@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foundation Textbooks — Output JSON Viewer</title>
+  <style>
+    :root{
+      color-scheme: dark;
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --panel2:#111c33;
+      --border:#263248;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#60a5fa;
+      --good:#34d399;
+      --warn:#fbbf24;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .wrap{max-width:1400px;margin:0 auto;padding:14px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:12px}
+    .hero{background:linear-gradient(135deg,rgba(96,165,250,.14),rgba(15,23,42,.92))}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .spacer{flex:1}
+    input,select,button{
+      background:var(--panel2);color:var(--text);
+      border:1px solid var(--border);border-radius:10px;
+      padding:9px 12px;font-size:14px
+    }
+    button{cursor:pointer}
+    button:hover{border-color:var(--accent)}
+    button.primary{border-color:var(--good);background:rgba(52,211,153,.15)}
+    .muted{color:var(--muted)}
+    .chip{display:inline-block;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.14);color:#bfdbfe;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px;margin-bottom:4px}
+    .chip.good{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.12);color:#a7f3d0}
+    .chip.warn{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.10);color:#fde68a}
+    .grid{display:grid;grid-template-columns:340px 1fr;gap:12px}
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+    .list{display:grid;gap:8px}
+    .topicBtn{width:100%;text-align:left;padding:10px;border-radius:12px;background:rgba(2,6,23,.18)}
+    .topicBtn.active{border-color:var(--accent);background:rgba(96,165,250,.12)}
+    .topicBtn .sub{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:normal}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tabs button.active{background:rgba(96,165,250,.18);border-color:var(--accent)}
+    .section{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px}
+    details summary{cursor:pointer;color:#bfdbfe}
+    .rich{line-height:1.55;font-size:15px;word-break:break-word}
+    .rich p{margin:0 0 10px}
+    .rich ul,.rich ol{margin:8px 0 8px 20px}
+    .rich li{margin-bottom:4px}
+    .rich table{width:100%;border-collapse:collapse;margin:8px 0 12px}
+    .rich th,.rich td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+    .rich img{max-width:100%;border-radius:10px;border:1px solid var(--border);display:block;margin:10px 0}
+    .math-plain{font-family:"Cambria Math","Segoe UI Symbol",serif;font-style:italic;color:#e2e8f0}
+    .rich .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+    .math-body{white-space:pre-wrap;word-break:break-word}
+    mjx-container{overflow-x:auto;max-width:100%}
+    code.path{display:inline-block;padding:2px 6px;border-radius:8px;background:rgba(2,6,23,.35);border:1px solid var(--border)}
+    .pager button{min-width:72px}
+    .kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .kpi .chip{margin-bottom:0}
+    pre.raw{white-space:pre-wrap;word-break:break-word;margin:0;max-height:70vh;overflow:auto;font-size:12px}
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code", "img"],
+        ignoreHtmlClass: "no-mathjax",
+      },
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card hero">
+      <div class="row">
+        <div>
+          <h1 style="margin:0 0 6px" id="title">Output JSON Viewer</h1>
+          <div class="muted" id="status">Loading…</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row">
+          <label class="muted">JSON path</label>
+          <input id="jsonPath" type="text" style="min-width:420px" />
+          <button id="loadBtn" class="primary" type="button">Load</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <span class="chip good">source: *_final.json (file)</span>
+        <span class="chip" id="chipTopics">topics: —</span>
+        <span class="chip" id="chipVersion">format: —</span>
+        <span class="chip" id="chipMath">mathml: —</span>
+        <span class="chip" id="chipSummary">summary: —</span>
+        <span class="chip" id="chipImages">images: —</span>
+        <span class="chip" id="chipLayout">layout: —</span>
+      </div>
+      <div class="muted" style="margin-top:8px;line-height:1.45" id="hint"></div>
+    </div>
+
+    <div id="mainGrid" class="grid" style="display:none">
+      <div class="card">
+        <div class="row" style="margin-bottom:10px">
+          <input id="topicFilter" type="text" placeholder="Filter topics…" style="flex:1;min-width:180px" />
+          <select id="topicSelect" style="min-width:180px"></select>
+        </div>
+        <div id="topicList" class="list"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:8px">
+          <h2 id="topicHeading" style="margin:0">Topic</h2>
+          <div class="spacer"></div>
+          <button id="downloadSummaryPdfBtn" type="button" class="primary" title="Download topic summary as PDF">Summary PDF</button>
+          <button id="downloadContentPdfBtn" type="button" title="Download full topic content as PDF">Full content PDF</button>
+          <button id="downloadPdfBtn" type="button" title="Download original textbook PDF pages for this chapter">Textbook pages PDF</button>
+          <span id="topicChip" class="chip"></span>
+        </div>
+        <div id="topicKpi" class="kpi"></div>
+        <div id="tabs" class="tabs" style="margin-bottom:10px"></div>
+        <div id="tabBody" class="section"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (!String.prototype.replaceAll) {
+      String.prototype.replaceAll = function(search, replacement) {
+        return this.split(search).join(replacement);
+      };
+    }
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function(s) {
+        var el = this;
+        do {
+          if (el.matches && el.matches(s)) return el;
+          el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+      };
+    }
+
+    var TAB_ORDER = [
+      "Summary", "Key points", "Theory",
+      "Illustrations", "Check knowledge", "Textbook", "Exercises", "Case studies",
+      "Raw"
+    ];
+    var TAB_ARRAY_KEY = {
+      "Illustrations": "illustrations",
+      "Check knowledge": "check_your_knowledge_items",
+      "Textbook": "textbook_exercises",
+      "Exercises": "exercises",
+      "Case studies": "case_studies"
+    };
+    var PAGE_SIZE = 35;
+
+    var state = {
+      doc: null,
+      topics: [],
+      activeTopicIdx: 0,
+      activeTab: "Summary",
+      filter: "",
+      imageMap: {},
+      pageByTab: {},
+      jsonPath: "",
+    };
+
+    var els = {
+      title: document.getElementById("title"),
+      status: document.getElementById("status"),
+      hint: document.getElementById("hint"),
+      jsonPath: document.getElementById("jsonPath"),
+      loadBtn: document.getElementById("loadBtn"),
+      chipTopics: document.getElementById("chipTopics"),
+      chipVersion: document.getElementById("chipVersion"),
+      chipMath: document.getElementById("chipMath"),
+      chipSummary: document.getElementById("chipSummary"),
+      chipImages: document.getElementById("chipImages"),
+      chipLayout: document.getElementById("chipLayout"),
+      mainGrid: document.getElementById("mainGrid"),
+      topicKpi: document.getElementById("topicKpi"),
+      topicFilter: document.getElementById("topicFilter"),
+      topicSelect: document.getElementById("topicSelect"),
+      topicList: document.getElementById("topicList"),
+      topicHeading: document.getElementById("topicHeading"),
+      topicChip: document.getElementById("topicChip"),
+      tabs: document.getElementById("tabs"),
+      tabBody: document.getElementById("tabBody"),
+      downloadSummaryPdfBtn: document.getElementById("downloadSummaryPdfBtn"),
+      downloadContentPdfBtn: document.getElementById("downloadContentPdfBtn"),
+      downloadPdfBtn: document.getElementById("downloadPdfBtn"),
+    };
+
+    function staticAssetUrl(relPath) {
+      var p = String(relPath || "").replace(/\\/g, "/").trim();
+      if (!p) return "";
+      if (/^https?:\/\//i.test(p)) return p;
+      if (p[0] !== "/") p = "/" + p;
+      return p.split("/").map(function(seg, i) {
+        if (!seg) return "";
+        return encodeURIComponent(seg);
+      }).join("/");
+    }
+
+    function imageAssetSrc(asset) {
+      if (!asset) return "";
+      if (asset.base64) {
+        var mime = asset.mime_type || "image/jpeg";
+        var b64 = String(asset.base64).replace(/\s+/g, "");
+        return "data:" + mime + ";base64," + b64;
+      }
+      if (asset.file) return staticAssetUrl(asset.file);
+      if (asset.source_url && /^https?:\/\//i.test(asset.source_url)) return asset.source_url;
+      return "";
+    }
+
+    function esc(s) {
+      var out = String(s == null ? "" : s);
+      out = out.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+      return out;
+    }
+
+    function escAttr(s) {
+      return esc(s).replaceAll("'", "&#39;");
+    }
+
+    function sanitizeSourceText(s) {
+      if (s == null) return "";
+      return String(s).replace(/<br\s*\/?>/gi, "\n").replace(/\uFFFD/g, "®");
+    }
+
+    function needsMathRendering(text) {
+      var raw = sanitizeSourceText(text);
+      if (!raw.trim()) return false;
+      if (/<math[\s>]/i.test(raw)) return true;
+      if (/\$\$[\s\S]+?\$\$/.test(raw)) return true;
+      if (/(^|[^\\$])\$[^$\n]+?\$/.test(raw)) return true;
+      if (/\\\(|\\\[/.test(raw)) return true;
+      return false;
+    }
+
+    function latexToReadable(latex) {
+      var s = String(latex || "").trim();
+      s = s.replace(/\\text\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\mathrm\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\mathbf\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)");
+      s = s.replace(/\\frac\{([^{}]+)\}/g, "($1)");
+      s = s.replace(/\^\{([^{}]+)\}/g, function(_, exp) {
+        if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
+        var map = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "n": "ⁿ", "+": "⁺", "-": "⁻" };
+        var out = "";
+        for (var i = 0; i < exp.length; i++) out += map[exp.charAt(i)] || exp.charAt(i);
+        return out;
+      });
+      s = s.replace(/_\{([^{}]+)\}/g, "_$1");
+      s = s.replace(/\\circ/g, "°");
+      s = s.replace(/\\theta/g, "θ");
+      s = s.replace(/\\alpha/g, "α");
+      s = s.replace(/\\beta/g, "β");
+      s = s.replace(/\\pi/g, "π");
+      s = s.replace(/\\mu/g, "μ");
+      s = s.replace(/\\times/g, "×");
+      s = s.replace(/\\cdot/g, "·");
+      s = s.replace(/\\leq/g, "≤");
+      s = s.replace(/\\geq/g, "≥");
+      s = s.replace(/\\neq/g, "≠");
+      s = s.replace(/\\infty/g, "∞");
+      s = s.replace(/\\rightarrow/g, "→");
+      s = s.replace(/\\leftarrow/g, "←");
+      s = s.replace(/\\Rightarrow/g, "⇒");
+      s = s.replace(/\\quad/g, " ");
+      s = s.replace(/\\left\(/g, "(").replace(/\\right\)/g, ")");
+      s = s.replace(/\\[a-zA-Z]+/g, "");
+      s = s.replace(/[{}]/g, "");
+      return s.replace(/\s+/g, " ").trim();
+    }
+
+    function replaceRawLatexInText(text) {
+      if (!text || text.indexOf("$") < 0) return text;
+      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
+        return '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
+      });
+      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
+        return pre + '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
+      });
+      return out;
+    }
+
+    function replaceRawLatexPlain(text) {
+      if (!text || text.indexOf("$") < 0) return text;
+      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
+        return latexToReadable(inner);
+      });
+      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
+        return pre + latexToReadable(inner);
+      });
+      return out;
+    }
+
+    var SUPER_MAP = { "0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","+":"⁺","-":"⁻","n":"ⁿ" };
+    function formatSuper(exp) {
+      exp = String(exp || "").replace(/\s+/g, "");
+      if (!exp) return "";
+      if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
+      var out = "";
+      for (var i = 0; i < exp.length; i++) out += SUPER_MAP[exp.charAt(i)] || exp.charAt(i);
+      return out;
+    }
+    function mathmlLocalTag(node) {
+      return String(node.localName || node.nodeName || "").replace(/^.*:/, "").toLowerCase();
+    }
+    function mathmlJoin(parts) {
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var piece = String(parts[i] || "").replace(/\s+/g, " ").trim();
+        if (!piece) continue;
+        if (out.length && !/^[,.;:!?)\]}°]/.test(piece) && !/[([{]$/.test(out[out.length - 1])) out.push(" ");
+        out.push(piece);
+      }
+      return out.join("");
+    }
+    function mathmlNodeToPlain(node) {
+      if (!node) return "";
+      var tag = mathmlLocalTag(node);
+      if (tag === "math" || tag === "mrow" || tag === "mstyle" || tag === "semantics") {
+        var kids = [];
+        for (var c = node.firstChild; c; c = c.nextSibling) {
+          if (c.nodeType === 1) kids.push(mathmlNodeToPlain(c));
+        }
+        return mathmlJoin(kids);
+      }
+      if (tag === "mn" || tag === "mi" || tag === "mtext" || tag === "ms" || tag === "mo") {
+        return (node.textContent || "").replace(/\s+/g, " ").trim();
+      }
+      if (tag === "mspace") return " ";
+      if (tag === "mfrac") {
+        var ch = node.children;
+        if (ch.length >= 2) {
+          var num = mathmlNodeToPlain(ch[0]), den = mathmlNodeToPlain(ch[1]);
+          if (/^[\w\d.]+$/.test(num) && /^[\w\d.]+$/.test(den)) return num + "/" + den;
+          return "(" + num + ")/(" + den + ")";
+        }
+        return ch.length ? mathmlNodeToPlain(ch[0]) : "";
+      }
+      if (tag === "msup") {
+        var ch2 = node.children;
+        if (ch2.length >= 2) return mathmlNodeToPlain(ch2[0]) + formatSuper(mathmlNodeToPlain(ch2[1]));
+        return ch2.length ? mathmlNodeToPlain(ch2[0]) : "";
+      }
+      if (tag === "msub" || tag === "msubsup" || tag === "msqrt" || tag === "mroot" || tag === "mfenced") {
+        var bits = [];
+        for (var j = 0; j < node.children.length; j++) bits.push(mathmlNodeToPlain(node.children[j]));
+        return mathmlJoin(bits);
+      }
+      return (node.textContent || "").replace(/\s+/g, " ").trim();
+    }
+    function mathmlBlockToReadable(block) {
+      try {
+        var safe = block.replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;");
+        var doc = new DOMParser().parseFromString(safe, "application/xml");
+        var root = doc.documentElement;
+        if (!root || root.nodeName === "parsererror") {
+          doc = new DOMParser().parseFromString(safe, "text/html");
+          root = doc.querySelector("math") || doc.body.firstElementChild;
+        }
+        if (!root) return block;
+        var plain = mathmlNodeToPlain(root).trim();
+        return plain;
+      } catch (e) {
+        return block;
+      }
+    }
+    function replaceMathMLInText(text) {
+      if (!text || !/<math[\s>]/i.test(text)) return text;
+      return text.replace(/<math[\s\S]*?<\/math>/gi, function(block) {
+        var plain = mathmlBlockToReadable(block);
+        return '<span class="math-plain">' + esc(plain) + "</span>";
+      });
+    }
+
+    function buildImageMap(topic) {
+      var map = {};
+      var assets = (topic && topic.image_assets) || {};
+      if (Array.isArray(assets)) {
+        for (var i = 0; i < assets.length; i++) {
+          var a = assets[i];
+          if (a && a.id) map[a.id] = a;
+        }
+      } else {
+        Object.keys(assets).forEach(function(id) {
+          var a = assets[id] || {};
+          map[id] = {
+            id: id,
+            file: a.file || "",
+            base64: a.base64 || "",
+            mime_type: a.mime_type || "image/jpeg",
+            source_url: a.source_url || "",
+          };
+        });
+      }
+      return map;
+    }
+
+    function injectImages(text, imageMap) {
+      var raw = String(text == null ? "" : text);
+      if (!raw.trim()) return raw;
+      imageMap = imageMap || {};
+      raw = raw.replace(/\[image:\s*(img_\d+)\]/gi, function(_match, id) {
+        var src = imageAssetSrc(imageMap[id]);
+        if (!src) {
+          return '<span class="chip warn">[missing image: ' + esc(id) + "]</span>";
+        }
+        return '<img class="topic-image" alt="' + esc(id) + '" loading="lazy" src="' + escAttr(src) + '">';
+      });
+      raw = raw.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(_match, alt, url) {
+        var src = staticAssetUrl(url) || url;
+        return '<img class="topic-image" alt="' + esc(alt || "image") + '" loading="lazy" src="' + escAttr(src) + '">';
+      });
+      return raw;
+    }
+
+    function renderRichContent(text, imageMap) {
+      var raw = sanitizeSourceText(text);
+      if (!raw.trim()) return "";
+      raw = injectImages(raw, imageMap);
+      if (/<math[\s>]/i.test(raw)) raw = replaceMathMLInText(raw);
+      var hasRawLatex = /(^|[^\\$])\$[^$\n]+?\$/.test(raw) || /\$\$[\s\S]+?\$\$/.test(raw);
+      if (hasRawLatex) raw = replaceRawLatexInText(raw);
+      if (/<math[\s>]/i.test(raw) || /<img[\s>]/i.test(raw) || /<table[\s>]/i.test(raw) ||
+          /<span class="math-plain"/i.test(raw) || needsMathRendering(raw)) {
+        return '<div class="rich math-body">' + raw + "</div>";
+      }
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var parts = [], paragraph = [], inList = false;
+      function flushP() {
+        if (!paragraph.length) return;
+        parts.push("<p>" + esc(replaceRawLatexPlain(paragraph.join(" "))) + "</p>");
+        paragraph = [];
+      }
+      function flushList() {
+        if (inList) { parts.push("</ul>"); inList = false; }
+      }
+      for (var i = 0; i < lines.length; i++) {
+        var t = lines[i].trim();
+        if (!t) { flushP(); flushList(); continue; }
+        var bullet = /^[-*•]\s+(.*)$/.exec(t) || /^\(\w+\)\s+(.*)$/.exec(t);
+        if (bullet) {
+          flushP();
+          if (!inList) { parts.push("<ul>"); inList = true; }
+          parts.push("<li>" + esc(replaceRawLatexPlain(bullet[1] || bullet[0])) + "</li>");
+          continue;
+        }
+        var heading = /^(#{1,6})\s+(.*)$/.exec(t);
+        if (heading) {
+          flushP(); flushList();
+          var lvl = Math.min(heading[1].length + 2, 6);
+          parts.push("<h" + lvl + ">" + esc(heading[2]) + "</h" + lvl + ">");
+          continue;
+        }
+        paragraph.push(t);
+      }
+      flushP(); flushList();
+      return '<div class="rich">' + parts.join("") + "</div>";
+    }
+
+    function typesetMath() {
+      if (!window.MathJax) return Promise.resolve();
+      if (MathJax.startup && MathJax.startup.promise) {
+        return MathJax.startup.promise.then(function() {
+          return MathJax.typesetPromise([els.tabBody]);
+        });
+      }
+      if (MathJax.typesetPromise) return MathJax.typesetPromise([els.tabBody]);
+      return Promise.resolve();
+    }
+
+    function defaultJsonPath() {
+      // best-effort default for your current run
+      return "outputs/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_final.json";
+    }
+
+    function getParam(name) {
+      var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.search || "");
+      return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+    }
+
+    function topicLabel(t) {
+      var num = t && t.topic_number != null ? ("Topic " + t.topic_number) : "Topic";
+      var name = (t && (t.chapter_name || t.topic_name || t.title)) ? String(t.chapter_name || t.topic_name || t.title) : "";
+      return name ? (num + ". " + name) : num;
+    }
+
+    function arrLen(t, key) {
+      var a = t && t[key];
+      return (a && a.length) ? a.length : 0;
+    }
+
+    function getCounts(t) {
+      var c = {};
+      if (t && t.summary && String(t.summary).trim()) c["Summary"] = 1;
+      if (arrLen(t, "key_points")) c["Key points"] = arrLen(t, "key_points");
+      if (arrLen(t, "theory_sections")) c["Theory"] = arrLen(t, "theory_sections");
+      if (arrLen(t, "illustrations")) c["Illustrations"] = arrLen(t, "illustrations");
+      if (arrLen(t, "check_your_knowledge_items")) c["Check knowledge"] = arrLen(t, "check_your_knowledge_items");
+      if (arrLen(t, "textbook_exercises")) c["Textbook"] = arrLen(t, "textbook_exercises");
+      if (arrLen(t, "exercises")) c["Exercises"] = arrLen(t, "exercises");
+      if (arrLen(t, "case_studies")) c["Case studies"] = arrLen(t, "case_studies");
+      c["Raw"] = 1;
+      return c;
+    }
+
+    function keyPointBody(kp) {
+      if (kp == null) return "";
+      if (typeof kp === "string") return kp;
+      if (typeof kp === "object") return kp.text || kp.markdown || kp.content || "";
+      return String(kp);
+    }
+
+    function getPageOffset(tabKey) {
+      return (state.pageByTab && state.pageByTab[tabKey]) || 0;
+    }
+
+    function setPageOffset(tabKey, off) {
+      if (!state.pageByTab) state.pageByTab = {};
+      state.pageByTab[tabKey] = Math.max(0, off);
+    }
+
+    function renderQaItem(ex, idx) {
+      var title = ex.title || ex.question_type || ("Item " + (idx + 1));
+      var prob = ex.problem_markdown || ex.problem || ex.prompt_markdown || ex.question || "";
+      var sol = ex.solution_markdown || ex.solution || ex.answer || "";
+      var chips = [];
+      if (ex.type) chips.push('<span class="chip">' + esc(ex.type) + "</span>");
+      if (ex.question_type) chips.push('<span class="chip warn">' + esc(ex.question_type) + "</span>");
+      if (ex.question_number != null && ex.question_number !== "") chips.push('<span class="chip">#' + esc(ex.question_number) + "</span>");
+      if (ex.subsection_title) chips.push('<span class="chip">' + esc(ex.subsection_title) + "</span>");
+      if (ex.page) chips.push('<span class="chip">p.' + esc(ex.page) + "</span>");
+      return (
+        '<details class="section">' +
+          "<summary>" + chips.join(" ") + esc(title) + "</summary>" +
+          (prob ? '<div style="margin-top:10px"><div class="label">Problem</div>' + renderRichContent(prob, state.imageMap) + "</div>" : "") +
+          (sol ? '<div style="margin-top:10px"><div class="label">Solution</div>' + renderRichContent(sol, state.imageMap) + "</div>" : '<div class="muted" style="margin-top:10px">No solution</div>') +
+        "</details>"
+      );
+    }
+
+    function renderQaList(items, tabKey, emptyLabel) {
+      items = items || [];
+      if (!items.length) return '<div class="muted">' + esc(emptyLabel) + "</div>";
+      var off = getPageOffset(tabKey);
+      var total = items.length;
+      if (off >= total) {
+        off = 0;
+        setPageOffset(tabKey, 0);
+      }
+      var slice = items.slice(off, off + PAGE_SIZE);
+      var parts = [];
+      if (total > PAGE_SIZE) {
+        parts.push('<div class="row pager" style="margin-bottom:10px">');
+        parts.push('<button type="button" data-pager="prev" data-tab="' + esc(tabKey) + '"' + (off <= 0 ? " disabled" : "") + ">Prev</button>");
+        parts.push('<span class="muted">' + (off + 1) + "–" + Math.min(off + PAGE_SIZE, total) + " of " + total + "</span>");
+        parts.push('<button type="button" data-pager="next" data-tab="' + esc(tabKey) + '"' + (off + PAGE_SIZE >= total ? " disabled" : "") + ">Next</button>");
+        parts.push("</div>");
+      }
+      for (var i = 0; i < slice.length; i++) parts.push(renderQaItem(slice[i], off + i));
+      return parts.join("");
+    }
+
+    function attachPagerHandlers() {
+      var buttons = els.tabBody.querySelectorAll("button[data-pager]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+          var tabKey = this.getAttribute("data-tab");
+          var dir = this.getAttribute("data-pager");
+          var t = state.topics[state.activeTopicIdx] || {};
+          var key = TAB_ARRAY_KEY[tabKey];
+          var total = key ? arrLen(t, key) : 0;
+          var off = getPageOffset(tabKey);
+          if (dir === "next") off = Math.min(off + PAGE_SIZE, Math.max(0, total - PAGE_SIZE));
+          else off = Math.max(0, off - PAGE_SIZE);
+          setPageOffset(tabKey, off);
+          renderTab();
+        });
+      }
+    }
+
+    function renderTopicKpi(counts) {
+      var keys = ["Illustrations", "Check knowledge", "Textbook", "Exercises", "Case studies", "Theory", "Key points"];
+      var html = [];
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (counts[k]) html.push('<span class="chip">' + esc(k) + ": " + counts[k] + "</span>");
+      }
+      els.topicKpi.innerHTML = html.join("") || '<span class="muted">No labeled content counts for this topic.</span>';
+    }
+
+    function pickDefaultTab(counts) {
+      for (var i = 0; i < TAB_ORDER.length; i++) {
+        if (counts[TAB_ORDER[i]]) return TAB_ORDER[i];
+      }
+      return "Raw";
+    }
+
+    function buildTabs(counts) {
+      var html = [];
+      for (var i = 0; i < TAB_ORDER.length; i++) {
+        var tab = TAB_ORDER[i];
+        if (!counts[tab]) continue;
+        var active = tab === state.activeTab ? " active" : "";
+        var cnt = counts[tab] || 0;
+        html.push(
+          '<button type="button" data-tab="' + esc(tab) + '" class="' + active.trim() + '">' +
+          esc(tab) + (cnt ? " (" + cnt + ")" : "") + "</button>"
+        );
+      }
+      els.tabs.innerHTML = html.join("");
+      var buttons = els.tabs.querySelectorAll("button[data-tab]");
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].addEventListener("click", function() {
+          state.activeTab = this.getAttribute("data-tab");
+          renderTab();
+        });
+      }
+    }
+
+    function splitSummaryBlocks(text) {
+      var raw = sanitizeSourceText(text || "");
+      if (!raw.trim()) return [];
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var blocks = [];
+      var currentTitle = "";
+      var currentLevel = 2;
+      var currentLines = [];
+      function flush() {
+        var body = currentLines.join("\n").trim();
+        if (currentTitle || body) {
+          blocks.push({ title: currentTitle || "Summary", level: currentLevel, body: body });
+        }
+        currentLines = [];
+      }
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var hm = /^(#{2,3})\s+(.*)$/.exec(line.trim());
+        if (hm) {
+          flush();
+          currentLevel = hm[1].length;
+          currentTitle = hm[2].trim();
+          continue;
+        }
+        currentLines.push(line);
+      }
+      flush();
+      return blocks;
+    }
+
+    function extractChapterOverview(summary) {
+      var raw = String(summary || "").trim();
+      if (!raw) return "";
+      var blocks = splitSummaryBlocks(raw);
+      for (var i = 0; i < blocks.length; i++) {
+        var t = (blocks[i].title || "").trim().toLowerCase();
+        if (t === "chapter overview" || t.indexOf("chapter overview") >= 0) {
+          return blocks[i].body || "";
+        }
+      }
+      if (blocks.length === 1) return blocks[0].body || "";
+      return "";
+    }
+
+    function chapterOverviewForTheory(summary) {
+      var overview = extractChapterOverview(summary || "");
+      if (String(overview).trim()) return overview;
+      return String(summary || "").trim();
+    }
+
+    function renderChapterOverviewBlock(summary, imageMap) {
+      var body = chapterOverviewForTheory(summary);
+      if (!String(body).trim()) return "";
+      return '<details class="section" open><summary>Chapter overview</summary>' +
+        renderRichContent(body, imageMap) + "</details>";
+    }
+
+    function renderSummaryTab(t) {
+      var summary = t.summary || "";
+      if (!String(summary).trim()) return '<div class="muted">No summary.</div>';
+      var blocks = splitSummaryBlocks(summary);
+      if (blocks.length <= 1 && !blocks[0].title) {
+        var body = renderRichContent(summary, state.imageMap);
+        if (!body.trim()) return '<div class="muted">No summary.</div>';
+        return '<details class="section" open><summary>Summary</summary>' + body + "</details>";
+      }
+      return blocks.map(function(block, idx) {
+        var label = block.title || ("Section " + (idx + 1));
+        if (block.level === 3 && label.indexOf("Subtopic:") !== 0) {
+          label = "Subtopic: " + label;
+        }
+        var open = idx === 0 ? " open" : "";
+        return '<details class="section"' + open + "><summary>" + esc(label) + "</summary>" +
+          renderRichContent(block.body, state.imageMap) + "</details>";
+      }).join("");
+    }
+
+    function renderKeyPointsTab(t) {
+      var kps = (t.key_points || []).filter(Boolean);
+      if (!kps.length) return '<div class="muted">No key points.</div>';
+      return kps.map(function(kp, idx) {
+        var body = keyPointBody(kp);
+        if (!String(body).trim()) return "";
+        return '<details class="section"><summary>Key point ' + (idx + 1) + "</summary>" +
+          renderRichContent(body, state.imageMap) + "</details>";
+      }).filter(Boolean).join("") || '<div class="muted">No key points.</div>';
+    }
+
+    function renderConceptMapBlock(t) {
+      var cm = t.concept_map || {};
+      var md = (typeof cm === "string") ? cm : (cm.markdown || "");
+      if (!String(md).trim()) {
+        var secs = t.theory_sections || [];
+        for (var i = 0; i < secs.length; i++) {
+          var title = ((secs[i].topics || secs[i].title || "") + "").toLowerCase();
+          if (title.indexOf("concept") >= 0 && title.indexOf("map") >= 0) {
+            md = secs[i].markdown || secs[i].topic_explanation || "";
+            break;
+          }
+        }
+      }
+      if (!String(md).trim()) return "";
+      return '<details class="section" open><summary>Concept Map</summary>' +
+        renderRichContent(md, state.imageMap) + "</details>";
+    }
+
+    function isConceptMapSection(sec) {
+      if (sec && sec.section_kind === "concept_map") return true;
+      var title = ((sec && (sec.topics || sec.title || sec.topic_name)) || "").toLowerCase();
+      return title.indexOf("concept") >= 0 && title.indexOf("map") >= 0;
+    }
+
+    function normalizeHeadingText(s) {
+      return String(s || "").trim().replace(/^#+\s*/, "").trim().toLowerCase();
+    }
+
+    function stripDuplicateHeading(text, title) {
+      var raw = String(text == null ? "" : text);
+      if (!raw.trim() || !title) return raw;
+      var normTitle = normalizeHeadingText(title);
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var start = 0;
+      while (start < lines.length) {
+        var line = lines[start].trim();
+        if (!line) { start++; continue; }
+        var hm = /^(#{1,6})\s+(.*)$/.exec(line);
+        if (hm) {
+          var htext = normalizeHeadingText(hm[2]);
+          if (htext === normTitle || htext.indexOf(normTitle) === 0 || normTitle.indexOf(htext) === 0) {
+            start++;
+            while (start < lines.length && !lines[start].trim()) start++;
+            continue;
+          }
+        }
+        if (normalizeHeadingText(line) === normTitle) {
+          start++;
+          while (start < lines.length && !lines[start].trim()) start++;
+          continue;
+        }
+        break;
+      }
+      return lines.slice(start).join("\n").trim();
+    }
+
+    function renderTheorySectionDetails(sec, imageMap) {
+      var title = (sec.topics && String(sec.topics).trim()) || (sec.title && String(sec.title).trim()) ||
+        (sec.topic_name && String(sec.topic_name).trim()) || "Section";
+      if (isConceptMapSection(sec)) title = "Concept Map";
+      var md = stripDuplicateHeading(sec.markdown || sec.topic_explanation || "", title);
+      var openAttr = isConceptMapSection(sec) ? " open" : "";
+      return '<details class="section"' + openAttr + '><summary>' + esc(title) + "</summary>" +
+        renderRichContent(md, imageMap) + "</details>";
+    }
+
+    function conceptMapMarkdownFromTopic(t) {
+      var cm = t.concept_map || {};
+      return (typeof cm === "string") ? cm : (cm.markdown || "");
+    }
+
+    function renderTheoryTab(t) {
+      var secs = t.theory_sections || [];
+      var conceptHtml = "";
+      var topicHtml = "";
+      secs.forEach(function(sec) {
+        if (isConceptMapSection(sec)) {
+          conceptHtml += renderTheorySectionDetails(sec, state.imageMap);
+        } else {
+          topicHtml += renderTheorySectionDetails(sec, state.imageMap);
+        }
+      });
+      if (!conceptHtml.trim()) {
+        var cmMd = conceptMapMarkdownFromTopic(t);
+        if (String(cmMd).trim()) {
+          conceptHtml =
+            '<details class="section" open><summary>Concept Map</summary>' +
+            renderRichContent(cmMd, state.imageMap) + "</details>";
+        }
+      }
+      var overviewHtml = renderChapterOverviewBlock(t.summary || "", state.imageMap);
+      if (!conceptHtml && !overviewHtml && !topicHtml) {
+        return '<div class="muted">No theory sections.</div>';
+      }
+      return conceptHtml + overviewHtml + topicHtml;
+    }
+
+    function renderIllustrationsTab(t) {
+      return renderQaList(t.illustrations || [], "Illustrations", "No illustrations.");
+    }
+
+    function renderCheckKnowledgeTab(t) {
+      return renderQaList(t.check_your_knowledge_items || [], "Check knowledge", "No check-your-knowledge items.");
+    }
+
+    function renderTextbookTab(t) {
+      return renderQaList(t.textbook_exercises || [], "Textbook", "No textbook exercises.");
+    }
+
+    function renderExercisesTab(t) {
+      return renderQaList(t.exercises || [], "Exercises", "No exercises.");
+    }
+
+    function renderCaseStudiesTab(t) {
+      var items = t.case_studies || [];
+      if (!items.length) return '<div class="muted">No case studies.</div>';
+      return items.map(function(cs, idx) {
+        var title = cs.title || ("Case study " + (idx + 1));
+        var desc = cs.description || "";
+        var qs = cs.questions || [];
+        var qHtml = "";
+        if (Array.isArray(qs) && qs.length) {
+          qHtml = qs.map(function(q, qi) {
+            var body = typeof q === "string" ? q : (q.prompt_markdown || q.problem || q.text || "");
+            return '<details class="section" style="margin-top:8px"><summary>Question ' + (qi + 1) + "</summary>" +
+              renderRichContent(body, state.imageMap) + "</details>";
+          }).join("");
+        }
+        return (
+          '<details class="section">' +
+            "<summary>" + esc(title) + "</summary>" +
+            (desc ? '<div style="margin-top:10px"><div class="label">Description</div>' + renderRichContent(desc, state.imageMap) + "</div>" : "") +
+            (qHtml ? '<div style="margin-top:10px"><div class="label">Questions</div>' + qHtml + "</div>" : "") +
+          "</details>"
+        );
+      }).join("");
+    }
+
+    function renderRawTab() {
+      return '<details class="section" open><summary>Raw topic JSON</summary><pre id="rawPre" class="raw muted">Expand or wait — generating…</pre></details>';
+    }
+
+    function fillRawTab(t) {
+      var pre = els.tabBody.querySelector("#rawPre");
+      if (!pre) return;
+      window.setTimeout(function() {
+        try {
+          pre.textContent = JSON.stringify(t, null, 2);
+          pre.classList.remove("muted");
+        } catch (e) {
+          pre.textContent = String(e.message || e);
+        }
+      }, 0);
+    }
+
+    function renderTab() {
+      var t = state.topics[state.activeTopicIdx];
+      if (!t) {
+        els.tabBody.innerHTML = '<div class="muted">No topic selected.</div>';
+        els.topicKpi.innerHTML = "";
+        return;
+      }
+      var html = "";
+      if (state.activeTab === "Summary") html = renderSummaryTab(t);
+      else if (state.activeTab === "Key points") html = renderKeyPointsTab(t);
+      else if (state.activeTab === "Theory") html = renderTheoryTab(t);
+      else if (state.activeTab === "Illustrations") html = renderIllustrationsTab(t);
+      else if (state.activeTab === "Check knowledge") html = renderCheckKnowledgeTab(t);
+      else if (state.activeTab === "Textbook") html = renderTextbookTab(t);
+      else if (state.activeTab === "Exercises") html = renderExercisesTab(t);
+      else if (state.activeTab === "Case studies") html = renderCaseStudiesTab(t);
+      else html = renderRawTab();
+      els.tabBody.innerHTML = html;
+      if (state.activeTab === "Raw") fillRawTab(t);
+      attachPagerHandlers();
+      typesetMath();
+    }
+
+    function renderTopicNav() {
+      var q = (state.filter || "").trim().toLowerCase();
+      var all = state.topics.slice();
+      var filtered = !q ? all : all.filter(function(t) {
+        var hay = [
+          t.topic_number,
+          t.chapter_name,
+          t.topic_name,
+          t.page_range,
+        ].join(" ").toLowerCase();
+        return hay.indexOf(q) >= 0;
+      });
+
+      els.topicSelect.innerHTML = filtered.map(function(t, idx) {
+        var actualIdx = state.topics.indexOf(t);
+        var sel = actualIdx === state.activeTopicIdx ? " selected" : "";
+        return '<option value="' + esc(String(actualIdx)) + '"' + sel + ">" + esc(topicLabel(t)) + "</option>";
+      }).join("");
+
+      els.topicList.innerHTML = filtered.map(function(t) {
+        var actualIdx = state.topics.indexOf(t);
+        var active = actualIdx === state.activeTopicIdx ? " active" : "";
+        var counts = getCounts(t);
+        var sub = [
+          (t.page_range ? ("pp. " + t.page_range) : ""),
+          (counts["Illustrations"] ? (counts["Illustrations"] + " ill.") : ""),
+          (counts["Textbook"] ? (counts["Textbook"] + " tb.") : ""),
+          (counts["Exercises"] ? (counts["Exercises"] + " ex.") : ""),
+        ].filter(Boolean).join(" · ");
+        return (
+          '<button class="topicBtn' + active + '" type="button" data-topic="' + esc(String(actualIdx)) + '">' +
+          esc(topicLabel(t)) +
+          '<span class="sub">' + esc(sub || "—") + "</span></button>"
+        );
+      }).join("");
+    }
+
+    function showTopic(idx) {
+      idx = Number(idx);
+      if (!isFinite(idx) || idx < 0 || idx >= state.topics.length) idx = 0;
+      state.activeTopicIdx = idx;
+      sessionStorage.setItem("outViewerTopicIdx", String(idx));
+      var t = state.topics[idx];
+      state.pageByTab = {};
+      state.imageMap = buildImageMap(t || {});
+      var imgCount = 0;
+      Object.keys(state.imageMap).forEach(function(k) {
+        if (state.imageMap[k] && imageAssetSrc(state.imageMap[k])) imgCount++;
+      });
+      els.chipImages.textContent = "images: " + imgCount;
+      var src = (t && t.summary_source) || "regex";
+      if (src === "llm") src = "student_llm";
+      els.chipSummary.textContent = "summary: " + (src === "student_llm" ? "student notes" : src);
+      var label = t ? topicLabel(t) : "Topic";
+      els.topicHeading.textContent = label;
+      els.topicChip.textContent = (t && t.page_range) ? ("pp. " + t.page_range) : "";
+      if (els.downloadPdfBtn) {
+        var canPdf = !!(t && t.page_range && state.jsonPath);
+        els.downloadPdfBtn.disabled = !canPdf;
+        els.downloadPdfBtn.title = canPdf
+          ? ("Download PDF pages " + t.page_range)
+          : "No page_range or JSON path for PDF export";
+      }
+      var counts = getCounts(t || {});
+      if (!counts[state.activeTab]) state.activeTab = pickDefaultTab(counts);
+      buildTabs(counts);
+      renderTopicKpi(counts);
+      renderTopicNav();
+      renderTab();
+    }
+
+    function setMeta(doc) {
+      var md = (doc && doc.metadata) || {};
+      els.title.textContent = (md.name ? (md.name + " — Output JSON Viewer") : "Output JSON Viewer");
+      els.chipTopics.textContent = "topics: " + (md.topic_count != null ? md.topic_count : (doc.topics ? doc.topics.length : "—"));
+      els.chipVersion.textContent = "format: " + (md.format_version || "—");
+      els.chipMath.textContent = "mathml: " + (md.mathml || "—");
+      els.chipLayout.textContent = "layout: " + (md.layout || "—");
+    }
+
+    function normalizeJsonPath(path) {
+      var p = String(path || "").trim();
+      if (p && !/^https?:\/\//i.test(p) && p[0] !== "/") p = "/" + p;
+      return p;
+    }
+
+    function loadJson(path) {
+      var p = normalizeJsonPath(path);
+      return fetch(p, { cache: "no-store" }).then(function(resp) {
+        if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + path);
+        return resp.json();
+      });
+    }
+
+    function exportErrorMessage(err, status) {
+      var msg = (err && err.error) ? String(err.error) : ("HTTP " + status);
+      if (msg.indexOf("not found") >= 0 || msg.indexOf("API route not found") >= 0) {
+        return "Export API unavailable — stop the server (Ctrl+C) and run: python viewer_api.py";
+      }
+      return msg;
+    }
+
+    function downloadTopicExportPdf(scope) {
+      var t = state.topics[state.activeTopicIdx];
+      if (!t || !state.jsonPath) return;
+      var topicNum = t.topic_number;
+      if (topicNum == null) return;
+      scope = scope || "full";
+      var url = "/api/topic-export?json=" + encodeURIComponent(normalizeJsonPath(state.jsonPath)) +
+        "&topic=" + encodeURIComponent(String(topicNum)) +
+        "&format=pdf&scope=" + encodeURIComponent(scope);
+      var btn = scope === "summary" ? els.downloadSummaryPdfBtn : els.downloadContentPdfBtn;
+      if (btn) btn.disabled = true;
+      els.status.textContent = (scope === "summary" ? "Building summary PDF" : "Building content PDF") +
+        " for topic " + topicNum + "…";
+      fetch(url).then(function(resp) {
+        if (!resp.ok) {
+          return resp.json().catch(function() { return {}; }).then(function(err) {
+            throw new Error(exportErrorMessage(err, resp.status));
+          });
+        }
+        var dispo = resp.headers.get("Content-Disposition") || "";
+        var nameMatch = /filename="([^"]+)"/.exec(dispo);
+        var filename = nameMatch ? nameMatch[1] : ("topic_" + topicNum + ".pdf");
+        return resp.blob().then(function(blob) {
+          var link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(function() { URL.revokeObjectURL(link.href); }, 2000);
+          els.status.textContent = "Downloaded: " + filename;
+        });
+      }).catch(function(e) {
+        els.status.textContent = "PDF failed: " + String(e.message || e);
+      }).finally(function() {
+        if (els.downloadSummaryPdfBtn) els.downloadSummaryPdfBtn.disabled = !state.jsonPath;
+        if (els.downloadContentPdfBtn) els.downloadContentPdfBtn.disabled = !state.jsonPath;
+      });
+    }
+
+    function downloadTopicContentPdf() {
+      downloadTopicExportPdf("full");
+    }
+
+    function downloadTopicSummaryPdf() {
+      downloadTopicExportPdf("summary");
+    }
+
+    function downloadChapterPdf() {
+      var t = state.topics[state.activeTopicIdx];
+      if (!t || !state.jsonPath) return;
+      var topicNum = t.topic_number;
+      if (topicNum == null) return;
+      var url = "/api/chapter-pdf?json=" + encodeURIComponent(normalizeJsonPath(state.jsonPath)) +
+        "&topic=" + encodeURIComponent(String(topicNum));
+      els.downloadPdfBtn.disabled = true;
+      els.status.textContent = "Preparing PDF for topic " + topicNum + "…";
+      fetch(url).then(function(resp) {
+        if (!resp.ok) {
+          return resp.json().catch(function() { return {}; }).then(function(err) {
+            throw new Error(exportErrorMessage(err, resp.status));
+          });
+        }
+        var dispo = resp.headers.get("Content-Disposition") || "";
+        var nameMatch = /filename="([^"]+)"/.exec(dispo);
+        var filename = nameMatch ? nameMatch[1] : ("chapter_" + topicNum + ".pdf");
+        return resp.blob().then(function(blob) {
+          var link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(function() { URL.revokeObjectURL(link.href); }, 2000);
+          els.status.textContent = "Downloaded: " + filename;
+        });
+      }).catch(function(e) {
+        els.status.textContent = "PDF download failed: " + String(e.message || e);
+      }).finally(function() {
+        if (els.downloadPdfBtn) els.downloadPdfBtn.disabled = !((t && t.page_range) && state.jsonPath);
+      });
+    }
+
+    function checkExportApi() {
+      return fetch("/api/capabilities", { cache: "no-store" }).then(function(resp) {
+        if (!resp.ok) throw new Error("capabilities missing");
+        return resp.json();
+      }).catch(function() {
+        els.hint.innerHTML =
+          (els.hint.innerHTML || "") +
+          '<br><span class="chip warn">Export API outdated</span> Stop the server (Ctrl+C) and run ' +
+          '<code class="path">python viewer_api.py</code>, then hard-refresh (Ctrl+F5).';
+      });
+    }
+
+    function init() {
+      if (window.location.protocol === "file:") {
+        els.status.textContent = "Opened as local file — fetching JSON will fail.";
+        els.hint.innerHTML =
+          "<span class='chip warn'>Open via server</span> Start the server then open:<br>" +
+          "<code class='path'>http://127.0.0.1:8765/Viewer/output_json_viewer.html</code><br>" +
+          "In terminal: <code>python viewer_api.py</code>";
+        return;
+      }
+
+      var qp = getParam("json");
+      var savedPath = sessionStorage.getItem("outViewerJsonPath") || "";
+      var initial = qp || savedPath || defaultJsonPath();
+      els.jsonPath.value = initial;
+
+      els.hint.innerHTML =
+        "Tip: pass a different file via <code class='path'>?json=outputs/&lt;book&gt;/&lt;book&gt;_final.json</code>. " +
+        "Rebuild with images + LLM summaries: <code class='path'>python topicwise_pipeline.py --merge-final --with-images --summarize-llm</code><br>" +
+        "Example:<br><code class='path'>http://127.0.0.1:8765/Viewer/output_json_viewer.html?json=/outputs/10%20PHYSICS%20FOUNDATION/10%20PHYSICS%20FOUNDATION_final.json</code>";
+
+      function doLoad() {
+        var p = (els.jsonPath.value || "").trim();
+        if (!p) return;
+        sessionStorage.setItem("outViewerJsonPath", p);
+        state.jsonPath = normalizeJsonPath(p);
+        els.status.textContent = "Loading " + p + " …";
+        loadJson(p).then(function(doc) {
+          state.doc = doc || {};
+          state.topics = (doc && doc.topics) ? doc.topics : [];
+          state.pageByTab = {};
+          setMeta(doc || {});
+          if (!state.topics.length) {
+            els.status.textContent = "No topics[] found in JSON.";
+            els.mainGrid.style.display = "none";
+            return;
+          }
+          els.mainGrid.style.display = "";
+          var savedIdx = Number(sessionStorage.getItem("outViewerTopicIdx"));
+          if (!isFinite(savedIdx)) savedIdx = 0;
+          state.filter = "";
+          els.topicFilter.value = "";
+          state.activeTab = "Summary";
+          renderTopicNav();
+          showTopic(savedIdx);
+          els.status.textContent = "Loaded: " + p;
+        }).catch(function(e) {
+          els.status.textContent = "Error: " + String(e.message || e);
+          els.mainGrid.style.display = "none";
+        });
+      }
+
+      els.loadBtn.addEventListener("click", function() { doLoad(); });
+      els.jsonPath.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") doLoad();
+      });
+      els.topicFilter.addEventListener("input", function(e) {
+        state.filter = e.target.value || "";
+        renderTopicNav();
+      });
+      els.topicSelect.addEventListener("change", function(e) {
+        showTopic(e.target.value);
+      });
+      els.topicList.addEventListener("click", function(e) {
+        var btn = e.target.closest("button[data-topic]");
+        if (!btn) return;
+        showTopic(btn.getAttribute("data-topic"));
+      });
+      if (els.downloadSummaryPdfBtn) {
+        els.downloadSummaryPdfBtn.addEventListener("click", downloadTopicSummaryPdf);
+      }
+      if (els.downloadContentPdfBtn) {
+        els.downloadContentPdfBtn.addEventListener("click", downloadTopicContentPdf);
+      }
+      if (els.downloadPdfBtn) {
+        els.downloadPdfBtn.addEventListener("click", downloadChapterPdf);
+      }
+
+      doLoad();
+      checkExportApi();
+    }
+
+    init();
+  </script>
+</body>
+</html>
+

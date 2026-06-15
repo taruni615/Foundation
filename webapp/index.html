@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Textbook Extractor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📚</span>
+      <div>
+        <h1>Textbook Extractor</h1>
+        <p class="tagline">Turn a textbook PDF into a clean, reviewed database — step by step.</p>
+      </div>
+    </div>
+    <button type="button" class="btn topbar-btn" id="history-btn">🕘 History</button>
+  </header>
+
+  <!-- Stepper -->
+  <nav class="stepper" id="stepper">
+    <div class="step" data-step="1"><span class="dot">1</span><span class="label">Choose &amp; Upload</span></div>
+    <div class="step" data-step="2"><span class="dot">2</span><span class="label">Extract</span></div>
+    <div class="step" data-step="3"><span class="dot">3</span><span class="label">Review &amp; Edit</span></div>
+    <div class="step" data-step="4"><span class="dot">4</span><span class="label">Preview</span></div>
+    <div class="step" data-step="5"><span class="dot">5</span><span class="label">Save to Database</span></div>
+  </nav>
+
+  <main class="container">
+
+    <!-- ============ STEP 1: Attributes + Upload ============ -->
+    <section class="panel-step" id="step-1">
+      <div class="split">
+        <!-- LEFT: attributes -->
+        <div class="card attributes-card">
+          <h2>1 · Tell us about the book</h2>
+          <p class="hint">Pick the details that describe this textbook. These are saved alongside the content.</p>
+
+          <label class="field">
+            <span>System / Board</span>
+            <select id="attr-board"></select>
+          </label>
+          <label class="field">
+            <span>Subject</span>
+            <select id="attr-subject"></select>
+          </label>
+          <label class="field">
+            <span>Class / Grade</span>
+            <select id="attr-class"></select>
+          </label>
+
+          <div class="slug-preview">
+            <span>This book will be saved as:</span>
+            <code id="slug-out">—</code>
+          </div>
+        </div>
+
+        <!-- RIGHT: upload -->
+        <div class="card upload-card">
+          <h2>2 · Add the textbook PDF</h2>
+          <p class="hint">Upload a new PDF, or pick one that's already on the server.</p>
+
+          <div id="dropzone" class="dropzone">
+            <div class="dz-inner">
+              <span class="dz-icon">⬆️</span>
+              <p><strong>Drag &amp; drop a PDF here</strong></p>
+              <p class="muted">or</p>
+              <button type="button" class="btn" id="browse-btn">Browse files</button>
+              <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+          </div>
+          <div id="upload-status" class="upload-status"></div>
+
+          <div class="selected-book" id="selected-book" hidden>
+            <span class="check">✓</span>
+            <div>
+              <strong id="selected-book-name"></strong>
+              <small id="selected-book-note"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span></span>
+        <button class="btn btn-primary" id="to-extract" disabled>Continue to Extraction →</button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 2: Extraction ============ -->
+    <section class="panel-step" id="step-2" hidden>
+      <div class="card extract-card">
+        <h2>Extracting your textbook</h2>
+        <p class="hint" id="extract-sub">This reads the PDF and pulls out topics, theory, and questions.</p>
+
+        <div class="progress-wrap">
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+
+        <ul class="step-list" id="extract-steps"></ul>
+
+        <p class="extract-message" id="extract-message"></p>
+        <pre class="extract-log" id="extract-log" hidden></pre>
+
+        <div class="error-box" id="extract-error" hidden></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="extract-back">← Back</button>
+        <button class="btn btn-primary" id="to-review" disabled>Review Extraction →</button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 3: Split-screen review/edit ============ -->
+    <section class="panel-step wide" id="step-3" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Review the extraction</h2>
+          <p class="hint">Original PDF on the left, what we extracted on the right. Click <em>Edit</em> on anything that's wrong.</p>
+        </div>
+
+        <div class="review-controls">
+          <label class="field inline">
+            <span>Topic / Chapter</span>
+            <select id="topic-select"></select>
+          </label>
+          <button class="btn btn-small" id="save-extraction" disabled>💾 Save edits</button>
+          <span class="save-note" id="extraction-save-note"></span>
+        </div>
+
+        <div class="split review-split">
+          <div class="pdf-pane">
+            <div class="pane-head">Original PDF</div>
+            <iframe id="pdf-frame" title="Original PDF"></iframe>
+          </div>
+          <div class="extract-pane">
+            <div class="pane-head">Extracted content</div>
+            <div class="extracted-scroll" id="extracted-content"></div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="review-back">← Back</button>
+        <button class="btn btn-primary" id="to-preview">Continue to Preview →</button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 4: Preview by category ============ -->
+    <section class="panel-step" id="step-4" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Preview before saving</h2>
+          <p class="hint">Everything we'll insert, grouped by category. You can still edit any question or answer.</p>
+        </div>
+
+        <div id="preview-summary" class="preview-summary"></div>
+
+        <div class="preview-controls">
+          <label class="field inline">
+            <span>Category</span>
+            <select id="category-select"></select>
+          </label>
+          <input type="search" id="preview-search" placeholder="Search questions…" class="search-input">
+          <button class="btn btn-small" id="save-preview" disabled>💾 Save edits</button>
+          <span class="save-note" id="preview-save-note"></span>
+        </div>
+
+        <div id="preview-rows" class="preview-rows"></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="preview-back">← Back</button>
+        <button class="btn btn-primary" id="to-insert">Looks good → Save to Database</button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 5: Insert ============ -->
+    <section class="panel-step" id="step-5" hidden>
+      <div class="card insert-card">
+        <h2>Save to the database</h2>
+        <div class="insert-recap" id="insert-recap"></div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="replace-book">
+          <span>Replace this book if it already exists (otherwise update/add)</span>
+        </label>
+
+        <button class="btn btn-primary btn-big" id="do-insert">💾 Insert into database</button>
+
+        <div class="progress-wrap" id="insert-progress" hidden>
+          <div class="progress-bar indeterminate"><div class="progress-fill"></div></div>
+          <span>Saving…</span>
+        </div>
+
+        <div class="result-box success" id="insert-success" hidden></div>
+        <div class="error-box" id="insert-error" hidden></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="insert-back">← Back</button>
+        <button class="btn btn-primary" id="start-over" hidden>Start another book ↺</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ History modal ============ -->
+  <div class="modal-overlay" id="history-modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>🕘 Extraction history</h2>
+        <button type="button" class="modal-close" id="history-close" aria-label="Close">✕</button>
+      </div>
+      <p class="hint">Every textbook that has been extracted. Open one to review, edit, preview, or re-save it.</p>
+      <div class="history-list" id="history-list"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

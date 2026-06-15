@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foundation Textbooks — Chapter Viewer (DB)</title>
+  <style>
+    :root{
+      color-scheme: dark;
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --panel2:#111c33;
+      --border:#263248;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#60a5fa;
+      --good:#34d399;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .wrap{max-width:1400px;margin:0 auto;padding:14px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:12px}
+    .hero{background:linear-gradient(135deg,rgba(52,211,153,.15),rgba(15,23,42,.9))}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .spacer{flex:1}
+    input,select,button{
+      background:var(--panel2);color:var(--text);
+      border:1px solid var(--border);border-radius:10px;
+      padding:9px 12px;font-size:14px
+    }
+    select#bookSelect{
+      min-width:320px;min-height:40px;font-size:15px;cursor:pointer;
+      appearance:auto;-webkit-appearance:menulist;
+    }
+    #setupHint{
+      margin-top:10px;padding:10px 12px;border-radius:10px;
+      border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08);
+      color:#fde68a;font-size:14px;line-height:1.45
+    }
+    #setupHint.hidden{display:none}
+    #setupHint a{color:#93c5fd}
+    button{cursor:pointer}
+    button:hover{border-color:var(--accent)}
+    button.primary{border-color:var(--good);background:rgba(52,211,153,.15)}
+    h1,h2,h3{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .chip{display:inline-block;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.14);color:#bfdbfe;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px;margin-bottom:4px}
+    .chip.db{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.12);color:#a7f3d0}
+    .grid{display:grid;grid-template-columns:320px 1fr;gap:12px}
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+    .list{display:grid;gap:8px}
+    .topicBtn{width:100%;text-align:left;padding:10px;border-radius:12px;background:rgba(2,6,23,.18)}
+    .topicBtn.active{border-color:var(--accent);background:rgba(96,165,250,.12)}
+    .topicBtn .sub{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:normal}
+    .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+    @media (max-width: 920px){ .kpi{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    .kpi .box{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tabs button.active{background:rgba(96,165,250,.18);border-color:var(--accent)}
+    .section{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px}
+    details summary{cursor:pointer;color:#bfdbfe}
+    .rich{line-height:1.55;font-size:15px;word-break:break-word}
+    .rich p{margin:0 0 10px}
+    .rich ul,.rich ol{margin:8px 0 8px 20px}
+    .rich li{margin-bottom:4px}
+    .rich table{width:100%;border-collapse:collapse;margin:8px 0 12px}
+    .rich th,.rich td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+    .rich img{max-width:100%;border-radius:10px;border:1px solid var(--border);display:block;margin:10px 0}
+    .math-plain{font-family:"Cambria Math","Segoe UI Symbol",serif;font-style:italic;color:#e2e8f0}
+    .rich .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+    .math-body{white-space:pre-wrap;word-break:break-word}
+    .key-point{padding:10px 12px;border-left:3px solid var(--accent);background:rgba(96,165,250,.06);border-radius:0 8px 8px 0;margin-bottom:8px}
+    .pager{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+    mjx-container{overflow-x:auto;max-width:100%}
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] },
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card hero">
+      <div class="row">
+        <div>
+          <h1 id="bookTitle">Foundation Textbooks</h1>
+          <div id="status" class="muted">Connecting to API…</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row">
+          <label class="muted">API</label>
+          <input id="apiBase" type="text" style="min-width:220px" />
+          <button id="reload" class="primary" type="button">Reload from DB</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="muted" for="bookSelect"><strong>Book</strong> (dropdown)</label>
+        <select id="bookSelect" title="Select book from database">
+          <option value="">Loading books…</option>
+        </select>
+      </div>
+      <div id="setupHint" class="hidden"></div>
+      <div id="meta" class="muted" style="margin-top:6px"></div>
+    </div>
+
+    <div id="mainGrid" class="grid hidden">
+      <div class="card">
+        <div class="row" style="margin-bottom:10px">
+          <input id="chapterFilter" type="text" placeholder="Filter chapters…" style="flex:1;min-width:180px" />
+          <select id="chapterSelect" style="min-width:180px"></select>
+        </div>
+        <div id="chapterList" class="list"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:8px">
+          <h2 id="chapterHeading" style="margin:0">Chapter</h2>
+          <div class="spacer"></div>
+          <button id="downloadSummaryPdfBtn" type="button" class="primary" title="Download chapter summary as PDF">Summary PDF</button>
+          <button id="downloadPdfBtn" type="button" title="Download full chapter as PDF (summary, theory, all Q&amp;A)">Full chapter PDF</button>
+          <button id="downloadHtmlBtn" type="button" title="Download full chapter as HTML">Download HTML</button>
+          <button id="downloadJsonBtn" type="button" title="Download full chapter data as JSON">Download JSON</button>
+          <span id="chapterChip" class="chip"></span>
+        </div>
+        <div id="kpi" class="kpi" style="margin-bottom:12px"></div>
+        <div id="tabs" class="tabs" style="margin-bottom:10px"></div>
+        <div id="tabBody" class="section"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (!String.prototype.replaceAll) {
+      String.prototype.replaceAll = function(search, replacement) {
+        return this.split(search).join(replacement);
+      };
+    }
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function(s) {
+        var el = this;
+        do {
+          if (el.matches && el.matches(s)) return el;
+          el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+      };
+    }
+
+    var TAB_ORDER = ["Summary", "Key points", "Theory", "Q&A"];
+
+    var state = {
+      apiBase: "",
+      books: [],
+      bookSlug: null,
+      chapters: [],
+      activeChapterId: null,
+      chapterPayload: null,
+      activeTab: "Theory",
+      filter: "",
+      contentOffset: 0,
+      contentLimit: 40,
+    };
+
+    var els = {
+      status: document.getElementById("status"),
+      meta: document.getElementById("meta"),
+      apiBase: document.getElementById("apiBase"),
+      reload: document.getElementById("reload"),
+      bookTitle: document.getElementById("bookTitle"),
+      bookSelect: document.getElementById("bookSelect"),
+      setupHint: document.getElementById("setupHint"),
+      mainGrid: document.getElementById("mainGrid"),
+      chapterFilter: document.getElementById("chapterFilter"),
+      chapterSelect: document.getElementById("chapterSelect"),
+      chapterList: document.getElementById("chapterList"),
+      chapterHeading: document.getElementById("chapterHeading"),
+      chapterChip: document.getElementById("chapterChip"),
+      kpi: document.getElementById("kpi"),
+      tabs: document.getElementById("tabs"),
+      tabBody: document.getElementById("tabBody"),
+      downloadSummaryPdfBtn: document.getElementById("downloadSummaryPdfBtn"),
+      downloadPdfBtn: document.getElementById("downloadPdfBtn"),
+      downloadHtmlBtn: document.getElementById("downloadHtmlBtn"),
+      downloadJsonBtn: document.getElementById("downloadJsonBtn"),
+    };
+
+    function defaultApiBase() {
+      var origin = window.location.origin;
+      if (origin && origin !== "null" && !origin.startsWith("file:")) return origin;
+      return "http://127.0.0.1:8765";
+    }
+
+    function esc(s) {
+      var out = String(s == null ? "" : s);
+      out = out.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+      return out;
+    }
+
+    function bookLabel(slug) {
+      return String(slug || "").replace(/_/g, " ").replace(/\b(\d+)/g, " $1").trim();
+    }
+
+    function chapterLabel(ch) {
+      return String(ch.chapter_number) + ". " + (ch.chapter_name || "(untitled)");
+    }
+
+    function sanitizeSourceText(s) {
+      if (s == null) return "";
+      return String(s).replace(/<br\s*\/?>/gi, "\n").replace(/\uFFFD/g, "®");
+    }
+
+    function needsMathRendering(text) {
+      var raw = sanitizeSourceText(text);
+      if (!raw.trim()) return false;
+      if (/<math[\s>]/i.test(raw)) return true;
+      if (/\$\$[\s\S]+?\$\$/.test(raw)) return true;
+      if (/(^|[^\\$])\$[^$\n]+?\$/.test(raw)) return true;
+      if (/\\\(|\\\[/.test(raw)) return true;
+      return false;
+    }
+
+    function latexToReadable(latex) {
+      var s = String(latex || "").trim();
+      s = s.replace(/\\text\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\mathrm\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\mathbf\{([^{}]*)\}/g, "$1");
+      s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)");
+      s = s.replace(/\\frac\{([^{}]+)\}/g, "($1)");
+      s = s.replace(/\^\{([^{}]+)\}/g, function(_, exp) {
+        if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
+        var map = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "n": "ⁿ", "+": "⁺", "-": "⁻" };
+        var out = "";
+        for (var i = 0; i < exp.length; i++) out += map[exp.charAt(i)] || exp.charAt(i);
+        return out;
+      });
+      s = s.replace(/_\{([^{}]+)\}/g, "_$1");
+      s = s.replace(/\\circ/g, "°");
+      s = s.replace(/\\theta/g, "θ");
+      s = s.replace(/\\alpha/g, "α");
+      s = s.replace(/\\beta/g, "β");
+      s = s.replace(/\\pi/g, "π");
+      s = s.replace(/\\mu/g, "μ");
+      s = s.replace(/\\times/g, "×");
+      s = s.replace(/\\cdot/g, "·");
+      s = s.replace(/\\leq/g, "≤");
+      s = s.replace(/\\geq/g, "≥");
+      s = s.replace(/\\neq/g, "≠");
+      s = s.replace(/\\infty/g, "∞");
+      s = s.replace(/\\rightarrow/g, "→");
+      s = s.replace(/\\leftarrow/g, "←");
+      s = s.replace(/\\Rightarrow/g, "⇒");
+      s = s.replace(/\\quad/g, " ");
+      s = s.replace(/\\left\(/g, "(").replace(/\\right\)/g, ")");
+      s = s.replace(/\\[a-zA-Z]+/g, "");
+      s = s.replace(/[{}]/g, "");
+      return s.replace(/\s+/g, " ").trim();
+    }
+
+    function replaceRawLatexInText(text) {
+      if (!text || text.indexOf("$") < 0) return text;
+      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
+        return '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
+      });
+      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
+        return pre + '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
+      });
+      return out;
+    }
+
+    function replaceRawLatexPlain(text) {
+      if (!text || text.indexOf("$") < 0) return text;
+      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
+        return latexToReadable(inner);
+      });
+      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
+        return pre + latexToReadable(inner);
+      });
+      return out;
+    }
+
+    var SUPER_MAP = { "0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","+":"⁺","-":"⁻","n":"ⁿ" };
+    function formatSuper(exp) {
+      exp = String(exp || "").replace(/\s+/g, "");
+      if (!exp) return "";
+      if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
+      var out = "";
+      for (var i = 0; i < exp.length; i++) out += SUPER_MAP[exp.charAt(i)] || exp.charAt(i);
+      return out;
+    }
+    function mathmlLocalTag(node) {
+      return String(node.localName || node.nodeName || "").replace(/^.*:/, "").toLowerCase();
+    }
+    function mathmlJoin(parts) {
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var piece = String(parts[i] || "").replace(/\s+/g, " ").trim();
+        if (!piece) continue;
+        if (out.length && !/^[,.;:!?)\]}°]/.test(piece) && !/[([{]$/.test(out[out.length - 1])) out.push(" ");
+        out.push(piece);
+      }
+      return out.join("");
+    }
+    function mathmlNodeToPlain(node) {
+      if (!node) return "";
+      var tag = mathmlLocalTag(node);
+      if (tag === "math" || tag === "mrow" || tag === "mstyle" || tag === "semantics") {
+        var kids = [];
+        for (var c = node.firstChild; c; c = c.nextSibling) {
+          if (c.nodeType === 1) kids.push(mathmlNodeToPlain(c));
+        }
+        return mathmlJoin(kids);
+      }
+      if (tag === "mn" || tag === "mi" || tag === "mtext" || tag === "ms" || tag === "mo") {
+        return (node.textContent || "").replace(/\s+/g, " ").trim();
+      }
+      if (tag === "mspace") return " ";
+      if (tag === "mfrac") {
+        var ch = node.children;
+        if (ch.length >= 2) {
+          var num = mathmlNodeToPlain(ch[0]), den = mathmlNodeToPlain(ch[1]);
+          if (/^[\w\d.]+$/.test(num) && /^[\w\d.]+$/.test(den)) return num + "/" + den;
+          return "(" + num + ")/(" + den + ")";
+        }
+        return ch.length ? mathmlNodeToPlain(ch[0]) : "";
+      }
+      if (tag === "msup") {
+        var ch2 = node.children;
+        if (ch2.length >= 2) return mathmlNodeToPlain(ch2[0]) + formatSuper(mathmlNodeToPlain(ch2[1]));
+        return ch2.length ? mathmlNodeToPlain(ch2[0]) : "";
+      }
+      if (tag === "msub" || tag === "msubsup" || tag === "msqrt" || tag === "mroot" || tag === "mfenced") {
+        var bits = [];
+        for (var j = 0; j < node.children.length; j++) bits.push(mathmlNodeToPlain(node.children[j]));
+        return mathmlJoin(bits);
+      }
+      return (node.textContent || "").replace(/\s+/g, " ").trim();
+    }
+    function mathmlBlockToReadable(block) {
+      try {
+        var safe = block.replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;");
+        var doc = new DOMParser().parseFromString(safe, "application/xml");
+        var root = doc.documentElement;
+        if (!root || root.nodeName === "parsererror") {
+          doc = new DOMParser().parseFromString(safe, "text/html");
+          root = doc.querySelector("math") || doc.body.firstElementChild;
+        }
+        if (!root) return block;
+        var plain = mathmlNodeToPlain(root).trim();
+        return plain;
+      } catch (e) {
+        return block;
+      }
+    }
+    function replaceMathMLInText(text) {
+      if (!text || !/<math[\s>]/i.test(text)) return text;
+      return text.replace(/<math[\s\S]*?<\/math>/gi, function(block) {
+        var plain = mathmlBlockToReadable(block);
+        return '<span class="math-plain">' + esc(plain) + "</span>";
+      });
+    }
+
+    function normalizeHeadingText(s) {
+      return String(s || "").trim().replace(/^#+\s*/, "").trim().toLowerCase();
+    }
+
+    function stripDuplicateHeading(text, title) {
+      var raw = sanitizeSourceText(text);
+      if (!raw.trim() || !title) return raw;
+      var normTitle = normalizeHeadingText(title);
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var start = 0;
+      while (start < lines.length) {
+        var line = lines[start].trim();
+        if (!line) { start++; continue; }
+        var hm = /^(#{1,6})\s+(.*)$/.exec(line);
+        if (hm) {
+          var htext = normalizeHeadingText(hm[2]);
+          if (htext === normTitle || htext.indexOf(normTitle) === 0 || normTitle.indexOf(htext) === 0) {
+            start++;
+            while (start < lines.length && !lines[start].trim()) start++;
+            continue;
+          }
+        }
+        if (normalizeHeadingText(line) === normTitle) {
+          start++;
+          while (start < lines.length && !lines[start].trim()) start++;
+          continue;
+        }
+        break;
+      }
+      return lines.slice(start).join("\n").trim();
+    }
+
+    function renderRichContent(text) {
+      var raw = sanitizeSourceText(text);
+      if (!raw.trim()) return "";
+      if (/<math[\s>]/i.test(raw)) raw = replaceMathMLInText(raw);
+      var hasRawLatex = /(^|[^\\$])\$[^$\n]+?\$/.test(raw) || /\$\$[\s\S]+?\$\$/.test(raw);
+      if (hasRawLatex) raw = replaceRawLatexInText(raw);
+      if (/<math[\s>]/i.test(raw) || /<img[\s>]/i.test(raw) || /<table[\s>]/i.test(raw) ||
+          /<span class="math-plain"/i.test(raw) || needsMathRendering(raw)) {
+        return '<div class="rich math-body">' + raw + "</div>";
+      }
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var parts = [], paragraph = [], inList = false;
+      function flushP() {
+        if (!paragraph.length) return;
+        parts.push("<p>" + esc(replaceRawLatexPlain(paragraph.join(" "))) + "</p>");
+        paragraph = [];
+      }
+      function flushList() {
+        if (inList) { parts.push("</ul>"); inList = false; }
+      }
+      for (var i = 0; i < lines.length; i++) {
+        var t = lines[i].trim();
+        if (!t) { flushP(); flushList(); continue; }
+        var bullet = /^[-*•]\s+(.*)$/.exec(t) || /^\(\w+\)\s+(.*)$/.exec(t);
+        if (bullet) {
+          flushP();
+          if (!inList) { parts.push("<ul>"); inList = true; }
+          parts.push("<li>" + esc(replaceRawLatexPlain(bullet[1] || bullet[0])) + "</li>");
+          continue;
+        }
+        var heading = /^(#{1,6})\s+(.*)$/.exec(t);
+        if (heading) {
+          flushP(); flushList();
+          var lvl = Math.min(heading[1].length + 2, 6);
+          parts.push("<h" + lvl + ">" + esc(heading[2]) + "</h" + lvl + ">");
+          continue;
+        }
+        paragraph.push(t);
+      }
+      flushP(); flushList();
+      return '<div class="rich">' + parts.join("") + "</div>";
+    }
+
+    function typesetMath() {
+      if (!window.MathJax) return Promise.resolve();
+      if (MathJax.startup && MathJax.startup.promise) {
+        return MathJax.startup.promise.then(function() {
+          return MathJax.typesetPromise([els.tabBody]);
+        });
+      }
+      if (MathJax.typesetPromise) return MathJax.typesetPromise([els.tabBody]);
+      return Promise.resolve();
+    }
+
+    function apiUrl(path) {
+      var base = (state.apiBase || els.apiBase.value || "").replace(/\/$/, "");
+      return base + path;
+    }
+
+    function fetchJson(path) {
+      return fetch(apiUrl(path), { cache: "no-store" }).then(function(resp) {
+        if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + path);
+        return resp.json();
+      }).then(function(data) {
+        if (data && data.error) throw new Error(data.error);
+        return data;
+      });
+    }
+
+    function showSetupHint(html) {
+      els.setupHint.innerHTML = html;
+      els.setupHint.classList.remove("hidden");
+    }
+
+    function hideSetupHint() {
+      els.setupHint.classList.add("hidden");
+      els.setupHint.innerHTML = "";
+    }
+
+    function splitKeyPoints(text) {
+      if (!text || !String(text).trim()) return [];
+      return String(text).split(/\n+/).map(function(s) { return s.trim(); }).filter(Boolean);
+    }
+
+    function getChapterCounts(payload) {
+      if (!payload) return {};
+      var ch = payload.chapter || {};
+      var theory = payload.theory_sections || [];
+      var rows = payload.content_rows || [];
+      var total = payload.content_total != null ? payload.content_total : rows.length;
+      var kps = splitKeyPoints(ch.key_points);
+      var counts = {};
+      if (ch.summary && String(ch.summary).trim()) counts["Summary"] = 1;
+      if (kps.length) counts["Key points"] = kps.length;
+      if (theory.length) counts["Theory"] = theory.length;
+      if (total > 0) counts["Q&A"] = total;
+      return counts;
+    }
+
+    function getChapterMeta(chapterId) {
+      for (var i = 0; i < state.chapters.length; i++) {
+        if (state.chapters[i].chapter_id === chapterId) return state.chapters[i];
+      }
+      return null;
+    }
+
+    function renderMeta() {
+      els.meta.innerHTML = [
+        '<span class="chip db">source: MySQL qa_*</span>',
+        '<span class="chip">chapters: ' + state.chapters.length + "</span>",
+        '<span class="chip">book: ' + esc(bookLabel(state.bookSlug)) + "</span>",
+      ].join(" ");
+    }
+
+    function renderKpi(counts) {
+      var c = counts || {};
+      els.kpi.innerHTML = [
+        '<div class="box"><div class="muted">Theory</div><div style="font-size:18px">' + (c["Theory"] || 0) + "</div></div>",
+        '<div class="box"><div class="muted">Q&amp;A</div><div style="font-size:18px">' + (c["Q&A"] || 0) + "</div></div>",
+        '<div class="box"><div class="muted">Key points</div><div style="font-size:18px">' + (c["Key points"] || 0) + "</div></div>",
+        '<div class="box"><div class="muted">Summary</div><div style="font-size:18px">' + (c["Summary"] || 0) + "</div></div>",
+      ].join("");
+    }
+
+    function buildTabs(counts) {
+      var c = counts || {};
+      var html = [];
+      for (var i = 0; i < TAB_ORDER.length; i++) {
+        var tab = TAB_ORDER[i];
+        if (!c[tab]) continue;
+        var active = tab === state.activeTab ? " active" : "";
+        var cnt = c[tab] || 0;
+        html.push(
+          '<button type="button" data-tab="' + esc(tab) + '" class="' + active.trim() + '">' +
+          esc(tab) + (cnt ? " (" + cnt + ")" : "") + "</button>"
+        );
+      }
+      els.tabs.innerHTML = html.join("");
+      var buttons = els.tabs.querySelectorAll("button[data-tab]");
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].addEventListener("click", function() {
+          state.activeTab = this.getAttribute("data-tab");
+          buildTabs(getChapterCounts(state.chapterPayload));
+          renderTabContent();
+        });
+      }
+    }
+
+    function pickDefaultTab(counts) {
+      for (var i = 0; i < TAB_ORDER.length; i++) {
+        if (counts[TAB_ORDER[i]]) return TAB_ORDER[i];
+      }
+      return "Theory";
+    }
+
+    function splitSummaryBlocks(text) {
+      var raw = sanitizeSourceText(text || "");
+      if (!raw.trim()) return [];
+      var lines = raw.replace(/\r/g, "").split("\n");
+      var blocks = [];
+      var currentTitle = "";
+      var currentLevel = 2;
+      var currentLines = [];
+      function flush() {
+        var body = currentLines.join("\n").trim();
+        if (currentTitle || body) {
+          blocks.push({ title: currentTitle || "Summary", level: currentLevel, body: body });
+        }
+        currentLines = [];
+      }
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var hm = /^(#{2,3})\s+(.*)$/.exec(line.trim());
+        if (hm) {
+          flush();
+          currentLevel = hm[1].length;
+          currentTitle = hm[2].trim();
+          continue;
+        }
+        currentLines.push(line);
+      }
+      flush();
+      return blocks;
+    }
+
+    function extractChapterOverview(summary) {
+      var raw = String(summary || "").trim();
+      if (!raw) return "";
+      var blocks = splitSummaryBlocks(raw);
+      for (var i = 0; i < blocks.length; i++) {
+        var t = (blocks[i].title || "").trim().toLowerCase();
+        if (t === "chapter overview" || t.indexOf("chapter overview") >= 0) {
+          return blocks[i].body || "";
+        }
+      }
+      if (blocks.length === 1) return blocks[0].body || "";
+      return "";
+    }
+
+    function chapterOverviewForTheory(summary) {
+      var overview = extractChapterOverview(summary || "");
+      if (String(overview).trim()) return overview;
+      return String(summary || "").trim();
+    }
+
+    function renderChapterOverviewBlock(summary) {
+      var body = chapterOverviewForTheory(summary);
+      if (!String(body).trim()) return "";
+      return '<details class="section" open><summary>Chapter overview</summary>' +
+        renderRichContent(body) + "</details>";
+    }
+
+    function renderSummaryTab(ch) {
+      var summary = ch.summary || "";
+      if (!String(summary).trim()) return '<div class="muted">No summary for this chapter.</div>';
+      var blocks = splitSummaryBlocks(summary);
+      if (blocks.length <= 1 && !blocks[0].title) {
+        var body = renderRichContent(summary);
+        if (!body.trim()) return '<div class="muted">No summary for this chapter.</div>';
+        return '<details class="section" open><summary>Chapter summary</summary>' + body + "</details>";
+      }
+      return blocks.map(function(block, idx) {
+        var label = block.title || ("Section " + (idx + 1));
+        if (block.level === 3 && label.indexOf("Subtopic:") !== 0) {
+          label = "Subtopic: " + label;
+        }
+        var open = idx === 0 ? " open" : "";
+        return '<details class="section"' + open + "><summary>" + esc(label) + "</summary>" +
+          renderRichContent(block.body) + "</details>";
+      }).join("");
+    }
+
+    function renderKeyPointsTab(ch) {
+      var kps = splitKeyPoints(ch.key_points);
+      if (!kps.length) return '<div class="muted">No key points.</div>';
+      return kps.map(function(kp, idx) {
+        return '<details class="section"><summary>Key point ' + (idx + 1) + "</summary>" +
+          '<div class="key-point">' + renderRichContent(kp) + "</div></details>";
+      }).join("");
+    }
+
+    function renderConceptMapBlock(chapter, theory) {
+      var cm = (chapter && chapter.concept_map) || {};
+      var md = (typeof cm === "string") ? cm : (cm.markdown || "");
+      if (!String(md).trim() && theory && theory.length) {
+        for (var i = 0; i < theory.length; i++) {
+          var title = ((theory[i].topic_name || "") + "").toLowerCase();
+          if (title.indexOf("concept") >= 0 && title.indexOf("map") >= 0) {
+            md = theory[i].topic_explanation || "";
+            break;
+          }
+        }
+      }
+      if (!String(md).trim()) return "";
+      return '<details class="section" open><summary>Concept Map</summary>' +
+        renderRichContent(md) + "</details>";
+    }
+
+    function isConceptMapSection(sec) {
+      if (sec && sec.section_kind === "concept_map") return true;
+      var title = ((sec && (sec.topic_name || sec.topics || sec.title)) || "").toLowerCase();
+      return title.indexOf("concept") >= 0 && title.indexOf("map") >= 0;
+    }
+
+    function renderTheorySectionDetails(sec) {
+      var title = (sec.topic_name && String(sec.topic_name).trim()) ||
+        (sec.topics && String(sec.topics).trim()) || (sec.title && String(sec.title).trim()) || "Section";
+      if (isConceptMapSection(sec)) title = "Concept Map";
+      var md = stripDuplicateHeading(sec.topic_explanation || sec.markdown || "", title);
+      var openAttr = isConceptMapSection(sec) ? " open" : "";
+      return '<details class="section"' + openAttr + '><summary>' + esc(title) + "</summary>" +
+        renderRichContent(md) + "</details>";
+    }
+
+    function conceptMapMarkdownFromChapter(chapter, theory) {
+      var cm = (chapter && chapter.concept_map) || {};
+      var md = (typeof cm === "string") ? cm : (cm.markdown || "");
+      if (!String(md).trim() && theory && theory.length) {
+        for (var i = 0; i < theory.length; i++) {
+          if (isConceptMapSection(theory[i])) {
+            md = theory[i].topic_explanation || theory[i].markdown || "";
+            break;
+          }
+        }
+      }
+      return md;
+    }
+
+    function renderTheoryTab(theory, chapterSummary, chapter) {
+      var secs = theory || [];
+      var conceptHtml = "";
+      var topicHtml = "";
+      secs.forEach(function(sec) {
+        if (isConceptMapSection(sec)) {
+          conceptHtml += renderTheorySectionDetails(sec);
+        } else {
+          topicHtml += renderTheorySectionDetails(sec);
+        }
+      });
+      if (!conceptHtml.trim()) {
+        var cmMd = conceptMapMarkdownFromChapter(chapter, secs);
+        if (String(cmMd).trim()) {
+          conceptHtml =
+            '<details class="section" open><summary>Concept Map</summary>' +
+            renderRichContent(cmMd) + "</details>";
+        }
+      }
+      var overviewHtml = renderChapterOverviewBlock(chapterSummary || "");
+      if (!conceptHtml && !overviewHtml && !topicHtml) {
+        return '<div class="muted">No theory sections.</div>';
+      }
+      return conceptHtml + overviewHtml + topicHtml;
+    }
+
+    function renderQaTab(payload) {
+      var rows = payload.content_rows || [];
+      var total = payload.content_total != null ? payload.content_total : rows.length;
+      if (!total) return '<div class="muted">No Q&amp;A rows for this chapter.</div>';
+      var html = rows.map(function(row, idx) {
+        var q = renderRichContent(row.question || "");
+        var a = row.answer ? renderRichContent(row.answer) : "";
+        var typeChip = row.question_type
+          ? '<span class="chip" style="border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.12);color:#fde68a">' + esc(row.question_type) + "</span> "
+          : "";
+        return (
+          '<details class="section">' +
+          '<summary>' + typeChip + '<span class="chip">id:' + esc(row.id) + "</span> " + esc("Question " + (state.contentOffset + idx + 1)) + "</summary>" +
+          '<div style="margin-top:10px"><div class="label">Question</div>' + q + "</div>" +
+          (a ? '<div style="margin-top:10px"><div class="label">Answer</div>' + a + "</div>" : '<div class="muted" style="margin-top:8px">No answer stored</div>') +
+          "</details>"
+        );
+      }).join("");
+
+      var pages = Math.ceil(total / state.contentLimit);
+      var page = Math.floor(state.contentOffset / state.contentLimit);
+      if (pages > 1) {
+        html += '<div class="pager">' +
+          '<button type="button" id="qaPrev"' + (page <= 0 ? ' disabled' : '') + '>Prev</button>' +
+          '<span class="muted">Page ' + (page + 1) + " / " + pages + " · " + total + " rows</span>" +
+          '<button type="button" id="qaNext"' + (page >= pages - 1 ? ' disabled' : '') + '>Next</button>' +
+          "</div>";
+      }
+      return html;
+    }
+
+    function renderTabContent() {
+      var payload = state.chapterPayload;
+      if (!payload) {
+        els.tabBody.innerHTML = '<div class="muted">Loading chapter…</div>';
+        return;
+      }
+      var ch = payload.chapter || {};
+      var html = "";
+      if (state.activeTab === "Summary") html = renderSummaryTab(ch);
+      else if (state.activeTab === "Key points") html = renderKeyPointsTab(ch);
+      else if (state.activeTab === "Theory") html = renderTheoryTab(payload.theory_sections, ch.summary, ch);
+      else if (state.activeTab === "Q&A") html = renderQaTab(payload);
+      else html = '<div class="muted">No content in tab "' + esc(state.activeTab) + '".</div>';
+
+      els.tabBody.innerHTML = html;
+
+      if (state.activeTab === "Q&A") {
+        var prev = document.getElementById("qaPrev");
+        var next = document.getElementById("qaNext");
+        if (prev) prev.addEventListener("click", function() {
+          state.contentOffset = Math.max(0, state.contentOffset - state.contentLimit);
+          showChapter(state.activeChapterId);
+        });
+        if (next) next.addEventListener("click", function() {
+          var total = payload.content_total != null ? payload.content_total : 0;
+          var pages = Math.ceil(total / state.contentLimit);
+          state.contentOffset = Math.min((pages - 1) * state.contentLimit, state.contentOffset + state.contentLimit);
+          showChapter(state.activeChapterId);
+        });
+      }
+
+      typesetMath();
+    }
+
+    function renderChapterNav() {
+      var q = (state.filter || "").trim().toLowerCase();
+      var all = state.chapters.slice();
+      var filtered = !q ? all : all.filter(function(ch) {
+        var hay = [
+          ch.chapter_number,
+          ch.chapter_name,
+          ch.page_range,
+          ch.theory_count,
+          ch.row_count,
+        ].join(" ").toLowerCase();
+        return hay.indexOf(q) >= 0;
+      });
+
+      els.chapterSelect.innerHTML = filtered.map(function(ch) {
+        var sel = ch.chapter_id === state.activeChapterId ? " selected" : "";
+        return '<option value="' + esc(ch.chapter_id) + '"' + sel + ">" + esc(chapterLabel(ch)) + "</option>";
+      }).join("");
+
+      els.chapterList.innerHTML = filtered.map(function(ch) {
+        var active = ch.chapter_id === state.activeChapterId ? " active" : "";
+        return (
+          '<button class="topicBtn' + active + '" type="button" data-chapter="' + esc(ch.chapter_id) + '">' +
+          esc(chapterLabel(ch)) +
+          '<span class="sub">' + (ch.theory_count || 0) + " theory · " + (ch.row_count || 0) +
+          " Q&amp;A · pp. " + esc(ch.page_range || "—") + "</span></button>"
+        );
+      }).join("");
+    }
+
+    function setExportButtonsEnabled(enabled) {
+      var on = !!enabled;
+      if (els.downloadSummaryPdfBtn) els.downloadSummaryPdfBtn.disabled = !on;
+      if (els.downloadPdfBtn) els.downloadPdfBtn.disabled = !on;
+      if (els.downloadHtmlBtn) els.downloadHtmlBtn.disabled = !on;
+      if (els.downloadJsonBtn) els.downloadJsonBtn.disabled = !on;
+    }
+
+    function exportErrorMessage(err, status) {
+      var msg = (err && err.error) ? String(err.error) : ("HTTP " + status);
+      if (msg.indexOf("not found") >= 0 || msg.indexOf("API route not found") >= 0) {
+        return "Export API unavailable — stop the old server (Ctrl+C) and run: python viewer_api.py";
+      }
+      return msg;
+    }
+
+    function checkApiCapabilities() {
+      return fetchJson("/api/capabilities").then(function(data) {
+        var caps = data.capabilities || [];
+        if (caps.indexOf("chapter-export") < 0) {
+          showSetupHint(
+            "<strong>Download export is unavailable on this API.</strong><br>" +
+            "Stop the server (Ctrl+C) and restart: <code>python viewer_api.py</code>"
+          );
+        }
+        return data;
+      }).catch(function() {
+        showSetupHint(
+          "<strong>Old viewer API detected (no /api/capabilities).</strong><br>" +
+          "Restart the server: <code>python viewer_api.py</code> then hard-refresh this page (Ctrl+F5)."
+        );
+      });
+    }
+
+    function downloadChapterExport(fmt, inline, scope) {
+      var chapterId = state.activeChapterId;
+      if (!chapterId) return;
+      scope = scope || "full";
+      var url = apiUrl("/api/chapter-export?chapter_id=" + encodeURIComponent(String(chapterId)) +
+        "&format=" + encodeURIComponent(fmt) + "&scope=" + encodeURIComponent(scope));
+      if (inline) url += "&inline=1";
+
+      if (inline) {
+        window.open(url, "_blank", "noopener");
+        return;
+      }
+
+      setExportButtonsEnabled(false);
+      els.status.textContent = "Preparing " + fmt.toUpperCase() + " export…";
+      fetch(url).then(function(resp) {
+        if (!resp.ok) {
+          return resp.json().catch(function() { return {}; }).then(function(err) {
+            throw new Error(exportErrorMessage(err, resp.status));
+          });
+        }
+        var contentType = resp.headers.get("Content-Type") || "";
+        var dispo = resp.headers.get("Content-Disposition") || "";
+        var nameMatch = /filename="([^"]+)"/.exec(dispo);
+        var filename = nameMatch ? nameMatch[1] : ("chapter_" + chapterId + "." + fmt);
+        if (contentType.indexOf("application/json") >= 0) {
+          return resp.json().then(function(err) {
+            throw new Error(exportErrorMessage(err, resp.status));
+          });
+        }
+        return resp.blob().then(function(blob) {
+          var link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(function() { URL.revokeObjectURL(link.href); }, 2000);
+          els.status.textContent = "Downloaded: " + filename;
+        });
+      }).catch(function(e) {
+        els.status.textContent = "Export failed: " + String(e.message || e);
+      }).finally(function() {
+        setExportButtonsEnabled(!!state.activeChapterId);
+      });
+    }
+
+    function showChapter(chapterId) {
+      if (!chapterId) return;
+      state.activeChapterId = chapterId;
+      setExportButtonsEnabled(true);
+      sessionStorage.setItem("viewerChapterId", String(chapterId));
+      var meta = getChapterMeta(chapterId);
+      els.chapterHeading.textContent = meta ? chapterLabel(meta) : ("Chapter " + chapterId);
+      els.chapterChip.textContent = meta ? ("pp. " + (meta.page_range || "—")) : "";
+      els.status.textContent = "Loading chapter…";
+      renderChapterNav();
+
+      fetchJson("/api/chapter/" + chapterId + "?offset=" + state.contentOffset + "&limit=" + state.contentLimit)
+        .then(function(payload) {
+          state.chapterPayload = payload;
+          var counts = getChapterCounts(payload);
+          if (!counts[state.activeTab]) state.activeTab = pickDefaultTab(counts);
+          var totalBlocks = Object.keys(counts).reduce(function(a, k) { return a + counts[k]; }, 0);
+          els.chapterChip.textContent = (meta ? "pp. " + (meta.page_range || "—") + " · " : "") + totalBlocks + " blocks";
+          renderKpi(counts);
+          buildTabs(counts);
+          renderTabContent();
+          els.status.textContent = bookLabel(state.bookSlug) + " · " + (meta ? chapterLabel(meta) : "chapter") + " loaded";
+        })
+        .catch(function(e) {
+          els.tabBody.innerHTML = '<div class="muted">' + esc(String(e.message || e)) + "</div>";
+          els.status.textContent = "Error: " + String(e.message || e);
+          setExportButtonsEnabled(false);
+        });
+    }
+
+    function loadBook(bookSlug) {
+      state.bookSlug = bookSlug;
+      sessionStorage.setItem("viewerBookSlug", bookSlug);
+      els.bookTitle.textContent = bookLabel(bookSlug);
+      els.status.textContent = "Loading chapters for " + bookLabel(bookSlug) + "…";
+      state.chapters = [];
+      state.chapterPayload = null;
+      state.contentOffset = 0;
+
+      return fetchJson("/api/chapters?book_slug=" + encodeURIComponent(bookSlug)).then(function(data) {
+        state.chapters = data.chapters || [];
+        renderMeta();
+        if (!state.chapters.length) {
+          els.mainGrid.classList.add("hidden");
+          els.status.textContent = "No chapters in database for this book.";
+          showSetupHint(
+            "No chapters found. Load JSON first, e.g.<br>" +
+            "<code>python insert_qa_table.py --replace-book …</code>"
+          );
+          return;
+        }
+        hideSetupHint();
+        els.mainGrid.classList.remove("hidden");
+        var savedId = Number(sessionStorage.getItem("viewerChapterId"));
+        var pick = null;
+        for (var i = 0; i < state.chapters.length; i++) {
+          if (state.chapters[i].chapter_id === savedId) { pick = savedId; break; }
+        }
+        if (pick == null) pick = state.chapters[0].chapter_id;
+        renderChapterNav();
+        showChapter(pick);
+        els.status.textContent = "Loaded " + state.chapters.length + " chapters from MySQL.";
+      });
+    }
+
+    function setBookOptions(books, selectedSlug) {
+      if (!books.length) {
+        els.bookSelect.innerHTML = '<option value="">— No books in database —</option>';
+        return;
+      }
+      els.bookSelect.innerHTML = books.map(function(b) {
+        var slug = b.book_slug;
+        var sel = slug === selectedSlug ? " selected" : "";
+        return '<option value="' + esc(slug) + '"' + sel + ">" +
+          esc(bookLabel(slug)) + " (" + (b.chapter_count || 0) + " ch)</option>";
+      }).join("");
+    }
+
+    function init() {
+      state.apiBase = els.apiBase.value.replace(/\/$/, "");
+      hideSetupHint();
+
+      if (window.location.protocol === "file:") {
+        els.status.textContent = "Opened as local file — API will not work.";
+        setBookOptions([], "");
+        showSetupHint(
+          "<strong>Do not open this HTML file directly.</strong> Start the server, then open:<br>" +
+          '<a href="http://127.0.0.1:8765/Viewer/textbook_viewer.html">http://127.0.0.1:8765/Viewer/textbook_viewer.html</a><br>' +
+          "In terminal: <code>python viewer_api.py</code>"
+        );
+        return;
+      }
+
+      els.status.textContent = "Loading books from database…";
+      els.bookSelect.innerHTML = '<option value="">Loading books…</option>';
+      fetchJson("/api/books").then(function(data) {
+        state.books = data.books || [];
+        if (!state.books.length) {
+          els.status.textContent = "No books in qa_chapter table.";
+          setBookOptions([], "");
+          showSetupHint(
+            "No books found. Insert data first, e.g.<br>" +
+            "<code>python insert_qa_table.py --replace-book …</code>"
+          );
+          return;
+        }
+        var saved = sessionStorage.getItem("viewerBookSlug");
+        var slug = state.books[0].book_slug;
+        for (var i = 0; i < state.books.length; i++) {
+          if (state.books[i].book_slug === saved) { slug = saved; break; }
+        }
+        setBookOptions(state.books, slug);
+        els.bookSelect.value = slug;
+        return checkApiCapabilities().then(function() {
+          return loadBook(slug);
+        });
+      }).catch(function(e) {
+        var msg = String(e.message || e);
+        els.status.textContent = "Error: " + msg;
+        setBookOptions([], "");
+        showSetupHint(
+          "<strong>Cannot reach API at " + esc(state.apiBase) + "</strong><br>" +
+          "Start the server in a terminal:<br>" +
+          "<code>python viewer_api.py</code><br>" +
+          'Then open <a href="http://127.0.0.1:8765/Viewer/textbook_viewer.html">http://127.0.0.1:8765/Viewer/textbook_viewer.html</a>'
+        );
+      });
+    }
+
+    els.apiBase.value = defaultApiBase();
+    els.reload.addEventListener("click", function() {
+      state.apiBase = els.apiBase.value.replace(/\/$/, "");
+      state.contentOffset = 0;
+      init();
+    });
+    els.bookSelect.addEventListener("change", function() {
+      state.contentOffset = 0;
+      loadBook(els.bookSelect.value).catch(function(e) {
+        els.status.textContent = String(e.message || e);
+      });
+    });
+    els.chapterFilter.addEventListener("input", function(e) {
+      state.filter = e.target.value || "";
+      renderChapterNav();
+    });
+    els.chapterSelect.addEventListener("change", function(e) {
+      var n = Number(e.target.value);
+      if (!isFinite(n)) return;
+      state.contentOffset = 0;
+      showChapter(n);
+    });
+    els.chapterList.addEventListener("click", function(e) {
+      var btn = e.target.closest("button[data-chapter]");
+      if (!btn) return;
+      var n = Number(btn.getAttribute("data-chapter"));
+      if (!isFinite(n)) return;
+      state.contentOffset = 0;
+      showChapter(n);
+    });
+    if (els.downloadSummaryPdfBtn) {
+      els.downloadSummaryPdfBtn.addEventListener("click", function() {
+        downloadChapterExport("pdf", false, "summary");
+      });
+    }
+    if (els.downloadPdfBtn) {
+      els.downloadPdfBtn.addEventListener("click", function() { downloadChapterExport("pdf", false, "full"); });
+    }
+    if (els.downloadHtmlBtn) {
+      els.downloadHtmlBtn.addEventListener("click", function() { downloadChapterExport("html", false); });
+    }
+    if (els.downloadJsonBtn) {
+      els.downloadJsonBtn.addEventListener("click", function() { downloadChapterExport("json", false); });
+    }
+    setExportButtonsEnabled(false);
+
+    init();
+  </script>
+</body>
+</html>

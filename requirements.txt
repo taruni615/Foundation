@@ -1,0 +1,6 @@
+requests
+latex2mathml
+pymysql
+pypdf
+xhtml2pdf
+fpdf2

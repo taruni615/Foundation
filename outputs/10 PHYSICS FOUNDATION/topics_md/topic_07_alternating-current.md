@@ -2,7 +2,7 @@
 topic_number: 7
 topic_name: Alternating Current
 page_range: 355-374
-source_markdown: Mathpix_Cache\10 PHYSICS FOUNDATION_mathpix.md
+source_markdown: Mathpix_Cache/10 PHYSICS FOUNDATION_mathpix.md
 md_kind: combined
 lines: 20097-21174
 ---

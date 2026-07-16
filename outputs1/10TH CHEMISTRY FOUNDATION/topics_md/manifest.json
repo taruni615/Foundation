@@ -1,0 +1,74 @@
+[
+  {
+    "topic_number": 1,
+    "topic_name": "Chemical Reactions and Equations",
+    "page_range": "1-46",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_01_chemical-reactions-and-equations.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_01.json",
+    "lines": "63-4031"
+  },
+  {
+    "topic_number": 2,
+    "topic_name": "Acids, Bases and Salts",
+    "page_range": "47-96",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_02_acids-bases-and-salts.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_02.json",
+    "lines": "4032-6815"
+  },
+  {
+    "topic_number": 3,
+    "topic_name": "Metals and Non-Metals",
+    "page_range": "97-144",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_03_metals-and-non-metals.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_03.json",
+    "lines": "6816-9969"
+  },
+  {
+    "topic_number": 4,
+    "topic_name": "Carbon and its Compounds",
+    "page_range": "145-194",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_04_carbon-and-its-compounds.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_04.json",
+    "lines": "9970-12989"
+  },
+  {
+    "topic_number": 5,
+    "topic_name": "Periodic Classificationof Elements",
+    "page_range": "195-236",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_05_periodic-classificationof-elements.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_05.json",
+    "lines": "12990-15695"
+  },
+  {
+    "topic_number": 6,
+    "topic_name": "Chemical Kinetics",
+    "page_range": "237-256",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_06_chemical-kinetics.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_06.json",
+    "lines": "15696-16805"
+  },
+  {
+    "topic_number": 7,
+    "topic_name": "Electrochemistry",
+    "page_range": "257-272",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_07_electrochemistry.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_07.json",
+    "lines": "16806-17735"
+  },
+  {
+    "topic_number": 8,
+    "topic_name": "GOC (Nomenclature and Isomerism)",
+    "page_range": "273-302",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_08_goc-nomenclature-and-isomerism.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_08.json",
+    "lines": "17736-19444"
+  },
+  {
+    "topic_number": 9,
+    "topic_name": "Organic Compounds",
+    "page_range": "303-336",
+    "md_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_md/topic_09_organic-compounds.md",
+    "json_path": "outputs/10TH CHEMISTRY FOUNDATION/topics_json/topic_09.json",
+    "lines": "19445-21278"
+  }
+]

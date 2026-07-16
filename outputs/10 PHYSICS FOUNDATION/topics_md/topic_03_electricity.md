@@ -2,7 +2,7 @@
 topic_number: 3
 topic_name: Electricity
 page_range: 129-214
-source_markdown: Mathpix_Cache\10 PHYSICS FOUNDATION_mathpix.md
+source_markdown: Mathpix_Cache/10 PHYSICS FOUNDATION_mathpix.md
 md_kind: combined
 lines: 7387-12699
 ---

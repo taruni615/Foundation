@@ -10,6 +10,8 @@ const state = {
   book: "",             // book name (PDF stem)
   jobId: "",
   document: null,       // final.json document (editable)
+  studyNotesByTopic: {},// topic_number -> study_notes object (separate file)
+  studyNotesLoaded: false,
   topicIndex: 0,
   preview: null,        // { rows, topics, summary }
   dirtyExtraction: false,
@@ -65,6 +67,298 @@ function el(tag, attrs = {}, children = []) {
     node.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
   });
   return node;
+}
+
+/* ------------------------------------------------------------------ */
+/* Notes/summary markdown renderer                                     */
+/* The student summary is stored as markdown (rich "study notes" layout:*/
+/* ## / ### headings, **bold**, `code`, - bullets, 1. lists, > recap,   */
+/* --- dividers, ✓/⚠/⏱/📊/⭐ lines). Render it to formatted HTML for the */
+/* read-only view. Content is our own extraction output (trusted), but  */
+/* we still escape first, then re-introduce a small, fixed markdown set.*/
+/* ------------------------------------------------------------------ */
+function escapeHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function renderInlineMd(text) {
+  let s = escapeHtml(text);
+  s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  return s;
+}
+
+function renderNotesMarkdown(md) {
+  const raw = String(md == null ? "" : md).replace(/\r/g, "").trim();
+  if (!raw) return "";
+  const lines = raw.split("\n");
+  const out = [];
+  let para = [];
+  let listItems = [];
+  let listType = null;
+  const flushPara = () => {
+    if (para.length) {
+      out.push("<p>" + para.map(renderInlineMd).join("<br>") + "</p>");
+      para = [];
+    }
+  };
+  const flushList = () => {
+    if (listItems.length) {
+      out.push("<" + listType + ">" +
+        listItems.map((li) => "<li>" + renderInlineMd(li) + "</li>").join("") +
+        "</" + listType + ">");
+      listItems = [];
+      listType = null;
+    }
+  };
+  for (const line of lines) {
+    const s = line.trim();
+    if (!s) { flushList(); flushPara(); continue; }
+    const h = /^(#{2,4})\s+(.*)$/.exec(s);
+    if (h) {
+      flushList(); flushPara();
+      const level = h[1].length;            // ## -> h3, ### -> h4, #### -> h5
+      out.push("<h" + (level + 1) + " class=\"notes-h\">" + renderInlineMd(h[2]) + "</h" + (level + 1) + ">");
+      continue;
+    }
+    if (s === "---" || s === "***" || s === "___") { flushList(); flushPara(); out.push("<hr>"); continue; }
+    if (s.startsWith(">")) {
+      flushList(); flushPara();
+      out.push("<blockquote class=\"notes-recap\">" + renderInlineMd(s.replace(/^>\s?/, "")) + "</blockquote>");
+      continue;
+    }
+    const ul = /^[-*]\s+(.*)$/.exec(s);
+    const ol = /^\d+\.\s+(.*)$/.exec(s);
+    if (ul) {
+      flushPara();
+      if (listType && listType !== "ul") flushList();
+      listType = "ul"; listItems.push(ul[1]); continue;
+    }
+    if (ol) {
+      flushPara();
+      if (listType && listType !== "ol") flushList();
+      listType = "ol"; listItems.push(ol[1]); continue;
+    }
+    flushList();
+    para.push(s);
+  }
+  flushList(); flushPara();
+  return out.join("");
+}
+
+/* ------------------------------------------------------------------ */
+/* Structured "study notes" renderer (study_notes JSON, schema v1)      */
+/* Renders topic.study_notes as rich components (cards, chips, badges)   */
+/* instead of parsing the markdown summary. Falls back to the markdown   */
+/* summary when study_notes is absent (see renderTopic). Content is our  */
+/* own trusted extraction output; inline values still go through         */
+/* renderInlineMd which HTML-escapes before applying bold/code spans.     */
+/* ------------------------------------------------------------------ */
+
+/* small helper: element whose innerHTML is rendered inline-markdown */
+function snInline(tag, cls, value) {
+  const node = el(tag, cls ? { class: cls } : {});
+  node.innerHTML = renderInlineMd(value);
+  return node;
+}
+
+/* a labelled block: <div class="sn-block ..."><span class="sn-block-label">..</span> ..body.. </div> */
+function snBlock(cls, label, ...body) {
+  const wrap = el("div", { class: "sn-block " + cls });
+  if (label) wrap.appendChild(el("span", { class: "sn-block-label" }, label));
+  body.forEach((b) => b && wrap.appendChild(b));
+  return wrap;
+}
+
+/* a bullet list (ul) of strings, each prefixed with an optional glyph */
+function snList(items, glyph) {
+  const ul = el("ul", { class: "sn-list" });
+  (items || []).forEach((it) => {
+    const li = el("li", {});
+    li.innerHTML = (glyph ? glyph + " " : "") + renderInlineMd(it);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+/* difficulty colour class from the raw enum (Easy|Medium|Advanced) */
+function snDiffClass(raw) {
+  const k = String(raw || "").toLowerCase();
+  if (k === "easy") return "sn-diff-easy";
+  if (k === "medium") return "sn-diff-medium";
+  if (k === "advanced") return "sn-diff-advanced";
+  return "";
+}
+
+/* one formula block (spec section 3) */
+function snFormula(f, i) {
+  const wrap = el("div", { class: "sn-formula" });
+  const head = el("div", { class: "sn-formula-head" }, [
+    el("span", { class: "sn-formula-no" }, "Formula " + i),
+  ]);
+  if (f.difficulty_badge) head.appendChild(el("span", { class: "sn-chip " + snDiffClass(f.difficulty) }, f.difficulty_badge));
+  wrap.appendChild(head);
+  if (f.formula) wrap.appendChild(el("code", { class: "sn-formula-eq" }, f.formula));
+  const meta = el("dl", { class: "sn-defs" });
+  const add = (k, v) => { if (v) { meta.appendChild(el("dt", {}, k)); meta.appendChild(snInline("dd", null, v)); } };
+  add("Variables", f.variables);
+  add("When to use", f.when_to_use);
+  add("⚠ Common mistake", f.common_mistake);
+  add("💡 Shortcut", f.shortcut);
+  if (meta.childNodes.length) wrap.appendChild(meta);
+  return wrap;
+}
+
+/* one derivation block (spec section 4) */
+function snDerivation(d) {
+  const wrap = el("div", { class: "sn-derivation" });
+  wrap.appendChild(el("div", { class: "sn-derivation-head" }, "Derivation: " + (d.name || "")));
+  const meta = el("dl", { class: "sn-defs" });
+  const add = (k, v) => { if (v) { meta.appendChild(el("dt", {}, k)); meta.appendChild(snInline("dd", null, v)); } };
+  add("Why it matters", d.why_it_matters);
+  add("Assumptions", d.assumptions);
+  if (Array.isArray(d.steps) && d.steps.length) {
+    meta.appendChild(el("dt", {}, "Steps"));
+    const dd = el("dd", {});
+    const ol = el("ol", { class: "sn-steps" });
+    d.steps.forEach((s) => { const li = el("li", {}); li.innerHTML = renderInlineMd(s); ol.appendChild(li); });
+    dd.appendChild(ol);
+    meta.appendChild(dd);
+  }
+  if (d.final_result) { meta.appendChild(el("dt", {}, "Final result")); meta.appendChild(el("dd", {}, el("code", {}, d.final_result))); }
+  add("Exam perspective", d.exam_perspective);
+  wrap.appendChild(meta);
+  return wrap;
+}
+
+/* one topic card following the exact spec ordering (section 2) */
+function snTopicCard(t) {
+  const card = el("div", { class: "sn-topic sn-card" + (t.level === 3 ? " sn-sub" : "") });
+
+  // Header: topic name + chips (estimated time, difficulty badge, exam stars)
+  const head = el("div", { class: "sn-topic-head" });
+  head.appendChild(el(t.level === 3 ? "h4" : "h3", { class: "sn-topic-title" }, t.heading || ""));
+  const chips = el("div", { class: "sn-chips" });
+  if (t.estimated_time) chips.appendChild(el("span", { class: "sn-chip sn-time" }, "⏱ " + t.estimated_time));
+  if (t.difficulty_badge) chips.appendChild(el("span", { class: "sn-chip " + snDiffClass(t.difficulty) }, t.difficulty_badge));
+  if (t.exam_importance_stars) chips.appendChild(el("span", { class: "sn-chip sn-stars", title: "Exam importance" }, t.exam_importance_stars));
+  if (chips.childNodes.length) head.appendChild(chips);
+  card.appendChild(head);
+
+  if (t.quick_summary) card.appendChild(snBlock("sn-quick", "Quick Summary", snInline("p", null, t.quick_summary)));
+  if (t.real_life_example) card.appendChild(snBlock("sn-real", "Real-Life Example", snInline("p", null, t.real_life_example)));
+
+  // Detailed explanation as labelled rows (no long paragraphs)
+  const de = t.detailed_explanation || {};
+  const deDl = el("dl", { class: "sn-defs" });
+  const deAdd = (k, v) => { if (v) { deDl.appendChild(el("dt", {}, k)); deDl.appendChild(snInline("dd", null, v)); } };
+  deAdd("Definition", de.definition);
+  deAdd("Key Idea", de.key_idea);
+  deAdd("Working Principle", de.working_principle);
+  deAdd("Applications", de.applications);
+  if (deDl.childNodes.length) card.appendChild(snBlock("sn-detail", "Detailed Explanation", deDl));
+
+  if ((t.points_to_remember || []).length) card.appendChild(snBlock("sn-points", "📌 Points to Remember (Exam Focus)", snList(t.points_to_remember, "✓")));
+  if ((t.common_mistakes || []).length) card.appendChild(snBlock("sn-mistakes", "⚠ Common Mistakes", snList(t.common_mistakes, "⚠")));
+  if (t.memory_hook) card.appendChild(snBlock("sn-hook", "🧠 Memory Hook", snInline("p", null, t.memory_hook)));
+
+  // Advanced insights collapsed by default (for high performers)
+  if (t.advanced_insights) {
+    const det = el("details", { class: "sn-block sn-advanced" });
+    det.appendChild(el("summary", {}, "🚀 Advanced Insights"));
+    det.appendChild(snInline("p", null, t.advanced_insights));
+    card.appendChild(det);
+  }
+
+  (t.formulas || []).forEach((f, i) => card.appendChild(snFormula(f, i + 1)));
+  (t.derivations || []).forEach((d) => card.appendChild(snDerivation(d)));
+  return card;
+}
+
+/* recap block summarising the last group of topics (spec section 5) */
+function snRecap(group) {
+  const items = group.filter((t) => t.quick_summary)
+    .map((t) => "**" + t.heading + ":** " + t.quick_summary);
+  if (!items.length) return null;
+  const box = el("div", { class: "sn-recap" });
+  box.appendChild(el("div", { class: "sn-recap-title" }, "🔁 Recap so far"));
+  box.appendChild(snList(items, null));
+  return box;
+}
+
+/* end-of-chapter revision section (spec section 7) */
+function snChapterRevision(rev) {
+  if (!rev) return null;
+  const hooks = (rev.memory_hooks || []).map((h) => "**" + h.heading + ":** " + h.hook);
+  const sheet = (rev.formula_sheet || []).map((f) => "`" + f.formula + "`" + (f.when_to_use ? " — " + f.when_to_use : ""));
+  const quick = (rev.quick_revision || []).map((q) => "**" + q.heading + ":** " + q.quick_summary);
+  if (!hooks.length && !(rev.common_mistakes || []).length && !sheet.length && !quick.length) return null;
+
+  const card = el("div", { class: "sn-revision sn-card" });
+  card.appendChild(el("h3", { class: "sn-card-title" }, "📝 Chapter Revision (Quick Recap)"));
+  if (hooks.length) card.appendChild(snBlock("sn-hooks", "🧠 All Memory Hooks", snList(hooks, null)));
+  if ((rev.common_mistakes || []).length) card.appendChild(snBlock("sn-allmistakes", "⚠ Common Mistakes to Avoid", snList(rev.common_mistakes, null)));
+  if (sheet.length) card.appendChild(snBlock("sn-sheet", "📐 Formula Sheet", snList(sheet, null)));
+  if (quick.length) card.appendChild(snBlock("sn-quickrev", "⚡ Quick Revision", snList(quick, null)));
+  return card;
+}
+
+/* Top-level: build the whole structured study-notes view from study_notes JSON */
+function renderStudyNotes(sn) {
+  const root = el("div", { class: "study-notes" });
+
+  // Architecture order: Chapter Introduction first, then Prerequisites.
+  // (data key stays chapter_overview for backward compatibility)
+  if (sn.chapter_overview) {
+    const card = el("div", { class: "sn-overview sn-card" });
+    card.appendChild(el("h3", { class: "sn-card-title" }, "Chapter Introduction"));
+    card.appendChild(snInline("p", null, sn.chapter_overview));
+    root.appendChild(card);
+  }
+
+  // Prerequisites (spec section 1)
+  if ((sn.prerequisites || []).length) {
+    const card = el("div", { class: "sn-prereq sn-card" });
+    card.appendChild(el("h3", { class: "sn-card-title" }, "📋 Prerequisites"));
+    card.appendChild(el("p", { class: "sn-muted" }, "Before starting this chapter, make sure you know:"));
+    card.appendChild(snList(sn.prerequisites, null));
+    root.appendChild(card);
+  }
+
+  // Topics with periodic recaps interleaved (cadence from recap_every)
+  const topics = sn.topics || [];
+  const every = Math.max(0, sn.recap_every || 0);
+  let group = [];
+  topics.forEach((t) => {
+    root.appendChild(snTopicCard(t));
+    group.push(t);
+    if (every && group.length >= every) {
+      const r = snRecap(group);
+      if (r) root.appendChild(r);
+      group = [];
+    }
+  });
+  // Trailing recap only when there is a meaningful tail beyond one full group
+  if (every && group.length && topics.length > every) {
+    const r = snRecap(group);
+    if (r) root.appendChild(r);
+  }
+
+  // End-of-chapter revision
+  const rev = snChapterRevision(sn.chapter_revision);
+  if (rev) root.appendChild(rev);
+
+  typesetMath(root);
+  return root;
+}
+
+function typesetMath(node) {
+  try {
+    if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
+      window.MathJax.typesetPromise([node]);
+    }
+  } catch (_) { /* MathML still renders natively */ }
 }
 
 function goToStep(n) {
@@ -273,6 +567,18 @@ async function initReview() {
     const data = await api("/api/extraction?book=" + encodeURIComponent(state.book));
     state.document = data.document;
   }
+  // Study notes live in a separate file (decoupled from _final.json). Fetch it
+  // once and index by topic_number; absence is non-fatal (falls back to summary).
+  if (!state.studyNotesLoaded) {
+    state.studyNotesByTopic = {};
+    try {
+      const sn = await api("/api/study-notes?book=" + encodeURIComponent(state.book));
+      ((sn.study_notes && sn.study_notes.topics) || []).forEach((e) => {
+        if (e && e.topic_number != null) state.studyNotesByTopic[e.topic_number] = e.study_notes;
+      });
+    } catch (_) { /* no study notes yet */ }
+    state.studyNotesLoaded = true;
+  }
   const topics = state.document.topics || [];
   const ts = $("#topic-select");
   ts.innerHTML = "";
@@ -299,8 +605,19 @@ function renderTopic() {
 
   // Chapter name
   root.appendChild(textSection("Chapter name", topic, "chapter_name", false));
-  // Summary (can be huge — show editable textarea)
-  root.appendChild(textSection("Summary", topic, "summary", true));
+
+  // Structured study notes (study_notes JSON, schema v1) — rich component view.
+  // Sourced from the separate study-notes file (indexed by topic_number); also
+  // accepts a legacy embedded topic.study_notes for backward compatibility.
+  const studyNotes = topic.study_notes || state.studyNotesByTopic[topic.topic_number];
+  if (studyNotes && Array.isArray(studyNotes.topics) && studyNotes.topics.length) {
+    const sec = sectionShell("Study notes", studyNotes.topics.length);
+    sec.querySelector(".x-body").appendChild(renderStudyNotes(studyNotes));
+    root.appendChild(sec);
+  }
+
+  // Summary (rich "study notes" markdown — rendered read-only, raw on edit)
+  root.appendChild(textSection("Summary", topic, "summary", true, true));
 
   // Key points
   if (Array.isArray(topic.key_points) && topic.key_points.length) {
@@ -346,20 +663,31 @@ function sectionShell(title, count) {
 }
 
 /* a single-value editable section bound to obj[field] */
-function textSection(label, obj, field, big) {
+function textSection(label, obj, field, big, md) {
   const sec = sectionShell(label, null);
-  sec.querySelector(".x-body").appendChild(editableItem(null, obj, field, big));
+  sec.querySelector(".x-body").appendChild(editableItem(null, obj, field, big, md));
   return sec;
 }
 
 /* generic editable item bound to obj[field] (string). Toggles between a
-   read-only view and a textarea; writes back to obj on "Done". */
-function editableItem(label, obj, field, big) {
+   read-only view and a textarea; writes back to obj on "Done".
+   When `md` is true the read-only view renders the value as formatted
+   notes markdown (the edit textarea always shows the raw markdown). */
+function editableItem(label, obj, field, big, md) {
   const wrap = el("div", { class: "x-item" });
   if (label) wrap.appendChild(el("div", { class: "x-label" }, label));
 
-  const view = el("div", { class: "x-text" });
-  view.textContent = obj[field] != null ? String(obj[field]) : "";
+  const view = el("div", { class: md ? "x-text notes-view" : "x-text" });
+  const paint = () => {
+    const val = obj[field] != null ? String(obj[field]) : "";
+    if (md) {
+      view.innerHTML = renderNotesMarkdown(val);
+      typesetMath(view);
+    } else {
+      view.textContent = val;
+    }
+  };
+  paint();
   wrap.appendChild(view);
 
   const row = el("div", { class: "x-edit-row" });
@@ -381,7 +709,7 @@ function editableItem(label, obj, field, big) {
     } else {
       editing = false;
       obj[field] = ta.value;
-      view.textContent = ta.value;
+      paint();
       ta.replaceWith(view);
       btn.textContent = "✎ Edit";
       markExtractionDirty();
@@ -664,6 +992,8 @@ function debounce(fn, ms) {
 
 function resetAll() {
   state.document = null;
+  state.studyNotesByTopic = {};
+  state.studyNotesLoaded = false;
   state.preview = null;
   state.jobId = "";
   state.dirtyExtraction = false;
@@ -727,6 +1057,8 @@ async function openFromHistory(b) {
   state.book = b.book;
   state.pdfFilename = b.book + ".pdf";
   state.document = null;
+  state.studyNotesByTopic = {};
+  state.studyNotesLoaded = false;
   state.preview = null;
   state.dirtyExtraction = false;
   state.dirtyPreview = false;

@@ -1,0 +1,154 @@
+[
+  {
+    "topic_number": 1,
+    "topic_name": "Real Numbers",
+    "page_range": "1-24",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_01_real-numbers.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_01.json",
+    "lines": "183-1896"
+  },
+  {
+    "topic_number": 2,
+    "topic_name": "Polynomials",
+    "page_range": "25-56",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_02_polynomials.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_02.json",
+    "lines": "1897-4229"
+  },
+  {
+    "topic_number": 3,
+    "topic_name": "Pair of Linear Equations in Two Variables",
+    "page_range": "57-88",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_03_pair-of-linear-equations-in-two-variables.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_03.json",
+    "lines": "4230-7102"
+  },
+  {
+    "topic_number": 4,
+    "topic_name": "Quadratic Equations",
+    "page_range": "89-118",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_04_quadratic-equations.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_04.json",
+    "lines": "7103-9386"
+  },
+  {
+    "topic_number": 5,
+    "topic_name": "Arithmetic Progression(A.P.)",
+    "page_range": "119-146",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_05_arithmetic-progression-a-p.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_05.json",
+    "lines": "9387-11881"
+  },
+  {
+    "topic_number": 6,
+    "topic_name": "Triangles",
+    "page_range": "147-188",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_06_triangles.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_06.json",
+    "lines": "11882-14838"
+  },
+  {
+    "topic_number": 7,
+    "topic_name": "Coordinate Geometry",
+    "page_range": "189-222",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_07_coordinate-geometry.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_07.json",
+    "lines": "14839-17070"
+  },
+  {
+    "topic_number": 8,
+    "topic_name": "Introduction to Trigonometry",
+    "page_range": "223-252",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_08_introduction-to-trigonometry.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_08.json",
+    "lines": "17071-19397"
+  },
+  {
+    "topic_number": 9,
+    "topic_name": "Some Applications of Trigonometry",
+    "page_range": "253-284",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_09_some-applications-of-trigonometry.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_09.json",
+    "lines": "19398-21129"
+  },
+  {
+    "topic_number": 10,
+    "topic_name": "Circles",
+    "page_range": "285-314",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_10_circles.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_10.json",
+    "lines": "21130-23283"
+  },
+  {
+    "topic_number": 11,
+    "topic_name": "Constructions",
+    "page_range": "315-336",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_11_constructions.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_11.json",
+    "lines": "23284-24375"
+  },
+  {
+    "topic_number": 12,
+    "topic_name": "Areas Related to Circles",
+    "page_range": "337-376",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_12_areas-related-to-circles.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_12.json",
+    "lines": "24376-26738"
+  },
+  {
+    "topic_number": 13,
+    "topic_name": "Surface Areas and Volumes",
+    "page_range": "377-416",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_13_surface-areas-and-volumes.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_13.json",
+    "lines": "26739-28262"
+  },
+  {
+    "topic_number": 14,
+    "topic_name": "Statistics",
+    "page_range": "417-454",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_14_statistics.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_14.json",
+    "lines": "28263-32358"
+  },
+  {
+    "topic_number": 15,
+    "topic_name": "Probability",
+    "page_range": "455-486",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_15_probability.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_15.json",
+    "lines": "32359-34442"
+  },
+  {
+    "topic_number": 16,
+    "topic_name": "Binomial Theorem",
+    "page_range": "487-496",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_16_binomial-theorem.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_16.json",
+    "lines": "34443-35163"
+  },
+  {
+    "topic_number": 17,
+    "topic_name": "Sets, Relations and Functions",
+    "page_range": "497-508",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_17_sets-relations-and-functions.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_17.json",
+    "lines": "35164-35910"
+  },
+  {
+    "topic_number": 18,
+    "topic_name": "Complex Number and Quadratic Equations",
+    "page_range": "509-516",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_18_complex-number-and-quadratic-equations.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_18.json",
+    "lines": "35911-36395"
+  },
+  {
+    "topic_number": 19,
+    "topic_name": "Matrices",
+    "page_range": "517-528",
+    "md_path": "outputs/10TH MATHS FOUNDATION/topics_md/topic_19_matrices.md",
+    "json_path": "outputs/10TH MATHS FOUNDATION/topics_json/topic_19.json",
+    "lines": "36396-37213"
+  }
+]

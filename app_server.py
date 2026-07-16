@@ -38,6 +38,24 @@ OUTPUTS_DIR = REPO_ROOT / "outputs"
 INPUT_PDF_DIR = REPO_ROOT / "Input_PDFs"
 DEFAULT_PORT = int(os.environ.get("APP_PORT", "8000"))
 
+
+def _load_dotenv(path: Path) -> None:
+    """Load KEY=VALUE pairs from a .env file into os.environ (without
+    overriding values already set in the real environment).  Must run BEFORE
+    importing the pipeline modules so DB_* are picked up."""
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, val = line.split("=", 1)
+            os.environ.setdefault(key.strip(), val.strip().strip('"').strip("'"))
+    except FileNotFoundError:
+        pass
+
+
+_load_dotenv(REPO_ROOT / ".env")
+
 # Pipeline helpers (imported lazily-safe: viewer_api.py imports the same way).
 from final_to_qa_table import build_qa_table_export  # noqa: E402
 from topicwise_pipeline import (  # noqa: E402
@@ -83,6 +101,11 @@ def qa_json_path(book: str) -> Path:
     return book_dir(book) / f"{book}_qa_table.json"
 
 
+def study_notes_json_path(book: str) -> Path:
+    # Standalone study-notes sidecar (separate from *_final.json).
+    return book_dir(book) / f"{book}_study_notes.json"
+
+
 def list_existing_books() -> List[Dict[str, Any]]:
     books: List[Dict[str, Any]] = []
     if OUTPUTS_DIR.is_dir():
@@ -120,8 +143,12 @@ def guess_attributes_from_name(name: str) -> Dict[str, str]:
         if s.lower() in low:
             subject = s
             break
+    if not subject and "math" in low:  # "Maths" -> Mathematics
+        subject = "Mathematics"
     cls = ""
-    m = re.search(r"class\s*(\d{1,2})", low) or re.search(r"(\d{1,2})\s*th", low)
+    m = (re.search(r"class\s*(\d{1,2})", low)
+         or re.search(r"(\d{1,2})\s*th", low)
+         or re.match(r"\s*(\d{1,2})\b", low))  # e.g. "10 PHYSICS FOUNDATION"
     if m:
         cls = m.group(1)
     board = "Foundation" if "foundation" in low else ""
@@ -157,9 +184,57 @@ def read_json_body(handler: BaseHTTPRequestHandler) -> Dict[str, Any]:
     return json.loads(raw.decode("utf-8"))
 
 
+def bank_filters_from_qs(qs: Dict[str, List[str]]) -> Dict[str, Any]:
+    """Translate a parsed query string into the loose filter dict that
+    ``bank_read.normalize_filters`` expects.  Multi-value facets arrive
+    comma-joined (e.g. ``subject=Physics,Chemistry``)."""
+    def multi(key: str) -> List[str]:
+        out: List[str] = []
+        for value in qs.get(key, []):
+            out.extend(p.strip() for p in value.split(",") if p.strip())
+        return out
+
+    def one(key: str) -> str:
+        return (qs.get(key) or [""])[0]
+
+    return {
+        "subject": multi("subject"),
+        "class": multi("class"),
+        "board": multi("board"),
+        "type": multi("type"),
+        "book": multi("book"),
+        "chapter": multi("chapter"),
+        "q": one("q"),
+        "sort": one("sort"),
+        "page": one("page"),
+        "pageSize": one("pageSize"),
+    }
+
+
+BANK_ITEM_RE = re.compile(r"^/api/bank/items/(\d+)$")
+EXAM_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)$")
+EXAM_ATTEMPTS_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/attempts$")
+EXAM_STATUS_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/status$")
+EXAM_REPORT_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/report$")
+ATTEMPT_RE = re.compile(r"^/api/attempts/([A-Za-z0-9_-]+)$")
+
+
+def _bearer(handler: BaseHTTPRequestHandler) -> str:
+    auth = handler.headers.get("Authorization") or ""
+    return auth[7:].strip() if auth.lower().startswith("bearer ") else ""
+
+
+def _auth_user(handler: BaseHTTPRequestHandler) -> Optional[Dict[str, Any]]:
+    """Resolve the current user from the bearer token, or None."""
+    import assessment_store as astore
+    payload = astore.parse_token(_bearer(handler))
+    return astore.get_user(payload["uid"]) if payload else None
+
+
 # ---------------------------------------------------------------------------
 # Extraction worker
 # ---------------------------------------------------------------------------
+
 CACHED_STEPS = [
     "Reading the PDF",
     "Converting pages to text",
@@ -260,10 +335,42 @@ class AppHandler(BaseHTTPRequestHandler):
                 self.api_extract_status(qs)
             elif path == "/api/extraction":
                 self.api_get_extraction(qs)
+            elif path == "/api/study-notes":
+                self.api_get_study_notes(qs)
             elif path == "/api/pdf":
                 self.api_get_pdf(qs)
             elif path == "/api/preview":
                 self.api_preview(qs)
+            elif path == "/api/bank/items":
+                self.api_bank_items(qs)
+            elif path == "/api/bank/facets":
+                self.api_bank_facets(qs)
+            elif path == "/api/bank/health":
+                self.api_bank_health()
+            elif path == "/api/mcq/health":
+                self.api_mcq_health()
+            elif BANK_ITEM_RE.match(path):
+                self.api_bank_item(int(BANK_ITEM_RE.match(path).group(1)))
+            elif path == "/api/auth/me":
+                self.api_auth_me()
+            elif path == "/api/exams":
+                self.api_exams_list()
+            elif path == "/api/exams/mine":
+                self.api_exams_mine()
+            elif path == "/api/students":
+                self.api_students()
+            elif path == "/api/reports/overall":
+                self.api_overall_report(qs)
+            elif path == "/api/attempts/me":
+                self.api_attempts_me()
+            elif path == "/api/analytics/me":
+                self.api_analytics_me()
+            elif EXAM_REPORT_RE.match(path):
+                self.api_exam_report(EXAM_REPORT_RE.match(path).group(1))
+            elif ATTEMPT_RE.match(path):
+                self.api_attempt_get(ATTEMPT_RE.match(path).group(1))
+            elif EXAM_RE.match(path):
+                self.api_exam_get(EXAM_RE.match(path).group(1))
             elif path.startswith("/api/"):
                 json_response(self, 404, {"error": f"Unknown API route: {path}"})
             else:
@@ -288,6 +395,20 @@ class AppHandler(BaseHTTPRequestHandler):
                 self.api_save_preview()
             elif path == "/api/insert":
                 self.api_insert()
+            elif path == "/api/auth/register":
+                self.api_auth_register()
+            elif path == "/api/auth/login":
+                self.api_auth_login()
+            elif path == "/api/exams":
+                self.api_exam_create()
+            elif path == "/api/adaptive/generate":
+                self.api_adaptive_generate()
+            elif path == "/api/mcq/generate":
+                self.api_mcq_generate()
+            elif EXAM_STATUS_RE.match(path):
+                self.api_exam_status(EXAM_STATUS_RE.match(path).group(1))
+            elif EXAM_ATTEMPTS_RE.match(path):
+                self.api_exam_submit(EXAM_ATTEMPTS_RE.match(path).group(1))
             else:
                 json_response(self, 404, {"error": f"Unknown API route: {path}"})
         except Exception as exc:
@@ -385,6 +506,19 @@ class AppHandler(BaseHTTPRequestHandler):
         with open(path, "r", encoding="utf-8") as fh:
             doc = json.load(fh)
         json_response(self, 200, {"book": book, "document": doc})
+
+    def api_get_study_notes(self, qs: Dict[str, List[str]]) -> None:
+        # Serve the standalone study-notes document. Returns an empty topics
+        # list (200) when the sidecar does not exist yet, so the webapp can
+        # simply fall back to the markdown summary without treating it as error.
+        book = (qs.get("book") or [""])[0].strip()
+        path = study_notes_json_path(book)
+        if not path.is_file():
+            json_response(self, 200, {"book": book, "study_notes": {"topics": []}})
+            return
+        with open(path, "r", encoding="utf-8") as fh:
+            doc = json.load(fh)
+        json_response(self, 200, {"book": book, "study_notes": doc})
 
     def api_save_extraction(self) -> None:
         body = read_json_body(self)
@@ -567,6 +701,321 @@ class AppHandler(BaseHTTPRequestHandler):
             "theory_sections": theory_n,
             "qa_rows": content_n,
         })
+
+    # -- API: question bank (read-only) ------------------------------------
+    # bank_read is imported lazily (like insert_qa_table) so the server still
+    # boots when pymysql is unavailable -- only the /api/bank/* routes degrade.
+    def api_bank_items(self, qs: Dict[str, List[str]]) -> None:
+        try:
+            import bank_read
+        except Exception as exc:
+            json_response(self, 500, {"error": f"Bank module unavailable: {exc}"})
+            return
+        try:
+            payload = bank_read.search_items(bank_filters_from_qs(qs))
+        except Exception as exc:
+            json_response(self, 502, {"error": "Question bank query failed.", "detail": str(exc)})
+            return
+        json_response(self, 200, payload)
+
+    def api_bank_facets(self, qs: Dict[str, List[str]]) -> None:
+        try:
+            import bank_read
+        except Exception as exc:
+            json_response(self, 500, {"error": f"Bank module unavailable: {exc}"})
+            return
+        try:
+            payload = bank_read.compute_facets(bank_filters_from_qs(qs))
+        except Exception as exc:
+            json_response(self, 502, {"error": "Question bank query failed.", "detail": str(exc)})
+            return
+        json_response(self, 200, payload)
+
+    def api_bank_item(self, item_id: int) -> None:
+        try:
+            import bank_read
+        except Exception as exc:
+            json_response(self, 500, {"error": f"Bank module unavailable: {exc}"})
+            return
+        try:
+            result = bank_read.get_item(item_id)
+        except Exception as exc:
+            json_response(self, 502, {"error": "Question bank query failed.", "detail": str(exc)})
+            return
+        if result is None:
+            json_response(self, 404, {"error": f"Question #{item_id} not found."})
+            return
+        json_response(self, 200, result)
+
+    def api_bank_health(self) -> None:
+        # Always 200: db_ok=False lets the frontend show a 'bank unreachable'
+        # state rather than treating it as a hard error.
+        try:
+            import bank_read
+        except Exception as exc:
+            json_response(self, 200, {"db_ok": False, "error": f"Bank module unavailable: {exc}"})
+            return
+        json_response(self, 200, bank_read.health())
+
+    # -- API: theory -> MCQ conversion (Ollama) ----------------------------
+    # Additive + lazy-imported: the server still boots (and every other route
+    # works) when Ollama or the pipeline deps are unavailable -- only the
+    # /api/mcq/* routes degrade.
+    def api_mcq_health(self) -> None:
+        # Always 200: ollama_ok=False lets the UI show a soft 'AI offline' state.
+        try:
+            import mcq_generator
+        except Exception as exc:
+            json_response(self, 200, {"ollama_ok": False, "error": f"MCQ module unavailable: {exc}"})
+            return
+        json_response(self, 200, mcq_generator.health())
+
+    def api_mcq_generate(self) -> None:
+        # Generation is an authoring tool -> teacher-gated (mirrors adaptive).
+        user = self._require_teacher()
+        if not user:
+            return
+        try:
+            import mcq_generator
+        except Exception as exc:
+            json_response(self, 500, {"error": f"MCQ module unavailable: {exc}"})
+            return
+        body = read_json_body(self)
+
+        # Accept either explicit items, or bank item ids to fetch + convert.
+        items = body.get("items")
+        if not isinstance(items, list):
+            items = []
+        item_ids = body.get("item_ids") or []
+        if item_ids:
+            try:
+                import bank_read
+            except Exception as exc:
+                json_response(self, 500, {"error": f"Bank module unavailable: {exc}"})
+                return
+            for raw_id in item_ids:
+                try:
+                    detail = bank_read.get_item(int(raw_id))
+                except Exception:
+                    detail = None
+                if detail and detail.get("item"):
+                    it = detail["item"]
+                    items.append({
+                        "id": it.get("id"), "question": it.get("stem", ""),
+                        "answer": it.get("answer", ""), "subject": it.get("subject", ""),
+                        "chapter_name": it.get("chapter_name", ""),
+                        "question_type": it.get("question_type", ""),
+                    })
+
+        if not items:
+            json_response(self, 400, {"error": "Provide items or item_ids to convert."})
+            return
+
+        try:
+            result = mcq_generator.convert_items(items)
+        except Exception as exc:
+            json_response(self, 502, {
+                "error": "MCQ generation failed.",
+                "detail": str(exc),
+                "hint": "This usually means Ollama is not running or the model "
+                        "isn't pulled. Start Ollama and try again.",
+            })
+            return
+        json_response(self, 200, result)
+
+    # -- API: auth ---------------------------------------------------------
+    def api_auth_register(self) -> None:
+        import assessment_store as astore
+        body = read_json_body(self)
+        name = (body.get("name") or "").strip()
+        username = (body.get("username") or "").strip()
+        password = body.get("password") or ""
+        role = body.get("role") or "student"
+        roll = body.get("roll") or ""
+        klass = body.get("klass") or ""
+        section = body.get("section") or ""
+        if not username or len(password) < 4:
+            json_response(self, 400, {"error": "username and a password (4+ chars) are required."})
+            return
+        try:
+            user = astore.create_user(name, username, password, role, roll, klass, section)
+        except ValueError as exc:
+            json_response(self, 409, {"error": str(exc)})
+            return
+        json_response(self, 200, {"token": astore.make_token(user), "user": astore.public_user(user)})
+
+    def api_auth_login(self) -> None:
+        import assessment_store as astore
+        body = read_json_body(self)
+        user = astore.authenticate(body.get("username") or "", body.get("password") or "")
+        if not user:
+            json_response(self, 401, {"error": "Invalid username or password."})
+            return
+        json_response(self, 200, {"token": astore.make_token(user), "user": astore.public_user(user)})
+
+    def api_auth_me(self) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        json_response(self, 200, {"user": astore.public_user(user)})
+
+    # -- API: exams + attempts (student-facing) ----------------------------
+    def api_exams_list(self) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        json_response(self, 200, {"exams": astore.list_exams(user)})
+
+    def api_exam_get(self, exam_id: str) -> None:
+        import assessment_store as astore
+        if not _auth_user(self):
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        exam = astore.get_exam_public(exam_id)
+        if not exam:
+            json_response(self, 404, {"error": f"Exam {exam_id!r} not found."})
+            return
+        json_response(self, 200, {"exam": exam})
+
+    def api_exam_submit(self, exam_id: str) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        body = read_json_body(self)
+        try:
+            attempt = astore.record_attempt(user, exam_id, body.get("answers") or {}, body.get("time_spent_sec") or 0)
+        except ValueError as exc:
+            json_response(self, 403, {"error": str(exc)})
+            return
+        if attempt is None:
+            json_response(self, 404, {"error": f"Exam {exam_id!r} not found."})
+            return
+        json_response(self, 200, {"attempt_id": attempt["id"], "result": attempt["result"],
+                                   "answer_key": {q["id"]: q.get("correct_index")
+                                                  for q in (astore.get_exam_full(exam_id) or {}).get("questions", [])}})
+
+    def api_attempts_me(self) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        json_response(self, 200, {"attempts": astore.list_attempts(user["id"])})
+
+    def api_attempt_get(self, attempt_id: str) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        attempt = astore.get_attempt(attempt_id, user["id"])
+        if not attempt:
+            json_response(self, 404, {"error": "Attempt not found."})
+            return
+        json_response(self, 200, {"attempt": attempt})
+
+    def api_analytics_me(self) -> None:
+        import assessment_store as astore
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return
+        json_response(self, 200, {"analytics": astore.analytics(user["id"])})
+
+    # -- API: exam authoring (teacher) -------------------------------------
+    def _require_teacher(self) -> Optional[Dict[str, Any]]:
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return None
+        if user.get("role") != "teacher":
+            json_response(self, 403, {"error": "Teacher account required."})
+            return None
+        return user
+
+    def api_exam_create(self) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        try:
+            exam = astore.create_exam(user, read_json_body(self))
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        json_response(self, 200, {"exam_id": exam["id"], "status": exam["status"]})
+
+    def api_exams_mine(self) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        json_response(self, 200, {"exams": astore.list_my_exams(user["id"])})
+
+    def api_students(self) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        json_response(self, 200, {"students": astore.list_students()})
+
+    def api_overall_report(self, qs: Dict[str, List[str]]) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        exam_type = (qs.get("exam_type") or [""])[0]
+        klass = (qs.get("class") or [""])[0]
+        json_response(self, 200, {"report": astore.overall_report(user["id"], exam_type, klass)})
+
+    def api_adaptive_generate(self) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        try:
+            result = astore.generate_adaptive(user, read_json_body(self))
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        json_response(self, 200, result)
+
+    def api_exam_status(self, exam_id: str) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        body = read_json_body(self)
+        try:
+            updated = astore.set_exam_status(user["id"], exam_id, body.get("status") or "draft")
+        except PermissionError as exc:
+            json_response(self, 403, {"error": str(exc)})
+            return
+        if updated is None:
+            json_response(self, 404, {"error": "Exam not found."})
+            return
+        json_response(self, 200, updated)
+
+    def api_exam_report(self, exam_id: str) -> None:
+        import assessment_store as astore
+        user = self._require_teacher()
+        if not user:
+            return
+        try:
+            report = astore.exam_report(user["id"], exam_id)
+        except PermissionError as exc:
+            json_response(self, 403, {"error": str(exc)})
+            return
+        if report is None:
+            json_response(self, 404, {"error": "Exam not found."})
+            return
+        json_response(self, 200, {"report": report})
 
     # -- Static files ------------------------------------------------------
     def serve_static(self, path: str) -> None:

@@ -1,0 +1,66 @@
+[
+  {
+    "topic_number": 1,
+    "topic_name": "Life Process",
+    "page_range": "1-62",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_01_life-process.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_01.json",
+    "lines": "66-2567"
+  },
+  {
+    "topic_number": 2,
+    "topic_name": "Control and Coordination",
+    "page_range": "63-102",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_02_control-and-coordination.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_02.json",
+    "lines": "2568-4382"
+  },
+  {
+    "topic_number": 3,
+    "topic_name": "How Do Organisms Reproduce",
+    "page_range": "103-142",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_03_how-do-organisms-reproduce.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_03.json",
+    "lines": "4383-6324"
+  },
+  {
+    "topic_number": 4,
+    "topic_name": "Heredity and Evolution",
+    "page_range": "143-184",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_04_heredity-and-evolution.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_04.json",
+    "lines": "6325-8282"
+  },
+  {
+    "topic_number": 5,
+    "topic_name": "Our Environment",
+    "page_range": "185-216",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_05_our-environment.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_05.json",
+    "lines": "8283-10006"
+  },
+  {
+    "topic_number": 6,
+    "topic_name": "Management of Our Natural Resources",
+    "page_range": "217-244",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_06_management-of-our-natural-resources.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_06.json",
+    "lines": "10007-11503"
+  },
+  {
+    "topic_number": 7,
+    "topic_name": "Biotechnology",
+    "page_range": "245-258",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_07_biotechnology.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_07.json",
+    "lines": "11504-12122"
+  },
+  {
+    "topic_number": 8,
+    "topic_name": "Biomolecules",
+    "page_range": "259-276",
+    "md_path": "outputs/10TH BIOLOGY FOUNDATION/topics_md/topic_08_biomolecules.md",
+    "json_path": "outputs/10TH BIOLOGY FOUNDATION/topics_json/topic_08.json",
+    "lines": "12123-12853"
+  }
+]

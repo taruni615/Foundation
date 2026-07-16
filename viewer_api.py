@@ -135,8 +135,84 @@ def filter_export_payload(payload: Dict[str, Any], scope: str) -> Dict[str, Any]
     raise ValueError(f"Unsupported export scope: {scope}")
 
 
+def _inline_md_export(text: Any) -> str:
+    """Inline markdown -> HTML for export: `code` and **bold** (escaped first)."""
+    s = html_module.escape(str(text or ""))
+    s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
+    s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
+    return s
+
+
+def _render_notes_markdown_body(text: Any) -> str:
+    """Render a study-notes markdown body to HTML.
+
+    Handles the rich "study notes" layout: **bold**, `code`, ``-``/``*`` bullet
+    lists, ``1.`` numbered lists, ``>`` recap blockquotes, ``---`` dividers, and
+    paragraphs (✓/⚠/⏱/📊/⭐ lines pass through as text). Falls back to the
+    embed-or-escape behaviour for bodies that already contain HTML/MathML.
+    """
+    raw = str(text or "").strip()
+    if not raw:
+        return ""
+    lowered = raw.lower()
+    if any(t in lowered for t in ("<math", "<table", "<img", "<p", "<div", "<ul", "<ol")):
+        return export_rich_block(raw)
+
+    out: List[str] = []
+    para: List[str] = []
+    items: List[str] = []
+    list_tag: Optional[str] = None
+
+    def flush_para() -> None:
+        if para:
+            out.append("<p>" + "<br>".join(_inline_md_export(p) for p in para) + "</p>")
+            para.clear()
+
+    def flush_list() -> None:
+        nonlocal list_tag
+        if items:
+            out.append(
+                f"<{list_tag}>"
+                + "".join(f"<li>{_inline_md_export(it)}</li>" for it in items)
+                + f"</{list_tag}>"
+            )
+            items.clear()
+            list_tag = None
+
+    for line in raw.replace("\r", "").split("\n"):
+        s = line.strip()
+        if not s:
+            flush_list(); flush_para(); continue
+        if s in ("---", "***", "___"):
+            flush_list(); flush_para(); out.append("<hr>"); continue
+        if s.startswith(">"):
+            flush_list(); flush_para()
+            out.append(
+                '<blockquote class="notes-recap">'
+                + _inline_md_export(re.sub(r"^>\s?", "", s))
+                + "</blockquote>"
+            )
+            continue
+        m_ul = re.match(r"^[-*]\s+(.*)$", s)
+        m_ol = re.match(r"^\d+\.\s+(.*)$", s)
+        if m_ul:
+            flush_para()
+            if list_tag and list_tag != "ul":
+                flush_list()
+            list_tag = "ul"; items.append(m_ul.group(1)); continue
+        if m_ol:
+            flush_para()
+            if list_tag and list_tag != "ol":
+                flush_list()
+            list_tag = "ol"; items.append(m_ol.group(1)); continue
+        flush_list()
+        para.append(s)
+    flush_list(); flush_para()
+    return '<div class="rich">' + "".join(out) + "</div>"
+
+
 def export_summary_html(summary: Any) -> str:
-    """Render hierarchical ## / ### summary markdown for PDF/HTML export."""
+    """Render hierarchical ## / ### / #### summary markdown for PDF/HTML export."""
     raw = str(summary or "").strip()
     if not raw:
         return ""
@@ -147,24 +223,29 @@ def export_summary_html(summary: Any) -> str:
         return export_rich_block(raw)
 
     parts: List[str] = []
-    chunks = re.split(r"\n(?=#{2,3}\s)", raw.replace("\r", ""))
+    chunks = re.split(r"\n(?=#{2,4}\s)", raw.replace("\r", ""))
     for chunk in chunks:
         chunk = chunk.strip()
         if not chunk:
             continue
-        heading_match = re.match(r"^(#{2,3})\s+(.*)$", chunk)
+        # Heading is the first line of the chunk; the rest is the body. (Matching
+        # the whole chunk fails for multi-line chunks since `.`/`$` don't span
+        # newlines without DOTALL/MULTILINE.)
+        nl = chunk.find("\n")
+        first_line = chunk if nl == -1 else chunk[:nl]
+        heading_match = re.match(r"^(#{2,4})\s+(.*)$", first_line)
         if heading_match:
             level = len(heading_match.group(1))
             heading = heading_match.group(2).strip()
-            body = chunk[heading_match.end():].strip()
-            tag = "h3" if level == 2 else "h4"
-            parts.append(f"<{tag}>{html_module.escape(heading)}</{tag}>")
+            body = "" if nl == -1 else chunk[nl + 1:].strip()
+            tag = {2: "h3", 3: "h4"}.get(level, "h5")
+            parts.append(f"<{tag}>{_inline_md_export(heading)}</{tag}>")
             if body:
-                parts.append(export_rich_block(body))
+                parts.append(_render_notes_markdown_body(body))
             continue
-        parts.append(export_rich_block(chunk))
+        parts.append(_render_notes_markdown_body(chunk))
 
-    return "".join(parts) if parts else export_rich_block(raw)
+    return "".join(parts) if parts else _render_notes_markdown_body(raw)
 
 
 def export_rich_block(text: Any) -> str:
@@ -355,6 +436,10 @@ def build_chapter_export_html(payload: Dict[str, Any], *, for_pdf: bool = False)
         ".key-point{border-left:3px solid #2563eb;padding:8px 12px;margin:8px 0;background:#f8fafc}",
         ".rich img{max-width:100%} table{border-collapse:collapse;width:100%}",
         "th,td{border:1px solid #ccc;padding:6px} .math-fallback{font-style:italic}",
+        ".rich h4{font-size:15px;color:#334155;margin:14px 0 4px} .rich h5{font-size:13.5px;color:#475569;margin:12px 0 4px}",
+        ".rich code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:1px 5px;font-size:13px;font-family:Consolas,Menlo,monospace}",
+        ".rich hr{border:0;border-top:1px dashed #cbd5e1;margin:12px 0}",
+        ".notes-recap{margin:10px 0;padding:8px 12px;background:#fffbeb;border-left:4px solid #f59e0b;border-radius:6px;color:#92400e;font-size:13.5px}",
         "@media print{body{margin:12px}}",
         "</style>",
     ]

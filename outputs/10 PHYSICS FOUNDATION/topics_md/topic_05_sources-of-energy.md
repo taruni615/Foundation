@@ -2,7 +2,7 @@
 topic_number: 5
 topic_name: Sources of Energy
 page_range: 281-318
-source_markdown: Mathpix_Cache\10 PHYSICS FOUNDATION_mathpix.md
+source_markdown: Mathpix_Cache/10 PHYSICS FOUNDATION_mathpix.md
 md_kind: combined
 lines: 16098-18022
 ---

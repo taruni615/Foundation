@@ -5,8 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Textbook Extractor</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-shell.css">
+  <!-- Formula rendering: MathML renders natively; MathJax adds LaTeX + cross-browser consistency -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+  <div id="app">
+  <aside id="app-nav" class="app-nav"></aside>
+  <div id="app-content" class="app-content">
+  <section id="extraction-root" data-module-root="extraction">
   <header class="topbar">
     <div class="brand">
       <span class="logo">📚</span>
@@ -214,8 +227,13 @@
       <div class="history-list" id="history-list"></div>
     </div>
   </div>
+  </section><!-- /#extraction-root -->
+  <div id="module-content" data-module-dynamic hidden></div>
+  </div><!-- /#app-content -->
+  </div><!-- /#app -->
 
   <div id="toast" class="toast" hidden></div>
+  <script type="module" src="src/main.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

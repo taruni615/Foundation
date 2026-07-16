@@ -170,6 +170,86 @@ select:focus, input:focus, textarea:focus { outline: 2px solid #bfdbfe; border-c
 .x-item:last-child { border-bottom: 0; }
 .x-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: .03em; }
 .x-text { white-space: pre-wrap; word-break: break-word; }
+
+/* Rendered "study notes" markdown (rich summary read-only view) */
+.notes-view { white-space: normal; line-height: 1.55; }
+.notes-view .notes-h { margin: 16px 0 6px; line-height: 1.3; font-weight: 700; }
+.notes-view h3.notes-h { font-size: 17px; color: var(--brand-dark, #1e3a8a); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.notes-view h4.notes-h { font-size: 15px; color: #334155; }
+.notes-view h5.notes-h { font-size: 13.5px; color: #475569; }
+.notes-view p { margin: 6px 0; }
+.notes-view ul, .notes-view ol { margin: 6px 0 10px; padding-left: 22px; }
+.notes-view li { margin: 2px 0; }
+.notes-view code { background: #f1f5f9; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 13px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.notes-view strong { color: #0f172a; }
+.notes-view hr { border: 0; border-top: 1px dashed var(--line); margin: 14px 0; }
+.notes-view blockquote.notes-recap { margin: 12px 0; padding: 8px 12px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 6px; color: #92400e; font-size: 13.5px; }
+
+/* ------------------------------------------------------------------ */
+/* Structured study notes (study_notes JSON, schema v1) component view  */
+/* Card-based layout for the new notes UI. Reuses brand/line CSS vars.   */
+/* ------------------------------------------------------------------ */
+.study-notes { line-height: 1.55; }
+.study-notes .sn-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.study-notes .sn-card-title { margin: 0 0 8px; font-size: 16px; font-weight: 700; color: var(--brand-dark); }
+.study-notes .sn-muted { color: var(--muted); font-size: 13px; margin: 0 0 6px; }
+
+/* Prerequisites / overview accents */
+.study-notes .sn-prereq { border-left: 4px solid #6366f1; background: #eef2ff; }
+.study-notes .sn-overview { border-left: 4px solid var(--brand); }
+
+/* Topic card */
+.study-notes .sn-topic { border-left: 4px solid var(--brand-dark); }
+.study-notes .sn-topic.sn-sub { margin-left: 16px; border-left-color: #94a3b8; }
+.study-notes .sn-topic-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.study-notes .sn-topic-title { margin: 0; font-size: 17px; font-weight: 700; color: #0f172a; }
+.study-notes .sn-sub .sn-topic-title { font-size: 15px; }
+
+/* Chips: estimated time, difficulty, exam stars */
+.study-notes .sn-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.study-notes .sn-chip { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 10px; background: #f1f5f9; color: #334155; border: 1px solid var(--line); }
+.study-notes .sn-time { background: #f8fafc; }
+.study-notes .sn-stars { background: #fffbeb; color: #b45309; border-color: #fde68a; letter-spacing: 1px; }
+.study-notes .sn-diff-easy { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.study-notes .sn-diff-medium { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.study-notes .sn-diff-advanced { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+
+/* Labelled blocks within a topic */
+.study-notes .sn-block { margin: 10px 0; }
+.study-notes .sn-block-label { display: block; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); margin-bottom: 3px; }
+.study-notes .sn-block p { margin: 2px 0; }
+.study-notes .sn-quick p { font-weight: 500; color: #0f172a; }
+.study-notes .sn-real { background: #f0f9ff; border-radius: 8px; padding: 8px 10px; }
+.study-notes .sn-hook { background: #faf5ff; border-radius: 8px; padding: 8px 10px; }
+.study-notes .sn-list { margin: 4px 0 4px; padding-left: 20px; }
+.study-notes .sn-list li { margin: 2px 0; }
+.study-notes .sn-points .sn-list, .study-notes .sn-mistakes .sn-list { list-style: none; padding-left: 4px; }
+
+/* Definition lists (detailed explanation, formula/derivation meta) */
+.study-notes .sn-defs { margin: 4px 0; display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; }
+.study-notes .sn-defs dt { font-weight: 700; color: #475569; font-size: 13px; }
+.study-notes .sn-defs dd { margin: 0; }
+.study-notes .sn-steps { margin: 2px 0; padding-left: 18px; }
+
+/* Formula / derivation blocks */
+.study-notes .sn-formula, .study-notes .sn-derivation { margin: 10px 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: #f8fafc; }
+.study-notes .sn-formula-head, .study-notes .sn-derivation-head { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--brand-dark); margin-bottom: 6px; }
+.study-notes .sn-formula-eq { display: inline-block; margin: 2px 0 6px; padding: 3px 10px; background: #fff; border: 1px solid var(--line); border-radius: 6px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+.study-notes code { background: #f1f5f9; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 13px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.study-notes strong { color: #0f172a; }
+
+/* Advanced insights (collapsible) */
+.study-notes .sn-advanced { background: #f8fafc; border: 1px dashed var(--line); border-radius: 8px; padding: 8px 12px; }
+.study-notes .sn-advanced summary { cursor: pointer; font-weight: 700; color: var(--brand-dark); }
+.study-notes .sn-advanced p { margin-top: 6px; }
+
+/* Periodic recap */
+.study-notes .sn-recap { margin: 12px 0; padding: 8px 12px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 6px; }
+.study-notes .sn-recap-title { font-weight: 700; color: #92400e; margin-bottom: 4px; }
+
+/* Chapter revision */
+.study-notes .sn-revision { border-left: 4px solid #10b981; background: #f0fdf4; }
+
 .x-edit-row { display: flex; justify-content: flex-end; margin-top: 6px; }
 .x-edit-btn { font-size: 12px; color: var(--brand); background: none; border: 0; cursor: pointer; font-weight: 600; }
 .editable-area { width: 100%; min-height: 70px; padding: 8px 10px; border: 1px solid var(--brand); border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical; }

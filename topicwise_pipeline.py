@@ -74,7 +74,42 @@ LLM_SUMMARY_SECTION_EXCERPT = int(os.environ.get("LLM_SUMMARY_SECTION_EXCERPT", 
 LLM_SUMMARY_BATCH_SIZE = int(os.environ.get("LLM_SUMMARY_BATCH_SIZE", "12"))
 STUDENT_SUMMARY_MAX_CHARS = int(os.environ.get("STUDENT_SUMMARY_MAX_CHARS", "650"))
 CHAPTER_OVERVIEW_MAX_CHARS = int(os.environ.get("CHAPTER_OVERVIEW_MAX_CHARS", "900"))
-CHAPTER_OVERVIEW_HEADING = "Chapter overview"
+# Displayed heading for the unified chapter-level intro block. The underlying
+# data key stays ``chapter_overview`` for backward compatibility; only the label
+# follows the "Chapter Introduction" wording from the notes architecture.
+CHAPTER_OVERVIEW_HEADING = "Chapter Introduction"
+
+# --- Rich "study notes" format (Topic Structure spec) -----------------------
+# When on, the per-topic notes follow the structured study-notes layout:
+# prerequisites tab, per-topic quick summary + real-life example + detailed
+# explanation + points-to-remember + common mistakes + memory hook + advanced
+# insights + estimated time + difficulty/exam-importance stars + formulas +
+# derivations, periodic recaps, and an end-of-chapter revision section.
+# The result is still a single markdown string stored in ``topic["summary"]`` --
+# no schema / endpoint / DB / frontend change -- so existing functionality is
+# untouched. Set SUMMARY_RICH_FORMAT=0 to fall back to the old plain layout.
+SUMMARY_RICH_FORMAT = os.environ.get("SUMMARY_RICH_FORMAT", "1").lower() in ("1", "true", "yes")
+# Rich JSON is much larger per section, so summarize fewer sections per LLM call
+# and allow a bigger output budget than the plain format.
+LLM_SUMMARY_RICH_BATCH_SIZE = int(os.environ.get("LLM_SUMMARY_RICH_BATCH_SIZE", "4"))
+SUMMARY_RICH_NUM_PREDICT = int(os.environ.get("SUMMARY_RICH_NUM_PREDICT", "8192"))
+# Guideline 5: a running recap after roughly every N topics (markdown has no
+# fixed pages, so this approximates "bottom of every 2 pages").
+SUMMARY_RECAP_EVERY_SECTIONS = int(os.environ.get("SUMMARY_RECAP_EVERY_SECTIONS", "3"))
+# Per-field length caps so one verbose field can't dominate a topic block.
+RICH_FIELD_MAX_CHARS = int(os.environ.get("RICH_FIELD_MAX_CHARS", "600"))
+
+PREREQUISITES_HEADING = "📋 Prerequisites"
+CHAPTER_REVISION_HEADING = "📝 Chapter Revision (Quick Recap)"
+
+STUDENT_PREREQUISITES_SYSTEM = (
+    "You list the prerequisite knowledge a Class 10 student needs BEFORE starting "
+    "a chapter. Return ONLY valid JSON: "
+    '{"prerequisites": ["string", "string"]}. '
+    "Give 3-6 short bullet points naming earlier concepts/skills/formulas the "
+    "student should already know to follow this chapter comfortably. "
+    "Plain English, no markdown, each item one short line."
+)
 
 STUDENT_CHAPTER_OVERVIEW_SYSTEM = (
     "You write a single chapter-level revision overview for Class 10 physics students. "
@@ -85,7 +120,8 @@ STUDENT_CHAPTER_OVERVIEW_SYSTEM = (
     "Do NOT copy textbook sentences. Do NOT use markdown headings inside chapter_overview."
 )
 
-STUDENT_SUMMARY_SYSTEM = (
+# Plain (legacy) layout -- kept as a fallback when SUMMARY_RICH_FORMAT is off.
+STUDENT_SUMMARY_SYSTEM_PLAIN = (
     "You write short topic-wise revision notes for Class 10 physics students (ages 14-16). "
     "Return ONLY valid JSON: "
     '{"sections": [{"heading": "string", "level": 2|3, "summary": "string"}]}. '
@@ -101,6 +137,48 @@ STUDENT_SUMMARY_SYSTEM = (
     "- Use the same heading text as provided in the input."
 )
 
+# Rich "study notes" layout -- one structured object per topic/subtopic.
+STUDENT_SUMMARY_SYSTEM_RICH = (
+    "You write structured study notes for Class 10 science students (ages 14-16). "
+    "For EACH input section, produce ONE rich topic object. "
+    "Return ONLY valid JSON in exactly this shape:\n"
+    '{"sections": [{'
+    '"heading": "string", "level": 2|3, '
+    '"estimated_time": "e.g. 5 mins", '
+    '"difficulty": "Easy|Medium|Advanced", '
+    '"exam_importance": 1-5, '
+    '"quick_summary": "1-2 lines understandable in under 30 seconds", '
+    '"real_life_example": "one line: where this is seen in daily life", '
+    '"definition": "string", "key_idea": "string", '
+    '"working_principle": "string", "applications": "string", '
+    '"points_to_remember": ["short exam-focused point", "..."], '
+    '"common_mistakes": ["mistake students make", "..."], '
+    '"memory_hook": "a mnemonic or vivid association to remember it", '
+    '"advanced_insights": "deeper insight for high performers (optional)", '
+    '"formulas": [{"formula": "string", "difficulty": "Easy|Medium|Advanced", '
+    '"variables": "meaning of each variable", "when_to_use": "string", '
+    '"common_mistake": "string", "shortcut": "memory trick"}], '
+    '"derivations": [{"name": "string", "why_it_matters": "string", '
+    '"assumptions": "string", "steps": ["step 1", "step 2"], '
+    '"final_result": "string", "exam_perspective": "string"}]'
+    '}]}\n'
+    "Rules:\n"
+    "- One object per input section. level 2 = main topic, level 3 = subtopic.\n"
+    "- Keep every field short and in plain, easy English. Write in your OWN words; "
+    "do NOT copy textbook sentences. Break ideas into small digestible pieces.\n"
+    "- exam_importance is an integer 1 (low) to 5 (must-know).\n"
+    "- Use [] for formulas/derivations when the topic genuinely has none. "
+    "Omit or leave \"\" for any text field that does not apply (e.g. no real-life "
+    "example for an abstract sub-point). Do NOT invent formulas.\n"
+    "- points_to_remember and common_mistakes are arrays of short strings.\n"
+    "- These notes are TEXT-ONLY: do NOT include any image tokens, figure "
+    "references or [image:img_NNN] placeholders.\n"
+    "- Use the same heading text as provided in the input."
+)
+
+# Active prompt depends on the format toggle (checked at call time too).
+STUDENT_SUMMARY_SYSTEM = STUDENT_SUMMARY_SYSTEM_RICH if SUMMARY_RICH_FORMAT else STUDENT_SUMMARY_SYSTEM_PLAIN
+
 
 def skip_images() -> bool:
     """When True, do not download, embed, or export image base64 (faster, smaller JSON)."""
@@ -110,6 +188,18 @@ def skip_images() -> bool:
 def skip_mathml() -> bool:
     """When True, leave $...$ / $$...$$ LaTeX in text (no MathML conversion)."""
     return os.environ.get("SKIP_MATHML", "0").lower() in ("1", "true", "yes")
+
+
+# --- Theory-only mode -------------------------------------------------------
+# When on, the pipeline ignores ALL question content (examples, exercises,
+# practice questions, case studies, check-your-knowledge, illustrations and the
+# question bank) and keeps only theory + the generated study notes. The per-topic
+# regex cache is left untouched (so caching still works); questions are dropped
+# only from the final *_final.json / topic_doc, and the *_qa_table.json sidecar is
+# skipped. Default OFF -> existing behaviour (theory + questions) is preserved.
+def theory_only() -> bool:
+    """When True, extract theory + study notes only and ignore all questions."""
+    return os.environ.get("THEORY_ONLY", "0").lower() in ("1", "true", "yes")
 
 
 MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)")
@@ -566,15 +656,21 @@ class BookPaths:
     db_manifest_path: str
     db_output_json: str
     qa_table_output_json: str
+    # Study notes are a standalone entity: per-topic files in topics_study_notes/
+    # plus a merged <book>_study_notes.json sidecar (NOT embedded in _final.json).
+    topics_study_notes_dir: str
+    study_notes_output_json: str
 
 
 def derive_book_paths(pdf_path: str) -> BookPaths:
     base_name, cache_path, output_json = derive_paths(pdf_path)
     book_output_dir = os.path.join(OUTPUT_DIR, base_name)
     qa_table_output_json = os.path.join(book_output_dir, f"{base_name}_qa_table.json")
+    study_notes_output_json = os.path.join(book_output_dir, f"{base_name}_study_notes.json")
     topics_md_dir = os.path.join(book_output_dir, "topics_md")
     topics_llm_md_dir = os.path.join(book_output_dir, "topics_llm_md")
     topics_json_dir = os.path.join(book_output_dir, "topics_json")
+    topics_study_notes_dir = os.path.join(book_output_dir, "topics_study_notes")
     topics_db_json_dir = os.path.join(book_output_dir, "topics_db_json")
     manifest_path = os.path.join(topics_md_dir, "manifest.json")
     llm_md_manifest_path = os.path.join(topics_llm_md_dir, "manifest.json")
@@ -594,6 +690,8 @@ def derive_book_paths(pdf_path: str) -> BookPaths:
         db_manifest_path=db_manifest_path,
         db_output_json=db_output_json,
         qa_table_output_json=qa_table_output_json,
+        topics_study_notes_dir=topics_study_notes_dir,
+        study_notes_output_json=study_notes_output_json,
     )
 
 
@@ -2887,13 +2985,446 @@ def _polish_student_summary_markdown(md: str) -> str:
     return compact_markdown("\n\n".join(blocks))
 
 
+# ---------------------------------------------------------------------------
+# Rich "study notes" rendering (Topic Structure spec)
+# ---------------------------------------------------------------------------
+_DIFFICULTY_BADGE = {
+    "easy": "🟢 Easy",
+    "medium": "🟡 Medium",
+    "moderate": "🟡 Medium",
+    "advanced": "🔴 Advanced",
+    "hard": "🔴 Advanced",
+    "difficult": "🔴 Advanced",
+}
+
+# Map any loose difficulty wording to the canonical raw enum used in the
+# structured ``study_notes`` JSON (the markdown badge above is the display form).
+_DIFFICULTY_RAW = {
+    "easy": "Easy",
+    "medium": "Medium",
+    "moderate": "Medium",
+    "advanced": "Advanced",
+    "hard": "Advanced",
+    "difficult": "Advanced",
+}
+
+
+def _normalize_difficulty(value: Any) -> str:
+    """Return the canonical difficulty enum (``Easy|Medium|Advanced``) or ``""``."""
+    return _DIFFICULTY_RAW.get(str(value or "").strip().lower(), "")
+
+
+def _strip_image_placeholders(text: str) -> str:
+    """Remove image references from study-notes text (text-only, no figures).
+
+    Drops both ``[image:img_NNN]`` tokens and inline ``![alt](url)`` markdown
+    images, then tidies the leftover whitespace."""
+    if not text:
+        return text or ""
+    cleaned = re.sub(r"\[image:\s*img_\d+\]", "", text, flags=re.IGNORECASE)
+    cleaned = MARKDOWN_IMAGE_RE.sub("", cleaned)
+    cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
+    return cleaned.strip()
+
+
+def _rich_str(value: Any, cap: int = RICH_FIELD_MAX_CHARS) -> str:
+    """Coerce to a clean single string, drop stray markdown headings, truncate.
+
+    Tolerates the model returning a dict (e.g. ``variables`` as
+    ``{"c": "speed of light"}``) or a list instead of a plain string -- those are
+    flattened to readable text rather than dumped as Python ``repr``.
+    """
+    if isinstance(value, dict):
+        parts = []
+        for k, v in value.items():
+            vs = str(v).strip()
+            if vs and vs.lower() != "none":
+                parts.append(f"{k}: {vs}")
+        s = "; ".join(parts)
+    elif isinstance(value, (list, tuple)):
+        s = "; ".join(str(x).strip() for x in value if str(x).strip())
+    else:
+        s = str(value or "").strip()
+    if not s:
+        return ""
+    s = re.sub(r"^#+\s+.*$", "", s, flags=re.MULTILINE).strip()
+    s = _strip_image_placeholders(s)  # study notes are text-only: drop image refs
+    return _truncate_text(s, cap).strip()
+
+
+def _rich_list(value: Any, cap: int = RICH_FIELD_MAX_CHARS) -> List[str]:
+    """Coerce to a list of clean non-empty strings (accepts list or newline str)."""
+    items: List[str] = []
+    if isinstance(value, list):
+        raw_items = value
+    elif isinstance(value, str):
+        raw_items = re.split(r"\n+", value)
+    else:
+        raw_items = []
+    for it in raw_items:
+        s = _rich_str(it, cap)
+        s = re.sub(r"^\s*[-*•✓✗⚠]\s*", "", s).strip()
+        if s:
+            items.append(s)
+    return items
+
+
+def _difficulty_badge(value: Any) -> str:
+    return _DIFFICULTY_BADGE.get(str(value or "").strip().lower(), "")
+
+
+def _stars(value: Any, max_stars: int = 5) -> str:
+    try:
+        n = int(round(float(value)))
+    except (TypeError, ValueError):
+        return ""
+    n = max(0, min(max_stars, n))
+    if n <= 0:
+        return ""
+    return "★" * n + "☆" * (max_stars - n)
+
+
+def _exam_importance_int(value: Any, max_stars: int = 5) -> int:
+    """Coerce the exam-importance rating to an int 0..5 for the structured JSON."""
+    try:
+        n = int(round(float(value)))
+    except (TypeError, ValueError):
+        return 0
+    return max(0, min(max_stars, n))
+
+
+def _normalize_rich_section(item: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Normalize one LLM section object into a rich, render-ready dict.
+
+    Backward compatible: a legacy ``{heading, level, summary}`` object is mapped
+    onto ``quick_summary`` so old-format responses still render cleanly.
+    """
+    if not isinstance(item, dict):
+        return None
+    heading = plain_section_title(str(item.get("heading") or ""))
+    if not heading:
+        return None
+    quick = _rich_str(item.get("quick_summary") or item.get("summary"))
+    formulas = []
+    for f in item.get("formulas") or []:
+        if not isinstance(f, dict):
+            continue
+        formula = _rich_str(f.get("formula"), 200)
+        if not formula:
+            continue
+        formulas.append({
+            "formula": formula,
+            "difficulty": _difficulty_badge(f.get("difficulty")),
+            # raw enum kept alongside the display badge for the structured JSON
+            "difficulty_raw": _normalize_difficulty(f.get("difficulty")),
+            "variables": _rich_str(f.get("variables")),
+            "when_to_use": _rich_str(f.get("when_to_use")),
+            "common_mistake": _rich_str(f.get("common_mistake")),
+            "shortcut": _rich_str(f.get("shortcut")),
+        })
+    derivations = []
+    for d in item.get("derivations") or []:
+        if not isinstance(d, dict):
+            continue
+        steps = _rich_list(d.get("steps"))
+        name = _rich_str(d.get("name"), 160)
+        if not (name or steps):
+            continue
+        derivations.append({
+            "name": name or "Derivation",
+            "why_it_matters": _rich_str(d.get("why_it_matters")),
+            "assumptions": _rich_str(d.get("assumptions")),
+            "steps": steps,
+            "final_result": _rich_str(d.get("final_result"), 200),
+            "exam_perspective": _rich_str(d.get("exam_perspective")),
+        })
+    return {
+        "heading": heading,
+        "level": 3 if int(item.get("level") or 2) == 3 else 2,
+        "estimated_time": _rich_str(item.get("estimated_time"), 40),
+        "difficulty": _difficulty_badge(item.get("difficulty")),
+        # raw enum + int rating kept beside the display strings for structured JSON
+        "difficulty_raw": _normalize_difficulty(item.get("difficulty")),
+        "exam_importance": _stars(item.get("exam_importance")),
+        "exam_importance_raw": _exam_importance_int(item.get("exam_importance")),
+        "quick_summary": quick,
+        "real_life_example": _rich_str(item.get("real_life_example")),
+        "definition": _rich_str(item.get("definition")),
+        "key_idea": _rich_str(item.get("key_idea")),
+        "working_principle": _rich_str(item.get("working_principle")),
+        "applications": _rich_str(item.get("applications")),
+        "points_to_remember": _rich_list(item.get("points_to_remember")),
+        "common_mistakes": _rich_list(item.get("common_mistakes")),
+        "memory_hook": _rich_str(item.get("memory_hook")),
+        "advanced_insights": _rich_str(item.get("advanced_insights")),
+        "formulas": formulas,
+        "derivations": derivations,
+    }
+
+
+def _parse_summary_sections(raw: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Parse an LLM response into normalized rich section dicts (rich or legacy)."""
+    out: List[Dict[str, Any]] = []
+    for item in (raw or {}).get("sections") or []:
+        norm = _normalize_rich_section(item)
+        if norm:
+            out.append(norm)
+    return out
+
+
+def _render_rich_section(obj: Dict[str, Any]) -> str:
+    """Render one normalized section into Topic-Structure markdown."""
+    prefix = "###" if obj.get("level") == 3 else "##"
+    lines: List[str] = [f"{prefix} {obj['heading']}"]
+
+    meta_bits: List[str] = []
+    if obj.get("estimated_time"):
+        meta_bits.append(f"⏱ Estimated time: {obj['estimated_time']}")
+    if obj.get("difficulty"):
+        meta_bits.append(f"📊 Difficulty: {obj['difficulty']}")
+    if obj.get("exam_importance"):
+        meta_bits.append(f"⭐ Exam importance: {obj['exam_importance']}")
+    if meta_bits:
+        lines.append("  ·  ".join(meta_bits))
+
+    if obj.get("quick_summary"):
+        lines.append(f"**Quick Summary**\n{obj['quick_summary']}")
+    if obj.get("real_life_example"):
+        lines.append(f"**Real-Life Example**\n{obj['real_life_example']}")
+
+    detail_bits: List[str] = []
+    if obj.get("definition"):
+        detail_bits.append(f"- **Definition:** {obj['definition']}")
+    if obj.get("key_idea"):
+        detail_bits.append(f"- **Key Idea:** {obj['key_idea']}")
+    if obj.get("working_principle"):
+        detail_bits.append(f"- **Working Principle:** {obj['working_principle']}")
+    if obj.get("applications"):
+        detail_bits.append(f"- **Applications:** {obj['applications']}")
+    if detail_bits:
+        lines.append("**Detailed Explanation**\n" + "\n".join(detail_bits))
+
+    if obj.get("points_to_remember"):
+        pts = "\n".join(f"✓ {p}" for p in obj["points_to_remember"])
+        lines.append(f"**📌 Points to Remember (Exam Focus)**\n{pts}")
+    if obj.get("common_mistakes"):
+        cms = "\n".join(f"⚠ {c}" for c in obj["common_mistakes"])
+        lines.append(f"**⚠ Common Mistakes**\n{cms}")
+    if obj.get("memory_hook"):
+        lines.append(f"**🧠 Memory Hook**\n{obj['memory_hook']}")
+    if obj.get("advanced_insights"):
+        lines.append(f"**🚀 Advanced Insights**\n{obj['advanced_insights']}")
+
+    for i, f in enumerate(obj.get("formulas") or [], 1):
+        head = f"**Formula {i}**"
+        if f.get("difficulty"):
+            head += f" — {f['difficulty']}"
+        fl = [head, f"`{f['formula']}`"]
+        if f.get("variables"):
+            fl.append(f"- Variables: {f['variables']}")
+        if f.get("when_to_use"):
+            fl.append(f"- When to use: {f['when_to_use']}")
+        if f.get("common_mistake"):
+            fl.append(f"- ⚠ Common mistake: {f['common_mistake']}")
+        if f.get("shortcut"):
+            fl.append(f"- 💡 Shortcut: {f['shortcut']}")
+        lines.append("\n".join(fl))
+
+    for d in obj.get("derivations") or []:
+        dl = [f"**Derivation: {d['name']}**"]
+        if d.get("why_it_matters"):
+            dl.append(f"- Why it matters: {d['why_it_matters']}")
+        if d.get("assumptions"):
+            dl.append(f"- Assumptions: {d['assumptions']}")
+        if d.get("steps"):
+            dl.append("- Steps:")
+            dl.extend(f"  {i}. {s}" for i, s in enumerate(d["steps"], 1))
+        if d.get("final_result"):
+            dl.append(f"- Final result: `{d['final_result']}`")
+        if d.get("exam_perspective"):
+            dl.append(f"- Exam perspective: {d['exam_perspective']}")
+        lines.append("\n".join(dl))
+
+    return "\n\n".join(lines)
+
+
+def _render_recap(group: List[Dict[str, Any]]) -> str:
+    """Guideline 5: a running recap of the last few topics' quick summaries."""
+    bits = []
+    for o in group:
+        qs = o.get("quick_summary") or ""
+        if qs:
+            bits.append(f"- **{o['heading']}:** {_truncate_text(qs, 160)}")
+    if not bits:
+        return ""
+    return "> **🔁 Recap so far**\n" + "\n".join(bits)
+
+
+def _render_prerequisites(prereqs: List[str]) -> str:
+    prereqs = [p for p in (prereqs or []) if p]
+    if not prereqs:
+        return ""
+    body = "\n".join(f"- {p}" for p in prereqs)
+    return f"## {PREREQUISITES_HEADING}\nBefore starting this chapter, make sure you know:\n{body}"
+
+
+def _build_chapter_revision_data(objs: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Guideline 9 as structured data: collect chapter-end memory hooks, common
+    mistakes, formula sheet and quick revision from the topic objects.
+
+    This is the single source of truth consumed by BOTH the markdown renderer
+    (`_render_chapter_revision`) and the structured ``study_notes`` JSON."""
+    hooks: List[Dict[str, str]] = []
+    mistakes: List[str] = []
+    formula_sheet: List[Dict[str, str]] = []
+    quick: List[Dict[str, str]] = []
+    for o in objs:
+        if o.get("memory_hook"):
+            hooks.append({"heading": o["heading"], "hook": o["memory_hook"]})
+        for c in o.get("common_mistakes") or []:
+            mistakes.append(c)
+        for f in o.get("formulas") or []:
+            formula_sheet.append({
+                "formula": f.get("formula", ""),
+                "when_to_use": f.get("when_to_use", ""),
+            })
+        if o.get("quick_summary"):
+            quick.append({"heading": o["heading"], "quick_summary": o["quick_summary"]})
+    return {
+        "memory_hooks": hooks,
+        "common_mistakes": mistakes,
+        "formula_sheet": formula_sheet,
+        "quick_revision": quick,
+    }
+
+
+def _render_chapter_revision(objs: List[Dict[str, Any]]) -> str:
+    """Guideline 9: end-of-chapter memory hooks + common mistakes + formula
+    sheet + quick revision. Renders markdown from `_build_chapter_revision_data`
+    so the structured JSON and the markdown never drift apart."""
+    data = _build_chapter_revision_data(objs)
+    blocks: List[str] = []
+    if data["memory_hooks"]:
+        blocks.append("### 🧠 All Memory Hooks\n" + "\n".join(
+            f"- **{h['heading']}:** {h['hook']}" for h in data["memory_hooks"]))
+    if data["common_mistakes"]:
+        blocks.append("### ⚠ Common Mistakes to Avoid\n" + "\n".join(
+            f"- {c}" for c in data["common_mistakes"]))
+    if data["formula_sheet"]:
+        blocks.append("### 📐 Formula Sheet\n" + "\n".join(
+            f"- `{f['formula']}`" + (f" — {f['when_to_use']}" if f.get("when_to_use") else "")
+            for f in data["formula_sheet"]))
+    if data["quick_revision"]:
+        blocks.append("### ⚡ Quick Revision\n" + "\n".join(
+            f"- **{q['heading']}:** {_truncate_text(q['quick_summary'], 160)}"
+            for q in data["quick_revision"]))
+    if not blocks:
+        return ""
+    return f"## {CHAPTER_REVISION_HEADING}\n\n" + "\n\n".join(blocks)
+
+
+def _render_rich_topic_body(objs: List[Dict[str, Any]]) -> str:
+    """Render all topic sections with periodic recaps interleaved."""
+    blocks: List[str] = []
+    group: List[Dict[str, Any]] = []
+    every = max(0, SUMMARY_RECAP_EVERY_SECTIONS)
+    for o in objs:
+        blocks.append(_render_rich_section(o))
+        group.append(o)
+        if every and len(group) >= every:
+            recap = _render_recap(group)
+            if recap:
+                blocks.append(recap)
+            group = []
+    # Trailing recap only if there is a meaningful tail and more than one group.
+    if every and group and len(objs) > every:
+        recap = _render_recap(group)
+        if recap:
+            blocks.append(recap)
+    return "\n\n".join(b for b in blocks if b)
+
+
+def _study_topic_from_normalized(o: Dict[str, Any]) -> Dict[str, Any]:
+    """Map one normalized section dict to a structured ``study_notes`` topic.
+
+    Reuses the already-normalized fields from `_normalize_rich_section`; it only
+    re-shapes them (raw enum + display string side by side, detailed explanation
+    grouped) for the JSON data model -- no re-parsing of the LLM output."""
+    formulas = [{
+        "formula": f.get("formula", ""),
+        "difficulty": f.get("difficulty_raw", ""),
+        "difficulty_badge": f.get("difficulty", ""),
+        "variables": f.get("variables", ""),
+        "when_to_use": f.get("when_to_use", ""),
+        "common_mistake": f.get("common_mistake", ""),
+        "shortcut": f.get("shortcut", ""),
+    } for f in o.get("formulas") or []]
+    return {
+        "heading": o.get("heading", ""),
+        "level": o.get("level", 2),
+        "estimated_time": o.get("estimated_time", ""),
+        "difficulty": o.get("difficulty_raw", ""),
+        "difficulty_badge": o.get("difficulty", ""),
+        "exam_importance": o.get("exam_importance_raw", 0),
+        "exam_importance_stars": o.get("exam_importance", ""),
+        "quick_summary": o.get("quick_summary", ""),
+        "real_life_example": o.get("real_life_example", ""),
+        "detailed_explanation": {
+            "definition": o.get("definition", ""),
+            "key_idea": o.get("key_idea", ""),
+            "working_principle": o.get("working_principle", ""),
+            "applications": o.get("applications", ""),
+        },
+        "points_to_remember": list(o.get("points_to_remember") or []),
+        "common_mistakes": list(o.get("common_mistakes") or []),
+        "memory_hook": o.get("memory_hook", ""),
+        "advanced_insights": o.get("advanced_insights", ""),
+        "formulas": formulas,
+        "derivations": list(o.get("derivations") or []),
+    }
+
+
+def _build_study_notes(
+    prerequisites: List[str],
+    overview: str,
+    objs: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Assemble the structured ``study_notes`` JSON object (schema version 1).
+
+    This is the structured counterpart to the markdown produced from the same
+    `objs`; it becomes ``topic["study_notes"]`` and drives the new webapp UI.
+    The markdown (`summary`) is still derived from the same data, so existing
+    consumers (PDF export, legacy viewer, DB) are unaffected."""
+    return {
+        "version": 1,
+        # cadence the UI uses to interleave recap blocks (mirrors the markdown)
+        "recap_every": max(0, SUMMARY_RECAP_EVERY_SECTIONS),
+        "prerequisites": [p for p in (prerequisites or []) if p],
+        "chapter_overview": _strip_image_placeholders(overview or ""),
+        "topics": [_study_topic_from_normalized(o) for o in objs],
+        "chapter_revision": _build_chapter_revision_data(objs),
+    }
+
+
 def _llm_sections_to_summary_markdown(raw: Dict[str, Any]) -> str:
+    """Render an LLM section response to markdown.
+
+    Honors SUMMARY_RICH_FORMAT: rich layout when on, legacy plain layout when
+    off. Backward compatible with both response schemas.
+    """
+    if SUMMARY_RICH_FORMAT:
+        objs = _parse_summary_sections(raw)
+        if not objs:
+            return ""
+        return compact_markdown(_render_rich_topic_body(objs))
+
+    # Legacy plain layout.
     blocks: List[str] = []
     for item in raw.get("sections") or []:
         if not isinstance(item, dict):
             continue
         heading = plain_section_title(str(item.get("heading") or ""))
-        summary = str(item.get("summary") or "").strip()
+        summary = str(item.get("summary") or item.get("quick_summary") or "").strip()
         if not heading or not summary:
             continue
         summary = re.sub(r"^#+\s+.*$", "", summary, flags=re.MULTILINE).strip()
@@ -2904,6 +3435,36 @@ def _llm_sections_to_summary_markdown(raw: Dict[str, Any]) -> str:
         prefix = "###" if level == 3 else "##"
         blocks.append(f"{prefix} {heading}\n{summary}")
     return _polish_student_summary_markdown(compact_markdown("\n\n".join(blocks)))
+
+
+def _llm_generate_prerequisites(
+    client: OllamaClient,
+    meta: TopicMeta,
+    payload_sections: List[Dict[str, Any]],
+) -> List[str]:
+    """Guideline 1: prerequisite knowledge for the chapter (best-effort)."""
+    if not payload_sections:
+        return []
+    outline = [
+        {"heading": item.get("heading", ""),
+         "excerpt": _truncate_text(str(item.get("excerpt") or ""), 250)}
+        for item in payload_sections[:15]
+    ]
+    user = json.dumps({
+        "task": (
+            f"List what a student must already know BEFORE starting chapter "
+            f"{meta.topic_number}: {meta.topic_name}."
+        ),
+        "audience": "Class 10 science students preparing for exams",
+        "chapter_name": meta.topic_name,
+        "section_outline": outline,
+    }, ensure_ascii=False)
+    try:
+        raw = client.chat_json(STUDENT_PREREQUISITES_SYSTEM, user)
+        return _rich_list(raw.get("prerequisites"), 200)[:6]
+    except RuntimeError as exc:
+        print(f"  Warning: prerequisites LLM failed ({exc}); skipping prerequisites.")
+        return []
 
 
 def _llm_generate_chapter_overview(
@@ -2946,10 +3507,15 @@ def _llm_extract_hierarchical_summary(
     client: OllamaClient,
     meta: TopicMeta,
     sections: List[Dict[str, Any]],
-) -> str:
+) -> Tuple[str, Optional[Dict[str, Any]]]:
+    """Return ``(summary_markdown, study_notes)``.
+
+    ``study_notes`` is the structured JSON object (rich format only); it is
+    ``None`` for the legacy plain layout or when nothing usable was produced.
+    The markdown is always returned for backward compatibility."""
     payload_sections = _build_llm_summary_payload(sections)
     if not payload_sections:
-        return ""
+        return "", None
     overview = _llm_generate_chapter_overview(client, meta, payload_sections)
     if not overview:
         topic_blocks: List[str] = []
@@ -2961,13 +3527,64 @@ def _llm_extract_hierarchical_summary(
         overview = _regex_chapter_overview_from_topic_blocks(topic_blocks, meta.topic_name)
 
     system = STUDENT_SUMMARY_SYSTEM
+    rich = SUMMARY_RICH_FORMAT
+    batch_size = LLM_SUMMARY_RICH_BATCH_SIZE if rich else LLM_SUMMARY_BATCH_SIZE
+    num_predict = SUMMARY_RICH_NUM_PREDICT if rich else None
+
+    if rich:
+        # Rich layout: collect normalized section objects across all batches so
+        # recaps, the prerequisites tab, and the chapter-end revision span the
+        # whole chapter (not just one batch).
+        prerequisites = _llm_generate_prerequisites(client, meta, payload_sections)
+        all_objs: List[Dict[str, Any]] = []
+        for start in range(0, len(payload_sections), batch_size):
+            batch = payload_sections[start:start + batch_size]
+            user = json.dumps({
+                "task": (
+                    f"Write structured study notes for chapter {meta.topic_number}: "
+                    f"{meta.topic_name} (batch {start // batch_size + 1}). "
+                    "Each section is one theory topic or subtopic — NOT the whole chapter."
+                ),
+                "audience": "Class 10 science students preparing for exams",
+                "topic_number": meta.topic_number,
+                "topic_name": meta.topic_name,
+                "sections": batch,
+            }, ensure_ascii=False)
+            try:
+                raw = client.chat_json(system, user, num_predict=num_predict)
+            except RuntimeError as exc:
+                print(f"  Warning: rich summary batch failed ({exc}); skipping batch.")
+                continue
+            all_objs.extend(_parse_summary_sections(raw))
+
+        if not all_objs:
+            # Nothing usable from the rich path -> keep prior behaviour.
+            return format_student_summary_document(overview, ""), None
+
+        parts: List[str] = []
+        # Architecture order: Chapter Introduction first, then Prerequisites.
+        if overview:
+            parts.append(f"## {CHAPTER_OVERVIEW_HEADING}\n{overview}")
+        prereq_md = _render_prerequisites(prerequisites)
+        if prereq_md:
+            parts.append(prereq_md)
+        parts.append(_render_rich_topic_body(all_objs))
+        revision_md = _render_chapter_revision(all_objs)
+        if revision_md:
+            parts.append(revision_md)
+        markdown = compact_markdown("\n\n".join(p for p in parts if p))
+        # Structured counterpart of the same notes (drives the new webapp UI).
+        study_notes = _build_study_notes(prerequisites, overview, all_objs)
+        return markdown, study_notes
+
+    # Legacy plain layout (unchanged behaviour).
     section_blocks: List[str] = []
-    for start in range(0, len(payload_sections), LLM_SUMMARY_BATCH_SIZE):
-        batch = payload_sections[start:start + LLM_SUMMARY_BATCH_SIZE]
+    for start in range(0, len(payload_sections), batch_size):
+        batch = payload_sections[start:start + batch_size]
         user = json.dumps({
             "task": (
                 f"Write topic-wise student notes for topic {meta.topic_number}: "
-                f"{meta.topic_name} (batch {start // LLM_SUMMARY_BATCH_SIZE + 1}). "
+                f"{meta.topic_name} (batch {start // batch_size + 1}). "
                 "Each section is one theory topic or subtopic — NOT the whole chapter."
             ),
             "audience": "Class 10 physics students preparing for exams",
@@ -2980,7 +3597,7 @@ def _llm_extract_hierarchical_summary(
         if part:
             section_blocks.append(part)
     topic_md = compact_markdown("\n\n".join(section_blocks))
-    return format_student_summary_document(overview, topic_md)
+    return format_student_summary_document(overview, topic_md), None
 
 
 def enrich_topic_summary_with_llm(topic_doc: Dict[str, Any]) -> Dict[str, Any]:
@@ -3002,10 +3619,14 @@ def enrich_topic_summary_with_llm(topic_doc: Dict[str, Any]) -> Dict[str, Any]:
         f"  Calling Ollama ({OLLAMA_MODEL}) for summary — "
         f"topic {meta.topic_number}: {meta.topic_name}..."
     )
-    summary = _llm_extract_hierarchical_summary(client, meta, sections)
+    summary, study_notes = _llm_extract_hierarchical_summary(client, meta, sections)
     if summary:
         topic_doc["summary"] = summary
         topic_doc["summary_source"] = "student_llm"
+    # Structured study-notes JSON (rich format only); markdown stays the source
+    # of truth for legacy consumers, this drives the new component-based UI.
+    if study_notes:
+        topic_doc["study_notes"] = study_notes
     return topic_doc
 
 
@@ -3506,6 +4127,148 @@ def save_qa_table_json_sidecar(
         output_path,
         source_final_path=source_final_path,
     )
+
+
+# ---------------------------------------------------------------------------
+# Study notes: standalone JSON artifacts (per-topic files + merged sidecar)
+# Study notes are kept completely separate from *_final.json so they can be
+# reused on their own. The generator attaches ``study_notes`` to topics in
+# memory; ``export_study_notes_sidecars`` pops it off, writes the standalone
+# files, and leaves *_final.json without the field.
+# ---------------------------------------------------------------------------
+STUDY_NOTES_SCHEMA = "study_notes_v1"
+
+
+def topic_study_notes_json_path(book_paths: BookPaths, topic_number: int) -> str:
+    return os.path.join(
+        book_paths.topics_study_notes_dir, f"topic_{topic_number:02d}.json"
+    )
+
+
+def study_notes_json_path_from_final(final_path: str) -> str:
+    """Sibling *_study_notes.json next to *_final.json (same directory)."""
+    if final_path.endswith("_final.json"):
+        return final_path.replace("_final.json", "_study_notes.json")
+    base, ext = os.path.splitext(final_path)
+    return f"{base}_study_notes{ext or '.json'}"
+
+
+def _study_notes_topics_dir_from_final(final_path: str) -> str:
+    return os.path.join(os.path.dirname(final_path) or ".", "topics_study_notes")
+
+
+def write_topic_study_notes_file(
+    book_slug: str,
+    topics_dir: str,
+    topic_number: int,
+    topic_name: str,
+    page_range: str,
+    study_notes: Dict[str, Any],
+) -> str:
+    """Write one self-describing per-topic study-notes file."""
+    os.makedirs(topics_dir, exist_ok=True)
+    path = os.path.join(topics_dir, f"topic_{int(topic_number or 0):02d}.json")
+    payload = {
+        "book": book_slug,
+        "schema": STUDY_NOTES_SCHEMA,
+        "topic_number": topic_number,
+        "topic_name": topic_name,
+        "page_range": page_range,
+        "study_notes": study_notes,
+    }
+    with open(path, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+    return path
+
+
+def build_merged_study_notes_from_dir(
+    book_slug: str,
+    topics_dir: str,
+    *,
+    book_name: str = "",
+    source_final_path: str = "",
+    llm_model: str = "",
+) -> Dict[str, Any]:
+    """Build the merged study-notes document from ALL per-topic files on disk.
+
+    Reading from disk (rather than only this run's topics) keeps partial
+    regenerations correct: untouched topics keep their existing study notes."""
+    entries: List[Dict[str, Any]] = []
+    if os.path.isdir(topics_dir):
+        for fname in sorted(os.listdir(topics_dir)):
+            if not fname.endswith(".json"):
+                continue
+            try:
+                with open(os.path.join(topics_dir, fname), "r", encoding="utf-8") as handle:
+                    data = json.load(handle)
+            except (OSError, json.JSONDecodeError):
+                continue
+            if isinstance(data, dict) and data.get("study_notes"):
+                entries.append(data)
+    entries.sort(key=lambda e: e.get("topic_number") or 0)
+    return {
+        "book": book_slug,
+        "metadata": {
+            "name": book_name or book_slug,
+            "schema": STUDY_NOTES_SCHEMA,
+            "format_version": "1.0",
+            "topic_count": len(entries),
+            "source_final": source_final_path,
+            "llm_model": llm_model,
+        },
+        "topics": entries,
+    }
+
+
+def export_study_notes_sidecars(
+    document: Dict[str, Any],
+    book_slug: str,
+    topics_dir: str,
+    merged_output_path: str,
+    *,
+    source_final_path: str = "",
+) -> Optional[str]:
+    """Pop ``study_notes`` off each topic, write per-topic files, then rebuild
+    the merged sidecar from all per-topic files. Mutates ``document`` so the
+    field is removed before *_final.json is written (kept as a separate entity).
+    Returns the merged path when written, else None."""
+    meta = document.get("metadata") or {}
+    wrote_any = False
+    for topic in document.get("topics") or []:
+        if not isinstance(topic, dict):
+            continue
+        study_notes = topic.pop("study_notes", None)
+        if not study_notes:
+            continue
+        write_topic_study_notes_file(
+            book_slug,
+            topics_dir,
+            topic.get("topic_number"),
+            topic.get("chapter_name") or topic.get("topic_name") or "",
+            topic.get("page_range") or "",
+            study_notes,
+        )
+        wrote_any = True
+
+    merged = build_merged_study_notes_from_dir(
+        book_slug,
+        topics_dir,
+        book_name=str(meta.get("name") or book_slug),
+        source_final_path=source_final_path,
+        llm_model=str(meta.get("llm_model") or ""),
+    )
+    # Only (re)write the merged file when there is something to write -- avoids
+    # clobbering an existing sidecar with an empty one on skip-LLM rebuilds.
+    if merged["topics"] and (wrote_any or not os.path.exists(merged_output_path)):
+        os.makedirs(os.path.dirname(merged_output_path) or ".", exist_ok=True)
+        with open(merged_output_path, "w", encoding="utf-8") as handle:
+            json.dump(merged, handle, indent=2, ensure_ascii=False)
+        print(
+            f"Saved study notes: {merged_output_path} "
+            f"({merged['metadata']['topic_count']} topic(s))"
+        )
+        return merged_output_path
+    return None
 
 
 def _example_to_illustration_problem_solution_rows(
@@ -4939,6 +5702,7 @@ class OllamaClient:
         system: str,
         user: str,
         retries: int = OLLAMA_RETRIES,
+        num_predict: Optional[int] = None,
     ) -> Dict[str, Any]:
         payload = {
             "model": self.model,
@@ -4948,7 +5712,7 @@ class OllamaClient:
             ],
             "stream": False,
             "format": "json",
-            "options": {"temperature": 0.2, "num_predict": 4096},
+            "options": {"temperature": 0.2, "num_predict": int(num_predict or 4096)},
         }
         last_err: Optional[Exception] = None
         for attempt in range(retries):
@@ -5595,12 +6359,15 @@ def enrich_topic_from_markdown(
                     sections, _qb = split_theory_and_question_bank_markdown(
                         result.get("theory_notes", "") or ""
                     )
-                    llm_summary = _llm_extract_hierarchical_summary(
+                    llm_summary, study_notes = _llm_extract_hierarchical_summary(
                         client, chunk.meta, sections
                     )
                     if llm_summary:
                         result["summary"] = llm_summary
                         result["summary_source"] = "llm"
+                    # Persist the structured study-notes JSON alongside markdown.
+                    if study_notes:
+                        result["study_notes"] = study_notes
                 print(f"  Calling Ollama ({OLLAMA_MODEL}) for key_points only...")
                 llm_kps = _llm_extract_key_points(
                     client,
@@ -5617,7 +6384,11 @@ def enrich_topic_from_markdown(
 
     os.makedirs(os.path.dirname(json_path) or ".", exist_ok=True)
     with open(json_path, "w", encoding="utf-8") as handle:
-        json.dump(result, handle, indent=2, ensure_ascii=False)
+        # study_notes is a standalone entity -> keep it out of the topics_json
+        # cache (and out of *_final.json); it is written to its own files by
+        # export_study_notes_sidecars. It stays on the returned dict in memory.
+        cache_result = {k: v for k, v in result.items() if k != "study_notes"}
+        json.dump(cache_result, handle, indent=2, ensure_ascii=False)
     print(f"  Saved topic JSON: {json_path} (LaTeX; MathML only in *_final.json)")
     return result
 
@@ -5781,34 +6552,51 @@ def _postprocess_topic_enriched(
     theory_sections, question_bank_md = split_theory_and_question_bank_markdown(theory_notes)
     example_buckets = split_examples_into_labeled_buckets(enriched.get("examples", []))
 
+    # THEORY_ONLY: drop every question-derived field so the topic carries theory +
+    # notes only. The buckets/lists are emptied here (not in the regex cache), so
+    # per-topic caching keeps working and only the output is theory-focused.
+    theory_only_mode = theory_only()
+
     topic_doc = {
         "topic_number": chunk.meta.topic_number,
         "topic_name": chunk.meta.topic_name,
         "page_range": chunk.meta.page_range,
         "summary": enriched.get("summary", ""),
         "summary_source": enriched.get("summary_source", ""),
+        # Structured study-notes JSON (rich format); markdown summary above stays
+        # the backward-compatible source for PDF export, legacy viewer and DB.
+        "study_notes": enriched.get("study_notes"),
         "theory_sections": theory_sections,
-        "illustrations": example_buckets["illustrations"],
-        "check_your_knowledge_items": example_buckets["check_your_knowledge"],
-        "textbook_exercises": example_buckets["textbook_exercises"],
-        "exercises": example_buckets["exercises"],
+        "illustrations": [] if theory_only_mode else example_buckets["illustrations"],
+        "check_your_knowledge_items": [] if theory_only_mode else example_buckets["check_your_knowledge"],
+        "textbook_exercises": [] if theory_only_mode else example_buckets["textbook_exercises"],
+        "exercises": [] if theory_only_mode else example_buckets["exercises"],
         "key_points": enriched.get("key_points", []),
-        "case_studies": enriched.get("case_studies", []),
-        "examples": enriched.get("examples", []),
-        "practice_exercises": enriched.get("practice_exercises", []),
+        "case_studies": [] if theory_only_mode else enriched.get("case_studies", []),
+        "examples": [] if theory_only_mode else enriched.get("examples", []),
+        "practice_exercises": [] if theory_only_mode else enriched.get("practice_exercises", []),
         "image_assets": image_assets,
         "source_topic_md": topic_md_path.replace("\\", "/"),
     }
     if examples_md_path:
         topic_doc["source_topic_examples_md"] = examples_md_path.replace("\\", "/")
-    topic_doc = merge_question_bank_examples_into_topic(
-        topic_doc, question_bank_md, book_slug=book_name
-    )
+    # THEORY_ONLY: skip folding question-bank questions back into the topic.
+    if not theory_only_mode:
+        topic_doc = merge_question_bank_examples_into_topic(
+            topic_doc, question_bank_md, book_slug=book_name
+        )
     if not skip_images() and not image_assets:
         topic_doc = attach_topic_images_from_source(topic_doc, book_name)
     elif image_assets:
         topic_doc["image_assets"] = image_assets
     topic_doc = apply_labeled_topic_layout(topic_doc)
+
+    # THEORY_ONLY: generate the structured study notes from the theory sections in
+    # this same run so a single command yields the notes (the normal build only
+    # summarizes when LLM_SUMMARY is set). Reuses the existing summarizer; the
+    # guard avoids re-running it when notes were already produced upstream.
+    if theory_only_mode and not skip_llm and not topic_doc.get("study_notes"):
+        topic_doc = enrich_topic_summary_with_llm(topic_doc)
 
     leaks = MathConverter.scan_latex_leaks(topic_doc)
     return topic_doc, leaks
@@ -5983,10 +6771,24 @@ class TopicWiseExporter:
         })
 
     def save_json(self) -> None:
+        # Write the standalone study-notes files first; this also strips
+        # study_notes off the topics so *_final.json stays a separate entity.
+        print("=== Step 6/6: Study notes JSON ===")
+        export_study_notes_sidecars(
+            self.document,
+            self.book_name,
+            self.book_paths.topics_study_notes_dir,
+            self.book_paths.study_notes_output_json,
+            source_final_path=self.output_path,
+        )
         os.makedirs(os.path.dirname(self.output_path) or ".", exist_ok=True)
         with open(self.output_path, "w", encoding="utf-8") as handle:
             json.dump(self.document, handle, indent=2, ensure_ascii=False)
         print(f"Saved topic-wise JSON: {self.output_path}")
+        # THEORY_ONLY: there are no questions to flatten, so skip the QA table.
+        if theory_only():
+            print("=== Step 6/6: QA table JSON skipped (theory-only mode) ===")
+            return
         print("=== Step 6/6: QA table JSON ===")
         save_qa_table_json_sidecar(
             self.document,
@@ -6090,6 +6892,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Do not convert LaTeX ($...$, $$...$$) to MathML in merge/export",
     )
+    parser.add_argument(
+        "--theory-only",
+        action="store_true",
+        help="Ignore all questions (examples/exercises/case studies/QA table) and "
+             "extract theory + generate study notes only",
+    )
     return parser.parse_args()
 
 
@@ -6120,6 +6928,12 @@ def main() -> None:
         os.environ["SKIP_MATHML"] = "1"
     elif os.environ.get("SKIP_MATHML") is None:
         os.environ["SKIP_MATHML"] = "0"
+
+    # Theory-only mode: ignore all questions and produce theory + study notes only.
+    if getattr(args, "theory_only", False):
+        os.environ["THEORY_ONLY"] = "1"
+    elif os.environ.get("THEORY_ONLY") is None:
+        os.environ["THEORY_ONLY"] = "0"
 
     if getattr(args, "math_to_plain", None):
         json_path = args.math_to_plain
@@ -6200,10 +7014,19 @@ def main() -> None:
         document = regenerate_student_summaries_in_document(
             document, topic_filter=topic_filter
         )
+        book_slug = os.path.basename(json_path).replace("_final.json", "")
+        # Write standalone study notes (per-topic + merged) and strip the field
+        # from the document before *_final.json is saved.
+        export_study_notes_sidecars(
+            document,
+            book_slug,
+            _study_notes_topics_dir_from_final(json_path),
+            study_notes_json_path_from_final(json_path),
+            source_final_path=json_path,
+        )
         with open(json_path, "w", encoding="utf-8") as handle:
             json.dump(document, handle, indent=2, ensure_ascii=False)
         print(f"Saved: {json_path}")
-        book_slug = os.path.basename(json_path).replace("_final.json", "")
         save_qa_table_json_sidecar(
             document,
             book_slug,

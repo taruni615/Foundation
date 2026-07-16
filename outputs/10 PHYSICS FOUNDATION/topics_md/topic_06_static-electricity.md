@@ -2,7 +2,7 @@
 topic_number: 6
 topic_name: Static Electricity
 page_range: 319-354
-source_markdown: Mathpix_Cache\10 PHYSICS FOUNDATION_mathpix.md
+source_markdown: Mathpix_Cache/10 PHYSICS FOUNDATION_mathpix.md
 md_kind: combined
 lines: 18023-20096
 ---

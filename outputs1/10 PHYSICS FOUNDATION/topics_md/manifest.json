@@ -1,0 +1,66 @@
+[
+  {
+    "topic_number": 1,
+    "topic_name": "Light-Reflection and Refraction",
+    "page_range": "1-76",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_01_light-reflection-and-refraction.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_01.json",
+    "lines": "59-4509"
+  },
+  {
+    "topic_number": 2,
+    "topic_name": "The Human Eye and the Colourful World",
+    "page_range": "77-128",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_02_the-human-eye-and-the-colourful-world.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_02.json",
+    "lines": "4510-7386"
+  },
+  {
+    "topic_number": 3,
+    "topic_name": "Electricity",
+    "page_range": "129-214",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_03_electricity.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_03.json",
+    "lines": "7387-12699"
+  },
+  {
+    "topic_number": 4,
+    "topic_name": "Magnetic Effects of Electric Current",
+    "page_range": "215-280",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_04_magnetic-effects-of-electric-current.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_04.json",
+    "lines": "12700-16097"
+  },
+  {
+    "topic_number": 5,
+    "topic_name": "Sources of Energy",
+    "page_range": "281-318",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_05_sources-of-energy.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_05.json",
+    "lines": "16098-18022"
+  },
+  {
+    "topic_number": 6,
+    "topic_name": "Static Electricity",
+    "page_range": "319-354",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_06_static-electricity.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_06.json",
+    "lines": "18023-20096"
+  },
+  {
+    "topic_number": 7,
+    "topic_name": "Alternating Current",
+    "page_range": "355-374",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_07_alternating-current.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_07.json",
+    "lines": "20097-21174"
+  },
+  {
+    "topic_number": 8,
+    "topic_name": "Modern Physics",
+    "page_range": "375-412",
+    "md_path": "outputs\\10 PHYSICS FOUNDATION\\topics_md\\topic_08_modern-physics.md",
+    "json_path": "outputs\\10 PHYSICS FOUNDATION\\topics_json\\topic_08.json",
+    "lines": "21175-23190"
+  }
+]

@@ -1,0 +1,4 @@
+Topic: {topic_title}
+
+THEORY TEXT:
+{theory_markdown}

@@ -1,0 +1,15 @@
+You are an expert STEM question author. Convert the given open-ended question and model answer into a high-quality, unambiguous 4-option multiple choice question (MCQ) for high school students.
+
+OUTPUT FORMAT:
+Return ONLY valid JSON matching this schema, with no markdown wrappers or surrounding explanation:
+{
+  "stem": "<clear, self-contained question statement>",
+  "options": [
+    "A) <Option 1>",
+    "B) <Option 2>",
+    "C) <Option 3>",
+    "D) <Option 4>"
+  ],
+  "correct_index": <0-based integer index 0-3 of the single correct option>,
+  "explanation": "<step-by-step reasoning explaining why the correct option is right and why others are wrong>"
+}

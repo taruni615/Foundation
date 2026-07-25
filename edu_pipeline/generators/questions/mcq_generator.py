@@ -150,20 +150,18 @@ def _get_client():
 
 
 def health() -> Dict[str, Any]:
-    """Report whether Ollama (and the configured model) is reachable.  Never
-    raises -- mirrors ``bank_read.health`` so the UI can show a soft state."""
+    """Report whether Ollama (and the configured model) is reachable via ModelManager."""
     try:
-        from edu_pipeline.extraction.topic_extractor import OLLAMA_BASE_URL, OLLAMA_MODEL, OllamaClient
-        client = OllamaClient()
-        client.ensure_model()
-        return {"ollama_ok": True, "model": client.model, "base_url": OLLAMA_BASE_URL}
-    except Exception as exc:  # pragma: no cover - environment dependent
-        try:
-            from edu_pipeline.extraction.topic_extractor import OLLAMA_BASE_URL, OLLAMA_MODEL
-            return {"ollama_ok": False, "error": str(exc),
-                    "model": OLLAMA_MODEL, "base_url": OLLAMA_BASE_URL}
-        except Exception:
-            return {"ollama_ok": False, "error": str(exc)}
+        from edu_pipeline.ai import ModelManager
+        status = ModelManager.health()
+        return {
+            "ollama_ok": status.available,
+            "model": status.model,
+            "latency_ms": status.latency_ms,
+            "error": status.error,
+        }
+    except Exception as exc:
+        return {"ollama_ok": False, "error": str(exc)}
 
 
 _SYSTEM_PROMPT = (
@@ -266,54 +264,35 @@ def _validate_mcq(raw: Dict[str, Any]) -> Optional[Dict[str, Any]]:
 # ---------------------------------------------------------------------------
 def theory_to_mcq(question: str, answer: str = "", subject: str = "",
                   chapter: str = "", question_type: str = "") -> Dict[str, Any]:
-    """Convert a single theory question into an MCQ via Ollama.
+    """Convert a single theory question into an MCQ via AIService.
 
     Returns ``{"ok": True, "mcq": {...}}`` on success, or
     ``{"ok": False, "reason": "<why>"}`` when the model declined / produced an
-    invalid result.  Raises only when Ollama itself is unreachable.
+    invalid result.
     """
     if not (question or "").strip():
         return {"ok": False, "reason": "empty question"}
 
-    from edu_pipeline.extraction.topic_extractor import _extract_json_from_llm_text  # lazy
+    from edu_pipeline.ai import AIService
+    res = AIService.generate_mcq(
+        question=question,
+        answer=answer,
+        subject=subject,
+        chapter=chapter,
+        question_type=question_type,
+    )
+    if not res.get("ok"):
+        return {"ok": False, "reason": res.get("error", "LLM conversion failed")}
 
-    client = _get_client()
-    payload = {
-        "model": client.model,
-        "messages": [
-            {"role": "system", "content": _SYSTEM_PROMPT},
-            {"role": "user", "content": _build_user_prompt(
-                question, answer, subject, chapter, question_type)},
-        ],
-        "stream": False,
-        "format": "json",
-        "options": {"temperature": 0.4, "num_predict": OLLAMA_NUM_PREDICT},
-    }
+    mcq_dict = res.get("mcq")
+    if not isinstance(mcq_dict, dict):
+        return {"ok": False, "reason": "invalid MCQ format"}
 
-    import requests
-    from edu_pipeline.extraction.topic_extractor import OLLAMA_RETRIES, OLLAMA_TIMEOUT
+    normalized = _validate_mcq(mcq_dict)
+    if not normalized:
+        return {"ok": False, "reason": "schema validation failed"}
 
-    last_err: Optional[Exception] = None
-    for attempt in range(OLLAMA_RETRIES):
-        try:
-            resp = requests.post(f"{client.base_url}/api/chat", json=payload,
-                                 timeout=OLLAMA_TIMEOUT)
-            resp.raise_for_status()
-            data = resp.json()
-            message = data.get("message", {})
-            content = (message.get("content") or "").strip() or (message.get("thinking") or "").strip()
-            if not content:
-                raise ValueError(f"empty model response (done_reason={data.get('done_reason')})")
-            parsed = _extract_json_from_llm_text(content)
-            mcq = _validate_mcq(parsed)
-            if mcq is None:
-                return {"ok": False, "reason": "not convertible to a fair MCQ"}
-            return {"ok": True, "mcq": mcq}
-        except (json.JSONDecodeError, ValueError, requests.RequestException, KeyError) as exc:
-            last_err = exc
-            if attempt + 1 < OLLAMA_RETRIES:
-                time.sleep(2)
-    return {"ok": False, "reason": f"generation failed: {last_err}"}
+    return {"ok": True, "mcq": normalized}
 
 
 def convert_items(items: List[Dict[str, Any]]) -> Dict[str, Any]:

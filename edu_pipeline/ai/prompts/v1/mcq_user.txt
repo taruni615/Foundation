@@ -1,0 +1,9 @@
+Subject: {subject}
+Chapter/Topic: {chapter}
+Question Type: {question_type}
+
+ORIGINAL QUESTION:
+{question}
+
+MODEL ANSWER:
+{answer}

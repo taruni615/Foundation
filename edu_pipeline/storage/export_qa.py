@@ -273,16 +273,25 @@ def build_qa_table_export_from_document(
 
 
 def build_qa_table_export(
-    final_path: str,
+    target: Union[str, Dict[str, Any], Any],
     *,
     book_slug: Optional[str] = None,
 ) -> Dict[str, Any]:
-    with open(final_path, "r", encoding="utf-8") as handle:
-        source = json.load(handle)
+    from edu_pipeline.repository import BookRepository
+    if isinstance(target, BookRepository):
+        source = target.raw_json
+        final_path = target.source_path or ""
+    elif isinstance(target, dict):
+        source = target
+        final_path = ""
+    else:
+        final_path = str(target)
+        with open(final_path, "r", encoding="utf-8") as handle:
+            source = json.load(handle)
 
     meta = source.get("metadata") or {}
     slug = book_slug or _slug_book(
-        meta.get("name") or os.path.basename(final_path).replace("_final.json", "")
+        meta.get("name") or (os.path.basename(final_path).replace("_final.json", "") if final_path else "book")
     )
     return build_qa_table_export_from_document(
         source,

@@ -327,6 +327,20 @@ def insert_qa_table(
     return len(chapter_records), len(theory_db), len(content_db)
 
 
+def insert_repository(
+    repository: Any,
+    connection: Optional[Any] = None,
+    replace_book: bool = False,
+) -> Tuple[int, int, int]:
+    """Export QA table from a BookRepository and insert into MySQL DB."""
+    from edu_pipeline.storage.export_qa import build_qa_table_export
+    qa_data = build_qa_table_export(repository)
+    if connection is None:
+        with connect_mysql() as conn:
+            return insert_qa_table(conn, qa_data, replace_book=replace_book)
+    return insert_qa_table(connection, qa_data, replace_book=replace_book)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Insert *_qa_table.json into MySQL")
     parser.add_argument("qa_table_json", help="Path to *_qa_table.json")

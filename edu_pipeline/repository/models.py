@@ -14,6 +14,7 @@ class BookRepository:
 
     def __init__(self, raw_json: Optional[Dict[str, Any]] = None, source_path: Optional[str] = None) -> None:
         self.raw_json: Dict[str, Any] = raw_json if raw_json is not None else {}
+        self.raw_document: Dict[str, Any] = self.raw_json
         self.source_path: Optional[str] = source_path
         self.metadata: Dict[str, Any] = self.raw_json.get("metadata", {})
         self.topics: List[Dict[str, Any]] = self.raw_json.get("topics", [])

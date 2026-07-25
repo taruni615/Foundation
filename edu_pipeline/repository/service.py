@@ -148,17 +148,27 @@ class RepositoryService:
         return None
 
     @staticmethod
+    def get_topic(repo: BookRepository, topic_number: int) -> Optional[Dict[str, Any]]:
+        """Alias for find_topic."""
+        return RepositoryService.find_topic(repo, topic_number)
+
+    @staticmethod
     def find_question(repo: BookRepository, query: str) -> List[Dict[str, Any]]:
-        """Search for questions containing query string in question or answer text."""
+        """Search for questions containing query string in problem/question or solution/answer text."""
         query_lower = str(query or "").lower().strip()
         matched: List[Dict[str, Any]] = []
         if not query_lower:
             return matched
 
         for q in RepositoryService.get_questions(repo):
-            q_text = str(q.get("question", "")).lower()
-            a_text = str(q.get("answer", "")).lower()
-            if query_lower in q_text or query_lower in a_text:
+            combined_text = (
+                str(q.get("question") or "") + " " +
+                str(q.get("problem") or "") + " " +
+                str(q.get("title") or "") + " " +
+                str(q.get("answer") or "") + " " +
+                str(q.get("solution") or "")
+            ).lower()
+            if query_lower in combined_text:
                 matched.append(q)
         return matched
 

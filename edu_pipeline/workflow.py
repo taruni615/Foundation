@@ -15,7 +15,7 @@ from edu_pipeline.generators.notes.generator import generate_short_notes, main a
 from edu_pipeline.generators.questions.mcq_generator import convert_repository_questions, main as run_mcq_generator
 from edu_pipeline.repository import BookRepository, RepositoryService
 from edu_pipeline.storage.export_qa import build_qa_table_export, main as run_export_qa
-from edu_pipeline.storage.store_questions import insert_qa_table, main as run_store_questions
+from edu_pipeline.storage.store_questions import insert_qa_table, insert_repository, main as run_store_questions
 
 __all__ = [
     "run_extraction_pipeline",
@@ -26,6 +26,7 @@ __all__ = [
     "run_store_questions",
     "build_qa_table_export",
     "insert_qa_table",
+    "insert_repository",
     "generate_short_notes",
     "convert_repository_questions",
     "execute_workflow",

@@ -102,9 +102,13 @@ class NotesService:
             timeout=timeout,
         )
         analysis_data = analysis_res.get("analysis", {})
-        analysis_json_str = json.dumps(analysis_data, indent=2, ensure_ascii=False)
 
-        # STAGE 2: Notes Synthesis from Analysis Representation
+        # STAGE 2: Deterministic Knowledge Enrichment (No LLM calls)
+        from edu_pipeline.ai.services.knowledge_enrichment import enrich_topic_analysis
+        enriched_data = enrich_topic_analysis(analysis_data)
+        analysis_json_str = json.dumps(enriched_data, indent=2, ensure_ascii=False)
+
+        # STAGE 3: Notes Synthesis from Enriched Analysis Representation
         sys_prompt = PromptService.notes_system_prompt().text
         user_prompt = PromptService.notes_user_prompt(
             topic_title=topic_title,

@@ -66,13 +66,25 @@ class PromptService:
         )
 
     @classmethod
+    def notes_analysis_system_prompt(cls, version: str = "v1") -> PromptTemplate:
+        return cls.get_template("notes_analysis_system", version)
+
+    @classmethod
+    def notes_analysis_user_prompt(cls, topic_title: str, theory_markdown: str, version: str = "v1") -> str:
+        tmpl = cls.get_template("notes_analysis_user", version)
+        return tmpl.format(
+            topic_title=topic_title or "",
+            theory_markdown=theory_markdown or "",
+        )
+
+    @classmethod
     def notes_system_prompt(cls, version: str = "v1") -> PromptTemplate:
         return cls.get_template("notes_system", version)
 
     @classmethod
-    def notes_user_prompt(cls, topic_title: str, theory_markdown: str, version: str = "v1") -> str:
+    def notes_user_prompt(cls, topic_title: str, structured_analysis_json: str, version: str = "v1") -> str:
         tmpl = cls.get_template("notes_user", version)
         return tmpl.format(
             topic_title=topic_title or "",
-            theory_markdown=theory_markdown or "",
+            structured_analysis_json=structured_analysis_json or "{}",
         )

@@ -1,4 +1,4 @@
 Topic: {topic_title}
 
-THEORY TEXT:
-{theory_markdown}
+STRUCTURED TOPIC ANALYSIS JSON:
+{structured_analysis_json}

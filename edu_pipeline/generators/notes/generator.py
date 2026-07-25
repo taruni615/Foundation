@@ -107,22 +107,34 @@ def generate_short_notes(
         name = topic.get("chapter_name") or topic.get("topic_name") or f"Topic {tn}"
         print(f"  Short notes — topic {tn}: {name}")
 
-        # Theory sections are the only input the summariser needs. They are
-        # already present in *_final.json; derive them from raw theory_notes only
-        # as a fallback (reusing the same splitter the main pipeline uses).
-        if not topic.get("theory_sections"):
-            theory_notes = topic.get("theory_notes") or ""
-            if theory_notes.strip():
-                sections, _qb = split_theory_and_question_bank_markdown(theory_notes)
-                topic["theory_sections"] = sections
-        if not topic.get("theory_sections"):
+        theory_text = ""
+        sections = topic.get("theory_sections") or []
+        for sec in sections:
+            if isinstance(sec, dict):
+                heading = sec.get("heading") or sec.get("title") or ""
+                text = sec.get("excerpt") or sec.get("content") or sec.get("text") or ""
+                theory_text += f"\n## {heading}\n{text}\n"
+
+        if not theory_text.strip():
+            theory_text = str(topic.get("theory_notes") or "")
+
+        if not theory_text.strip():
             print(f"    Warning: no theory for topic {tn}; skipping.")
             continue
 
-        # Reuse the existing summariser: it attaches topic["study_notes"]
-        # (and a markdown topic["summary"]) following the architecture.
-        enrich_topic_summary_with_llm(topic)
-        if topic.get("study_notes"):
+        from edu_pipeline.ai import NotesService
+        res = NotesService.generate_notes(name, theory_text)
+        if res.get("ok"):
+            notes_md = res.get("notes_markdown") or ""
+            topic["summary"] = notes_md
+            topic["summary_source"] = "student_llm"
+            topic["study_notes"] = {
+                "topic_number": tn,
+                "topic_name": name,
+                "model_used": res.get("model", "qwen3:14b"),
+                "fallback_used": res.get("fallback_used", False),
+                "notes_markdown": notes_md,
+            }
             made += 1
 
     if not made and not (topic_filter is None):

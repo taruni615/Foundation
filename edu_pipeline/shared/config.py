@@ -31,6 +31,8 @@ class PathConfig:
 class LLMConfig:
     provider: str = "ollama"
     model: str = "qwen3:8b"
+    notes_model: str = "qwen3:14b"
+    notes_fallback_model: str = "qwen3:12b"
     base_url: str = "http://localhost:11434"
     timeout: int = 1800
     temperature: float = 0.4
@@ -89,6 +91,8 @@ class ConfigService:
         llm_cfg = LLMConfig(
             provider=os.environ.get("LLM_PROVIDER") or "ollama",
             model=os.environ.get("OLLAMA_MODEL") or os.environ.get("LLM_MODEL") or "qwen3:8b",
+            notes_model=os.environ.get("NOTES_MODEL") or "qwen3:14b",
+            notes_fallback_model=os.environ.get("NOTES_FALLBACK_MODEL") or "qwen3:12b",
             base_url=os.environ.get("OLLAMA_BASE_URL") or "http://localhost:11434",
             timeout=int(os.environ.get("LLM_TIMEOUT") or "1800"),
             temperature=float(os.environ.get("LLM_TEMPERATURE") or "0.4"),

@@ -1,0 +1,4 @@
+Topic: {topic_title}
+
+STRUCTURED TOPIC ANALYSIS JSON:
+{structured_analysis_json}

@@ -21,35 +21,47 @@ python viewer_api.py                      # read-only DB/JSON viewer → http://
 
 Viewers must be reached through the server, not `file://`:
 - DB viewer: `http://127.0.0.1:8765/Viewer/textbook_viewer.html`
-- JSON viewer: `http://127.0.0.1:8765/Viewer/output_json_viewer.html?json=/outputs/<book>/<book>_final.json`
+- JSON viewer: `http://127.0.0.1:8765/Viewer/output_json_viewer.html?json=/edu_pipeline/workspace/<book>/<book>_final.json`
+
+Static assets are served from `edu_pipeline/web/frontend/` first, then from the
+repo root — so `/Viewer/...` resolves to the package copy and
+`/edu_pipeline/workspace/...` resolves to extraction output.
 
 There is no test suite, linter, or build step configured.
+
+Non-runtime utilities live in `tools/` (`tools/export/`, `tools/migration/`) and
+are never imported by the application; the root `*.py` files are thin
+compatibility wrappers over `edu_pipeline/` and are the stable CLI entry points.
 
 ## Pipeline (command line)
 
 The end-to-end flow, all driven by `topicwise_pipeline.py` unless noted:
 
 ```
-PDF → Mathpix OCR (Mathpix_Cache/<book>_mathpix.md) → split into topics_md/
+PDF → Mathpix OCR (edu_pipeline/materials/cache/<book>_mathpix.md) → topics_md/
     → Ollama (qwen3:8b) key points + summaries → topics_json/
     → merge/relabel (v3.1) + LaTeX→MathML → <book>_final.json
     → <book>_qa_table.json → MySQL (foundation db)
 ```
 
+Paths below are written as `WS` = `edu_pipeline/workspace` (extraction output)
+and `IN` = `edu_pipeline/materials/input` (source PDFs). Both are resolved
+**relative to the current working directory**, so always run from the repo root.
+
 Key invocations:
 
 ```bash
 # Full pipeline from a PDF (images optional)
-python -u topicwise_pipeline.py "Input_PDFs/10 PHYSICS FOUNDATION.pdf" --with-images
+python -u topicwise_pipeline.py "edu_pipeline/materials/input/10 PHYSICS FOUNDATION.pdf" --with-images
 
 # Regenerate student summaries only, in place
-python -u topicwise_pipeline.py --summarize-only "outputs/<book>/<book>_final.json" --force-summarize --summarize-llm
+python -u topicwise_pipeline.py --summarize-only "edu_pipeline/workspace/<book>/<book>_final.json" --force-summarize --summarize-llm
 
 # Export the DB-ready QA table from a final.json
-python final_to_qa_table.py "outputs/<book>/<book>_final.json"
+python final_to_qa_table.py "edu_pipeline/workspace/<book>/<book>_final.json"
 
 # Load a QA table into MySQL (use --replace-book to overwrite an existing book)
-python insert_qa_table.py "outputs/<book>/<book>_qa_table.json"
+python insert_qa_table.py "edu_pipeline/workspace/<book>/<book>_qa_table.json"
 
 # Short-notes / study-notes only (never touches *_final.json)
 python short_notes_pipeline.py "10 PHYSICS FOUNDATION"
@@ -91,7 +103,8 @@ credentials and is loaded on server startup.
   `book_slug` (see `app_server.guess_attributes_from_name`, mirrored in
   `bank_read.py`). Attribute filters resolve to matching `book_slug` sets
   before hitting SQL.
-- `assessment_store.py` is a **file-backed** store (JSON under `assessment/`:
+- `assessment_store.py` is a **file-backed** store (JSON under
+  `edu_pipeline/assessment/`:
   `users.json`, `exams.json`, `attempts.json`) for accounts, hosted exams, and
   student attempts. Grading is server-side (correct answers never sent to the
   client before submit); pbkdf2 passwords + HMAC bearer tokens. Works without
@@ -101,32 +114,98 @@ credentials and is loaded on server startup.
 - `mcq_generator.py` — converts theory/open-ended questions into auto-gradable MCQs.
 - `mcq_similar.py` — generates fresh MCQs similar to existing bank MCQs.
 
-**Frontend** (`webapp/`, vanilla JS ES modules, no build): a small SPA shell
-(`src/shell/` — router, registry, sidenav) over a store (`src/state/`), with two
-feature modules — `src/modules/bank/` (question bank browse/detail) and
-`src/modules/exams/` (dashboard, create, adaptive, analytics, login views). API
-clients in `src/api/`. Standalone HTML viewers live in `Viewer/`.
+**Frontend** (`edu_pipeline/web/frontend/webapp/`, vanilla JS ES modules, no
+build): a small SPA shell (`src/shell/` — router, registry, sidenav) over a store
+(`src/state/`), with two feature modules — `src/modules/bank/` (question bank
+browse/detail) and `src/modules/exams/` (dashboard, create, adaptive, analytics,
+login views). API clients in `src/api/`. Standalone HTML viewers live in
+`edu_pipeline/web/frontend/Viewer/`.
 
 ## External dependencies & their env vars
 
 - **Mathpix** (PDF OCR): `MATHPIX_APP_ID`, `MATHPIX_APP_KEY`. Results cached in
-  `Mathpix_Cache/` so re-runs skip OCR.
+  `edu_pipeline/materials/cache/` so re-runs skip OCR. The cache is **not**
+  version-controlled but is kept on disk — deleting it means paying for OCR again.
 - **Ollama** (local LLM, default model `qwen3:8b`): `OLLAMA_BASE_URL`,
   `OLLAMA_MODEL`, `OLLAMA_TIMEOUT`. Used for key points, summaries, MCQ generation.
 - **MySQL**: `DB_SOCKET` (UNIX socket, preferred) or `DB_HOST`/`DB_PORT` (TCP
   fallback), `DB_USER`, `DB_PASSWORD`, `DB_NAME` (default `foundation`).
+
+## Layer responsibilities & dependency flow
+
+```
+        shared/         infrastructure: paths, db_config, logger, events,
+          ▲             config, constants, json_utils. Imports nothing else.
+          │
+  ┌───────┴────────┬──────────────┬───────────────┐
+  │                │              │               │
+extraction/    repository/       ai/         assessment/
+PDF → topics    *_final.json    providers,    exams, attempts,
+→ *_final.json  load/query      prompts,      accounts
+                (data access    services      (file-backed)
+                 only)
+  │                │              │               │
+  └───────┬────────┴──────────────┘               │
+          │                                       │
+     generators/          storage/                │
+     orchestrate:         QA-table export,        │
+     notes + questions    MySQL load,             │
+          │               bank queries            │
+          └───────────────┬───────────────────────┘
+                          │
+                        web/    HTTP + frontend (composes everything)
+```
+
+- **Repositories** (`repository/`) only load, save and query `*_final.json`. No
+  business logic, no LLM calls, no DB.
+- **Services** (`ai/services/`) hold domain logic. Each AI service follows the
+  same shape: *validate input → load prompt → execute model → parse response →
+  validate output → return domain dict*, with `{"ok": bool, ...}` results rather
+  than exceptions.
+- **Generators** (`generators/`) orchestrate: read from a repository, call a
+  service, persist. They should not contain extraction or DB logic.
+- **`workflow.py`** is the only module allowed to import across all layers; it is
+  the orchestrator, not a layer.
+
+Two known deviations are accepted (not accidental):
+- `storage/` imports `classify_question` from `generators/questions/classifier.py`.
+  The classifier is a pure rule engine that belongs in a domain package, but it
+  backs the public `question_type_classifier.py` wrapper, so it cannot move
+  without renaming a public module.
+- `extraction/topic_extractor.py` lazily calls into `generators` and `storage`
+  for question typing and QA-table export. These were previously hidden behind
+  root-wrapper imports; they are now explicit, and remain lazy to avoid cycles.
 
 ## Conventions worth respecting
 
 - Servers use **stdlib only** — do not introduce Flask/FastAPI/etc. to match the
   existing style.
 - Prefer importing helpers from `topicwise_pipeline.py` over re-implementing
-  extraction/DB/LLM logic. Where duplication exists (e.g. the vocabulary in
-  `bank_read.py` mirroring `app_server.py`), keep both copies in sync.
+  extraction/DB/LLM logic.
+- Cross-layer helpers live in `edu_pipeline/shared/` — import from there rather
+  than copying:
+  - `shared/paths.py` — `PACKAGE_ROOT`, `PROJECT_ROOT`, `load_dotenv()`, and the
+    CWD-relative `OUTPUT_DIR` / `MATHPIX_CACHE_DIR`
+  - `shared/db_config.py` — `DB_HOST/PORT/USER/PASSWORD/NAME/CHARSET/COLLATION`.
+    Deliberately **not** re-exported from `shared/__init__` so the env reads stay
+    after `load_dotenv()` in `web/server.py`.
+  - `shared/json_utils.py` — `extract_json_object()` for parsing LLM replies
+  - `shared/constants.py` — `QA_SECTION_KEYS` (question arrays in `topics[]`)
+  - `shared/logger.py` — `PipelineLogger`
+- **Never import the root wrapper scripts from inside `edu_pipeline/`.** Use the
+  real module (`from edu_pipeline.storage import database as bank_read`), not
+  `import bank_read`. The wrappers exist for CLI users; importing them from the
+  package inverts the dependency and only works when the repo root is on
+  `sys.path`.
+- One deliberate duplication remains: `storage/database.derive_attributes` and
+  `web/server.guess_attributes_from_name` implement the same rule but are **not**
+  identical (the server's `SUBJECTS` list carries an extra `"Other"` entry and
+  its input is not `None`-safe). Keep them in sync by hand; do not merge them
+  without deciding which behaviour is canonical.
 - New capabilities have been added **additively**: importing a module must not
   pull in the heavy pipeline or require Ollama/MySQL at import time (use lazy
   imports and graceful degradation), so the app keeps working with the books
-  already in `outputs/` when external services are offline.
+  already in `edu_pipeline/workspace/` when external services are offline.
 - Output JSON format is **v3.1**; `<book>_final.json` is the source of truth,
   `<book>_qa_table.json` is the DB-ready flattening.
 

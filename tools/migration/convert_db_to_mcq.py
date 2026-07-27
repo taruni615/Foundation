@@ -13,8 +13,8 @@ from pathlib import Path
 # Force the available Ollama model
 os.environ["OLLAMA_MODEL"] = "qwen2.5:1.5b-instruct"
 
-# Add repository root to path
-REPO_ROOT = Path(__file__).resolve().parent
+# Add repository root to path (this file lives in tools/migration/)
+REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(REPO_ROOT))
 
 # Force UTF-8 stdout to avoid CP1252 encoding issues on Windows

@@ -1,0 +1,85 @@
+# Tooling configuration only. This project is run from the repository root and
+# is deliberately NOT packaged/installed — no [project] or build-system table,
+# so nothing about how the code is imported or executed changes.
+
+[tool.black]
+line-length = 100
+target-version = ["py313"]
+# The legacy modules are not yet formatted; see CONTRIBUTING.md. Nothing is
+# excluded here so `black .` remains the single source of truth once adopted.
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["edu_pipeline"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+exclude = [".git", "__pycache__", "edu_pipeline/workspace", "edu_pipeline/materials"]
+
+[tool.ruff.lint]
+# Start strict on real defects, lenient on style, so the first adoption pass is
+# actionable rather than a wall of noise.
+select = [
+    "F",    # pyflakes — undefined names, unused imports (catches the class of
+            # bug found during Level 2: a deleted helper still called at runtime)
+    "E9",   # syntax / IO errors
+    "B",    # bugbear — mutable defaults, silent except, loop-variable binding
+    "I",    # import sorting
+    "UP",   # pyupgrade
+]
+ignore = [
+    "E501",  # line length: legacy modules exceed it widely; black owns wrapping
+    "B008",  # function call in default arg — used intentionally in a few places
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Compatibility wrappers exist purely to re-export; star-imports are the point.
+"app_server.py" = ["F401", "F403"]
+"topicwise_pipeline.py" = ["F401", "F403"]
+"viewer_api.py" = ["F401", "F403"]
+"assessment_store.py" = ["F401", "F403"]
+"bank_read.py" = ["F401", "F403"]
+"final_to_qa_table.py" = ["F401", "F403"]
+"insert_qa_table.py" = ["F401", "F403"]
+"mcq_generator.py" = ["F401", "F403"]
+"mcq_similar.py" = ["F401", "F403"]
+"question_type_classifier.py" = ["F401", "F403"]
+"refresh_qa_question_types.py" = ["F401", "F403"]
+"short_notes_pipeline.py" = ["F401", "F403"]
+"textbook_extract_pipeline.py" = ["F401", "F403"]
+# Modules that re-export moved constants for backward compatibility.
+"edu_pipeline/extraction/topic_extractor.py" = ["F401"]
+"edu_pipeline/shared/__init__.py" = ["F401"]
+"edu_pipeline/ai/__init__.py" = ["F401"]
+"edu_pipeline/ai/services/__init__.py" = ["F401"]
+"edu_pipeline/ai/providers/__init__.py" = ["F401"]
+"edu_pipeline/ai/prompts/__init__.py" = ["F401"]
+"edu_pipeline/repository/__init__.py" = ["F401"]
+"edu_pipeline/workflow.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.13"
+# Pragmatic starting point: type-check the small, well-typed layers and let the
+# 7k-line legacy extraction module opt in later. Tightening these flags is
+# tracked in CONTRIBUTING.md.
+files = ["edu_pipeline/shared", "edu_pipeline/repository", "edu_pipeline/ai"]
+ignore_missing_imports = true
+warn_unused_ignores = true
+no_implicit_optional = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "edu_pipeline.extraction.*"
+ignore_errors = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# `-p no:cacheprovider` keeps the tree clean; markers let CI skip service-backed
+# tests on machines without MySQL/Ollama.
+addopts = "-q --strict-markers"
+markers = [
+    "requires_db: needs a reachable MySQL instance",
+    "requires_ollama: needs a running Ollama server",
+]

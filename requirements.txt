@@ -1,6 +1,19 @@
-requests
-latex2mathml
-pymysql
-pypdf
-xhtml2pdf
-fpdf2
+# Runtime dependencies. Servers are stdlib-only by design (no web framework);
+# everything below is for OCR, LLM calls, the database, and document export.
+#
+# Verified in use by an AST scan of every import in edu_pipeline/ and tools/.
+
+requests          # HTTP client: Mathpix OCR, Ollama chat/embeddings, health checks
+latex2mathml      # LaTeX -> MathML conversion in the extraction pipeline
+pymysql           # MySQL driver for the qa_* tables (no ORM)
+pypdf             # PDF page extraction for the chapter/topic export endpoints
+xhtml2pdf         # HTML -> PDF chapter export (viewer_api)
+fpdf2             # Fallback PDF writer used when xhtml2pdf cannot render
+
+# Used only by tools/export/export_questions.py (bank -> CSV/XLSX).
+# Previously undeclared, which made that script fail on a clean install.
+pandas
+openpyxl
+
+# Used only by docs/generate_*_docx.py to regenerate the .docx workflow files.
+python-docx

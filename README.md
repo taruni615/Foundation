@@ -8,13 +8,17 @@ through a simple step-by-step website. No technical knowledge required.
 1. **Install the requirements** (one time):
 
    ```bash
-   pip install -r requirements.txt
+   make setup          # installs dependencies and creates .env from .env.example
    ```
+
+   Then open `.env` and fill in your MySQL password (and Mathpix/Ollama
+   settings if you plan to extract new PDFs or generate notes). Running
+   `pip install -r requirements.txt` by hand works too.
 
 2. **Start the website**:
 
    ```bash
-   python app_server.py
+   make serve          # or: python app_server.py
    ```
 
 3. **Open it in your browser**:
@@ -62,15 +66,59 @@ PDF → text (Mathpix) → topics → questions & answers (Ollama) → <book>_fi
 You can still run those steps directly from the terminal if you prefer:
 
 ```bash
-python textbook_extract_pipeline.py "Input_PDFs/<book>.pdf"   # PDF → extracted JSON
-python final_to_qa_table.py outputs/<book>/<book>_final.json  # → qa_table JSON
-python insert_qa_table.py outputs/<book>/<book>_qa_table.json # → database
+BOOK="10 PHYSICS FOUNDATION"
+python textbook_extract_pipeline.py "edu_pipeline/materials/input/$BOOK.pdf"
+python final_to_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_final.json"
+python insert_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_qa_table.json"
 ```
+
+Run these from the repository root — the pipeline resolves `edu_pipeline/workspace`
+and `edu_pipeline/materials/cache` relative to the current working directory.
 
 A separate read-only viewer (`viewer_api.py`) is also available for browsing
 what's already in the database.
-# IIT_Foundation
-# IIT_Foundation
-# Foundation_Extraction
-# Foundation_Extraction
-# Foundation_Extraction
+
+## For developers
+
+```bash
+make install-dev    # runtime + dev dependencies
+make test           # test suite (needs neither MySQL nor Ollama)
+make check          # lint + tests, same as CI
+make help           # all available tasks
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the onboarding guide, and
+[CLAUDE.md](CLAUDE.md) for layer responsibilities and architecture rules.
+
+## Repository layout
+
+```
+edu_pipeline/            # the application package
+    materials/input/     # source PDFs (tracked)
+    materials/cache/     # Mathpix OCR cache (generated, not tracked)
+    workspace/           # extraction output per book (generated, not tracked)
+    extraction/          # PDF → topics → *_final.json
+    repository/          # BookRepository + RepositoryService
+    ai/                  # providers, prompts, model manager, domain services
+    generators/          # notes + question generators
+    storage/             # QA table export and MySQL load
+    assessment/          # exams, attempts, accounts (file-backed)
+    web/                 # app server, read-only API, frontend
+
+schema/                  # SQL schema and migrations
+docs/                    # workflow documentation
+tools/                   # non-runtime utilities (see below)
+*.py (root)              # compatibility wrappers — stable CLI entry points
+```
+
+### Tools
+
+Utilities that are *not* part of normal pipeline execution:
+
+```bash
+python tools/export/export_questions.py       # dump the bank to CSV/XLSX
+python tools/migration/convert_db_to_mcq.py   # one-off DB theory → MCQ conversion
+```
+
+Both must be run from the repository root. `export_questions.py` additionally
+requires `pandas` and `openpyxl`, which are not in `requirements.txt`.

@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------------------
+# Python bytecode / build artefacts
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+
+# ---------------------------------------------------------------------------
+# OS / editor noise
+# ---------------------------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+
+# ---------------------------------------------------------------------------
+# Secrets — never commit. Template lives in .env.example
+# ---------------------------------------------------------------------------
+.env
+.env.local
+*.pem
+*.key
+
+# Assessment store: HMAC signing key + real user/exam/attempt records
+edu_pipeline/assessment/.secret
+edu_pipeline/assessment/users.json
+edu_pipeline/assessment/exams.json
+edu_pipeline/assessment/attempts.json
+
+# ---------------------------------------------------------------------------
+# Tooling caches
+# ---------------------------------------------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------------------------------------------------------------------------
+# Generated pipeline products (regenerable — source lives in materials/input)
+# ---------------------------------------------------------------------------
+# Extraction output: <book>_final.json, <book>_qa_table.json, topics_md/,
+# topics_json/, study notes sidecars, image_cache/ ...
+edu_pipeline/workspace/
+
+# Mathpix OCR cache. Regenerable, but re-running costs API credits — the files
+# are kept on disk deliberately; they are simply not versioned.
+edu_pipeline/materials/cache/
+
+# Legacy pre-refactor output locations (superseded by edu_pipeline/workspace/)
+outputs/
+outputs1/
+
+# Generated exports produced by tools/export/export_questions.py
+all_database_questions.csv
+all_database_questions.xlsx
+*.tmp
+*.json.tmp

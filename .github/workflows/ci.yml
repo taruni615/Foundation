@@ -1,0 +1,63 @@
+name: CI
+
+# Quality gates only — no deployment steps (the project has no deploy target).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Lint (ruff)
+        run: python -m ruff check .
+
+      - name: Format check (black)
+        run: python -m black --check .
+        # Legacy modules are not yet formatted; see CONTRIBUTING.md.
+        continue-on-error: true
+
+      - name: Type check (mypy)
+        run: python -m mypy
+        continue-on-error: true
+
+      - name: Tests
+        # MySQL and Ollama are unavailable on the runner; those tests are marked.
+        run: python -m pytest -m "not requires_db and not requires_ollama"
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install pip-audit
+        run: python -m pip install pip-audit
+
+      - name: Dependency vulnerability scan
+        run: python -m pip_audit -r requirements.txt
+
+      - name: Fail if a secret-bearing file is tracked
+        run: |
+          set -e
+          for f in .env edu_pipeline/assessment/.secret edu_pipeline/assessment/users.json; do
+            if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+              echo "::error::$f is tracked in git — it must be ignored"
+              exit 1
+            fi
+          done
+          echo "No secret-bearing files are tracked."

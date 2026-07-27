@@ -1,14 +1,19 @@
 import os
 import re
+import sys
+from pathlib import Path
+
+# Add repository root to path (this file lives in tools/export/)
+sys.path.append(str(Path(__file__).resolve().parents[2]))
+
 import pymysql
 import pandas as pd
 from topicwise_pipeline import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
 
-# Copy functions from bank_read.py to derive attributes and estimate difficulty
-SUBJECTS = ["Physics", "Chemistry", "Biology", "Mathematics", "Science"]
-_CLASS_RE = re.compile(r"class\s*(\d{1,2})")
-_CLASS_TH_RE = re.compile(r"(\d{1,2})\s*th")
-_CLASS_LEAD_RE = re.compile(r"^\s*(\d{1,2})\b")
+# Attribute derivation + difficulty estimation are owned by the storage layer
+# (bank_read / edu_pipeline.storage.database). This script used to carry a
+# verbatim copy of both; it now imports the single implementation.
+from edu_pipeline.storage.database import derive_attributes, estimate_difficulty
 
 # Regex to match characters not allowed in XML (Excel xlsx files)
 # XML 1.0 permits: #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
@@ -19,43 +24,6 @@ def clean_string(val):
     if isinstance(val, str):
         return ILLEGAL_CHARACTERS_RE.sub('', val)
     return val
-
-def derive_attributes(book_slug: str):
-    low = (book_slug or "").lower()
-    subject = ""
-    for s in SUBJECTS:
-        if s.lower() in low:
-            subject = s
-            break
-    if not subject and "math" in low:
-        subject = "Mathematics"
-    cls = ""
-    m = _CLASS_RE.search(low) or _CLASS_TH_RE.search(low) or _CLASS_LEAD_RE.match(low)
-    if m:
-        cls = m.group(1)
-    board = "Foundation" if "foundation" in low else ""
-    return subject, cls, board
-
-def estimate_difficulty(stem: str, question_type: str = "") -> str:
-    s = stem or ""
-    qt = (question_type or "").lower()
-    score = 0
-    n = len(s)
-    if n > 260:
-        score += 2
-    elif n > 130:
-        score += 1
-    if "<math" in s or "$" in s or "\\(" in s or "\\frac" in s:
-        score += 1
-    if any(t in qt for t in ("numerical", "problem", "hots", "assertion", "matrix")):
-        score += 1
-    if any(t in qt for t in ("definition", "fill", "true", "one word", "short")):
-        score -= 1
-    if score >= 3:
-        return "Difficult"
-    if score >= 1:
-        return "Moderate"
-    return "Easy"
 
 def main():
     print("Connecting to MySQL...")
@@ -94,7 +62,8 @@ def main():
         processed_data = []
         for row in rows:
             book_slug = row['book_slug']
-            subject, cls, board = derive_attributes(book_slug)
+            attrs = derive_attributes(book_slug)
+            subject, cls, board = attrs["subject"], attrs["class"], attrs["board"]
             difficulty = estimate_difficulty(row['question'], row['question_type'])
             
             # Clean all string values to prevent Excel generation errors

@@ -54,17 +54,17 @@ check: lint test  ## What CI runs
 # Run
 # ---------------------------------------------------------------------------
 serve:  ## Start the web app on http://127.0.0.1:8000/
-	$(PY) app_server.py
+	$(PY) scripts/app_server.py
 
 viewer:  ## Start the read-only viewer on http://127.0.0.1:8765/
-	$(PY) viewer_api.py
+	$(PY) scripts/viewer_api.py
 
 notes:  ## Generate study notes: make notes BOOK="10 PHYSICS FOUNDATION"
-	$(PY) short_notes_pipeline.py $(if $(BOOK),"$(BOOK)",--list)
+	$(PY) scripts/short_notes_pipeline.py $(if $(BOOK),"$(BOOK)",--list)
 
 extract:  ## Extract a PDF: make extract PDF="edu_pipeline/materials/input/<book>.pdf"
 	@test -n "$(PDF)" || (echo "Usage: make extract PDF=<path to pdf>" && exit 1)
-	$(PY) textbook_extract_pipeline.py "$(PDF)"
+	$(PY) scripts/textbook_extract_pipeline.py "$(PDF)"
 
 clean:  ## Remove caches and bytecode
 	find . -path ./.git -prune -o -name '__pycache__' -type d -print0 | xargs -0 rm -rf

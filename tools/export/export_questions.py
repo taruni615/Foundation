@@ -8,7 +8,7 @@ sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 import pymysql
 import pandas as pd
-from topicwise_pipeline import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
+from edu_pipeline.shared.db_config import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
 
 # Attribute derivation + difficulty estimation are owned by the storage layer
 # (bank_read / edu_pipeline.storage.database). This script used to carry a

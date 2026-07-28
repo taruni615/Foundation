@@ -18,7 +18,7 @@ through a simple step-by-step website. No technical knowledge required.
 2. **Start the website**:
 
    ```bash
-   make serve          # or: python app_server.py
+   make serve          # or: python scripts/app_server.py
    ```
 
 3. **Open it in your browser**:
@@ -47,7 +47,7 @@ That's it. The website walks you through five steps:
 - **Change the port** if 8000 is taken:
 
   ```bash
-  APP_PORT=8080 python app_server.py
+  APP_PORT=8080 python scripts/app_server.py
   ```
 
 - **Database connection** is configured with environment variables
@@ -67,15 +67,15 @@ You can still run those steps directly from the terminal if you prefer:
 
 ```bash
 BOOK="10 PHYSICS FOUNDATION"
-python textbook_extract_pipeline.py "edu_pipeline/materials/input/$BOOK.pdf"
-python final_to_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_final.json"
-python insert_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_qa_table.json"
+python scripts/textbook_extract_pipeline.py "edu_pipeline/materials/input/$BOOK.pdf"
+python scripts/final_to_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_final.json"
+python scripts/insert_qa_table.py "edu_pipeline/workspace/$BOOK/${BOOK}_qa_table.json"
 ```
 
 Run these from the repository root — the pipeline resolves `edu_pipeline/workspace`
 and `edu_pipeline/materials/cache` relative to the current working directory.
 
-A separate read-only viewer (`viewer_api.py`) is also available for browsing
+A separate read-only viewer (`scripts/viewer_api.py`) is also available for browsing
 what's already in the database.
 
 ## For developers
@@ -94,7 +94,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the onboarding guide, and
 
 ```
 edu_pipeline/            # the application package
-    materials/input/     # source PDFs (tracked)
+    materials/input/     # source PDFs (on disk, not versioned)
     materials/cache/     # Mathpix OCR cache (generated, not tracked)
     workspace/           # extraction output per book (generated, not tracked)
     extraction/          # PDF → topics → *_final.json
@@ -108,7 +108,7 @@ edu_pipeline/            # the application package
 schema/                  # SQL schema and migrations
 docs/                    # workflow documentation
 tools/                   # non-runtime utilities (see below)
-*.py (root)              # compatibility wrappers — stable CLI entry points
+scripts/                 # CLI entry points (thin wrappers over the package)
 ```
 
 ### Tools
@@ -121,4 +121,4 @@ python tools/migration/convert_db_to_mcq.py   # one-off DB theory → MCQ conver
 ```
 
 Both must be run from the repository root. `export_questions.py` additionally
-requires `pandas` and `openpyxl`, which are not in `requirements.txt`.
+requires `pandas` and `openpyxl`, both declared in `requirements.txt`.

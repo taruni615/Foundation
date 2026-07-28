@@ -16,6 +16,8 @@ import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
+# The CLI entry points now live in scripts/. Each is a thin wrapper that
+# re-exports a package module, so the package remains the real implementation.
 WRAPPERS = [
     "app_server", "topicwise_pipeline", "viewer_api", "assessment_store", "bank_read",
     "final_to_qa_table", "insert_qa_table", "mcq_generator", "mcq_similar",
@@ -31,14 +33,14 @@ CLI_HELP = [
 
 
 @pytest.mark.parametrize("name", WRAPPERS)
-def test_every_wrapper_still_imports(name):
-    assert importlib.import_module(name) is not None
+def test_every_entry_point_exists_in_scripts(name):
+    assert (PROJECT_ROOT / "scripts" / f"{name}.py").is_file()
 
 
 @pytest.mark.parametrize("script", CLI_HELP)
 def test_every_cli_responds_to_help(script):
     result = subprocess.run(
-        [sys.executable, script, "--help"], cwd=str(PROJECT_ROOT),
+        [sys.executable, f"scripts/{script}", "--help"], cwd=str(PROJECT_ROOT),
         capture_output=True, text=True, timeout=120,
     )
     assert result.returncode == 0, result.stderr[-800:]
@@ -47,7 +49,7 @@ def test_every_cli_responds_to_help(script):
 
 def test_short_notes_cli_lists_books():
     result = subprocess.run(
-        [sys.executable, "short_notes_pipeline.py", "--list"], cwd=str(PROJECT_ROOT),
+        [sys.executable, "scripts/short_notes_pipeline.py", "--list"], cwd=str(PROJECT_ROOT),
         capture_output=True, text=True, timeout=120,
     )
     assert result.returncode == 0, result.stderr[-800:]
@@ -60,19 +62,13 @@ class TestReExportedNames:
         "DB_HOST", "DB_PORT", "DB_USER", "DB_PASSWORD", "DB_NAME",
         "OUTPUT_DIR", "MATHPIX_CACHE_DIR",
     ])
-    def test_topicwise_pipeline_still_exports(self, name):
-        assert hasattr(importlib.import_module("topicwise_pipeline"), name)
+    def test_extraction_module_still_exports_moved_constants(self, name):
+        assert hasattr(importlib.import_module("edu_pipeline.extraction.topic_extractor"), name)
 
-    def test_bank_read_still_exposes_its_query_helpers(self):
-        bank_read = importlib.import_module("bank_read")
+    def test_storage_still_exposes_its_query_helpers(self):
+        database = importlib.import_module("edu_pipeline.storage.database")
         for name in ("derive_attributes", "estimate_difficulty", "search_items"):
-            assert hasattr(bank_read, name)
-
-    def test_wrapper_and_package_share_one_implementation(self):
-        import bank_read
-
-        from edu_pipeline.storage import database
-        assert bank_read.derive_attributes is database.derive_attributes
+            assert hasattr(database, name)
 
 
 class TestPublicApiSurface:

@@ -257,7 +257,7 @@ def run_extraction_job(job_id: str, pdf_filename: str, book: str, force_real: bo
         return
 
     update(step=0, step_label=CACHED_STEPS[0], message="Starting extraction pipeline…", progress=2)
-    cmd = [sys.executable, str(REPO_ROOT / "textbook_extract_pipeline.py"), str(pdf_path)]
+    cmd = [sys.executable, str(REPO_ROOT / "scripts" / "textbook_extract_pipeline.py"), str(pdf_path)]
     try:
         proc = subprocess.Popen(
             cmd,

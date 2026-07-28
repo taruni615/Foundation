@@ -197,13 +197,13 @@ class ServerProcess:
 
 @pytest.fixture(scope="module")
 def app_server():
-    srv = ServerProcess("app_server.py", "APP_PORT")
+    srv = ServerProcess("scripts/app_server.py", "APP_PORT")
     yield srv
     srv.close()
 
 
 @pytest.fixture(scope="module")
 def viewer_server():
-    srv = ServerProcess("viewer_api.py", "VIEWER_API_PORT")
+    srv = ServerProcess("scripts/viewer_api.py", "VIEWER_API_PORT")
     yield srv
     srv.close()

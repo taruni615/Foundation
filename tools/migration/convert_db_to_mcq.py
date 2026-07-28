@@ -23,8 +23,8 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
-import mcq_generator
-from final_to_qa_table import save_qa_table_json
+from edu_pipeline.generators.questions import mcq_generator
+from edu_pipeline.storage.export_qa import save_qa_table_json
 
 # Option marker letter mapping
 IDX_TO_LETTER = {0: "a", 1: "b", 2: "c", 3: "d"}

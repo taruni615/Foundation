@@ -1,0 +1,98 @@
+{
+  "number": 5,
+  "title": "Arithmetic Progression",
+  "prerequisites": [
+    "Ability to identify patterns in a sequence of numbers.",
+    "Comfort with substituting into a formula.",
+    "Skill in solving linear and quadratic equations.",
+    "Understanding of the term 'common difference'."
+  ],
+  "topics": [
+    {
+      "title": "Arithmetic Progression and the nth Term",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "An arithmetic progression is a sequence in which each term differs from the previous one by a fixed common difference d, and its nth term is a + (n − 1)d.",
+      "real_life": "A salary rising by a fixed increment each year, or the seats increasing row by row in an auditorium, are arithmetic progressions.",
+      "detailed": {
+        "definition": "An arithmetic progression (AP) is a list of numbers in which each term, except the first, is obtained by adding a fixed number d, the common difference, to the preceding term.",
+        "key_idea": "The coefficient of d is (n − 1), not n, because the first term needs no addition at all. This off-by-one is the most frequent source of error in the whole chapter.",
+        "working_principle": "To check whether a sequence is an AP, verify that a₂ − a₁ = a₃ − a₂ = a₄ − a₃. A single equal difference is not enough.",
+        "applications": [
+          "The nth term from the end of an AP with l as the last term is l − (n − 1)d.",
+          "Three terms in AP are conveniently taken as a − d, a, a + d.",
+          "A negative d gives a decreasing AP."
+        ]
+      },
+      "points": [
+        "aₙ = a + (n − 1)d, where a is the first term and d the common difference.",
+        "d = aₙ − aₙ₋₁, and must be the same throughout.",
+        "The nth term from the end = l − (n − 1)d.",
+        "For three terms in AP, take a − d, a, a + d to simplify algebra.",
+        "d > 0 gives an increasing AP; d < 0 a decreasing one."
+      ],
+      "mistakes": [
+        "Using a + nd instead of a + (n − 1)d.",
+        "Checking only one pair of consecutive terms before declaring a sequence an AP.",
+        "Assuming d must be positive."
+      ],
+      "memory_hook": "'First term needs no step, so multiply d by (n − 1), never n.'",
+      "advanced": "An AP is a linear function of n, so its graph is a set of collinear points. This is why the sum formula is quadratic in n — summing a linear function always gives a quadratic.",
+      "formulas": [
+        {
+          "name": "nth Term of an AP",
+          "difficulty": "Easy",
+          "formula": "aₙ = a + (n − 1)d",
+          "variables": "a = first term, d = common difference, n = term number.",
+          "when_to_use": "To find any term, or to find n when a particular term is given.",
+          "common_mistakes": "Using n instead of (n − 1) as the multiplier of d.",
+          "shortcut": "If n comes out as a non-integer, that value is not a term of the AP."
+        }
+      ]
+    },
+    {
+      "title": "Sum of n Terms of an AP",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The sum of the first n terms of an AP is Sₙ = (n/2)[2a + (n − 1)d], which equals (n/2)(a + l) when the last term is known.",
+      "real_life": "Total savings over ten years with a fixed annual increase is the sum of an AP — no need to add the ten amounts one by one.",
+      "detailed": {
+        "definition": "Sₙ denotes the sum of the first n terms of an arithmetic progression. It is given by Sₙ = (n/2)[2a + (n − 1)d] or equivalently (n/2)(a + l), where l is the last term.",
+        "key_idea": "The second form is quicker whenever the last term is known, because it avoids computing d altogether. Choosing the right form halves the work.",
+        "working_principle": "The formula comes from pairing the first and last terms, the second and second-last, and so on. Each pair sums to a + l, and there are n/2 such pairs.",
+        "applications": [
+          "aₙ = Sₙ − Sₙ₋₁ recovers a term from the sums.",
+          "Sum of the first n natural numbers = n(n+1)/2.",
+          "Sum of the first n odd numbers = n²."
+        ]
+      },
+      "points": [
+        "Sₙ = (n/2)[2a + (n − 1)d].",
+        "Sₙ = (n/2)(a + l) when the last term l is known.",
+        "aₙ = Sₙ − Sₙ₋₁.",
+        "Sum of the first n natural numbers = n(n+1)/2.",
+        "If Sₙ is quadratic in n, the sequence is an AP."
+      ],
+      "mistakes": [
+        "Using (n/2)(a + l) when l is not the nth term.",
+        "Forgetting the factor n/2 outside the bracket.",
+        "Solving a quadratic in n and keeping a negative or fractional value."
+      ],
+      "memory_hook": "'Half the number of terms, times first plus last' — Gauss's schoolboy trick.",
+      "advanced": "Gauss reportedly summed 1 to 100 in seconds by pairing 1+100, 2+99, and so on. The general formula is nothing more than that pairing written in symbols.",
+      "formulas": [
+        {
+          "name": "Sum of n Terms of an AP",
+          "difficulty": "Medium",
+          "formula": "Sₙ = (n/2)[2a + (n − 1)d] = (n/2)(a + l)",
+          "variables": "n = number of terms, a = first term, d = common difference, l = last term.",
+          "when_to_use": "To find a total, or to find n given the sum.",
+          "common_mistakes": "Mixing the two forms and using both d and l in the same expression.",
+          "shortcut": "Use (n/2)(a + l) whenever the last term is given."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "number": 12,
+  "title": "Heron's Formula",
+  "prerequisites": [
+    "Area of a triangle as ½ × base × height.",
+    "Ability to compute square roots.",
+    "Knowledge of the Pythagoras theorem.",
+    "Familiarity with the perimeter of a polygon."
+  ],
+  "topics": [
+    {
+      "title": "Heron's Formula and Its Applications",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Heron's formula finds the area of a triangle from its three sides alone, without needing the height.",
+      "real_life": "A farmer with a triangular field can measure the three boundary lengths with a tape and compute the area exactly — no need to find any perpendicular.",
+      "detailed": {
+        "definition": "For a triangle with sides a, b and c and semi-perimeter s = (a + b + c)/2, the area is √[s(s − a)(s − b)(s − c)].",
+        "key_idea": "The formula's whole value is that it needs no height. For a scalene triangle, finding a perpendicular height is awkward, while measuring three sides is easy.",
+        "working_principle": "Compute s first, then each of the three differences, then multiply and take the square root. Keeping surds in exact form until the last step avoids accumulated rounding error.",
+        "applications": [
+          "Area of a quadrilateral: split it along a diagonal into two triangles and add.",
+          "Area of an equilateral triangle of side a is (√3/4)a².",
+          "Checking whether a triangle is valid: if any (s − a) is negative, the triangle cannot exist."
+        ]
+      },
+      "points": [
+        "s = (a + b + c)/2 is the semi-perimeter, half the perimeter.",
+        "Area = √[s(s − a)(s − b)(s − c)].",
+        "Useful when the height is unknown or hard to find.",
+        "A quadrilateral is handled by splitting it into two triangles along a diagonal.",
+        "For a right triangle, the ordinary ½ × base × height is quicker."
+      ],
+      "mistakes": [
+        "Using the full perimeter instead of the semi-perimeter.",
+        "Forgetting to take the square root at the end.",
+        "Rounding intermediate values, which distorts the final answer."
+      ],
+      "memory_hook": "'Half the perimeter, then s minus each side, multiply all four, square root.'",
+      "advanced": "Heron's formula can be derived from the cosine rule with some algebra, and Brahmagupta's formula generalises it to cyclic quadrilaterals. Both are special cases of Bretschneider's formula for any quadrilateral.",
+      "formulas": [
+        {
+          "name": "Heron's Formula",
+          "difficulty": "Medium",
+          "formula": "Area = √[s(s − a)(s − b)(s − c)],  where s = (a + b + c)/2",
+          "variables": "a, b, c = the three sides of the triangle, s = semi-perimeter.",
+          "when_to_use": "Whenever all three sides are known and the height is not.",
+          "common_mistakes": "Using the perimeter instead of the semi-perimeter, or omitting the square root.",
+          "shortcut": "If the triangle is right-angled, ½ × base × height is far quicker."
+        },
+        {
+          "name": "Area of an Equilateral Triangle",
+          "difficulty": "Easy",
+          "formula": "Area = (√3 / 4) a²",
+          "variables": "a = length of each side.",
+          "when_to_use": "For any equilateral triangle, as a shortcut instead of Heron's formula.",
+          "common_mistakes": "Using √3/2 instead of √3/4, which is the height factor, not the area factor.",
+          "shortcut": "Height of an equilateral triangle is (√3/2)a."
+        }
+      ]
+    }
+  ]
+}

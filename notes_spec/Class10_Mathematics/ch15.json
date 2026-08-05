@@ -1,0 +1,55 @@
+{
+  "number": 15,
+  "title": "Probability",
+  "prerequisites": [
+    "Empirical probability from Class 9.",
+    "Ability to count outcomes systematically.",
+    "Familiarity with a deck of cards, dice and coins.",
+    "Comfort with fractions in lowest terms."
+  ],
+  "topics": [
+    {
+      "title": "Theoretical Probability",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Theoretical probability of an event is the number of favourable outcomes divided by the total number of equally likely outcomes.",
+      "real_life": "The probability of drawing an ace from a well-shuffled deck is 4/52 regardless of how many times you have tried before — the cards have no memory.",
+      "detailed": {
+        "definition": "For an experiment with equally likely outcomes, P(E) = (number of outcomes favourable to E) / (total number of possible outcomes). Two events are complementary if exactly one of them must occur.",
+        "key_idea": "The phrase 'equally likely' is essential. A biased die or a bag with differently sized balls breaks the assumption, and the formula no longer applies.",
+        "working_principle": "For two dice there are 36 equally likely outcomes, not 12 — the two dice are distinguishable even if identical in appearance. Listing the sample space as ordered pairs avoids this classic error.",
+        "applications": [
+          "A deck has 52 cards: 26 red, 26 black, 4 suits of 13, 12 face cards.",
+          "Two coins give 4 outcomes: HH, HT, TH, TT — not 3.",
+          "P(E) + P(not E) = 1, so the complement is often the quicker route."
+        ]
+      },
+      "points": [
+        "P(E) = favourable outcomes / total outcomes, for equally likely outcomes.",
+        "0 ≤ P(E) ≤ 1; P(impossible) = 0 and P(certain) = 1.",
+        "P(not E) = 1 − P(E).",
+        "Two dice give 36 outcomes; two coins give 4.",
+        "A deck of 52 cards has 4 aces, 12 face cards and 26 cards of each colour."
+      ],
+      "mistakes": [
+        "Counting the outcomes of two dice as 12 or 21 instead of 36.",
+        "Assuming outcomes are equally likely when they are not.",
+        "Treating the ace as a face card; the face cards are jack, queen and king only."
+      ],
+      "memory_hook": "'Favourable over Total' — and when the favourable cases are messy, count the complement instead.",
+      "advanced": "Equally likely outcomes are an assumption, not a fact, and a badly chosen sample space gives wrong answers. Bertrand's paradox shows that the same physical question can yield different probabilities depending on how outcomes are parameterised.",
+      "formulas": [
+        {
+          "name": "Theoretical Probability",
+          "difficulty": "Easy",
+          "formula": "P(E) = n(E) / n(S)",
+          "variables": "n(E) = number of favourable outcomes, n(S) = total number of equally likely outcomes.",
+          "when_to_use": "For dice, coins, cards and any experiment with symmetric outcomes.",
+          "common_mistakes": "Miscounting the sample space, especially for two dice or two coins.",
+          "shortcut": "Use P(not E) = 1 − P(E) whenever 'at least one' appears in the question."
+        }
+      ]
+    }
+  ]
+}

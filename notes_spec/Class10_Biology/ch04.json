@@ -1,0 +1,172 @@
+{
+  "number": 4,
+  "title": "Heredity and Evolution",
+  "prerequisites": [
+    "Knowledge that DNA in chromosomes carries hereditary information.",
+    "Understanding of sexual reproduction and gamete formation.",
+    "Idea that variation arises during reproduction.",
+    "Familiarity with the terms gene and chromosome."
+  ],
+  "topics": [
+    {
+      "title": "Mendel's Experiments and Rules of Inheritance",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Mendel worked out the rules of inheritance from garden pea crosses, showing that traits are controlled by pairs of factors, one of which may be dominant over the other.",
+      "real_life": "Two parents with attached earlobes can never have a child with free earlobes, but two free-earlobed parents can — dominance at work in a single family.",
+      "detailed": {
+        "definition": "A dominant trait is one that expresses itself even when only one copy of the gene is present; a recessive trait expresses only when both copies are recessive. Genotype is the genetic make-up; phenotype is the observable appearance.",
+        "key_idea": "In a monohybrid cross between two pure tall (TT) and dwarf (tt) plants, the F₁ generation is all tall (Tt), and the F₂ generation shows a 3:1 phenotypic ratio but a 1:2:1 genotypic ratio. The dwarf trait reappears in F₂, proving it was not lost but merely masked.",
+        "working_principle": "Mendel chose the pea because it has clearly contrasting characters, a short life cycle and is normally self-pollinating. He studied one character at a time and counted large numbers of offspring — the first quantitative approach in biology.",
+        "applications": [
+          "Dihybrid cross of round-yellow × wrinkled-green gives a 9:3:3:1 ratio in F₂.",
+          "The 9:3:3:1 ratio proves that two traits are inherited independently of each other.",
+          "A test cross with the recessive parent reveals whether a dominant individual is TT or Tt."
+        ]
+      },
+      "points": [
+        "Monohybrid F₂ phenotypic ratio 3:1; genotypic ratio 1:2:1.",
+        "Dihybrid F₂ phenotypic ratio 9:3:3:1.",
+        "Law of dominance, law of segregation and law of independent assortment.",
+        "Each gamete carries only ONE copy of each gene — the basis of segregation.",
+        "Mendel's work of 1866 was rediscovered only in 1900."
+      ],
+      "mistakes": [
+        "Confusing the phenotypic ratio 3:1 with the genotypic ratio 1:2:1.",
+        "Saying the recessive trait disappears in F₁; it is masked, not lost.",
+        "Assuming dominant traits are always more common in a population; frequency and dominance are unrelated."
+      ],
+      "memory_hook": "'3:1 for one trait, 9:3:3:1 for two' — and 'F₁ hides it, F₂ reveals it'.",
+      "advanced": "Mendel's laws hold only for genes on different chromosomes. Genes close together on the same chromosome are linked and inherited together — an exception discovered by Morgan that actually confirmed genes sit on chromosomes."
+    },
+    {
+      "title": "Sex Determination in Human Beings",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "In humans the sex of a child is determined by the sex chromosome carried by the father's sperm — X gives a girl and Y gives a boy.",
+      "real_life": "Blaming a mother for not producing a son is biologically baseless: she has only X chromosomes to give.",
+      "detailed": {
+        "definition": "Sex chromosomes are the chromosome pair that determines the sex of an individual: XX in a human female and XY in a human male. The remaining 22 pairs are autosomes.",
+        "key_idea": "All ova carry an X chromosome; half the sperms carry X and half carry Y. The sex of the child therefore depends entirely on which type of sperm fertilizes the ovum, and the chance is close to 50:50.",
+        "working_principle": "Different organisms use different systems. In some reptiles the temperature at which the eggs are incubated decides the sex, and in some snails an individual can change sex — so the human XY system is one solution among many.",
+        "applications": [
+          "The Y chromosome carries the SRY gene, which switches development towards male.",
+          "Temperature-dependent sex determination occurs in crocodiles and turtles.",
+          "Understanding this refutes the social prejudice of blaming women for a child's sex."
+        ]
+      },
+      "points": [
+        "Human female = XX, male = XY; humans have 23 pairs of chromosomes.",
+        "Every ovum carries X; sperms carry either X or Y.",
+        "The father determines the sex of the child.",
+        "22 pairs are autosomes and 1 pair is the sex chromosomes.",
+        "In some reptiles, incubation temperature determines sex."
+      ],
+      "mistakes": [
+        "Saying the mother determines the sex of the child.",
+        "Thinking sex determination is chromosomal in all organisms; some use temperature.",
+        "Writing that human males are XX and females XY."
+      ],
+      "memory_hook": "'Mother gives X always, Father gives X or Y — the father flips the coin.'",
+      "advanced": "The Y chromosome has lost most of its genes over evolutionary time and now carries only a few dozen, chiefly SRY. The X, by contrast, carries over a thousand — which is why X-linked disorders are common and Y-linked ones vanishingly rare."
+    },
+    {
+      "title": "Acquired and Inherited Traits",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Traits acquired during an individual's lifetime are not passed to the next generation because they do not change the DNA of the germ cells.",
+      "real_life": "A weightlifter's muscles are acquired and vanish with the next generation, but their eye colour is inherited and will be passed on.",
+      "detailed": {
+        "definition": "An inherited trait is one passed from parents to offspring through the genes in the gametes. An acquired trait is one developed during an individual's lifetime in response to the environment.",
+        "key_idea": "Only changes in the DNA of the germ cells (sperm and ovum) can be inherited. Changes in somatic (body) cells, however dramatic, die with the individual.",
+        "working_principle": "In a classic experiment, mice whose tails were surgically removed generation after generation continued to produce tailed offspring, because the surgery never altered the genes of the germ cells.",
+        "applications": [
+          "Low weight of beetles due to poor nutrition is acquired and not inherited.",
+          "A colour change caused by a mutation in a germ cell is inherited.",
+          "Lamarck's theory of inheritance of acquired characters was disproved by exactly this reasoning."
+        ]
+      },
+      "points": [
+        "Acquired traits are NOT inherited because germ cell DNA is unchanged.",
+        "Inherited traits are transmitted through gametes.",
+        "Somatic cell changes die with the individual.",
+        "Cutting the tails of mice for many generations never produced tailless offspring.",
+        "Only germ-cell mutations contribute to evolution."
+      ],
+      "mistakes": [
+        "Believing that muscles built by exercise will be passed on to children.",
+        "Confusing a mutation (heritable, in DNA) with an injury (acquired, not in DNA).",
+        "Thinking all changes in an organism are evolutionary changes."
+      ],
+      "memory_hook": "'If it is not in the gametes, it does not travel to the next generation.'",
+      "advanced": "Epigenetics has complicated this picture: chemical marks on DNA that switch genes on or off can occasionally be transmitted for a generation or two. The core rule still holds, but the boundary is less absolute than Weismann supposed."
+    },
+    {
+      "title": "Evolution, Speciation and Natural Selection",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Evolution is the gradual change in the inherited characters of a population over generations, driven by natural selection acting on variation, and speciation is the formation of new species.",
+      "real_life": "The rise of drug-resistant bacteria in hospitals is natural selection observed in real time, within months rather than millennia.",
+      "detailed": {
+        "definition": "Evolution is the sequence of gradual changes in a population over many generations. Natural selection is the process by which individuals with favourable variations survive and reproduce more successfully. Speciation is the formation of new species from an existing one.",
+        "key_idea": "Selection does not create variation — it only filters it. Variation arises randomly through mutation and recombination; the environment then decides which variants leave more offspring.",
+        "working_principle": "Speciation typically requires reproductive isolation: geographical separation prevents gene flow, and the two populations then accumulate different variations until they can no longer interbreed. Genetic drift can also change gene frequencies in small populations purely by chance.",
+        "applications": [
+          "Antibiotic resistance in bacteria and pesticide resistance in insects are natural selection in action.",
+          "Darwin's finches on the Galapagos islands diverged after geographical isolation.",
+          "Wild cabbage was bred by artificial selection into cabbage, broccoli, cauliflower and kohlrabi."
+        ]
+      },
+      "points": [
+        "Charles Darwin proposed the theory of evolution by natural selection in 'On the Origin of Species' (1859).",
+        "Variation arises by mutation and by recombination during sexual reproduction.",
+        "Genetic drift changes gene frequency by chance and matters most in small populations.",
+        "Speciation needs reproductive isolation, most often through geographical separation.",
+        "Natural selection acts on the individual but its effects appear in the population."
+      ],
+      "mistakes": [
+        "Saying organisms evolve because they 'need' a trait; variation arises first and randomly.",
+        "Calling evolution 'progress towards perfection'; it is adaptation to current conditions only.",
+        "Thinking an individual evolves — populations evolve, individuals do not."
+      ],
+      "memory_hook": "'Variation is random, Selection is not' — the whole of Darwinism in five words.",
+      "advanced": "Bacteria evolve resistance so fast because their generation time is minutes and they exchange genes horizontally through plasmids. Antibiotic resistance is therefore not a distant threat but a live demonstration of evolution in a hospital ward."
+    },
+    {
+      "title": "Evidences of Evolution and Human Evolution",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Homologous and analogous organs, fossils and molecular similarity all provide evidence for evolution, and DNA studies show all humans belong to a single species that originated in Africa.",
+      "real_life": "The bones in a human arm, a bat's wing and a whale's flipper are the same bones in the same order — different jobs built on a shared inheritance.",
+      "detailed": {
+        "definition": "Homologous organs have the same basic structure and origin but different functions, indicating common ancestry. Analogous organs have different structure and origin but similar function, indicating similar adaptation rather than common ancestry.",
+        "key_idea": "Homology points backward to a shared ancestor; analogy points sideways to a shared environment. Distinguishing the two is the central skill in interpreting evolutionary evidence.",
+        "working_principle": "Fossils are the preserved remains or impressions of organisms. Their age is estimated from the depth of the layer in which they are found and from the relative proportions of radioactive isotopes they contain.",
+        "applications": [
+          "Homologous: forelimbs of humans, bats, whales, lizards and birds.",
+          "Analogous: wings of a bird and a bat, or of an insect and a bird.",
+          "Archaeopteryx has features of both reptiles and birds, showing birds evolved from reptiles."
+        ]
+      },
+      "points": [
+        "Homologous organs → common ancestry; Analogous organs → similar function only.",
+        "Fossils provide direct evidence; deeper layers contain older fossils.",
+        "Archaeopteryx is a connecting link between reptiles and birds.",
+        "All human beings belong to a single species, Homo sapiens, which originated in Africa.",
+        "Evolution is not equivalent to progress; it is adaptation to prevailing conditions."
+      ],
+      "mistakes": [
+        "Calling a bird's wing and an insect's wing homologous; they are analogous.",
+        "Saying humans evolved from chimpanzees; both share a common ancestor.",
+        "Assuming newer species are 'better' than older ones."
+      ],
+      "memory_hook": "'HOMO = same structure, different job; ANALOG = different structure, same job.'",
+      "advanced": "Molecular phylogeny compares DNA sequences directly and has resolved relationships that anatomy could not — showing, for instance, that whales are close relatives of hippopotamuses, a result no skeleton had suggested."
+    }
+  ]
+}

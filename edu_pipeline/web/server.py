@@ -205,6 +205,10 @@ EXAM_ATTEMPTS_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/attempts$")
 EXAM_STATUS_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/status$")
 EXAM_REPORT_RE = re.compile(r"^/api/exams/([A-Za-z0-9_-]+)/report$")
 ATTEMPT_RE = re.compile(r"^/api/attempts/([A-Za-z0-9_-]+)$")
+PRACTICE_SESSION_RE = re.compile(r"^/api/practice/sessions/([A-Za-z0-9_-]+)$")
+PRACTICE_REPORT_RE = re.compile(r"^/api/practice/sessions/([A-Za-z0-9_-]+)/report$")
+PRACTICE_ANSWER_RE = re.compile(r"^/api/practice/sessions/([A-Za-z0-9_-]+)/answer$")
+PRACTICE_FINISH_RE = re.compile(r"^/api/practice/sessions/([A-Za-z0-9_-]+)/finish$")
 
 
 def _bearer(handler: BaseHTTPRequestHandler) -> str:
@@ -288,8 +292,30 @@ def run_extraction_job(job_id: str, pdf_filename: str, book: str, force_real: bo
     proc.wait()
 
     if proc.returncode == 0 and final_file.is_file():
-        update(state="done", book=book, ready=True, progress=100,
-                message="Extraction complete.")
+        # A run can exit 0 and still produce an empty document — that happens
+        # when the table of contents was not recognised, so nothing was split
+        # into topics. Reporting "complete" there sends the user to a review
+        # screen with an empty chapter list and no explanation, so check the
+        # output actually has content before calling it a success.
+        topic_count = -1
+        try:
+            with open(final_file, "r", encoding="utf-8") as fh:
+                topic_count = len(json.load(fh).get("topics") or [])
+        except Exception:
+            topic_count = -1
+
+        if topic_count == 0:
+            update(state="error", progress=100,
+                   error="Extraction produced no chapters. The book's table of "
+                         "contents was not recognised, so the text could not be "
+                         "split into topics. Check that the OCR output starts "
+                         "with a contents/index heading followed by numbered "
+                         "chapter entries.",
+                   log="\n".join(tail))
+        else:
+            update(state="done", book=book, ready=True, progress=100,
+                   message=f"Extraction complete — {topic_count} chapters."
+                           if topic_count > 0 else "Extraction complete.")
     else:
         update(state="error", progress=100,
                error="Extraction failed. This usually means Mathpix or Ollama "
@@ -339,6 +365,22 @@ class AppHandler(BaseHTTPRequestHandler):
                 self.api_mcq_health()
             elif BANK_ITEM_RE.match(path):
                 self.api_bank_item(int(BANK_ITEM_RE.match(path).group(1)))
+            elif path == "/api/dashboard":
+                self.api_dashboard()
+            elif path == "/api/practice/modes":
+                self.api_practice_modes()
+            elif path == "/api/practice/health":
+                self.api_practice_health()
+            elif path == "/api/practice/chapters":
+                self.api_practice_chapters(qs)
+            elif path == "/api/practice/history":
+                self.api_practice_history()
+            elif path == "/api/practice/sessions":
+                self.api_practice_sessions()
+            elif PRACTICE_REPORT_RE.match(path):
+                self.api_practice_report(PRACTICE_REPORT_RE.match(path).group(1))
+            elif PRACTICE_SESSION_RE.match(path):
+                self.api_practice_session(PRACTICE_SESSION_RE.match(path).group(1))
             elif path == "/api/auth/me":
                 self.api_auth_me()
             elif path == "/api/exams":
@@ -391,6 +433,16 @@ class AppHandler(BaseHTTPRequestHandler):
                 self.api_exam_create()
             elif path == "/api/adaptive/generate":
                 self.api_adaptive_generate()
+            elif path == "/api/practice/sessions":
+                self.api_practice_start()
+            elif path == "/api/practice/daily-challenge":
+                self.api_daily_challenge_start()
+            elif path == "/api/dashboard/goal":
+                self.api_dashboard_set_goal()
+            elif PRACTICE_ANSWER_RE.match(path):
+                self.api_practice_answer(PRACTICE_ANSWER_RE.match(path).group(1))
+            elif PRACTICE_FINISH_RE.match(path):
+                self.api_practice_finish(PRACTICE_FINISH_RE.match(path).group(1))
             elif path == "/api/mcq/generate":
                 self.api_mcq_generate()
             elif EXAM_STATUS_RE.match(path):
@@ -848,6 +900,171 @@ class AppHandler(BaseHTTPRequestHandler):
             json_response(self, 401, {"error": "Not authenticated."})
             return
         json_response(self, 200, {"user": astore.public_user(user)})
+
+    # -- API: practice engine + dashboard (student-facing) -----------------
+    def _require_user(self) -> Optional[Dict[str, Any]]:
+        user = _auth_user(self)
+        if not user:
+            json_response(self, 401, {"error": "Not authenticated."})
+            return None
+        return user
+
+    def _practice(self):
+        """Lazy import — practice needs MySQL, the rest of the app does not."""
+        from edu_pipeline.assessment import practice
+
+        return practice
+
+    def api_practice_modes(self) -> None:
+        json_response(self, 200, {"modes": self._practice().modes_catalog()})
+
+    def api_practice_health(self) -> None:
+        try:
+            json_response(self, 200, self._practice().bank_health())
+        except Exception as exc:
+            json_response(self, 200, {"ok": False, "error": str(exc), "gradable": 0})
+
+    def api_practice_chapters(self, qs: Dict[str, List[str]]) -> None:
+        book = (qs.get("book") or [""])[0]
+        try:
+            minq = int((qs.get("min") or ["5"])[0])
+        except ValueError:
+            minq = 5
+        try:
+            chapters = self._practice().list_chapters(book, minq)
+        except Exception as exc:
+            json_response(self, 503, {"error": f"Question bank unavailable: {exc}"})
+            return
+        json_response(self, 200, {"chapters": chapters})
+
+    def api_practice_sessions(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        json_response(self, 200, {"sessions": self._practice().list_sessions(user["id"])})
+
+    def api_practice_session(self, sid: str) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        practice = self._practice()
+        s = practice.get_session(user["id"], sid)
+        if not s:
+            json_response(self, 404, {"error": "Session not found."})
+            return
+        # Answers are only revealed once the session is over.
+        json_response(self, 200, {"session": practice.public_session(s, reveal=s["status"] != "active")})
+
+    def api_practice_report(self, sid: str) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        practice = self._practice()
+        s = practice.get_session(user["id"], sid)
+        if not s:
+            json_response(self, 404, {"error": "Session not found."})
+            return
+        json_response(self, 200, {"report": practice.report(s)})
+
+    def api_practice_history(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        json_response(self, 200, {"history": self._practice().history(user["id"])})
+
+    def api_practice_start(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        body = read_json_body(self)
+        practice = self._practice()
+        try:
+            session = practice.start_session(
+                user,
+                str(body.get("mode") or "chapter"),
+                chapter_id=body.get("chapter_id"),
+                subtopic=str(body.get("subtopic") or ""),
+                book_slug=str(body.get("book_slug") or ""),
+                total=body.get("total"),
+            )
+        except practice.PracticeUnavailable as exc:
+            json_response(self, 409, {"error": str(exc)})
+            return
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        except Exception as exc:
+            json_response(self, 503, {"error": f"Question bank unavailable: {exc}"})
+            return
+        json_response(self, 200, {"session": session})
+
+    def api_practice_answer(self, sid: str) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        body = read_json_body(self)
+        choice = body.get("choice", None)
+        try:
+            result = self._practice().answer(
+                user["id"], sid,
+                int(body.get("index", -1)),
+                None if choice in (None, "") else int(choice),
+                int(body.get("time_sec") or 0),
+            )
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        json_response(self, 200, result)
+
+    def api_practice_finish(self, sid: str) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        try:
+            report = self._practice().finish(user["id"], sid)
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        json_response(self, 200, {"report": report})
+
+    def api_dashboard(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        from edu_pipeline.assessment import dashboard
+
+        json_response(self, 200, dashboard.student_dashboard(user))
+
+    def api_dashboard_set_goal(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        from edu_pipeline.assessment import dashboard
+
+        body = read_json_body(self)
+        try:
+            progress = dashboard.set_daily_goal(user["id"], int(body.get("goal") or 0))
+        except (TypeError, ValueError):
+            json_response(self, 400, {"error": "goal must be a number."})
+            return
+        json_response(self, 200, {"progress": progress})
+
+    def api_daily_challenge_start(self) -> None:
+        user = self._require_user()
+        if not user:
+            return
+        from edu_pipeline.assessment import dashboard
+
+        practice = self._practice()
+        try:
+            session = dashboard.start_daily_challenge(user)
+        except practice.PracticeUnavailable as exc:
+            json_response(self, 409, {"error": str(exc)})
+            return
+        except ValueError as exc:
+            json_response(self, 400, {"error": str(exc)})
+            return
+        json_response(self, 200, {"session": session})
 
     # -- API: exams + attempts (student-facing) ----------------------------
     def api_exams_list(self) -> None:

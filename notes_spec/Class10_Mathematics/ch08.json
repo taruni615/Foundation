@@ -1,0 +1,98 @@
+{
+  "number": 8,
+  "title": "Introduction to Trigonometry",
+  "prerequisites": [
+    "Pythagoras theorem and right-angled triangles.",
+    "Similarity of triangles.",
+    "Ability to simplify algebraic fractions.",
+    "Familiarity with surds such as √2 and √3."
+  ],
+  "topics": [
+    {
+      "title": "Trigonometric Ratios and Standard Angles",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The six trigonometric ratios relate the angles of a right triangle to its sides, and their values at 0°, 30°, 45°, 60° and 90° must be known by heart.",
+      "real_life": "A ramp's steepness is quoted as a gradient, which is exactly the tangent of the angle it makes with the ground.",
+      "detailed": {
+        "definition": "For an acute angle θ in a right triangle: sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent, and cosec, sec and cot are their reciprocals.",
+        "key_idea": "The ratios depend only on the angle, not on the size of the triangle, because all right triangles with the same acute angle are similar. This is why a single table of values serves every triangle.",
+        "working_principle": "The standard-angle table is generated from two triangles: the 45-45-90 triangle from a square's diagonal, and the 30-60-90 triangle from an equilateral triangle cut in half.",
+        "applications": [
+          "sin θ increases from 0 to 1 as θ goes from 0° to 90°; cos θ decreases from 1 to 0.",
+          "tan 90° and sec 90° are undefined; cot 0° and cosec 0° are undefined.",
+          "sin θ and cos θ can never exceed 1 in magnitude."
+        ]
+      },
+      "points": [
+        "sin θ = P/H, cos θ = B/H, tan θ = P/B; cosec, sec, cot are the reciprocals.",
+        "sin 0°=0, sin 30°=½, sin 45°=1/√2, sin 60°=√3/2, sin 90°=1.",
+        "cos values run in exactly the reverse order of sin values.",
+        "tan θ = sin θ / cos θ; cot θ = cos θ / sin θ.",
+        "sin θ and cos θ always lie between −1 and 1."
+      ],
+      "mistakes": [
+        "Interchanging sin and cos when the angle is measured from the other vertex.",
+        "Writing sin 90° = 0 instead of 1.",
+        "Treating tan 90° as infinity in a proof; it is undefined."
+      ],
+      "memory_hook": "'SOH-CAH-TOA' — and for the table, sin runs 0, ½, 1/√2, √3/2, 1 while cos runs backwards.",
+      "advanced": "Extending these ratios to angles beyond 90° needs the unit circle, where sine and cosine become the coordinates of a point. That extension turns trigonometry from triangle measurement into the mathematics of waves.",
+      "formulas": [
+        {
+          "name": "Trigonometric Ratios",
+          "difficulty": "Easy",
+          "formula": "sin θ = P/H,  cos θ = B/H,  tan θ = P/B,  cosec θ = H/P,  sec θ = H/B,  cot θ = B/P",
+          "variables": "P = perpendicular (opposite side), B = base (adjacent side), H = hypotenuse.",
+          "when_to_use": "For any right-angled triangle where an angle and one side are known.",
+          "common_mistakes": "Identifying the wrong side as the perpendicular when the angle changes.",
+          "shortcut": "The side opposite the angle is always the perpendicular for that angle."
+        }
+      ]
+    },
+    {
+      "title": "Trigonometric Identities",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The three Pythagorean identities relate the squares of the trigonometric ratios and are the tools for proving every other trigonometric result.",
+      "real_life": "Signal processing constantly uses sin²θ + cos²θ = 1 to convert between amplitude and power without knowing the angle.",
+      "detailed": {
+        "definition": "An identity is an equation true for every value of the variable for which both sides are defined. The fundamental identity is sin²θ + cos²θ = 1.",
+        "key_idea": "All three identities are the Pythagoras theorem divided by different sides. Dividing sin²θ + cos²θ = 1 by cos²θ gives the sec identity, and by sin²θ gives the cosec identity.",
+        "working_principle": "The standard proof technique is to convert everything to sines and cosines, simplify, and compare. Working on one side only, and never across the equality sign, is what examiners expect.",
+        "applications": [
+          "Complementary angles: sin(90° − θ) = cos θ and tan(90° − θ) = cot θ.",
+          "Rationalising expressions such as (1 + sin θ)/cos θ using the identities.",
+          "Eliminating θ between two given equations."
+        ]
+      },
+      "points": [
+        "sin²θ + cos²θ = 1.",
+        "1 + tan²θ = sec²θ.",
+        "1 + cot²θ = cosec²θ.",
+        "sin(90° − θ) = cos θ, cos(90° − θ) = sin θ, tan(90° − θ) = cot θ.",
+        "Work on one side of an identity only; never operate across the equals sign."
+      ],
+      "mistakes": [
+        "Writing sin²θ to mean sin(θ²); it means (sin θ)².",
+        "Using sec²θ = 1 − tan²θ instead of 1 + tan²θ.",
+        "Cross-multiplying across the equality while proving an identity."
+      ],
+      "memory_hook": "'Divide the first identity by cos² for sec, by sin² for cosec' — three identities, one source.",
+      "advanced": "sin²θ + cos²θ = 1 is the equation of the unit circle in disguise. Every trigonometric identity is ultimately a statement about points on that circle.",
+      "formulas": [
+        {
+          "name": "Fundamental Trigonometric Identities",
+          "difficulty": "Medium",
+          "formula": "sin²θ + cos²θ = 1;  1 + tan²θ = sec²θ;  1 + cot²θ = cosec²θ",
+          "variables": "θ = any angle for which the ratios are defined.",
+          "when_to_use": "To prove identities, simplify expressions and eliminate variables.",
+          "common_mistakes": "Getting the sign wrong: it is 1 + tan²θ, not 1 − tan²θ.",
+          "shortcut": "Convert everything to sin and cos when a proof stalls."
+        }
+      ]
+    }
+  ]
+}

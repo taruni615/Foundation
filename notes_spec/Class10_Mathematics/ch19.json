@@ -1,0 +1,98 @@
+{
+  "number": 19,
+  "title": "Matrices",
+  "prerequisites": [
+    "Comfort with arrays of numbers in rows and columns.",
+    "Ability to solve simultaneous linear equations.",
+    "Basic algebraic manipulation.",
+    "Understanding of ordered pairs and indices."
+  ],
+  "topics": [
+    {
+      "title": "Matrices and Their Operations",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A matrix is a rectangular array of numbers; addition requires equal orders, and multiplication requires the columns of the first to match the rows of the second.",
+      "real_life": "Every image on a screen is a matrix of pixel values, and rotating or brightening it is a matrix operation.",
+      "detailed": {
+        "definition": "A matrix of order m × n has m rows and n columns. Element aᵢⱼ lies in the ith row and jth column. Two matrices are equal if they have the same order and all corresponding elements are equal.",
+        "key_idea": "Matrix multiplication is not commutative: AB is generally not equal to BA, and one may be defined while the other is not. This is the single biggest departure from ordinary algebra.",
+        "working_principle": "For AB to be defined, the number of columns of A must equal the number of rows of B, and the product has order (rows of A) × (columns of B).",
+        "applications": [
+          "Solving simultaneous equations by writing them as AX = B.",
+          "Computer graphics uses matrices for rotation, scaling and translation.",
+          "Transition matrices model how a system moves between states over time."
+        ]
+      },
+      "points": [
+        "Order m × n means m rows and n columns — rows first, always.",
+        "Addition and subtraction require matrices of exactly the same order.",
+        "AB is defined only if columns of A = rows of B.",
+        "AB ≠ BA in general; matrix multiplication is not commutative.",
+        "Types: row, column, square, diagonal, scalar, identity, zero."
+      ],
+      "mistakes": [
+        "Multiplying matrices element by element instead of row by column.",
+        "Assuming AB = BA.",
+        "Writing the order as columns × rows."
+      ],
+      "memory_hook": "'Rows first, columns second' — and 'inner dimensions must match, outer dimensions give the answer'.",
+      "advanced": "Matrix multiplication is non-commutative because it represents the composition of transformations, and rotating then reflecting is genuinely different from reflecting then rotating. The algebra is encoding geometry.",
+      "formulas": [
+        {
+          "name": "Matrix Multiplication",
+          "difficulty": "Medium",
+          "formula": "(AB)ᵢⱼ = Σₖ aᵢₖ · bₖⱼ",
+          "variables": "aᵢₖ = element of A in row i, column k; bₖⱼ = element of B in row k, column j.",
+          "when_to_use": "Whenever two compatible matrices are multiplied.",
+          "common_mistakes": "Multiplying corresponding elements instead of taking row-by-column sums.",
+          "shortcut": "(m×n)(n×p) gives an (m×p) matrix; the inner n must match."
+        }
+      ]
+    },
+    {
+      "title": "Determinants and the Inverse of a Matrix",
+      "time": "15 mins",
+      "difficulty": "Hard",
+      "importance": 5,
+      "quick_summary": "The determinant of a square matrix is a single number that decides whether the matrix has an inverse, and the inverse exists exactly when the determinant is non-zero.",
+      "real_life": "A system of equations has a unique solution exactly when its coefficient determinant is non-zero — engineers check this before attempting to solve.",
+      "detailed": {
+        "definition": "For a 2×2 matrix [[a, b], [c, d]], the determinant is ad − bc. A matrix is singular if its determinant is zero and non-singular otherwise. The inverse A⁻¹ satisfies AA⁻¹ = A⁻¹A = I.",
+        "key_idea": "The determinant is the gatekeeper. If it is zero the matrix has no inverse, and the corresponding system of equations has either no solution or infinitely many.",
+        "working_principle": "For a 2×2 matrix, the inverse is (1/det A) × adj A, where the adjoint is obtained by swapping the diagonal elements and changing the signs of the off-diagonal ones.",
+        "applications": [
+          "AX = B has the unique solution X = A⁻¹B when det A ≠ 0.",
+          "The determinant of a 2×2 matrix is the area of the parallelogram formed by its rows.",
+          "det(AB) = det(A) × det(B)."
+        ]
+      },
+      "points": [
+        "det [[a,b],[c,d]] = ad − bc.",
+        "A⁻¹ exists if and only if det A ≠ 0.",
+        "For a 2×2 matrix, A⁻¹ = (1/det A)[[d, −b], [−c, a]].",
+        "AA⁻¹ = A⁻¹A = I, the identity matrix.",
+        "det(AB) = det(A)·det(B) and (AB)⁻¹ = B⁻¹A⁻¹."
+      ],
+      "mistakes": [
+        "Swapping the wrong pair of elements when forming the adjoint of a 2×2 matrix.",
+        "Attempting to invert a singular matrix.",
+        "Writing (AB)⁻¹ = A⁻¹B⁻¹; the order must be reversed."
+      ],
+      "memory_hook": "'Swap the diagonal, flip the signs off it, divide by the determinant.'",
+      "advanced": "Geometrically the determinant is the factor by which a transformation scales area. A zero determinant means the transformation collapses the plane onto a line, which is exactly why the information needed to invert it has been lost.",
+      "formulas": [
+        {
+          "name": "Inverse of a 2×2 Matrix",
+          "difficulty": "Hard",
+          "formula": "A⁻¹ = (1/(ad − bc)) [[d, −b], [−c, a]]",
+          "variables": "A = [[a, b], [c, d]], with ad − bc ≠ 0.",
+          "when_to_use": "To solve AX = B, or wherever a matrix inverse is required.",
+          "common_mistakes": "Negating the diagonal elements instead of the off-diagonal ones.",
+          "shortcut": "Swap a and d, negate b and c, then divide by the determinant."
+        }
+      ]
+    }
+  ]
+}

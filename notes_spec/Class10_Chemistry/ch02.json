@@ -1,0 +1,108 @@
+{
+  "number": 2,
+  "title": "Acids, Bases and Salts",
+  "prerequisites": [
+    "Idea of ions and radicals from the language of chemistry.",
+    "Familiarity with litmus paper and indicators.",
+    "Knowledge of common acids such as HCl and H₂SO₄.",
+    "Understanding of a neutralisation reaction."
+  ],
+  "topics": [
+    {
+      "title": "Properties of Acids and Bases",
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Acids produce H⁺ ions in water and turn blue litmus red, bases produce OH⁻ ions and turn red litmus blue, and indicators are used to tell them apart.",
+      "real_life": "Lemon juice turns blue litmus red because of citric acid, while soap solution turns red litmus blue because it is basic.",
+      "detailed": {
+        "definition": "An acid is a substance that produces hydrogen ions (H⁺) in aqueous solution; a base produces hydroxide ions (OH⁻). A base soluble in water is called an alkali. An indicator is a substance that shows a distinct colour change in acid and base.",
+        "key_idea": "Acids show acidic behaviour only in aqueous solution, because they need water to release H⁺ ions. Dry HCl gas does not turn dry blue litmus red — a classic examination demonstration.",
+        "working_principle": "Acid + metal → salt + hydrogen; acid + metal carbonate → salt + CO₂ + water; acid + base → salt + water (neutralisation); metal oxide + acid → salt + water.",
+        "applications": [
+          "Natural indicators: litmus, turmeric, red cabbage, china rose petals.",
+          "Olfactory indicators such as onion and vanilla essence change smell rather than colour.",
+          "Hydrogen gas is tested by bringing a burning candle near — it burns with a pop sound."
+        ]
+      },
+      "points": [
+        "Acids: sour, turn blue litmus red, release H⁺ in water, react with metals to give H₂.",
+        "Bases: bitter, soapy to touch, turn red litmus blue, release OH⁻ in water.",
+        "Acids show acidic behaviour ONLY in aqueous solution.",
+        "Phenolphthalein: colourless in acid, pink in base. Methyl orange: red in acid, yellow in base.",
+        "CO₂ turns lime water milky — the standard test for carbon dioxide."
+      ],
+      "mistakes": [
+        "Saying dry HCl gas turns dry litmus red; water is essential.",
+        "Adding water to concentrated acid instead of acid to water, which can cause violent splashing.",
+        "Assuming all bases are alkalis; only water-soluble bases are alkalis."
+      ],
+      "memory_hook": "'Acid Adds H⁺, Base Brings OH⁻' — and 'Always Add Acid to water, never the reverse'.",
+      "advanced": "Dilution of a concentrated acid is strongly exothermic because hydration of the ions releases a large amount of energy. Adding water to acid concentrates that heat in a small volume, which can boil the water and splash acid out."
+    },
+    {
+      "title": "The pH Scale and Its Importance",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The pH scale from 0 to 14 measures the concentration of hydrogen ions, with 7 neutral, below 7 acidic and above 7 basic.",
+      "real_life": "Toothpaste is basic because it neutralises the acid produced by bacteria in the mouth, which attacks enamel below pH 5.5.",
+      "detailed": {
+        "definition": "pH is a number that indicates the acidic or basic nature of a solution; it is inversely related to the concentration of hydrogen ions. The 'p' in pH stands for 'potenz', meaning power in German.",
+        "key_idea": "The scale is logarithmic, so each unit represents a tenfold change. A solution of pH 3 is not slightly more acidic than pH 5 but a hundred times more acidic.",
+        "working_principle": "A strong acid ionises completely and produces many H⁺ ions, giving a very low pH. A weak acid ionises only partly, so its solution has a higher pH at the same concentration.",
+        "applications": [
+          "Human blood is maintained between pH 7.35 and 7.45; a small deviation is dangerous.",
+          "Plants grow best in soil close to neutral pH; acidic soil is treated with quicklime.",
+          "Bee sting is acidic and relieved by baking soda; wasp sting is basic and relieved by vinegar."
+        ]
+      },
+      "points": [
+        "pH < 7 acidic, pH = 7 neutral, pH > 7 basic.",
+        "The scale is logarithmic: one unit means a tenfold change in H⁺ concentration.",
+        "Tooth decay begins when the mouth pH falls below 5.5.",
+        "Stomach acid is HCl with pH about 1.2–3; antacids such as milk of magnesia neutralise it.",
+        "Acid rain has pH below 5.6 and damages aquatic life and buildings."
+      ],
+      "mistakes": [
+        "Treating the pH scale as linear — the difference between pH 3 and pH 5 is a factor of 100.",
+        "Confusing strength (degree of ionisation) with concentration (amount dissolved).",
+        "Saying pH 0 or pH 14 is impossible; both are attainable in strong solutions."
+      ],
+      "memory_hook": "'Below 7 sour, above 7 soapy, 7 exactly neutral' — and each step is a factor of ten.",
+      "advanced": "Blood pH is held within a tenth of a unit by the bicarbonate buffer system, which absorbs added acid or base. Buffering, not avoidance, is how biology copes with constant chemical disturbance."
+    },
+    {
+      "title": "Salts and Their Preparation",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Salts are formed by neutralisation of an acid with a base, and their pH depends on whether the parent acid and base were strong or weak.",
+      "real_life": "Common salt is the raw material for baking soda, washing soda, bleaching powder and caustic soda — an entire industry from one mineral.",
+      "detailed": {
+        "definition": "A salt is an ionic compound formed by the reaction of an acid with a base, in which the hydrogen of the acid is replaced by a metal or an ammonium ion.",
+        "key_idea": "Strong acid + strong base gives a neutral salt (NaCl, pH 7). Strong acid + weak base gives an acidic salt (NH₄Cl). Weak acid + strong base gives a basic salt (Na₂CO₃).",
+        "working_principle": "The chlor-alkali process electrolyses brine to give sodium hydroxide at the cathode, chlorine at the anode and hydrogen as a by-product. All three products have major industrial uses.",
+        "applications": [
+          "Baking soda NaHCO₃: antacid, baking powder ingredient, soda-acid fire extinguisher.",
+          "Washing soda Na₂CO₃·10H₂O: removes permanent hardness of water, used in glass and paper.",
+          "Bleaching powder CaOCl₂: disinfecting drinking water, bleaching cotton and wood pulp."
+        ]
+      },
+      "points": [
+        "Chlor-alkali process: brine → NaOH (cathode) + Cl₂ (anode) + H₂.",
+        "Plaster of Paris: CaSO₄·½H₂O, made by heating gypsum to 373 K; sets on adding water.",
+        "Baking soda is a mild, non-corrosive base that decomposes on heating to give CO₂.",
+        "Water of crystallisation is the fixed number of water molecules in a crystal, e.g. CuSO₄·5H₂O.",
+        "Blue copper sulphate crystals turn white on heating and blue again on adding water."
+      ],
+      "mistakes": [
+        "Writing plaster of Paris as CaSO₄·2H₂O; that is gypsum, not plaster of Paris.",
+        "Assuming all salts are neutral; the parent acid and base decide the pH.",
+        "Confusing baking soda (NaHCO₃) with washing soda (Na₂CO₃·10H₂O)."
+      ],
+      "memory_hook": "'Strong beats weak' — whichever parent is stronger decides whether the salt is acidic or basic.",
+      "advanced": "Plaster of Paris must be stored in a moisture-proof container because it sets by rehydrating back to gypsum. The setting is a chemical reaction, not drying, which is why it hardens even under water."
+    }
+  ]
+}

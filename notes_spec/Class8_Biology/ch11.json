@@ -1,0 +1,108 @@
+{
+  "number": 11,
+  "title": "Genetics",
+  "prerequisites": [
+    "Knowledge that the nucleus controls the cell and contains chromosomes.",
+    "Idea that characters pass from parents to children.",
+    "Basic understanding of sexual reproduction and gametes.",
+    "Familiarity with the term DNA."
+  ],
+  "topics": [
+    {
+      "title": "Chromosomes, DNA and Genes",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Chromosomes inside the nucleus are made of DNA, and a gene is the segment of DNA that carries the instruction for one character.",
+      "real_life": "The reason a child has her mother's eyes and her father's hairline is that each parent contributed one chromosome of every pair.",
+      "detailed": {
+        "definition": "A chromosome is a thread-like structure in the nucleus made of DNA and protein; DNA (deoxyribonucleic acid) is the molecule that stores hereditary information; a gene is a segment of DNA that codes for a particular character.",
+        "key_idea": "DNA is a double helix — two strands twisted around each other, discovered by Watson and Crick in 1953. The strands are held together by pairs of nitrogenous bases: adenine always pairs with thymine, and guanine always pairs with cytosine.",
+        "working_principle": "Humans have 46 chromosomes in 23 pairs. Each pair has one chromosome from the mother and one from the father, so every character is represented twice. During gamete formation the pairs separate, so each gamete carries 23 chromosomes.",
+        "applications": [
+          "DNA fingerprinting is used in crime investigation and paternity testing.",
+          "The Human Genome Project mapped all the genes in human DNA.",
+          "Genetic counselling uses karyotypes to detect chromosomal disorders."
+        ]
+      },
+      "points": [
+        "Humans have 46 chromosomes = 23 pairs (22 pairs autosomes + 1 pair sex chromosomes).",
+        "DNA is a double helix; base pairing is A–T and G–C.",
+        "A gene is a segment of DNA that determines one character.",
+        "Watson and Crick proposed the double-helix model of DNA in 1953.",
+        "Gregor Mendel, the father of genetics, worked on the garden pea."
+      ],
+      "mistakes": [
+        "Saying humans have 46 pairs of chromosomes — they have 46 chromosomes, i.e. 23 pairs.",
+        "Confusing gene (a segment of DNA) with chromosome (the whole DNA-protein thread).",
+        "Pairing A with G — adenine always pairs with thymine, guanine with cytosine."
+      ],
+      "memory_hook": "'Chromosome is the book, gene is the sentence, DNA is the alphabet' — and pair 'A with T, G with C' (Apple–Tree, Green–Cabbage).",
+      "advanced": "Only about 2% of human DNA actually codes for proteins. The rest, once dismissed as 'junk DNA', is now known to contain switches that decide when and where each gene is turned on — which is why humans and chimpanzees differ so much despite nearly identical genes."
+    },
+    {
+      "title": "Human Genetics — Blood Groups and Sex Determination",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Blood groups and sex are both determined by genes; the ABO blood groups depend on antigens on red cells, and the sex of a child depends on whether the fertilizing sperm carries X or Y.",
+      "real_life": "Before any transfusion the hospital checks blood group and Rh factor, because giving the wrong group causes the donated cells to clump and can be fatal.",
+      "detailed": {
+        "definition": "Blood group is determined by the type of antigen present on the surface of red blood cells — A, B, both (AB) or neither (O). Sex determination is the mechanism by which the sex of an individual is fixed at fertilization.",
+        "key_idea": "Group O is the universal donor because its red cells carry no A or B antigen; group AB is the universal recipient because its plasma has no anti-A or anti-B antibodies. The Rh factor is a separate antigen that is either present (Rh⁺) or absent (Rh⁻).",
+        "working_principle": "The mother's ovum always carries an X chromosome. A sperm carries either X or Y. X + X gives a girl, X + Y gives a boy, so the sex of the child is determined entirely by the father's sperm and the chance is roughly 50:50.",
+        "applications": [
+          "Blood group testing before transfusion and before surgery.",
+          "Rh incompatibility between an Rh⁻ mother and an Rh⁺ foetus is prevented by anti-D injection.",
+          "Genetic disorders: haemophilia and colour blindness are sex-linked; sickle-cell anaemia and thalassaemia are not."
+        ]
+      },
+      "points": [
+        "Blood groups: A, B, AB and O; O is the universal donor, AB the universal recipient.",
+        "Female = XX, Male = XY; the ovum always carries X.",
+        "The father determines the sex of the child.",
+        "Haemophilia and colour blindness are X-linked and far more common in males.",
+        "Down's syndrome is caused by an extra copy of chromosome 21."
+      ],
+      "mistakes": [
+        "Blaming the mother for the sex of the child — she can contribute only an X chromosome.",
+        "Calling AB the universal donor; AB is the universal recipient, O is the universal donor.",
+        "Thinking colour blindness affects males and females equally; males need only one affected X."
+      ],
+      "memory_hook": "'O Offers to all, AB Accepts from all' — and 'Father's sperm flips the coin'.",
+      "advanced": "Males are more affected by X-linked disorders because they have only one X: a single faulty copy has no healthy partner to mask it. Females carrying one faulty copy are usually unaffected carriers — the biological reason haemophilia was called 'the royal disease' passed silently through queens."
+    },
+    {
+      "title": "Genetic Disorders and Genetic Engineering",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Genetic disorders arise from faulty genes or abnormal chromosome numbers, and genetic engineering lets scientists deliberately alter genes to produce medicines and improved crops.",
+      "real_life": "The insulin injected by a person with diabetes today is human insulin made by bacteria that were given the human insulin gene.",
+      "detailed": {
+        "definition": "A genetic disorder is a disease caused by an abnormality in an individual's genes or chromosomes. Genetic engineering is the deliberate modification of an organism's genetic material by inserting, deleting or altering genes.",
+        "key_idea": "Disorders may be gene-based (sickle-cell anaemia, thalassaemia, haemophilia, colour blindness) or chromosome-based (Down's syndrome from an extra chromosome 21, Turner's and Klinefelter's syndromes from abnormal sex chromosomes).",
+        "working_principle": "In recombinant DNA technology the desired gene is cut out with restriction enzymes, joined into a plasmid vector with ligase, and inserted into a bacterium. The bacterium then multiplies and manufactures the required protein.",
+        "applications": [
+          "Human insulin, growth hormone and hepatitis-B vaccine are produced by genetically engineered bacteria.",
+          "Bt cotton carries a bacterial gene that makes the plant resistant to bollworm.",
+          "Gene therapy aims to replace a faulty gene with a healthy one."
+        ]
+      },
+      "points": [
+        "Sickle-cell anaemia and thalassaemia are inherited blood disorders.",
+        "Down's syndrome results from an extra chromosome 21 (47 chromosomes in total).",
+        "Restriction enzymes are the 'molecular scissors' that cut DNA at specific sites.",
+        "Genetically engineered bacteria are used to make human insulin.",
+        "Genetically modified crops can be pest-resistant or nutritionally enriched, e.g. Golden Rice."
+      ],
+      "mistakes": [
+        "Calling every inherited disease a chromosomal disorder — most are single-gene disorders.",
+        "Saying Down's syndrome is caused by a missing chromosome; it is caused by an extra one.",
+        "Assuming genetic engineering and selective breeding are the same; breeding works with existing genes only."
+      ],
+      "memory_hook": "'Cut, Paste, Copy' — restriction enzyme cuts, ligase pastes, bacterium copies.",
+      "advanced": "CRISPR-Cas9, adapted from a bacterial defence system, now allows a single letter of DNA to be edited precisely. It has already been used to treat sickle-cell anaemia, turning what was an incurable inherited disorder into a treatable one."
+    }
+  ]
+}

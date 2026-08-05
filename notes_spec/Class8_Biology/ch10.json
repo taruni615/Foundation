@@ -1,0 +1,108 @@
+{
+  "number": 10,
+  "title": "Diversity in Living Organisms",
+  "prerequisites": [
+    "Idea that living things differ greatly from one another.",
+    "Basic difference between plants and animals.",
+    "Knowledge that cells may or may not have a nucleus.",
+    "Familiarity with common animals such as earthworm, fish and frog."
+  ],
+  "topics": [
+    {
+      "title": "Classification and Binomial Nomenclature",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Classification arranges organisms into groups based on similarities and differences, and binomial nomenclature gives every organism a unique two-word scientific name.",
+      "real_life": "A shopkeeper arranges goods aisle by aisle so anything can be found quickly — biologists do exactly the same with about two million known species.",
+      "detailed": {
+        "definition": "Classification is the arrangement of organisms into groups on the basis of their similarities and differences. Binomial nomenclature is the system of naming an organism by two words — the genus name followed by the species name.",
+        "key_idea": "Common names differ from place to place and language to language, so a single unambiguous scientific name is needed. Carolus Linnaeus, the father of taxonomy, introduced binomial nomenclature.",
+        "working_principle": "The hierarchy runs Kingdom → Phylum (or Division in plants) → Class → Order → Family → Genus → Species. As you move down, the number of organisms in the group decreases while their similarity increases.",
+        "applications": [
+          "Homo sapiens (human), Mangifera indica (mango), Panthera tigris (tiger).",
+          "Whittaker's five-kingdom system: Monera, Protista, Fungi, Plantae, Animalia.",
+          "The species is the basic unit of classification."
+        ]
+      },
+      "points": [
+        "Hierarchy: Kingdom, Phylum, Class, Order, Family, Genus, Species.",
+        "Genus name begins with a capital letter, species name with a small letter; both are italicised (or underlined separately when handwritten).",
+        "Carolus Linnaeus is the father of taxonomy and gave binomial nomenclature.",
+        "Whittaker proposed the five-kingdom classification in 1969.",
+        "Basis of classification: cell type (pro/eukaryotic), cell number, mode of nutrition, body organisation."
+      ],
+      "mistakes": [
+        "Writing the species name with a capital letter — only the genus name is capitalised.",
+        "Underlining the two words of a scientific name together; they must be underlined separately.",
+        "Reversing the hierarchy — Kingdom is the largest group, Species the smallest."
+      ],
+      "memory_hook": "'King Philip Came Over For Good Soup' — Kingdom, Phylum, Class, Order, Family, Genus, Species.",
+      "advanced": "Modern classification is increasingly based on DNA sequence rather than appearance. This has revealed that some organisms placed together on the basis of looks are only distantly related — an example of convergent evolution producing similar body forms independently."
+    },
+    {
+      "title": "The Five Kingdoms",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Whittaker's five kingdoms — Monera, Protista, Fungi, Plantae and Animalia — separate organisms by cell type, cell number and mode of nutrition.",
+      "real_life": "A bacterium in curd, an Amoeba in pond water, a mushroom on a log, a mango tree and a tiger are one example from each of the five kingdoms.",
+      "detailed": {
+        "definition": "The five-kingdom classification proposed by R. H. Whittaker in 1969 groups all organisms into Monera, Protista, Fungi, Plantae and Animalia.",
+        "key_idea": "The three criteria used are cell structure (prokaryotic or eukaryotic), body organisation (unicellular or multicellular) and mode of nutrition (autotrophic or heterotrophic).",
+        "working_principle": "Monera are prokaryotic and unicellular with no true nucleus. Protista are eukaryotic and unicellular. Fungi are eukaryotic, mostly multicellular, and saprophytic with chitin cell walls. Plantae are multicellular autotrophs with cellulose cell walls. Animalia are multicellular heterotrophs without cell walls.",
+        "applications": [
+          "Monera: bacteria, blue-green algae, mycoplasma.",
+          "Protista: Amoeba, Paramecium, Euglena, diatoms.",
+          "Fungi: yeast, mushroom, Penicillium, Rhizopus."
+        ]
+      },
+      "points": [
+        "Monera is the only prokaryotic kingdom — no true nucleus and no membrane-bound organelles.",
+        "Protista are all unicellular eukaryotes and may be autotrophic or heterotrophic.",
+        "Fungal cell walls are made of chitin, plant cell walls of cellulose.",
+        "Plantae are autotrophic; Animalia are heterotrophic and have no cell wall.",
+        "Euglena is a bridge organism — it photosynthesises like a plant but moves like an animal."
+      ],
+      "mistakes": [
+        "Placing fungi in the plant kingdom — fungi have no chlorophyll and are heterotrophic.",
+        "Calling all unicellular organisms Monera; unicellular eukaryotes belong to Protista.",
+        "Saying blue-green algae are plants; they are prokaryotes and belong to Monera."
+      ],
+      "memory_hook": "'MoProFunPlanAni' — Monera, Protista, Fungi, Plantae, Animalia, in order of increasing complexity.",
+      "advanced": "The five-kingdom system has since been superseded by the three-domain system (Bacteria, Archaea, Eukarya), because Archaea — organisms of hot springs and salt lakes — turned out to be as different from bacteria as bacteria are from us."
+    },
+    {
+      "title": "Plant and Animal Groups",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Plants are divided into cryptogams, which have hidden reproductive organs, and phanerogams, which bear seeds; animals are grouped by increasing body complexity from Porifera to Chordata.",
+      "real_life": "Moss on a damp wall, a fern in a shaded pot, a pine cone and a mango are the four great plant groups lined up in a single garden.",
+      "detailed": {
+        "definition": "Cryptogams are seedless plants with concealed reproductive organs — Thallophyta, Bryophyta and Pteridophyta. Phanerogams bear seeds and are divided into Gymnosperms (naked seeds) and Angiosperms (seeds enclosed in fruit).",
+        "key_idea": "Plant classification moves from no body differentiation (algae) through no vascular tissue (mosses) to vascular tissue without seeds (ferns), to naked seeds and finally to flowers and fruits.",
+        "working_principle": "Animal classification tracks body organisation: cellular level (Porifera), tissue level with radial symmetry (Coelenterata), organ level with bilateral symmetry (Platyhelminthes onward), and finally a notochord and backbone (Chordata, of which Vertebrata is the major subphylum).",
+        "applications": [
+          "Bryophyta are called the 'amphibians of the plant kingdom' as they need water for reproduction.",
+          "Angiosperms are further divided into monocots (one cotyledon) and dicots (two cotyledons).",
+          "Vertebrate classes: Pisces, Amphibia, Reptilia, Aves, Mammalia."
+        ]
+      },
+      "points": [
+        "Thallophyta = algae; Bryophyta = mosses; Pteridophyta = ferns (first with vascular tissue).",
+        "Gymnosperms bear naked seeds (pine, cycas); Angiosperms bear seeds inside fruits.",
+        "Porifera (sponges) have pores and are the simplest multicellular animals.",
+        "Coelenterata show radial symmetry; from Platyhelminthes onward animals are bilaterally symmetrical.",
+        "Mammals have mammary glands, hair, and are mostly viviparous — the platypus is the egg-laying exception."
+      ],
+      "mistakes": [
+        "Calling algae 'plants with roots and leaves' — Thallophyta have an undifferentiated thallus.",
+        "Thinking gymnosperms have flowers and fruits; they have naked seeds in cones.",
+        "Saying all mammals give birth to live young — the platypus and echidna lay eggs."
+      ],
+      "memory_hook": "'CRYPTic = hidden reproduction; PHANEROgams = plain seeds on show' — and for plants, 'Algae, Moss, Fern, Cone, Flower' in order of advancement.",
+      "advanced": "Angiosperms dominate the modern world because the flower and fruit solve two problems at once: the flower recruits animals for pollination, and the fruit recruits animals for seed dispersal — outsourcing both stages of reproduction to mobile partners."
+    }
+  ]
+}

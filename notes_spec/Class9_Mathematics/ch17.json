@@ -1,0 +1,98 @@
+{
+  "number": 17,
+  "title": "Permutations and Combinations",
+  "prerequisites": [
+    "Ability to multiply large numbers systematically.",
+    "Understanding of the factorial notation.",
+    "Basic counting of possibilities.",
+    "Familiarity with the idea of an ordered pair."
+  ],
+  "topics": [
+    {
+      "title": "Fundamental Principle of Counting and Permutations",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "If one task can be done in m ways and another in n ways, together they can be done in m × n ways; a permutation is an arrangement in which order matters.",
+      "real_life": "A four-digit PIN has 10,000 possibilities because each of the four positions independently has ten choices — the multiplication principle securing your bank account.",
+      "detailed": {
+        "definition": "The fundamental principle of counting states that if an event can occur in m ways and a second independent event in n ways, then both can occur in m × n ways. A permutation is an arrangement of objects in a definite order.",
+        "key_idea": "Permutations count arrangements, so ABC and BCA are different. This is the one question to ask before choosing a formula: does the order matter?",
+        "working_principle": "The number of permutations of n distinct objects taken r at a time is ⁿPᵣ = n!/(n−r)!. When all n objects are used, this becomes n!.",
+        "applications": [
+          "Number of ways to seat 5 people in 5 chairs = 5! = 120.",
+          "Number of 3-letter words from 5 distinct letters = ⁵P₃ = 60.",
+          "Circular permutations of n objects = (n − 1)!."
+        ]
+      },
+      "points": [
+        "Multiplication principle for 'and'; addition principle for 'or'.",
+        "n! = n × (n−1) × ... × 2 × 1, and 0! = 1 by definition.",
+        "ⁿPᵣ = n! / (n − r)!.",
+        "Permutations of n objects where p are alike = n!/p!.",
+        "Circular permutations of n distinct objects = (n − 1)!."
+      ],
+      "mistakes": [
+        "Taking 0! as 0; it is defined to be 1.",
+        "Adding when the tasks must both be done — 'and' means multiply.",
+        "Using n! for circular arrangements instead of (n − 1)!."
+      ],
+      "memory_hook": "'AND means multiply, OR means add' — and 'Permutation = Position matters'.",
+      "advanced": "Circular arrangements lose one factor of n because rotating the whole circle produces the same arrangement. Whenever a symmetry maps arrangements onto each other, the count must be divided by the size of that symmetry group.",
+      "formulas": [
+        {
+          "name": "Permutations",
+          "difficulty": "Medium",
+          "formula": "ⁿPᵣ = n! / (n − r)!",
+          "variables": "n = total number of distinct objects, r = number of objects taken at a time.",
+          "when_to_use": "When order matters — arrangements, rankings, seatings, words from letters.",
+          "common_mistakes": "Using it where order does not matter, which requires combinations instead.",
+          "shortcut": "ⁿPₙ = n! and ⁿP₁ = n."
+        }
+      ]
+    },
+    {
+      "title": "Combinations",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A combination is a selection in which order does not matter, and ⁿCᵣ = n!/[r!(n−r)!].",
+      "real_life": "A cricket selection committee choosing 11 from 15 players is making a combination — who is picked matters, the order of picking does not.",
+      "detailed": {
+        "definition": "A combination is a selection of objects without regard to order. The number of combinations of n distinct objects taken r at a time is ⁿCᵣ = n!/[r!(n−r)!].",
+        "key_idea": "Every combination of r objects can be arranged in r! ways, so ⁿPᵣ = ⁿCᵣ × r!. Dividing permutations by r! removes the ordering, and that is the whole relationship between the two.",
+        "working_principle": "The symmetry ⁿCᵣ = ⁿCₙ₋ᵣ holds because choosing r objects to include is the same as choosing n − r to leave out. It often halves the arithmetic.",
+        "applications": [
+          "Selecting a committee, a team or a hand of cards.",
+          "ⁿC₀ = ⁿCₙ = 1 and ⁿC₁ = n.",
+          "The number of subsets of a set with n elements is 2ⁿ."
+        ]
+      },
+      "points": [
+        "ⁿCᵣ = n! / [r!(n − r)!].",
+        "ⁿPᵣ = ⁿCᵣ × r!.",
+        "ⁿCᵣ = ⁿCₙ₋ᵣ — choosing what to take is the same as choosing what to leave.",
+        "ⁿC₀ = ⁿCₙ = 1; ⁿC₁ = n.",
+        "Sum of all ⁿCᵣ from r = 0 to n equals 2ⁿ."
+      ],
+      "mistakes": [
+        "Using combinations for arrangements, where order matters.",
+        "Forgetting the r! in the denominator, which gives permutations instead.",
+        "Computing full factorials of large n instead of cancelling first."
+      ],
+      "memory_hook": "'Combination = Committee (order irrelevant); Permutation = Podium (order decides everything).'",
+      "advanced": "The numbers ⁿCᵣ are exactly the entries of Pascal's triangle and the coefficients in the binomial expansion of (a + b)ⁿ. Counting, algebra and the triangle are three views of one object.",
+      "formulas": [
+        {
+          "name": "Combinations",
+          "difficulty": "Medium",
+          "formula": "ⁿCᵣ = n! / [r! (n − r)!]",
+          "variables": "n = total objects, r = objects selected.",
+          "when_to_use": "When order does not matter — teams, committees, subsets, card hands.",
+          "common_mistakes": "Omitting r! in the denominator, which turns the answer into a permutation.",
+          "shortcut": "Use ⁿCᵣ = ⁿCₙ₋ᵣ to pick whichever of r or n−r is smaller."
+        }
+      ]
+    }
+  ]
+}

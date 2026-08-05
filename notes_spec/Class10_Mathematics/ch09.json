@@ -1,0 +1,55 @@
+{
+  "number": 9,
+  "title": "Some Applications of Trigonometry",
+  "prerequisites": [
+    "Trigonometric ratios of standard angles.",
+    "Ability to draw and label a right-angled triangle.",
+    "Skill in solving linear equations with surds.",
+    "Understanding of the horizontal and the vertical."
+  ],
+  "topics": [
+    {
+      "title": "Heights and Distances",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The angle of elevation and the angle of depression allow inaccessible heights and distances to be computed from a single measured length.",
+      "real_life": "The height of a tower is found by measuring the angle from a known distance away — no one has to climb anything.",
+      "detailed": {
+        "definition": "The angle of elevation is the angle between the horizontal and the line of sight to an object above the observer. The angle of depression is the angle between the horizontal and the line of sight to an object below.",
+        "key_idea": "The angle of depression from a tower to a point equals the angle of elevation from that point to the tower, because they are alternate angles between parallel horizontals. Redrawing the figure using this equality is the standard first step.",
+        "working_principle": "Draw a clear figure, mark the right angle and all given data, choose the ratio that connects the known side with the required one, and solve. The choice of ratio is the whole of the technique.",
+        "applications": [
+          "tan is used when the two sides involved are the perpendicular and the base.",
+          "sin or cos is used whenever the hypotenuse is involved.",
+          "The observer's height must be added when the angle is measured from eye level."
+        ]
+      },
+      "points": [
+        "Angle of elevation: looking up. Angle of depression: looking down.",
+        "Angle of depression = angle of elevation from the other end (alternate angles).",
+        "The line of sight is the hypotenuse; the horizontal is the base.",
+        "Choose tan when the hypotenuse is neither known nor required.",
+        "Add the observer's height when the angle is measured from the eye."
+      ],
+      "mistakes": [
+        "Marking the angle of depression inside the triangle instead of with the horizontal.",
+        "Forgetting to add the height of the observer to the final answer.",
+        "Using sin where tan is required, which brings in an unknown hypotenuse."
+      ],
+      "memory_hook": "'Depression is measured from the horizontal, never from the vertical' — draw the horizontal line first.",
+      "advanced": "Beyond right triangles, the sine and cosine rules handle oblique triangles and are the basis of triangulation. Land surveying and satellite positioning both extend exactly this method.",
+      "formulas": [
+        {
+          "name": "Heights and Distances",
+          "difficulty": "Medium",
+          "formula": "tan θ = height / horizontal distance",
+          "variables": "θ = angle of elevation or depression, height = vertical, distance = horizontal.",
+          "when_to_use": "Whenever a vertical height and a horizontal distance are involved and the hypotenuse is not needed.",
+          "common_mistakes": "Interchanging the height and the distance in the ratio.",
+          "shortcut": "tan 45° = 1, so at 45° the height equals the horizontal distance exactly."
+        }
+      ]
+    }
+  ]
+}

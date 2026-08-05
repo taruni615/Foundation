@@ -1,0 +1,123 @@
+{
+  "number": 11,
+  "title": "Mensuration",
+  "prerequisites": [
+    "Area and perimeter formulas for squares, rectangles, and triangles from earlier classes.",
+    "Understanding of quadrilaterals (Chapter 3) and solid shapes (Chapter 10).",
+    "Comfort with substitution into formulas and basic unit conversions."
+  ],
+  "topics": [
+    {
+      "title": "Area of Quadrilaterals — Trapezium, Rhombus & General Quadrilateral",
+      "quick_summary": "Areas of trapeziums, rhombuses, and general (irregular) quadrilaterals are found using formulas based on parallel sides, diagonals, or by splitting the shape into triangles.",
+      "detailed": {
+        "definition": "The area of a trapezium is found using its two parallel sides and the perpendicular distance (height) between them; the area of a rhombus uses the product of its two diagonals; a general quadrilateral's area is found by splitting it into two triangles using one diagonal.",
+        "key_idea": "Almost every quadrilateral area formula ultimately reduces to combinations of triangle areas — a trapezium can be split into a rectangle and two triangles, a rhombus into 4 right triangles, and any general quadrilateral into 2 triangles via a diagonal.",
+        "working_principle": "For a general quadrilateral, draw one diagonal to split it into two triangles, find the height (perpendicular distance) from each opposite vertex to that diagonal, then sum the two triangle areas: ½ × diagonal × (h1 + h2).",
+        "applications": [
+          "Land surveying and real estate area calculations for irregularly-shaped plots.",
+          "Fabric, tile, and material estimation for trapezium or rhombus-shaped design elements."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Calculating the area of a trapezium-shaped plot of farmland, or a rhombus-shaped kite, are direct real-life applications of these mensuration formulas.",
+      "points": [
+        "Area of trapezium = ½ × (sum of parallel sides) × height.",
+        "Area of rhombus = ½ × d1 × d2, where d1 and d2 are the lengths of its two diagonals.",
+        "Area of general quadrilateral = ½ × diagonal × (sum of the two perpendicular heights from the opposite vertices to that diagonal).",
+        "Always ensure 'height' means the PERPENDICULAR distance, not a slanted side length."
+      ],
+      "mistakes": [
+        "Using a slant side instead of the perpendicular height in the trapezium or general quadrilateral formula.",
+        "Forgetting the ½ factor in the rhombus diagonal formula or the general quadrilateral formula.",
+        "Mixing up which two sides are 'parallel' in a trapezium before applying the formula."
+      ],
+      "memory_hook": "'Split into triangles, then just add' — nearly every quadrilateral area formula is triangles in disguise.",
+      "advanced": "The rhombus area formula (½ × d1 × d2) is a special case of the general quadrilateral formula because the diagonals of a rhombus are perpendicular bisectors of each other — this perpendicularity is exactly what allows the simpler diagonal-product formula to work directly, without needing separate height measurements.",
+      "formulas": [
+        {
+          "name": "Area of Trapezium",
+          "difficulty": "Easy",
+          "formula": "Area = ½ × d1 × d2",
+          "variables": "d1, d2 = lengths of the two diagonals of the rhombus.",
+          "when_to_use": "To find the area of a rhombus when both diagonal lengths are known.",
+          "common_mistakes": "Forgetting the ½ factor, or using a side length instead of a diagonal.",
+          "shortcut": "Same shape as the general 'half the product of diagonals' idea — works because rhombus diagonals are perpendicular."
+        }
+      ]
+    },
+    {
+      "title": "Surface Area of Solids — Cube, Cuboid & Cylinder",
+      "quick_summary": "Surface area measures the total area covering the outside of a solid; cubes, cuboids, and cylinders each have their own formula based on their face shapes.",
+      "detailed": {
+        "definition": "Total Surface Area (TSA) is the sum of the areas of ALL faces (including top and bottom) of a solid; Lateral (or Curved) Surface Area (LSA/CSA) is the area of only the side faces, excluding the top and bottom.",
+        "key_idea": "For solids with a uniform cross-section along their height (like cuboids and cylinders), lateral surface area is simply the perimeter (or circumference) of the base multiplied by the height.",
+        "working_principle": "Cube TSA = 6 × (side)²; Cuboid TSA = 2(lb + bh + hl); Cylinder CSA = 2πrh, and Cylinder TSA = 2πrh + 2πr² = 2πr(h + r), adding the two circular end caps to the curved surface.",
+        "applications": [
+          "Estimating material (paint, wrapping paper, sheet metal) needed to cover the surface of containers, rooms, or tanks.",
+          "Comparing packaging efficiency by calculating surface area for a given volume of different container shapes."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Calculating how much paint is needed to cover a cuboidal room's walls, or how much metal sheet is needed to make a cylindrical water tank, both require surface area calculations.",
+      "points": [
+        "Cube TSA = 6a², where a = side length.",
+        "Cuboid TSA = 2(lb + bh + hl), where l, b, h are length, breadth, and height.",
+        "Cylinder CSA (curved surface only) = 2πrh; Cylinder TSA (including both circular ends) = 2πr(h + r).",
+        "'Lateral/curved surface area' always EXCLUDES the top and bottom faces; 'total surface area' always INCLUDES them."
+      ],
+      "mistakes": [
+        "Confusing lateral/curved surface area (sides only) with total surface area (includes top and bottom).",
+        "Forgetting to add BOTH circular end caps (2πr², not just πr²) when calculating a cylinder's total surface area.",
+        "Mixing up which of l, b, h goes where in the cuboid TSA formula, leading to repeated or missing terms."
+      ],
+      "memory_hook": "'CSA = sides only, TSA = sides + top + bottom' — always ask if the caps are included.",
+      "advanced": "The cylinder's curved surface area formula (2πrh) makes intuitive sense once you realise the curved surface, if cut vertically and unrolled flat, becomes exactly a rectangle with width equal to the circle's circumference (2πr) and height h — turning a seemingly complex curved-surface problem into simple rectangle area."
+    },
+    {
+      "title": "Volume of Solids — Cube, Cuboid & Cylinder",
+      "quick_summary": "Volume measures the amount of 3D space enclosed by a solid; for cubes, cuboids, and cylinders, volume is found by multiplying the base area by the height.",
+      "detailed": {
+        "definition": "Volume is the amount of space occupied by a 3D solid, measured in cubic units (cm³, m³, litres, etc.). For prism-like solids (cube, cuboid, cylinder), Volume = Area of base × height.",
+        "key_idea": "Since cubes, cuboids, and cylinders all have a constant cross-sectional shape along their height, their volume formula always reduces to (base area) × (height) — only the shape of the base area differs.",
+        "working_principle": "Identify the shape of the solid's base (square for cube, rectangle for cuboid, circle for cylinder), calculate that base's area using the standard 2D formula, then multiply by the solid's height to get the volume.",
+        "applications": [
+          "Calculating capacity of tanks, containers, swimming pools, and storage boxes.",
+          "Determining material required (concrete, liquid, grain) to fill a given 3D space."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Calculating how much water a cuboidal tank or cylindrical drum can hold uses exactly these volume formulas.",
+      "points": [
+        "Cube Volume = a³, where a = side length.",
+        "Cuboid Volume = l × b × h (length × breadth × height).",
+        "Cylinder Volume = πr²h, where r = base radius and h = height.",
+        "1 m³ = 1000 litres — a common and important conversion when volume answers are needed in litres."
+      ],
+      "mistakes": [
+        "Forgetting to convert units consistently (e.g., mixing cm and m) before calculating volume.",
+        "Confusing surface area formulas with volume formulas, especially for the cylinder (2πrh vs. πr²h).",
+        "Forgetting the important conversion 1 m³ = 1000 litres when a 'capacity in litres' answer is required."
+      ],
+      "memory_hook": "'Volume = Base Area × Height' — the single unifying idea behind cube, cuboid, and cylinder volume.",
+      "advanced": "This 'base area × height' principle for volume extends directly to any prism (triangular prism, hexagonal prism, etc.) in later classes — as long as the cross-section stays exactly the same shape all the way up the solid, the same simple multiplication rule applies, regardless of how complex the base shape is.",
+      "formulas": [
+        {
+          "name": "Volume of Cylinder",
+          "difficulty": "Medium",
+          "formula": "Volume = πr²h",
+          "variables": "r = radius of the circular base, h = height of the cylinder, π ≈ 22/7 or 3.14.",
+          "when_to_use": "To find the capacity/volume of any cylindrical solid (tank, pipe, drum) given radius and height.",
+          "common_mistakes": "Using diameter instead of radius directly in the formula (must halve the diameter first).",
+          "shortcut": "Remember it as 'circle's area (πr²) swept upward through the height h'."
+        }
+      ]
+    }
+  ]
+}

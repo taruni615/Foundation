@@ -1,0 +1,55 @@
+{
+  "number": 10,
+  "title": "Circles",
+  "prerequisites": [
+    "Chord and angle properties of circles from Class 9.",
+    "Congruence of triangles.",
+    "Pythagoras theorem.",
+    "Idea of a line touching a curve."
+  ],
+  "topics": [
+    {
+      "title": "Tangent to a Circle and Its Properties",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A tangent touches a circle at exactly one point and is perpendicular to the radius at that point, and the two tangents from an external point are equal in length.",
+      "real_life": "A bicycle chain leaves each sprocket along a tangent, and the two straight stretches from a common point are always of equal length.",
+      "detailed": {
+        "definition": "A tangent to a circle is a line that intersects the circle at exactly one point, called the point of contact. A secant intersects the circle at two points.",
+        "key_idea": "The tangent–radius perpendicularity is the key to every problem in this chapter. Drawing the radius to the point of contact immediately creates a right triangle to work with.",
+        "working_principle": "From an external point P, the two tangent lengths PA and PB are equal because triangles OAP and OBP are congruent by RHS, sharing OP and having equal radii.",
+        "applications": [
+          "No tangent can be drawn from a point inside the circle; exactly one from a point on it; exactly two from an external point.",
+          "The length of a tangent from an external point is √(d² − r²), where d is the distance from the centre.",
+          "OP bisects both the angle between the tangents and the angle at the centre."
+        ]
+      },
+      "points": [
+        "A tangent is perpendicular to the radius at the point of contact.",
+        "Tangents drawn from an external point are equal in length.",
+        "A circle has infinitely many tangents, one at each point.",
+        "Tangent length from an external point = √(d² − r²).",
+        "The line joining the external point to the centre bisects the angle between the tangents."
+      ],
+      "mistakes": [
+        "Assuming the tangent is perpendicular to the chord rather than to the radius.",
+        "Trying to draw a tangent from a point inside the circle.",
+        "Using the radius in place of the distance from the centre in the tangent-length formula."
+      ],
+      "memory_hook": "'Radius meets tangent at a right angle' — draw that radius and a right triangle appears.",
+      "advanced": "A tangent is the limiting position of a secant as the two intersection points merge. This limiting idea is precisely what a derivative captures in calculus.",
+      "formulas": [
+        {
+          "name": "Length of a Tangent",
+          "difficulty": "Medium",
+          "formula": "Tangent length = √(d² − r²)",
+          "variables": "d = distance of the external point from the centre, r = radius of the circle.",
+          "when_to_use": "To find the tangent length from a point outside the circle.",
+          "common_mistakes": "Adding instead of subtracting under the root.",
+          "shortcut": "It is just Pythagoras on the right triangle formed by radius, tangent and the line to the centre."
+        }
+      ]
+    }
+  ]
+}

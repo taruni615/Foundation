@@ -2,6 +2,122 @@
 // the management dashboard.
 import { el, clear } from "../../../ui/el.js";
 import * as assess from "../../../api/assess.api.js";
+import * as practice from "../../../api/practice.api.js";
+
+// ---- PRD dashboard widgets -------------------------------------------------
+// Each builder takes the widget payload and returns a card, or null when the
+// widget says it has nothing to show.
+
+function widgetShell(title, icon, body, extraClass) {
+  return el("div", { class: "dash-widget " + (extraClass || "") }, [
+    el("div", { class: "dash-widget-head" }, [
+      el("span", { class: "dash-widget-icon" }, icon),
+      el("strong", {}, title),
+    ]),
+    body,
+  ]);
+}
+
+function unavailable(title, icon, message) {
+  return widgetShell(title, icon, el("div", { class: "ex-muted" }, message), "dash-widget-muted");
+}
+
+function dailyGoalCard(g, summary) {
+  if (!g || !g.ok) return unavailable("Daily Goal", "🎯", "Goal tracking is unavailable.");
+  const bar = el("div", { class: "pr-progress" },
+    el("div", { class: "pr-progress-fill", style: `width:${g.pct}%` }));
+  return widgetShell("Daily Goal", "🎯", el("div", {}, [
+    el("div", { class: "dash-value" }, `${g.done} / ${g.goal}`),
+    el("div", { class: "dash-sub" }, g.met ? "Goal met — well done." : `${g.remaining} questions to go`),
+    bar,
+    el("div", { class: "dash-sub" },
+      `🔥 ${g.streak}-day streak${g.best_streak > g.streak ? ` · best ${g.best_streak}` : ""}` +
+      (summary.accuracy ? ` · ${summary.accuracy}% overall accuracy` : "")),
+  ]));
+}
+
+function continueLearningCard(c, navigate) {
+  // The PRD hides this widget once the chapter is complete.
+  if (!c || !c.ok || !c.show) return null;
+  const btn = el("button", { class: "ex-btn ex-btn-primary" }, "Resume →");
+  btn.addEventListener("click", () => navigate("/practice"));
+  return widgetShell("Continue Learning", "📖", el("div", {}, [
+    el("div", { class: "dash-value dash-value-sm" }, c.chapter_name || "Last chapter"),
+    el("div", { class: "dash-sub" }, `${c.pct}% covered · ${c.accuracy}% accuracy`),
+    el("div", { class: "pr-progress" },
+      el("div", { class: "pr-progress-fill", style: `width:${c.pct}%` })),
+    btn,
+  ]));
+}
+
+function dailyChallengeCard(d, navigate) {
+  if (!d || !d.ok) return unavailable("Daily Challenge", "⭐", "Challenge unavailable.");
+  const body = el("div", {});
+  if (d.status === "completed") {
+    body.appendChild(el("div", { class: "dash-value" }, `${d.score}/${d.size}`));
+    body.appendChild(el("div", { class: "dash-sub" }, "Done for today — back tomorrow."));
+  } else {
+    body.appendChild(el("div", { class: "dash-sub" },
+      `${d.size} questions · resets daily`));
+    const btn = el("button", { class: "ex-btn ex-btn-primary" },
+      d.status === "in_progress" ? "Continue challenge →" : "Start challenge →");
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      try {
+        const r = await practice.startDailyChallenge();
+        navigate("/practice/run/" + r.session.id);
+      } catch (e) {
+        btn.disabled = false;
+        body.appendChild(el("div", { class: "ex-error" }, e.message || "Could not start."));
+      }
+    });
+    body.appendChild(btn);
+  }
+  return widgetShell("Daily Challenge", "⭐", body);
+}
+
+function recommendationCard(r, navigate) {
+  if (!r || !r.ok) return unavailable("AI Recommendation", "🧠", "No recommendation yet.");
+  const btn = el("button", { class: "ex-btn" }, "Do this →");
+  btn.addEventListener("click", () => navigate("/practice"));
+  return widgetShell("AI Recommendation", "🧠", el("div", {}, [
+    el("div", { class: "dash-value dash-value-sm" }, r.title),
+    el("div", { class: "dash-sub" }, r.why),
+    btn,
+  ]));
+}
+
+function weeklyProgressCard(p) {
+  if (!p || !p.ok) return unavailable("Weekly Progress", "📈", "Trend unavailable.");
+  const peak = Math.max(1, ...p.series.map((d) => d.answered));
+  const chart = el("div", { class: "dash-spark" });
+  p.series.forEach((d) => {
+    const h = Math.round(100 * d.answered / peak);
+    chart.appendChild(el("div", { class: "dash-spark-col", title: `${d.day}: ${d.answered} answered` }, [
+      el("div", { class: "dash-spark-bar", style: `height:${Math.max(4, h)}%` }),
+      el("span", { class: "dash-spark-day" }, d.day.slice(8)),
+    ]));
+  });
+  return widgetShell("Weekly Progress", "📈", el("div", {}, [
+    el("div", { class: "dash-value" }, `${p.total_answered}`),
+    el("div", { class: "dash-sub" },
+      `questions this week · ${p.accuracy}% accuracy · ${p.active_days}/7 active days`),
+    chart,
+  ]));
+}
+
+function savedContentCard(s) {
+  if (!s || !s.ok) return null;
+  if (!s.available) {
+    return unavailable("Saved Content", "🔖",
+      s.note || "Snippets and bookmarks arrive with the Learn Module.");
+  }
+  return widgetShell("Saved Content", "🔖", el("div", {}, [
+    el("div", { class: "dash-value" }, String(s.items.length)),
+    el("div", { class: "dash-sub" },
+      `${s.counts.snippets} snippets · ${s.counts.bookmarks} bookmarks`),
+  ]));
+}
 
 function statCard(icon, label, value, accent, sub) {
   return el("div", { class: "dash-card dash-" + (accent || "blue") }, [
@@ -78,33 +194,45 @@ async function renderTeacher(root, user, navigate) {
   ]));
 }
 
-// ---- Student dashboard ----
+// ---- Student dashboard (the PRD command centre) ----
+// Every widget is fetched with its own catch and rendered from its own `ok`
+// flag, so one unavailable source degrades a single card instead of blanking
+// the page — the PRD's "widgets should load independently" note.
 async function renderStudent(root, user, navigate) {
-  let exams = [], attempts = [], analytics = null;
-  try {
-    [exams, attempts, analytics] = await Promise.all([
-      assess.listExams().then((d) => d.exams || []),
-      assess.listAttempts().then((d) => d.attempts || []),
-      assess.analytics().then((d) => d.analytics).catch(() => null),
-    ]);
-  } catch (_) {}
+  let dash = null, exams = [], attempts = [];
+  [dash, exams, attempts] = await Promise.all([
+    practice.dashboard().catch(() => null),
+    assess.listExams().then((d) => d.exams || []).catch(() => []),
+    assess.listAttempts().then((d) => d.attempts || []).catch(() => []),
+  ]);
   clear(root);
 
-  const takeBtn = el("button", { class: "ex-btn ex-btn-primary" }, "Take a Test →");
-  takeBtn.addEventListener("click", () => navigate("/exams"));
+  const w = (dash && dash.widgets) || {};
+  const sum = (dash && dash.summary) || {};
+
+  const practiseBtn = el("button", { class: "ex-btn ex-btn-primary" }, "Practise now →");
+  practiseBtn.addEventListener("click", () => navigate("/practice"));
   root.appendChild(el("div", { class: "dash-head" }, [
-    el("div", {}, [el("h2", {}, "Student Dashboard"), el("p", { class: "ex-muted" }, `Welcome, ${user.name || "Student"}`)]),
-    takeBtn,
+    el("div", {}, [
+      el("h2", {}, `Welcome back, ${user.name || "Student"}`),
+      el("p", { class: "ex-muted" }, "Here is what to focus on today."),
+    ]),
+    practiseBtn,
   ]));
 
-  const avg = analytics ? analytics.avg_percentage : 0;
-  const best = analytics ? analytics.best_percentage : 0;
-  root.appendChild(el("div", { class: "dash-cards" }, [
-    statCard("📝", "TESTS AVAILABLE", exams.length, "blue", "hosted now"),
-    statCard("✅", "TESTS TAKEN", attempts.length, "green", "your attempts"),
-    statCard("📊", "AVERAGE", `${avg}%`, "pink", "across attempts"),
-    statCard("🏆", "BEST", `${best}%`, "amber", "personal best"),
-  ]));
+  if (!dash) {
+    root.appendChild(el("div", { class: "ex-error" },
+      "Your learning widgets are unavailable right now. Tests are still listed below."));
+  }
+
+  root.appendChild(el("div", { class: "dash-widgets" }, [
+    dailyGoalCard(w.daily_goal, sum),
+    continueLearningCard(w.continue_learning, navigate),
+    dailyChallengeCard(w.daily_challenge, navigate),
+    recommendationCard(w.ai_recommendation, navigate),
+    weeklyProgressCard(w.weekly_progress),
+    savedContentCard(w.saved_content),
+  ].filter(Boolean)));
 
   root.appendChild(el("h3", { class: "ex-section-title" }, "Available tests"));
   if (!exams.length) root.appendChild(el("div", { class: "ex-empty-card" }, "No tests hosted right now."));

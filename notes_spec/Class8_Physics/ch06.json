@@ -1,0 +1,131 @@
+{
+  "number": 6,
+  "title": "Light",
+  "prerequisites": [
+    "Basic idea of a ray as a straight-line path along which light travels.",
+    "Concept of a mirror as a smooth, reflecting surface.",
+    "Familiarity with basic geometry — angles and straight lines."
+  ],
+  "topics": [
+    {
+      "title": "Reflection of Light",
+      "quick_summary": "Light bounces back into the same medium when it strikes a smooth, polished surface, always following two simple laws that relate the incident and reflected rays to the normal.",
+      "detailed": {
+        "definition": "Reflection of light is the bouncing back of light into the same medium when it strikes a boundary such as a mirror, without any change in its speed or wavelength.",
+        "key_idea": "Every reflecting surface has an imaginary line, the normal, drawn perpendicular to the surface at the point where light strikes it; all angles of incidence and reflection are measured from this normal.",
+        "working_principle": "An incident ray strikes the mirror and bounces off according to two laws: the angle of incidence equals the angle of reflection, and the incident ray, reflected ray and normal all lie in the same flat plane.",
+        "applications": [
+          "Plane mirrors are used for personal grooming and in periscopes to see around obstacles.",
+          "Polished metal surfaces and still water also reflect light and can act like mirrors.",
+          "Kaleidoscopes use multiple mirrors at an angle to form repeating, symmetric patterns."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "We see ourselves clearly in a plane mirror because the smooth glass surface reflects light in a regular, predictable pattern, forming a clear image.",
+      "points": [
+        "Angle of incidence = Angle of reflection, both measured from the normal, never from the mirror surface.",
+        "Incident ray, reflected ray, and normal all lie in the same plane.",
+        "The image formed in a plane mirror is virtual, erect, laterally inverted, and the same size as the object.",
+        "Image distance behind the mirror equals object distance in front of the mirror."
+      ],
+      "mistakes": [
+        "Measuring the angle of incidence from the mirror's surface instead of from the normal.",
+        "Thinking the image in a plane mirror is real — it is always virtual (cannot be caught on a screen)."
+      ],
+      "memory_hook": "\"i = r, always from the Normal, Never from the surface.\"",
+      "advanced": "Lateral inversion (left-right reversal seen in a mirror) happens because the mirror reverses the front-back direction of the image, not the actual left-right direction — this subtlety is why text held up to a mirror appears reversed, which is used deliberately on ambulances (written in mirror-image so drivers ahead can read it correctly in their rear-view mirror)."
+    },
+    {
+      "title": "Multiple Reflection and Curved Mirrors",
+      "quick_summary": "When two or more mirrors are placed at an angle to each other, light can reflect multiple times, producing multiple images — the basis of devices like the periscope and kaleidoscope.",
+      "detailed": {
+        "definition": "Multiple reflection occurs when light reflects off more than one mirror before reaching the eye, producing several images of the same object depending on the angle between the mirrors.",
+        "key_idea": "The number of images formed by two mirrors inclined at an angle θ to each other is related to how many times that angle divides evenly into 360°; smaller angles between mirrors generally produce more images.",
+        "working_principle": "Each mirror reflects the object (or the image formed by the other mirror) according to the basic laws of reflection, so light effectively 'bounces' between the mirrors, each bounce producing another image.",
+        "applications": [
+          "Periscopes in submarines and along trenches use two plane mirrors at 45° to redirect the line of sight around corners.",
+          "Kaleidoscopes use two or three mirrors at an angle with loose coloured pieces to create colourful, symmetric patterns.",
+          "Shop dressing-room mirror arrangements let a person see multiple angles of themselves at once."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A periscope, made of two plane mirrors fixed parallel to each other at 45°, lets a person in a submarine or trench see over an obstacle by reflecting light around a right-angle path twice.",
+      "points": [
+        "Two mirrors at 90° generally produce 3 images of an object placed between them.",
+        "A periscope uses two mirrors, each at 45° to the vertical, positioned parallel to one another.",
+        "Multiple reflection still follows the basic law of reflection (i = r) at every single bounce.",
+        "The more mirrors involved (or the sharper the angle between them), the more repeated images can form."
+      ],
+      "mistakes": [
+        "Assuming only one image forms whenever more than one mirror is involved — multiple mirrors at an angle typically create several images.",
+        "Forgetting that periscope mirrors must be exactly parallel to each other (both at 45°) for the final image to be seen correctly, not tilted or offset."
+      ],
+      "memory_hook": "\"Two mirrors, many bounces, many images.\"",
+      "advanced": "A kaleidoscope's ever-changing, perfectly symmetric patterns arise purely from the geometry of multiple reflection combined with randomly falling coloured pieces — no two views are ever exactly identical because the loose pieces resettle differently each time the tube is turned."
+    },
+    {
+      "title": "The Human Eye",
+      "quick_summary": "The human eye works like a natural camera, using a lens to focus light and form an image on the light-sensitive retina, which sends signals to the brain to let us see.",
+      "detailed": {
+        "definition": "The human eye is a sense organ that forms a real, inverted image of objects on the retina, using the combined focusing action of the cornea and the eye lens, and converts this image into signals sent to the brain via the optic nerve.",
+        "key_idea": "The ciliary muscles can change the curvature (and hence the focal length) of the eye lens, a process called accommodation, which allows the eye to focus clearly on both near and distant objects.",
+        "working_principle": "Light enters through the transparent cornea, passes through the pupil (whose size is controlled by the iris), and is focused by the eye lens onto the retina, where light-sensitive cells convert the image into electrical nerve signals.",
+        "applications": [
+          "Understanding accommodation explains why we cannot focus clearly on objects that are extremely close or extremely far beyond the eye's limits.",
+          "This same optical structure (lens + light-sensitive screen) is the basis for how a camera is designed.",
+          "Eye examinations use the concepts of near point and far point to detect vision problems."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "You can quickly shift focus from a nearby book to a distant scene outside a window, thanks to the eye's ability to automatically adjust its lens shape.",
+      "points": [
+        "Near point (least distance of distinct vision) for a normal eye ≈ 25 cm; far point ≈ infinity.",
+        "The retina is where the real, inverted image forms; the brain processes this as an upright image.",
+        "The iris controls how much light enters the eye by adjusting the size of the pupil.",
+        "The ciliary muscles adjust the eye lens's curvature to focus on objects at different distances (accommodation)."
+      ],
+      "mistakes": [
+        "Thinking we actually perceive the world upside down — although the retinal image is inverted, the brain interprets it as upright.",
+        "Confusing the pupil (the opening that lets light in) with the lens (the part that actually focuses light)."
+      ],
+      "memory_hook": "\"Eye = natural camera: Lens focuses, Retina captures, Brain interprets.\"",
+      "advanced": "As people age, the eye lens gradually loses its flexibility and the ciliary muscles weaken, reducing the eye's power of accommodation — this natural, age-related condition (presbyopia) is why many older adults eventually need reading glasses even if their distance vision was previously perfect."
+    },
+    {
+      "title": "Care of the Eyes and Assistive Aids",
+      "quick_summary": "Good habits protect our vision from strain and damage, and for people with visual impairment, special aids like Braille and assistive devices help them read, learn, and navigate independently.",
+      "detailed": {
+        "definition": "Care of the eyes refers to habits and practices that protect vision and prevent eye strain or damage. Braille is a system of raised dots that visually impaired people read using their fingertips.",
+        "key_idea": "Simple daily habits — adequate lighting, correct reading distance, regular breaks from screens, and a balanced diet rich in vitamin A — go a long way in protecting eyesight over a lifetime.",
+        "working_principle": "Excessive eye strain occurs when the eye's focusing muscles are overworked (e.g., reading in poor light, keeping objects too close, or staring at a fixed distance for very long periods without blinking or resting).",
+        "applications": [
+          "Regular eye check-ups can detect and correct refractive errors early using spectacles or contact lenses.",
+          "Braille enables visually impaired individuals to read books, signage, and use everyday devices.",
+          "Assistive technologies such as screen readers and audio books further support learning for visually impaired students."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Reading in dim light or staring at screens for long periods without breaks can strain the eyes, while regular eye check- ups help catch vision problems early.",
+      "points": [
+        "Never look directly at the Sun or other very bright light sources — it can permanently damage the retina.",
+        "Read and work in adequate, even lighting, keeping a comfortable distance from books and screens.",
+        "A diet rich in vitamin A (found in carrots, leafy vegetables, etc.) supports healthy vision.",
+        "Braille uses patterns of raised dots (in cells of up to six dots) that represent letters, numbers, and punctuation."
+      ],
+      "mistakes": [
+        "Thinking eye strain has no long-term effects — chronic, uncorrected eye strain can worsen underlying vision problems over time.",
+        "Assuming visual impairment always means complete blindness — many visually impaired people have partial vision and use a range of different aids."
+      ],
+      "memory_hook": "\"Protect the eye: right light, right distance, right diet, regular rest.\"",
+      "advanced": "Braille, invented by Louis Braille (who was himself blind), converts written language into a tactile code using combinations of up to six raised dots — its elegant simplicity is why it remains the standard reading system for visually impaired people worldwide even in the digital age."
+    }
+  ]
+}

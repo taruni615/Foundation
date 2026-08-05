@@ -1,0 +1,108 @@
+{
+  "number": 6,
+  "title": "Lines and Angles",
+  "prerequisites": [
+    "Knowledge of types of angles — acute, right, obtuse, straight.",
+    "Ability to measure an angle with a protractor.",
+    "Idea of parallel and intersecting lines.",
+    "Understanding that angles on a straight line sum to 180°."
+  ],
+  "topics": [
+    {
+      "title": "Pairs of Angles and Intersecting Lines",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Angles formed at a point or on a line follow fixed relationships — linear pairs sum to 180° and vertically opposite angles are always equal.",
+      "real_life": "Two crossing roads always create equal angles opposite each other, which is why a junction looks symmetric from opposite corners.",
+      "detailed": {
+        "definition": "Complementary angles sum to 90°; supplementary angles sum to 180°. A linear pair is a pair of adjacent angles whose non-common arms form a straight line. Vertically opposite angles are the pairs of opposite angles formed by two intersecting lines.",
+        "key_idea": "Vertically opposite angles are equal because each is supplementary to the same adjacent angle. The proof is one line, and it is a standard two-mark question.",
+        "working_principle": "The sum of all angles at a point is 360°, and the sum of angles on one side of a straight line is 180°. Every angle-chasing problem reduces to repeated use of these two facts.",
+        "applications": [
+          "Adjacent angles share a common vertex and a common arm but no common interior points.",
+          "If two lines intersect, both pairs of vertically opposite angles are equal.",
+          "Angles around a point add to 360°."
+        ]
+      },
+      "points": [
+        "Complementary: sum 90°; Supplementary: sum 180°.",
+        "A linear pair is always supplementary.",
+        "Vertically opposite angles are always equal.",
+        "Angles at a point sum to 360°.",
+        "Two supplementary adjacent angles form a linear pair, so their outer arms are collinear."
+      ],
+      "mistakes": [
+        "Swapping complementary (90°) and supplementary (180°).",
+        "Assuming any two equal angles are vertically opposite; they must be formed by two intersecting lines.",
+        "Treating adjacent angles as necessarily forming a linear pair."
+      ],
+      "memory_hook": "'C comes before S, and 90 comes before 180' — Complementary 90, Supplementary 180.",
+      "advanced": "The linear pair axiom and its converse together are equivalent to the statement that a straight angle measures exactly 180°. Much of elementary geometry rests on this single normalisation."
+    },
+    {
+      "title": "Parallel Lines and a Transversal",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "When a transversal cuts two parallel lines, corresponding angles are equal, alternate angles are equal, and co-interior angles are supplementary.",
+      "real_life": "Railway sleepers cut across two parallel rails at the same angle every time — that constancy is exactly the corresponding-angles property.",
+      "detailed": {
+        "definition": "A transversal is a line that intersects two or more lines at distinct points. It creates corresponding, alternate interior, alternate exterior and co-interior (allied) angle pairs.",
+        "key_idea": "Each of these three properties is both a test for parallelism and a consequence of it. Given parallel lines you may use the equalities; given the equalities you may conclude the lines are parallel.",
+        "working_principle": "In angle chasing, mark all equal angles first using corresponding and alternate pairs, then use the linear pair and angle-sum facts to fill in the rest.",
+        "applications": [
+          "Corresponding angles equal ⟺ lines are parallel.",
+          "Alternate interior angles equal ⟺ lines are parallel.",
+          "Co-interior angles supplementary ⟺ lines are parallel."
+        ]
+      },
+      "points": [
+        "Corresponding angles: equal when the lines are parallel (F-shape).",
+        "Alternate interior angles: equal when the lines are parallel (Z-shape).",
+        "Co-interior (allied) angles: supplementary when the lines are parallel (C or U-shape).",
+        "Lines parallel to the same line are parallel to each other.",
+        "Each property works in both directions — as a consequence and as a test."
+      ],
+      "mistakes": [
+        "Saying co-interior angles are equal; they are supplementary.",
+        "Applying these properties when the lines are not known to be parallel.",
+        "Mixing up alternate interior with alternate exterior angles."
+      ],
+      "memory_hook": "'F for corresponding, Z for alternate, C for co-interior' — and only C adds to 180°.",
+      "advanced": "All three properties depend on Euclid's fifth postulate. On a sphere, where 'lines' are great circles, no two lines are parallel at all and none of these results holds."
+    },
+    {
+      "title": "Angle Sum Property of a Triangle",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The three angles of a triangle always add to 180°, and an exterior angle equals the sum of the two interior opposite angles.",
+      "real_life": "A surveyor checks measurements by confirming that the three measured angles of a triangular plot total 180° — any excess signals an error.",
+      "detailed": {
+        "definition": "The angle sum property states that the sum of the three interior angles of a triangle is 180°. The exterior angle property states that an exterior angle equals the sum of the two interior opposite angles.",
+        "key_idea": "The exterior angle property follows immediately from the angle sum property together with the linear pair at that vertex, so the second result is really a corollary of the first.",
+        "working_principle": "The angle sum is proved by drawing a line through one vertex parallel to the opposite side and using alternate angles. This is the standard proof expected in the examination.",
+        "applications": [
+          "A triangle can have at most one right angle or one obtuse angle.",
+          "In an equilateral triangle each angle is 60°.",
+          "The exterior angle is always greater than either interior opposite angle."
+        ]
+      },
+      "points": [
+        "Sum of the interior angles of a triangle = 180°.",
+        "Exterior angle = sum of the two interior opposite angles.",
+        "A triangle cannot have two right angles or two obtuse angles.",
+        "The angle sum property is proved using a parallel line through one vertex.",
+        "Sum of the exterior angles of any polygon, taken one at each vertex, is 360°."
+      ],
+      "mistakes": [
+        "Adding the exterior angle to all three interior angles.",
+        "Assuming the exterior angle equals the adjacent interior angle.",
+        "Forgetting that the property holds only in plane (Euclidean) geometry."
+      ],
+      "memory_hook": "'Three angles, one straight line — 180° every time.'",
+      "advanced": "On a sphere the angles of a triangle sum to more than 180°, and the excess is proportional to its area. Gauss reportedly tried to measure this excess on mountain triangles to test whether physical space is Euclidean."
+    }
+  ]
+}

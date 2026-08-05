@@ -1,0 +1,101 @@
+{
+  "number": 3,
+  "title": "Understanding Quadrilaterals",
+  "prerequisites": [
+    "Basic idea of angles, lines, and triangles (angle sum property of a triangle = 180°).",
+    "Familiarity with terms like parallel lines, perpendicular lines, and diagonals.",
+    "Concept of a polygon as a closed figure made of line segments."
+  ],
+  "topics": [
+    {
+      "title": "Polygons — Classification & Angle Sum Property",
+      "quick_summary": "A polygon is a closed plane figure made of straight line segments; polygons are classified by their number of sides, and the sum of their interior/exterior angles follows fixed formulas.",
+      "detailed": {
+        "definition": "A polygon is a simple closed figure formed by three or more line segments (sides); it is 'convex' if all interior angles are less than 180°, and 'concave' if at least one interior angle is greater than 180°.",
+        "key_idea": "The sum of interior angles of a polygon depends only on its number of sides (n), given by (n−2) × 180°; the sum of exterior angles of any convex polygon is always 360°, regardless of the number of sides.",
+        "working_principle": "Any polygon with n sides can be split into (n−2) triangles by drawing diagonals from one vertex; since each triangle's angles sum to 180°, the polygon's interior angle sum becomes (n−2) × 180°.",
+        "applications": [
+          "Architectural and tiling designs rely on knowing which regular polygons can fit together without gaps (e.g., hexagons, squares, triangles).",
+          "Finding unknown angles in geometry problems involving multi-sided figures."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A honeycomb's hexagonal cells and a stop sign's octagonal shape are real-world regular polygons, chosen partly because of how their angles fit together efficiently.",
+      "points": [
+        "Sum of interior angles of a polygon with n sides = (n−2) × 180°.",
+        "Sum of exterior angles of ANY convex polygon = 360°, always.",
+        "For a regular polygon (all sides and angles equal), each interior angle = [(n−2) × 180°] / n.",
+        "A quadrilateral (n = 4) has interior angle sum = 360°."
+      ],
+      "mistakes": [
+        "Using the interior angle sum formula for exterior angles (exterior angle sum is always 360°, not dependent on n).",
+        "Forgetting that the (n−2) × 180° formula only applies to simple polygons (non-self-intersecting).",
+        "Miscounting the number of sides when the polygon is irregularly drawn."
+      ],
+      "memory_hook": "'Interior grows with sides, Exterior always 360' — (n−2)×180° for interior, but exterior angles always add to one full circle.",
+      "advanced": "The fact that exterior angles always sum to 360° regardless of the number of sides can be understood by imagining walking around the polygon's boundary: turning through each exterior angle in turn, you make exactly one full 360° rotation by the time you return to your starting direction."
+    },
+    {
+      "title": "Properties of Quadrilaterals — Parallelogram & Trapezium",
+      "quick_summary": "A parallelogram has both pairs of opposite sides parallel and equal, with diagonals that bisect each other; a trapezium has only one pair of parallel sides.",
+      "detailed": {
+        "definition": "A parallelogram is a quadrilateral with both pairs of opposite sides parallel. A trapezium is a quadrilateral with exactly one pair of parallel sides (called the parallel sides or bases).",
+        "key_idea": "In a parallelogram, opposite sides are equal, opposite angles are equal, consecutive (adjacent) angles are supplementary (sum to 180°), and the diagonals bisect each other.",
+        "working_principle": "These properties can be proven using congruent triangles formed by a diagonal of the parallelogram; because alternate interior angles are equal (parallel sides cut by the diagonal as a transversal), the two triangles formed are always congruent.",
+        "applications": [
+          "Engineering linkages and folding mechanisms (like scissor lifts) use parallelogram properties to maintain parallel motion.",
+          "Land surveying and architectural floor plans often use trapezium-shaped plots, requiring these angle and side properties."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A sliding door track (parallelogram linkage) and a trapezium-shaped table top are common real-life shapes that rely on these specific quadrilateral properties.",
+      "points": [
+        "Parallelogram: opposite sides equal & parallel; opposite angles equal; diagonals bisect each other.",
+        "Sum of any two adjacent (consecutive) angles in a parallelogram = 180° (co-interior angles).",
+        "Trapezium: only ONE pair of sides is parallel; the non-parallel sides are called 'legs'.",
+        "A trapezium is 'isosceles' if its non-parallel sides (legs) are equal — then base angles are also equal."
+      ],
+      "mistakes": [
+        "Assuming a trapezium has both pairs of sides parallel — only one pair is parallel by definition.",
+        "Thinking diagonals of a parallelogram are always equal — they are equal only in a rectangle (a special parallelogram).",
+        "Confusing 'opposite angles equal' with 'adjacent angles equal' in a parallelogram — adjacent angles are supplementary, not equal (unless it's a rectangle)."
+      ],
+      "memory_hook": "'Parallelogram: opposite twins, diagonals share the middle' — sides and angles come in equal opposite pairs, diagonals cut each other in half.",
+      "advanced": "Every property of a parallelogram can be derived from just two facts — opposite sides are parallel — using alternate angle theorems and triangle congruence; this is a good example of how a minimal set of definitions can generate a rich set of derived properties in geometry."
+    },
+    {
+      "title": "Special Parallelograms — Rhombus, Rectangle, Square & Kite",
+      "quick_summary": "Rhombus, rectangle, and square are special parallelograms with extra conditions on sides, angles, or diagonals; a kite is a distinct quadrilateral with two pairs of adjacent (not opposite) equal sides.",
+      "detailed": {
+        "definition": "A rhombus is a parallelogram with all four sides equal; a rectangle is a parallelogram with all angles equal to 90°; a square is a parallelogram that is both a rhombus and a rectangle. A kite has two distinct pairs of adjacent equal sides but is generally NOT a parallelogram.",
+        "key_idea": "Diagonals behave differently in each special quadrilateral: a rhombus's diagonals bisect each other at 90° (perpendicular bisectors); a rectangle's diagonals are equal and bisect each other; a square's diagonals are equal, perpendicular, AND bisect each other; a kite's diagonals are perpendicular but only one diagonal is bisected by the other.",
+        "working_principle": "Since a square satisfies both the rhombus condition (equal sides) and the rectangle condition (equal angles), it automatically inherits diagonal properties from both — equal, perpendicular, and bisecting each other.",
+        "applications": [
+          "Rhombus-shaped patterns are common in tile flooring and traditional textile/rangoli designs.",
+          "Rectangular and square shapes dominate construction (rooms, windows, screens) because right angles simplify building and fitting objects."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A cricket pitch or a door is rectangular (equal diagonals, right angles); traditional kite toys give the quadrilateral 'kite' its name, with two pairs of adjacent equal sides.",
+      "points": [
+        "Rhombus: all sides equal; diagonals bisect each other at right angles (perpendicular bisectors), but are not necessarily equal.",
+        "Rectangle: all angles = 90°; diagonals are equal and bisect each other, but not necessarily perpendicular.",
+        "Square: all sides equal AND all angles = 90°; diagonals equal, perpendicular, and bisect each other.",
+        "Kite: two pairs of adjacent equal sides; diagonals are perpendicular, and only the diagonal between the unequal-side vertices is bisected."
+      ],
+      "mistakes": [
+        "Assuming every rhombus is a square — a rhombus only needs equal sides, not right angles.",
+        "Assuming every rectangle is a square — a rectangle only needs right angles, not equal sides.",
+        "Applying parallelogram diagonal-bisecting properties to a kite — in a kite, only ONE diagonal is bisected, not both."
+      ],
+      "memory_hook": "'Square = Rhombus + Rectangle' — it inherits equal sides from the rhombus and right angles from the rectangle.",
+      "advanced": "This chapter builds a natural hierarchy: parallelogram ⊃ rhombus/rectangle ⊃ square — every square is a rhombus AND a rectangle AND a parallelogram, but the reverse is not true, an important distinction tested frequently through 'always/sometimes/never true' style questions."
+    }
+  ]
+}

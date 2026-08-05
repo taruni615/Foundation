@@ -1,0 +1,248 @@
+{
+  "number": 2,
+  "title": "Tissues",
+  "prerequisites": [
+    "Basic understanding of cells and cell structure from The Fundamental Unit of Life.",
+    "Awareness that multicellular organisms have specialised cells for different jobs."
+  ],
+  "topics": [
+    {
+      "title": "What is a Tissue? Plant vs Animal Tissues",
+      "quick_summary": "A tissue is a group of similar cells that work together to perform a specific function; plant tissues and animal tissues differ in growth pattern and organisation.",
+      "detailed": {
+        "definition": "A tissue is a group of cells that are similar in structure and work together to perform a specific function within an organism.",
+        "key_idea": "Plants are mostly stationary, so plant tissues are largely concerned with providing support and structure, while animals move around, so animal tissues focus on providing energy for movement and repairing worn-out cells.",
+        "working_principle": "Plant growth is localised to specific regions called meristems (like root and shoot tips), producing tissues that mostly just add mass without much repair, whereas animal growth is more uniform throughout the body, with continuous cell repair and replacement.",
+        "applications": [
+          "Basis for understanding plant and animal organ structure in higher biology.",
+          "Explains why plants can regenerate lost parts from meristems while most animals cannot regrow entire limbs."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A group of muscle cells working together to contract and move your arm is a muscular tissue, just as a group of similar cells in a plant stem work together to transport water.",
+      "points": [
+        "A tissue is a group of similar cells performing a common function.",
+        "Plant tissues: broadly divided into meristematic tissue (dividing) and permanent tissue (non-dividing, differentiated).",
+        "Animal tissues: broadly divided into epithelial, connective, muscular and nervous tissue.",
+        "Plant tissues mainly provide mechanical support; animal tissues provide energy, movement, and repair."
+      ],
+      "mistakes": [
+        "Confusing 'tissue' with 'organ' — an organ is made of several different tissues working together.",
+        "Assuming plant and animal tissues serve identical purposes — their functions differ due to different lifestyles."
+      ],
+      "memory_hook": "'Plants build, Animals move' — this difference shapes their tissue types.",
+      "advanced": "Because plant growth is restricted to meristems, a tree's height increase each year comes from a tiny, localised region of dividing cells at the shoot tip, not from all cells growing simultaneously."
+    },
+    {
+      "title": "Meristematic Tissue",
+      "quick_summary": "Meristematic tissue consists of actively dividing cells found at specific growth points in a plant, responsible for increasing the plant's length and girth.",
+      "detailed": {
+        "definition": "Meristematic tissue is a group of undifferentiated, actively dividing plant cells found at regions of growth, classified by location as apical, lateral or intercalary meristem.",
+        "key_idea": "Cells of meristematic tissue are densely packed, have thin walls and prominent nuclei with no vacuoles, features that allow rapid, repeated cell division.",
+        "working_principle": "Apical meristem at root and shoot tips increases plant length; lateral meristem (like the vascular cambium) increases girth/thickness; intercalary meristem, found near the base of leaves or internodes, allows regrowth after grazing or cutting.",
+        "applications": [
+          "Explains why grass keeps growing back after mowing (intercalary meristem near the base).",
+          "Basis of plant tissue culture, where meristematic cells are used to grow entire new plants."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "The tip of a growing root or the bud at the tip of a branch both owe their continued growth to meristematic tissue at those locations.",
+      "points": [
+        "Apical meristem: located at root and shoot tips, increases length.",
+        "Lateral meristem: located along the sides (e.g. cambium), increases girth/thickness.",
+        "Intercalary meristem: located at the base of leaves/internodes, allows regeneration after cutting.",
+        "Meristematic cells lack vacuoles and have dense cytoplasm, unlike mature permanent cells."
+      ],
+      "mistakes": [
+        "Mixing up apical (length) and lateral (girth) meristem functions.",
+        "Forgetting intercalary meristem exists — students often only recall apical and lateral."
+      ],
+      "memory_hook": "'Apical = Above (tip), Lateral = sideways (girth), Intercalary = In-between (base, regrowth).'",
+      "advanced": "Once meristematic cells divide and move away from the growing tip, they lose their ability to divide further and mature into permanent tissue — a one-way process called differentiation."
+    },
+    {
+      "title": "Simple Permanent Tissue (Parenchyma, Collenchyma, Sclerenchyma)",
+      "quick_summary": "Permanent tissues are made of cells that have stopped dividing and taken up a fixed shape and function; simple permanent tissues (parenchyma, collenchyma, sclerenchyma) are each made of only one type of cell.",
+      "detailed": {
+        "definition": "Simple permanent tissue is made of structurally similar cells performing the same function; parenchyma provides storage and support, collenchyma provides flexible mechanical support, and sclerenchyma provides rigid mechanical strength.",
+        "key_idea": "The three types differ mainly in the thickness and composition of their cell walls: parenchyma has thin walls, collenchyma has unevenly thickened flexible walls, and sclerenchyma has thick, lignified (hardened) walls with dead cells at maturity.",
+        "working_principle": "Parenchyma cells stay alive and loosely packed to store food or, when containing chlorophyll (chlorenchyma), to photosynthesise; collenchyma gives flexible support to growing parts like leaf stalks; sclerenchyma cells die after depositing lignin, leaving a hard, hollow structure that provides rigidity.",
+        "applications": [
+          "Parenchyma stores food in fruits, roots (like carrots) and tubers (like potatoes).",
+          "Sclerenchyma gives strength to the husk of a coconut and the hard shell of a nut.",
+          "Collenchyma allows plant parts like leaf stalks to bend without breaking."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The soft, juicy pulp of a fruit like a tomato is parenchyma tissue, storing food and water in loosely packed cells.",
+      "points": [
+        "Parenchyma: thin cell walls, loosely packed, living cells; stores food and water.",
+        "Collenchyma: unevenly thickened walls, living cells; gives flexible mechanical support (found in leaf stalks).",
+        "Sclerenchyma: thick, lignified walls, dead cells at maturity; gives rigid strength (found in seed coats, husk of coconut).",
+        "Chlorenchyma is parenchyma containing chloroplasts, and aerenchyma is parenchyma with air spaces (as in aquatic plants)."
+      ],
+      "mistakes": [
+        "Confusing collenchyma (living, flexible) with sclerenchyma (dead, rigid) — both give support but in different ways.",
+        "Forgetting sclerenchyma cells are dead at maturity, unlike parenchyma and collenchyma cells."
+      ],
+      "memory_hook": "'Parenchyma = Pack & store; Collenchyma = bend without break; Sclerenchyma = Stiff & Strong (dead).'",
+      "advanced": "The rigidity of sclerenchyma comes from lignin, the same hardening compound responsible for making wood strong — this is why sclerenchyma-rich tissue is found in nutshells and seed coats that need extra protection."
+    },
+    {
+      "title": "Complex Permanent Tissue (Xylem and Phloem)",
+      "quick_summary": "Complex permanent tissues are made of more than one type of cell working together as a unit; xylem transports water and minerals upward, while phloem transports food made by photosynthesis to all parts of the plant.",
+      "detailed": {
+        "definition": "Xylem is a complex tissue made of tracheids, vessels, xylem parenchyma and xylem fibres that conducts water and minerals from roots to other parts; phloem is a complex tissue made of sieve tubes, companion cells, phloem parenchyma and phloem fibres that conducts food from leaves to the rest of the plant.",
+        "key_idea": "Xylem conduction is unidirectional (only upward, root to shoot) and involves mostly dead cells (tracheids and vessels); phloem conduction is bidirectional (can move food up or down as needed) and involves living cells (sieve tubes and companion cells).",
+        "working_principle": "Water enters roots and moves up through the hollow, dead, lignified xylem vessels/tracheids by transpiration pull; food (mainly sucrose) made during photosynthesis in leaves is loaded into living sieve tubes, and companion cells help sieve tubes function despite sieve tubes lacking a nucleus.",
+        "applications": [
+          "Explains how a tall tree can move water from its roots to its topmost leaves.",
+          "Basis for understanding transport of fertilisers/systemic pesticides applied to roots or leaves."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "When you water a potted plant, the water travels up through the xylem in the stem to reach the leaves, while sugars made in the leaves travel down through the phloem to feed the roots.",
+      "points": [
+        "Xylem components: tracheids, vessels, xylem parenchyma, xylem fibres — mostly dead cells except xylem parenchyma.",
+        "Xylem transports water and minerals, one-way, from roots to leaves.",
+        "Phloem components: sieve tubes, companion cells, phloem parenchyma, phloem fibres — mostly living cells.",
+        "Phloem transports food, in both directions, using energy (an active process)."
+      ],
+      "mistakes": [
+        "Thinking both xylem and phloem move substances in only one direction — only xylem is strictly one-way.",
+        "Forgetting that sieve tube cells lack a nucleus and depend on adjoining companion cells."
+      ],
+      "memory_hook": "'Xylem = eXpress lift going UP only (water); Phloem = Flows both ways (food).'",
+      "advanced": "Xylem transport of water is largely a passive process driven by transpiration pull from the leaves, while phloem transport of food requires the plant to actively spend energy — a key difference tested at higher levels of plant physiology."
+    },
+    {
+      "title": "Epithelial Tissue",
+      "quick_summary": "Epithelial tissue forms a continuous protective covering or lining over the body's surfaces and organs, classified by cell shape as squamous, cuboidal or columnar.",
+      "detailed": {
+        "definition": "Epithelial tissue is a sheet of tightly packed cells that covers the outer surface of the body and lines internal cavities and organs, resting on a thin basement membrane with little intercellular space.",
+        "key_idea": "Epithelial cells are classified by shape (squamous - flat, cuboidal - cube-shaped, columnar - tall/pillar-shaped) and by arrangement (simple - single layer, stratified - multiple layers); some columnar cells bear cilia to move mucus, and some are modified into glands.",
+        "working_principle": "Because epithelial cells are packed tightly with almost no intercellular space, they form an effective barrier; simple epithelium (single layer) suits areas needing easy diffusion or absorption (like lung alveoli or intestine lining), while stratified epithelium (many layers) suits areas needing protection from wear (like skin).",
+        "applications": [
+          "Squamous epithelium in lung alveoli allows easy diffusion of oxygen and carbon dioxide.",
+          "Ciliated columnar epithelium in the respiratory tract moves mucus (and trapped dust) out of the airway.",
+          "Glandular epithelium forms secretory glands like sweat and salivary glands."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The skin covering your body and the lining of your mouth are both made of epithelial tissue, protecting the deeper tissues from damage and infection.",
+      "points": [
+        "Squamous epithelium: flat cells, forms thin linings (e.g. blood vessels, alveoli), allows easy diffusion.",
+        "Cuboidal epithelium: cube-shaped cells, found in kidney tubules and salivary gland ducts; helps absorption/secretion.",
+        "Columnar epithelium: tall, pillar-shaped cells, lines the intestine; helps absorption; may bear cilia.",
+        "Epithelial tissue always has a free surface, a basement membrane, and no blood vessels of its own."
+      ],
+      "mistakes": [
+        "Confusing simple epithelium (single layer, suited for diffusion) with stratified epithelium (multiple layers, suited for protection).",
+        "Forgetting that epithelial tissue has almost no space between cells, unlike connective tissue."
+      ],
+      "memory_hook": "'Squamous = flat like a Scale, Cuboidal = like a Cube, Columnar = tall like a Column.'",
+      "advanced": "Because epithelial tissue has no blood supply of its own, it must receive nutrients by diffusion from the connective tissue beneath it — this is one reason superficial skin wounds heal differently from deeper ones."
+    },
+    {
+      "title": "Connective Tissue",
+      "quick_summary": "Connective tissue connects, supports, and binds other tissues and organs together, and is unique in having cells that are widely spaced within a large amount of non-living intercellular matrix.",
+      "detailed": {
+        "definition": "Connective tissue consists of cells that are loosely spaced and embedded in an intercellular matrix, which may be jelly-like (areolar), fibrous (tendons/ligaments), fluid (blood) or hard/mineralised (bone/cartilage).",
+        "key_idea": "Unlike other tissue types, connective tissue is defined mainly by its matrix rather than its cells — the nature of the matrix (soft, fluid, or hard) decides the tissue's specific function and properties.",
+        "working_principle": "Areolar tissue fills spaces inside organs and supports internal organs; adipose tissue stores fat as an energy reserve and insulator; bone provides a rigid mineralised framework; cartilage provides a smoother, flexible framework; blood, with its fluid plasma matrix, transports substances throughout the body.",
+        "applications": [
+          "Tendons and ligaments allow movement at joints while keeping bones and muscles connected.",
+          "Adipose tissue under the skin provides insulation and cushioning as well as energy storage.",
+          "Blood, as a connective tissue, transports nutrients, gases, hormones and waste around the body."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Tendons connecting your muscles to bones and ligaments connecting bone to bone are both types of connective tissue built for strength and flexibility.",
+      "points": [
+        "Areolar tissue: fills spaces between organs, supports internal organs, and helps in repair.",
+        "Adipose tissue: stores fat, found beneath the skin, insulates the body.",
+        "Bone: hard, rigid matrix rich in calcium and collagen, forms the skeletal framework.",
+        "Cartilage: smoother, more flexible matrix than bone (e.g. in the nose and ear).",
+        "Blood: fluid connective tissue with plasma as matrix, containing RBCs, WBCs and platelets.",
+        "Tendons connect muscle to bone; ligaments connect bone to bone."
+      ],
+      "mistakes": [
+        "Forgetting that blood is classified as a connective tissue (students often think of it as a separate category).",
+        "Mixing up tendons (muscle-to-bone) with ligaments (bone-to-bone)."
+      ],
+      "memory_hook": "'Tendon = to bone from muscle (T for tie muscle); Ligament = Links bone to bone.'",
+      "advanced": "Blood being a connective tissue is a classic exam trick — it fits the definition perfectly because its cells (RBCs, WBCs, platelets) are dispersed within a large, non-living fluid matrix (plasma), just like other connective tissues."
+    },
+    {
+      "title": "Muscular Tissue",
+      "quick_summary": "Muscular tissue is made of elongated cells called muscle fibres that can contract and relax to produce movement, and is classified as striated, unstriated or cardiac.",
+      "detailed": {
+        "definition": "Muscular tissue is composed of long, contractile cells (muscle fibres) containing special proteins that allow the tissue to shorten (contract) and produce movement.",
+        "key_idea": "Striated (skeletal) muscle is voluntary and shows alternating light-dark bands; unstriated (smooth) muscle is involuntary and unbanded; cardiac muscle is involuntary but striated, and is found only in the heart.",
+        "working_principle": "Voluntary muscles are under conscious control (moving limbs), while involuntary muscles work automatically without conscious control (digesting food, pumping blood); cardiac muscle uniquely combines the banded appearance of skeletal muscle with the involuntary, rhythmic, tireless contraction needed to keep the heart beating throughout life.",
+        "applications": [
+          "Skeletal muscle enables voluntary movements like walking, writing and lifting.",
+          "Smooth muscle controls involuntary processes like peristalsis in the intestine and blood vessel diameter.",
+          "Cardiac muscle powers the continuous, rhythmic pumping of the heart."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The biceps muscle you use to lift a bag is striated (voluntary) muscle, while the muscle in the walls of your stomach that churns food is unstriated (involuntary) muscle.",
+      "points": [
+        "Striated/skeletal muscle: voluntary, banded appearance, attached to bones, tires easily.",
+        "Unstriated/smooth muscle: involuntary, unbanded, found in internal organs like intestines and blood vessels.",
+        "Cardiac muscle: involuntary, striated, found only in the heart, works continuously without fatigue.",
+        "Muscle cells are also called muscle fibres due to their elongated shape."
+      ],
+      "mistakes": [
+        "Assuming all striated muscle is voluntary — cardiac muscle is striated but involuntary, an important exception.",
+        "Confusing 'striated' (banded pattern) with 'voluntary' (under conscious control) — they are related but not the same idea."
+      ],
+      "memory_hook": "'Cardiac muscle breaks the rule: Striated but NOT voluntary!'",
+      "advanced": "Cardiac muscle cells are branched and interconnected by special junctions, allowing electrical signals to spread quickly across the heart so that all chambers contract in a coordinated rhythm — a structural feature unique to this tissue."
+    },
+    {
+      "title": "Nervous Tissue",
+      "quick_summary": "Nervous tissue is made of specialised cells called neurons that generate and transmit electrical impulses, coordinating the body's responses to internal and external stimuli.",
+      "detailed": {
+        "definition": "Nervous tissue is composed mainly of neurons (nerve cells), which are highly specialised cells with a cell body, dendrites (that receive signals) and a long axon (that transmits signals) to conduct nerve impulses.",
+        "key_idea": "A neuron has three main parts: the cell body (with nucleus), dendrites that receive incoming signals, and a single long axon that carries the impulse away to the next neuron, muscle or gland.",
+        "working_principle": "Neurons connect to each other end-to-end at junctions called synapses, forming long chains that transmit electrical impulses extremely quickly from sense organs to the brain/spinal cord and from there to muscles or glands, enabling fast coordination.",
+        "applications": [
+          "Basis of the entire nervous system, including reflex actions and voluntary responses.",
+          "Explains the extremely fast reaction time compared to hormonal (chemical) coordination in the body."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Touching a hot object and instantly pulling your hand away happens because nervous tissue rapidly carries the sensory signal to the brain/spinal cord and the response signal back to the muscle.",
+      "points": [
+        "A neuron has three parts: cell body, dendrites (receive signal), axon (send signal).",
+        "Neurons are the structural and functional unit of the nervous system.",
+        "The junction between two neurons is called a synapse.",
+        "Nerve impulses travel much faster than hormonal signals, enabling quick responses like reflex actions."
+      ],
+      "mistakes": [
+        "Confusing dendrites (receive signals, carry them toward the cell body) with the axon (sends signals away from the cell body).",
+        "Thinking a single neuron reaches all the way from the brain to a distant body part alone — usually many neurons relay the signal in a chain."
+      ],
+      "memory_hook": "'Dendrites = Deliver signal IN; Axon = Away it goes.'",
+      "advanced": "Some human axons (like those running from the spinal cord to the toes) can be over a metre long, making a single neuron one of the longest cells in the human body despite being microscopic in width."
+    }
+  ]
+}

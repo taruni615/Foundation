@@ -1,0 +1,64 @@
+{
+  "number": 18,
+  "title": "Complex Numbers",
+  "prerequisites": [
+    "Quadratic equations and the discriminant.",
+    "Operations with surds.",
+    "Plotting points in the Cartesian plane.",
+    "Pythagoras theorem."
+  ],
+  "topics": [
+    {
+      "title": "Complex Numbers and Their Algebra",
+      "time": "16 mins",
+      "difficulty": "Hard",
+      "importance": 5,
+      "quick_summary": "A complex number has the form a + ib where i = √−1, and complex numbers are added, multiplied and divided using ordinary algebra together with i² = −1.",
+      "real_life": "Alternating-current circuits are analysed with complex impedance, because it captures both the size and the timing of a signal in one number.",
+      "detailed": {
+        "definition": "A complex number is of the form z = a + ib, where a is the real part, b is the imaginary part and i = √−1 with i² = −1. The conjugate of z is z̄ = a − ib and the modulus is |z| = √(a² + b²).",
+        "key_idea": "Complex numbers exist so that every quadratic has roots. Once i is admitted, the Fundamental Theorem of Algebra guarantees that every polynomial of degree n has exactly n roots.",
+        "working_principle": "Division is carried out by multiplying numerator and denominator by the conjugate of the denominator, which makes the denominator real because (a + ib)(a − ib) = a² + b².",
+        "applications": [
+          "Powers of i cycle with period 4: i, −1, −i, 1.",
+          "Roots of a quadratic with negative discriminant are complex conjugates.",
+          "The Argand plane represents a + ib as the point (a, b)."
+        ]
+      },
+      "points": [
+        "i = √−1, i² = −1, i³ = −i, i⁴ = 1; powers repeat with period 4.",
+        "z = a + ib; conjugate z̄ = a − ib; modulus |z| = √(a² + b²).",
+        "z · z̄ = a² + b² = |z|², which is always real and non-negative.",
+        "Divide by multiplying numerator and denominator by the conjugate.",
+        "Complex roots of a real polynomial always occur in conjugate pairs."
+      ],
+      "mistakes": [
+        "Writing √(−4) × √(−9) = √36 = 6; the correct value is 6i² = −6.",
+        "Treating i as an ordinary variable and forgetting i² = −1.",
+        "Comparing two complex numbers as greater or less; they cannot be ordered."
+      ],
+      "memory_hook": "'i squared is minus one' — and the powers of i cycle every four.",
+      "advanced": "Euler's formula e^(iθ) = cos θ + i sin θ unites exponentials with trigonometry, and at θ = π gives e^(iπ) + 1 = 0, linking the five most important constants in mathematics in a single equation.",
+      "formulas": [
+        {
+          "name": "Modulus and Conjugate",
+          "difficulty": "Medium",
+          "formula": "|z| = √(a² + b²);  z̄ = a − ib;  z·z̄ = |z|²",
+          "variables": "z = a + ib, a = real part, b = imaginary part.",
+          "when_to_use": "For division, rationalising and finding the distance of a point from the origin in the Argand plane.",
+          "common_mistakes": "Forgetting to change the sign of only the imaginary part when conjugating.",
+          "shortcut": "|z| is just the distance formula applied to the point (a, b)."
+        },
+        {
+          "name": "Roots of a Quadratic with D < 0",
+          "difficulty": "Medium",
+          "formula": "x = [−b ± i√(4ac − b²)] / 2a",
+          "variables": "a, b, c = coefficients, with b² − 4ac < 0.",
+          "when_to_use": "When the discriminant is negative and complex roots are required.",
+          "common_mistakes": "Leaving a negative quantity under the root instead of extracting i.",
+          "shortcut": "The two roots are always conjugates of each other."
+        }
+      ]
+    }
+  ]
+}

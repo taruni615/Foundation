@@ -27,8 +27,13 @@ Static assets are served from `edu_pipeline/web/frontend/` first, then from the
 repo root — so `/Viewer/...` resolves to the package copy and
 `/edu_pipeline/workspace/...` resolves to extraction output.
 
-Quality gates: `make test` (243 tests, no MySQL/Ollama needed), `make lint`,
+Quality gates: `make test` (366 tests, no MySQL/Ollama needed), `make lint`,
 `make check`. Config lives in `pyproject.toml`; see CONTRIBUTING.md.
+
+**Note:** `make lint` is a bare `ruff check .` and currently reports ~1,280
+findings against modern ruff, almost all cosmetic `UP` rules (`Dict` → `dict`)
+in legacy modules. `make check` therefore fails as configured. New code is kept
+clean under `--select F,E9,B,I`.
 
 Non-runtime utilities live in `tools/` (`tools/export/`, `tools/migration/`) and
 are never imported by the application. The CLI entry points live in `scripts/`
@@ -64,9 +69,42 @@ python scripts/final_to_qa_table.py "edu_pipeline/workspace/<book>/<book>_final.
 # Load a QA table into MySQL (use --replace-book to overwrite an existing book)
 python scripts/insert_qa_table.py "edu_pipeline/workspace/<book>/<book>_qa_table.json"
 
+# Tag the freshly loaded rows so the Practice Engine can select against them
+python scripts/tag_questions.py --coverage          # inspect first
+python scripts/tag_questions.py                     # tag everything untagged
+
 # Short-notes / study-notes only (never touches *_final.json)
 python scripts/short_notes_pipeline.py "10 PHYSICS FOUNDATION"
 ```
+
+## Working from the database instead of the pipeline
+
+Once a book is loaded into MySQL, the three *downstream* jobs need nothing from
+the extraction pipeline — theory and question rows are already in the `qa_*`
+tables. `scripts/db_workbench.py` runs those jobs straight off the DB:
+
+```bash
+python scripts/db_workbench.py health                       # MySQL + Ollama reachability
+python scripts/db_workbench.py books                        # book slugs; --book "<slug>" for chapters
+
+# Study notes from qa_theory_chapter (no PDF, no OCR, no *_final.json)
+python scripts/db_workbench.py notes "10 PHYSICS FOUNDATION" --topics 1,2
+
+# Theory/open-ended rows -> auto-gradable MCQs
+python scripts/db_workbench.py convert --book "10 PHYSICS FOUNDATION" --limit 20
+
+# Existing bank MCQs -> fresh similar MCQs
+python scripts/db_workbench.py similar --chapter 666 --per-item 2 --limit 10
+```
+
+It is **read-only against MySQL** and never touches `*_final.json`,
+`*_qa_table.json`, or `edu_pipeline/workspace/`. Output goes to a separate
+`edu_pipeline/workspace_db/` tree, so a DB-sourced run cannot overwrite
+extraction output. `convert` / `similar` delegate to the same functions as
+`scripts/mcq_generator.py` / `scripts/mcq_similar.py` (which already read the DB
+directly); only the notes path needed new code —
+`edu_pipeline/storage/db_repository.py` rebuilds the slice of the v3.1 document
+that the notes generator reads, so `generate_short_notes` runs unmodified.
 
 `edu_pipeline/extraction/topic_extractor.py` is the ~7,200-line core and owns most flags (`--topics`,
 `--skip-llm`, `--force-llm`, `--merge-final`, `--relabel-final`,
@@ -110,6 +148,34 @@ credentials and is loaded on server startup.
   student attempts. Grading is server-side (correct answers never sent to the
   client before submit); pbkdf2 passwords + HMAC bearer tokens. Works without
   MySQL.
+
+**Practice Engine + student dashboard** (PRD Phase 1 MVP, additive):
+- `generators/questions/tagger.py` — pure rule engine producing the four PRD
+  tagging attributes (`difficulty`, `subtopic`, `cognitive_level` on Bloom's
+  taxonomy, `learning_objective`). `storage/database.estimate_difficulty`
+  delegates here so difficulty has one definition.
+- `generators/questions/mcq_parser.py` — recovers gradable MCQs from bank rows,
+  whose options live *inline* in the question text and whose key lives in the
+  answer text. Deliberately conservative: a row whose key cannot be established
+  is rejected rather than guessed at. Only ~15% of the bank (3,319 rows) is
+  recoverable — many rows have a misaligned `answer` column holding the *next*
+  question's text, which is an extraction-side data bug, not a parser bug.
+- `storage/tagging.py` + `scripts/tag_questions.py` — chapter-by-chapter backfill
+  of the tagging columns. Resumable (`--retag` to redo, default skips tagged
+  rows), `--dry-run` and `--coverage` for inspection.
+- `assessment/practice.py` — the six PRD practice modes (Topic, Chapter, Mixed,
+  Timed Sprint, Adaptive, Mistake) plus Daily Challenge and Chapter Tests with
+  mastery bands. File-backed sessions (`practice.json`), server-side grading,
+  and the Result Analysis report (per topic / difficulty / Bloom level, time per
+  question, mistakes, next-step recommendation).
+- `assessment/dashboard.py` — the six dashboard widgets. Each is computed behind
+  its own `ok` flag so one unavailable source degrades a single card.
+- Frontend: `web/frontend/webapp/src/modules/practice/` and the rewritten
+  student half of `modules/exams/views/dashboard.view.js`.
+
+Schema migration `schema/add_question_tagging_columns.sql` adds the four columns
+and their indexes; every statement is guarded by an `information_schema` check,
+so it is safe to re-run.
 
 **MCQ generation** (both Ollama-powered, additive, read-only w.r.t. DB):
 - `generators/questions/mcq_generator.py` — converts theory/open-ended questions into auto-gradable MCQs.

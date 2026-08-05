@@ -1,0 +1,128 @@
+{
+  "number": 6,
+  "title": "Units and Measurements",
+  "prerequisites": [
+    "Familiarity with metre, kilogram and second.",
+    "Ability to work with powers of ten.",
+    "Basic idea of area and volume.",
+    "Knowledge that every measurement carries some uncertainty."
+  ],
+  "topics": [
+    {
+      "title": "Physical Quantities and the SI System",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Physical quantities are measured against agreed standards, and the SI system defines seven base units from which all other units are derived.",
+      "real_life": "The Mars Climate Orbiter was lost in 1999 because one team used pounds and another newtons — a $125 million reminder that units are not a formality.",
+      "detailed": {
+        "definition": "A physical quantity is anything that can be measured. A unit is the agreed standard against which it is measured. Base units are independent and cannot be derived from one another; derived units are combinations of base units.",
+        "key_idea": "There are exactly seven SI base units. Every other unit in physics — newton, joule, watt, pascal — is built from these seven by multiplication and division alone.",
+        "working_principle": "A measurement is meaningless without a unit, and the numerical value is inversely proportional to the size of the unit chosen. The same length is 1 m or 100 cm — a larger unit gives a smaller number.",
+        "applications": [
+          "Newton (N) = kg·m/s²; Joule (J) = kg·m²/s²; Watt (W) = kg·m²/s³.",
+          "Prefixes: kilo (10³), mega (10⁶), giga (10⁹), milli (10⁻³), micro (10⁻⁶), nano (10⁻⁹).",
+          "Astronomical unit and light year are convenient units for very large distances."
+        ]
+      },
+      "points": [
+        "Seven SI base units: metre (length), kilogram (mass), second (time), ampere (current), kelvin (temperature), mole (amount of substance), candela (luminous intensity).",
+        "Derived units are combinations of base units; e.g. 1 N = 1 kg·m/s².",
+        "Unit symbols named after scientists are capitalised (N, J, W, K) but written in full in lower case (newton, joule).",
+        "Never write a plural 's' on a unit symbol — 5 kg, not 5 kgs.",
+        "1 light year = 9.46 × 10¹⁵ m — a unit of distance, not of time."
+      ],
+      "mistakes": [
+        "Calling the light year a unit of time; it is a unit of distance.",
+        "Writing 'Kg' or 'KG' instead of 'kg' — only the prefix rules decide capitalisation.",
+        "Treating the newton as a base unit; it is derived."
+      ],
+      "memory_hook": "'Metre, Kilogram, Second, Ampere, Kelvin, Mole, Candela' — 'My King Sends A Knight, Mounted, Charging.'",
+      "advanced": "Since 2019 every SI base unit is defined by fixing a fundamental constant — the kilogram through Planck's constant, the metre through the speed of light. No physical artefact remains, so the units cannot drift over time."
+    },
+    {
+      "title": "Measuring Instruments — Vernier Callipers and Screw Gauge",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A vernier calliper measures to 0.1 mm and a screw gauge to 0.01 mm, using a scale that magnifies a fraction of the smallest main-scale division.",
+      "real_life": "A mechanic checks the diameter of a piston with a screw gauge because a metre rule simply cannot resolve the hundredth of a millimetre that decides whether an engine seizes.",
+      "detailed": {
+        "definition": "Least count is the smallest measurement that an instrument can read accurately. For a vernier calliper it is the difference between one main-scale division and one vernier-scale division.",
+        "key_idea": "Both instruments work by the same trick: a second scale is made slightly different from the first, so the point at which two divisions coincide reveals a fraction of the smallest main-scale division.",
+        "working_principle": "Total reading = main scale reading + (vernier or circular scale coincidence × least count). Zero error must be found first and subtracted algebraically from every reading.",
+        "applications": [
+          "Vernier calliper: internal and external diameters, depths of hollow cylinders.",
+          "Screw gauge: thickness of a wire, a sheet of paper or a glass slide.",
+          "Both are used in workshops, laboratories and quality control."
+        ]
+      },
+      "points": [
+        "Least count of vernier calliper = 1 MSD − 1 VSD, usually 0.1 mm or 0.01 cm.",
+        "Least count of screw gauge = pitch / number of circular scale divisions, usually 0.01 mm.",
+        "Pitch = distance moved on the main scale in one complete rotation of the screw.",
+        "Total reading = MSR + (coincidence × LC), then correct for zero error.",
+        "Positive zero error is subtracted; negative zero error is added."
+      ],
+      "mistakes": [
+        "Adding a positive zero error instead of subtracting it.",
+        "Using the number of vernier divisions instead of the coincidence number in the formula.",
+        "Forgetting to convert the final reading into the required unit."
+      ],
+      "memory_hook": "'Correct reading = Observed reading − Zero error' — sign and all, every single time.",
+      "advanced": "The vernier principle dates to 1631 and remains in use because it needs no power and cannot drift. Digital callipers replace the eye with a capacitive encoder but rely on exactly the same geometrical idea.",
+      "formulas": [
+        {
+          "name": "Least Count of a Vernier Calliper",
+          "difficulty": "Medium",
+          "formula": "LC = 1 MSD − 1 VSD",
+          "variables": "MSD = one main scale division, VSD = one vernier scale division.",
+          "when_to_use": "Before taking any reading with a vernier calliper.",
+          "common_mistakes": "Dividing instead of subtracting.",
+          "shortcut": "LC also equals (value of 1 MSD) ÷ (number of vernier divisions)."
+        },
+        {
+          "name": "Least Count of a Screw Gauge",
+          "difficulty": "Medium",
+          "formula": "LC = Pitch / Number of circular scale divisions",
+          "variables": "Pitch = distance advanced in one full rotation, usually 0.5 mm or 1 mm.",
+          "when_to_use": "Before taking any reading with a screw gauge or micrometer.",
+          "common_mistakes": "Using the total number of main scale divisions instead of circular scale divisions.",
+          "shortcut": "Pitch 1 mm with 100 divisions gives the standard LC of 0.01 mm."
+        }
+      ]
+    },
+    {
+      "title": "Errors and Significant Figures",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Every measurement carries an error; significant figures record how precisely a quantity is known, and a calculated result can never be more precise than the least precise measurement used.",
+      "real_life": "Reporting a body's mass as 52.3846 kg after weighing it on a bathroom scale claims a precision the instrument never had.",
+      "detailed": {
+        "definition": "Systematic errors have a definite cause and always shift readings in the same direction; random errors vary unpredictably. Significant figures are the digits in a measurement that are known reliably plus one uncertain digit.",
+        "key_idea": "Accuracy is closeness to the true value; precision is the closeness of repeated measurements to one another. A measurement can be precise but inaccurate — for example, a scale with a zero error.",
+        "working_principle": "Random errors are reduced by taking the mean of many readings. Systematic errors are not — they must be removed by correcting the instrument, which is why zero error is checked before measuring.",
+        "applications": [
+          "In addition and subtraction, the result keeps as many decimal places as the least precise term.",
+          "In multiplication and division, the result keeps as many significant figures as the least precise factor.",
+          "Zero error in callipers and screw gauges is a classic systematic error."
+        ]
+      },
+      "points": [
+        "All non-zero digits are significant; zeros between non-zero digits are significant.",
+        "Leading zeros are not significant; trailing zeros after a decimal point are.",
+        "Accuracy = closeness to the true value; Precision = repeatability.",
+        "Random errors are reduced by averaging; systematic errors are not.",
+        "The final answer must not have more significant figures than the least precise input."
+      ],
+      "mistakes": [
+        "Quoting a calculator result to eight digits when the data justify only three.",
+        "Counting leading zeros in 0.0025 as significant — there are only two significant figures.",
+        "Assuming averaging removes all errors; it only reduces random ones."
+      ],
+      "memory_hook": "'Accurate = on target; Precise = tightly grouped' — you can be one without the other.",
+      "advanced": "Errors propagate predictably: for a product or quotient, the fractional errors add. So if a radius is known to 1%, the volume of a sphere is known only to 3%, because the radius is cubed."
+    }
+  ]
+}

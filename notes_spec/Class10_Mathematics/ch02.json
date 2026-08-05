@@ -1,0 +1,87 @@
+{
+  "number": 2,
+  "title": "Polynomials",
+  "prerequisites": [
+    "Definition of a polynomial and its degree.",
+    "Factorisation by splitting the middle term.",
+    "Ability to plot a graph from a table of values.",
+    "Knowledge of the remainder and factor theorems."
+  ],
+  "topics": [
+    {
+      "title": "Zeroes of a Polynomial and Their Graphical Meaning",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The zeroes of a polynomial are the x-coordinates of the points where its graph meets the x-axis, and a polynomial of degree n has at most n zeroes.",
+      "real_life": "The break-even points of a business, where profit is zero, are exactly the zeroes of the profit polynomial.",
+      "detailed": {
+        "definition": "A real number k is a zero of the polynomial p(x) if p(k) = 0. Geometrically, the zeroes are the x-coordinates of the points where the graph of y = p(x) intersects the x-axis.",
+        "key_idea": "The graph tells you the number of real zeroes at a glance. A parabola cutting the axis twice has two zeroes, touching it once has one repeated zero, and missing it entirely has none.",
+        "working_principle": "A linear polynomial has exactly one zero, a quadratic at most two and a cubic at most three. The graph of a quadratic is a parabola, opening upward if a > 0 and downward if a < 0.",
+        "applications": [
+          "y = x² − 4 cuts the axis at x = 2 and x = −2.",
+          "y = x² + 1 never meets the x-axis, so it has no real zeroes.",
+          "y = (x − 3)² touches the axis at x = 3, a repeated zero."
+        ]
+      },
+      "points": [
+        "A polynomial of degree n has AT MOST n real zeroes.",
+        "Zeroes are the x-coordinates of the graph's intersections with the x-axis.",
+        "A quadratic graph is a parabola: upward if a > 0, downward if a < 0.",
+        "Touching the x-axis means a repeated (equal) zero.",
+        "A cubic can have one, two or three real zeroes."
+      ],
+      "mistakes": [
+        "Reading a y-intercept as a zero; zeroes lie on the x-axis.",
+        "Assuming every quadratic has two real zeroes.",
+        "Saying a degree-n polynomial has exactly n real zeroes; it has at most n."
+      ],
+      "memory_hook": "'Zeroes are where the curve crosses the x-axis' — count the crossings, count the zeroes.",
+      "advanced": "The discriminant b² − 4ac decides the number of crossings before the graph is drawn: positive gives two, zero gives one, negative gives none. Algebra predicts the geometry exactly."
+    },
+    {
+      "title": "Relationship Between Zeroes and Coefficients",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "For a quadratic ax² + bx + c, the sum of the zeroes is −b/a and their product is c/a, which lets a polynomial be reconstructed from its zeroes.",
+      "real_life": "Knowing only the total and the product of two unknown quantities is enough to write down the quadratic they satisfy — a standard trick in word problems.",
+      "detailed": {
+        "definition": "If α and β are the zeroes of ax² + bx + c, then α + β = −b/a and αβ = c/a. For a cubic ax³ + bx² + cx + d with zeroes α, β, γ: α+β+γ = −b/a, αβ+βγ+γα = c/a, αβγ = −d/a.",
+        "key_idea": "The signs alternate as the degree of the symmetric expression increases: −b/a, +c/a, −d/a. Remembering the alternating pattern is easier than memorising each result.",
+        "working_principle": "A quadratic with given zeroes is written as k[x² − (sum)x + (product)], where k is any non-zero constant. Taking k = 1 gives the simplest such polynomial.",
+        "applications": [
+          "Zeroes 3 and −2 give x² − x − 6.",
+          "Given one zero of a cubic, the other two are found by dividing and solving the quotient quadratic.",
+          "Symmetric expressions such as α² + β² are evaluated as (α+β)² − 2αβ."
+        ]
+      },
+      "points": [
+        "Quadratic: α + β = −b/a, αβ = c/a.",
+        "Cubic: Σα = −b/a, Σαβ = c/a, αβγ = −d/a.",
+        "Polynomial from zeroes: k[x² − (α+β)x + αβ].",
+        "α² + β² = (α+β)² − 2αβ.",
+        "1/α + 1/β = (α+β)/αβ."
+      ],
+      "mistakes": [
+        "Writing the sum of the zeroes as +b/a instead of −b/a.",
+        "Forgetting to divide by a when the leading coefficient is not 1.",
+        "Omitting the arbitrary constant k when constructing a polynomial from its zeroes."
+      ],
+      "memory_hook": "'Sum is minus b over a, Product is c over a' — and the signs alternate as you go up in degree.",
+      "advanced": "These are Vieta's formulas, valid for polynomials of any degree. They connect the coefficients to the elementary symmetric functions of the roots, a link that opens into Galois theory.",
+      "formulas": [
+        {
+          "name": "Zeroes and Coefficients of a Quadratic",
+          "difficulty": "Medium",
+          "formula": "α + β = −b/a,  αβ = c/a",
+          "variables": "a, b, c = coefficients of ax² + bx + c; α, β = the two zeroes.",
+          "when_to_use": "To find the sum or product of zeroes without solving, or to build a polynomial from its zeroes.",
+          "common_mistakes": "Dropping the minus sign in the sum.",
+          "shortcut": "Quadratic with given zeroes: x² − (sum)x + (product)."
+        }
+      ]
+    }
+  ]
+}

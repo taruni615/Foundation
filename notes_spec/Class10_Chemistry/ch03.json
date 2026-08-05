@@ -1,0 +1,108 @@
+{
+  "number": 3,
+  "title": "Metals and Non-Metals",
+  "prerequisites": [
+    "Physical properties of metals and non-metals from earlier classes.",
+    "Idea of valency and electronic configuration.",
+    "Understanding of oxidation and reduction.",
+    "Familiarity with the reactivity series."
+  ],
+  "topics": [
+    {
+      "title": "Physical and Chemical Properties",
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Metals are lustrous, malleable, ductile and good conductors and form basic oxides, while non-metals are brittle, poor conductors and form acidic oxides.",
+      "real_life": "Aluminium foil can be beaten into a sheet thinner than paper, while a stick of sulphur crumbles at a tap — the same hammer, opposite results.",
+      "detailed": {
+        "definition": "Malleability is the ability to be beaten into sheets; ductility is the ability to be drawn into wires; sonorousness is the ability to produce a ringing sound. Amphoteric oxides react with both acids and bases.",
+        "key_idea": "Metals lose electrons to form positive ions and their oxides are basic; non-metals gain electrons to form negative ions and their oxides are acidic. Every property in this chapter follows from that one difference in electron behaviour.",
+        "working_principle": "Metals react with oxygen to form oxides, with water to form hydroxide and hydrogen, and with dilute acids to release hydrogen — but only metals above hydrogen in the reactivity series do the last.",
+        "applications": [
+          "Aluminium and zinc form amphoteric oxides, reacting with both acids and alkalis.",
+          "Aqua regia (3 : 1 concentrated HCl : HNO₃) is the only reagent that dissolves gold and platinum.",
+          "Anodising thickens the natural oxide layer on aluminium to protect it further."
+        ]
+      },
+      "points": [
+        "Exceptions: mercury is liquid, sodium and potassium are soft, graphite conducts, iodine is lustrous, diamond is hardest.",
+        "Metal oxides are basic; non-metal oxides are acidic; Al₂O₃ and ZnO are amphoteric.",
+        "Metals below hydrogen in the reactivity series (Cu, Ag, Au) do not release H₂ from dilute acids.",
+        "Nitric acid does not usually give hydrogen with metals — it oxidises it to water.",
+        "Aqua regia dissolves gold and platinum; it is a 3:1 mixture of conc. HCl and conc. HNO₃."
+      ],
+      "mistakes": [
+        "Saying all metals react with dilute acids to give hydrogen; copper, silver and gold do not.",
+        "Expecting hydrogen gas with nitric acid; it is normally reduced to nitrogen oxides instead.",
+        "Calling all metal oxides basic and forgetting the amphoteric ones."
+      ],
+      "memory_hook": "'Metals give electrons and make bases; non-metals take electrons and make acids.'",
+      "advanced": "Aluminium appears unreactive despite being high in the reactivity series because a thin, tightly adherent oxide layer forms instantly and seals the surface. Reactivity and corrosion resistance are therefore not the same property."
+    },
+    {
+      "title": "Ionic Compounds and the Reactivity Series",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Metals transfer electrons to non-metals to form ionic compounds, which are hard, high-melting and conduct electricity when molten or dissolved.",
+      "real_life": "Solid table salt does not conduct electricity, but the moment it dissolves in water the solution completes a circuit — the ions have been set free.",
+      "detailed": {
+        "definition": "An ionic or electrovalent bond is formed by the complete transfer of one or more electrons from a metal atom to a non-metal atom. The reactivity series lists metals in decreasing order of reactivity.",
+        "key_idea": "Ionic compounds do not conduct in the solid state because the ions are locked in a rigid lattice. Melting or dissolving frees the ions, and only then can charge move.",
+        "working_principle": "In a displacement reaction, a metal higher in the reactivity series displaces one lower down from its salt solution. The same ordering decides which method must be used to extract each metal from its ore.",
+        "applications": [
+          "Sodium (2,8,1) loses one electron and chlorine (2,8,7) gains one, forming Na⁺Cl⁻.",
+          "Iron displaces copper from copper sulphate solution; copper cannot displace iron.",
+          "Thermite reaction: Fe₂O₃ + 2Al → 2Fe + Al₂O₃, used for welding railway tracks."
+        ]
+      },
+      "points": [
+        "Reactivity series: K > Na > Ca > Mg > Al > Zn > Fe > Pb > H > Cu > Hg > Ag > Au.",
+        "Ionic compounds: high melting and boiling points, hard, brittle, soluble in water.",
+        "They conduct electricity in molten or aqueous state, NOT in the solid state.",
+        "A more reactive metal displaces a less reactive metal from its salt solution.",
+        "The thermite reaction is highly exothermic and produces molten iron."
+      ],
+      "mistakes": [
+        "Saying ionic compounds conduct in the solid state; the ions cannot move.",
+        "Reversing displacement — the more reactive metal displaces the less reactive one.",
+        "Assuming all ionic compounds dissolve in water; some, like BaSO₄, do not."
+      ],
+      "memory_hook": "'Please Send Cats, Monkeys And Zebras In Lead Cages Made Securely Gold-plated' — the reactivity series in order.",
+      "advanced": "The reactivity series is an empirical ordering of standard electrode potentials, which measure how readily a metal gives up electrons. The same table therefore predicts displacement, extraction method and galvanic corrosion."
+    },
+    {
+      "title": "Extraction of Metals and Corrosion",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The method of extracting a metal depends on its position in the reactivity series, and corrosion is prevented by coating, alloying or sacrificial protection.",
+      "real_life": "Iron railings need repainting every few years, but the Iron Pillar at Delhi has resisted rust for over sixteen centuries because of its unusual composition.",
+      "detailed": {
+        "definition": "Metallurgy is the process of extracting a metal from its ore and refining it. Roasting is heating a sulphide ore strongly in excess air; calcination is heating a carbonate ore in limited air.",
+        "key_idea": "The extraction method follows the reactivity series exactly. Highly reactive metals must be extracted by electrolysis, moderately reactive ones by reduction with carbon, and least reactive ones simply by heating their ore in air.",
+        "working_principle": "Concentration removes gangue, roasting or calcination converts the ore to oxide, reduction gives the free metal, and electrolytic refining yields the pure metal at the cathode.",
+        "applications": [
+          "Aluminium is obtained from bauxite by electrolysis (Hall–Héroult process).",
+          "Zinc and iron oxides are reduced by carbon or carbon monoxide in a furnace.",
+          "Mercury and copper can be obtained simply by heating their sulphide ores in air."
+        ]
+      },
+      "points": [
+        "Roasting: sulphide ore + excess air → oxide + SO₂. Calcination: carbonate ore, limited air → oxide + CO₂.",
+        "Highly reactive metals (K, Na, Ca, Mg, Al): extracted by electrolysis of the molten ore.",
+        "Moderately reactive metals (Zn, Fe, Pb): oxide reduced by carbon.",
+        "Least reactive metals (Cu, Ag, Hg): obtained by heating the ore in air alone.",
+        "Rusting requires BOTH air and moisture; galvanising, painting and alloying prevent it."
+      ],
+      "mistakes": [
+        "Confusing roasting (sulphides, excess air) with calcination (carbonates, limited air).",
+        "Trying to reduce aluminium oxide with carbon; aluminium is too reactive for that.",
+        "Saying rusting occurs in dry air; both oxygen and water are needed."
+      ],
+      "memory_hook": "'Reactive → Electrolysis, Middling → Carbon, Lazy → just Heat it' — extraction follows the series.",
+      "advanced": "Alloying changes properties fundamentally: adding chromium and nickel to iron gives stainless steel, whose chromium oxide layer self-repairs when scratched. That self-healing film, not hardness, is what makes it stainless."
+    }
+  ]
+}

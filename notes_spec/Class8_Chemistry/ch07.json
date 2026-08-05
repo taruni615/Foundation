@@ -1,0 +1,128 @@
+{
+  "number": 7,
+  "title": "States of Matter",
+  "prerequisites": [
+    "Idea that matter is made of tiny particles.",
+    "Familiarity with ice, water and steam as three forms of the same substance.",
+    "Knowledge that heating raises temperature.",
+    "Basic understanding of the words melting and boiling."
+  ],
+  "topics": [
+    {
+      "title": "Particle Nature and the Three States of Matter",
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Matter is made of tiny particles with spaces between them that are constantly moving, and the three states — solid, liquid and gas — differ in how strongly those particles are held together.",
+      "real_life": "The smell of incense reaching across a room, and sugar disappearing into a glass of water without raising the level much, both show that particles move and that there are gaps between them.",
+      "detailed": {
+        "definition": "Matter is anything that has mass and occupies space. Diffusion is the spontaneous intermixing of the particles of two substances; it proves that particles are in constant motion and have spaces between them.",
+        "key_idea": "Five postulates of the particle theory: matter is made of very small particles; there are spaces between them; they are in constant motion; they attract one another; and their kinetic energy increases with temperature.",
+        "working_principle": "In solids the intermolecular force is strongest and the spaces smallest, so particles only vibrate about fixed positions. In liquids the force is weaker, so particles slide past one another. In gases the force is negligible, so particles move freely and fill any container.",
+        "applications": [
+          "Diffusion is fastest in gases, slower in liquids, and negligible in solids.",
+          "Gases are highly compressible, which is why LPG and oxygen are supplied in cylinders.",
+          "Solids have a definite shape and volume; liquids have definite volume only; gases have neither."
+        ]
+      },
+      "points": [
+        "Order of intermolecular force: Solid > Liquid > Gas.",
+        "Order of intermolecular space and kinetic energy: Gas > Liquid > Solid.",
+        "Solids: definite shape and volume, incompressible, high density.",
+        "Liquids: definite volume, no definite shape, take the shape of the container.",
+        "Gases: neither definite shape nor volume, highly compressible, low density."
+      ],
+      "mistakes": [
+        "Saying liquids cannot be compressed at all — they are only very slightly compressible.",
+        "Thinking particles in a solid are completely stationary; they vibrate about fixed positions.",
+        "Confusing diffusion (mixing due to particle motion) with dissolution (forming a solution)."
+      ],
+      "memory_hook": "'Solid = Strongly held, Liquid = Loosely held, Gas = Get away free.'",
+      "advanced": "Plasma and Bose–Einstein condensate are the fourth and fifth states of matter. Plasma — ionised gas — is actually the most common state in the universe, making up stars and the glow inside fluorescent tubes and neon signs."
+    },
+    {
+      "title": "Interconversion of States — Melting, Boiling and Latent Heat",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Matter changes state when temperature or pressure changes, and the heat absorbed during a change of state without any rise in temperature is called latent heat.",
+      "real_life": "Ice at 0 °C keeps a drink far colder than water at 0 °C, because melting ice absorbs a large amount of latent heat from the drink without itself getting warmer.",
+      "detailed": {
+        "definition": "Melting point is the temperature at which a solid becomes a liquid; boiling point is the temperature at which a liquid becomes a gas throughout its bulk. Latent heat is the heat energy absorbed or released during a change of state at constant temperature.",
+        "key_idea": "During melting or boiling the temperature stays constant even though heat is still being supplied. That heat is not raising kinetic energy — it is being used to overcome the forces of attraction between particles.",
+        "working_principle": "Latent heat of fusion of ice is 3.34 × 10⁵ J/kg; latent heat of vaporisation of water is 22.5 × 10⁵ J/kg. Vaporisation needs far more energy because the particles must be separated completely, not merely loosened.",
+        "applications": [
+          "Steam at 100 °C causes far more severe burns than water at 100 °C because of its latent heat.",
+          "Sublimation is the direct change from solid to gas — camphor, naphthalene, dry ice, iodine, ammonium chloride.",
+          "Increasing pressure and lowering temperature liquefies a gas; this is how LPG is stored."
+        ]
+      },
+      "points": [
+        "Melting point of ice = 0 °C = 273 K; boiling point of water = 100 °C = 373 K.",
+        "Kelvin conversion: K = °C + 273; °C = K − 273.",
+        "Temperature stays constant during a change of state, even though heat is supplied.",
+        "Latent heat of vaporisation is much larger than latent heat of fusion.",
+        "Sublimation: solid → gas directly, without becoming liquid."
+      ],
+      "mistakes": [
+        "Expecting the temperature to keep rising while ice is melting — it stays at 0 °C until all the ice has melted.",
+        "Subtracting 273 when converting Celsius to Kelvin instead of adding it.",
+        "Confusing evaporation (surface, any temperature) with boiling (bulk, at the boiling point)."
+      ],
+      "memory_hook": "'Latent = Hidden heat — it hides in the change of state, not in the thermometer.'",
+      "advanced": "Water's exceptionally high latent heat of vaporisation comes from hydrogen bonding. It is why sweating cools the body so effectively, why coastal climates are mild, and why steam carries so much energy in a power station.",
+      "formulas": [
+        {
+          "name": "Celsius–Kelvin Conversion",
+          "difficulty": "Easy",
+          "formula": "K = °C + 273",
+          "variables": "K = temperature on the Kelvin scale, °C = temperature on the Celsius scale.",
+          "when_to_use": "Whenever a temperature has to be expressed on the absolute (SI) scale, or converted back.",
+          "common_mistakes": "Subtracting instead of adding, and writing a degree sign with K — it is written 300 K, not 300 °K.",
+          "shortcut": "Kelvin is always the bigger number for everyday temperatures — add 273 going up to K."
+        },
+        {
+          "name": "Heat Absorbed During Change of State",
+          "difficulty": "Medium",
+          "formula": "Q = m × L",
+          "variables": "Q = heat energy in joules, m = mass in kg, L = specific latent heat in J/kg.",
+          "when_to_use": "To find the heat needed to melt or vaporise a given mass, with no change in temperature.",
+          "common_mistakes": "Using the latent heat of fusion where vaporisation is meant, or including a temperature term — there is no ΔT in this formula.",
+          "shortcut": "No temperature change → use Q = mL; temperature change → use Q = mcΔT."
+        }
+      ]
+    },
+    {
+      "title": "Evaporation and Its Cooling Effect",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Evaporation is the change of a liquid into vapour at the surface at any temperature below the boiling point, and it produces cooling because the fastest particles escape.",
+      "real_life": "Water stays cool in an earthen pot, wet clothes dry faster on a windy day, and a splash of spirit on the palm feels icy — all evaporation.",
+      "detailed": {
+        "definition": "Evaporation is the slow change of a liquid into its vapour at the surface, occurring at all temperatures below the boiling point.",
+        "key_idea": "Only the particles at the surface with the highest kinetic energy escape. The particles left behind therefore have a lower average kinetic energy, and lower average kinetic energy means a lower temperature — so the liquid cools.",
+        "working_principle": "Evaporation increases with a larger surface area, a higher temperature, a lower humidity and a faster wind speed. Humidity slows it because air already saturated with vapour cannot accept more.",
+        "applications": [
+          "An earthen pot keeps water cool because water seeping through its pores evaporates.",
+          "We sweat in summer; evaporation of sweat cools the body.",
+          "Clothes are spread out to dry to increase the exposed surface area."
+        ]
+      },
+      "points": [
+        "Evaporation is a surface phenomenon; boiling is a bulk phenomenon.",
+        "Evaporation occurs at ALL temperatures; boiling occurs only at the boiling point.",
+        "Factors that increase evaporation: larger surface area, higher temperature, lower humidity, more wind.",
+        "Evaporation causes cooling because the most energetic particles leave.",
+        "High humidity slows evaporation, which is why sweat does not dry in the monsoon."
+      ],
+      "mistakes": [
+        "Saying evaporation only happens at the boiling point — that is boiling, not evaporation.",
+        "Thinking humidity speeds up drying; it slows it down.",
+        "Explaining the cooling by 'water is cold' rather than by the loss of high-energy particles."
+      ],
+      "memory_hook": "'The fastest runners escape, so the crowd left behind is slower — and slower means cooler.'",
+      "advanced": "Evaporative cooling sets a physical limit called the wet-bulb temperature. When humidity is so high that sweat cannot evaporate, the body cannot shed heat at all — which is why a wet-bulb temperature above about 35 °C is survivable only for a few hours."
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "number": 3,
+  "title": "Atoms and Molecules",
+  "prerequisites": [
+    "Understanding of elements, compounds and mixtures from Chapter 2.",
+    "Comfort with basic ratio and proportion calculations.",
+    "Familiarity with the idea of physical and chemical changes."
+  ],
+  "topics": [
+    {
+      "title": "Laws of Chemical Combination",
+      "quick_summary": "Chemical combinations always follow fixed, experimentally verified laws — mass is conserved, elements combine in fixed proportions by mass, and gases combine in simple whole-number volume ratios.",
+      "detailed": {
+        "definition": "The Law of Conservation of Mass states that mass can neither be created nor destroyed in a chemical reaction (total mass of reactants = total mass of products). The Law of Constant/Definite Proportions states that a given pure compound always contains the same elements combined in exactly the same proportion by mass, regardless of its source or method of preparation.",
+        "key_idea": "These laws show that chemical combination is not random — every pure compound has one, fixed 'recipe' by mass, and no mass is ever gained or lost during a chemical change, only rearranged.",
+        "working_principle": "The Law of Reciprocal Proportions relates the ratios in which two elements separately combine with a fixed mass of a third element to the ratio in which the two elements combine with each other. The Law of Gaseous Volumes (Gay-Lussac's Law of Combining Volumes) states that gases combine, or are produced, in simple whole-number ratios by volume under the same conditions of temperature and pressure.",
+        "applications": [
+          "The law of conservation of mass is used to balance chemical equations, ensuring atoms are neither created nor destroyed.",
+          "The law of constant proportions justifies why a chemical formula (like CO₂) can be trusted to represent the same substance everywhere in the world."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Whenever hydrogen and oxygen combine to form water, they always do so in exactly the same mass ratio (1:8) no matter how the water is prepared — a direct real-world demonstration of the law of constant proportions.",
+      "points": [
+        "Conservation of Mass: mass of reactants = mass of products in a closed system.",
+        "Constant Proportions: same compound always has the same elements in the same mass ratio (e.g., water is always 1 : 8 by mass of hydrogen : oxygen).",
+        "Reciprocal Proportions: connects combining ratios of two elements with a common third element.",
+        "Law of Gaseous Volumes: gases react/form in simple whole-number volume ratios at the same temperature and pressure."
+      ],
+      "mistakes": [
+        "Thinking mass appears to be 'lost' in reactions releasing a gas (like effervescence) — the gas still has mass, it has just escaped into the surroundings; in a sealed container, total mass is conserved.",
+        "Confusing the law of constant proportions (fixed ratio by mass for one specific compound) with the law of multiple proportions (concerns two elements forming more than one compound)."
+      ],
+      "memory_hook": "'Nothing is lost, nothing is gained — mass just gets rearranged.'",
+      "advanced": "These 18th–19th century laws (established well before atoms could be directly observed) were the strongest indirect evidence for the existence of atoms, and directly inspired Dalton to propose his atomic theory."
+    },
+    {
+      "title": "Dalton's Atomic Theory & Avogadro's Law",
+      "quick_summary": "Dalton's atomic theory explained all the laws of chemical combination by proposing that matter is made of indivisible atoms, while Avogadro's Law relates equal volumes of gases to equal numbers of molecules.",
+      "detailed": {
+        "definition": "Dalton's Atomic Theory (1808) proposed that all matter is made of tiny, indivisible particles called atoms; atoms of a given element are identical in mass and properties; atoms combine in simple whole-number ratios to form compounds; and atoms are neither created nor destroyed in chemical reactions. Avogadro's Law states that equal volumes of all gases, at the same temperature and pressure, contain an equal number of molecules.",
+        "key_idea": "Dalton's theory successfully explained the conservation of mass and constant proportions, but could not explain the law of gaseous volumes — Avogadro resolved this by proposing that gas molecules (not necessarily single atoms) are the basic reacting/combining units.",
+        "working_principle": "Avogadro's Law implies that at a fixed temperature and pressure, the volume of a gas is directly proportional to the number of molecules (and hence moles) present — this became the foundation for calculating molecular masses of gases from their vapour densities.",
+        "applications": [
+          "Avogadro's Law underlies the concept of molar volume (22.4 L at STP for 1 mole of any gas).",
+          "Vapour density measurements (mass of a gas compared to an equal volume of hydrogen) are used to determine unknown molecular masses using Avogadro's Law."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The fact that a fixed volume of any gas at the same temperature and pressure contains the same number of molecules (Avogadro's Law) is the basis for why gas cylinders of the same size and pressure hold similar 'amounts' of different gases.",
+      "points": [
+        "Dalton's postulates: atoms are indivisible; atoms of an element are alike; compounds form in simple whole-number atomic ratios; atoms are conserved in reactions.",
+        "Drawback of Dalton's theory: it could not explain the law of gaseous volumes, and modern physics later showed atoms ARE divisible (into electrons, protons, neutrons).",
+        "Avogadro's Law: V ∝ n (number of moles) at constant T and P.",
+        "Vapour Density = mass of a given volume of gas ÷ mass of the same volume of hydrogen under identical conditions; Molecular Mass = 2 × Vapour Density."
+      ],
+      "mistakes": [
+        "Believing Dalton's atoms are still considered truly 'indivisible' today — modern atomic theory (Chapter 4) shows atoms are made of electrons, protons and neutrons.",
+        "Confusing atoms (Dalton's basic unit) with molecules (Avogadro's basic reacting unit for gases like O₂, H₂, N₂)."
+      ],
+      "memory_hook": "'Dalton: Atoms are Alike & Indivisible. Avogadro: Equal Volume = Equal Molecule count.'",
+      "advanced": "Avogadro's hypothesis was not accepted for nearly 50 years after it was proposed, mainly because scientists at the time did not clearly distinguish between atoms and molecules — its eventual acceptance was crucial for correctly determining atomic and molecular masses."
+    },
+    {
+      "title": "Atoms, Atomic Mass & Chemical Symbols",
+      "quick_summary": "Every element is represented by a unique one- or two-letter chemical symbol, and each atom has a characteristic (usually average) atomic mass measured relative to the mass of one carbon-12 atom.",
+      "detailed": {
+        "definition": "An atom is the smallest particle of an element that retains all the chemical properties of that element and takes part in a chemical reaction; a chemical symbol is a one- or two-letter internationally accepted short form representing one atom of an element; atomic mass is the average mass of an atom of an element expressed on a scale where one atom of carbon-12 is assigned a mass of exactly 12 atomic mass units (amu/u).",
+        "key_idea": "Since atoms are far too light to weigh in grams conveniently, atomic mass is always expressed as a relative value compared to carbon-12, making atomic masses easy, unit-independent numbers to compare across all elements.",
+        "working_principle": "By international convention (IUPAC), the first letter of a chemical symbol is always capital and any second letter is always lowercase (e.g., Co = cobalt, but CO = carbon monoxide, a compound). Elements are named after places (e.g., germanium), planets (e.g., uranium), or scientists (e.g., curium, einsteinium).",
+        "applications": [
+          "Chemical symbols form the universal shorthand language used to write formulas and balance chemical equations in every branch of chemistry.",
+          "Atomic mass values are essential for all mole concept and stoichiometry calculations in later topics."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "The symbol 'Na' for sodium (from its Latin name 'Natrium') and 'Fe' for iron (from 'Ferrum') show how many chemical symbols trace back to Latin or Greek names of elements.",
+      "points": [
+        "One atomic mass unit (amu/u) = 1/12th the mass of one carbon-12 atom.",
+        "Gram atomic mass: the atomic mass of an element expressed in grams (e.g., 1 gram atomic mass of oxygen = 16 g).",
+        "Chemical symbols: first letter always capital, second letter (if any) always lowercase.",
+        "Atomic mass values used in calculations are usually the weighted average of all naturally occurring isotopes of that element."
+      ],
+      "mistakes": [
+        "Writing chemical symbols with the wrong capitalisation (e.g., writing 'co' or 'CO' when 'Co' — cobalt — is meant); this can completely change the chemical meaning.",
+        "Confusing atomic mass (a number, unitless on the amu scale) with gram atomic mass (the same number, but expressed in grams)."
+      ],
+      "memory_hook": "'One Capital, one small — that's how every symbol should fall.'",
+      "advanced": "Because atomic mass is a weighted average of all naturally occurring isotopes (atoms of the same element with different numbers of neutrons, studied in Chapter 4), many atomic masses are not whole numbers — e.g., chlorine's atomic mass of about 35.5 reflects a natural mixture of chlorine-35 and chlorine-37 atoms."
+    },
+    {
+      "title": "Molecules, Ions & Chemical Formulae",
+      "quick_summary": "A molecule is a group of atoms chemically bonded together, an ion is a charged atom or group of atoms, and a chemical formula shows the fixed ratio of atoms/ions present in one unit of a substance based on valency.",
+      "detailed": {
+        "definition": "A molecule is the smallest particle of an element or compound that can exist independently and shows all the properties of that substance, formed when two or more atoms combine chemically. An ion is an atom or group of atoms that has gained or lost one or more electrons and therefore carries a net positive (cation) or negative (anion) charge. A chemical formula is the symbolic representation of one molecule (or formula unit) of a substance, showing the exact number of atoms of each element present.",
+        "key_idea": "Chemical formulae are written using the concept of valency — the combining capacity of an element — by criss-crossing the numerical valency of one atom/ion to become the subscript of the other.",
+        "working_principle": "For simple molecules, valency values are crossed over (e.g., valency of H is 1 and O is 2, giving H₂O). For ionic compounds, the charges on the cation and anion are crossed over and reduced to the simplest ratio (e.g., Mg²⁺ and Cl⁻ combine to give MgCl₂, since the charges 2 and 1 cross over). Polyatomic ions (like SO₄²⁻, NO₃⁻, NH₄⁺) behave as single charged units while writing formulae.",
+        "applications": [
+          "Writing correct chemical formulae is essential for naming compounds, balancing equations, and calculating molecular masses.",
+          "Recognising common polyatomic ions (sulphate, nitrate, carbonate, ammonium) is a frequently tested and practically essential skill."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The oxygen we breathe exists as O₂ molecules (two oxygen atoms bonded together), while common salt is made of Na⁺ and Cl⁻ ions held together by electrostatic attraction, written with the formula NaCl.",
+      "points": [
+        "Molecular mass = sum of atomic masses of all atoms present in one molecule.",
+        "For writing formulae: cross over the valencies (or ionic charges) of the combining atoms/ions and reduce to the simplest whole-number ratio.",
+        "Common polyatomic ions to memorise: sulphate SO₄²⁻, carbonate CO₃²⁻, nitrate NO₃⁻, ammonium NH₄⁺, hydroxide OH⁻.",
+        "A cation is a positively charged ion (formed by loss of electrons); an anion is a negatively charged ion (formed by gain of electrons)."
+      ],
+      "mistakes": [
+        "Forgetting to reduce the crossed-over valency ratio to its simplest whole-number form (e.g., writing Mg₂O₂ instead of the simplified MgO).",
+        "Mixing up which ion is written first — by convention, the cation (positive ion) is always written before the anion (negative ion) in a formula."
+      ],
+      "memory_hook": "'Criss-Cross the charges, then simplify — Cation first, Anion stays close by.'",
+      "advanced": "The valency-based criss-cross method works because a stable compound must be electrically neutral overall — the total positive charge contributed by cations must exactly balance the total negative charge contributed by anions, a principle that becomes fully clear once ionic bonding is studied in Chapter 5."
+    },
+    {
+      "title": "Mole Concept & Empirical/Molecular Formula",
+      "quick_summary": "The mole is chemistry's counting unit for extremely large numbers of particles (6.022 × 10²³, Avogadro's number), linking mass, number of particles, and gas volume in one consistent framework.",
+      "detailed": {
+        "definition": "A mole is the amount of substance that contains exactly 6.022 × 10²³ elementary particles (atoms, molecules, or ions) — this number is called Avogadro's number (Nₐ). The empirical formula of a compound shows the simplest whole-number ratio of atoms of each element present; the molecular formula shows the actual (true) number of atoms of each element in one molecule.",
+        "key_idea": "The mole connects three quantities that are otherwise hard to relate directly: the mass of a substance (in grams), the number of particles it contains, and (for gases) the volume it occupies at STP.",
+        "working_principle": "Moles = given mass ÷ molar mass = number of particles ÷ Avogadro's number = volume of gas at STP ÷ 22.4 L. The molecular formula is always a whole-number multiple (n) of the empirical formula, found using n = molecular mass ÷ empirical formula mass.",
+        "applications": [
+          "The mole concept underlies every stoichiometric calculation in chemistry, from balancing equations to determining reactant/product quantities in industrial processes.",
+          "Determining empirical and molecular formulae from percentage composition is a core skill in analytical and organic chemistry."
+        ]
+      },
+      "time": "22 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Just as we say 'a dozen eggs' to mean 12 eggs without counting them individually, chemists say 'one mole of atoms' to mean 6.022 × 10²³ atoms, a convenient way to handle the astronomically large number of particles in even a small sample.",
+      "points": [
+        "1 mole of any substance = 6.022 × 10²³ particles = gram atomic/molecular/formula mass in grams.",
+        "1 mole of any gas at STP occupies 22.4 L (molar volume).",
+        "Empirical formula mass and molecular formula mass are related by: Molecular formula = n × Empirical formula, where n = Molecular Mass ÷ Empirical Formula Mass.",
+        "To find empirical formula from percentage composition: convert % to mass, convert mass to moles (divide by atomic mass), then divide all mole values by the smallest one to get the simplest ratio."
+      ],
+      "mistakes": [
+        "Forgetting to divide by the smallest mole value when finding the simplest atomic ratio for an empirical formula.",
+        "Confusing empirical formula (simplest ratio, e.g., CH₂O) with molecular formula (actual formula, e.g., C₆H₁₂O₆ for glucose, which is 6 × CH₂O)."
+      ],
+      "memory_hook": "'Empirical = simplEst ratio; Molecular = actual, might be a Multiple of empirical.'",
+      "advanced": "Avogadro's number is so large that if 6.022 × 10²³ grains of rice were spread over the entire surface of the Earth, they would cover it several metres deep — this helps convey just how many particles are packed into even a single mole of a substance.  Formula: Mole–Mass–Number Relationship Difficulty Medium Formula n = m/M = N/Nₐ = V/22.4 (at STP, for gases) Meaning of Variables n = number of moles, m = given mass (g), M = molar mass (g/mol), N = number of particles, Nₐ = Avogadro's number, V = volume of gas at STP (L). When to Use Whenever converting between mass, number of moles, number of particles, or gas volume at STP. Common Mistakes Using this gas-volume relationship at conditions other than STP without first correcting using the gas laws. Shortcut / Memory Trick Always find moles first — it is the central hub connecting mass, particle count, and gas volume.  Formula: Finding n for Molecular Formula Difficulty Advanced Formula n = Molecular Mass / Empirical Formula Mass Meaning of Variables n = whole number multiplier; Molecular Formula = n × (Empirical Formula). When to Use When the empirical formula and molecular mass of a compound are known, and the true molecular formula must be found. Common Mistakes Forgetting to multiply every atom's subscript in the empirical formula by n, not just one element. Shortcut / Memory Trick Divide molecular mass by empirical formula mass first — the answer should come out to a whole (or very close to whole) number."
+    }
+  ]
+}

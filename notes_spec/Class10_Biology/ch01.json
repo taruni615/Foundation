@@ -1,0 +1,172 @@
+{
+  "number": 1,
+  "title": "Life Processes",
+  "prerequisites": [
+    "Knowledge that the cell is the basic unit of life.",
+    "Idea of autotrophic and heterotrophic nutrition.",
+    "Basic familiarity with the human digestive and circulatory systems.",
+    "Understanding of diffusion and of the leaf as the site of photosynthesis."
+  ],
+  "topics": [
+    {
+      "title": "Life Processes and Autotrophic Nutrition",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Life processes are the maintenance functions that keep an organism alive, and photosynthesis is the autotrophic process by which green plants build glucose from carbon dioxide and water using sunlight.",
+      "real_life": "Every calorie of food on earth, and the oxygen in every breath, traces back to chlorophyll trapping sunlight in a leaf.",
+      "detailed": {
+        "definition": "Life processes are the processes — nutrition, respiration, transportation, excretion, control and coordination, growth and reproduction — that together maintain life. Photosynthesis is the process by which autotrophs make food from carbon dioxide and water in the presence of sunlight and chlorophyll.",
+        "key_idea": "Photosynthesis has three events: absorption of light energy by chlorophyll, conversion of light energy into chemical energy with the splitting of water into hydrogen and oxygen, and reduction of carbon dioxide to carbohydrate. These need not occur one after another in time.",
+        "working_principle": "6CO₂ + 12H₂O → C₆H₁₂O₆ + 6O₂ + 6H₂O, in the presence of sunlight and chlorophyll. Carbon dioxide enters through stomata, whose opening and closing is controlled by guard cells that swell and shrink as water enters or leaves them.",
+        "applications": [
+          "Starch test with iodine proves that photosynthesis has taken place in a leaf.",
+          "Variegated leaves stay colourless where there is no chlorophyll, proving chlorophyll is essential.",
+          "Desert plants keep stomata closed by day and take in CO₂ at night to reduce water loss."
+        ]
+      },
+      "points": [
+        "Site of photosynthesis: chloroplast, mainly in the mesophyll of the leaf.",
+        "Oxygen released in photosynthesis comes from water, NOT from carbon dioxide.",
+        "Stomatal pores open when guard cells swell (turgid) and close when they shrink (flaccid).",
+        "Raw materials: CO₂ (from air), water (from soil), plus sunlight and chlorophyll.",
+        "Plants also need nitrogen, phosphorus, iron and magnesium from the soil."
+      ],
+      "mistakes": [
+        "Saying the oxygen released comes from carbon dioxide — it comes from the splitting of water.",
+        "Believing plants respire only at night; they respire continuously, day and night.",
+        "Thinking stomata are only for gas exchange; they are also the main route of transpiration."
+      ],
+      "memory_hook": "'Light, Water split, Carbon fixed' — the three events of photosynthesis, in that logical order.",
+      "advanced": "Because stomata must open for CO₂ but then lose water, desert plants use CAM photosynthesis: they take in CO₂ at night, store it as an acid, and use it by day with the stomata shut — separating the two steps in time rather than in space."
+    },
+    {
+      "title": "Heterotrophic Nutrition and Human Digestion",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Heterotrophs obtain ready-made food, and in humans digestion converts complex food into absorbable molecules through the coordinated action of enzymes along the alimentary canal.",
+      "real_life": "Chewing bread for a minute makes it taste sweet, because salivary amylase has already begun converting starch into sugar in the mouth.",
+      "detailed": {
+        "definition": "Heterotrophic nutrition is obtaining ready-made organic food. It is saprophytic (feeding on dead matter, as in fungi), parasitic (living on a host, as in Cuscuta and tapeworm) or holozoic (ingesting solid food, as in humans and Amoeba).",
+        "key_idea": "Each region of the alimentary canal has a specific pH and specific enzymes. Salivary amylase works in the slightly alkaline mouth, pepsin needs the strongly acidic stomach, and pancreatic and intestinal enzymes need the alkaline small intestine.",
+        "working_principle": "Bile from the liver does two jobs: it makes the acidic food from the stomach alkaline so pancreatic enzymes can act, and it emulsifies fat into small droplets to increase the surface area for lipase.",
+        "applications": [
+          "Amoeba feeds by forming pseudopodia and a food vacuole — a form of holozoic nutrition.",
+          "Peristalsis, the rhythmic muscular contraction of the gut wall, moves food along.",
+          "Villi in the small intestine hugely increase the surface area for absorption."
+        ]
+      },
+      "points": [
+        "Mouth: salivary amylase converts starch to maltose.",
+        "Stomach: HCl (kills germs, makes medium acidic), pepsin (protein), mucus (protects the lining).",
+        "Small intestine: bile (emulsifies fat), trypsin (protein), lipase (fat), amylase (starch) — digestion is completed here.",
+        "Absorption occurs through the villi of the small intestine; the large intestine absorbs water.",
+        "Bile contains NO enzymes — it emulsifies fat and neutralises acid."
+      ],
+      "mistakes": [
+        "Saying bile digests fat — it emulsifies fat; lipase digests it.",
+        "Placing protein digestion in the mouth; it begins in the stomach.",
+        "Confusing the roles of the large intestine (water absorption) and small intestine (nutrient absorption)."
+      ],
+      "memory_hook": "'Mouth = starch, Stomach = protein, Small intestine = all three finished.'",
+      "advanced": "Pepsin is secreted as inactive pepsinogen and is activated only by HCl in the stomach lumen. This safeguard prevents the enzyme from digesting the very cells that make it — the same strategy is used for trypsin in the pancreas."
+    },
+    {
+      "title": "Respiration — Aerobic and Anaerobic",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Respiration releases energy from glucose, aerobically in the mitochondria with oxygen giving much ATP, or anaerobically without oxygen giving far less.",
+      "real_life": "The ache in your legs after a sprint is lactic acid, produced because your muscles ran out of oxygen and switched to anaerobic respiration.",
+      "detailed": {
+        "definition": "Respiration is the breakdown of food to release energy in the form of ATP. Aerobic respiration occurs in the presence of oxygen; anaerobic respiration occurs in its absence.",
+        "key_idea": "The first step is the same in both: glucose is broken down in the cytoplasm into two molecules of pyruvate. What happens to that pyruvate next depends entirely on whether oxygen is available.",
+        "working_principle": "With oxygen, pyruvate enters the mitochondria and is broken to CO₂ and water, releasing a large amount of energy. Without oxygen, it becomes ethanol and CO₂ in yeast, or lactic acid in our muscle cells, releasing much less.",
+        "applications": [
+          "Yeast respires anaerobically in brewing and baking.",
+          "Terrestrial organisms take oxygen from air; aquatic organisms take dissolved oxygen and must breathe faster.",
+          "Haemoglobin in red blood cells carries oxygen; CO₂ is more soluble and is carried mostly dissolved in plasma."
+        ]
+      },
+      "points": [
+        "Glucose → pyruvate (in cytoplasm) is common to both pathways.",
+        "Aerobic: pyruvate → CO₂ + H₂O + a large amount of energy, in the mitochondria.",
+        "Anaerobic in yeast: pyruvate → ethanol + CO₂; in muscle: pyruvate → lactic acid.",
+        "ATP is the energy currency of the cell.",
+        "Air passages are supported by rings of cartilage so that they never collapse."
+      ],
+      "mistakes": [
+        "Saying breathing and respiration are the same; breathing is gas exchange, respiration is energy release in cells.",
+        "Placing glycolysis in the mitochondria — it occurs in the cytoplasm.",
+        "Thinking lactic acid forms in yeast; yeast produces ethanol, muscles produce lactic acid."
+      ],
+      "memory_hook": "'Oxygen present → CO₂ + Water + lots of energy; Oxygen absent → Alcohol (yeast) or Ache (muscle).'",
+      "advanced": "Aerobic respiration yields about 36–38 ATP per glucose against just 2 from anaerobic — an eighteenfold difference. That efficiency gap is why complex multicellular life became possible only after oxygen accumulated in the atmosphere."
+    },
+    {
+      "title": "Transportation in Humans and Plants",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "In humans a four-chambered heart drives a double circulation of blood, while in plants xylem carries water upward by transpiration pull and phloem translocates food using energy.",
+      "real_life": "A tall tree lifts water a hundred metres to its topmost leaves without a pump — evaporation from those leaves does all the work.",
+      "detailed": {
+        "definition": "Double circulation means blood passes through the heart twice in one complete cycle. Transpiration is the loss of water vapour from the aerial parts of a plant. Translocation is the transport of food from leaves to other parts through the phloem.",
+        "key_idea": "Birds and mammals need a four-chambered heart because their high energy requirement demands that oxygenated and deoxygenated blood never mix. Amphibians and many reptiles, with lower demand, manage with three chambers.",
+        "working_principle": "Xylem transport is passive — evaporation from leaf surfaces creates a suction, transpiration pull, which draws a continuous water column upward. Phloem transport is active, using ATP to load sugar, which draws in water by osmosis and creates the pressure that moves the sap.",
+        "applications": [
+          "Lymph carries digested fats and drains excess fluid back into the blood.",
+          "Platelets clot blood at an injury; plasma carries food, CO₂ and nitrogenous waste.",
+          "Transpiration also cools the plant and helps absorb minerals from the soil."
+        ]
+      },
+      "points": [
+        "Human heart: right atrium and ventricle carry deoxygenated blood; left side carries oxygenated blood.",
+        "The left ventricle has the thickest wall because it pumps blood to the whole body.",
+        "Arteries carry blood away from the heart (thick walls, no valves); veins carry it back (thin walls, valves).",
+        "Xylem: water and minerals, upward only, passive, driven by transpiration pull.",
+        "Phloem: food, in both directions, active, requires ATP."
+      ],
+      "mistakes": [
+        "Saying all arteries carry oxygenated blood — the pulmonary artery carries deoxygenated blood.",
+        "Confusing transpiration (water loss) with translocation (food transport).",
+        "Believing phloem transport is passive; it needs energy."
+      ],
+      "memory_hook": "'Arteries Away, Veins in' — and 'Xylem is a straw pulled from above; Phloem is a pump pushed from within'.",
+      "advanced": "Transpiration pull can support a water column under negative pressure of many atmospheres, far beyond what a suction pump could achieve. It works only because water's hydrogen bonds give it enormous tensile strength within the narrow xylem vessels."
+    },
+    {
+      "title": "Excretion in Humans and Plants",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The kidneys filter nitrogenous waste from blood through nephrons and reabsorb what the body needs, while plants excrete by storing wastes or shedding parts.",
+      "real_life": "A dialysis machine replaces failed kidneys by passing blood through a semi-permeable tube in a fluid that has everything except the waste.",
+      "detailed": {
+        "definition": "Excretion is the removal of harmful nitrogenous wastes produced during metabolism. The excretory system in humans consists of a pair of kidneys, ureters, a urinary bladder and a urethra. A nephron is the basic filtration unit of the kidney.",
+        "key_idea": "The kidney does not simply filter — it filters everything small and then reclaims what is useful. Glucose, amino acids, salts and most of the water are selectively reabsorbed, leaving concentrated urine.",
+        "working_principle": "Blood is filtered under pressure in the glomerulus into Bowman's capsule. As the filtrate passes down the tubule, useful substances are reabsorbed into the surrounding capillaries. The amount of water reabsorbed depends on how much excess water the body has and how much waste must be excreted.",
+        "applications": [
+          "Dialysis uses a dialysing fluid with the same composition as plasma but with no nitrogenous waste.",
+          "Plants store wastes in vacuoles and in old xylem as resins and gums, and shed leaves.",
+          "Plants also excrete some waste into the soil around them."
+        ]
+      },
+      "points": [
+        "Each kidney has about one million nephrons.",
+        "Filtration occurs in the glomerulus; selective reabsorption occurs in the tubule.",
+        "Urea is produced in the LIVER, not the kidney.",
+        "Urine is carried by ureters to the bladder, which is under nervous control.",
+        "Plants have no specialised excretory organ; they shed leaves and store waste."
+      ],
+      "mistakes": [
+        "Saying urea is made in the kidneys; it is made in the liver and only removed by the kidneys.",
+        "Confusing the ureter (kidney to bladder) with the urethra (bladder to outside).",
+        "Thinking dialysis cures kidney failure; it only substitutes for the kidney's filtering role."
+      ],
+      "memory_hook": "'Filter everything, then take back what you need' — and 'liver Makes urea, kidney Removes it'.",
+      "advanced": "Water reabsorption is regulated by antidiuretic hormone from the pituitary. Alcohol suppresses ADH, which is why it causes both frequent urination and dehydration — a hormonal, not a fluid-volume, effect."
+    }
+  ]
+}

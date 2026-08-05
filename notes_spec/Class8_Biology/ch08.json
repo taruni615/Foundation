@@ -1,0 +1,108 @@
+{
+  "number": 8,
+  "title": "Life Processes",
+  "prerequisites": [
+    "Idea that living things need food, air and water.",
+    "Basic knowledge of the cell and its parts.",
+    "Familiarity with the words photosynthesis and respiration.",
+    "Awareness that blood flows through the body."
+  ],
+  "topics": [
+    {
+      "title": "Nutrition in Plants and Animals",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Green plants are autotrophs that make their own food by photosynthesis, while animals are heterotrophs that depend directly or indirectly on plants.",
+      "real_life": "Every meal you eat traces back to a green leaf — the wheat in a chapati, and the grass eaten by the cow whose milk you drink.",
+      "detailed": {
+        "definition": "Nutrition is the process of taking in food and using it for energy, growth and repair. Autotrophic nutrition is the making of one's own food from simple inorganic substances; heterotrophic nutrition is obtaining ready-made organic food.",
+        "key_idea": "Photosynthesis converts carbon dioxide and water into glucose and oxygen using sunlight trapped by chlorophyll. It is the only process on earth that puts energy into the living world, and it releases the oxygen every animal breathes.",
+        "working_principle": "6CO₂ + 6H₂O, in the presence of sunlight and chlorophyll, gives C₆H₁₂O₆ + 6O₂. Carbon dioxide enters through stomata, water is drawn up by the roots, and glucose is stored as starch. Heterotrophs are further grouped as holozoic (ingest solid food), saprophytic (feed on dead matter) and parasitic.",
+        "applications": [
+          "Iodine test: starch turns blue-black, proving photosynthesis has occurred in a leaf.",
+          "Insectivorous plants such as pitcher plant and Venus flytrap get nitrogen by trapping insects.",
+          "Fungi such as bread mould are saprophytes; Cuscuta (amarbel) is a parasitic plant."
+        ]
+      },
+      "points": [
+        "Photosynthesis occurs in the chloroplasts, mainly in the leaf, and requires chlorophyll.",
+        "Raw materials: carbon dioxide (from air through stomata) and water (from soil through roots).",
+        "Products: glucose (stored as starch) and oxygen (released).",
+        "Autotrophs = green plants; Heterotrophs = all animals and fungi.",
+        "Heterotrophic types: holozoic (humans, Amoeba), saprophytic (fungi), parasitic (Cuscuta, tapeworm)."
+      ],
+      "mistakes": [
+        "Saying plants respire only at night — plants respire all the time; photosynthesis only happens in light.",
+        "Thinking sunlight is a raw material; sunlight is the energy source, CO₂ and water are the raw materials.",
+        "Calling insectivorous plants heterotrophs — they photosynthesise and are autotrophs that supplement nitrogen."
+      ],
+      "memory_hook": "'AUTO = self-service; HETERO = ordering from outside' — and 'CO₂ + H₂O + Sun + Chlorophyll → Sugar + O₂'.",
+      "advanced": "Photosynthesis has two stages: light reactions in the thylakoid membranes split water and produce ATP and NADPH, and the light-independent Calvin cycle in the stroma uses these to fix CO₂ into sugar. This is why the two are often called the light and dark reactions."
+    },
+    {
+      "title": "Digestion, Respiration and Transportation in Humans",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The digestive system breaks food into absorbable form, respiration releases energy from that food, and the circulatory system carries both nutrients and oxygen to every cell.",
+      "real_life": "The rumbling of an empty stomach, the faster breathing after running up stairs, and the pulse you feel at your wrist are these three systems announcing themselves.",
+      "detailed": {
+        "definition": "Digestion is the breakdown of complex food into simple absorbable substances. Respiration is the release of energy from food. Transportation is the movement of substances around the body by the blood.",
+        "key_idea": "Digestion begins in the mouth with salivary amylase acting on starch, continues in the stomach where pepsin and hydrochloric acid act on protein, and is completed in the small intestine by bile, pancreatic juice and intestinal juice. Absorption occurs through the villi of the small intestine.",
+        "working_principle": "Aerobic respiration: glucose + oxygen → carbon dioxide + water + energy (ATP). The blood, pumped by the four-chambered heart, carries oxygen bound to haemoglobin in red blood cells, and returns carbon dioxide to the lungs.",
+        "applications": [
+          "Anaerobic respiration in muscles during heavy exercise produces lactic acid and causes cramps.",
+          "Yeast respires anaerobically to give alcohol and carbon dioxide — used in brewing and baking.",
+          "Blood pressure is normally about 120/80 mm of mercury in a healthy adult."
+        ]
+      },
+      "points": [
+        "Alimentary canal: mouth → oesophagus → stomach → small intestine → large intestine → anus.",
+        "Largest gland in the human body is the liver; it secretes bile which emulsifies fat.",
+        "Absorption of digested food occurs through the villi of the small intestine.",
+        "Aerobic respiration needs oxygen and releases much more energy than anaerobic respiration.",
+        "The human heart has four chambers: two atria and two ventricles."
+      ],
+      "mistakes": [
+        "Saying digestion is completed in the stomach — most digestion and all absorption happen in the small intestine.",
+        "Confusing breathing (exchange of gases) with respiration (release of energy inside cells).",
+        "Writing that veins always carry deoxygenated blood; the pulmonary vein carries oxygenated blood."
+      ],
+      "memory_hook": "'Mouth, Oesophagus, Stomach, Small, Large — MOSSL, the food's journey' — and 'Breathing is the doorway, respiration is the furnace'.",
+      "advanced": "The small intestine is about 6 metres long and its villi and microvilli raise the absorptive surface to roughly 250 square metres — about the area of a tennis court packed into the abdomen. Surface area is the recurring design solution in every exchange organ."
+    },
+    {
+      "title": "Excretion and Control of the Internal Environment",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Excretion removes the nitrogenous wastes produced by the body's chemical reactions, and in humans it is carried out mainly by the kidneys, which filter the blood.",
+      "real_life": "A dialysis machine does mechanically what a healthy kidney does continuously — filtering waste from the blood of a patient whose kidneys have failed.",
+      "detailed": {
+        "definition": "Excretion is the removal of harmful metabolic wastes, especially nitrogenous wastes such as urea, from the body. The excretory system in humans consists of two kidneys, two ureters, a urinary bladder and the urethra.",
+        "key_idea": "Each kidney contains about a million tiny filtering units called nephrons. Blood is filtered under pressure, and then useful substances — glucose, amino acids, most water and salts — are reabsorbed, leaving urine.",
+        "working_principle": "Urea is formed in the liver from the breakdown of excess amino acids, carried by the blood to the kidneys, filtered out and excreted in urine. Skin excretes water and salts as sweat, and lungs excrete carbon dioxide and water vapour.",
+        "applications": [
+          "Dialysis is used when the kidneys fail, to remove urea artificially from the blood.",
+          "Plants excrete by shedding leaves, storing waste in vacuoles, and releasing gums and resins.",
+          "Sweating cools the body as well as removing salts and urea."
+        ]
+      },
+      "points": [
+        "Excretory organs: kidneys (urea), lungs (CO₂), skin (sweat), liver (bile pigments).",
+        "The functional unit of the kidney is the nephron.",
+        "Urea is produced in the liver, not in the kidney.",
+        "Urine is about 95% water, with urea, uric acid and salts.",
+        "Plants have no specialised excretory system."
+      ],
+      "mistakes": [
+        "Saying urea is made in the kidney — it is made in the liver and only filtered by the kidney.",
+        "Confusing excretion (removal of metabolic waste) with egestion (removal of undigested food as faeces).",
+        "Forgetting that lungs and skin are also excretory organs."
+      ],
+      "memory_hook": "'Liver Makes it, Kidney Takes it' — urea is made in the liver and removed by the kidney.",
+      "advanced": "The kidneys filter about 180 litres of fluid a day but produce only about 1.5 litres of urine — over 99% is reabsorbed. This enormous filter-then-reclaim strategy lets the body finely adjust water and salt balance moment by moment."
+    }
+  ]
+}

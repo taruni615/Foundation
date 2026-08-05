@@ -78,11 +78,16 @@ class OllamaLLMProvider(LLMProvider):
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": user_prompt})
 
+        import os
+        num_ctx = int(os.environ.get("OLLAMA_NUM_CTX") or "32768")
         payload: Dict[str, Any] = {
             "model": self._model,
             "messages": messages,
             "stream": False,
-            "options": {"temperature": temperature},
+            "options": {
+                "temperature": temperature,
+                "num_ctx": num_ctx,
+            },
         }
         if max_tokens:
             payload["options"]["num_predict"] = max_tokens

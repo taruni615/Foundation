@@ -1,0 +1,87 @@
+{
+  "number": 13,
+  "title": "Surface Areas and Volumes",
+  "prerequisites": [
+    "Surface area and volume formulae for cuboid, cylinder, cone and sphere.",
+    "Value of π and skill with fractions.",
+    "Pythagoras theorem for finding slant height.",
+    "Ratio and proportion."
+  ],
+  "topics": [
+    {
+      "title": "Combination of Solids",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "For a solid made by joining two shapes, volumes always add, but only the exposed surfaces are counted in the surface area.",
+      "real_life": "A capsule is a cylinder with a hemisphere at each end, and a circus tent is a cylinder topped by a cone — both standard combination problems.",
+      "detailed": {
+        "definition": "A combination of solids is formed by joining two or more standard solids, or by removing one from another. Its volume is the sum or difference of the component volumes.",
+        "key_idea": "Surfaces that are joined together disappear from view and must not be counted. Volumes, by contrast, always add without exception — this asymmetry is the heart of the chapter.",
+        "working_principle": "Identify the component solids, decide which faces remain exposed, add only those areas, and add all the volumes.",
+        "applications": [
+          "Cylinder + hemisphere: total surface area = 2πrh + 2πr² + πr² (base), if the base is exposed.",
+          "Cone on a cylinder (a tent): canvas needed = curved surface of cone + curved surface of cylinder.",
+          "A cylinder with a conical cavity: subtract the cone's volume but add its curved surface."
+        ]
+      },
+      "points": [
+        "Volumes always add; only exposed surface areas add.",
+        "The circular faces where two solids join are not part of the surface area.",
+        "Draw the solid and mark which faces are visible before writing any formula.",
+        "For a cone, the curved surface uses slant height l = √(r² + h²).",
+        "Check that r is the same for both parts where they join."
+      ],
+      "mistakes": [
+        "Including the joined circular faces in the total surface area.",
+        "Using the vertical height instead of the slant height for a cone's curved surface.",
+        "Subtracting volumes when the solids are joined rather than hollowed out."
+      ],
+      "memory_hook": "'Add all volumes, but only the surfaces you can actually see.'",
+      "advanced": "For a hollowed solid the surface area may increase even though the volume decreases, because a new internal surface is created. Volume and surface area are genuinely independent quantities."
+    },
+    {
+      "title": "Conversion of Solids and Frustum of a Cone",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "When a solid is melted and recast the volume stays constant, and a frustum is the part of a cone left after cutting off the top parallel to the base.",
+      "real_life": "A bucket, a lampshade and a drinking glass are all frustums, and melting a metal sphere into wire is a volume-conservation problem.",
+      "detailed": {
+        "definition": "A frustum of a cone is the solid remaining when a cone is cut by a plane parallel to its base and the upper cone is removed. Its slant height is l = √[h² + (R − r)²].",
+        "key_idea": "In every melting, recasting or reshaping problem the volume is conserved while the surface area changes freely. Setting the two volumes equal is always the first line of the solution.",
+        "working_principle": "The frustum formulas come from subtracting the small cone from the large one; the algebra is done once and the result quoted.",
+        "applications": [
+          "Number of small articles from a large one = volume of large ÷ volume of one small.",
+          "A bucket's capacity is a frustum volume; the metal sheet needed is its curved surface plus the base.",
+          "Water flowing through a pipe: volume = cross-sectional area × speed × time."
+        ]
+      },
+      "points": [
+        "In melting and recasting, volume is conserved but surface area is not.",
+        "Frustum volume = (1/3)πh(R² + r² + Rr).",
+        "Frustum curved surface = πl(R + r), with l = √[h² + (R − r)²].",
+        "Frustum total surface = πl(R + r) + πR² + πr².",
+        "For a flowing pipe, volume delivered = area of cross-section × flow speed × time."
+      ],
+      "mistakes": [
+        "Using l = √(h² + R² + r²) instead of √[h² + (R − r)²].",
+        "Equating surface areas instead of volumes in a recasting problem.",
+        "Forgetting that a bucket usually has no lid, so the top circle is not included."
+      ],
+      "memory_hook": "'Melt and recast: volume never changes' — and for a frustum, use (R − r) in the slant height.",
+      "advanced": "Letting r → 0 turns the frustum formula into the cone formula, and r → R turns it into the cylinder formula. A single expression contains both as limiting cases.",
+      "formulas": [
+        {
+          "name": "Frustum of a Cone",
+          "difficulty": "Hard",
+          "formula": "V = (1/3)πh(R² + r² + Rr);  CSA = πl(R + r);  l = √[h² + (R − r)²]",
+          "variables": "R = larger radius, r = smaller radius, h = vertical height, l = slant height.",
+          "when_to_use": "For buckets, glasses, lampshades and any truncated cone.",
+          "common_mistakes": "Adding R and r inside the slant-height root instead of subtracting.",
+          "shortcut": "Setting r = 0 recovers the cone formulas as a check."
+        }
+      ]
+    }
+  ]
+}

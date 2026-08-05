@@ -1,0 +1,96 @@
+{
+  "number": 2,
+  "title": "Polynomials",
+  "prerequisites": [
+    "Comfort with algebraic expressions and like terms.",
+    "Knowledge of the laws of exponents.",
+    "Ability to substitute a value into an expression.",
+    "Familiarity with factorisation of simple expressions."
+  ],
+  "topics": [
+    {
+      "title": "Polynomials, Degree and Zeroes",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A polynomial is an algebraic expression in which the powers of the variable are whole numbers, and a zero of a polynomial is a value of the variable that makes it equal to zero.",
+      "real_life": "The path of a thrown ball is described by a quadratic polynomial, and its zeroes are exactly the two moments it is at ground level.",
+      "detailed": {
+        "definition": "A polynomial in one variable x is an expression of the form aₙxⁿ + ... + a₁x + a₀ where the coefficients are real numbers and n is a whole number. The degree is the highest power of the variable appearing with a non-zero coefficient.",
+        "key_idea": "The powers must be whole numbers. Expressions such as x^(1/2) or 1/x are not polynomials, however algebraic they look — this is the single most common classification error.",
+        "working_principle": "A number k is a zero of p(x) if p(k) = 0. A polynomial of degree n has at most n zeroes, and a linear polynomial has exactly one.",
+        "applications": [
+          "Linear (degree 1), quadratic (degree 2), cubic (degree 3).",
+          "The zero polynomial has no degree defined; a non-zero constant has degree 0.",
+          "Zeroes of a polynomial are the x-coordinates where its graph meets the x-axis."
+        ]
+      },
+      "points": [
+        "Powers of the variable must be whole numbers for an expression to be a polynomial.",
+        "Degree = highest power with a non-zero coefficient.",
+        "A polynomial of degree n has at most n zeroes.",
+        "A linear polynomial ax + b has exactly one zero, x = −b/a.",
+        "The degree of the zero polynomial is not defined."
+      ],
+      "mistakes": [
+        "Calling √x + 3 or 1/x + 2 a polynomial; fractional and negative powers are not allowed.",
+        "Saying the degree of a non-zero constant is undefined; it is 0.",
+        "Confusing the value of a polynomial p(k) with a zero of the polynomial."
+      ],
+      "memory_hook": "'Whole-number powers only' — that one rule decides whether an expression is a polynomial.",
+      "advanced": "The Fundamental Theorem of Algebra guarantees that a degree-n polynomial has exactly n roots when complex numbers are allowed. The 'at most n' rule of school algebra becomes 'exactly n' once the number system is complete."
+    },
+    {
+      "title": "Remainder Theorem and Factor Theorem",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The remainder theorem gives the remainder on dividing p(x) by (x − a) as p(a), and the factor theorem says (x − a) is a factor exactly when p(a) = 0.",
+      "real_life": "Checking whether a large polynomial has a particular factor takes one substitution instead of a full long division — the theorem turns pages of work into a single line.",
+      "detailed": {
+        "definition": "Remainder theorem: if a polynomial p(x) is divided by the linear polynomial (x − a), the remainder is p(a). Factor theorem: (x − a) is a factor of p(x) if and only if p(a) = 0.",
+        "key_idea": "The factor theorem is simply the remainder theorem with remainder zero. Recognising this means only one idea has to be remembered, not two.",
+        "working_principle": "To factorise a cubic, guess a small integer zero from the factors of the constant term, confirm with the factor theorem, divide out the linear factor, and factorise the remaining quadratic.",
+        "applications": [
+          "To divide by (ax + b), evaluate p(−b/a), not p(b/a).",
+          "Factorising x³ − 3x² − x + 3 begins by testing x = 1, which gives zero.",
+          "Splitting the middle term factorises a quadratic without any division."
+        ]
+      },
+      "points": [
+        "Remainder on division by (x − a) is p(a).",
+        "(x − a) is a factor of p(x) if and only if p(a) = 0.",
+        "For divisor (ax + b), the relevant value is x = −b/a.",
+        "Try factors of the constant term first when hunting for a zero.",
+        "Splitting the middle term: find two numbers whose product is ac and sum is b."
+      ],
+      "mistakes": [
+        "Substituting x = a when dividing by (x + a) — the correct value is x = −a.",
+        "Using p(b/a) instead of p(−b/a) for the divisor (ax + b).",
+        "Forgetting to factorise the quotient completely after removing one factor."
+      ],
+      "memory_hook": "'Set the divisor to zero, substitute, and read the remainder.'",
+      "advanced": "Synthetic division carries out the same computation with only the coefficients, and is far faster for repeated testing. It is the algorithm behind most computer routines for polynomial root-finding.",
+      "formulas": [
+        {
+          "name": "Remainder Theorem",
+          "difficulty": "Easy",
+          "formula": "Remainder of p(x) ÷ (x − a) = p(a)",
+          "variables": "p(x) = the polynomial, a = the value that makes the divisor zero.",
+          "when_to_use": "To find a remainder without performing long division.",
+          "common_mistakes": "Getting the sign of a wrong for a divisor of the form (x + a).",
+          "shortcut": "Set the divisor equal to zero and solve for x — that is the value to substitute."
+        },
+        {
+          "name": "Algebraic Identities",
+          "difficulty": "Medium",
+          "formula": "(a+b)² = a²+2ab+b²;  a²−b² = (a+b)(a−b);  (a+b)³ = a³+3a²b+3ab²+b³;  a³+b³ = (a+b)(a²−ab+b²)",
+          "variables": "a and b = any algebraic terms.",
+          "when_to_use": "For rapid expansion and factorisation without long multiplication.",
+          "common_mistakes": "Writing (a+b)² = a² + b² and omitting the middle term.",
+          "shortcut": "a³ + b³ + c³ − 3abc = (a+b+c)(a²+b²+c²−ab−bc−ca); if a+b+c = 0 then a³+b³+c³ = 3abc."
+        }
+      ]
+    }
+  ]
+}

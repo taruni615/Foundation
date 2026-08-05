@@ -1,0 +1,186 @@
+{
+  "number": 1,
+  "title": "Force and Pressure",
+  "prerequisites": [
+    "Basic idea of push and pull as everyday actions.",
+    "Familiarity with SI units — kilogram (kg), metre (m), second (s), newton (N).",
+    "Idea that objects can be at rest or in motion.",
+    "Basic understanding of liquids, gases and how they fill containers."
+  ],
+  "topics": [
+    {
+      "title": "Force — Balanced and Unbalanced Forces",
+      "quick_summary": "A force is a push or a pull that can change the state of motion or shape of an object. When forces on a body cancel out, they are balanced; when they don't, the body's motion changes.",
+      "detailed": {
+        "definition": "Force is an external push or pull that changes, or tries to change, the state of rest or motion of an object, or its shape. It is a vector quantity with SI unit newton (N).",
+        "key_idea": "Several forces can act on a body at once. Their combined effect is the net (resultant) force. If the net force is zero, forces are balanced; if not, they are unbalanced.",
+        "working_principle": "A single force is called the net force only when all forces acting on the object are combined. Balanced forces keep a body's speed and direction unchanged; unbalanced forces start, stop, speed up, slow down, or change the direction of motion.",
+        "applications": [
+          "A book resting on a table stays still because its weight and the table's support force are balanced.",
+          "A moving car speeds up when the engine's driving force exceeds friction and air resistance (unbalanced forces).",
+          "Forces also change shape — squeezing a rubber ball or stretching a spring."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Two teams pulling equally in a tug-of-war produce balanced forces (the rope doesn't move); one team pulling harder creates unbalanced force and the rope moves.",
+      "points": [
+        "Force can change speed, direction, or shape of an object.",
+        "Balanced forces → net force = 0 → no change in motion.",
+        "Unbalanced forces → net force ≠ 0 → motion changes.",
+        "Force is measured in newtons (N); 1 N is a fairly small everyday force."
+      ],
+      "mistakes": [
+        "Thinking a stationary object has \"no forces\" acting on it — usually it has balanced forces, not zero forces.",
+        "Believing a constant force is needed to keep something moving at constant speed (true only when friction/resistance is present to balance it)."
+      ],
+      "memory_hook": "\"Balanced = Boring (no change), Unbalanced = Unrest (change happens)\".",
+      "advanced": "Even a body that looks perfectly still, like a building, has large balanced forces (gravity vs structural support) constantly acting on it — stillness is a result of balance, not absence, of force."
+    },
+    {
+      "title": "Newton's Laws of Motion",
+      "quick_summary": "Newton's three laws describe how forces cause and change motion: objects resist changes in motion (inertia), force causes acceleration, and every force has an equal and opposite reaction.",
+      "detailed": {
+        "definition": "Newton's First Law (Law of Inertia): an object continues in its state of rest or uniform motion unless acted upon by an unbalanced force. Second Law: the rate of change of momentum is proportional to the applied force. Third Law: every action has an equal and opposite reaction.",
+        "key_idea": "Inertia is the natural tendency of a body to resist any change in its state of rest or motion; more mass means more inertia. Force is what overcomes inertia and produces acceleration, F = ma.",
+        "working_principle": "When an unbalanced force acts on a mass, it produces acceleration in the direction of the force, given by F = ma. Whenever one body exerts a force on a second body, the second body exerts an equal and opposite force back on the first.",
+        "applications": [
+          "Seatbelts in cars work directly against the effect of inertia during sudden stops.",
+          "Rockets are propelled forward by expelling gas backward (action-reaction).",
+          "A karate player breaks a tile faster with a sharp force to produce large acceleration in a short time."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A passenger lurches forward when a bus suddenly stops (1st law); pushing a shopping trolley harder makes it accelerate faster (2nd law); a swimmer pushes water backward to move forward (3rd law).",
+      "points": [
+        "Inertia depends only on mass — heavier objects are harder to start or stop moving.",
+        "F = ma; force and acceleration are always in the same direction.",
+        "Action and reaction forces act on two different objects, so they never cancel each other.",
+        "There are three types of inertia: of rest, of motion, and of direction."
+      ],
+      "mistakes": [
+        "Thinking action and reaction forces cancel out — they act on different bodies, so they don't.",
+        "Confusing mass (amount of matter, constant) with weight (force due to gravity, changes with location).",
+        "Assuming a bigger force always means bigger acceleration, forgetting mass also matters (a = F/m)."
+      ],
+      "memory_hook": "\"Newton 1 = Lazy (resists change), Newton 2 = F=ma, Newton 3 = Always in Pairs\".",
+      "advanced": "Newton's first law is actually a special case of the second law (when F = 0, a = 0, so velocity stays constant) — the three laws form one connected description of motion, not three unrelated rules.",
+      "formulas": [
+        {
+          "name": "Formula",
+          "difficulty": "Medium",
+          "formula": "F = ma",
+          "variables": "F = net force (N), m = mass (kg), a = acceleration (m/s²).",
+          "when_to_use": "To find the force needed to produce a given acceleration, or the acceleration produced by a known force on a known mass.",
+          "common_mistakes": "Using weight instead of mass, or forgetting units must be in kg, m/s² for the answer to come out in newtons.",
+          "shortcut": "\"Force is directly proportional to acceleration, and to make the same acceleration, more mass needs more force.\""
+        }
+      ]
+    },
+    {
+      "title": "Pressure and Thrust",
+      "quick_summary": "Thrust is the total force acting perpendicular to a surface; pressure is thrust spread over an area — the same thrust can feel very different depending on how much area it acts on.",
+      "detailed": {
+        "definition": "Thrust is the force acting perpendicular (normal) to a surface. Pressure is the thrust acting per unit area of that surface: P = Thrust/Area.",
+        "key_idea": "For the same thrust, a smaller area gives higher pressure and a larger area gives lower pressure — this is why wide surfaces \"spread out\" a force.",
+        "working_principle": "When a force pushes on a surface, its effect depends not just on how big the force is but also on how concentrated it is. Reducing the area increases pressure even without increasing the force.",
+        "applications": [
+          "Camels have broad feet to reduce pressure on soft sand and avoid sinking.",
+          "School bag straps are made wide to reduce pressure on the shoulders.",
+          "Tractors use wide tyres to spread their weight over soft or muddy ground.",
+          "Nails and pins are made pointed to increase pressure so they penetrate easily."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A sharp knife cuts more easily than a blunt one because its thin edge concentrates the same force on a tiny area, creating much higher pressure.",
+      "points": [
+        "Pressure = Thrust / Area; SI unit is the pascal (Pa), 1 Pa = 1 N/m².",
+        "Pressure increases when area decreases (for the same thrust) and decreases when area increases.",
+        "Thrust is a force (vector); pressure is thrust per unit area (scalar).",
+        "Sharp or pointed tools work by maximising pressure at a small area."
+      ],
+      "mistakes": [
+        "Confusing thrust (total force) with pressure (force per unit area) — a small thrust can create a huge pressure if the area is tiny enough.",
+        "Assuming a heavier object always exerts more pressure — a lighter object on a much smaller area can exert more pressure."
+      ],
+      "memory_hook": "\"Pressure = Thrust ÷ Area — Push Spread Thin, Pressure Grows.\"",
+      "advanced": "This is why walking on snow with skis (large area) prevents sinking, while the same body weight concentrated on narrow boot soles (small area) would sink — same thrust, very different pressure.",
+      "formulas": [
+        {
+          "name": "Formula",
+          "difficulty": "Easy",
+          "formula": "P = F/A",
+          "variables": "P = pressure (Pa), F = thrust/force (N), A = area (m²).",
+          "when_to_use": "Whenever comparing how \"concentrated\" a force is, or finding pressure exerted on a surface.",
+          "common_mistakes": "Forgetting to convert area to m² when given in cm².",
+          "shortcut": "\"Smaller area, same force  bigger pressure.\""
+        }
+      ]
+    },
+    {
+      "title": "Pressure in Fluids — Pascal's Law",
+      "quick_summary": "Liquids and gases (fluids) exert pressure in all directions, and this pressure increases with depth. Pascal's Law states that pressure applied to an enclosed fluid is transmitted equally in every direction.",
+      "detailed": {
+        "definition": "Fluid pressure at a point is the thrust exerted per unit area by the fluid at that point, acting equally in all directions. Pascal's Law states that pressure change applied to an enclosed, incompressible fluid is transmitted undiminished to every point of the fluid.",
+        "key_idea": "Pressure inside a liquid increases with depth (and with the liquid's density) because deeper points must support the weight of more liquid above them.",
+        "working_principle": "At any point inside a fluid, pressure acts equally in all directions (not just downward), which is why swimmers feel pressure on their ears from all sides, not just from above.",
+        "applications": [
+          "Hydraulic lifts and brakes use Pascal's Law to multiply a small applied force into a much larger output force.",
+          "Water towers are built tall so the pressure at ground-level taps is high enough for good flow.",
+          "Divers experience increasing pressure on their ears the deeper they go."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A dam wall is built thicker at the bottom because water pressure increases with depth; hydraulic car jacks lift heavy vehicles using Pascal's Law.",
+      "points": [
+        "Fluid pressure increases with depth and with the density of the fluid.",
+        "Fluid pressure acts equally in all directions at a given point.",
+        "Atmospheric pressure is the pressure exerted by the layer of air surrounding the Earth on its surface.",
+        "Pascal's Law is the basis of all hydraulic machines (brakes, lifts, jacks)."
+      ],
+      "mistakes": [
+        "Thinking fluid pressure acts only downward, like the weight of an object — it actually acts in all directions.",
+        "Forgetting that pressure depends on depth and density, not on the total amount (volume) of liquid present."
+      ],
+      "memory_hook": "\"Deeper = Heavier weight above = More Pressure\"; \"Pascal: Push anywhere, felt everywhere (in an enclosed fluid).\"",
+      "advanced": "Because fluid pressure depends only on depth and density (not on the shape or total volume of the container), two very differently shaped containers filled with the same liquid to the same height have identical pressure at the bottom — known as the hydrostatic paradox."
+    },
+    {
+      "title": "Buoyancy and Archimedes' Principle",
+      "quick_summary": "Fluids push upward on objects placed in them with a force called buoyant force (upthrust); Archimedes' Principle tells us exactly how large this force is, and it decides whether an object floats or sinks.",
+      "detailed": {
+        "definition": "Buoyancy is the upward force (upthrust) exerted by a fluid on a body partially or fully immersed in it. Archimedes' Principle states that this upthrust equals the weight of the fluid displaced by the immersed part of the body.",
+        "key_idea": "Whether an object floats or sinks depends on comparing its own density with the density of the fluid — an object floats if its average density is less than or equal to the fluid's density.",
+        "working_principle": "As an object is immersed, it pushes fluid out of the way (displaces it). The weight of this displaced fluid equals the buoyant force pushing the object upward; if this upthrust equals the object's weight, it floats.",
+        "applications": [
+          "Ships and boats are designed with a hollow shape to displace enough water to float despite being made of dense metal.",
+          "Submarines control ballast tanks to adjust their average density and rise or sink at will.",
+          "Hydrometers use buoyancy to measure the density of liquids like milk or battery acid."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A ship made of heavy steel floats because its hollow shape displaces a large volume of water, while a solid steel block of the same mass sinks.",
+      "points": [
+        "Object floats if its density ≤ fluid's density; sinks if its density > fluid's density.",
+        "Upthrust = weight of fluid displaced (Archimedes' Principle).",
+        "A floating object displaces a volume of fluid whose weight equals its own weight.",
+        "Objects appear lighter (\"loss of weight\") when weighed while immersed in a fluid, due to upthrust."
+      ],
+      "mistakes": [
+        "Thinking heavy objects always sink — it is density (not just weight) that decides floating or sinking.",
+        "Forgetting that upthrust depends on the volume of fluid displaced, not on the object's own weight directly."
+      ],
+      "memory_hook": "\"Archimedes: Upthrust = Weight of fluid pushed out of the way.\" — 'Eureka!'",
+      "advanced": "A ship floats higher in seawater than in river water because seawater is denser — it needs to displace a smaller volume of the denser seawater to generate the same upthrust equal to the ship's weight."
+    }
+  ]
+}

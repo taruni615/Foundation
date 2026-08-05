@@ -1,0 +1,108 @@
+{
+  "number": 6,
+  "title": "Classification of Matter on the Basis of Chemical Composition",
+  "prerequisites": [
+    "Idea that matter is anything that has mass and occupies space.",
+    "Knowledge of chemical symbols and formulae.",
+    "Familiarity with common substances such as water, salt and air.",
+    "Basic understanding that some substances can be separated and others cannot."
+  ],
+  "topics": [
+    {
+      "title": "Pure Substances — Elements and Compounds",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A pure substance has a fixed composition throughout and is either an element, which cannot be broken down further, or a compound, formed by chemically combining elements in a fixed ratio.",
+      "real_life": "Pure gold is an element, table salt is a compound, and sea water is neither — it is a mixture, even though all three look uniform.",
+      "detailed": {
+        "definition": "An element is a pure substance made of only one kind of atom and cannot be broken into simpler substances by chemical means. A compound is a pure substance formed when two or more elements combine chemically in a fixed ratio by mass.",
+        "key_idea": "In a compound the constituents lose their individual properties completely. Sodium is a metal that catches fire in water and chlorine is a poisonous gas, yet sodium chloride is a harmless substance we eat every day.",
+        "working_principle": "Elements are classified as metals, non-metals and metalloids. Atomicity is the number of atoms in one molecule of an element: monoatomic (He, Ne, Ar), diatomic (H₂, O₂, N₂, Cl₂), triatomic (O₃), tetratomic (P₄), polyatomic (S₈).",
+        "applications": [
+          "There are 118 known elements, of which about 94 occur naturally.",
+          "Compounds are formed with the absorption or evolution of energy — a chemical change.",
+          "The composition of a compound is always fixed: water is always 1:8 hydrogen to oxygen by mass."
+        ]
+      },
+      "points": [
+        "Element = one kind of atom; Compound = two or more elements chemically combined in a fixed ratio.",
+        "In a compound, the constituents lose their original properties.",
+        "A compound has a fixed melting point and boiling point; a mixture does not.",
+        "Atomicity: He (mono), O₂ (di), O₃ (tri), P₄ (tetra), S₈ (poly).",
+        "Compounds can be separated only by chemical methods, never by physical ones."
+      ],
+      "mistakes": [
+        "Calling air a compound — it is a mixture, since its composition varies and its gases keep their properties.",
+        "Saying a compound is a mixture of elements; the elements are chemically bonded, not merely mixed.",
+        "Thinking all elements are monoatomic — most non-metals exist as diatomic or polyatomic molecules."
+      ],
+      "memory_hook": "'Element = One; Compound = Combined and Constant ratio; Mixture = Mixed and Mutable.'",
+      "advanced": "The law of definite proportions — that a compound always contains the same elements in the same mass ratio — was the crucial evidence for Dalton's atomic theory. If matter were continuous rather than made of discrete atoms, there would be no reason for such fixed ratios."
+    },
+    {
+      "title": "Mixtures — Homogeneous and Heterogeneous",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A mixture contains two or more substances in any proportion that keep their own properties; it is homogeneous if uniform throughout and heterogeneous if not.",
+      "real_life": "Sugar dissolved in tea is homogeneous — every sip tastes the same; a bowl of mixed dry fruits is heterogeneous — every handful is different.",
+      "detailed": {
+        "definition": "A mixture is a substance containing two or more pure substances mixed in any proportion, which can be separated by physical methods. A homogeneous mixture has a uniform composition throughout; a heterogeneous mixture does not.",
+        "key_idea": "The key contrast with a compound is threefold: a mixture has variable composition, its constituents keep their own properties, and it can be separated by physical means without any chemical reaction.",
+        "working_principle": "A solution is a homogeneous mixture of a solute dissolved in a solvent. Air, brass, salt water and soda water are homogeneous; sand and water, oil and water, and soil are heterogeneous.",
+        "applications": [
+          "Alloys such as brass and steel are homogeneous mixtures — solid solutions.",
+          "Air is a homogeneous mixture of nitrogen (78%), oxygen (21%) and other gases.",
+          "Milk is a colloid — it looks homogeneous but is heterogeneous at the microscopic level."
+        ]
+      },
+      "points": [
+        "Mixture: variable composition, constituents keep properties, separable by physical means.",
+        "Homogeneous = uniform throughout (solutions, alloys, air).",
+        "Heterogeneous = non-uniform (sand + water, oil + water, soil).",
+        "No energy is absorbed or released in forming a mixture.",
+        "A mixture has no fixed melting or boiling point."
+      ],
+      "mistakes": [
+        "Calling every clear liquid a solution; some clear liquids are pure substances.",
+        "Assuming alloys are compounds — they are homogeneous mixtures.",
+        "Saying mixtures always look non-uniform; homogeneous mixtures look completely uniform."
+      ],
+      "memory_hook": "'HOMOgeneous = HOMOgenised milk look — one phase; HETEROgeneous = you can see the parts.'",
+      "advanced": "Whether a mixture counts as homogeneous depends on the scale of observation. Milk appears uniform to the eye but a microscope reveals suspended fat globules — which is why colloids sit awkwardly between the two categories and are usually treated separately."
+    },
+    {
+      "title": "Separating the Components of a Mixture",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Mixtures are separated by physical methods chosen according to the difference in properties — size, density, solubility, boiling point, magnetism or sublimation.",
+      "real_life": "Winnowing grain in a village, filtering tea leaves through a strainer, and boiling sea water to get salt are three separation techniques used every day.",
+      "detailed": {
+        "definition": "Separation techniques are physical methods that exploit a difference in a physical property between the components of a mixture.",
+        "key_idea": "The method is always chosen by asking which single property differs most. Different densities suggest sedimentation or winnowing; different solubilities suggest filtration or crystallisation; different boiling points suggest distillation.",
+        "working_principle": "Filtration separates an insoluble solid from a liquid. Evaporation recovers a dissolved solid. Distillation recovers the solvent as well, by boiling and then condensing it. Fractional distillation separates two miscible liquids whose boiling points differ. Chromatography separates dissolved substances that travel at different rates on paper.",
+        "applications": [
+          "Sublimation separates camphor, naphthalene or ammonium chloride from common salt.",
+          "A magnet separates iron filings from sulphur powder.",
+          "Chromatography separates the dyes in ink and the pigments in a leaf."
+        ]
+      },
+      "points": [
+        "Filtration: insoluble solid from liquid (chalk and water).",
+        "Evaporation: soluble solid from solution (salt from sea water).",
+        "Distillation: pure solvent recovered (pure water from salt water).",
+        "Fractional distillation: two miscible liquids with different boiling points (petroleum, liquid air).",
+        "Sublimation: a subliming solid from a non-subliming one (camphor from salt)."
+      ],
+      "mistakes": [
+        "Using filtration to separate a dissolved solid — a solute passes straight through the filter paper.",
+        "Confusing evaporation (solvent lost) with distillation (solvent recovered).",
+        "Thinking centrifugation and filtration are interchangeable; centrifugation is for very fine suspended particles."
+      ],
+      "memory_hook": "'Match the Method to the Mismatch' — find the one property that differs and pick the technique that exploits it.",
+      "advanced": "Chromatography works because each component has its own balance between sticking to the stationary phase and dissolving in the moving one. The same principle, scaled up, underlies HPLC and gas chromatography — the standard tools of every modern analytical laboratory."
+    }
+  ]
+}

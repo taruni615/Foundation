@@ -1,0 +1,172 @@
+{
+  "number": 6,
+  "title": "Management of Our Natural Resources",
+  "prerequisites": [
+    "Idea that some resources are exhaustible and others are not.",
+    "Understanding of pollution of air and water.",
+    "Familiarity with the terms forest, wildlife and biodiversity.",
+    "Knowledge of fossil fuels and their formation."
+  ],
+  "topics": [
+    {
+      "title": "Natural Resources and the Need for Management",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Natural resources are limited and shared, so they must be managed for sustainable development — meeting present needs without harming the ability of future generations to meet theirs.",
+      "real_life": "A groundwater table that has fallen by fifty metres in a single generation shows what happens when a shared resource is used faster than it is replenished.",
+      "detailed": {
+        "definition": "Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs. Natural resource management is the planned use and conservation of resources.",
+        "key_idea": "Resources belong to everyone but are consumed by individuals, so short-term individual benefit can destroy long-term collective benefit. Management must therefore be a social and legal question, not only a technical one.",
+        "working_principle": "The three R's — Reduce, Reuse, Recycle — are ordered by effectiveness. Reduce is best because it avoids consumption altogether; recycling still requires energy and produces some pollution.",
+        "applications": [
+          "Switching off unnecessary lights and fans reduces electricity demand at source.",
+          "Reusing envelopes, bottles and bags avoids the energy cost of recycling.",
+          "Recycling metals, paper, glass and plastics returns material to the economy."
+        ]
+      },
+      "points": [
+        "Sustainable development balances present needs and future availability.",
+        "The 3 R's in order of priority: Reduce, Reuse, Recycle.",
+        "Reuse is better than recycle because recycling itself consumes energy.",
+        "Resources must be distributed equitably, not only conserved.",
+        "Short-term aims of individuals often conflict with long-term collective interest."
+      ],
+      "mistakes": [
+        "Ranking recycling above reducing among the three R's.",
+        "Treating conservation as only a technical problem, ignoring equity and law.",
+        "Assuming renewable resources cannot be exhausted; they can, if used faster than they regenerate."
+      ],
+      "memory_hook": "'Reduce beats Reuse beats Recycle' — the earlier you stop the flow, the less is wasted.",
+      "advanced": "This is the tragedy of the commons: a shared resource with individual incentives to overuse it. Solutions require either regulation or community ownership, which is why local forest and water management schemes often outperform central control."
+    },
+    {
+      "title": "Forests and Wildlife — Stakeholders and Conservation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Forests are biodiversity hotspots with four groups of stakeholders whose interests conflict, and conservation must balance ecological need with the livelihoods of local people.",
+      "real_life": "The Chipko movement began when village women hugged trees to stop contractors felling them — a conflict between local users and industry that changed national forest policy.",
+      "detailed": {
+        "definition": "Stakeholders in forest management are the people who live in or near forests, the Forest Department, industrialists who use forest produce, and wildlife and nature enthusiasts.",
+        "key_idea": "Local people were the most sustainable users historically, because their survival depended on the forest continuing to exist. Excluding them and handing forests to distant industry produced far worse outcomes.",
+        "working_principle": "Loss of biodiversity means loss of ecological stability. Conservation programmes therefore aim to preserve the whole ecosystem, not just charismatic species, and increasingly involve local communities directly.",
+        "applications": [
+          "The Chipko Andolan in Reni village, Garhwal, stopped commercial felling in the 1970s.",
+          "West Bengal's Arabari forest range was successfully restored by involving local villagers.",
+          "Project Tiger, Project Rhino and wildlife sanctuaries protect species in their habitat."
+        ]
+      },
+      "points": [
+        "Four stakeholders: local people, Forest Department, industry, conservationists.",
+        "Local communities have historically used forests most sustainably.",
+        "Loss of biodiversity reduces the stability of an ecosystem.",
+        "Chipko Andolan: villagers hugged trees to prevent felling.",
+        "Participation of local people has proved essential for successful conservation."
+      ],
+      "mistakes": [
+        "Assuming local communities are the main cause of deforestation; large-scale industry usually is.",
+        "Thinking conservation means excluding all human presence from forests.",
+        "Listing only wildlife enthusiasts as stakeholders."
+      ],
+      "memory_hook": "'People, Department, Industry, Enthusiasts' — four stakeholders, four different definitions of a forest.",
+      "advanced": "The Arabari experiment showed that giving villagers a share of forest revenue reduced illegal felling more effectively than policing did. Aligning incentives outperformed enforcement — a finding since replicated across joint forest management schemes."
+    },
+    {
+      "title": "Water Management and Rainwater Harvesting",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Dams provide irrigation and electricity but displace people and damage ecology, while local water harvesting recharges groundwater with fewer costs.",
+      "real_life": "The khadins of Rajasthan and the bandharas of Maharashtra have stored monsoon water for centuries without displacing a single village.",
+      "detailed": {
+        "definition": "Water harvesting is the collection and storage of rainwater, usually to recharge groundwater rather than to store it in open reservoirs. A dam is a barrier built across a river to store water.",
+        "key_idea": "Groundwater is the better storage medium because it does not evaporate, does not breed mosquitoes, spreads out to recharge wells over a wide area, and is protected from contamination by human and animal waste.",
+        "working_principle": "Large dams raise three problems: social (displacement of large populations without adequate compensation), economic (huge public spending for benefits that are often unevenly distributed), and environmental (loss of forest and biodiversity, methane from submerged vegetation).",
+        "applications": [
+          "Traditional systems: khadins and nadis in Rajasthan, bandharas in Maharashtra, ahars in Bihar, kulhs in Himachal Pradesh.",
+          "The Tehri Dam on the Ganga and the Sardar Sarovar on the Narmada raised major displacement controversies.",
+          "Rooftop rainwater harvesting is now mandatory in many Indian cities."
+        ]
+      },
+      "points": [
+        "Advantages of dams: irrigation, electricity generation, drinking water supply.",
+        "Problems with dams: social displacement, economic cost, environmental damage.",
+        "Water harvesting aims to recharge GROUNDWATER, not to store water in open tanks.",
+        "Groundwater does not evaporate, does not breed mosquitoes and spreads to recharge wells.",
+        "Traditional local systems were built and maintained by the communities that used them."
+      ],
+      "mistakes": [
+        "Saying water harvesting stores water in ponds; the aim is groundwater recharge.",
+        "Listing only environmental objections to dams and omitting the social and economic ones.",
+        "Assuming large dams are always more efficient than many small local structures."
+      ],
+      "memory_hook": "'Store it underground, not in the sun' — no evaporation, no mosquitoes, no contamination.",
+      "advanced": "Submerged vegetation in reservoirs decomposes anaerobically and releases methane, a greenhouse gas about 25 times more potent than CO₂. Large tropical dams are therefore not always the low-carbon option they are assumed to be."
+    },
+    {
+      "title": "Coal, Petroleum and Energy Conservation",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Coal and petroleum are finite fossil fuels whose combustion pollutes the air and warms the planet, so their use must be reduced and replaced by renewable sources.",
+      "real_life": "Every litre of petrol burnt releases about 2.3 kg of carbon dioxide, which is why fuel efficiency is an environmental measure and not only a financial one.",
+      "detailed": {
+        "definition": "Fossil fuels are formed from the buried remains of organisms over millions of years and are non-renewable on any human timescale. Energy conservation is the reduction of energy consumption through efficient use.",
+        "key_idea": "Because fossil fuels contain carbon, nitrogen and sulphur, burning them necessarily produces CO₂, oxides of nitrogen and sulphur. Cleaner combustion reduces the last two but can never eliminate the first.",
+        "working_principle": "Complete combustion in adequate oxygen gives CO₂ and water; incomplete combustion gives carbon monoxide and soot. Reducing consumption is therefore more effective than improving combustion.",
+        "applications": [
+          "Using public transport, car-pooling and cycling reduces petroleum consumption.",
+          "Pressure cookers, solar cookers and CFL/LED lamps save energy directly.",
+          "Solar, wind, tidal and geothermal are renewable alternatives."
+        ]
+      },
+      "points": [
+        "Fossil fuels are exhaustible and non-renewable.",
+        "Burning them produces CO₂ (warming), SO₂ and NO₂ (acid rain), CO and soot (health damage).",
+        "Incomplete combustion produces poisonous carbon monoxide.",
+        "Energy is lost as heat at every conversion, so efficiency is always less than 100%.",
+        "Renewable sources: solar, wind, hydro, tidal, geothermal, biomass."
+      ],
+      "mistakes": [
+        "Calling all air pollution from fuels 'smoke'; the invisible gases do most of the damage.",
+        "Thinking electricity is a clean energy source regardless of how it was generated.",
+        "Assuming fossil fuels will simply run out; the climate limit will bite long before the supply limit."
+      ],
+      "memory_hook": "'Burn less before you burn better' — conservation beats cleaner combustion.",
+      "advanced": "Because every energy conversion loses heat, the overall efficiency of a coal plant, transmission grid and motor together may be under 30%. Saving one unit at the point of use therefore saves three units at the source."
+    },
+    {
+      "title": "Sustainable Development and Individual Responsibility",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Sustainable development requires equitable distribution of resources, long-term thinking and small consistent changes in individual behaviour.",
+      "real_life": "Ganga Action Plan spending ran into thousands of crores, yet coliform counts fell fastest where local sewage was simply stopped from entering the river.",
+      "detailed": {
+        "definition": "Equitable distribution means resources are shared fairly among all people, not concentrated among the powerful or the wealthy. Sustainable development combines this with ecological limits.",
+        "key_idea": "Conservation without equity fails politically, and equity without conservation fails ecologically. Both conditions have to be met at once for development to be sustainable.",
+        "working_principle": "Individual action matters because consumption is the sum of individual choices, but it must be supported by policy and by technology. No one of the three succeeds alone.",
+        "applications": [
+          "Choosing public transport, avoiding single-use plastic, saving electricity and water.",
+          "Coliform bacteria in the Ganga indicate contamination by untreated sewage.",
+          "Ecomark on Indian products indicates that they are environmentally friendly."
+        ]
+      },
+      "points": [
+        "Sustainable development = present needs met without harming future generations.",
+        "Equitable distribution of resources is as important as conservation.",
+        "Coliform is a group of bacteria whose presence indicates sewage contamination.",
+        "Ecomark identifies environment-friendly products in India.",
+        "Individual, technological and legal measures must act together."
+      ],
+      "mistakes": [
+        "Treating sustainability as purely an environmental issue and ignoring fairness.",
+        "Believing individual action alone can solve systemic problems.",
+        "Confusing Ecomark (environment) with ISI or Agmark (quality standards)."
+      ],
+      "memory_hook": "'Fair share, long view, small steps' — the three conditions of sustainability.",
+      "advanced": "Per-capita resource consumption differs by more than an order of magnitude between rich and poor countries. Any global sustainability target therefore raises a question of allocation, not just of total limits — which is why climate negotiations are so difficult."
+    }
+  ]
+}

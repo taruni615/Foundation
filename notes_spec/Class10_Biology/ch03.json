@@ -1,0 +1,172 @@
+{
+  "number": 3,
+  "title": "How Do Organisms Reproduce?",
+  "prerequisites": [
+    "Knowledge that DNA in the nucleus carries hereditary information.",
+    "Difference between sexual and asexual reproduction.",
+    "Basic idea of the human reproductive organs.",
+    "Familiarity with the parts of a flower."
+  ],
+  "topics": [
+    {
+      "title": "Reproduction, DNA Copying and Variation",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Reproduction is the creation of a DNA copy along with a cellular apparatus, and the small inaccuracies in copying generate the variation on which evolution depends.",
+      "real_life": "A photocopy of a photocopy is never perfect — and it is exactly those tiny imperfections in DNA copying that let species adapt and survive.",
+      "detailed": {
+        "definition": "Reproduction is the biological process by which an organism produces new individuals of its own kind. Variation refers to the differences that appear among individuals of the same species.",
+        "key_idea": "DNA copying is never perfectly accurate. Most variations are neutral or harmful, but a few give an advantage when conditions change. A population without variation could be wiped out by a single change in its environment.",
+        "working_principle": "Reproduction begins with the creation of a DNA copy in the cell, along with additional cellular apparatus, followed by the separation of the copy into a new cell. Consistency of body design is essential for the organism to function in its niche.",
+        "applications": [
+          "Bacterial populations survive heat waves because a few variants tolerate higher temperatures.",
+          "Sexual reproduction generates far more variation than asexual reproduction.",
+          "Variation is the raw material on which natural selection acts."
+        ]
+      },
+      "points": [
+        "DNA is the information source for making proteins and hence for body design.",
+        "Copying of DNA is accompanied by inevitable small variations.",
+        "Variation is useful for the survival of the SPECIES over time, not always for the individual.",
+        "Asexual reproduction gives very little variation; sexual reproduction gives a great deal.",
+        "Reproduction is not essential for the survival of an individual, only of the species."
+      ],
+      "mistakes": [
+        "Saying variation always benefits the individual; many variations are neutral or harmful.",
+        "Thinking DNA copying is perfectly accurate; small errors are inevitable and essential.",
+        "Calling reproduction a life process necessary for individual survival — it is not."
+      ],
+      "memory_hook": "'Copy the DNA, but never perfectly — that imperfection is the engine of evolution.'",
+      "advanced": "DNA polymerase has proofreading ability that reduces the error rate to roughly one in a billion bases. Evolution therefore depends on a copying system that is astonishingly accurate yet deliberately not perfect."
+    },
+    {
+      "title": "Asexual Reproduction in Organisms",
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Asexual reproduction occurs by fission, budding, fragmentation, regeneration, spore formation or vegetative propagation, and produces genetically identical offspring from a single parent.",
+      "real_life": "A cut rose stem planted in soil grows into a complete plant identical to the parent — which is how every rose of a named variety is produced commercially.",
+      "detailed": {
+        "definition": "Asexual reproduction is the production of new individuals from a single parent without the formation or fusion of gametes.",
+        "key_idea": "The mode depends on body organisation. Simple single-celled organisms just split; organisms with simple, undifferentiated bodies fragment or regenerate; complex plants use specialised vegetative parts.",
+        "working_principle": "Regeneration is possible only in organisms with relatively simple body organisation — Planaria and Hydra can regenerate a whole body from a piece, but a complex animal cannot. Regeneration is not the same as reproduction.",
+        "applications": [
+          "Vegetative propagation: sugarcane and rose by stem cutting, potato by tubers, Bryophyllum by leaf buds.",
+          "Tissue culture grows whole plants from a few cells in a nutrient medium — used for orchids and ornamentals.",
+          "Spore formation in Rhizopus produces thousands of spores with thick protective walls."
+        ]
+      },
+      "points": [
+        "Binary fission: Amoeba, Leishmania (along a definite plane); Multiple fission: Plasmodium.",
+        "Budding: Hydra and yeast; Fragmentation: Spirogyra; Regeneration: Planaria and Hydra.",
+        "Spore formation: Rhizopus — spores have thick walls to survive harsh conditions.",
+        "Vegetative propagation preserves desirable characters and produces flowers and fruit earlier.",
+        "Plants that have lost the ability to produce seeds, such as banana and jasmine, are propagated only vegetatively."
+      ],
+      "mistakes": [
+        "Calling regeneration a normal mode of reproduction — it is a repair process in simple organisms.",
+        "Saying Spirogyra reproduces by budding; it fragments.",
+        "Assuming vegetative propagation gives variation; the offspring are clones."
+      ],
+      "memory_hook": "'Fission splits, Budding bumps, Fragmentation breaks, Spores scatter, Vegetative propagates.'",
+      "advanced": "Because vegetatively propagated crops are genetically uniform, a single new pathogen can devastate an entire variety worldwide. This is the reason seed banks maintain wild relatives of crop plants as a genetic reservoir."
+    },
+    {
+      "title": "Sexual Reproduction in Flowering Plants",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The flower is the reproductive organ of an angiosperm; pollination transfers pollen to the stigma and fertilization forms the zygote, which develops into a seed inside a fruit.",
+      "real_life": "Every mango you eat is a ripened ovary, and the stone inside it is the seed that a bee's visit to a flower made possible.",
+      "detailed": {
+        "definition": "Pollination is the transfer of pollen grains from the anther to the stigma. Fertilization is the fusion of the male gamete with the egg cell in the ovule. Self-pollination occurs within the same flower; cross-pollination occurs between two flowers.",
+        "key_idea": "Cross-pollination is biologically preferable because it brings together genetic material from two parents, giving greater variation. Plants have evolved many devices — colour, scent, nectar, separate maturation times — to encourage it.",
+        "working_principle": "After landing on the stigma, the pollen grain germinates and grows a pollen tube down the style to the ovule. The male gamete travels down this tube and fuses with the egg to form the zygote.",
+        "applications": [
+          "Agents of pollination: wind, water, insects, birds and other animals.",
+          "After fertilization: ovule → seed, ovary → fruit, zygote → embryo, petals and stamens wither.",
+          "Germination is the growth of the embryo into a seedling under suitable conditions."
+        ]
+      },
+      "points": [
+        "Stamen (anther + filament) is the male part; carpel/pistil (stigma, style, ovary) is the female part.",
+        "A flower with both stamens and carpel is bisexual; with only one, unisexual.",
+        "Pollen tube carries the male gamete from the stigma to the ovule.",
+        "After fertilization: ovary → fruit, ovule → seed, zygote → embryo.",
+        "A seed contains the embryo (plumule, radicle) and stored food (cotyledons)."
+      ],
+      "mistakes": [
+        "Using pollination and fertilization as the same word — pollination is transfer, fertilization is fusion.",
+        "Saying the ovule becomes the fruit; the ovule becomes the seed and the ovary becomes the fruit.",
+        "Calling papaya and watermelon bisexual flowers; they are unisexual."
+      ],
+      "memory_hook": "'Pollination is the Post, Fertilization is the Fusion' — and 'Ovary → fruit, Ovule → seed'.",
+      "advanced": "Angiosperms perform double fertilization: one male gamete fuses with the egg to form the zygote and the other with two polar nuclei to form the triploid endosperm. Endosperm is the food store, which is what makes cereal grains the basis of human nutrition."
+    },
+    {
+      "title": "Reproduction in Human Beings",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Humans reproduce sexually; sperms produced in the testes fertilize an ovum in the oviduct, and the embryo develops in the uterus nourished through the placenta.",
+      "real_life": "The placenta is a temporary organ built specifically for pregnancy and discarded after birth — the only organ in the body designed to be disposable.",
+      "detailed": {
+        "definition": "The male reproductive system consists of the testes, vas deferens, prostate and seminal vesicles, and the penis. The female system consists of the ovaries, oviducts (fallopian tubes), uterus and vagina. The placenta is the disc-like tissue that connects the embryo to the uterine wall.",
+        "key_idea": "The testes lie in the scrotum outside the abdominal cavity because sperm formation requires a temperature about 2–3 °C lower than normal body temperature.",
+        "working_principle": "Fertilization occurs in the oviduct. The zygote divides to form an embryo, which implants in the thick uterine lining. The placenta provides a large surface area for glucose and oxygen to pass from mother to embryo and waste to pass back.",
+        "applications": [
+          "Gestation period in humans is about nine months.",
+          "If the egg is not fertilized, the uterine lining breaks down and is shed as menstruation.",
+          "Contraception methods: barrier (condom), chemical (oral pills), IUCD (copper-T), surgical (vasectomy, tubectomy)."
+        ]
+      },
+      "points": [
+        "Testes are outside the abdomen because sperm formation needs a lower temperature.",
+        "Fertilization takes place in the oviduct (fallopian tube), not in the uterus.",
+        "The placenta supplies glucose and oxygen and removes waste from the embryo.",
+        "Menstruation occurs about every 28 days if fertilization does not take place.",
+        "Sexually transmitted diseases: gonorrhoea and syphilis (bacterial); warts and HIV-AIDS (viral)."
+      ],
+      "mistakes": [
+        "Saying fertilization occurs in the uterus; it occurs in the oviduct.",
+        "Thinking the placenta mixes maternal and foetal blood; the two circulations stay separate.",
+        "Confusing vasectomy (male) with tubectomy (female)."
+      ],
+      "memory_hook": "'Fertilize in the Tube, develop in the Uterus, feed through the Placenta.'",
+      "advanced": "The placenta's villi provide an enormous exchange surface while keeping maternal and foetal blood entirely separate. This barrier is why blood groups can differ safely, and why Rh incompatibility becomes a problem only if the barrier is breached at birth."
+    },
+    {
+      "title": "Reproductive Health and Family Planning",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Reproductive health means healthy reproductive organs and safe practices, and contraception allows the spacing of children and prevents sexually transmitted infections.",
+      "real_life": "A condom serves two purposes at once — preventing pregnancy and blocking the transmission of HIV and other infections.",
+      "detailed": {
+        "definition": "Reproductive health is the state of complete physical, mental and social well-being in all matters relating to the reproductive system. Contraception is the deliberate prevention of pregnancy.",
+        "key_idea": "Contraceptive methods work at different points: barriers stop sperm meeting egg, hormonal pills prevent ovulation, IUCDs prevent implantation, and surgical methods block the tubes permanently.",
+        "working_principle": "Oral contraceptive pills change the hormonal balance so that no egg is released, which is effective but may have side effects. Surgical methods are reliable and permanent but need proper medical care.",
+        "applications": [
+          "Family planning helps maintain population size and improves maternal and child health.",
+          "Prenatal sex determination is prohibited by law in India, because it leads to female foeticide.",
+          "A healthy sex ratio is essential for social balance."
+        ]
+      },
+      "points": [
+        "Barrier methods (condom, diaphragm) also prevent sexually transmitted infections.",
+        "Oral pills work by changing hormonal balance to stop ovulation.",
+        "Copper-T or loop is an IUCD placed in the uterus.",
+        "Vasectomy blocks the vas deferens; tubectomy blocks the fallopian tubes.",
+        "Prenatal sex determination is legally banned in India."
+      ],
+      "mistakes": [
+        "Assuming all contraceptives protect against infections; only barrier methods do.",
+        "Believing surgical methods are easily reversible; they are meant to be permanent.",
+        "Thinking family planning is only about limiting numbers; spacing and health matter just as much."
+      ],
+      "memory_hook": "'Barrier blocks, Pill prevents ovulation, IUCD stops implantation, Surgery seals the tube.'",
+      "advanced": "India's sex ratio has been distorted by the misuse of prenatal diagnostic technology, which is why the PCPNDT Act bans sex determination. It is a rare instance of a biology chapter carrying a direct legal obligation."
+    }
+  ]
+}

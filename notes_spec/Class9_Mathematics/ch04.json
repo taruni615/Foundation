@@ -1,0 +1,44 @@
+{
+  "number": 4,
+  "title": "Linear Equations in Two Variables",
+  "prerequisites": [
+    "Ability to solve a linear equation in one variable.",
+    "Familiarity with the Cartesian plane and plotting points.",
+    "Understanding of substitution into an algebraic expression.",
+    "Knowledge of the terms coefficient and constant."
+  ],
+  "topics": [
+    {
+      "title": "Linear Equations and Their Solutions",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "An equation of the form ax + by + c = 0 with a and b not both zero is linear in two variables, and it has infinitely many solutions.",
+      "real_life": "If two pens and three pencils cost ₹50, there are many possible price combinations — a single equation in two unknowns can never pin down both.",
+      "detailed": {
+        "definition": "A linear equation in two variables is an equation of the form ax + by + c = 0, where a, b and c are real numbers and a and b are not both zero. A solution is an ordered pair (x, y) that satisfies the equation.",
+        "key_idea": "One equation in two variables has infinitely many solutions because each chosen value of x determines a value of y. Only a second independent equation can fix a unique pair.",
+        "working_principle": "To find solutions, substitute any convenient value for one variable and solve for the other. Choosing x = 0 and y = 0 gives the two intercepts, which are usually the easiest points to plot.",
+        "applications": [
+          "The graph of a linear equation in two variables is always a straight line.",
+          "Every point on the line is a solution, and every solution lies on the line.",
+          "y = mx is a line through the origin; x = a is vertical and y = b is horizontal."
+        ]
+      },
+      "points": [
+        "Standard form: ax + by + c = 0, with a and b not both zero.",
+        "A linear equation in two variables has infinitely many solutions.",
+        "Its graph is always a straight line; two points are enough to draw it.",
+        "x = a is a line parallel to the y-axis; y = b is parallel to the x-axis.",
+        "An equation in one variable represents a point on the number line but a line in the plane."
+      ],
+      "mistakes": [
+        "Saying a linear equation in two variables has only one solution.",
+        "Plotting only one point and trying to draw the line through it.",
+        "Confusing x = 3 (a vertical line in the plane) with the single point 3 on the number line."
+      ],
+      "memory_hook": "'One equation, two unknowns, infinitely many answers — and all of them lie on one line.'",
+      "advanced": "The line is the set of all solutions, so solving simultaneous equations is geometrically the intersection of two lines. Parallel lines mean no solution and coincident lines mean infinitely many — algebra and geometry saying the same thing."
+    }
+  ]
+}

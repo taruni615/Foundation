@@ -1,0 +1,55 @@
+{
+  "number": 9,
+  "title": "Area of Parallelograms and Triangles",
+  "prerequisites": [
+    "Formula for the area of a rectangle.",
+    "Properties of parallelograms.",
+    "Idea of the height or altitude of a figure.",
+    "Congruence of triangles."
+  ],
+  "topics": [
+    {
+      "title": "Figures on the Same Base and Between the Same Parallels",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Parallelograms on the same base and between the same parallels are equal in area, and a triangle in that position has half the area of the parallelogram.",
+      "real_life": "Sliding the top of a stack of paper sideways changes the shape from a rectangle to a slanted parallelogram, but not the amount of paper — area unchanged.",
+      "detailed": {
+        "definition": "Two figures are said to be on the same base and between the same parallels if they share a base and their opposite sides or vertices lie on a line parallel to that base.",
+        "key_idea": "Area depends only on base and perpendicular height, never on how slanted the figure is. Every result in this chapter is a restatement of that single fact.",
+        "working_principle": "Since the parallels are a fixed distance apart, all such figures have the same height. With base and height both equal, their areas must be equal.",
+        "applications": [
+          "A median of a triangle divides it into two triangles of equal area.",
+          "A diagonal of a parallelogram divides it into two congruent triangles of equal area.",
+          "The diagonals of a parallelogram divide it into four triangles of equal area."
+        ]
+      },
+      "points": [
+        "Parallelograms on the same base and between the same parallels are equal in area.",
+        "A triangle and a parallelogram on the same base and between the same parallels: triangle = ½ parallelogram.",
+        "Triangles on the same base and between the same parallels are equal in area.",
+        "A median divides a triangle into two triangles of equal area.",
+        "Equal areas do not imply congruence."
+      ],
+      "mistakes": [
+        "Confusing equal area with congruence; equal-area figures may have very different shapes.",
+        "Using a slant side as the height instead of the perpendicular distance.",
+        "Forgetting the factor of ½ when comparing a triangle with a parallelogram."
+      ],
+      "memory_hook": "'Same base, same parallels, same area' — slant does not change the size.",
+      "advanced": "This is the geometric ancestor of Cavalieri's principle: two solids with equal cross-sectional areas at every height have equal volume. It is what makes the volume of an oblique cylinder equal to that of a right one.",
+      "formulas": [
+        {
+          "name": "Area of a Parallelogram and a Triangle",
+          "difficulty": "Easy",
+          "formula": "Area of parallelogram = base × height;  Area of triangle = ½ × base × height",
+          "variables": "base = any chosen side, height = perpendicular distance from that side to the opposite side or vertex.",
+          "when_to_use": "For any parallelogram or triangle where a base and its corresponding height are known.",
+          "common_mistakes": "Using a slant side as the height instead of the perpendicular distance.",
+          "shortcut": "Any side may be taken as the base, provided the height is measured perpendicular to it."
+        }
+      ]
+    }
+  ]
+}

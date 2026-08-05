@@ -1,0 +1,64 @@
+{
+  "number": 16,
+  "title": "Binomial Theorem",
+  "prerequisites": [
+    "Factorial notation and combinations ⁿCᵣ.",
+    "Laws of exponents.",
+    "Algebraic identities such as (a + b)² and (a + b)³.",
+    "Ability to simplify expressions with powers."
+  ],
+  "topics": [
+    {
+      "title": "Binomial Expansion and General Term",
+      "time": "16 mins",
+      "difficulty": "Hard",
+      "importance": 5,
+      "quick_summary": "The binomial theorem expands (a + b)ⁿ as a sum of n + 1 terms whose coefficients are the combinations ⁿCᵣ.",
+      "real_life": "Compound interest, probability distributions and approximations in physics all rely on binomial expansions rather than repeated multiplication.",
+      "detailed": {
+        "definition": "For any positive integer n, (a + b)ⁿ = Σ ⁿCᵣ aⁿ⁻ʳ bʳ for r = 0 to n. The general term is Tᵣ₊₁ = ⁿCᵣ aⁿ⁻ʳ bʳ.",
+        "key_idea": "The general term is indexed Tᵣ₊₁, not Tᵣ, because r starts at 0. This off-by-one is the single most common error in the whole chapter.",
+        "working_principle": "The powers of a decrease from n to 0 while the powers of b increase from 0 to n, and in every term the two powers add to n — a useful check on any expansion.",
+        "applications": [
+          "The expansion has exactly n + 1 terms.",
+          "The coefficients are the entries of the nth row of Pascal's triangle.",
+          "Coefficients equidistant from the two ends are equal, since ⁿCᵣ = ⁿCₙ₋ᵣ."
+        ]
+      },
+      "points": [
+        "(a + b)ⁿ = ⁿC₀aⁿ + ⁿC₁aⁿ⁻¹b + ... + ⁿCₙbⁿ.",
+        "General term Tᵣ₊₁ = ⁿCᵣ aⁿ⁻ʳ bʳ.",
+        "Number of terms in the expansion = n + 1.",
+        "The sum of the exponents in each term is always n.",
+        "For (a − b)ⁿ the signs alternate, starting positive."
+      ],
+      "mistakes": [
+        "Writing the general term as Tᵣ instead of Tᵣ₊₁.",
+        "Forgetting the alternating signs in (a − b)ⁿ.",
+        "Using n instead of n + 1 for the number of terms."
+      ],
+      "memory_hook": "'Powers of a fall, powers of b rise, and together they always add to n.'",
+      "advanced": "Newton extended the theorem to negative and fractional exponents, where the expansion becomes an infinite series valid for |x| < 1. That generalisation is the basis of most approximation formulas in physics.",
+      "formulas": [
+        {
+          "name": "Binomial Theorem",
+          "difficulty": "Hard",
+          "formula": "(a + b)ⁿ = Σᵣ₌₀ⁿ ⁿCᵣ aⁿ⁻ʳ bʳ",
+          "variables": "a and b = the two terms, n = positive integer exponent, r = term index.",
+          "when_to_use": "To expand a binomial power or to find one particular term without expanding fully.",
+          "common_mistakes": "Interchanging the powers of a and b.",
+          "shortcut": "For the middle term of an even power n, take r = n/2."
+        },
+        {
+          "name": "General Term",
+          "difficulty": "Medium",
+          "formula": "Tᵣ₊₁ = ⁿCᵣ aⁿ⁻ʳ bʳ",
+          "variables": "r = 0, 1, 2, ..., n; Tᵣ₊₁ is the (r+1)th term.",
+          "when_to_use": "To find a specific term, the term independent of x, or the coefficient of a given power.",
+          "common_mistakes": "Setting r equal to the required term number instead of one less.",
+          "shortcut": "For the term independent of x, set the total power of x to zero and solve for r."
+        }
+      ]
+    }
+  ]
+}

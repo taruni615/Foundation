@@ -1,0 +1,44 @@
+{
+  "number": 16,
+  "title": "Linear Inequalities",
+  "prerequisites": [
+    "Ability to solve linear equations in one variable.",
+    "Familiarity with the number line.",
+    "Understanding of the symbols <, >, ≤ and ≥.",
+    "Knowledge of the Cartesian plane."
+  ],
+  "topics": [
+    {
+      "title": "Solving Linear Inequalities in One Variable",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Linear inequalities are solved like equations, with one crucial exception: multiplying or dividing by a negative number reverses the inequality sign.",
+      "real_life": "A lift rated 'not more than 600 kg' defines an inequality, and every safety limit in engineering is written the same way.",
+      "detailed": {
+        "definition": "A strict inequality uses < or >; a slack inequality uses ≤ or ≥. The solution set is the set of all values of the variable satisfying the inequality.",
+        "key_idea": "Adding or subtracting the same number leaves an inequality unchanged, and so does multiplying or dividing by a positive number. Only a negative multiplier flips the sign — that is the entire difference from equation solving.",
+        "working_principle": "The solution of a linear inequality is generally an interval, not a single value, and is represented on the number line with a hollow circle for a strict inequality and a filled circle for a slack one.",
+        "applications": [
+          "−3x > 12 gives x < −4 after dividing by −3 and reversing the sign.",
+          "Solution sets are written in interval notation, e.g. (−∞, −4).",
+          "Restricting the solution to integers or natural numbers changes the answer set."
+        ]
+      },
+      "points": [
+        "Multiplying or dividing both sides by a NEGATIVE number reverses the inequality.",
+        "Adding or subtracting any number does not change the direction.",
+        "Strict inequality (<, >) is shown by a hollow circle on the number line.",
+        "Slack inequality (≤, ≥) is shown by a filled circle.",
+        "The solution is usually an interval containing infinitely many values."
+      ],
+      "mistakes": [
+        "Forgetting to reverse the sign after dividing by a negative number.",
+        "Giving a single value as the answer instead of an interval.",
+        "Using a filled circle for a strict inequality."
+      ],
+      "memory_hook": "'Negative flips it' — divide or multiply by a negative and the inequality turns around.",
+      "advanced": "Systems of linear inequalities define feasible regions in the plane, which is the foundation of linear programming. Optimising a linear objective over such a region always gives an answer at a corner of the region."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "number": 9,
+  "title": "Organic Compounds",
+  "prerequisites": [
+    "IUPAC nomenclature and functional groups.",
+    "Knowledge of addition and substitution reactions.",
+    "Understanding of oxidation of alcohols.",
+    "Familiarity with soaps, detergents and esters."
+  ],
+  "topics": [
+    {
+      "title": "Alkanes, Alkenes and Alkynes",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Alkanes are saturated and undergo substitution, while alkenes and alkynes are unsaturated and undergo addition, which makes them far more reactive.",
+      "real_life": "Ethyne burning in an oxy-acetylene torch reaches over 3000 °C, hot enough to cut steel — energy released from breaking a triple bond.",
+      "detailed": {
+        "definition": "Alkanes (CₙH₂ₙ₊₂) contain only C−C single bonds. Alkenes (CₙH₂ₙ) contain at least one C=C double bond. Alkynes (CₙH₂ₙ₋₂) contain at least one C≡C triple bond.",
+        "key_idea": "The multiple bond is a site of high electron density and is therefore attacked readily, which is why unsaturated hydrocarbons are far more reactive than alkanes despite the multiple bond being stronger overall.",
+        "working_principle": "Alkanes react by free-radical substitution in sunlight, giving a mixture of products. Alkenes and alkynes react by addition across the multiple bond, giving a single major product.",
+        "applications": [
+          "Bromine water test: unsaturated compounds decolourise reddish-brown bromine water; alkanes do not.",
+          "Ethene is used to ripen fruit artificially and to make polythene.",
+          "Ethyne is used in oxy-acetylene welding and cutting."
+        ]
+      },
+      "points": [
+        "Alkanes: substitution reactions, require sunlight, give a mixture of products.",
+        "Alkenes and alkynes: addition reactions with H₂, Br₂, HCl and H₂O.",
+        "Bromine water test distinguishes saturated from unsaturated hydrocarbons.",
+        "Unsaturated hydrocarbons burn with a sooty yellow flame; saturated ones with a blue flame.",
+        "Alkanes are relatively unreactive and were once called paraffins, meaning 'little affinity'."
+      ],
+      "mistakes": [
+        "Expecting alkanes to decolourise bromine water; only unsaturated compounds do.",
+        "Writing the alkyne general formula as CₙH₂ₙ₋₁.",
+        "Assuming substitution gives a single clean product; it gives a mixture."
+      ],
+      "memory_hook": "'Saturated Substitutes, Unsaturated Adds' — and 'bromine water fades only for the unsaturated'.",
+      "advanced": "Addition to an unsymmetrical alkene follows Markovnikov's rule: the hydrogen adds to the carbon already carrying more hydrogens. The rule reflects the stability of the intermediate carbocation, not any preference of the reagent."
+    },
+    {
+      "title": "Alcohols, Aldehydes and Ketones",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Alcohols carry the −OH group and are oxidised first to aldehydes or ketones and then, for primary alcohols, to carboxylic acids.",
+      "real_life": "The unpleasant symptoms of a hangover come largely from ethanal, the aldehyde produced when the liver oxidises ethanol.",
+      "detailed": {
+        "definition": "Alcohols contain the hydroxyl group −OH. Aldehydes contain −CHO at the end of a chain; ketones contain >C=O within the chain. Denatured alcohol is ethanol made unfit for drinking by adding methanol and a dye.",
+        "key_idea": "Primary alcohols oxidise to aldehydes and then to carboxylic acids; secondary alcohols oxidise to ketones and stop there. The position of the −OH group therefore determines the whole oxidation pathway.",
+        "working_principle": "Alcohols react with sodium to liberate hydrogen, which distinguishes them from hydrocarbons. Concentrated sulphuric acid at 443 K dehydrates ethanol to ethene.",
+        "applications": [
+          "Ethanol: alcoholic drinks, solvent, antiseptic, tincture of iodine, fuel additive.",
+          "Methanol is highly toxic — it causes blindness and death even in small quantities.",
+          "Aldehydes reduce Tollens' reagent (silver mirror) and Fehling's solution; ketones do not."
+        ]
+      },
+      "points": [
+        "Alcohol + Na → sodium alkoxide + H₂ (test for the −OH group).",
+        "Primary alcohol → aldehyde → carboxylic acid; secondary alcohol → ketone only.",
+        "Oxidising agents: alkaline KMnO₄, acidified K₂Cr₂O₇.",
+        "Tollens' and Fehling's tests distinguish aldehydes from ketones.",
+        "Ethanol dehydrated by conc. H₂SO₄ at 443 K gives ethene."
+      ],
+      "mistakes": [
+        "Saying ketones give a positive Tollens' test; only aldehydes do.",
+        "Confusing dehydration (removes water, gives alkene) with oxidation (adds oxygen, gives acid).",
+        "Treating methanol as a harmless substitute for ethanol; it is severely toxic."
+      ],
+      "memory_hook": "'Primary goes all the way to acid, Secondary stops at ketone.'",
+      "advanced": "Methanol poisoning is treated with ethanol, which competes for the same enzyme and prevents methanol being converted into formic acid. It is a rare case where an antidote works by occupying the enzyme rather than neutralising the poison."
+    },
+    {
+      "title": "Carboxylic Acids and Esters",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Carboxylic acids carry the −COOH group and are weak acids, and they react with alcohols to give sweet-smelling esters.",
+      "real_life": "The smell of pineapple, banana and jasmine in sweets and perfumes usually comes from synthetic esters made in exactly this way.",
+      "detailed": {
+        "definition": "Carboxylic acids contain the carboxyl group −COOH. Esterification is the reaction of a carboxylic acid with an alcohol in the presence of concentrated sulphuric acid to give an ester and water. Saponification is the hydrolysis of an ester with alkali to give soap.",
+        "key_idea": "Carboxylic acids are weak acids because they ionise only partially, yet they are strong enough to displace CO₂ from carbonates — a reaction that distinguishes them sharply from alcohols and phenols.",
+        "working_principle": "Concentrated sulphuric acid acts as both catalyst and dehydrating agent in esterification, removing the water formed and driving the equilibrium towards the ester.",
+        "applications": [
+          "Ethanoic acid + ethanol → ethyl ethanoate, a sweet-smelling ester.",
+          "Esters are used in perfumes, artificial flavours and as solvents.",
+          "Saponification of vegetable oil with NaOH gives soap and glycerol."
+        ]
+      },
+      "points": [
+        "Carboxylic acids turn blue litmus red and are weak acids.",
+        "Acid + Na₂CO₃ or NaHCO₃ → salt + CO₂ + water, with brisk effervescence.",
+        "Esterification needs concentrated H₂SO₄ as catalyst and dehydrating agent.",
+        "Esters are sweet-smelling; alkaline hydrolysis of an ester is called saponification.",
+        "Ethanoic acid is called glacial acetic acid because it freezes at 290 K."
+      ],
+      "mistakes": [
+        "Saying carboxylic acids are strong acids; they are weak and only partially ionised.",
+        "Expecting alcohols to give CO₂ with carbonate; only carboxylic acids do.",
+        "Confusing esterification with saponification — they run in opposite directions."
+      ],
+      "memory_hook": "'Acid + Alcohol = Ester + water (sweet); Ester + Alkali = Soap (saponification).'",
+      "advanced": "Carboxylic acids are acidic because the carboxylate ion delocalises its negative charge over two oxygen atoms. Alcohols have no such stabilisation, which is why an −OH on a carbon chain is neutral but an −OH on a carbonyl is acidic."
+    },
+    {
+      "title": "Polymers and Biomolecules",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Polymers are giant molecules built from repeating monomer units, and the major biomolecules — carbohydrates, proteins, fats and nucleic acids — are natural polymers or their assemblies.",
+      "real_life": "Cotton, wool, silk, starch and DNA are all natural polymers, and polythene, nylon and PVC are the synthetic answers to them.",
+      "detailed": {
+        "definition": "A polymer is a large molecule formed by joining many small repeating units called monomers. Addition polymers form without loss of any small molecule; condensation polymers form with the elimination of a small molecule such as water.",
+        "key_idea": "Biomolecules are simply polymers with biological jobs: carbohydrates are polymers of sugars, proteins of amino acids, and nucleic acids of nucleotides. The same chemistry underlies a plastic bag and a strand of DNA.",
+        "working_principle": "Proteins are formed by peptide bonds between amino acids; their function depends on the precise three-dimensional folding, which is destroyed by heat or acid — a process called denaturation.",
+        "applications": [
+          "Addition polymers: polythene, PVC, polystyrene, Teflon.",
+          "Condensation polymers: nylon, terylene, bakelite.",
+          "Carbohydrates: glucose (monosaccharide), sucrose (disaccharide), starch and cellulose (polysaccharides)."
+        ]
+      },
+      "points": [
+        "Addition polymerisation adds monomers with no by-product; condensation eliminates a small molecule.",
+        "Proteins are polymers of amino acids joined by peptide bonds.",
+        "Starch and cellulose are both glucose polymers, but humans can digest only starch.",
+        "Vitamins are classified as fat-soluble (A, D, E, K) and water-soluble (B group, C).",
+        "Denaturation destroys a protein's shape and hence its function, without breaking peptide bonds."
+      ],
+      "mistakes": [
+        "Saying cellulose and starch are different sugars; both are glucose polymers linked differently.",
+        "Confusing addition polymerisation (no by-product) with condensation (water eliminated).",
+        "Thinking denaturation breaks the peptide chain; it only unfolds the structure."
+      ],
+      "memory_hook": "'Monomers make Polymers' — addition just joins, condensation joins and drops water.",
+      "advanced": "Humans cannot digest cellulose because the enzyme cellulase is absent, yet ruminants can through the bacteria in their gut. The difference between food and fibre comes down to a single change in the geometry of the link between two identical glucose units."
+    }
+  ]
+}

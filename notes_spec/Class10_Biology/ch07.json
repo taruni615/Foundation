@@ -1,0 +1,172 @@
+{
+  "number": 7,
+  "title": "Biotechnology",
+  "prerequisites": [
+    "Knowledge that DNA carries genetic information.",
+    "Understanding of bacteria and their rapid multiplication.",
+    "Idea of a gene as a segment of DNA coding for a character.",
+    "Familiarity with insulin and its role in diabetes."
+  ],
+  "topics": [
+    {
+      "title": "Biotechnology and Genetic Engineering",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Biotechnology uses living organisms to make useful products, and genetic engineering deliberately transfers a chosen gene from one organism into another.",
+      "real_life": "The insulin used by millions of people with diabetes is human insulin manufactured by bacteria that were given the human insulin gene.",
+      "detailed": {
+        "definition": "Biotechnology is the use of living organisms or their products for the benefit of human beings. Genetic engineering, or recombinant DNA technology, is the deliberate modification of an organism's genetic material by inserting, deleting or altering genes.",
+        "key_idea": "The genetic code is universal — the same triplet codes for the same amino acid in a bacterium and in a human. That universality is precisely why a human gene works when placed inside a bacterial cell.",
+        "working_principle": "The desired gene is cut out with restriction enzymes, joined into a plasmid vector with DNA ligase, and the recombinant plasmid is introduced into a host bacterium. The bacterium then multiplies, and each daughter cell carries and expresses the gene.",
+        "applications": [
+          "Human insulin, growth hormone, interferon and hepatitis-B vaccine are made this way.",
+          "Bt cotton carries a gene from Bacillus thuringiensis and resists bollworm attack.",
+          "Golden Rice is engineered to produce beta-carotene, a precursor of vitamin A."
+        ]
+      },
+      "points": [
+        "Restriction enzymes are 'molecular scissors' that cut DNA at specific sequences.",
+        "DNA ligase joins DNA fragments together.",
+        "A plasmid is the most commonly used vector for carrying a gene into a bacterium.",
+        "Recombinant DNA is DNA formed by joining segments from two different sources.",
+        "The genetic code is universal, which is why genes function across species."
+      ],
+      "mistakes": [
+        "Confusing restriction enzymes (cut) with ligase (join).",
+        "Saying genetic engineering and selective breeding are the same; breeding works only with existing genes in the species.",
+        "Thinking the plasmid is the gene; it is the vehicle that carries it."
+      ],
+      "memory_hook": "'Cut with restriction, Paste with ligase, Carry with plasmid, Copy with bacteria.'",
+      "advanced": "Restriction enzymes evolved as a bacterial immune system, cutting up invading viral DNA. Biotechnology's most important tool was therefore borrowed intact from a natural defence mechanism."
+    },
+    {
+      "title": "Tissue Culture and Cloning",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Tissue culture grows whole plants from a few cells on a nutrient medium, and cloning produces a genetically identical organism from a single body cell.",
+      "real_life": "Orchids that once took years to propagate are now produced by the thousand from a single parent plant in a laboratory flask.",
+      "detailed": {
+        "definition": "Tissue culture is the growth of tissues or cells in an artificial nutrient medium under sterile conditions. Cloning is the production of an organism genetically identical to another.",
+        "key_idea": "Tissue culture works because plant cells are totipotent — a single differentiated cell retains the full genetic capacity to regenerate an entire plant. Animal cells generally lose this capacity, which is why animal cloning is far harder.",
+        "working_principle": "A small piece of tissue, the explant, is placed on a nutrient medium where it forms an unorganised mass called a callus. Hormones then induce the callus to differentiate into shoots and roots, forming plantlets that are transferred to soil.",
+        "applications": [
+          "Micropropagation of orchids, bananas, sugarcane and ornamental plants.",
+          "Production of disease-free planting material from meristem tissue.",
+          "Dolly the sheep (1996) was cloned from an adult udder cell by nuclear transfer."
+        ]
+      },
+      "points": [
+        "Explant → callus → plantlets is the sequence in tissue culture.",
+        "Plant cells are totipotent; a single cell can regenerate a whole plant.",
+        "Tissue culture produces disease-free, genetically identical plants very rapidly.",
+        "Dolly the sheep was the first mammal cloned from an adult somatic cell.",
+        "Clones show no genetic variation, which makes them vulnerable to a single disease."
+      ],
+      "mistakes": [
+        "Calling tissue culture a form of sexual reproduction; it is vegetative and produces clones.",
+        "Saying animal cells are totipotent like plant cells; they generally are not.",
+        "Thinking a clone is identical in every respect; environment still shapes the organism."
+      ],
+      "memory_hook": "'One cell, one callus, a thousand plants' — totipotency in three steps.",
+      "advanced": "Somatic cell nuclear transfer requires the egg cytoplasm to reprogramme an adult nucleus back to an embryonic state. Understanding that reprogramming later led to induced pluripotent stem cells, which can be made without any egg at all."
+    },
+    {
+      "title": "Applications of Biotechnology in Medicine and Agriculture",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Biotechnology produces medicines, vaccines and diagnostic tests, and creates crops that resist pests, tolerate stress and carry improved nutrition.",
+      "real_life": "A PCR test for an infection, an insulin pen and a Bt cotton field are three everyday products of the same set of laboratory techniques.",
+      "detailed": {
+        "definition": "A transgenic organism is one that carries a gene transferred from another species. Gene therapy is the treatment of a disease by replacing or correcting a defective gene.",
+        "key_idea": "Medical biotechnology mostly moves human genes into microbes so that a human protein can be manufactured cheaply and in pure form. Agricultural biotechnology mostly moves microbial or plant genes into crops to add a trait.",
+        "working_principle": "PCR amplifies a tiny quantity of DNA into millions of copies, making it detectable. DNA fingerprinting compares repeated sequences that differ between individuals, and is used in forensic and paternity testing.",
+        "applications": [
+          "Medicine: insulin, growth hormone, vaccines, monoclonal antibodies, gene therapy.",
+          "Agriculture: Bt cotton and Bt brinjal (pest resistance), Golden Rice (vitamin A), Flavr Savr tomato (longer shelf life).",
+          "Environment: bacteria used to clean up oil spills and treat industrial effluent."
+        ]
+      },
+      "points": [
+        "PCR (polymerase chain reaction) amplifies DNA and underlies most modern diagnostic tests.",
+        "DNA fingerprinting is used in crime investigation and paternity determination.",
+        "Bt crops carry a gene from Bacillus thuringiensis that produces an insecticidal protein.",
+        "Golden Rice was engineered to combat vitamin A deficiency.",
+        "Bioremediation uses microorganisms to clean polluted environments."
+      ],
+      "mistakes": [
+        "Saying Bt crops are sprayed with a toxin; the plant produces the protein itself.",
+        "Confusing gene therapy (treating a patient) with genetic engineering of microbes (making a product).",
+        "Assuming DNA fingerprinting compares whole genomes; it compares specific repeated regions."
+      ],
+      "memory_hook": "'Medicine borrows human genes, Agriculture borrows bacterial ones.'",
+      "advanced": "The Bt protein is activated only in the alkaline gut of specific insect larvae and is harmless in the acidic human stomach. This target specificity is the scientific basis for regulatory approval, and it is why the debate centres on ecology rather than toxicity."
+    },
+    {
+      "title": "Fermentation and Industrial Biotechnology",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Fermentation by microorganisms in large bioreactors produces alcohol, antibiotics, enzymes, vitamins and organic acids on an industrial scale.",
+      "real_life": "Penicillin, curd, bread, vinegar, citric acid in soft drinks and the enzymes in your detergent are all fermentation products.",
+      "detailed": {
+        "definition": "Fermentation is the breakdown of organic substances by microorganisms in the absence of oxygen, or more broadly any large-scale microbial process used to make a product. A bioreactor or fermenter is the vessel in which it is carried out under controlled conditions.",
+        "key_idea": "Industrial fermentation is not just biology but process control. Temperature, pH, oxygen supply and sterility must be held constant, because a single contaminating microbe can destroy an entire batch.",
+        "working_principle": "A pure culture of the chosen organism is grown on a suitable medium in a sterile fermenter. The product is then recovered by downstream processing — separation, purification and formulation.",
+        "applications": [
+          "Antibiotics: penicillin from Penicillium, streptomycin from Streptomyces.",
+          "Foods and beverages: curd, cheese, bread, idli, dosa, wine, beer, vinegar.",
+          "Enzymes: amylase and protease for detergents; pectinase for clearing fruit juice."
+        ]
+      },
+      "points": [
+        "Fermentation is carried out in a bioreactor under controlled temperature, pH and aeration.",
+        "Yeast (Saccharomyces cerevisiae) produces ethanol and CO₂.",
+        "Lactobacillus converts milk sugar to lactic acid, forming curd.",
+        "Antibiotics, vitamins, organic acids and enzymes are all fermentation products.",
+        "Downstream processing separates and purifies the product after fermentation."
+      ],
+      "mistakes": [
+        "Assuming all fermentation is anaerobic; industrial antibiotic production is highly aerobic.",
+        "Saying yeast makes curd — Lactobacillus does.",
+        "Ignoring downstream processing, which is often the most expensive stage."
+      ],
+      "memory_hook": "'Grow it, feed it, keep it clean, then purify it' — the four stages of industrial fermentation.",
+      "advanced": "Downstream processing typically accounts for more than half the cost of a biotechnology product. This is why engineering organisms to secrete a product into the medium, rather than retain it inside the cell, is such a valuable design choice."
+    },
+    {
+      "title": "Ethical Issues and Biosafety",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Biotechnology raises questions of safety, consent, ownership and ecological risk, which is why genetically modified organisms are regulated before release.",
+      "real_life": "Bt brinjal was cleared by India's regulator in 2009 and then placed under an indefinite moratorium after public consultation — science and society reaching different conclusions.",
+      "detailed": {
+        "definition": "Biosafety is the set of measures taken to prevent harm to human health and the environment from biotechnological products. Biopiracy is the use of biological resources or traditional knowledge without authorisation or fair compensation.",
+        "key_idea": "The principal concerns are not that GM food is inherently poisonous, but that engineered genes may spread to wild relatives, that pests may evolve resistance, and that ownership of seed may concentrate in a few companies.",
+        "working_principle": "In India the Genetic Engineering Appraisal Committee reviews and approves the release of genetically modified organisms. Field trials are conducted under contained conditions before any commercial approval is granted.",
+        "applications": [
+          "Patents on neem and turmeric were revoked after India challenged them as biopiracy.",
+          "Labelling of genetically modified food allows consumers to make an informed choice.",
+          "Gene editing of human embryos is prohibited in almost every country."
+        ]
+      },
+      "points": [
+        "Main concerns: gene flow to wild relatives, resistant pests, loss of biodiversity, seed ownership.",
+        "GEAC is the regulatory authority for genetically modified organisms in India.",
+        "Biopiracy is the unauthorised commercial use of biological resources or traditional knowledge.",
+        "Bt brinjal was cleared and then placed under moratorium in India.",
+        "Ethical review and informed consent are essential in medical biotechnology."
+      ],
+      "mistakes": [
+        "Claiming GM foods are proven harmful to eat; the evidence-based concerns are ecological and economic.",
+        "Assuming regulation is unnecessary because the science is sound.",
+        "Confusing biopiracy (unauthorised use) with biosafety (protection from harm)."
+      ],
+      "memory_hook": "'Can we? Should we? Who owns it?' — the three questions every biotechnology raises.",
+      "advanced": "Pest resistance to Bt is delayed by 'refuge' planting — sowing a fraction of non-Bt crop so that susceptible insects survive and dilute resistance genes. Evolutionary theory is here written directly into agricultural regulation."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "number": 9,
+  "title": "Tissues",
+  "prerequisites": [
+    "Knowledge that the cell is the basic unit of life.",
+    "Difference between a plant cell and an animal cell.",
+    "Idea that organs such as the heart and leaf do specific jobs.",
+    "Familiarity with the terms unicellular and multicellular."
+  ],
+  "topics": [
+    {
+      "title": "Plant Tissues — Meristematic and Permanent",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Plant tissues are either meristematic, which divide and cause growth, or permanent, which have lost the power to divide and perform a fixed function.",
+      "real_life": "A plant grows taller at its tips and thicker at its stem because different meristems are working in different places — which is also why pruning a shoot tip makes a hedge grow bushy.",
+      "detailed": {
+        "definition": "A tissue is a group of similar cells performing a specific function. Meristematic tissue consists of actively dividing cells; permanent tissue consists of cells that have stopped dividing and have taken a definite shape and function.",
+        "key_idea": "Growth in plants is restricted to certain regions where meristems sit. Apical meristem at the tips increases length, intercalary meristem at the base of leaves and internodes also adds length, and lateral meristem (cambium) increases girth.",
+        "working_principle": "Simple permanent tissues are made of one cell type — parenchyma (packing and storage), collenchyma (flexible support in stems and leaf stalks) and sclerenchyma (hard, dead cells giving rigidity). Complex permanent tissues are made of more than one cell type — xylem and phloem.",
+        "applications": [
+          "Chlorenchyma is parenchyma with chloroplasts and performs photosynthesis.",
+          "Aerenchyma has large air cavities and helps aquatic plants float.",
+          "Coconut husk fibre and jute fibre are sclerenchyma."
+        ]
+      },
+      "points": [
+        "Apical meristem → increase in length; Lateral meristem (cambium) → increase in girth.",
+        "Parenchyma: living, thin-walled, stores food; Collenchyma: living, flexible support; Sclerenchyma: dead, thick lignified walls, rigidity.",
+        "Xylem carries water and minerals upwards only — it is unidirectional.",
+        "Phloem carries food from leaves to all parts — it is bidirectional.",
+        "Xylem is made of tracheids, vessels, xylem parenchyma and xylem fibres."
+      ],
+      "mistakes": [
+        "Saying phloem carries water — xylem carries water; phloem carries food.",
+        "Calling sclerenchyma a living tissue; its cells are dead at maturity.",
+        "Confusing apical meristem (length) with lateral meristem (girth)."
+      ],
+      "memory_hook": "'Xylem = eXit upward with water; Phloem = Food, both ways' — and 'Para stores, Colla bends, Sclera hardens'.",
+      "advanced": "Xylem transport works by transpiration pull: water evaporating from the leaves creates tension that pulls a continuous column of water up the vessels, held together by cohesion. No pump is involved — the plant is drinking through a straw hundreds of times its own width."
+    },
+    {
+      "title": "Animal Tissues — Epithelial and Connective",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Epithelial tissue covers and lines body surfaces, while connective tissue binds, supports and transports — blood and bone are both connective tissues.",
+      "real_life": "Your skin is epithelium sealing the outside world away, and the blood beneath it is a connective tissue delivering supplies to every cell.",
+      "detailed": {
+        "definition": "Epithelial tissue is the covering or protective tissue that lines the outer surface of the body and the inner surface of organs and cavities. Connective tissue connects, supports and binds different tissues and organs, and has an abundant matrix.",
+        "key_idea": "Epithelium always rests on a basement membrane and has very little intercellular material; connective tissue is the opposite — the cells are few and widely separated in a large matrix, which may be fluid (blood), solid (bone) or jelly-like (cartilage).",
+        "working_principle": "Epithelium is classified by cell shape and layering: squamous (flat, for diffusion), cuboidal (for secretion and absorption), columnar (for absorption in the intestine), ciliated columnar (moves mucus in the respiratory tract) and glandular (secretes).",
+        "applications": [
+          "Areolar tissue fills the space inside organs and repairs tissues.",
+          "Adipose tissue stores fat and insulates the body against heat loss.",
+          "Tendons attach muscle to bone; ligaments attach bone to bone."
+        ]
+      },
+      "points": [
+        "Epithelium rests on a basement membrane and has almost no intercellular space.",
+        "Blood is a connective tissue with a fluid matrix called plasma.",
+        "Bone matrix is hard, made of calcium and phosphorus compounds; cartilage matrix is flexible.",
+        "Tendon connects muscle to bone (tough, less flexible); Ligament connects bone to bone (elastic, strong).",
+        "Adipose tissue stores fat and acts as an insulator."
+      ],
+      "mistakes": [
+        "Refusing to accept blood as a tissue — it is a connective tissue because its cells share a common matrix and function.",
+        "Swapping tendon and ligament — 'tendon to the bone from the muscle'.",
+        "Thinking cartilage is a type of bone; it is a separate, flexible connective tissue."
+      ],
+      "memory_hook": "'Epithelium = the wrapping paper; Connective = the packing material' — and 'LiGament joins Bone to Bone, TenDon Ties muscle Down to bone'.",
+      "advanced": "Blood and bone appear utterly different but share an origin — bone marrow manufactures blood cells. Their common feature, a cell-poor and matrix-rich structure derived from embryonic mesoderm, is exactly what defines connective tissue."
+    },
+    {
+      "title": "Muscular and Nervous Tissues",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Muscular tissue produces movement by contracting, and nervous tissue carries electrical messages rapidly around the body.",
+      "real_life": "Lifting a bag uses voluntary striated muscle, digesting your lunch uses involuntary smooth muscle, and your heart uses a third kind that never tires.",
+      "detailed": {
+        "definition": "Muscular tissue consists of elongated cells called muscle fibres that contract and relax to cause movement. Nervous tissue consists of neurons specialised to receive and conduct impulses.",
+        "key_idea": "There are three kinds of muscle: striated (skeletal, voluntary, cylindrical, multinucleate), smooth (unstriated, involuntary, spindle-shaped, uninucleate) and cardiac (striated but involuntary, branched, found only in the heart).",
+        "working_principle": "A neuron has a cell body with a nucleus, short branching dendrites that receive impulses, and a long axon that carries the impulse away. The impulse travels as an electrical signal and crosses to the next neuron chemically at a synapse.",
+        "applications": [
+          "Skeletal muscles attached to bones move the limbs at will.",
+          "Smooth muscles in the alimentary canal move food along by peristalsis.",
+          "Cardiac muscle contracts rhythmically throughout life without fatigue."
+        ]
+      },
+      "points": [
+        "Striated = voluntary, cylindrical, multinucleate, attached to bones.",
+        "Smooth (unstriated) = involuntary, spindle-shaped, single nucleus, in internal organs.",
+        "Cardiac = striated but involuntary, branched, only in the heart.",
+        "A neuron is the longest cell in the human body.",
+        "Nervous tissue makes up the brain, spinal cord and nerves."
+      ],
+      "mistakes": [
+        "Calling cardiac muscle voluntary because it is striated — it is striated but involuntary.",
+        "Saying smooth muscles are found in the limbs; they are found in internal organs.",
+        "Confusing dendrite (receives) with axon (transmits)."
+      ],
+      "memory_hook": "'Striated = Steered by you; Smooth = Silently automatic; Cardiac = both Striated and Silent'.",
+      "advanced": "Cardiac muscle cells are joined by intercalated discs containing gap junctions, so an electrical impulse spreads through the whole heart almost instantly. This is why the heart contracts as one unit rather than fibre by fibre."
+    }
+  ]
+}

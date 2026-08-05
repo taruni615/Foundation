@@ -1,0 +1,140 @@
+{
+  "number": 4,
+  "title": "Carbon and Its Compounds",
+  "prerequisites": [
+    "Idea of electronic configuration and valency.",
+    "Difference between ionic and covalent bonding.",
+    "Knowledge that carbon has atomic number 6.",
+    "Familiarity with fuels such as LPG and petrol."
+  ],
+  "topics": [
+    {
+      "title": "Covalent Bonding, Catenation and Allotropes",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Carbon shares electrons to form four covalent bonds, and its ability to bond with itself — catenation — together with tetravalency explains the millions of carbon compounds.",
+      "real_life": "Diamond and graphite are both pure carbon, yet one cuts glass and the other writes on paper — the difference is entirely in how the atoms are joined.",
+      "detailed": {
+        "definition": "A covalent bond is formed by the mutual sharing of electrons between two atoms. Catenation is the ability of an element to form long chains, branches and rings by bonding with its own atoms.",
+        "key_idea": "Carbon cannot lose four electrons (too much energy needed) or gain four (the nucleus could not hold ten electrons), so it must share. That single constraint produces the whole of organic chemistry.",
+        "working_principle": "Carbon–carbon bonds are exceptionally strong because carbon is small and the shared pair is held close to both nuclei. This strength makes long chains stable, which silicon — the next element down — cannot manage.",
+        "applications": [
+          "Diamond: each carbon bonded to four others in a rigid 3D lattice — hardest natural substance.",
+          "Graphite: layers of hexagonal rings with one free electron per atom — soft and conducting.",
+          "Fullerene (C₆₀, buckminsterfullerene) has a football-like cage structure."
+        ]
+      },
+      "points": [
+        "Carbon is tetravalent: it forms four covalent bonds.",
+        "Covalent compounds: low melting and boiling points, poor conductors, generally insoluble in water.",
+        "Catenation plus tetravalency explains the enormous number of carbon compounds.",
+        "Diamond is the hardest substance; graphite is a good conductor and a lubricant.",
+        "Allotropes are different physical forms of the same element in the same physical state."
+      ],
+      "mistakes": [
+        "Saying covalent compounds conduct electricity; they generally do not, as they have no free ions.",
+        "Calling diamond and graphite different compounds; they are allotropes of the same element.",
+        "Thinking carbon forms C⁴⁺ or C⁴⁻ ions in its compounds."
+      ],
+      "memory_hook": "'Four bonds, endless chains' — tetravalency plus catenation is the whole story.",
+      "advanced": "Graphite conducts because each atom uses only three of its four valence electrons in bonding, leaving one delocalised within the layer. The same free electrons make graphene an outstanding conductor."
+    },
+    {
+      "title": "Hydrocarbons and Homologous Series",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Hydrocarbons are compounds of carbon and hydrogen, saturated if all bonds are single and unsaturated if they contain a double or triple bond, and they form homologous series.",
+      "real_life": "The methane in cooking gas, the ethene that ripens fruit and the acetylene in a welding torch are the first three members of three different families.",
+      "detailed": {
+        "definition": "Saturated hydrocarbons (alkanes) contain only single bonds; unsaturated hydrocarbons contain a double bond (alkenes) or a triple bond (alkynes). A homologous series is a family of compounds with the same general formula in which consecutive members differ by a −CH₂− unit.",
+        "key_idea": "All members of a homologous series have the same functional group and similar chemical properties, while physical properties change gradually with molecular mass. This is why learning one member effectively teaches the whole family.",
+        "working_principle": "Saturated hydrocarbons burn with a clean blue flame; unsaturated ones burn with a yellow sooty flame because their higher carbon percentage means incomplete combustion.",
+        "applications": [
+          "Alkanes CₙH₂ₙ₊₂: methane, ethane, propane, butane — used as fuels.",
+          "Alkenes CₙH₂ₙ: ethene ripens fruit; alkynes CₙH₂ₙ₋₂: ethyne used in welding.",
+          "Functional groups: −OH alcohol, −CHO aldehyde, >C=O ketone, −COOH carboxylic acid."
+        ]
+      },
+      "points": [
+        "Alkane CₙH₂ₙ₊₂ (single bonds), alkene CₙH₂ₙ (double bond), alkyne CₙH₂ₙ₋₂ (triple bond).",
+        "Consecutive members of a homologous series differ by CH₂ and by 14 u in molecular mass.",
+        "Isomers have the same molecular formula but different structures; butane onwards show isomerism.",
+        "Saturated hydrocarbons burn with a clean blue flame; unsaturated ones with a sooty yellow flame.",
+        "IUPAC names use a prefix for chain length, a suffix for the functional group."
+      ],
+      "mistakes": [
+        "Writing the alkyne general formula as CₙH₂ₙ₋₁ instead of CₙH₂ₙ₋₂.",
+        "Saying methane and ethane are isomers; isomers must have the SAME molecular formula.",
+        "Claiming the first three alkanes show isomerism; isomerism starts at butane."
+      ],
+      "memory_hook": "'Meth, Eth, Prop, But, Pent, Hex' — and '-ane single, -ene double, -yne triple'.",
+      "advanced": "The homologous series exists because chemistry is governed by the functional group while physical properties are governed by molecular size. This separation is why an entire family can be predicted from a single member."
+    },
+    {
+      "title": "Chemical Properties of Carbon Compounds",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Carbon compounds undergo combustion, oxidation, addition and substitution reactions, each characteristic of a particular type of bond.",
+      "real_life": "Vegetable oil is hardened into vanaspati ghee by adding hydrogen across its double bonds — an addition reaction on an industrial scale.",
+      "detailed": {
+        "definition": "An addition reaction is one in which atoms are added across a double or triple bond. A substitution reaction is one in which an atom or group is replaced by another. Oxidation converts alcohols to carboxylic acids.",
+        "key_idea": "Unsaturated compounds undergo addition because they have a bond to spare; saturated compounds can only undergo substitution, and even that requires sunlight. Bond type dictates reaction type.",
+        "working_principle": "Hydrogenation of vegetable oil uses nickel as a catalyst and converts unsaturated oils into saturated fats. Substitution of methane by chlorine requires sunlight and gives a mixture of chlorinated products.",
+        "applications": [
+          "Hydrogenation: oil + H₂ (Ni catalyst) → vanaspati ghee.",
+          "Ethanol + alkaline KMnO₄ or acidified K₂Cr₂O₇ → ethanoic acid (oxidation).",
+          "Esterification: ethanol + ethanoic acid (conc. H₂SO₄) → ester with a sweet fruity smell."
+        ]
+      },
+      "points": [
+        "Addition reactions occur in unsaturated compounds; substitution in saturated ones.",
+        "Nickel and palladium act as catalysts in hydrogenation.",
+        "Alkaline KMnO₄ and acidified K₂Cr₂O₇ are oxidising agents that convert alcohol to acid.",
+        "Esterification gives a sweet-smelling ester; saponification is the reverse with alkali, giving soap.",
+        "Animal fats are saturated and vegetable oils unsaturated; unsaturated oils are healthier."
+      ],
+      "mistakes": [
+        "Expecting an addition reaction from an alkane; alkanes have no spare bond.",
+        "Forgetting that substitution of methane needs sunlight.",
+        "Confusing esterification (acid + alcohol → ester) with saponification (ester + alkali → soap)."
+      ],
+      "memory_hook": "'Unsaturated Adds, Saturated Substitutes' — the bond decides the reaction.",
+      "advanced": "Partial hydrogenation produces trans fats, whose straight chains pack tightly and raise the risk of heart disease. The same reaction that improved shelf life created a public-health problem, and many countries now restrict it."
+    },
+    {
+      "title": "Ethanol, Ethanoic Acid, Soaps and Detergents",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Ethanol and ethanoic acid are the two most important carbon compounds in the syllabus, and soaps clean by having one end that dissolves in water and another that dissolves in grease.",
+      "real_life": "Soap fails to lather in hard water and forms a grey scum instead, which is exactly why detergents were invented.",
+      "detailed": {
+        "definition": "Soap is the sodium or potassium salt of a long-chain carboxylic acid. A micelle is a spherical cluster in which the hydrophobic tails point inward towards the oil and the hydrophilic heads point outward towards the water.",
+        "key_idea": "A soap molecule has two ends with opposite affinities — an ionic head that dissolves in water and a hydrocarbon tail that dissolves in grease. Cleaning is simply this dual nature at work.",
+        "working_principle": "In hard water, calcium and magnesium ions react with soap to form an insoluble scum, wasting soap. Detergents use sulphonate or sulphate heads whose calcium and magnesium salts are soluble, so they lather even in hard water.",
+        "applications": [
+          "Ethanol is used in alcoholic drinks, as a solvent, in tinctures and as a fuel additive.",
+          "Ethanoic acid (5–8% solution) is vinegar; glacial acetic acid freezes in cold climates.",
+          "Detergents are used in shampoos and washing powders because they work in hard water."
+        ]
+      },
+      "points": [
+        "Ethanol C₂H₅OH: reacts with sodium to give hydrogen; dehydrated by conc. H₂SO₄ at 443 K to give ethene.",
+        "Ethanoic acid CH₃COOH: melting point 290 K, so it freezes in cold climates — hence 'glacial'.",
+        "Ethanoic acid + sodium carbonate → sodium ethanoate + CO₂ + water (brisk effervescence).",
+        "Soap: sodium salt of a fatty acid; ineffective in hard water because it forms scum.",
+        "Detergents work in hard water because their calcium and magnesium salts are soluble."
+      ],
+      "mistakes": [
+        "Saying detergents are biodegradable like soaps; many detergents are not.",
+        "Confusing denatured alcohol (made unfit to drink) with glacial acetic acid.",
+        "Thinking soap cleans by dissolving grease in water; it forms micelles that suspend the grease."
+      ],
+      "memory_hook": "'Head loves water, Tail loves grease' — that split personality is the whole of detergency.",
+      "advanced": "Micelles keep grease suspended as an emulsion rather than dissolved, which is why rinsing carries the dirt away. Branched-chain detergents resist bacterial breakdown, which is why modern formulations use straight chains."
+    }
+  ]
+}

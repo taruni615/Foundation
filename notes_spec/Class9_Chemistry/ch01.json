@@ -1,0 +1,127 @@
+{
+  "number": 1,
+  "title": "Matter in Our Surroundings",
+  "prerequisites": [
+    "Basic idea that everything around us is made of 'matter' from earlier classes.",
+    "Familiarity with solids, liquids and gases as everyday states of substances.",
+    "Comfort with simple observation-based reasoning (why ice melts, why smell spreads, etc.)."
+  ],
+  "topics": [
+    {
+      "title": "Characteristics & Particle Nature of Matter",
+      "quick_summary": "Matter is anything that has mass and occupies space; it is made of very tiny particles that are constantly moving, attract each other, and have spaces between them.",
+      "detailed": {
+        "definition": "Matter is anything that occupies space, has mass, and is affected by gravity; it is composed of extremely small particles too tiny to be seen individually with the naked eye.",
+        "key_idea": "All matter is made of particles that (i) have spaces between them, (ii) are continuously moving (kinetic energy), and (iii) attract each other with a force of attraction — the strength of this attraction and the spacing decides whether the matter is a solid, liquid or gas.",
+        "working_principle": "Diffusion (mixing of particles of two different types of matter on their own), Brownian motion (zig-zag movement of visible particles due to invisible molecular bombardment), and compressibility are all direct evidences that matter is particulate rather than continuous.",
+        "applications": [
+          "Explains why smells travel, why sugar dissolves and disappears into tea, and why ink spreads in water.",
+          "Basis for understanding states of matter, gas laws, and chemical reactions in later chapters."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A few drops of dettol or perfume placed in one corner of a room can be smelled everywhere after some time — this happens because perfume particles move and mix with air particles (diffusion).",
+      "points": [
+        "Matter has mass, occupies space, has inertia, is affected by gravity, and cannot be created or destroyed by ordinary physical/chemical processes (law of conservation of matter).",
+        "Evidence for particle nature: diffusion, Brownian motion, compressibility, and the fact that dissolved substances 'disappear' into a solvent.",
+        "Particles of matter are continuously moving (kinetic energy) — this motion increases with temperature.",
+        "There is a force of attraction between particles that keeps them together; this force varies for solids > liquids > gases."
+      ],
+      "mistakes": [
+        "Thinking matter must be visible to the naked eye — atoms and molecules are far too small to see, yet they are still matter.",
+        "Confusing diffusion (self-mixing of particles of different substances) with simple stirring, which is a mechanical mixing process."
+      ],
+      "memory_hook": "'Matter MASS-es around, taking SPACE, made of moving, attracting PARTICLES.'",
+      "advanced": "The kinetic theory of matter (particles are always in motion and this motion increases with temperature) is the single unifying idea that explains diffusion, evaporation, gas pressure, and even chemical reaction rates — nearly every chapter in chemistry eventually traces back to it."
+    },
+    {
+      "title": "States of Matter — Solid, Liquid and Gas",
+      "quick_summary": "Matter exists in three common physical states — solid, liquid and gas — which differ in the arrangement, spacing, and force of attraction between their particles.",
+      "detailed": {
+        "definition": "A solid has a fixed shape and fixed volume; a liquid has a fixed volume but takes the shape of its container; a gas has neither a fixed shape nor a fixed volume and expands to fill its container completely.",
+        "key_idea": "As we go from solid  liquid  gas, the force of attraction between particles decreases, the space between particles increases, and the kinetic energy (movement) of particles increases.",
+        "working_principle": "Solids: particles are closely packed in a fixed pattern with strong attractive forces, so they only vibrate about fixed positions. Liquids: particles are close but can slide past one another, giving fluidity. Gases: particles are far apart with negligible attraction, moving randomly at high speed and colliding with container walls to create pressure.",
+        "applications": [
+          "Explains why solids are rigid and incompressible, liquids can be poured, and gases can be compressed into cylinders (like LPG).",
+          "Basis for understanding change of state and gas laws studied later in the chapter."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Ice (solid), water (liquid) and water vapour/steam (gas) are the same substance, H₂O, showing different physical states depending on particle arrangement and energy.",
+      "points": [
+        "Solids: definite shape, definite volume, negligible compressibility, high density, strong intermolecular force.",
+        "Liquids: no definite shape (takes container's shape), definite volume, slightly compressible, moderate intermolecular force, exhibit fluidity.",
+        "Gases: no definite shape, no definite volume, highly compressible, negligible intermolecular force, exert pressure on container walls uniformly.",
+        "Order of increasing particle spacing and decreasing force of attraction: Solid < Liquid < Gas."
+      ],
+      "mistakes": [
+        "Thinking liquids have 'no fixed volume' — a liquid's volume stays the same even though its shape changes with the container.",
+        "Assuming gases have no mass or do not exert pressure — gases have mass and exert pressure equally in all directions due to particle collisions."
+      ],
+      "memory_hook": "'Solid SITS still, Liquid FLOWS but keeps volume, Gas GOES everywhere.'",
+      "advanced": "Surface tension (the tendency of a liquid surface to behave like a stretched elastic sheet) arises because surface molecules experience an unbalanced inward pull from neighbouring molecules — it explains why small drops are spherical and why some insects can walk on water."
+    },
+    {
+      "title": "Change of State & Evaporation",
+      "quick_summary": "Matter can change from one state to another by altering temperature or pressure; evaporation is a slow, surface-level conversion of liquid to vapour that occurs even below the boiling point.",
+      "detailed": {
+        "definition": "Melting (fusion) is solid  liquid at the melting point; boiling/vaporisation is liquid  gas at the boiling point (throughout the bulk of the liquid); sublimation is a direct solid  gas change without passing through the liquid state; evaporation is the spontaneous, surface-only conversion of liquid into vapour at any temperature below the boiling point.",
+        "key_idea": "Supplying heat increases particle kinetic energy, weakening the forces of attraction and pushing matter towards a more disordered state (solid  liquid  gas); removing heat does the reverse.",
+        "working_principle": "During melting/boiling, all the heat supplied at the melting/boiling point is used to break intermolecular forces (latent heat) rather than raise temperature, so temperature stays constant during the change of state. Evaporation instead happens continuously at the liquid's surface, and is faster with more surface area, higher temperature, lower humidity, and higher wind speed.",
+        "applications": [
+          "Cooling by evaporation explains why sweating cools the body and why water is stored in earthen pots to keep it cool.",
+          "Sublimation is used to purify substances like camphor, naphthalene, and iodine (a technique called sublimation purification)."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Wet clothes dry in the sun because water evaporates from the cloth surface into the air, even though the water never actually boils.",
+      "points": [
+        "Melting point/boiling point remain constant during the change of state because supplied heat (latent heat) overcomes intermolecular forces, not temperature rise.",
+        "Evaporation occurs only at the surface and at any temperature; boiling occurs throughout the liquid only at a fixed temperature (the boiling point).",
+        "Factors that increase evaporation: increase in surface area, increase in temperature, decrease in humidity, increase in wind speed.",
+        "Evaporation causes cooling because the fastest (highest energy) particles escape first, lowering the average kinetic energy — hence temperature — of the remaining liquid."
+      ],
+      "mistakes": [
+        "Confusing evaporation (surface phenomenon, any temperature, slow) with boiling (bulk phenomenon, fixed temperature, fast).",
+        "Thinking pressure has no effect on boiling point — boiling point decreases at lower (higher-altitude) pressure and increases at higher pressure, which is why food cooks faster in a pressure cooker."
+      ],
+      "memory_hook": "'Evaporation: Surface, Slow, any temperature — Boiling: Bulk, fixed temperature, fast (Big Boil).'",
+      "advanced": "Because evaporation removes the most energetic particles first, it is a natural cooling mechanism — the same principle used in modern refrigerators and air coolers, where a rapidly evaporating fluid (refrigerant) absorbs heat from its surroundings."
+    },
+    {
+      "title": "Gas Laws & the Ideal Gas Equation",
+      "quick_summary": "Gas laws describe fixed mathematical relationships between the pressure, volume, temperature and amount of a gas, which combine into a single ideal gas equation, PV = nRT.",
+      "detailed": {
+        "definition": "Boyle's Law: at constant temperature, the volume of a fixed mass of gas is inversely proportional to its pressure. Charles's Law: at constant pressure, volume is directly proportional to absolute temperature. Gay- Lussac's Law: at constant volume, pressure is directly proportional to absolute temperature. Avogadro's Law: equal volumes of all gases, at the same temperature and pressure, contain equal numbers of molecules.",
+        "key_idea": "All these individual gas laws are special cases of one combined relationship between pressure (P), volume (V), absolute temperature (T) and number of moles (n): PV = nRT, where R is the universal gas constant.",
+        "working_principle": "Each gas law is derived by holding two of the four variables (P, V, T, n) constant and observing how the remaining two vary together; combining all of them (keeping n constant) gives the combined gas law P₁V₁/T₁ = P₂V₂/T₂, and introducing moles gives the ideal gas equation.",
+        "applications": [
+          "Boyle's Law explains breathing (lungs expand to lower internal pressure and draw in air) and the working of a syringe.",
+          "Charles's Law explains why a balloon shrinks in cold weather and expands when warmed; Avogadro's Law underlies the concept of molar volume (22.4 L at STP for one mole of any gas)."
+        ]
+      },
+      "time": "22 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A sealed packet of chips puffs up and may burst when carried up a mountain (lower outside pressure lets the trapped gas expand) — a direct real-life demonstration of Boyle's Law.",
+      "points": [
+        "Boyle's Law: P₁V₁ = P₂V₂ (constant T, n). Charles's Law: V₁/T₁ = V₂/T₂ (constant P, n).",
+        "Gay-Lussac's Law: P₁/T₁ = P₂/T₂ (constant V, n). Combined gas law: P₁V₁/T₁ = P₂V₂/T₂ (constant n).",
+        "Temperature in all gas law calculations MUST be in Kelvin (K = °C + 273), never in Celsius directly.",
+        "At STP (0 °C, 1 atm), one mole of any ideal gas occupies 22.4 L — this is called the molar volume of a gas."
+      ],
+      "mistakes": [
+        "Using Celsius temperature directly in gas law equations instead of converting to Kelvin first — this is the single most common numerical error.",
+        "Mixing up which variable is held constant in each law (Boyle's = constant T; Charles's = constant P; Gay- Lussac's = constant V)."
+      ],
+      "memory_hook": "'Boyle Bends volume with pressure (T constant); Charles Changes volume with temperature (P constant).' Always convert to Kelvin first!",
+      "advanced": "The ideal gas equation PV = nRT assumes gas particles have no volume and no intermolecular attraction — real gases deviate from this behaviour at high pressure and low temperature, which is precisely why gases like ammonia or CO₂ can be liquefied under such conditions.  Formula: Boyle's Law Difficulty Medium Formula P₁V₁ = P₂V₂ (at constant T and n) Meaning of Variables P₁, V₁ = initial pressure and volume; P₂, V₂ = final pressure and volume of the same fixed mass of gas. When to Use Whenever temperature and amount of gas stay fixed and only pressure/volume change. Common Mistakes Forgetting that temperature must be truly constant for this law to apply; using non- Kelvin units inconsistently between the two states. Shortcut / Memory Trick Pressure UP means Volume DOWN, and vice versa — they move in opposite directions.  Formula: Ideal Gas Equation Difficulty Advanced Formula PV = nRT Meaning of Variables P = pressure, V = volume, n = number of moles, R = universal gas constant (0.0821 L·atm/mol·K), T = absolute temperature in Kelvin. When to Use To relate all four gas variables at once for a single state of a gas, or to find any one variable when the other three are known. Common Mistakes Using the wrong value/units of R for the units of P and V given in the question; forgetting to convert temperature to Kelvin. Shortcut / Memory Trick Remember 'PV = nRT' as 'Please Very Nice Right Time' — and always check units of R match units of P and V before substituting."
+    }
+  ]
+}

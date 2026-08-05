@@ -1,0 +1,44 @@
+{
+  "number": 15,
+  "title": "Probability",
+  "prerequisites": [
+    "Ability to work with fractions and percentages.",
+    "Idea of counting favourable cases out of total cases.",
+    "Familiarity with dice, coins and playing cards.",
+    "Understanding of a ratio."
+  ],
+  "topics": [
+    {
+      "title": "Empirical Probability",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Empirical or experimental probability is the ratio of the number of times an event occurs to the total number of trials, and it approaches the theoretical value as trials increase.",
+      "real_life": "A weather forecast of 70% rain comes from records of past days with similar conditions — empirical probability at work.",
+      "detailed": {
+        "definition": "The empirical probability of an event E is P(E) = (number of trials in which E happened) / (total number of trials). A trial is one performance of an experiment.",
+        "key_idea": "Empirical probability is based on actual observation and can change with each new set of trials, whereas theoretical probability is computed from the structure of the experiment and does not.",
+        "working_principle": "The law of large numbers guarantees that as the number of trials grows, empirical probability settles closer and closer to the theoretical value.",
+        "applications": [
+          "Insurance premiums are computed from empirical probabilities of claims.",
+          "Quality control estimates defect rates by sampling.",
+          "Medical trials estimate the probability of a treatment succeeding."
+        ]
+      },
+      "points": [
+        "P(E) = favourable trials / total trials.",
+        "0 ≤ P(E) ≤ 1 always.",
+        "P(E) = 0 means an impossible event; P(E) = 1 means a certain event.",
+        "The sum of the probabilities of all elementary outcomes is 1.",
+        "P(not E) = 1 − P(E)."
+      ],
+      "mistakes": [
+        "Reporting a probability greater than 1 or negative.",
+        "Dividing by the number of favourable cases instead of the total.",
+        "Assuming a small number of trials gives a reliable estimate."
+      ],
+      "memory_hook": "'Favourable over Total — and the answer can never leave the range 0 to 1.'",
+      "advanced": "The gambler's fallacy — believing a coin is 'due' to land heads after several tails — comes from confusing the law of large numbers with a short-run correction. Independent trials have no memory whatsoever."
+    }
+  ]
+}

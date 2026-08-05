@@ -1,0 +1,219 @@
+{
+  "number": 1,
+  "title": "Motion",
+  "prerequisites": [
+    "Idea of distance, time and speed from earlier classes.",
+    "Ability to plot and read a simple graph.",
+    "Familiarity with SI units — metre, second, kilogram.",
+    "Basic algebra: rearranging an equation to make a chosen symbol the subject."
+  ],
+  "topics": [
+    {
+      "title": "Rest, Motion, Distance and Displacement",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Motion is a change of position with respect to a reference point; distance is the total path length covered while displacement is the shortest straight-line change in position.",
+      "real_life": "Running one full lap of a 400 m track means a distance of 400 m but a displacement of zero — you finish exactly where you started.",
+      "detailed": {
+        "definition": "A body is said to be in motion if its position changes with time with respect to a reference point. Distance is the total length of the path travelled, a scalar. Displacement is the shortest distance from the initial to the final position, a vector.",
+        "key_idea": "All motion is relative — a passenger sitting in a moving train is at rest relative to the train but in motion relative to the platform. There is no such thing as absolute rest.",
+        "working_principle": "Distance can never be zero or negative for a moving body, but displacement can be zero (a closed path) or negative (motion in the negative direction). The magnitude of displacement is always less than or equal to the distance travelled.",
+        "applications": [
+          "GPS navigation reports both route distance and straight-line displacement.",
+          "In a circular track, after one complete round distance = circumference but displacement = 0.",
+          "Displacement equals distance only for motion in a straight line without reversing."
+        ]
+      },
+      "points": [
+        "Distance is a scalar; displacement is a vector.",
+        "|Displacement| ≤ Distance, always.",
+        "Displacement can be zero, positive or negative; distance is always positive.",
+        "Motion and rest are relative to a chosen reference point.",
+        "SI unit of both distance and displacement is the metre (m)."
+      ],
+      "mistakes": [
+        "Treating distance and displacement as interchangeable in a numerical problem.",
+        "Saying displacement is 'distance in a straight line' without specifying direction — direction is essential.",
+        "Forgetting that a body returning to its start has zero displacement but non-zero distance."
+      ],
+      "memory_hook": "'Distance is the path you Traced; Displacement is the Direct route' — D for Direct, D for Displacement.",
+      "advanced": "Because displacement is a vector it obeys vector addition, so two successive displacements of 3 m and 4 m can give a resultant anywhere from 1 m to 7 m. Distances, being scalars, would simply add to 7 m in every case."
+    },
+    {
+      "title": "Speed, Velocity and Acceleration",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Speed is the rate of covering distance, velocity is the rate of change of displacement, and acceleration is the rate of change of velocity.",
+      "real_life": "A car's speedometer shows speed only; to know its velocity you also need the direction, and turning a corner at constant speed still counts as acceleration.",
+      "detailed": {
+        "definition": "Speed = distance/time (scalar). Velocity = displacement/time (vector). Acceleration = change in velocity/time taken (vector). Uniform velocity means equal displacements in equal intervals of time in the same direction.",
+        "key_idea": "Velocity changes if either the magnitude or the direction changes. A body moving in a circle at constant speed is continuously accelerating because its direction is constantly changing.",
+        "working_principle": "Average speed is total distance divided by total time, which is not generally the same as the average of the individual speeds. Retardation, or deceleration, is simply negative acceleration.",
+        "applications": [
+          "Free fall near the earth has a constant acceleration of about 9.8 m/s².",
+          "A body slowing down has acceleration opposite in direction to its velocity.",
+          "Uniform circular motion has constant speed but continuously changing velocity."
+        ]
+      },
+      "points": [
+        "SI unit of speed and velocity is m/s; of acceleration, m/s².",
+        "Average speed = total distance / total time — never the average of two speeds.",
+        "Acceleration is zero for uniform velocity, positive for speeding up, negative for slowing down.",
+        "Uniform circular motion: constant speed, changing velocity, non-zero acceleration.",
+        "1 km/h = 5/18 m/s."
+      ],
+      "mistakes": [
+        "Averaging two speeds directly instead of using total distance over total time.",
+        "Saying acceleration is zero when a body moves in a circle at constant speed.",
+        "Forgetting to convert km/h to m/s before substituting into an equation of motion."
+      ],
+      "memory_hook": "'Speed has no direction, Velocity has a Vector' — and 'to convert km/h to m/s, multiply by 5/18'.",
+      "advanced": "Instantaneous velocity is the limit of average velocity as the time interval approaches zero — formally the derivative of displacement with respect to time. A speedometer reading is an instantaneous speed, which is why it changes moment to moment.",
+      "formulas": [
+        {
+          "name": "Average Speed",
+          "difficulty": "Easy",
+          "formula": "v_avg = Total distance / Total time",
+          "variables": "v_avg = average speed in m/s, distance in m, time in s.",
+          "when_to_use": "For any journey in stages, especially where the speed differs in different stages.",
+          "common_mistakes": "Taking the arithmetic mean of the two speeds, which is correct only if the two times are equal.",
+          "shortcut": "Equal distances at speeds v₁ and v₂ give average speed 2v₁v₂/(v₁ + v₂), the harmonic mean."
+        },
+        {
+          "name": "Acceleration",
+          "difficulty": "Easy",
+          "formula": "a = (v − u) / t",
+          "variables": "a = acceleration in m/s², v = final velocity, u = initial velocity, t = time taken.",
+          "when_to_use": "Whenever a velocity changes over a known interval of time.",
+          "common_mistakes": "Reversing u and v, which gives the wrong sign for the acceleration.",
+          "shortcut": "If the answer is negative, the body is slowing down — that is retardation."
+        }
+      ]
+    },
+    {
+      "title": "Equations of Uniformly Accelerated Motion",
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Three equations connect initial velocity, final velocity, acceleration, time and displacement for motion with constant acceleration.",
+      "real_life": "Calculating the length of runway an aircraft needs to reach take-off speed is exactly a v² = u² + 2as problem.",
+      "detailed": {
+        "definition": "The equations of motion are v = u + at, s = ut + ½at², and v² = u² + 2as, valid only when the acceleration is uniform.",
+        "key_idea": "Each equation omits one variable. The first has no s, the second has no v, and the third has no t. Choosing the right equation means identifying which quantity is neither given nor asked for.",
+        "working_principle": "A consistent sign convention is essential: choose one direction as positive and give every vector quantity a sign accordingly. For a body thrown upward, taking upward as positive makes g negative.",
+        "applications": [
+          "Free fall: substitute a = g = 9.8 m/s² and the same three equations apply.",
+          "Distance travelled in the nth second: sₙ = u + a(2n − 1)/2.",
+          "Braking distance of a vehicle uses v² = u² + 2as with v = 0."
+        ]
+      },
+      "points": [
+        "The three equations apply ONLY when acceleration is uniform.",
+        "v = u + at (no s); s = ut + ½at² (no v); v² = u² + 2as (no t).",
+        "For a freely falling body, u = 0 and a = g = 9.8 m/s².",
+        "For a body thrown up, velocity at the highest point is zero but acceleration is still g.",
+        "Use a consistent sign convention for direction throughout a problem."
+      ],
+      "mistakes": [
+        "Applying these equations to non-uniform acceleration, where they are invalid.",
+        "Taking acceleration as zero at the top of a vertical throw — the velocity is zero, not the acceleration.",
+        "Mixing units, such as u in km/h with a in m/s²."
+      ],
+      "memory_hook": "'First has no s, second has no v, third has no t' — pick the equation that omits what you neither know nor need.",
+      "advanced": "The three equations are not independent — the third is obtained by eliminating t between the first two. All three are consequences of a single statement: acceleration is constant, so the velocity–time graph is a straight line.",
+      "formulas": [
+        {
+          "name": "First Equation of Motion",
+          "difficulty": "Easy",
+          "formula": "v = u + at",
+          "variables": "v = final velocity, u = initial velocity, a = acceleration, t = time.",
+          "when_to_use": "When displacement is neither given nor required.",
+          "common_mistakes": "Using it when the acceleration is not uniform.",
+          "shortcut": "This is just the definition of acceleration rearranged."
+        },
+        {
+          "name": "Second Equation of Motion",
+          "difficulty": "Medium",
+          "formula": "s = ut + ½at²",
+          "variables": "s = displacement, u = initial velocity, a = acceleration, t = time.",
+          "when_to_use": "When final velocity is neither given nor required.",
+          "common_mistakes": "Forgetting the factor of ½, or squaring only the a instead of the t.",
+          "shortcut": "For a body starting from rest, u = 0 and it reduces to s = ½at²."
+        },
+        {
+          "name": "Third Equation of Motion",
+          "difficulty": "Medium",
+          "formula": "v² = u² + 2as",
+          "variables": "v = final velocity, u = initial velocity, a = acceleration, s = displacement.",
+          "when_to_use": "When time is neither given nor required — typically braking and stopping-distance problems.",
+          "common_mistakes": "Writing v² = u² + 2at, substituting time in place of displacement.",
+          "shortcut": "Set v = 0 to find stopping distance directly: s = −u²/2a."
+        }
+      ],
+      "derivations": [
+        {
+          "title": "Equations of Motion from the Velocity–Time Graph",
+          "why": "It shows that all three equations follow from a single straight-line velocity–time graph, so they need not be memorised as unrelated results.",
+          "assumptions": [
+            "The acceleration is uniform throughout the motion.",
+            "Motion is along a straight line."
+          ],
+          "steps": [
+            "Draw a velocity–time graph: a straight line from initial velocity u at time 0 to final velocity v at time t.",
+            "The slope of this line is the acceleration, so a = (v − u)/t, which rearranges to v = u + at — the first equation.",
+            "The area under the graph gives the displacement. The shape is a trapezium of parallel sides u and v and width t, so s = ½(u + v)t.",
+            "Substituting v = u + at into s = ½(u + v)t gives s = ½(u + u + at)t = ut + ½at² — the second equation.",
+            "Eliminating t between v = u + at and s = ½(u + v)t gives s = (v² − u²)/2a, which rearranges to v² = u² + 2as — the third equation."
+          ],
+          "result": "v = u + at,  s = ut + ½at²,  v² = u² + 2as",
+          "exam_perspective": "Board papers frequently ask for the graphical derivation of any one of the three — always draw and label the graph first, and state clearly that slope gives acceleration and area gives displacement."
+        }
+      ]
+    },
+    {
+      "title": "Uniform Circular Motion",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "A body moving along a circular path at constant speed is in uniform circular motion, which is accelerated motion because the direction of velocity changes continuously.",
+      "real_life": "The moon orbiting the earth, a stone whirled on a string, and a cyclist on a circular track are all accelerating even though their speed never changes.",
+      "detailed": {
+        "definition": "Uniform circular motion is motion along a circular path with constant speed. The velocity at any instant is directed along the tangent to the circle at that point.",
+        "key_idea": "Speed is constant but velocity is not, because direction changes at every instant. A changing velocity means acceleration, and that acceleration points towards the centre — it is called centripetal acceleration.",
+        "working_principle": "In one complete revolution the body covers a distance equal to the circumference 2πr in a time T called the time period, so the speed is v = 2πr/T. If the string is cut, the body flies off along the tangent, not radially outward.",
+        "applications": [
+          "A satellite in a circular orbit around the earth.",
+          "Mud flying off a spinning bicycle wheel leaves tangentially.",
+          "A cyclist leans inward on a curve to obtain the necessary centripetal force."
+        ]
+      },
+      "points": [
+        "Uniform circular motion has constant speed but changing velocity.",
+        "It is accelerated motion; the acceleration is directed towards the centre.",
+        "Velocity at any point is along the tangent to the circle.",
+        "v = 2πr/T, where T is the time for one complete revolution.",
+        "If the string breaks, the body moves along the tangent at that instant."
+      ],
+      "mistakes": [
+        "Saying the body flies radially outward when released; it moves along the tangent.",
+        "Claiming acceleration is zero because the speed is constant.",
+        "Confusing the time period T (per revolution) with the total time of motion."
+      ],
+      "memory_hook": "'Constant Speed, Changing Velocity, Centre-seeking acceleration' — and 'cut the string, fly the tangent'.",
+      "advanced": "The centripetal acceleration has magnitude v²/r. This single expression explains why tight turns at high speed are dangerous — halving the radius or doubling the speed both demand far more force from the tyres than intuition suggests.",
+      "formulas": [
+        {
+          "name": "Speed in Uniform Circular Motion",
+          "difficulty": "Easy",
+          "formula": "v = 2πr / T",
+          "variables": "v = speed, r = radius of the circular path, T = time period of one revolution.",
+          "when_to_use": "To find the speed of any body moving in a circle when the radius and time period are known.",
+          "common_mistakes": "Using the diameter in place of the radius, or forgetting the factor 2π.",
+          "shortcut": "2πr is the distance for one lap; divide by the time for one lap."
+        }
+      ]
+    }
+  ]
+}

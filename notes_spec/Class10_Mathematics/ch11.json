@@ -1,0 +1,76 @@
+{
+  "number": 11,
+  "title": "Constructions",
+  "prerequisites": [
+    "Basic ruler-and-compass constructions from Class 9.",
+    "Basic Proportionality Theorem.",
+    "Similarity of triangles and the ratio of sides.",
+    "Tangent properties of a circle."
+  ],
+  "topics": [
+    {
+      "title": "Division of a Segment and Similar Triangles",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "A line segment can be divided in any given ratio using a ray of equally spaced points, and the same idea constructs a triangle similar to a given one in a required scale factor.",
+      "real_life": "An architect scaling a plan to two-thirds size uses exactly this construction rather than recomputing every measurement.",
+      "detailed": {
+        "definition": "To divide a segment AB in the ratio m : n, draw an acute-angled ray from A, mark m + n equal arcs along it, join the last point to B, and draw a parallel through the mth point.",
+        "key_idea": "The construction works by the Basic Proportionality Theorem — the parallel line divides AB in the same ratio as the ray was divided. Every step has a justification.",
+        "working_principle": "For a similar triangle with scale factor m/n, mark the larger of m and n arcs along the ray. Getting this choice right is what decides whether the new triangle is larger or smaller.",
+        "applications": [
+          "Scale factor greater than 1 gives a larger triangle; less than 1 gives a smaller one.",
+          "The arcs on the ray must be exactly equal, so the compass width must not change.",
+          "The justification is expected in the answer, not only the drawing."
+        ]
+      },
+      "points": [
+        "Mark m + n equal arcs when dividing a segment in the ratio m : n.",
+        "The construction is justified by the Basic Proportionality Theorem.",
+        "For a scale factor m/n, use the greater of m and n as the number of arcs.",
+        "Keep the compass width unchanged while marking equal arcs.",
+        "Write the steps of construction and the justification; both carry marks."
+      ],
+      "mistakes": [
+        "Marking m arcs instead of m + n when dividing in the ratio m : n.",
+        "Changing the compass width partway through marking the arcs.",
+        "Omitting the justification, which is separately marked."
+      ],
+      "memory_hook": "'m + n equal arcs, then one parallel line' — the ratio transfers automatically.",
+      "advanced": "This is a constructive proof of the Basic Proportionality Theorem. The same principle underlies the slide rule and every mechanical scaling device built before calculators."
+    },
+    {
+      "title": "Construction of Tangents to a Circle",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Tangents from an external point are constructed by drawing a circle on the line joining the point to the centre as diameter, and joining the intersections.",
+      "real_life": "Marking where a belt leaves a pulley when it runs to a fixed post is exactly this construction on a workshop floor.",
+      "detailed": {
+        "definition": "To construct tangents from an external point P to a circle with centre O, find the mid-point M of OP, draw a circle with centre M and radius MO, and join P to the two points where the circles intersect.",
+        "key_idea": "The construction works because an angle in a semicircle is a right angle. The circle on OP as diameter forces OA ⟂ PA, which is exactly the tangent condition.",
+        "working_principle": "When the centre is not marked, it is first located by drawing two chords and their perpendicular bisectors, which meet at the centre.",
+        "applications": [
+          "Two tangents can be drawn from any external point.",
+          "Only one tangent exists at a point on the circle itself.",
+          "The tangent lengths from P are equal, which serves as a check on the drawing."
+        ]
+      },
+      "points": [
+        "Find the mid-point of OP and draw a circle with OP as diameter.",
+        "The intersections of the two circles are the points of contact.",
+        "Justification: angle in a semicircle is 90°, so the radius is perpendicular to the tangent.",
+        "If the centre is not given, locate it using the perpendicular bisectors of two chords.",
+        "Check the drawing by verifying that the two tangent lengths are equal."
+      ],
+      "mistakes": [
+        "Taking the mid-point of the radius instead of OP.",
+        "Drawing tangents by eye rather than by construction.",
+        "Omitting the justification based on the angle in a semicircle."
+      ],
+      "memory_hook": "'Circle on OP as diameter' — the semicircle supplies the right angle for free.",
+      "advanced": "The construction is the geometric solution of a quadratic: the two intersection points correspond to the two roots. Where the external point lies on the circle, the roots coincide and only one tangent exists."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "number": 7,
+  "title": "Triangles",
+  "prerequisites": [
+    "Angle sum property of a triangle.",
+    "Properties of parallel lines and a transversal.",
+    "Idea of congruent figures as identical in shape and size.",
+    "Familiarity with the terms median, altitude and bisector."
+  ],
+  "topics": [
+    {
+      "title": "Congruence of Triangles",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Two triangles are congruent if they have exactly the same shape and size, and this can be established by the SSS, SAS, ASA, AAS or RHS criteria.",
+      "real_life": "Mass-produced roof trusses must be congruent so that any one fits any position — manufacturers verify this by checking three measurements, not six.",
+      "detailed": {
+        "definition": "Two triangles are congruent if their corresponding sides and corresponding angles are equal. The congruence criteria are shortcuts that establish this from only three pieces of information.",
+        "key_idea": "SAS requires the angle to be between the two sides. SSA is not a valid criterion — two different triangles can share two sides and a non-included angle, which is why it is excluded.",
+        "working_principle": "Write the correspondence in the correct order: ΔABC ≅ ΔPQR means A↔P, B↔Q, C↔R. All conclusions about corresponding parts (CPCT) depend on getting this order right.",
+        "applications": [
+          "RHS applies only to right triangles, using the hypotenuse and one side.",
+          "AAA is not a congruence criterion — it gives similarity, not congruence.",
+          "CPCT is used after proving congruence to deduce equality of remaining parts."
+        ]
+      },
+      "points": [
+        "Congruence criteria: SSS, SAS, ASA, AAS and RHS.",
+        "SAS requires the INCLUDED angle between the two sides.",
+        "SSA and AAA are NOT congruence criteria.",
+        "Write the correspondence in the correct order when stating congruence.",
+        "CPCT — Corresponding Parts of Congruent Triangles are equal — is used after congruence is proved."
+      ],
+      "mistakes": [
+        "Using SSA as a congruence criterion.",
+        "Writing the vertices in the wrong order in a congruence statement.",
+        "Applying AAA and concluding congruence rather than similarity."
+      ],
+      "memory_hook": "'SSS, SAS, ASA, AAS, RHS' — five valid keys; SSA and AAA open nothing.",
+      "advanced": "SSA fails because a circle of given radius can cut a line in two places, giving the ambiguous case. In trigonometry this reappears as the two possible solutions of the sine rule."
+    },
+    {
+      "title": "Properties of Triangles and Inequalities",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Angles opposite equal sides are equal, the larger angle lies opposite the larger side, and any two sides together exceed the third.",
+      "real_life": "You cannot build a triangle from sticks of 2 cm, 3 cm and 8 cm — the two shorter sticks simply will not reach across.",
+      "detailed": {
+        "definition": "The triangle inequality states that the sum of the lengths of any two sides of a triangle is greater than the third side. In an isosceles triangle, the angles opposite the equal sides are equal.",
+        "key_idea": "Side–angle relationships always run in the same direction: bigger side, bigger opposite angle. This one principle covers both the isosceles theorem and the inequality theorems.",
+        "working_principle": "To test whether three lengths can form a triangle, it is enough to check that the two smaller lengths together exceed the largest. The other two inequalities then follow automatically.",
+        "applications": [
+          "Angles opposite equal sides are equal, and conversely.",
+          "The side opposite the greater angle is longer.",
+          "The difference of any two sides is less than the third side."
+        ]
+      },
+      "points": [
+        "Isosceles triangle: angles opposite the equal sides are equal (and conversely).",
+        "The greater side has the greater angle opposite it.",
+        "Sum of any two sides > the third side.",
+        "Difference of any two sides < the third side.",
+        "The perpendicular from a point to a line is the shortest distance to that line."
+      ],
+      "mistakes": [
+        "Checking only one of the three triangle inequalities when a length is large.",
+        "Reversing the side–angle relation and pairing the largest side with the smallest angle.",
+        "Assuming an isosceles triangle must also be acute-angled."
+      ],
+      "memory_hook": "'Bigger side, bigger angle' — and 'the two short ones must out-reach the long one'.",
+      "advanced": "The triangle inequality generalises far beyond geometry: it is one of the defining axioms of a metric space, and holds for distances in any dimension, for absolute values, and for vector magnitudes."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "number": 10,
+  "title": "Visualising Solid Shapes",
+  "prerequisites": [
+    "Basic familiarity with common 3D shapes — cube, cuboid, cylinder, cone, sphere, prism, pyramid.",
+    "Idea of 2D shapes (faces) that make up 3D solids.",
+    "Comfort with counting and simple arithmetic."
+  ],
+  "topics": [
+    {
+      "title": "Faces, Edges, Vertices & Nets of Solids",
+      "quick_summary": "Every 3D solid can be described by its number of flat faces, straight edges, and corner vertices, and can be 'unfolded' into a flat 2D net that folds back into the same solid.",
+      "detailed": {
+        "definition": "A face is a flat (or curved) surface of a solid; an edge is a line segment where two faces meet; a vertex is a point where edges meet (a corner). A net is a 2D pattern that can be folded to form a 3D solid.",
+        "key_idea": "The same solid can often be represented by more than one valid net (different unfolding arrangements), but a net must fold up without gaps or overlaps to correctly form the target solid.",
+        "working_principle": "To identify a net correctly, mentally (or physically) fold each flat piece along its shared edges and check whether all faces align correctly to enclose a solid shape with no missing or overlapping surfaces.",
+        "applications": [
+          "Packaging design (boxes, cartons) relies entirely on correct nets for manufacturing folded containers.",
+          "Visualizing cross-sections and different views (top, front, side) of solids in engineering and architecture drawings."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Unfolding a cereal box flat gives its net — a 2D pattern of six rectangles — which can be refolded to reconstruct the original cuboid.",
+      "points": [
+        "A cube has 6 faces, 12 edges, and 8 vertices.",
+        "A cuboid also has 6 faces, 12 edges, and 8 vertices (but faces are rectangles, not all squares).",
+        "A cylinder has 2 flat circular faces + 1 curved surface, 2 edges, and 0 vertices.",
+        "A cone has 1 flat circular face + 1 curved surface, 1 edge, and 1 vertex (the apex)."
+      ],
+      "mistakes": [
+        "Miscounting curved surfaces as 'no face' — a curved surface still counts as one face for solids like cylinders and cones.",
+        "Drawing a net where faces overlap or leave gaps when mentally folded, making it invalid.",
+        "Confusing edges (line segments) with vertices (corner points) when describing a solid."
+      ],
+      "memory_hook": "'Fold it flat, that's the net; count faces, edges, corners for the ID' — every solid has its own fixed count.",
+      "advanced": "The idea of a 'net' generalises beautifully in higher mathematics to unfolding four-dimensional shapes into three- dimensional nets (a famous example being the 'unfolded tesseract') — the same folding logic used here for cubes and cuboids extends conceptually into shapes we cannot directly visualize."
+    },
+    {
+      "title": "Euler's Formula for Solids",
+      "quick_summary": "For any convex polyhedron (a solid with flat polygonal faces), the number of faces, vertices, and edges are always related by the simple formula F + V − E = 2.",
+      "detailed": {
+        "definition": "A polyhedron is a 3D solid bounded entirely by flat polygonal faces (like a cube, prism, or pyramid); Euler's formula states that for any such convex polyhedron, F + V − E = 2, where F = number of faces, V = number of vertices, and E = number of edges.",
+        "key_idea": "Euler's formula acts as a quick consistency check — if a claimed polyhedron's face, vertex, and edge counts don't satisfy F + V − E = 2, either the counts are wrong or the shape isn't a valid simple convex polyhedron.",
+        "working_principle": "Count the faces (F), vertices (V), and edges (E) of the solid carefully, then substitute into F + V − E and confirm the result equals 2 for any valid, simple, convex polyhedron.",
+        "applications": [
+          "Verifying structural designs in architecture (domes, trusses) built from polyhedral panels.",
+          "Cross-checking answers in geometry problems that describe a solid using only some of F, V, E and ask you to find the missing one."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Checking a football (soccer ball) pattern of pentagons and hexagons, or verifying a geodesic dome's structural design, both use Euler's formula to confirm the face-edge-vertex count is consistent.",
+      "points": [
+        "Euler's Formula: F + V − E = 2, for any simple convex polyhedron.",
+        "Cube: F=6, V=8, E=12 → 6+8−12 = 2 ✓.",
+        "Triangular pyramid (tetrahedron): F=4, V=4, E=6 → 4+4−6 = 2 ✓.",
+        "Euler's formula does NOT apply to solids with curved surfaces (like cylinders, cones, spheres) since they are not polyhedra."
+      ],
+      "mistakes": [
+        "Applying Euler's formula to solids with curved faces (cylinder, cone, sphere) — it is valid only for polyhedra with flat faces.",
+        "Miscounting shared edges between faces, leading to an incorrect E value.",
+        "Rearranging the formula incorrectly when solving for a missing quantity (e.g., writing E = F + V + 2 instead of E = F + V − 2)."
+      ],
+      "memory_hook": "'Faces plus Vertices, minus Edges, always 2' — a universal fingerprint of any convex polyhedron.",
+      "advanced": "Euler's formula is one of the earliest results in topology — the branch of mathematics studying properties that don't change under stretching or bending; remarkably, F + V − E = 2 stays true no matter how a polyhedron is distorted (as long as it isn't torn or given a hole), because it reflects a deeper topological property of the sphere- like surface rather than just simple counting.",
+      "formulas": [
+        {
+          "name": "Euler's Formula",
+          "difficulty": "Medium",
+          "formula": "F + V − E = 2",
+          "variables": "F = number of faces, V = number of vertices, E = number of edges of a simple convex polyhedron.",
+          "when_to_use": "To verify consistency of a polyhedron's face/vertex/edge counts, or to find one missing value given the other two.",
+          "common_mistakes": "Applying this to non-polyhedral (curved) solids, or miscounting shared edges/vertices.",
+          "shortcut": "Rearrange as needed: E = F + V − 2, or V = 2 − F + E, depending on which quantity is missing."
+        }
+      ]
+    }
+  ]
+}

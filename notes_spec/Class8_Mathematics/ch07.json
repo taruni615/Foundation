@@ -1,0 +1,71 @@
+{
+  "number": 7,
+  "title": "Cube and Cube Roots",
+  "prerequisites": [
+    "Understanding of squares and square roots from Chapter 6.",
+    "Comfort with prime factorization of numbers.",
+    "Idea of exponents, specifically a³ meaning a × a × a."
+  ],
+  "topics": [
+    {
+      "title": "Perfect Cubes & Their Properties",
+      "quick_summary": "A perfect cube is a number obtained by multiplying an integer by itself three times; perfect cubes have predictable unit-digit patterns and depend on primes occurring in groups of three.",
+      "detailed": {
+        "definition": "A natural number n is a perfect cube if n = m × m × m (written m³) for some natural number m; m is called the cube root of n.",
+        "key_idea": "In the prime factorization of a perfect cube, every prime factor must occur in a group of exactly three (a multiple of 3 times), unlike perfect squares where factors occur in pairs.",
+        "working_principle": "To check if a number is a perfect cube, factorize it into primes and verify that every distinct prime's power is a multiple of 3; if any prime's count isn't a multiple of 3, the number is not a perfect cube.",
+        "applications": [
+          "Determining the smallest number to multiply or divide by to convert a given number into a perfect cube.",
+          "Calculating volumes of cube-shaped containers, packaging, and storage units."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "The volume of a cube-shaped box (like a Rubik's cube or a sugar cube) with whole-number side length is always a perfect cube.",
+      "points": [
+        "Cubes of even numbers are always even; cubes of odd numbers are always odd.",
+        "Unit digit patterns: cubes of numbers ending in 1,4,5,6,9,0 end in the same digit; 2↔8 and 3↔7 swap unit digits when cubed.",
+        "For a perfect cube, every prime factor's exponent in the prime factorization must be a multiple of 3.",
+        "Cube of a negative number is negative: (−m)³ = −m³ (unlike squares, which are always positive)."
+      ],
+      "mistakes": [
+        "Assuming cube unit-digit rules work the same as square unit-digit rules — cubes allow ALL digits 0–9 to appear as the last digit, unlike squares.",
+        "Forgetting that cubing a negative number keeps the result negative, unlike squaring.",
+        "Checking only one prime factor's power instead of verifying ALL prime factors are multiples of 3."
+      ],
+      "memory_hook": "'Cubes come in triples' — every prime factor of a perfect cube must appear exactly 3, 6, 9... times.",
+      "advanced": "Unlike perfect squares (which can never end in 2, 3, 7, or 8), perfect cubes can end in any digit from 0 to 9 — this is because cubing preserves the sign and 'rotates' unit digits in pairs (2³ ends in 8, 8³ ends in 2, etc.) rather than restricting them the way squaring does."
+    },
+    {
+      "title": "Finding Cube Roots by Prime Factorization",
+      "quick_summary": "The cube root of a perfect cube is found by prime factorization — grouping identical prime factors in threes and taking one factor from each group.",
+      "detailed": {
+        "definition": "The cube root of a number n, written ∛n or n^(1/3), is the number which when multiplied by itself three times gives n.",
+        "key_idea": "Just as pairing was the key operation for square roots, GROUPING IN THREES is the key operation for cube roots — every prime factor group of three contributes exactly one factor to the final cube root.",
+        "working_principle": "Factorize the number fully into primes, group each distinct prime's occurrences into sets of three, and multiply one factor from each group of three to get the cube root.",
+        "applications": [
+          "Finding dimensions of cube-shaped objects or containers when volume is known.",
+          "Simplifying cube-root expressions in algebra and verifying perfect-cube claims quickly."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Finding the side length of a cube-shaped water tank given its volume (say, 3375 litres) requires calculating the cube root of 3375, using exactly this method.",
+      "points": [
+        "Group prime factors in THREES (not twos, as with square roots) and pick one factor from each group.",
+        "∛(a×b) = ∛a × ∛b, useful for breaking a large cube root into smaller manageable pieces.",
+        "∛(a/b) = ∛a / ∛b, useful for cube roots of fractions.",
+        "The cube root of a perfect cube ending in 0 must end in exactly a multiple of 3 zeros itself is a special sub-case; more generally check zero-count is a multiple of 3."
+      ],
+      "mistakes": [
+        "Grouping prime factors in twos (square-root habit) instead of threes when finding a cube root.",
+        "Leaving a leftover, incomplete group of primes and still treating the number as a perfect cube.",
+        "Confusing the cube root symbol ∛ with the square root symbol √, leading to using the wrong grouping method."
+      ],
+      "memory_hook": "'Threes for cubes, twos for squares' — never mix up the grouping size for the two root operations.",
+      "advanced": "The 'group in threes/twos' technique is a special case of a much more general algebraic idea: to find the n-th root of a perfect n-th power via prime factorization, you always group each prime's exponent by n and take one factor per group — the same principle scales up to fourth roots, fifth roots, and beyond in higher classes."
+    }
+  ]
+}

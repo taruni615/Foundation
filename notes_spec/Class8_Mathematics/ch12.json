@@ -1,0 +1,82 @@
+{
+  "number": 12,
+  "title": "Exponents and Powers",
+  "prerequisites": [
+    "Basic idea of repeated multiplication (aⁿ means a multiplied n times).",
+    "Comfort with squares, cubes, and prime factorization from earlier chapters.",
+    "Basic understanding of place value for very large or very small numbers."
+  ],
+  "topics": [
+    {
+      "title": "Laws of Exponents",
+      "quick_summary": "Powers with the same base can be combined using a fixed set of exponent laws for multiplication, division, and raising a power to another power.",
+      "detailed": {
+        "definition": "For a base a (a ≠ 0) and exponent n, aⁿ means a multiplied by itself n times. The laws of exponents give shortcut rules for combining powers without expanding them fully.",
+        "key_idea": "Exponent laws only combine directly when the BASES are the same (for multiplication/division laws) — you cannot directly add exponents of terms with different bases.",
+        "working_principle": "When multiplying powers with the same base, add exponents; when dividing, subtract exponents; when raising a power to another power, multiply exponents; when a product or quotient is raised to a power, the exponent distributes to each factor.",
+        "applications": [
+          "Simplifying scientific notation and very large/small number calculations in physics and chemistry.",
+          "Computer science applications like binary/memory calculations, which are built entirely on powers of 2."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Computing how bacteria populations double repeatedly (2¹⁰ after 10 doublings) or how computer memory scales in powers of 2 (1 KB = 2¹⁰ bytes) both rely directly on exponent laws.",
+      "points": [
+        "aᵐ × aⁿ = aᵐ⁺ⁿ (same base, multiplying → ADD exponents).",
+        "aᵐ ÷ aⁿ = aᵐ⁻ⁿ (same base, dividing → SUBTRACT exponents).",
+        "(aᵐ)ⁿ = aᵐⁿ (power of a power → MULTIPLY exponents).",
+        "(ab)ⁿ = aⁿbⁿ and (a/b)ⁿ = aⁿ/bⁿ (exponent distributes over products and quotients)."
+      ],
+      "mistakes": [
+        "Adding exponents of terms with DIFFERENT bases (e.g., treating 2³ × 3² as 6⁵, which is wrong).",
+        "Multiplying exponents instead of adding them when multiplying same-base powers (confusing aᵐ×aⁿ with (aᵐ)ⁿ).",
+        "Forgetting the exponent must distribute to EVERY factor inside a bracket, e.g., (2x)³ = 8x³, not 2x³."
+      ],
+      "memory_hook": "'Same base: multiplyadd, dividesubtract, power of powermultiply' — three different exponent actions for three different operations.",
+      "advanced": "These laws of exponents are the foundation for logarithms in higher classes — a logarithm is essentially asking 'to what exponent must this base be raised?', and every exponent law here has a matching logarithm law (productsum, quotientdifference, powermultiply), making this chapter a direct stepping stone to logarithmic thinking."
+    },
+    {
+      "title": "Negative Exponents & Standard (Scientific) Form",
+      "quick_summary": "A negative exponent represents the reciprocal of the positive power, and very large or very small numbers are conveniently written in standard form as a number between 1 and 10 multiplied by a power of 10.",
+      "detailed": {
+        "definition": "For a ≠ 0, a⁻ⁿ = 1/aⁿ. Standard form (scientific notation) expresses any number as k × 10ⁿ, where 1 ≤ k < 10 and n is an integer (positive for large numbers, negative for small numbers).",
+        "key_idea": "A negative exponent does NOT make a number negative — it only means 'take the reciprocal of the positive power'; a⁻ⁿ is always positive if a is positive.",
+        "working_principle": "To convert a number to standard form, move the decimal point until only one non-zero digit remains before it, and count how many places the decimal moved — that count becomes the power of 10 (positive if you moved left, negative if you moved right).",
+        "applications": [
+          "Expressing astronomical distances, atomic/molecular sizes, and other extreme-scale measurements compactly in science.",
+          "Simplifying calculations involving very large or very small numbers by working with exponents instead of long strings of zeros."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The distance to the Sun (about 1.5 × 10⁸ km) and the size of a virus (about 3 × 10⁻⁸ m) are both conveniently expressed using standard form with negative or large positive exponents.",
+      "points": [
+        "a⁻ⁿ = 1/aⁿ, and conversely 1/aⁿ = a⁻ⁿ — negative exponents flip a term between numerator and denominator.",
+        "a⁰ = 1 for any a ≠ 0 (the exponent laws force this definition to stay consistent).",
+        "Standard form: k × 10ⁿ, where 1 ≤ k < 10; moving the decimal LEFT gives a positive n, moving it RIGHT gives a negative n.",
+        "All the regular laws of exponents (add/subtract/multiply exponents) still apply even when exponents are negative."
+      ],
+      "mistakes": [
+        "Thinking a negative exponent makes the whole number negative (e.g., assuming 2⁻³ = −8, when it is actually 1/8).",
+        "Miscounting decimal places when converting to/from standard form, especially for numbers less than 1.",
+        "Writing standard form with k outside the range 1 ≤ k < 10 (e.g., 25 × 10⁴ instead of the correct 2.5 × 10⁵)."
+      ],
+      "memory_hook": "'Negative exponent = flip it, don't negate it' — a⁻ⁿ is a reciprocal, not a negative number.",
+      "advanced": "The rule a⁰ = 1 is not an arbitrary convention — it is forced by consistency: since aᵐ ÷ aᵐ = aᵐ⁻ᵐ = a⁰, and any non- zero number divided by itself equals 1, the exponent law itself REQUIRES a⁰ = 1 for the pattern to hold together without contradiction.",
+      "formulas": [
+        {
+          "name": "Negative Exponent Rule",
+          "difficulty": "Easy",
+          "formula": "a⁻ⁿ = 1/aⁿ  (a ≠ 0)",
+          "variables": "a = base, n = a positive integer exponent being negated.",
+          "when_to_use": "Whenever a term has a negative exponent that needs to be rewritten as a positive- exponent fraction, or vice versa.",
+          "common_mistakes": "Treating a⁻ⁿ as −(aⁿ), i.e., mistakenly making the whole value negative.",
+          "shortcut": "'Flip it to the other side of the fraction bar' — negative exponent moves a term from top to bottom (or bottom to top) and becomes positive."
+        }
+      ]
+    }
+  ]
+}

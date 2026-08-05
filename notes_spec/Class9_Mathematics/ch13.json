@@ -1,0 +1,116 @@
+{
+  "number": 13,
+  "title": "Surface Areas and Volumes of Solids",
+  "prerequisites": [
+    "Area of a rectangle, triangle and circle.",
+    "Idea of three-dimensional shapes and their nets.",
+    "Value of π as 22/7 or 3.14.",
+    "Ability to handle squares, cubes and square roots."
+  ],
+  "topics": [
+    {
+      "title": "Cuboid, Cube and Cylinder",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Surface area is the area of the outer covering of a solid and volume is the space it occupies; for prisms and cylinders volume is simply base area times height.",
+      "real_life": "The paper needed to wrap a gift box is its surface area, while the amount it can hold is its volume — two different questions about the same box.",
+      "detailed": {
+        "definition": "Total surface area is the area of all the faces of a solid. Lateral or curved surface area excludes the top and bottom faces. Volume is the space enclosed by the solid.",
+        "key_idea": "For any prism or cylinder, volume = base area × height. Learning this one principle replaces three separate volume formulas.",
+        "working_principle": "The curved surface of a cylinder unrolls into a rectangle of width 2πr and height h, which is exactly why its curved surface area is 2πrh.",
+        "applications": [
+          "Cost of painting a wall uses surface area; capacity of a tank uses volume.",
+          "1 m³ = 1000 litres; 1 cm³ = 1 millilitre.",
+          "A hollow cylinder such as a pipe requires both the inner and outer radii."
+        ]
+      },
+      "points": [
+        "Cuboid: TSA = 2(lb + bh + hl), Volume = lbh, diagonal = √(l² + b² + h²).",
+        "Cube: TSA = 6a², Volume = a³, diagonal = a√3.",
+        "Cylinder: CSA = 2πrh, TSA = 2πr(r + h), Volume = πr²h.",
+        "Lateral surface area of a cuboid = 2h(l + b), excluding top and bottom.",
+        "All dimensions must be converted to the same unit before substituting."
+      ],
+      "mistakes": [
+        "Using total surface area where only the curved or lateral area is needed (e.g. painting only the walls).",
+        "Mixing units — length in metres and radius in centimetres.",
+        "Using the diameter in place of the radius in a cylinder formula."
+      ],
+      "memory_hook": "'Volume = base area × height' for every prism and cylinder — one rule, three solids.",
+      "advanced": "Cavalieri's principle explains why a slanted stack of coins has the same volume as a straight one: equal cross-sections at every height give equal volume, regardless of how the solid leans.",
+      "formulas": [
+        {
+          "name": "Cuboid and Cube",
+          "difficulty": "Easy",
+          "formula": "Cuboid: V = lbh, TSA = 2(lb+bh+hl);  Cube: V = a³, TSA = 6a²",
+          "variables": "l, b, h = length, breadth, height; a = edge of the cube.",
+          "when_to_use": "For boxes, rooms, tanks, bricks and any rectangular solid.",
+          "common_mistakes": "Forgetting the factor 2 in the total surface area of a cuboid.",
+          "shortcut": "Diagonal of a cuboid = √(l²+b²+h²); of a cube = a√3."
+        },
+        {
+          "name": "Cylinder",
+          "difficulty": "Medium",
+          "formula": "CSA = 2πrh,  TSA = 2πr(r + h),  V = πr²h",
+          "variables": "r = radius of the base, h = height of the cylinder.",
+          "when_to_use": "For pipes, tanks, rollers, cans and drums.",
+          "common_mistakes": "Substituting the diameter for r, which quadruples the volume.",
+          "shortcut": "A roller covers CSA per revolution; multiply by the number of revolutions for area covered."
+        }
+      ]
+    },
+    {
+      "title": "Cone, Sphere and Hemisphere",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A cone has one third the volume of a cylinder on the same base and height, and a sphere has volume (4/3)πr³ with surface area 4πr².",
+      "real_life": "An ice cream cone holds exactly one third of what a cylindrical cup of the same width and height would hold — which is why it looks bigger than it is.",
+      "detailed": {
+        "definition": "The slant height l of a cone is the distance from the apex to any point on the edge of the base, and satisfies l² = r² + h². A hemisphere is half of a sphere.",
+        "key_idea": "The cone's curved surface uses the slant height l, while its volume uses the vertical height h. Substituting one for the other is the most frequent error in this chapter.",
+        "working_principle": "For combined solids, add the curved surfaces of the parts that remain exposed and ignore the joined faces. Volumes always add directly.",
+        "applications": [
+          "A cone, hemisphere and cylinder of the same radius and height have volumes in the ratio 1 : 2 : 3.",
+          "A sphere's surface area equals the curved surface of the cylinder that just encloses it.",
+          "Melting and recasting problems keep volume constant while shape changes."
+        ]
+      },
+      "points": [
+        "Cone: l² = r² + h², CSA = πrl, TSA = πr(l + r), V = (1/3)πr²h.",
+        "Sphere: Surface area = 4πr², V = (4/3)πr³.",
+        "Hemisphere: CSA = 2πr², TSA = 3πr², V = (2/3)πr³.",
+        "Cone : hemisphere : cylinder volumes on the same base and height = 1 : 2 : 3.",
+        "In recasting problems, volume is conserved even though surface area changes."
+      ],
+      "mistakes": [
+        "Using slant height l in the volume formula instead of vertical height h.",
+        "Taking the total surface area of a hemisphere as 2πr² and forgetting the flat circular face.",
+        "Adding the surface areas of joined faces in a combined solid."
+      ],
+      "memory_hook": "'Cone is a third of a cylinder, sphere is two thirds of it' — and 'l for curved, h for volume'.",
+      "advanced": "Archimedes proved that a sphere has two thirds the volume and two thirds the total surface area of its circumscribing cylinder, and asked for that figure to be carved on his tomb — he considered it his finest result.",
+      "formulas": [
+        {
+          "name": "Cone",
+          "difficulty": "Medium",
+          "formula": "l = √(r² + h²),  CSA = πrl,  TSA = πr(l + r),  V = (1/3)πr²h",
+          "variables": "r = base radius, h = vertical height, l = slant height.",
+          "when_to_use": "For conical tents, funnels, heaps of grain and ice-cream cones.",
+          "common_mistakes": "Using l in the volume formula, or h in the curved surface area formula.",
+          "shortcut": "Canvas needed for a conical tent is the curved surface area only."
+        },
+        {
+          "name": "Sphere and Hemisphere",
+          "difficulty": "Medium",
+          "formula": "Sphere: SA = 4πr², V = (4/3)πr³;  Hemisphere: CSA = 2πr², TSA = 3πr², V = (2/3)πr³",
+          "variables": "r = radius.",
+          "when_to_use": "For balls, domes, bowls and spherical tanks.",
+          "common_mistakes": "Omitting the flat face when the total surface area of a hemisphere is required.",
+          "shortcut": "Hemisphere TSA = 2πr² (curved) + πr² (flat) = 3πr²."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "number": 16,
+  "title": "Playing with Numbers",
+  "prerequisites": [
+    "Comfort with place value of digits in a multi-digit number.",
+    "Basic linear equation and algebraic manipulation skills from Chapter 2.",
+    "Familiarity with divisibility rules (for 2, 3, 5, 9, 10) from earlier classes."
+  ],
+  "topics": [
+    {
+      "title": "Numbers in General Form & Reversing Digits",
+      "quick_summary": "Any two- or three-digit number can be written algebraically in terms of its digits' place values, which allows number puzzles about digit reversal and digit sums to be solved using algebra.",
+      "detailed": {
+        "definition": "A two-digit number with tens digit 'a' and units digit 'b' is written in general form as 10a + b; a three-digit number with digits a (hundreds), b (tens), c (units) is written as 100a + 10b + c.",
+        "key_idea": "Writing numbers in general (place-value) form converts a numerical pattern or puzzle into an algebraic expression that can be manipulated, factorised, or tested for divisibility just like any other algebraic expression.",
+        "working_principle": "Represent the unknown number(s) using place-value notation with variables for each digit, translate the puzzle's conditions (like 'reverse the digits' or 'sum of digits') into algebraic expressions, then simplify or solve using standard algebraic techniques.",
+        "applications": [
+          "Solving classic number puzzles and logical brain-teasers involving digit manipulation.",
+          "Proving general divisibility results (e.g., why the difference between a 2-digit number and its reverse is always divisible by 9)."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Verifying why a two-digit number is always divisible by 9 when added to its digit-reversed version and then divided by 11 (or similar classic number tricks) becomes provable using this general algebraic form.",
+      "points": [
+        "Two-digit number with digits a, b: general form = 10a + b (a = tens digit, b = units digit).",
+        "Reversed two-digit number (digits swapped) = 10b + a.",
+        "Sum of a 2-digit number and its reverse: (10a+b) + (10b+a) = 11(a+b), always divisible by 11.",
+        "Difference of a 2-digit number and its reverse: (10a+b) − (10b+a) = 9(a−b), always divisible by 9."
+      ],
+      "mistakes": [
+        "Writing the general form with digits in the wrong place-value position (e.g., writing ab instead of 10a+b).",
+        "Forgetting that digit values must be single digits (0 to 9), which constrains possible values of a, b, c in puzzle solutions.",
+        "Losing track of which digit is being called 'a' vs 'b' partway through a multi-step puzzle."
+      ],
+      "memory_hook": "'Digits become variables' — 10a+b turns a number puzzle into an ordinary algebra problem.",
+      "advanced": "The results '(number) + (its reverse) is divisible by 11' and '(number) − (its reverse) is divisible by 9' are not coincidences — they fall directly out of the algebraic identity 11(a+b) and 9(a−b), showing how a seemingly 'magical' number trick is really just a disguised piece of straightforward algebra."
+    },
+    {
+      "title": "Letters for Digits — Solving Number Puzzles & Divisibility Tests",
+      "quick_summary": "Cryptarithm-style puzzles use letters to represent unknown digits in an arithmetic sum, solved through logical deduction combined with divisibility rules for 2, 3, 5, 9, and 10.",
+      "detailed": {
+        "definition": "A 'letters for digits' puzzle replaces the digits of a sum with letters (each letter representing one fixed, unknown digit consistently); divisibility rules provide quick tests for whether a number (possibly containing an unknown digit) is divisible by a small number like 2, 3, 5, 9, or 10.",
+        "key_idea": "In any letters-for-digits puzzle, each distinct letter represents ONE specific digit throughout the entire puzzle (never changing), and typically the leading digit of any number cannot be 0.",
+        "working_principle": "Use column-by-column addition/subtraction logic starting from the units column, applying carry-over rules, and use process-of-elimination with the constraint that each letter is a single fixed digit (0–9) and leading digits are non-zero, to narrow down the unique solution.",
+        "applications": [
+          "Recreational mathematics and logical reasoning puzzles that build systematic deduction skills.",
+          "Quick mental divisibility checks (e.g., checking if a large number is divisible by 9 by adding its digits) used throughout arithmetic and number theory."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Classic puzzles like 'ON + ON = TOO' or determining the digit that makes a number divisible by 9, both rely on the systematic logic taught in this topic.",
+      "points": [
+        "Divisibility by 2: last digit is even (0,2,4,6,8). Divisibility by 5: last digit is 0 or 5. Divisibility by 10: last digit is 0.",
+        "Divisibility by 3: sum of all digits is divisible by 3. Divisibility by 9: sum of all digits is divisible by 9.",
+        "In letters-for-digits puzzles, the SAME letter always represents the SAME digit everywhere it appears.",
+        "The leading (first) digit of any multi-digit number in the puzzle can never be 0."
+      ],
+      "mistakes": [
+        "Allowing the same letter to take different digit values in different parts of the puzzle — this breaks the rules of the puzzle.",
+        "Forgetting to check that a leading digit isn't 0, which can eliminate otherwise 'valid-looking' solutions.",
+        "Confusing the divisibility rule for 3 (digit sum divisible by 3) with the rule for 9 (digit sum divisible by 9) — they use the same method but different divisors."
+      ],
+      "memory_hook": "'Same letter, same digit, always' — and no number ever starts with a leading zero.",
+      "advanced": "Divisibility rules for 3 and 9 both work because 10 ≡ 1 (mod 3) and 10 ≡ 1 (mod 9) — every place value power of 10 leaves the same remainder of 1 when divided by 3 or 9, which is exactly why simply summing the digits (ignoring their place value) still correctly tests divisibility, a neat early glimpse into modular arithmetic explored formally in higher classes."
+    }
+  ]
+}

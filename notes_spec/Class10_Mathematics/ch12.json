@@ -1,0 +1,64 @@
+{
+  "number": 12,
+  "title": "Areas Related to Circles",
+  "prerequisites": [
+    "Formulae for circumference and area of a circle.",
+    "Value of π as 22/7 or 3.14.",
+    "Area of a triangle, including the equilateral case.",
+    "Understanding of an angle measured in degrees."
+  ],
+  "topics": [
+    {
+      "title": "Sector and Segment of a Circle",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A sector is the region between two radii and an arc, and a segment is the region between a chord and an arc; both are found from the central angle as a fraction of 360°.",
+      "real_life": "A slice of pizza is a sector, and the crust-side piece left after a straight cut across it is a segment.",
+      "detailed": {
+        "definition": "A sector is the region enclosed by two radii and the arc between them. A segment is the region enclosed by a chord and the corresponding arc. The minor sector or segment is the smaller of the two parts.",
+        "key_idea": "Every formula in the chapter is the whole-circle formula multiplied by θ/360. Once that is seen, only the area and circumference of a circle need to be remembered.",
+        "working_principle": "Area of a segment = area of the sector − area of the triangle formed by the two radii and the chord. Choosing the right triangle formula for that step is where most marks are lost.",
+        "applications": [
+          "Area swept by a clock hand or a windscreen wiper is a sector area.",
+          "Grazing area of an animal tied at the corner of a field is a sector.",
+          "Designs combining circles and squares are handled by adding and subtracting areas."
+        ]
+      },
+      "points": [
+        "Length of arc = (θ/360) × 2πr.",
+        "Area of sector = (θ/360) × πr².",
+        "Area of segment = area of sector − area of the triangle.",
+        "For a 60° sector the triangle is equilateral, with area (√3/4)r².",
+        "Area of sector can also be written as ½ × arc length × r."
+      ],
+      "mistakes": [
+        "Using θ/180 instead of θ/360 in the sector formulas.",
+        "Forgetting to subtract the triangle when the segment is required.",
+        "Using the diameter in place of the radius."
+      ],
+      "memory_hook": "'Sector = slice of pizza; Segment = sector minus triangle.'",
+      "advanced": "In radian measure the formulas simplify to arc = rθ and sector area = ½r²θ, with no 360 anywhere. That simplification is the whole reason radians are the standard unit in higher mathematics.",
+      "formulas": [
+        {
+          "name": "Arc Length and Sector Area",
+          "difficulty": "Medium",
+          "formula": "Arc = (θ/360)·2πr;  Sector area = (θ/360)·πr² = ½ × arc × r",
+          "variables": "θ = central angle in degrees, r = radius.",
+          "when_to_use": "For any sector, wiper, grazing or clock-hand problem.",
+          "common_mistakes": "Dividing by 180 instead of 360.",
+          "shortcut": "θ = 90° gives a quarter circle; θ = 180° gives a semicircle."
+        },
+        {
+          "name": "Area of a Segment",
+          "difficulty": "Medium",
+          "formula": "Segment area = (θ/360)·πr² − ½r² sin θ",
+          "variables": "θ = central angle, r = radius.",
+          "when_to_use": "For the region between a chord and its arc.",
+          "common_mistakes": "Forgetting to subtract the triangular part.",
+          "shortcut": "For θ = 60° the triangle is equilateral with area (√3/4)r²."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "number": 4,
+  "title": "Work and Energy",
+  "prerequisites": [
+    "Newton's laws of motion and the concept of force.",
+    "Equations of uniformly accelerated motion.",
+    "Idea of resolving a force into components.",
+    "Familiarity with the joule as a unit of energy."
+  ],
+  "topics": [
+    {
+      "title": "Work Done by a Force",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Work is done only when a force produces a displacement in its own direction, and it is measured as the product of the force and the displacement along the force.",
+      "real_life": "Holding a heavy suitcase while standing still is exhausting but does zero work in physics, because there is no displacement.",
+      "detailed": {
+        "definition": "Work done by a constant force is the product of the magnitude of the force and the displacement in the direction of the force: W = F s cos θ, where θ is the angle between force and displacement.",
+        "key_idea": "Two conditions must both be met for work to be done: a force must act, and the body must be displaced. If either is missing, or if the displacement is perpendicular to the force, the work done is zero.",
+        "working_principle": "Work is positive when the force has a component along the displacement, negative when it opposes the displacement (as friction does), and zero when the force is perpendicular to the displacement.",
+        "applications": [
+          "A coolie carrying a load on their head along a level platform does zero work against gravity.",
+          "Friction always does negative work, converting kinetic energy into heat.",
+          "The centripetal force in circular motion does zero work, being always perpendicular to velocity."
+        ]
+      },
+      "points": [
+        "W = F s cos θ; SI unit is the joule (J), 1 J = 1 N·m.",
+        "Work is a scalar quantity even though force and displacement are vectors.",
+        "Zero work: no displacement, no force, or force perpendicular to displacement.",
+        "Negative work is done by a force opposing the motion, such as friction.",
+        "1 joule is the work done when a force of 1 N moves a body 1 m in its own direction."
+      ],
+      "mistakes": [
+        "Saying work is done when a body is merely held stationary — displacement is required.",
+        "Omitting cos θ when the force acts at an angle to the displacement.",
+        "Treating work as a vector; it is a scalar."
+      ],
+      "memory_hook": "'No displacement, no work' — and 'perpendicular force does nothing at all'.",
+      "advanced": "Because the centripetal force does no work, a satellite maintains its speed indefinitely without any energy input. This is why orbits are stable and why a planet needs no fuel to keep circling the sun.",
+      "formulas": [
+        {
+          "name": "Work Done",
+          "difficulty": "Medium",
+          "formula": "W = F s cos θ",
+          "variables": "W = work in joules, F = force in N, s = displacement in m, θ = angle between force and displacement.",
+          "when_to_use": "For any constant force producing a displacement, including forces at an angle.",
+          "common_mistakes": "Forgetting cos θ, or using the total distance rather than the displacement along the force.",
+          "shortcut": "θ = 0° gives W = Fs; θ = 90° gives W = 0; θ = 180° gives W = −Fs."
+        }
+      ]
+    },
+    {
+      "title": "Kinetic and Potential Energy",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Kinetic energy is the energy of a body due to its motion, ½mv², and gravitational potential energy is the energy due to its position, mgh.",
+      "real_life": "A pile driver lifted high stores potential energy; released, it converts that into kinetic energy and drives a post into the ground.",
+      "detailed": {
+        "definition": "Kinetic energy is the energy possessed by a body by virtue of its motion. Potential energy is the energy possessed by a body by virtue of its position or configuration.",
+        "key_idea": "Kinetic energy depends on the square of velocity, so doubling the speed quadruples the kinetic energy. This is why stopping distances grow so steeply with speed and why speed limits matter far more than intuition suggests.",
+        "working_principle": "The work–energy theorem states that the net work done on a body equals its change in kinetic energy: W = ½mv² − ½mu². Potential energy is measured relative to a chosen reference level, usually the ground.",
+        "applications": [
+          "A stretched bow, a compressed spring and water in a dam all store potential energy.",
+          "Doubling a car's speed quadruples its kinetic energy and roughly quadruples its braking distance.",
+          "Hydroelectric power converts the potential energy of stored water into electrical energy."
+        ]
+      },
+      "points": [
+        "Kinetic energy KE = ½mv²; potential energy PE = mgh.",
+        "KE ∝ v², so doubling speed gives four times the kinetic energy.",
+        "Energy is a scalar; SI unit is the joule.",
+        "Work–energy theorem: net work done = change in kinetic energy.",
+        "Potential energy depends on the reference level chosen; only changes in it are physically meaningful."
+      ],
+      "mistakes": [
+        "Writing KE = mv² and omitting the factor of ½.",
+        "Assuming doubling speed doubles kinetic energy; it quadruples it.",
+        "Forgetting to state the reference level when calculating potential energy."
+      ],
+      "memory_hook": "'Half-em-vee-squared' for kinetic, 'em-gee-aitch' for potential — and 'speed counts twice over'.",
+      "advanced": "Potential energy is a property of a system, not of a single body. The 'potential energy of a brick' is really the energy of the earth–brick system, which is why only differences in potential energy have physical meaning.",
+      "formulas": [
+        {
+          "name": "Kinetic Energy",
+          "difficulty": "Easy",
+          "formula": "KE = ½ m v²",
+          "variables": "KE = kinetic energy in J, m = mass in kg, v = speed in m/s.",
+          "when_to_use": "For any moving body, and in every work–energy theorem problem.",
+          "common_mistakes": "Squaring the mass instead of the velocity, or dropping the ½.",
+          "shortcut": "Triple the speed → nine times the kinetic energy."
+        },
+        {
+          "name": "Gravitational Potential Energy",
+          "difficulty": "Easy",
+          "formula": "PE = m g h",
+          "variables": "PE = potential energy in J, m = mass in kg, g = 9.8 m/s², h = height above the reference level.",
+          "when_to_use": "For a body raised above a chosen reference level near the earth's surface.",
+          "common_mistakes": "Using the total path length instead of the vertical height.",
+          "shortcut": "Only the vertical height matters — the path taken is irrelevant."
+        },
+        {
+          "name": "Work–Energy Theorem",
+          "difficulty": "Medium",
+          "formula": "W_net = ½mv² − ½mu²",
+          "variables": "W_net = net work done, u = initial speed, v = final speed, m = mass.",
+          "when_to_use": "To find final speed or work done without needing the acceleration or time.",
+          "common_mistakes": "Using only one force instead of the net work done by all forces.",
+          "shortcut": "If the speed is unchanged, the net work done is zero."
+        }
+      ],
+      "derivations": [
+        {
+          "title": "Kinetic Energy Expression ½mv²",
+          "why": "It shows that the kinetic energy formula follows directly from the definition of work and the equations of motion, rather than being an arbitrary definition.",
+          "assumptions": [
+            "A constant force acts on a body of constant mass along a straight line.",
+            "The body starts from rest."
+          ],
+          "steps": [
+            "Let a constant force F act on a body of mass m initially at rest, moving it a distance s and giving it a final velocity v.",
+            "The work done by the force is W = F × s.",
+            "By Newton's second law, F = ma, so W = mas.",
+            "From the third equation of motion with u = 0, v² = 2as, which gives as = v²/2.",
+            "Substituting as = v²/2 into W = mas gives W = ½mv². Since all this work has gone into the motion of the body, its kinetic energy is ½mv²."
+          ],
+          "result": "KE = ½ m v²",
+          "exam_perspective": "This derivation is commonly asked for 3 marks. Marks are given for using F = ma, for using the third equation of motion, and for the final substitution — show all three explicitly."
+        }
+      ]
+    },
+    {
+      "title": "Conservation of Energy",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Energy can neither be created nor destroyed, only transformed from one form to another, so the total energy of an isolated system remains constant.",
+      "real_life": "A swinging pendulum trades potential energy for kinetic energy and back again, and its total stays the same until friction slowly converts it into heat.",
+      "detailed": {
+        "definition": "The law of conservation of energy states that energy can neither be created nor destroyed; it can only be transformed from one form to another, and the total energy of an isolated system remains constant.",
+        "key_idea": "For a freely falling body the sum KE + PE is constant at every point of the fall. At the top it is all potential; at the bottom it is all kinetic; in between it is shared, but the total never changes.",
+        "working_principle": "Energy exists in many forms — mechanical, heat, light, sound, chemical, electrical and nuclear — and devices are simply energy converters. A bulb converts electrical energy to light and heat; a loudspeaker converts electrical to sound.",
+        "applications": [
+          "A simple pendulum continuously converts potential energy to kinetic energy and back.",
+          "A hydroelectric plant converts potential energy of water to electrical energy.",
+          "Photosynthesis converts light energy into chemical energy stored in glucose."
+        ]
+      },
+      "points": [
+        "Total mechanical energy = KE + PE remains constant if only gravity acts.",
+        "For a body falling from height h: at the top E = mgh; at the bottom E = ½mv².",
+        "Energy is never lost — apparent losses go into heat and sound.",
+        "Devices such as motors, generators and bulbs are energy converters.",
+        "No machine can be 100% efficient because some energy always becomes heat."
+      ],
+      "mistakes": [
+        "Saying energy is 'used up' or 'lost' — it is only converted into a less useful form.",
+        "Applying conservation of mechanical energy where friction acts, without accounting for heat.",
+        "Forgetting that at the mid-point of a fall the energy is shared, not doubled."
+      ],
+      "memory_hook": "'Energy changes clothes but never leaves the party.'",
+      "advanced": "Einstein's E = mc² extended conservation to include mass itself. In a nuclear reaction a tiny amount of mass converts to an enormous amount of energy, so the conserved quantity is really mass-energy taken together.",
+      "formulas": [
+        {
+          "name": "Conservation of Mechanical Energy",
+          "difficulty": "Medium",
+          "formula": "mgh + ½mu² = mgh' + ½mv²",
+          "variables": "h and h' = heights at the two positions, u and v = speeds at those positions, m = mass.",
+          "when_to_use": "For any motion under gravity alone, where friction and air resistance are negligible.",
+          "common_mistakes": "Applying it where friction is significant, which invalidates the assumption.",
+          "shortcut": "For a body dropped from rest through height h, v = √(2gh) — the mass cancels."
+        }
+      ]
+    },
+    {
+      "title": "Power and Commercial Unit of Energy",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Power is the rate of doing work, measured in watts, and electrical energy in daily use is measured in kilowatt-hours, the commercial unit.",
+      "real_life": "Two people carrying identical loads up the same stairs do equal work, but the one who arrives first has developed more power.",
+      "detailed": {
+        "definition": "Power is the rate of doing work or the rate of transfer of energy, P = W/t. Its SI unit is the watt (W), equal to one joule per second.",
+        "key_idea": "Work and power are different questions: work asks 'how much energy was transferred' and power asks 'how quickly'. A slow machine and a fast one can do exactly the same work.",
+        "working_principle": "The commercial unit of electrical energy is the kilowatt-hour, the energy consumed by a 1 kW device running for 1 hour. 1 kWh = 3.6 × 10⁶ J, and it is the 'unit' on an electricity bill.",
+        "applications": [
+          "A 100 W bulb burning for 10 hours consumes 1 kWh — one unit of electricity.",
+          "Power ratings on appliances let consumers estimate running cost.",
+          "1 horsepower = 746 W, still used for engine and motor ratings."
+        ]
+      },
+      "points": [
+        "P = W/t; SI unit is the watt, 1 W = 1 J/s.",
+        "Power can also be written P = F × v for a constant force.",
+        "1 kilowatt = 1000 W; 1 horsepower = 746 W.",
+        "1 kWh = 3.6 × 10⁶ J — the commercial unit of electrical energy.",
+        "Energy consumed (in kWh) = power in kW × time in hours."
+      ],
+      "mistakes": [
+        "Treating the kilowatt-hour as a unit of power — it is a unit of energy.",
+        "Forgetting to convert watts to kilowatts and minutes to hours before calculating units consumed.",
+        "Confusing the watt (power) with the joule (energy)."
+      ],
+      "memory_hook": "'Work is how much, Power is how fast' — and 'kWh is energy, kW is power'.",
+      "advanced": "P = Fv explains why a vehicle's top speed is set by engine power rather than force: as speed rises, air drag grows roughly as v², so the power needed grows as v³ — which is why doubling top speed demands about eight times the power.",
+      "formulas": [
+        {
+          "name": "Power",
+          "difficulty": "Easy",
+          "formula": "P = W / t = F × v",
+          "variables": "P = power in W, W = work in J, t = time in s, F = force in N, v = velocity in m/s.",
+          "when_to_use": "To find how fast work is being done, or the force a machine exerts at a known speed.",
+          "common_mistakes": "Using time in minutes without converting to seconds.",
+          "shortcut": "Use P = Fv when speed is constant and force is known — no need to find work first."
+        },
+        {
+          "name": "Commercial Unit of Energy",
+          "difficulty": "Easy",
+          "formula": "1 kWh = 3.6 × 10⁶ J",
+          "variables": "kWh = kilowatt-hour, the energy used by a 1 kW appliance in 1 hour.",
+          "when_to_use": "For all electricity-bill and household-consumption calculations.",
+          "common_mistakes": "Writing 1 kWh = 3600 J by forgetting the factor of 1000 for kilo.",
+          "shortcut": "kWh = (watts ÷ 1000) × hours."
+        }
+      ]
+    }
+  ]
+}

@@ -498,3 +498,84 @@
 .mg-act { width: 28px; height: 28px; border: 1px solid var(--line, #e2e8f0); background: #fff; border-radius: 7px; cursor: pointer; font-size: 12px; color: var(--brand, #2563eb); }
 .mg-act[disabled] { opacity: 0.4; cursor: default; }
 .mg-act-toggle.on { color: var(--err, #dc2626); }
+
+/* ==========================================================================
+   Practice Engine + PRD dashboard widgets (Phase 1 MVP)
+   ========================================================================== */
+
+/* --- dashboard widget grid --- */
+.dash-widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 22px; }
+.dash-widget { background: var(--card, #fff); border: 1px solid var(--line, #e2e8f0); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,.06)); display: flex; flex-direction: column; gap: 8px; }
+.dash-widget-muted { opacity: 0.75; }
+.dash-widget-head { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted, #64748b); }
+.dash-widget-icon { font-size: 16px; }
+.dash-widget .ex-btn { align-self: flex-start; margin-top: 4px; }
+.dash-value-sm { font-size: 17px; line-height: 1.3; }
+
+/* --- weekly sparkline --- */
+.dash-spark { display: flex; align-items: flex-end; gap: 6px; height: 64px; margin-top: 6px; }
+.dash-spark-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px; }
+.dash-spark-bar { width: 100%; background: var(--brand, #2563eb); border-radius: 4px 4px 0 0; min-height: 4px; }
+.dash-spark-day { font-size: 10px; color: var(--muted, #64748b); }
+
+/* --- practice: mode picker --- */
+.pr { display: block; }
+.pr-mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.pr-mode-card { background: var(--card, #fff); border: 1px solid var(--line, #e2e8f0); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color .15s, transform .15s; }
+.pr-mode-card:hover, .pr-mode-card:focus { border-color: var(--brand, #2563eb); transform: translateY(-2px); outline: none; }
+.pr-mode-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.pr-mode-icon { font-size: 20px; }
+.pr-mode-meta { margin-top: 8px; font-size: 12px; color: var(--muted, #64748b); }
+.pr-chapter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.pr-chapter-row select { min-width: 280px; max-width: 100%; }
+
+/* --- practice: runner --- */
+.pr-run { max-width: 780px; }
+.pr-run-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.pr-timer { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 18px; color: var(--brand, #2563eb); }
+.pr-progress { height: 6px; background: var(--line, #e2e8f0); border-radius: 999px; overflow: hidden; margin: 8px 0; }
+.pr-progress-fill { height: 100%; background: var(--brand, #2563eb); border-radius: 999px; transition: width .25s; }
+.pr-tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0; }
+.pr-tag { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: var(--chip, #f1f5f9); color: var(--muted, #475569); }
+.pr-diff-easy { background: #dcfce7; color: #166534; }
+.pr-diff-moderate { background: #fef3c7; color: #92400e; }
+.pr-diff-difficult { background: #fee2e2; color: #991b1b; }
+.pr-stem { font-size: 16px; line-height: 1.6; margin: 12px 0 16px; }
+.pr-options { display: flex; flex-direction: column; gap: 10px; }
+.pr-option { display: flex; align-items: flex-start; gap: 10px; text-align: left; padding: 12px 14px; border: 1px solid var(--line, #e2e8f0); background: var(--card, #fff); border-radius: 10px; cursor: pointer; font-size: 14px; line-height: 1.5; }
+.pr-option:hover:not(:disabled) { border-color: var(--brand, #2563eb); background: #f8fafc; }
+.pr-option:disabled { cursor: default; }
+.pr-option-key { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--chip, #f1f5f9); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+.pr-option-correct { border-color: #16a34a; background: #f0fdf4; }
+.pr-option-wrong { border-color: #dc2626; background: #fef2f2; }
+.pr-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 10px; }
+.pr-feedback.pr-ok { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.pr-feedback.pr-no { background: #fef2f2; border: 1px solid #fecaca; }
+.pr-actions { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.pr-err { color: var(--err, #dc2626); font-size: 13px; margin-top: 8px; }
+
+/* --- practice: report --- */
+.pr-reco { display: flex; justify-content: space-between; align-items: center; gap: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 14px 16px; margin: 6px 0 20px; }
+.pr-breakdown { margin-bottom: 22px; }
+.pr-bars { display: flex; flex-direction: column; gap: 8px; }
+.pr-bar-row { display: grid; grid-template-columns: minmax(0, 1.4fr) 3fr minmax(96px, auto); align-items: center; gap: 10px; font-size: 13px; }
+/* min-width:0 lets these shrink inside the grid/flex track; without it a long
+   label or stem forces the whole page to scroll sideways. */
+.pr-bar-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pr-bar { height: 8px; background: var(--line, #e2e8f0); border-radius: 999px; overflow: hidden; }
+.pr-bar-fill { height: 100%; background: var(--brand, #2563eb); border-radius: 999px; }
+.pr-bar-num { text-align: right; color: var(--muted, #64748b); font-variant-numeric: tabular-nums; }
+.pr-review { display: flex; flex-direction: column; gap: 8px; }
+.pr-review-item { border: 1px solid var(--line, #e2e8f0); border-radius: 10px; background: var(--card, #fff); padding: 10px 14px; }
+.pr-review-item summary { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; min-width: 0; }
+.pr-review-stem { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pr-review-item summary .ex-badge { flex: none; }
+.pr-review-options { display: flex; flex-direction: column; gap: 6px; margin: 12px 0 6px; }
+.pr-review-opt { padding: 8px 12px; border: 1px solid var(--line, #e2e8f0); border-radius: 8px; font-size: 13px; }
+.pr-review-obj { font-size: 12px; margin-top: 6px; }
+
+@media (max-width: 620px) {
+  .pr-bar-row { grid-template-columns: 1fr; gap: 4px; }
+  .pr-bar-num { text-align: left; }
+  .pr-run-head { flex-direction: column; }
+}

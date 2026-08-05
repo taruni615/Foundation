@@ -1,0 +1,140 @@
+{
+  "number": 5,
+  "title": "Reproduction in Animals",
+  "prerequisites": [
+    "Idea that living organisms produce young ones of their own kind.",
+    "Basic knowledge of the cell and the nucleus.",
+    "Familiarity with the life cycle of a butterfly or frog.",
+    "Understanding that some animals lay eggs and others give birth."
+  ],
+  "topics": [
+    {
+      "title": "Sexual Reproduction and Fertilization",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "In sexual reproduction a male gamete (sperm) fuses with a female gamete (ovum) to form a zygote, and this fusion is called fertilization.",
+      "real_life": "A hen's egg you eat is an unfertilized ovum; the same egg, if fertilized, would have developed into a chick inside the shell.",
+      "detailed": {
+        "definition": "Sexual reproduction is the production of a new individual by the fusion of male and female gametes. Fertilization is the fusion of a sperm with an ovum to form a single cell called the zygote.",
+        "key_idea": "Gametes are produced by the reproductive organs — sperms in the testes of the male and ova in the ovaries of the female. Each gamete carries half the chromosomes, so the zygote formed carries a full set with characters from both parents.",
+        "working_principle": "The sperm is a tiny motile cell with a head, middle piece and long tail; the ovum is a large, round, non-motile cell. Only one sperm fuses with the ovum. The nuclei of the two gametes fuse, forming the zygote — the very first cell of the new individual.",
+        "applications": [
+          "Human male reproductive system: testes, sperm ducts, penis; female: ovaries, oviducts, uterus.",
+          "In-vitro fertilization (IVF) achieves fertilization in a laboratory dish, producing 'test-tube babies'.",
+          "Only one ovum is normally released by a human ovary each month."
+        ]
+      },
+      "points": [
+        "Zygote = sperm + ovum; it is a single cell and the beginning of a new individual.",
+        "Testes produce sperms; ovaries produce ova.",
+        "The sperm is much smaller than the ovum and is the only motile gamete.",
+        "Variation arises in sexual reproduction because characters come from two parents.",
+        "The offspring is never exactly identical to either parent."
+      ],
+      "mistakes": [
+        "Saying many sperms fertilize one ovum — only one sperm nucleus fuses with the ovum.",
+        "Confusing the zygote (single fertilized cell) with the embryo (the developing multicellular stage).",
+        "Thinking the ovum is motile; it is carried along the oviduct, it does not swim."
+      ],
+      "memory_hook": "'Sperm + Ovum = Zygote' — 'Two halves make one whole'.",
+      "advanced": "Once a sperm enters the ovum, the egg membrane changes chemically within seconds — the cortical reaction — so that no second sperm can enter. This 'block to polyspermy' guarantees the zygote receives exactly one set of chromosomes from each parent."
+    },
+    {
+      "title": "Internal and External Fertilization",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Fertilization inside the female body is internal fertilization; fertilization outside the body, usually in water, is external fertilization.",
+      "real_life": "A frog lays hundreds of eggs in a pond and the male sheds sperms over them — but a cow carries a single calf inside her for nine months.",
+      "detailed": {
+        "definition": "Internal fertilization takes place inside the body of the female; external fertilization takes place outside the body of the female, generally in water.",
+        "key_idea": "External fertilization is far less certain — gametes may be washed away or eaten — so animals that use it release very large numbers of eggs and sperms. Internal fertilization is highly reliable, so far fewer eggs are needed.",
+        "working_principle": "In external fertilization the female lays eggs in water and the male immediately releases sperms over them; the sperms swim to the eggs through the water. In internal fertilization sperms are deposited inside the female body, where they meet the ovum in the oviduct.",
+        "applications": [
+          "External fertilization: frogs, fish, starfish — all aquatic.",
+          "Internal fertilization: humans, cows, dogs, hens, birds, reptiles.",
+          "Hens have internal fertilization but lay eggs — internal fertilization does not require live birth."
+        ]
+      },
+      "points": [
+        "External fertilization needs water as a medium and produces very many eggs.",
+        "Internal fertilization occurs in the oviduct of the female.",
+        "Birds and reptiles show internal fertilization but are oviparous (egg-laying).",
+        "Fewer eggs survive with external fertilization, so survival rate is low.",
+        "Fertilization always means the fusion of a sperm nucleus with an ovum nucleus."
+      ],
+      "mistakes": [
+        "Assuming internal fertilization always means the young are born alive — hens are the standard counter-example.",
+        "Thinking external fertilization can happen on land; it needs water for the sperms to swim.",
+        "Confusing 'fertilization' with 'development' — fertilization is one event, development takes much longer."
+      ],
+      "memory_hook": "'IN the body = Internal; IN the water = External' — and 'External = Enormous numbers of eggs'.",
+      "advanced": "External fertilization requires precise timing, so many fish and amphibians synchronise spawning with the moon, tide or the first monsoon rain — chemical signals called pheromones released into the water keep males and females in step."
+    },
+    {
+      "title": "Development of Embryo and Metamorphosis",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "The zygote divides repeatedly to form an embryo, which develops into a foetus, and in some animals the young one changes dramatically into an adult through metamorphosis.",
+      "real_life": "A tadpole with a tail and gills becomes a four-legged, lung-breathing frog — the same animal, completely rebuilt.",
+      "detailed": {
+        "definition": "An embryo is the early multicellular stage formed by repeated division of the zygote; a foetus is the later stage in which body parts are identifiable. Metamorphosis is the drastic change of body form from larva to adult.",
+        "key_idea": "The zygote divides again and again to form a hollow ball of cells that embeds in the wall of the uterus — this is implantation. Once body parts such as hands, legs, eyes and ears can be recognised, the developing individual is called a foetus.",
+        "working_principle": "In humans the gestation period is about nine months, after which the fully developed baby is born. In frogs, the fertilized egg becomes a tadpole that swims with a tail and gills, and thyroid hormone then triggers metamorphosis into the adult frog.",
+        "applications": [
+          "Viviparous animals give birth to live young: humans, cows, dogs, cats, whales.",
+          "Oviparous animals lay eggs: hens, frogs, lizards, butterflies, fish.",
+          "Silk moth and butterfly show complete metamorphosis: egg → larva → pupa → adult."
+        ]
+      },
+      "points": [
+        "Zygote → embryo → foetus → young one; implantation happens in the uterus.",
+        "Human gestation period ≈ 9 months.",
+        "Viviparous = live young; Oviparous = eggs laid outside.",
+        "Metamorphosis in frogs is controlled by thyroxine from the thyroid gland.",
+        "Butterfly life cycle: egg, caterpillar (larva), pupa, adult."
+      ],
+      "mistakes": [
+        "Calling a tadpole a 'baby frog' — it is a larva with a completely different body plan.",
+        "Saying all egg-laying animals show metamorphosis; a chick hatches looking like a small hen.",
+        "Confusing the order embryo → foetus by reversing them."
+      ],
+      "memory_hook": "'Zygote, Embryo, Foetus, Baby — ZEFB, the growing-up ladder' — and 'Tadpole needs Thyroxine to Transform'.",
+      "advanced": "If a tadpole is fed thyroxine it metamorphoses early into a miniature frog; if the thyroid is removed it stays a tadpole and simply grows larger. This classic experiment showed for the first time that a single hormone can control an entire developmental programme."
+    },
+    {
+      "title": "Asexual Reproduction and Cloning",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Asexual reproduction produces new individuals from a single parent without gametes — by binary fission or budding — and the offspring are genetically identical to the parent.",
+      "real_life": "The tiny buds you can see on a Hydra in pond water grow into complete new Hydra, and Dolly the sheep was an artificial clone made in a laboratory.",
+      "detailed": {
+        "definition": "Asexual reproduction is the production of a new individual from a single parent without the fusion of gametes. A clone is an individual genetically identical to its parent.",
+        "key_idea": "Because there is only one parent and no fusion of gametes, the offspring receives an exact copy of the parent's genetic material. This gives rapid multiplication but almost no variation.",
+        "working_principle": "In binary fission (Amoeba, bacteria) the nucleus divides first, then the cell splits into two equal daughter cells. In budding (Hydra, yeast) a small outgrowth forms on the parent, develops into a miniature individual and then detaches.",
+        "applications": [
+          "Binary fission: Amoeba, Paramecium, bacteria, Leishmania.",
+          "Budding: Hydra and yeast.",
+          "Dolly the sheep (1996, Ian Wilmut) was the first mammal cloned from an adult body cell."
+        ]
+      },
+      "points": [
+        "Asexual reproduction needs only one parent and no gametes.",
+        "Offspring are exact copies (clones) of the parent — no variation.",
+        "Binary fission produces two equal cells; budding produces one small outgrowth.",
+        "Advantage: very rapid multiplication; Disadvantage: no variation, so poor adaptability.",
+        "Dolly the sheep was created by transferring a nucleus from a body cell into an enucleated egg."
+      ],
+      "mistakes": [
+        "Saying budding occurs in Amoeba — Amoeba reproduces by binary fission; Hydra and yeast bud.",
+        "Thinking asexual reproduction produces slight variation; it does not, except by mutation.",
+        "Believing clones are identical in every way — environment still influences appearance and behaviour."
+      ],
+      "memory_hook": "'Fission = Fifty-fifty split; Budding = a Bump that Breaks off' — and 'One parent, One copy'.",
+      "advanced": "Lack of variation is asexual reproduction's fatal weakness. A population of genetically identical individuals can be wiped out by a single new disease — as happened to the Gros Michel banana, which was propagated only by cloning and was destroyed by Panama disease."
+    }
+  ]
+}

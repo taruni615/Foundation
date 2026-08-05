@@ -1,0 +1,140 @@
+{
+  "number": 6,
+  "title": "Reaching the Age of Adolescence",
+  "prerequisites": [
+    "Basic idea of reproduction in animals and the role of testes and ovaries.",
+    "Knowledge that the body grows in height and changes with age.",
+    "Familiarity with the idea of a gland and a secretion.",
+    "Understanding that some characters are inherited from parents."
+  ],
+  "topics": [
+    {
+      "title": "Adolescence, Puberty and Changes at Puberty",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Adolescence is the period between about 11 and 19 years of age, during which puberty brings a sudden growth spurt and the development of secondary sexual characters.",
+      "real_life": "The sudden change in a boy's voice and the rapid growth in height that classmates notice between classes 7 and 9 are both puberty at work.",
+      "detailed": {
+        "definition": "Adolescence is the period of life beginning at about 11 years and ending at about 18 or 19 years, when the body changes from that of a child to that of an adult. Puberty is the stage at which the reproductive organs become functional.",
+        "key_idea": "Puberty ends when the reproductive organs become fully functional; adolescence continues a little longer. Adolescents are also called teenagers because this period roughly covers ages 13 to 19.",
+        "working_principle": "The most obvious change is the sudden increase in height caused by rapid lengthening of the long bones of the arms and legs. Body shape changes, the voice deepens in boys as the larynx grows, sweat and sebaceous glands become more active causing acne, and the sex organs mature.",
+        "applications": [
+          "Adam's apple — the enlarged larynx visible in boys.",
+          "Estimating full adult height from the percentage of height already attained.",
+          "Understanding why acne appears at this age and needs cleanliness rather than worry."
+        ]
+      },
+      "points": [
+        "Adolescence: about 11 to 19 years; puberty is the part of it when reproductive organs mature.",
+        "Growth spurt: the fastest increase in height in the whole of life after infancy.",
+        "In boys the larynx (voice box) grows large, producing the Adam's apple and a deep voice.",
+        "Increased activity of sweat and sebaceous glands causes acne and pimples.",
+        "Secondary sexual characters: facial hair and broad shoulders in boys; breast development and wider hips in girls."
+      ],
+      "mistakes": [
+        "Using 'adolescence' and 'puberty' as the same word — puberty ends earlier, when reproductive organs become functional.",
+        "Thinking girls and boys start puberty at the same age; girls usually begin about a year or two earlier.",
+        "Believing acne is caused by diet alone; the main cause is increased secretion of the sebaceous glands."
+      ],
+      "memory_hook": "'Puberty = the Power switch of the reproductive organs; Adolescence = the whole Adjustment period around it.'",
+      "advanced": "The growth spurt ends when the epiphyseal plates — the growth zones at the ends of long bones — fuse under the influence of sex hormones. Once fused, no further increase in height is possible, which is why height stops changing after adolescence."
+    },
+    {
+      "title": "Hormones and the Endocrine System",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Endocrine glands release hormones directly into the bloodstream, and these chemical messengers control growth, metabolism and the changes of puberty.",
+      "real_life": "The pounding heart and rush of energy you feel just before an exam or after a near-miss on the road is adrenaline released by the adrenal glands.",
+      "detailed": {
+        "definition": "A hormone is a chemical messenger secreted in very small amounts by an endocrine gland and carried by the blood to a target organ. Endocrine (ductless) glands pour secretions straight into the blood; exocrine glands use ducts.",
+        "key_idea": "The pituitary gland, controlled by the hypothalamus, is the master gland: it secretes growth hormone and also the hormones that switch on the testes, ovaries and thyroid. Sex hormones from the testes and ovaries are what actually produce the secondary sexual characters.",
+        "working_principle": "The pituitary releases FSH and LH into the blood; these reach the testes and ovaries and stimulate them to produce testosterone and oestrogen respectively. These sex hormones then act on the body to produce the changes of puberty.",
+        "applications": [
+          "Thyroid → thyroxine; its deficiency causes goitre, and iodised salt prevents it.",
+          "Pancreas → insulin, which controls blood sugar; its deficiency causes diabetes.",
+          "Adrenal glands → adrenaline, the 'emergency' or fight-or-flight hormone."
+        ]
+      },
+      "points": [
+        "Pituitary is the master gland; it is controlled by the hypothalamus.",
+        "Testes → testosterone (male hormone); Ovaries → oestrogen (female hormone).",
+        "Thyroid → thyroxine (needs iodine); deficiency → goitre.",
+        "Pancreas → insulin; deficiency → diabetes.",
+        "Adrenal glands → adrenaline, released during fear, anger or excitement."
+      ],
+      "mistakes": [
+        "Calling the pancreas purely an endocrine gland — it is both endocrine (insulin) and exocrine (digestive juice).",
+        "Saying the hypothalamus is the master gland; the pituitary is, though the hypothalamus controls it.",
+        "Confusing thyroxine deficiency (goitre) with insulin deficiency (diabetes)."
+      ],
+      "memory_hook": "'Pituitary is the Principal, all other glands are the teachers' — and 'Adrenaline for Action, Insulin for Sugar, Thyroxine needs Iodine'.",
+      "advanced": "Hormone levels are held steady by negative feedback: rising thyroxine in the blood suppresses the pituitary hormone that stimulated the thyroid in the first place. This self-correcting loop is the same principle a thermostat uses to hold a room at a set temperature."
+    },
+    {
+      "title": "Reproductive Phase of Life and the Menstrual Cycle",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "The reproductive phase begins at puberty; in females it is marked by a roughly 28-day menstrual cycle that begins with menarche and ends at menopause.",
+      "real_life": "The monthly cycle is the body preparing for a possible pregnancy each month and clearing away the preparation when it does not occur.",
+      "detailed": {
+        "definition": "Menarche is the first menstruation, at about 10–12 years; menopause is the permanent stopping of menstruation, at about 45–50 years. The menstrual cycle is the roughly 28-day cycle of changes in the ovary and uterus.",
+        "key_idea": "One ovum matures and is released by an ovary about every 28 days — this is ovulation. Meanwhile the uterus lining thickens to receive a possible embryo. If fertilization does not occur, the lining breaks down and is shed as menstrual flow.",
+        "working_principle": "The cycle has four phases: menstrual (days 1–5, shedding of the lining), follicular/proliferative (days 6–13, lining rebuilds), ovulation (about day 14, ovum released), and luteal/secretory (days 15–28, lining maintained awaiting implantation).",
+        "applications": [
+          "Ovulation on about day 14 is why the middle of the cycle is the fertile period.",
+          "Menstrual hygiene and adequate iron in the diet are important during this phase.",
+          "The reproductive phase in males begins at puberty and continues much longer."
+        ]
+      },
+      "points": [
+        "Menstrual cycle length ≈ 28 days; ovulation occurs around day 14.",
+        "Menarche = first menstruation; Menopause = end of menstruation (about 45–50 years).",
+        "Menstruation lasts about 3–5 days and is the shedding of the thickened uterine lining.",
+        "Only one ovum is normally released per cycle, by one of the two ovaries.",
+        "If the ovum is fertilized, menstruation stops and pregnancy begins."
+      ],
+      "mistakes": [
+        "Thinking the ovum is released on day 1 — it is released about mid-cycle, around day 14.",
+        "Confusing menarche (the first period) with menopause (the last).",
+        "Assuming the cycle is exactly 28 days for everyone; it commonly varies from 21 to 35 days."
+      ],
+      "memory_hook": "'MenARCHE = the ARCHway in (first); MenoPAUSE = the PAUSE for good (last)' — and 'Day 14, the ovum leaves'.",
+      "advanced": "Ovulation is triggered by a sharp surge of luteinising hormone (LH) from the pituitary. Home ovulation-prediction kits work by detecting exactly this LH surge in urine, roughly 24–36 hours before the ovum is released."
+    },
+    {
+      "title": "Sex Determination and Reproductive Health",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "The sex of a baby is decided by the sex chromosome carried by the father's sperm, and staying healthy through adolescence needs a balanced diet, hygiene, exercise and avoidance of drugs.",
+      "real_life": "Blaming a mother for the sex of her child is biologically wrong — it is always the father's sperm that decides.",
+      "detailed": {
+        "definition": "Sex chromosomes are the pair of chromosomes that determine the sex of an individual: XX in a female and XY in a male. Reproductive health is the state of complete physical and mental well-being of the reproductive system.",
+        "key_idea": "Every ovum carries an X chromosome. A sperm may carry either X or Y. If an X-bearing sperm fertilizes the ovum the child is a girl (XX); if a Y-bearing sperm does, the child is a boy (XY). The chance is therefore about 50:50 each time.",
+        "working_principle": "Humans have 23 pairs of chromosomes, of which 22 pairs are autosomes and one pair is the sex chromosomes. During gamete formation each gamete receives one chromosome of each pair, so the father's sperm decides the sex.",
+        "applications": [
+          "A balanced diet rich in protein, iron, calcium and vitamins supports the growth spurt.",
+          "Personal hygiene and daily bathing prevent infections and control body odour and acne.",
+          "AIDS is caused by HIV and spreads by unsafe blood transfusion, infected needles and from mother to child — not by casual contact."
+        ]
+      },
+      "points": [
+        "Female = XX, Male = XY; the ovum always carries X.",
+        "The father's sperm (X or Y) determines the sex of the child.",
+        "Humans have 23 pairs of chromosomes: 22 pairs autosomes + 1 pair sex chromosomes.",
+        "Adolescents need extra iron (jaggery, green leafy vegetables) and protein.",
+        "Say no to drugs — they are addictive, harm the body permanently and can spread HIV through shared needles."
+      ],
+      "mistakes": [
+        "Saying the mother determines the sex of the baby — she can only contribute an X.",
+        "Believing AIDS spreads by touching, sharing food or sitting beside an infected person; it does not.",
+        "Thinking junk food is fine during the growth spurt; adolescence has the highest nutritional demand of life."
+      ],
+      "memory_hook": "'Mother always gives X, Father gives the choice' — XX girl, XY boy.",
+      "advanced": "The Y chromosome carries a single decisive gene, SRY, which switches the embryonic gonad into a testis. Everything else about male development follows from the hormones that testis then produces — one gene setting off an entire cascade."
+    }
+  ]
+}

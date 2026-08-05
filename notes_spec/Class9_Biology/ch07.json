@@ -1,0 +1,68 @@
+{
+  "number": 7,
+  "title": "Origin of Life",
+  "prerequisites": [
+    "Basic idea of cells and living organisms from earlier chapters.",
+    "General awareness that the Earth is billions of years old."
+  ],
+  "topics": [
+    {
+      "title": "Early Theories: Spontaneous Generation and Biogenesis",
+      "quick_summary": "Early thinkers believed life could arise spontaneously from non-living matter, a theory eventually disproved by controlled experiments showing that life arises only from pre-existing life.",
+      "detailed": {
+        "definition": "Spontaneous generation (abiogenesis, in its old sense) was the theory that living organisms could arise suddenly and directly from non-living matter; biogenesis is the theory, now well established, that life arises only from pre- existing life.",
+        "key_idea": "Louis Pasteur's swan-neck flask experiment definitively disproved spontaneous generation by showing that a sterilised nutrient broth remained free of microorganisms as long as airborne dust/microbes were physically prevented from reaching it, even though air itself could still enter.",
+        "working_principle": "Pasteur's specially curved flask allowed air to pass in and out but trapped dust and microorganisms in the curved neck, so the broth stayed sterile; when the flask was tilted so broth touched the trapped dust, microbial growth appeared almost immediately, proving the microbes came from outside, not from the broth itself.",
+        "applications": [
+          "Established the modern scientific foundation of microbiology and sterilisation techniques.",
+          "Basis for understanding why boiling/sterilising food and medical equipment prevents contamination."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "People once believed maggots arose spontaneously from rotting meat, until careful experiments showed the maggots actually hatched from fly eggs laid on the exposed meat.",
+      "points": [
+        "Spontaneous generation: incorrect old theory that life arises suddenly from non-living matter.",
+        "Biogenesis: life arises only from pre-existing life (established as scientific fact).",
+        "Louis Pasteur's swan-neck flask experiment (1860s) disproved spontaneous generation.",
+        "The debate over 'origin of the very first life' is separate from biogenesis, which concerns life arising today."
+      ],
+      "mistakes": [
+        "Confusing biogenesis (life from life, an established fact for present-day organisms) with the still-debated scientific question of how the very first life originated from non-living matter billions of years ago.",
+        "Thinking Pasteur's flask kept out air entirely — it only kept out dust and microorganisms while still allowing air to pass."
+      ],
+      "memory_hook": "'Pasteur's swan-neck flask: air gets in, dust (and life) stays out.'",
+      "advanced": "Pasteur's experiment did not actually explain how the very first life on Earth began — it only disproved that life spontaneously and repeatedly arises from non-living matter under today's conditions, leaving the deeper question of life's true origin to later scientists like Oparin and Haldane."
+    },
+    {
+      "title": "The Oparin-Haldane Hypothesis and the Miller-Urey Experiment",
+      "quick_summary": "The Oparin-Haldane hypothesis proposed that simple organic molecules could have formed spontaneously on early Earth under conditions very different from today, an idea later tested and supported by the Miller-Urey laboratory experiment.",
+      "detailed": {
+        "definition": "The Oparin-Haldane hypothesis (chemical evolution theory) proposed that early Earth's atmosphere (rich in gases like methane, ammonia, hydrogen and water vapour, with no free oxygen) combined with energy sources like lightning and UV radiation to form simple organic compounds, which eventually gave rise to the first primitive life forms.",
+        "key_idea": "In 1953, Stanley Miller and Harold Urey built a laboratory apparatus that simulated early Earth's proposed atmosphere and energy sources (electric sparks representing lightning), successfully producing several simple amino acids within just a week, offering experimental support for the Oparin-Haldane hypothesis.",
+        "working_principle": "The Miller-Urey apparatus circulated a mixture of gases (methane, ammonia, hydrogen, water vapour) believed to represent the early Earth atmosphere, passing it through an electric spark (simulating lightning) and then cooling/condensing it, allowing scientists to analyse the resulting chemical products for signs of organic molecule formation.",
+        "applications": [
+          "Provides experimental support for the idea that life's basic building blocks could form under early Earth- like conditions without any external life already present.",
+          "Basis for ongoing scientific research into how simple organic molecules could have eventually organised into the first living cells."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The Miller-Urey experiment recreated the harsh, gas-rich conditions believed to exist on early Earth inside a laboratory flask, and successfully produced simple amino acids — the building blocks of proteins — from non- living chemicals.",
+      "points": [
+        "Oparin-Haldane hypothesis: early Earth conditions allowed simple organic molecules to form from inorganic gases.",
+        "Early atmosphere (proposed): methane, ammonia, hydrogen, water vapour — no free oxygen.",
+        "Miller-Urey experiment (1953): simulated early Earth conditions in the lab and produced amino acids.",
+        "This supports chemical evolution as a plausible first step toward the origin of life, though it does not fully explain how organic molecules became a living cell."
+      ],
+      "mistakes": [
+        "Believing the Miller-Urey experiment created 'life' itself — it only produced simple organic molecules like amino acids, not living cells.",
+        "Assuming today's oxygen-rich atmosphere is the same as early Earth's atmosphere — the proposed early atmosphere had no free oxygen."
+      ],
+      "memory_hook": "'Miller and Urey sparked a flask of ancient air and got the building blocks of life — amino acids.'",
+      "advanced": "The presence of free oxygen in today's atmosphere is actually thought to have prevented spontaneous generation from happening again after early life evolved, because oxygen would break down the simple organic molecules before they could accumulate and organise the way they may have on the early, oxygen-free Earth."
+    }
+  ]
+}

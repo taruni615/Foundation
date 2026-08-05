@@ -1,0 +1,98 @@
+{
+  "number": 4,
+  "title": "Quadratic Equations",
+  "prerequisites": [
+    "Factorisation by splitting the middle term.",
+    "Ability to simplify surds and square roots.",
+    "Relationship between zeroes and coefficients of a polynomial.",
+    "Skill in framing equations from word problems."
+  ],
+  "topics": [
+    {
+      "title": "Solving Quadratic Equations",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A quadratic equation ax² + bx + c = 0 with a ≠ 0 is solved by factorisation, by completing the square, or by the quadratic formula.",
+      "real_life": "Finding the width of a uniform path around a rectangular garden of given total area leads directly to a quadratic equation.",
+      "detailed": {
+        "definition": "A quadratic equation is an equation of the form ax² + bx + c = 0 where a, b and c are real numbers and a ≠ 0. A root is a value of x satisfying the equation.",
+        "key_idea": "Factorisation is fastest when it works, but it works only for nice coefficients. The quadratic formula always works, which is why it is derived by completing the square once and for all.",
+        "working_principle": "Factorisation uses the zero-product rule: if pq = 0 then p = 0 or q = 0. Completing the square rewrites the equation as a perfect square equal to a constant.",
+        "applications": [
+          "Splitting the middle term: find two numbers with product ac and sum b.",
+          "Word problems on speed, age, area and numbers commonly reduce to quadratics.",
+          "Always reject roots that are physically impossible, such as a negative length."
+        ]
+      },
+      "points": [
+        "Standard form ax² + bx + c = 0 with a ≠ 0.",
+        "A quadratic equation has at most two roots.",
+        "Zero-product rule: if pq = 0 then p = 0 or q = 0.",
+        "The quadratic formula works for every quadratic; factorisation does not.",
+        "In word problems, discard roots that make no physical sense."
+      ],
+      "mistakes": [
+        "Applying the zero-product rule when the product is not zero.",
+        "Forgetting to bring all terms to one side before solving.",
+        "Keeping a negative root for a length, age or number of items."
+      ],
+      "memory_hook": "'All terms to one side, then factorise or use the formula.'",
+      "advanced": "The quadratic formula is simply completing the square carried out with letters instead of numbers. Doing it once symbolically saves repeating the process for every individual equation.",
+      "formulas": [
+        {
+          "name": "Quadratic Formula",
+          "difficulty": "Medium",
+          "formula": "x = [−b ± √(b² − 4ac)] / 2a",
+          "variables": "a, b, c = coefficients of ax² + bx + c = 0.",
+          "when_to_use": "For any quadratic, especially when factorisation is not obvious.",
+          "common_mistakes": "Dividing only part of the numerator by 2a, or dropping the ± sign.",
+          "shortcut": "Compute the discriminant first — if it is negative, stop, there are no real roots."
+        }
+      ]
+    },
+    {
+      "title": "Nature of Roots and the Discriminant",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The discriminant D = b² − 4ac decides the nature of the roots without solving the equation at all.",
+      "real_life": "An engineer checking whether a projectile will ever reach a given height only needs the sign of the discriminant, not the actual times.",
+      "detailed": {
+        "definition": "The discriminant of ax² + bx + c = 0 is D = b² − 4ac. It is the quantity under the square root in the quadratic formula.",
+        "key_idea": "The sign of D alone answers the question of how many real roots exist. Positive gives two distinct real roots, zero gives two equal roots, and negative gives no real roots.",
+        "working_principle": "Questions asking for the value of k such that an equation has equal roots are solved by setting D = 0 and solving the resulting equation in k.",
+        "applications": [
+          "Graphically, D > 0 means the parabola cuts the x-axis twice, D = 0 once, D < 0 not at all.",
+          "The roots are rational when D is a perfect square and a, b, c are rational.",
+          "Sum of roots = −b/a and product = c/a, whatever the sign of D."
+        ]
+      },
+      "points": [
+        "D = b² − 4ac.",
+        "D > 0: two distinct real roots. D = 0: two equal real roots. D < 0: no real roots.",
+        "For equal roots, set D = 0 and solve for the unknown parameter.",
+        "Roots are rational if D is a perfect square and the coefficients are rational.",
+        "Sum of roots = −b/a; product = c/a."
+      ],
+      "mistakes": [
+        "Writing the discriminant as b² + 4ac.",
+        "Saying an equation with D < 0 has no roots at all; it has no REAL roots.",
+        "Forgetting to check that a ≠ 0 before treating an equation as quadratic."
+      ],
+      "memory_hook": "'D positive, two roots; D zero, one repeated; D negative, none at all.'",
+      "advanced": "When D < 0 the roots are complex conjugates. Extending to complex numbers makes the count of roots exactly two for every quadratic, which is the Fundamental Theorem of Algebra in its simplest case.",
+      "formulas": [
+        {
+          "name": "Discriminant",
+          "difficulty": "Easy",
+          "formula": "D = b² − 4ac",
+          "variables": "a, b, c = coefficients of the quadratic equation.",
+          "when_to_use": "To determine the nature of the roots, or to find a parameter giving equal roots.",
+          "common_mistakes": "Using + instead of − in the formula.",
+          "shortcut": "Equal roots means D = 0 — this is the standard route for 'find the value of k' questions."
+        }
+      ]
+    }
+  ]
+}

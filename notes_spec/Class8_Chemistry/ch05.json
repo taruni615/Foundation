@@ -1,0 +1,108 @@
+{
+  "number": 5,
+  "title": "Language of Chemistry",
+  "prerequisites": [
+    "Idea that all matter is made of atoms.",
+    "Knowledge that elements are the simplest pure substances.",
+    "Basic arithmetic with whole numbers and ratios.",
+    "Familiarity with the names of common elements such as oxygen and iron."
+  ],
+  "topics": [
+    {
+      "title": "Symbols of Elements",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A symbol is a short form of the name of an element — one or two letters, with the first always capital and the second always small.",
+      "real_life": "The 'Fe' on an iron tablet and the 'Na' on a salt packet are chemical symbols in daily use, both taken from Latin rather than English names.",
+      "detailed": {
+        "definition": "A symbol is an abbreviated representation of the name of an element. It represents both the element and exactly one atom of it.",
+        "key_idea": "Berzelius introduced the modern system: the first letter of the English name, capitalised, and where two elements share that letter, a second small letter is added. Some symbols come from Latin names, and these are the ones most often forgotten.",
+        "working_principle": "A symbol carries quantitative meaning too — 'O' means one atom of oxygen with a mass of 16 u, while 'O₂' means one molecule of oxygen with a mass of 32 u.",
+        "applications": [
+          "Latin-derived symbols: Na (Natrium, sodium), K (Kalium, potassium), Fe (Ferrum, iron), Cu (Cuprum, copper).",
+          "More Latin symbols: Ag (Argentum, silver), Au (Aurum, gold), Pb (Plumbum, lead), Sn (Stannum, tin), Sb (Stibium, antimony), Hg (Hydrargyrum, mercury).",
+          "Symbols are the same in every language, which makes chemistry universal."
+        ]
+      },
+      "points": [
+        "First letter of a symbol is ALWAYS capital; the second letter is ALWAYS small.",
+        "A symbol represents one atom of the element and its atomic mass.",
+        "Latin symbols to memorise: Na, K, Fe, Cu, Ag, Au, Pb, Sn, Hg, Sb, W.",
+        "Berzelius introduced the modern system of symbols.",
+        "Co is cobalt, but CO is carbon monoxide — capitalisation changes the meaning completely."
+      ],
+      "mistakes": [
+        "Writing CO for cobalt instead of Co — the capital O turns it into a compound.",
+        "Writing 'NA' or 'FE' — only the first letter is capital.",
+        "Guessing symbols from English names for Latin-derived elements (writing 'S' or 'So' for sodium)."
+      ],
+      "memory_hook": "'Capital first, small second — always.' And for Latin ones: 'Sodium's Natrium, Potassium's Kalium, Iron's Ferrum, Copper's Cuprum'.",
+      "advanced": "IUPAC now assigns three-letter placeholder symbols to newly synthesised superheavy elements until a permanent name is approved — for example Uut for element 113 before it became Nihonium (Nh). The naming convention itself is part of the language of chemistry."
+    },
+    {
+      "title": "Valency, Ions and Radicals",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Valency is the combining capacity of an element, an ion is a charged atom or group of atoms, and a radical is a group of atoms that behaves as a single unit in a reaction.",
+      "real_life": "Sodium always combines one-to-one with chlorine to give NaCl, but calcium takes two chlorines to give CaCl₂ — valency is the reason.",
+      "detailed": {
+        "definition": "Valency is the number of electrons an atom loses, gains or shares to attain a stable configuration — that is, its combining capacity. An ion is an atom or group of atoms carrying a net charge; a positive ion is a cation and a negative ion is an anion.",
+        "key_idea": "A compound as a whole is electrically neutral, so the total positive charge must exactly balance the total negative charge. This single rule generates every chemical formula.",
+        "working_principle": "Radicals are groups of atoms that carry a charge and stay together through a reaction — sulphate (SO₄²⁻), nitrate (NO₃⁻), carbonate (CO₃²⁻), ammonium (NH₄⁺). They are treated as single units and bracketed when more than one is needed.",
+        "applications": [
+          "Variable valency: iron shows +2 (ferrous, Fe²⁺) and +3 (ferric, Fe³⁺); copper shows +1 (cuprous) and +2 (cupric).",
+          "The '-ous' suffix indicates the lower valency and '-ic' the higher valency.",
+          "Ammonium (NH₄⁺) is the only common positive radical."
+        ]
+      },
+      "points": [
+        "Valency = combining capacity; it has no sign, while charge on an ion does.",
+        "Cation = positive (metal, loses electrons); Anion = negative (non-metal, gains electrons).",
+        "Common monovalent radicals: OH⁻, NO₃⁻, HCO₃⁻, NH₄⁺; divalent: SO₄²⁻, CO₃²⁻; trivalent: PO₄³⁻.",
+        "Noble gases have a valency of zero because their outermost shell is already complete.",
+        "'-ous' = lower valency, '-ic' = higher valency (ferrous Fe²⁺, ferric Fe³⁺)."
+      ],
+      "mistakes": [
+        "Writing brackets around a single radical — Na(NO₃) should simply be NaNO₃.",
+        "Forgetting brackets when a radical is taken more than once — writing CaNO₃₂ instead of Ca(NO₃)₂.",
+        "Confusing valency (a number) with charge (a number with a sign)."
+      ],
+      "memory_hook": "'CATion is PAWSitive (cat has paws), ANion is Negative' — and 'ous is lOWer, ic is hIgher'.",
+      "advanced": "Valency is a bookkeeping idea; oxidation number is its more general successor and can be negative or fractional. In Fe₃O₄, for instance, the average oxidation number of iron is +8/3 because the compound is really a mixture of Fe²⁺ and Fe³⁺ ions."
+    },
+    {
+      "title": "Chemical Formulae and Chemical Equations",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A chemical formula shows the elements in a compound and how many atoms of each are present, and it is written by the criss-cross method of exchanging valencies.",
+      "real_life": "Writing H₂SO₄ instead of 'sulphuric acid' tells a chemist anywhere in the world exactly which atoms are present and in what ratio.",
+      "detailed": {
+        "definition": "A chemical formula is the symbolic representation of the composition of a molecule of a substance, showing which elements are present and in what ratio.",
+        "key_idea": "In the criss-cross method the valency of each element or radical is written above it, and then the two valencies are exchanged and written as subscripts. The subscripts are then reduced to the simplest whole-number ratio.",
+        "working_principle": "The positive part (metal or positive radical) is always written first, followed by the negative part. If a radical has to be taken more than once, it is enclosed in brackets.",
+        "applications": [
+          "Al (valency 3) and SO₄ (valency 2) give Al₂(SO₄)₃.",
+          "Ca (valency 2) and O (valency 2) give CaO after reducing Ca₂O₂ to its simplest ratio.",
+          "Acids: HCl, H₂SO₄, HNO₃, H₂CO₃; Bases: NaOH, KOH, Ca(OH)₂, NH₄OH."
+        ]
+      },
+      "points": [
+        "Write the positive part first, negative part second, then criss-cross the valencies.",
+        "Always reduce the subscripts to the simplest whole-number ratio.",
+        "Use brackets when a radical is taken more than once: Ca(OH)₂, Al₂(SO₄)₃.",
+        "A chemical equation must be balanced — the same number of atoms of each element on both sides.",
+        "Only coefficients may be changed while balancing, never the subscripts in a formula."
+      ],
+      "mistakes": [
+        "Changing a subscript while balancing an equation, which changes the substance itself.",
+        "Forgetting to reduce Ca₂O₂ to CaO after criss-crossing equal valencies.",
+        "Writing the negative radical first — the metal or positive radical always comes first."
+      ],
+      "memory_hook": "'Criss-cross the valencies, then cancel down' — and 'Balance by coefficients, never by subscripts'.",
+      "advanced": "Balancing an equation is really an application of the law of conservation of mass. For complex redox equations the ion-electron method is used instead of trial and error — balancing charge and atoms separately, which is far more systematic."
+    }
+  ]
+}

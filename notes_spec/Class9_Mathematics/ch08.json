@@ -1,0 +1,76 @@
+{
+  "number": 8,
+  "title": "Quadrilaterals",
+  "prerequisites": [
+    "Angle sum property of a triangle.",
+    "Congruence criteria for triangles.",
+    "Properties of parallel lines and a transversal.",
+    "Familiarity with the terms diagonal and vertex."
+  ],
+  "topics": [
+    {
+      "title": "Types of Quadrilaterals and the Parallelogram",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The angles of a quadrilateral sum to 360°, and a parallelogram has opposite sides and angles equal with diagonals that bisect each other.",
+      "real_life": "A collapsible scissor gate stays a parallelogram at every stage of opening — opposite sides remain equal even as the angles change.",
+      "detailed": {
+        "definition": "A parallelogram is a quadrilateral in which both pairs of opposite sides are parallel. A rhombus is a parallelogram with all sides equal, a rectangle one with all angles right angles, and a square is both.",
+        "key_idea": "The family is hierarchical: every square is a rhombus and a rectangle, and every rhombus and rectangle is a parallelogram. Properties inherit downward but not upward.",
+        "working_principle": "A quadrilateral is a parallelogram if any one of these holds: both pairs of opposite sides equal, both pairs of opposite angles equal, diagonals bisect each other, or one pair of opposite sides both equal and parallel.",
+        "applications": [
+          "Diagonals of a rectangle are equal; of a rhombus, perpendicular; of a square, both.",
+          "A diagonal divides a parallelogram into two congruent triangles.",
+          "The angle sum of any quadrilateral is 360°."
+        ]
+      },
+      "points": [
+        "Angle sum of a quadrilateral = 360°.",
+        "Parallelogram: opposite sides equal, opposite angles equal, diagonals bisect each other.",
+        "Rectangle: diagonals are equal. Rhombus: diagonals are perpendicular bisectors.",
+        "Square: diagonals are equal AND perpendicular bisectors.",
+        "One pair of opposite sides equal and parallel is enough to prove a parallelogram."
+      ],
+      "mistakes": [
+        "Saying the diagonals of a parallelogram are equal; only in a rectangle are they equal.",
+        "Assuming the diagonals of a rhombus are equal; they are perpendicular, not equal.",
+        "Calling a trapezium a parallelogram; only one pair of its sides is parallel."
+      ],
+      "memory_hook": "'Square = Rectangle + Rhombus' — it inherits equal diagonals from one and perpendicular diagonals from the other.",
+      "advanced": "In vector terms, a quadrilateral ABCD is a parallelogram exactly when AB⃗ = DC⃗. Every classical property then follows in one or two lines of vector algebra."
+    },
+    {
+      "title": "The Mid-point Theorem",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The line joining the mid-points of two sides of a triangle is parallel to the third side and half its length.",
+      "real_life": "A shelf fixed halfway up two sloping supports is automatically parallel to the floor and half the span — the mid-point theorem doing carpentry.",
+      "detailed": {
+        "definition": "Mid-point theorem: the segment joining the mid-points of two sides of a triangle is parallel to the third side and equal to half of it. Its converse states that a line through the mid-point of one side, parallel to another side, bisects the third side.",
+        "key_idea": "The theorem converts a statement about lengths into one about parallels, and its converse does the reverse. Most quadrilateral proofs use one or the other to create a parallelogram.",
+        "working_principle": "In a quadrilateral, joining the mid-points of all four sides always produces a parallelogram, whatever the original shape. This is proved by applying the mid-point theorem to the two triangles formed by a diagonal.",
+        "applications": [
+          "The figure formed by joining the mid-points of any quadrilateral is a parallelogram.",
+          "Mid-points of a rectangle give a rhombus; of a rhombus, a rectangle.",
+          "The converse is used to prove that a point is a mid-point."
+        ]
+      },
+      "points": [
+        "Mid-point theorem: segment joining mid-points is parallel to and half the third side.",
+        "Converse: a line through one mid-point parallel to another side bisects the third side.",
+        "Joining mid-points of any quadrilateral gives a parallelogram.",
+        "Mid-points of a rectangle form a rhombus; mid-points of a rhombus form a rectangle.",
+        "The theorem is proved using congruent triangles or by constructing a parallelogram."
+      ],
+      "mistakes": [
+        "Forgetting the 'half the length' part and stating only parallelism.",
+        "Applying the converse without confirming the parallel condition.",
+        "Assuming the mid-point figure of a square is a square of half the area; it is a square of half the area, but the same is not true for other shapes."
+      ],
+      "memory_hook": "'Join the mid-points: parallel to the third side, and exactly half of it.'",
+      "advanced": "The mid-point theorem is the simplest case of the basic proportionality theorem, which allows any ratio rather than just one-half. Class 10 similarity generalises this chapter almost entirely."
+    }
+  ]
+}

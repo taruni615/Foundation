@@ -1,0 +1,101 @@
+{
+  "number": 10,
+  "title": "Heat",
+  "prerequisites": [
+    "Basic idea that some objects feel hotter or colder than others.",
+    "Concept of particles/molecules making up matter, from basic chemistry.",
+    "Familiarity with everyday temperature-related instruments like a thermometer."
+  ],
+  "topics": [
+    {
+      "title": "Temperature and Thermometers",
+      "quick_summary": "Temperature is a measure of how hot or cold an object is, distinct from heat itself, and is measured using instruments called thermometers, most commonly in Celsius or Fahrenheit.",
+      "detailed": {
+        "definition": "Temperature is the measure of the degree of hotness or coldness of a body, essentially indicating the average kinetic energy of its particles. Heat is the form of energy that flows from a hotter body to a colder one due to a temperature difference.",
+        "key_idea": "Temperature and heat are related but different — temperature tells us how hot something is, while heat is the actual energy that flows between objects at different temperatures until they reach the same temperature (thermal equilibrium).",
+        "working_principle": "A thermometer works using a property of matter that changes predictably with temperature (like the expansion of mercury or alcohol in a thin glass tube); as temperature rises, the liquid expands and rises higher in the calibrated tube.",
+        "applications": [
+          "Clinical thermometers are used to check body temperature, with a typical range around 35°C to 42°C.",
+          "Laboratory thermometers cover a much wider temperature range for scientific experiments.",
+          "Weather forecasting uses temperature readings from thermometers placed at weather stations."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A clinical thermometer measures human body temperature (normally around 37°C), while a laboratory thermometer with a wider range is used to measure temperatures of liquids in experiments.",
+      "points": [
+        "Common temperature scales: Celsius (°C) and Fahrenheit (°F); the Kelvin scale is used in scientific work.",
+        "Normal human body temperature is about 37°C (98.6°F).",
+        "Heat flows naturally from a hotter object to a colder one, never on its own in the reverse direction.",
+        "A clinical thermometer has a kink near the bulb to prevent the mercury column from falling back down before the reading is taken."
+      ],
+      "mistakes": [
+        "Using the words 'heat' and 'temperature' as if they mean the same thing — temperature is a measure of hotness, heat is the energy that flows.",
+        "Forgetting that two objects at different sizes can be at the same temperature but contain very different amounts of heat energy."
+      ],
+      "memory_hook": "\"Temperature = how Hot; Heat = energy that Flows because of that hotness difference.\"",
+      "advanced": "Two containers of water at the exact same temperature but very different volumes contain very different amounts of heat energy — a small cup and a large tub of water at 50°C feel equally hot to the touch (same temperature), but the tub holds far more heat energy and would take much longer to cool down to room temperature."
+    },
+    {
+      "title": "Transfer of Heat — Conduction, Convection, Radiation",
+      "quick_summary": "Heat can travel from one place to another by three distinct methods — conduction (through solids), convection (through liquids and gases), and radiation (through empty space, without needing any medium).",
+      "detailed": {
+        "definition": "Conduction is the transfer of heat through a material by direct particle-to-particle collision, without the particles themselves moving from their position. Convection is the transfer of heat through a fluid (liquid or gas) by the actual movement of heated particles. Radiation is the transfer of heat as electromagnetic waves, which can travel even through a vacuum.",
+        "key_idea": "Conduction dominates in solids because particles are fixed close together, convection dominates in fluids because particles are free to move and carry heat with them, and radiation is the only method that works without any medium at all.",
+        "working_principle": "In conduction, particles that are heated vibrate more and pass on energy to neighbouring particles through collisions, gradually spreading heat along the material. In convection, heated fluid becomes less dense, rises, and is replaced by cooler, denser fluid, setting up a continuous circulating current. In radiation, heat travels directly as electromagnetic waves that can be absorbed, reflected, or transmitted by objects they strike.",
+        "applications": [
+          "Cooking pots are made of metal (a good conductor) with insulating handles (a poor conductor) for safe handling.",
+          "Convection currents in air and water drive weather patterns, sea breezes, and the boiling of water in a pot.",
+          "Radiation from the Sun travels through the vacuum of space to warm the Earth — this is the only heat transfer method that needs no medium."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A metal spoon left in a hot cup of soup gets warm from conduction; hot air rising above a heater shows convection; the warmth we feel from sunlight reaching us across space is radiation.",
+      "points": [
+        "Conduction: mainly in solids; particles vibrate but stay in place.",
+        "Convection: mainly in liquids and gases; particles actually move and carry heat with them.",
+        "Radiation: works even through a vacuum; does not need any medium at all.",
+        "Metals are generally good conductors of heat; materials like wood, plastic, and air are poor conductors (insulators)."
+      ],
+      "mistakes": [
+        "Thinking all three methods need a medium — radiation is unique in not requiring one.",
+        "Confusing conduction (particles vibrate in place) with convection (particles actually move to a new location), especially in liquids and gases where both may occur together."
+      ],
+      "memory_hook": "\"Conduction = Contact & vibrate; Convection = Currents that move; Radiation = Reaches even through empty space.\"",
+      "advanced": "The Sun's heat reaching Earth by radiation across 150 million km of empty space is direct proof that radiation cannot be explained by particle collisions like conduction or convection — it travels as electromagnetic waves, the same basic family of waves as visible light."
+    },
+    {
+      "title": "Effects of Heat and Everyday Applications",
+      "quick_summary": "Heat transfer principles explain many everyday choices, from the clothes we wear in different seasons to how homes and appliances are designed to either retain or release heat efficiently.",
+      "detailed": {
+        "definition": "Insulation is the use of materials that are poor conductors of heat to reduce unwanted heat transfer; the choice of colour, material, and design of everyday objects is often based on controlling how they absorb, conduct, or radiate heat.",
+        "key_idea": "Dark, rough surfaces absorb and radiate heat more effectively than light, shiny surfaces, which tend to reflect heat — this single idea explains many everyday design and clothing choices across seasons.",
+        "working_principle": "Objects that need to retain heat (like a thermos flask) are designed to minimise conduction, convection, and radiation losses (using double walls with a vacuum gap and a shiny reflective inner surface); objects that need to release heat (like vehicle radiators or cooling fins) are designed with a large surface area to maximise heat loss.",
+        "applications": [
+          "Thermos flasks use a vacuum layer to block conduction and convection, and a silvered (shiny) surface to reduce radiation loss.",
+          "Woollen clothes trap air (a poor conductor) between fibres, keeping the body warm in winter.",
+          "Cooling fins on engines and electronic devices increase surface area to release heat faster by convection and radiation."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Dark-coloured clothes are preferred in winter because they absorb more radiant heat from sunlight, while light- coloured, loose cotton clothes are preferred in summer because they reflect heat and allow better air circulation (convection) to keep the body cool.",
+      "points": [
+        "Dark, dull surfaces are good absorbers and good radiators of heat.",
+        "Light, shiny surfaces are poor absorbers and poor radiators, but good reflectors of heat.",
+        "A thermos flask minimises heat transfer by all three methods at once — conduction, convection, and radiation.",
+        "Trapped air is a poor conductor of heat, which is why materials like wool and fibre-filled jackets provide insulation."
+      ],
+      "mistakes": [
+        "Thinking woollen clothes themselves 'generate' warmth — they don't produce heat, they simply trap the body's own heat by reducing conductive and convective loss.",
+        "Assuming any shiny object is automatically a poor conductor — shininess mainly affects radiation, not conduction (many shiny objects, like polished metal, are still excellent conductors)."
+      ],
+      "memory_hook": "\"Dark & dull = absorbs/radiates heat well; Light & shiny = reflects heat well.\"",
+      "advanced": "A thermos flask is a neat real-world demonstration of blocking heat transfer by all three mechanisms simultaneously: the vacuum gap between its double walls stops conduction and convection (since there are no particles to carry heat across a vacuum), while the silvered surface reflects radiant heat back inward — showing how understanding all three heat-transfer methods together leads to genuinely better engineering."
+    }
+  ]
+}

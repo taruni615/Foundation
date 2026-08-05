@@ -1,0 +1,96 @@
+{
+  "number": 14,
+  "title": "Statistics",
+  "prerequisites": [
+    "Ability to calculate an average of a set of numbers.",
+    "Familiarity with tables and bar graphs.",
+    "Basic understanding of fractions and percentages.",
+    "Skill in plotting points on a graph."
+  ],
+  "topics": [
+    {
+      "title": "Collection and Presentation of Data",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Raw data is organised into frequency distributions and displayed as bar graphs, histograms or frequency polygons to make patterns visible.",
+      "real_life": "A histogram of a class's marks shows at a glance whether the paper was easy or hard — something a list of eighty numbers never could.",
+      "detailed": {
+        "definition": "Primary data is collected by the investigator directly; secondary data is obtained from an existing source. Class size is the difference between the upper and lower limits of a class, and the class mark is their average.",
+        "key_idea": "A histogram is not a bar graph. Histogram bars touch because the variable is continuous, whereas bar graph bars are separated because the categories are discrete.",
+        "working_principle": "For a grouped frequency distribution with unequal class sizes, the height of each histogram bar must be adjusted so that area, not height, represents frequency.",
+        "applications": [
+          "Discontinuous classes such as 10–19, 20–29 are made continuous by subtracting 0.5 from lower limits and adding 0.5 to upper limits.",
+          "A frequency polygon is drawn by joining the mid-points of the tops of histogram bars.",
+          "Class mark = (upper limit + lower limit) / 2."
+        ]
+      },
+      "points": [
+        "Primary data is first-hand; secondary data comes from an existing source.",
+        "Range = maximum value − minimum value.",
+        "Class mark = (upper limit + lower limit) / 2.",
+        "In a histogram the bars touch; in a bar graph they do not.",
+        "With unequal class sizes, the AREA of each bar must be proportional to the frequency."
+      ],
+      "mistakes": [
+        "Drawing a histogram with gaps between the bars.",
+        "Using raw frequencies as heights when class sizes are unequal.",
+        "Forgetting to convert discontinuous classes into continuous ones before drawing."
+      ],
+      "memory_hook": "'Histogram bars touch, bar-graph bars do not' — continuous versus categorical.",
+      "advanced": "Choosing the class width is a genuine trade-off: too wide hides structure, too narrow shows noise. Statisticians use rules such as Sturges' formula, but the honest answer is that several widths should be tried."
+    },
+    {
+      "title": "Mean, Median and Mode",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The mean is the arithmetic average, the median is the middle value when data is arranged in order, and the mode is the most frequent value.",
+      "real_life": "Average income in a town is misleading if one billionaire lives there — the median gives a far truer picture of a typical resident.",
+      "detailed": {
+        "definition": "Mean = sum of observations ÷ number of observations. Median is the middle observation of ordered data. Mode is the observation occurring most often.",
+        "key_idea": "The mean is pulled by extreme values while the median is not. Choosing between them is a judgement about whether outliers are meaningful or distorting.",
+        "working_principle": "For n observations arranged in order, the median is the (n+1)/2 th value when n is odd, and the average of the n/2 th and (n/2 + 1)th values when n is even.",
+        "applications": [
+          "The median is preferred for income, house prices and any skewed data.",
+          "The mode is the only average usable for non-numerical data such as favourite colour.",
+          "Empirical relation: Mode ≈ 3 × Median − 2 × Mean."
+        ]
+      },
+      "points": [
+        "Mean = Σx / n; for grouped data, mean = Σfx / Σf.",
+        "Median: order the data first — this step is essential and often forgotten.",
+        "Mode is the most frequent value; a data set may have more than one mode or none.",
+        "The mean is affected by extreme values; the median is not.",
+        "Empirical relation: Mode = 3 Median − 2 Mean."
+      ],
+      "mistakes": [
+        "Finding the median without first arranging the data in order.",
+        "Using n/2 as the median position for odd n instead of (n+1)/2.",
+        "Reporting the frequency instead of the observation as the mode."
+      ],
+      "memory_hook": "'Mean adds, Median orders, Mode counts' — three different questions about the same data.",
+      "advanced": "Mean, median and mode coincide in a perfectly symmetric distribution. The size and direction of the gap between them is a standard measure of skewness — which is what the empirical relation is really capturing.",
+      "formulas": [
+        {
+          "name": "Mean of Grouped Data",
+          "difficulty": "Medium",
+          "formula": "Mean = Σ(fᵢxᵢ) / Σfᵢ",
+          "variables": "fᵢ = frequency of the ith class, xᵢ = class mark of the ith class.",
+          "when_to_use": "For any grouped frequency distribution.",
+          "common_mistakes": "Using the class limits instead of the class marks as xᵢ.",
+          "shortcut": "The assumed-mean method reduces arithmetic when the class marks are large."
+        },
+        {
+          "name": "Median",
+          "difficulty": "Easy",
+          "formula": "n odd: ((n+1)/2)th term;  n even: mean of (n/2)th and (n/2 + 1)th terms",
+          "variables": "n = number of observations, arranged in ascending order.",
+          "when_to_use": "When the data contains extreme values that would distort the mean.",
+          "common_mistakes": "Failing to sort the data before locating the middle term.",
+          "shortcut": "Sort first, always — the formula is meaningless on unsorted data."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "number": 6,
+  "title": "Chemistry in Everyday Life",
+  "prerequisites": [
+    "Basic understanding of covalent bonding and molecules from Chapter 5.",
+    "General awareness of common household and biological substances."
+  ],
+  "topics": [
+    {
+      "title": "Polymers, Plastics & Resins",
+      "quick_summary": "Polymers are giant molecules built by joining together many small, repeating units called monomers, and they form the basis of plastics, synthetic fibres, and resins used throughout everyday life.",
+      "detailed": {
+        "definition": "A polymer is a very large molecule (macromolecule) formed by the repeated chemical joining of many small, simple molecules called monomers; plastics are synthetic polymers that can be moulded into shape under heat and pressure; resins are polymer substances (natural or synthetic) often used as adhesives, coatings, or in composite materials.",
+        "key_idea": "Polymers can be classified as addition polymers (formed by monomers simply joining together without loss of any atoms, e.g., polythene) or condensation polymers (formed with the loss of a small molecule like water during joining, e.g., nylon, terylene).",
+        "working_principle": "The properties of a polymer (flexibility, strength, melting point) depend on the type of monomer used, the length of the polymer chain, and how the chains are arranged (linear, branched, or cross- linked) relative to one another.",
+        "applications": [
+          "Polymers are used to make everyday plastics (buckets, bottles, pipes), synthetic fibres (nylon, polyester used in clothing and ropes), and resins (adhesives, paints, and composite materials).",
+          "Understanding polymer structure guides efforts in recycling and developing biodegradable alternatives to reduce plastic pollution."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A polythene bag is made of thousands of small ethylene molecules (monomers) joined end-to-end into one long polymer chain, giving it flexibility and strength that a single ethylene molecule could never have.",
+      "points": [
+        "Monomer: small repeating unit; Polymer: large chain made of many monomers joined together.",
+        "Addition polymers: formed without loss of any by-product (e.g., polythene from ethylene monomers).",
+        "Condensation polymers: formed with loss of a small molecule like water during the joining process (e.g., nylon, terylene).",
+        "Natural polymers include proteins, starch, and cellulose; synthetic polymers include polythene, PVC, nylon, and polyester."
+      ],
+      "mistakes": [
+        "Thinking all polymers are synthetic/man-made — many important polymers (proteins, starch, cellulose, rubber) occur naturally.",
+        "Confusing plastics (a subset of synthetic polymers that can be moulded) with polymers in general (a much broader category including natural biomolecules)."
+      ],
+      "memory_hook": "'Poly-MER = Many repeating units joined in a chain.'",
+      "advanced": "The push towards biodegradable polymers (which can be broken down by natural microbial action) is a direct, real-world chemistry response to the environmental problems caused by the extreme chemical stability of common synthetic polymers like polythene, which can persist in the environment for hundreds of years."
+    },
+    {
+      "title": "Biomolecules — Carbohydrates, Proteins & Amino Acids",
+      "quick_summary": "Carbohydrates, amino acids and proteins are essential biomolecules that provide energy, build body structures, and carry out nearly all biochemical functions in living organisms.",
+      "detailed": {
+        "definition": "Carbohydrates are organic compounds made of carbon, hydrogen and oxygen (usually in a 1:2:1 ratio) that serve as the primary source of energy for living organisms; amino acids are the basic structural units (monomers) that combine to form proteins; proteins are large polymer molecules made of many amino acids joined by peptide bonds, essential for growth, repair, and enzyme/hormone function in the body.",
+        "key_idea": "Carbohydrates are classified by complexity — simple sugars (monosaccharides like glucose, fructose), disaccharides (like sucrose, made of two simple sugar units), and complex carbohydrates/polysaccharides (like starch and cellulose, made of many simple sugar units).",
+        "working_principle": "Amino acids join together through peptide bonds (formed with the loss of a water molecule, a condensation reaction) to form chains called peptides; many peptide units linked together form a protein, whose specific 3D folded shape determines its exact biological function.",
+        "applications": [
+          "Understanding carbohydrate types explains why simple sugars provide quick energy while complex carbohydrates provide sustained, slow-release energy.",
+          "Understanding protein structure explains why the body needs a variety of essential amino acids from the diet, since it cannot manufacture all amino acids on its own."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Rice and bread (rich in starch, a complex carbohydrate) provide quick energy, while foods like eggs, milk, and pulses (rich in proteins built from amino acids) help build and repair body tissue.",
+      "points": [
+        "Monosaccharides (simple sugars): glucose, fructose — cannot be broken down further into smaller sugar units.",
+        "Disaccharides: sucrose (glucose + fructose), maltose, lactose — made of two monosaccharide units joined together.",
+        "Polysaccharides (complex carbohydrates): starch, cellulose, glycogen — made of many monosaccharide units joined together.",
+        "Essential amino acids must be obtained through diet, as the human body cannot synthesise them on its own; non-essential amino acids can be made by the body itself."
+      ],
+      "mistakes": [
+        "Assuming all carbohydrates provide identical, equally fast energy release — simple sugars are absorbed quickly while complex carbohydrates are digested and release energy far more slowly.",
+        "Forgetting the peptide bond formation is a condensation reaction (loses a water molecule) — this is directly linked back to the condensation polymer idea from the previous topic."
+      ],
+      "memory_hook": "'Mono = one sugar unit, Di = two, Poly = many — Proteins = long amino acid chains, joined step by step (peptide bonds).'",
+      "advanced": "A protein's specific three-dimensional folded shape (not just its sequence of amino acids) determines its biological function — even a single wrong amino acid in a very long protein chain can sometimes drastically change its shape and cause it to malfunction, as happens in certain genetic diseases."
+    },
+    {
+      "title": "Vitamins, Hormones & Oils/Fats",
+      "quick_summary": "Vitamins are essential organic compounds needed in small amounts for normal body function, hormones are chemical messengers that regulate body processes, and oils/fats are energy-rich biomolecules that can be converted into one another by hydrogenation.",
+      "detailed": {
+        "definition": "Vitamins are organic compounds required in small quantities for specific metabolic functions, classified as fat-soluble (A, D, E, K) or water-soluble (B-complex, C); hormones are chemical messengers, produced by endocrine glands, that travel through the bloodstream to regulate the activity of specific target organs; oils are unsaturated fats that are liquid at room temperature, while fats are generally saturated and solid at room temperature.",
+        "key_idea": "Hydrogenation (addition of hydrogen across carbon-carbon double bonds) converts unsaturated liquid oils into saturated solid fats (e.g., converting vegetable oil into vanaspati/margarine), directly linking back to the double-bond concept from covalent bonding.",
+        "working_principle": "Fat-soluble vitamins are stored in body fat and can accumulate to toxic levels if taken in excess; water-soluble vitamins are not stored significantly in the body and must be replenished regularly through diet. Hormones are typically effective in extremely small quantities and are broken down quickly once their function is complete, allowing tight, dynamic control of body processes.",
+        "applications": [
+          "Understanding vitamin solubility guides dietary and supplementation advice (fat-soluble vitamins pose a higher risk of toxicity if over-consumed).",
+          "Hydrogenation of oils is used industrially to manufacture solid cooking fats (vanaspati) and margarine from liquid vegetable oils."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Vitamin C deficiency causes scurvy (as historically seen in sailors on long sea voyages without fresh fruit), while the hormone insulin (produced by the pancreas) regulates blood sugar levels in the body.",
+      "points": [
+        "Fat-soluble vitamins: A, D, E, K — stored in the body, deficiency develops slowly, excess can be toxic.",
+        "Water-soluble vitamins: B-complex and C — not significantly stored, deficiency develops relatively quickly, excess is usually excreted.",
+        "Hormones act as chemical messengers (e.g., insulin for blood sugar, thyroxine for metabolism, adrenaline for the 'fight-or-flight' response).",
+        "Oils (unsaturated, liquid) can be converted to fats (saturated, solid) by hydrogenation — the addition of hydrogen at carbon-carbon double bonds."
+      ],
+      "mistakes": [
+        "Assuming all vitamins behave identically in the body — fat-soluble and water-soluble vitamins differ greatly in storage, deficiency onset, and toxicity risk.",
+        "Confusing hormones (regulate body processes via the bloodstream, effective in tiny amounts) with vitamins (must be obtained from diet, function as metabolic helpers) — they serve very different biological roles."
+      ],
+      "memory_hook": "'Fat-soluble vitamins (A, D, E, K) — stay stored and can overload; Water-soluble (B, C) — flow through, need daily reload.'",
+      "advanced": "Trans fats, formed as an unwanted by-product of partial/incomplete hydrogenation of oils, have a different molecular geometry than natural fats and are strongly linked to cardiovascular health risks — a well-known real- world consequence of the same hydrogenation chemistry used to make solid cooking fats."
+    },
+    {
+      "title": "Chemicals in Medicine",
+      "quick_summary": "Different classes of medicinal chemicals — antiseptics, disinfectants, analgesics, antibiotics, and antacids — are each designed to act on a specific biological target to treat or prevent illness.",
+      "detailed": {
+        "definition": "Antiseptics are mild chemical substances that kill or prevent the growth of microorganisms and are safe to apply on living tissue; disinfectants are stronger chemicals that kill microorganisms but are too harsh to apply on living tissue, used only on non-living surfaces; antibiotics are chemicals (produced by or derived from microorganisms) that kill or stop the growth of other disease-causing microorganisms, especially bacteria, inside the body.",
+        "key_idea": "The distinguishing factor between an antiseptic and a disinfectant is not the chemical class but the concentration and safe context of use — the exact same chemical can act as an antiseptic at a low, dilute concentration and as a disinfectant at a much higher, more toxic concentration.",
+        "working_principle": "Analgesics relieve pain without necessarily affecting the underlying cause; antipyretics reduce fever; antacids neutralise excess stomach acid (usually using a mild base) to relieve acidity; tranquilizers and sedatives act on the nervous system to reduce anxiety or induce calm/sleep; anaesthetics block sensation, either locally (a specific body part) or generally (the whole body, inducing unconsciousness).",
+        "applications": [
+          "Correctly distinguishing antiseptics from disinfectants prevents dangerous misuse (e.g., never applying a strong disinfectant directly onto skin or a wound).",
+          "Antacids (like magnesium hydroxide or sodium bicarbonate) provide quick, practical, real-life relief from acidity and heartburn by simple acid-base neutralisation chemistry."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Applying an antiseptic like tincture of iodine on a small cut kills germs on living skin tissue, while using a disinfectant like phenol (in much stronger, more toxic concentrations) is only safe for cleaning non-living surfaces like floors and toilets.",
+      "points": [
+        "Antiseptics: safe on living tissue (e.g., dilute iodine tincture, hydrogen peroxide).",
+        "Disinfectants: used only on non-living surfaces, too harsh for skin (e.g., phenol at higher concentration, chlorine-based cleaning agents).",
+        "Analgesics relieve pain; antipyretics reduce fever; antacids neutralise excess stomach acid; antibiotics fight bacterial infections specifically (not viral infections).",
+        "The same chemical (e.g., phenol) can function as an antiseptic at low concentration and a disinfectant at high concentration."
+      ],
+      "mistakes": [
+        "Using the terms 'antiseptic' and 'disinfectant' interchangeably — applying a disinfectant-strength chemical to skin can cause serious burns or tissue damage.",
+        "Assuming antibiotics work against all types of infections — antibiotics specifically target bacteria and are ineffective against viral infections like the common cold."
+      ],
+      "memory_hook": "'Antiseptic = safe on Skin; Disinfectant = only for Dead surfaces (Dirty floors).'",
+      "advanced": "The overuse and misuse of antibiotics (including stopping a course early) contributes to antibiotic resistance, where bacteria evolve to survive drugs that once killed them — a pressing modern public health challenge rooted directly in basic chemistry and biology principles covered in this chapter."
+    }
+  ]
+}

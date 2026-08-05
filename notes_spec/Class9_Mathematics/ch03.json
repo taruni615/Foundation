@@ -1,0 +1,55 @@
+{
+  "number": 3,
+  "title": "Co-ordinate Geometry",
+  "prerequisites": [
+    "Ability to plot points on a number line.",
+    "Understanding of positive and negative directions.",
+    "Familiarity with the terms horizontal and vertical.",
+    "Basic knowledge of the Pythagoras theorem."
+  ],
+  "topics": [
+    {
+      "title": "The Cartesian Plane and Plotting Points",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Two perpendicular number lines divide the plane into four quadrants, and every point is located by an ordered pair (x, y) giving its distances from the two axes.",
+      "real_life": "A map reference, a seat number in a cinema and a pixel address on a screen are all Cartesian coordinates under different names.",
+      "detailed": {
+        "definition": "The x-axis and y-axis intersect at right angles at the origin O(0, 0). The abscissa is the x-coordinate (perpendicular distance from the y-axis) and the ordinate is the y-coordinate (perpendicular distance from the x-axis).",
+        "key_idea": "The order matters absolutely: (3, 5) and (5, 3) are different points. This is why (x, y) is called an ordered pair.",
+        "working_principle": "Signs of the coordinates identify the quadrant. Points on the x-axis have y = 0, and points on the y-axis have x = 0 — which is how axis membership is tested.",
+        "applications": [
+          "Quadrant I (+,+), II (−,+), III (−,−), IV (+,−), counted anticlockwise.",
+          "Graphs of linear equations are drawn by plotting and joining points.",
+          "Computer graphics addresses every pixel by a coordinate pair."
+        ]
+      },
+      "points": [
+        "The origin is (0, 0); the axes divide the plane into four quadrants.",
+        "Abscissa = x-coordinate; ordinate = y-coordinate.",
+        "Quadrant signs: I (+,+), II (−,+), III (−,−), IV (+,−).",
+        "A point on the x-axis is (a, 0); a point on the y-axis is (0, b).",
+        "(x, y) is an ordered pair — reversing it gives a different point."
+      ],
+      "mistakes": [
+        "Plotting (5, 3) where (3, 5) was intended.",
+        "Numbering the quadrants clockwise instead of anticlockwise.",
+        "Saying a point on the x-axis has x = 0; it is y that is zero."
+      ],
+      "memory_hook": "'x first, then y — walk before you climb.'",
+      "advanced": "Descartes' insight in uniting algebra and geometry meant every geometric statement could become an equation. Coordinate geometry is the bridge that makes calculus, physics and computer graphics possible.",
+      "formulas": [
+        {
+          "name": "Distance Formula",
+          "difficulty": "Medium",
+          "formula": "d = √[(x₂ − x₁)² + (y₂ − y₁)²]",
+          "variables": "(x₁, y₁) and (x₂, y₂) = the two points, d = distance between them.",
+          "when_to_use": "To find the length of a segment, or to test whether a triangle is isosceles or right-angled.",
+          "common_mistakes": "Forgetting to square the differences, or subtracting the coordinates in a mixed order.",
+          "shortcut": "Distance from the origin to (x, y) is simply √(x² + y²)."
+        }
+      ]
+    }
+  ]
+}

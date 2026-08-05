@@ -1,0 +1,112 @@
+{
+  "number": 8,
+  "title": "Comparing Quantities",
+  "prerequisites": [
+    "Comfort with ratios, fractions, and percentages from earlier classes.",
+    "Basic linear equation solving skills from Chapter 2.",
+    "Understanding of multiplication and division of decimals."
+  ],
+  "topics": [
+    {
+      "title": "Ratios, Percentages & Their Conversions",
+      "quick_summary": "A ratio compares two quantities of the same kind, while a percentage expresses a quantity as a fraction out of 100 — both are used to compare relative sizes in daily life.",
+      "detailed": {
+        "definition": "A ratio a:b compares two quantities a and b of the same kind. A percentage is a special fraction with denominator 100, written using the '%' symbol; x% means x/100.",
+        "key_idea": "Ratios, fractions, and percentages are three different ways of expressing the same relative comparison — converting between them just changes the denominator to 100 (for percentage) or simplifies to lowest terms (for ratio).",
+        "working_principle": "To convert a fraction to a percentage, multiply by 100%; to convert a percentage to a fraction, divide by 100 and simplify; to convert a ratio a:b to percentages, express each part as a fraction of the total (a+b) and multiply by 100%.",
+        "applications": [
+          "Interpreting exam scores, survey results, discounts, and nutritional labels, all commonly given as percentages.",
+          "Mixing ingredients, scaling recipes, and dividing shared amounts using ratios."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A fruit juice label showing '20% real fruit content' or a recipe ratio of '2:1 flour to sugar' are everyday uses of percentages and ratios.",
+      "points": [
+        "x% = x/100; to convert a fraction a/b to a percentage, compute (a/b) × 100%.",
+        "To express a ratio a:b as percentages of a whole, use a/(a+b) × 100% and b/(a+b) × 100%.",
+        "Ratios should always be simplified to lowest terms, just like fractions.",
+        "Percentages can exceed 100% when a quantity is more than the whole it's being compared to (e.g., 150% increase)."
+      ],
+      "mistakes": [
+        "Forgetting to simplify a ratio to its lowest terms before presenting the final answer.",
+        "Confusing 'increase of x%' with 'x% of the new value' — percentage increase is always calculated on the ORIGINAL value.",
+        "Adding percentages of different totals directly without adjusting for the different bases."
+      ],
+      "memory_hook": "'Percent = per hundred' — always picture x% as x parts out of a total of 100.",
+      "advanced": "Percentages became popular historically because comparing fractions with different denominators is hard for quick mental judgment, while converting everything to a common denominator of 100 makes any two percentages instantly and intuitively comparable — this is the core reason percentages dominate news, finance, and statistics."
+    },
+    {
+      "title": "Profit, Loss & Discount",
+      "quick_summary": "Profit or loss is calculated by comparing the selling price to the cost price of an item, while discount is a reduction from the marked price offered to attract buyers.",
+      "detailed": {
+        "definition": "Cost Price (CP) is the price at which an item is bought; Selling Price (SP) is the price at which it is sold; Profit = SP − CP (when SP > CP); Loss = CP − SP (when CP > SP). Marked Price (MP) is the listed price before discount; Discount = MP − SP.",
+        "key_idea": "Profit% and Loss% are always calculated as a percentage of the Cost Price, never the Selling Price, while Discount% is always calculated as a percentage of the Marked Price.",
+        "working_principle": "Profit% = (Profit/CP) × 100; Loss% = (Loss/CP) × 100; Discount% = (Discount/MP) × 100. These formulas can be rearranged to find any one unknown quantity (CP, SP, MP, or the percentage) given the others.",
+        "applications": [
+          "Retail and wholesale business calculations for pricing items to achieve a target profit margin.",
+          "Understanding 'sale' advertisements and calculating the actual price paid after a stated discount percentage."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A shopkeeper buying a shirt for ₹400 (cost price) and selling it for ₹500 (selling price) makes a profit of ₹100; a '20% OFF' sale tag represents a discount on the marked price.",
+      "points": [
+        "Profit% = (Profit/CP) × 100; always uses CP as the base, never SP.",
+        "Discount is always calculated on the Marked Price (MP), NOT on the Cost Price.",
+        "SP = MP − Discount; also SP = MP × (1 − Discount%/100).",
+        "When two successive discounts are given, they are NOT simply added — apply them one after another on the reducing price."
+      ],
+      "mistakes": [
+        "Calculating profit or loss percentage using SP as the base instead of CP.",
+        "Assuming two successive discounts of x% and y% combine to a single discount of (x+y)% — this overstates the actual combined discount.",
+        "Confusing Marked Price (listed/tag price) with Cost Price (what the shopkeeper actually paid)."
+      ],
+      "memory_hook": "'Profit/Loss on Cost, Discount on Marked' — always match the percentage base to the correct price.",
+      "advanced": "For two successive discounts of x% and y%, the true single equivalent discount is x + y − (xy/100)%, always slightly LESS than simply adding x% and y% — this subtlety is a favourite in comparing-quantities exam questions and mirrors compound-percentage effects seen later in compound interest."
+    },
+    {
+      "title": "Simple Interest & Compound Interest",
+      "quick_summary": "Simple Interest is calculated only on the original principal every year, while Compound Interest is calculated on the principal plus all previously accumulated interest, causing it to grow faster.",
+      "detailed": {
+        "definition": "Simple Interest (SI) = (P × R × T)/100, where P = principal, R = rate of interest per annum, T = time in years. Compound Interest (CI) is calculated using Amount A = P(1 + R/100)^T, with CI = A − P.",
+        "key_idea": "In compound interest, the principal used for calculating interest changes (increases) every compounding period, since previous interest is added back to the principal — this is the key difference from simple interest, where the principal stays fixed throughout.",
+        "working_principle": "For SI, multiply the fixed principal by rate and time directly. For CI, repeatedly apply the growth factor (1 + R/100) once per compounding period, or use the direct formula A = P(1 + R/100)^T for annual compounding.",
+        "applications": [
+          "Bank savings accounts, fixed deposits, and loan EMIs use compound interest calculations.",
+          "Simple interest is commonly used for short-term loans and basic financial literacy problems."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A fixed deposit that pays simple interest grows by the same amount each year, while a compound-interest savings account or loan grows by an increasing amount each year as interest earns further interest.",
+      "points": [
+        "SI = (P × R × T)/100; the principal P never changes during the calculation.",
+        "CI: Amount A = P(1 + R/100)^T; Compound Interest = A − P.",
+        "For the SAME P, R, and T (T > 1 year), Compound Interest is always greater than or equal to Simple Interest.",
+        "For compounding periods other than yearly (half-yearly, quarterly), adjust R to R/2 or R/4 and T to 2T or 4T respectively."
+      ],
+      "mistakes": [
+        "Applying the simple interest formula's flat P×R×T logic to a compound interest problem.",
+        "Forgetting to adjust the rate and time when interest compounds half-yearly or quarterly instead of annually.",
+        "Confusing Amount (A = P + Interest) with Compound Interest (CI = A − P) — these are not the same quantity."
+      ],
+      "memory_hook": "'SI stays flat, CI snowballs' — compound interest earns interest on interest, so it grows faster year after year.",
+      "advanced": "For small rates and short durations, CI and SI give very similar results, but the GAP between them widens dramatically over long time periods — this exponential growth effect (interest earning interest) is exactly why starting to save or invest early makes such a large long-term difference, a principle sometimes called 'the power of compounding'.",
+      "formulas": [
+        {
+          "name": "Simple Interest",
+          "difficulty": "Medium",
+          "formula": "A = P(1 + R/100)^T ; CI = A − P",
+          "variables": "A = amount after T years, P = principal, R = annual rate (%), T = number of years (compounding periods).",
+          "when_to_use": "Whenever interest is added back to the principal at the end of each period before calculating the next period's interest.",
+          "common_mistakes": "Forgetting to subtract P from A to get just the Compound Interest, not the total amount.",
+          "shortcut": "For 2 years, quickly expand: A = P(1 + R/100)² = P + 2×SI(1yr) + SI on the 1st year's interest."
+        }
+      ]
+    }
+  ]
+}

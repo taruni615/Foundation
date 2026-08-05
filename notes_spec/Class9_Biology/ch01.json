@@ -1,0 +1,218 @@
+{
+  "number": 1,
+  "title": "The Fundamental Unit of Life",
+  "prerequisites": [
+    "Basic idea that living things are made of smaller parts (from earlier classes).",
+    "Familiarity with using a simple microscope or magnifying lens.",
+    "Basic vocabulary: organism, structure, function."
+  ],
+  "topics": [
+    {
+      "title": "Discovery of the Cell and Cell Theory",
+      "quick_summary": "The cell was discovered by Robert Hooke in 1665; later work by Leeuwenhoek, Schleiden, Schwann and Virchow led to the Cell Theory, which states that the cell is the basic unit of all life.",
+      "detailed": {
+        "definition": "A cell is the smallest structural and functional unit of a living organism; Cell Theory states that all living organisms are composed of cells, the cell is the basic unit of life, and new cells arise only from pre-existing cells.",
+        "key_idea": "Robert Hooke named the honeycomb-like compartments he saw in cork 'cellulae' (little rooms); Leeuwenhoek was the first to observe living cells; Schleiden and Schwann proposed the Cell Theory in 1838-39; Virchow added that cells arise from pre-existing cells (1855).",
+        "working_principle": "Each scientist's discovery built on the previous one: Hooke saw dead plant cell walls, Leeuwenhoek saw living single-celled organisms, Schleiden (plants) and Schwann (animals) generalised that all organisms are made of cells, and Virchow explained how new cells form.",
+        "applications": [
+          "Basis of modern cell biology, histology, and medical diagnosis (e.g. examining cells for disease).",
+          "Explains why all living things, however different, share a common cellular organisation."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Looking at a thin slice of cork or an onion peel under a microscope shows the same box-like cells that Hooke first described almost 360 years ago.",
+      "points": [
+        "Robert Hooke (1665) first observed and named cells in cork.",
+        "Van Leeuwenhoek (1674) was the first to see living cells.",
+        "Schleiden and Schwann (1838-39) proposed the Cell Theory.",
+        "Rudolf Virchow (1855) added: 'Omnis cellula-e-cellula' (cells arise from pre-existing cells).",
+        "Viruses are an exception to the Cell Theory as they are not made of cells."
+      ],
+      "mistakes": [
+        "Mixing up who discovered the cell (Hooke) versus who first saw a living cell (Leeuwenhoek).",
+        "Forgetting that viruses are an exception to the Cell Theory."
+      ],
+      "memory_hook": "'H-L-S-S-V' — Hooke saw it, Leeuwenhoek Lived it, Schleiden-Schwann Stated it, Virchow Verified it comes from pre-existing cells.",
+      "advanced": "Hooke never saw a living cell — he only saw the empty cell walls of dead cork tissue; the first person to see a truly living, moving cell was Leeuwenhoek, using a microscope of his own design."
+    },
+    {
+      "title": "Cell Shape, Size and Number",
+      "quick_summary": "Cells vary enormously in shape, size and number depending on their function and the organism they belong to, ranging from a single-celled amoeba to the trillions of cells in a human body.",
+      "detailed": {
+        "definition": "Cell shape is the outer form of a cell, which may be regular (like the brick-shaped onion peel cell) or irregular (like an amoeba); cell size is usually microscopic, though a few cells like the ostrich egg (yolk) are visible to the naked eye.",
+        "key_idea": "Cell shape and size are related to the cell's function — nerve cells are long to transmit impulses, red blood cells are disc-shaped to maximise surface area for gas exchange, and root hair cells are thin and elongated to absorb water efficiently.",
+        "working_principle": "Unicellular organisms (like Amoeba, Paramecium) perform all life processes within a single cell, while multicellular organisms divide labour among specialised cells, tissues and organs.",
+        "applications": [
+          "Understanding why blood cells, nerve cells and muscle cells look so different from each other.",
+          "Basis for identifying tissue types under a microscope in later chapters."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A red blood cell is a small biconcave disc suited to carrying oxygen, while a nerve cell is extremely long and thread-like so it can carry signals over long distances.",
+      "points": [
+        "Cell size usually ranges from 1 micrometre to 100 micrometres (mostly microscopic).",
+        "The largest known cell is the ostrich egg; the smallest cells (Mycoplasma) are about 0.1-0.3 micrometres.",
+        "Unicellular organisms: entire body is a single cell (e.g. Amoeba, bacteria).",
+        "Multicellular organisms: body made of many cells that are specialised for different jobs."
+      ],
+      "mistakes": [
+        "Assuming all cells are too small to see without a microscope — a few (like egg yolk) are visible to the naked eye.",
+        "Thinking cell shape is random rather than related to the cell's specific function."
+      ],
+      "memory_hook": "'Shape follows job' — a cell's shape is built for the work it does.",
+      "advanced": "Cell number in an organism is not fixed by size alone — an elephant is not made of bigger cells than a mouse, it simply has far more cells of roughly the same size."
+    },
+    {
+      "title": "The Cell Membrane and Movement of Substances",
+      "quick_summary": "The cell (plasma) membrane is a thin, selectively permeable living layer that controls what enters and leaves the cell through diffusion and osmosis.",
+      "detailed": {
+        "definition": "The cell membrane (plasma membrane) is the outermost boundary of the cell (in animal cells) made mainly of lipids and proteins; it is selectively permeable, meaning it allows only certain substances to pass through.",
+        "key_idea": "Diffusion is the movement of any substance (like a gas or dissolved particle) from a region of higher concentration to lower concentration; osmosis is a special case of diffusion — specifically the movement of water molecules across a selectively permeable membrane.",
+        "working_principle": "Small, uncharged molecules like oxygen and carbon dioxide diffuse freely across the membrane; water moves by osmosis depending on the concentration of dissolved solutes on either side, causing cells to swell (in hypotonic solutions) or shrink (in hypertonic solutions).",
+        "applications": [
+          "Explains why plant cells become turgid or flaccid depending on water availability.",
+          "Basis for phenomena like plasmolysis, preserving food with salt or sugar, and IV fluid concentration in medicine."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Soaking dried raisins in water makes them swell up because water moves into the raisin cells by osmosis, from a region of higher water concentration outside to lower water concentration inside.",
+      "points": [
+        "Cell membrane is selectively permeable — it does not let everything pass equally.",
+        "Diffusion needs no living membrane and can occur with any substance moving down a concentration gradient.",
+        "Osmosis specifically refers to water movement across a selectively permeable membrane.",
+        "Endocytosis (e.g. in Amoeba) is a special way large food particles enter a cell by membrane folding around them."
+      ],
+      "mistakes": [
+        "Using 'diffusion' and 'osmosis' interchangeably — osmosis is only about water movement.",
+        "Believing water always moves from outside to inside a cell; direction depends on relative solute concentration."
+      ],
+      "memory_hook": "'Osmosis = Only water, through a Selective membrane.'",
+      "advanced": "Plasmolysis, where a plant cell shrinks away from its cell wall in a strongly salty or sugary solution, is used practically to preserve pickles and jams by drawing water out of microorganisms so they cannot survive."
+    },
+    {
+      "title": "The Cell Wall",
+      "quick_summary": "The cell wall is a rigid, non-living outer covering found only in plant cells (and some other organisms like fungi and bacteria), giving the cell shape, support and protection.",
+      "detailed": {
+        "definition": "The cell wall is a thick, rigid, non-living layer made mainly of cellulose that lies outside the cell membrane in plant cells, providing mechanical strength and a defined shape.",
+        "key_idea": "Because the cell wall is freely permeable (unlike the selectively permeable cell membrane), it allows the cell to take in water and swell without bursting, resisting the internal pressure created by osmosis.",
+        "working_principle": "When water enters a plant cell by osmosis, the cell membrane pushes against the rigid cell wall, creating turgor pressure that keeps the plant firm; the wall prevents the cell from over-expanding and bursting.",
+        "applications": [
+          "Explains why plants wilt when they lose water (loss of turgor pressure) and recover when watered.",
+          "Cellulose from cell walls is the basis of products like paper, cotton and wood."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A plant can stand upright and its cells stay rigid mainly because of the strength of the cellulose cell wall, unlike animal cells which have no such rigid covering.",
+      "points": [
+        "Cell wall is present in plant cells, fungi, algae and bacteria — absent in animal cells.",
+        "Made mainly of cellulose in plants.",
+        "It is freely permeable — unlike the selectively permeable cell membrane.",
+        "Provides shape, rigidity, mechanical support and protection to the cell."
+      ],
+      "mistakes": [
+        "Confusing the cell wall (rigid, non-living, only in plants) with the cell membrane (living, selectively permeable, in all cells).",
+        "Thinking the cell wall controls what enters/leaves the cell — that is the job of the cell membrane."
+      ],
+      "memory_hook": "'Wall = Wood-like and freely permeable; Membrane = selective gate.'",
+      "advanced": "Because the cell wall is rigid, plant cells cannot change shape the way many animal cells can — this is one reason animal cells (like white blood cells) can squeeze through narrow gaps while plant cells cannot."
+    },
+    {
+      "title": "Nucleus and Chromosomes",
+      "quick_summary": "The nucleus is the control centre of the cell, containing chromosomes made of DNA that carry hereditary information from one generation to the next.",
+      "detailed": {
+        "definition": "The nucleus is a membrane-bound organelle containing chromatin (DNA and proteins) which condenses into rod-shaped chromosomes during cell division; genes are specific segments of DNA on a chromosome that control hereditary characteristics.",
+        "key_idea": "Chromosomes carry genes, the units of inheritance; the number of chromosomes is fixed and characteristic for each species (humans have 46, i.e. 23 pairs).",
+        "working_principle": "The nucleus directs all cellular activities by controlling which genes are 'read' to make proteins; during cell division, chromatin condenses into visible chromosomes so that genetic material can be equally distributed to daughter cells.",
+        "applications": [
+          "Basis for heredity, genetics and understanding inherited diseases.",
+          "Explains why a nucleus-containing cell (unlike a mature red blood cell) can grow and divide."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A red blood cell in humans loses its nucleus as it matures and therefore cannot divide or repair itself, showing just how essential the nucleus is for a cell's long-term functioning.",
+      "points": [
+        "Nucleus contains chromatin material, which condenses into chromosomes during cell division.",
+        "Chromosomes are made of DNA and protein and carry genes.",
+        "Genes are the units of inheritance, controlling characteristics passed from parents to offspring.",
+        "Cells without a well-defined nucleus (like bacteria) are called prokaryotic; those with one are eukaryotic."
+      ],
+      "mistakes": [
+        "Thinking chromosomes are always visible as rods — they are only condensed and rod-shaped during cell division; otherwise they exist as thread-like chromatin.",
+        "Confusing 'gene' (a segment of DNA) with 'chromosome' (a structure made of many genes)."
+      ],
+      "memory_hook": "'Nucleus = Command Centre; Chromosomes = the instruction books inside it.'",
+      "advanced": "The distinction between a nucleus-containing (eukaryotic) and nucleus-lacking (prokaryotic) cell is one of the most fundamental divisions in all of biology, separating bacteria from every other form of life."
+    },
+    {
+      "title": "Cytoplasm and Cell Organelles",
+      "quick_summary": "The cytoplasm is the jelly-like material between the nucleus and the cell membrane, containing specialised organelles such as mitochondria, ER, Golgi bodies, lysosomes and ribosomes, each with a distinct function.",
+      "detailed": {
+        "definition": "Cytoplasm is the fluid content of the cell (excluding the nucleus) in which organelles are suspended; an organelle is a specialised structure within a cell that performs a specific function, much like an organ does for the body.",
+        "key_idea": "Each organelle has a job matched to its structure: mitochondria release energy through respiration, the endoplasmic reticulum (ER) helps synthesise and transport substances, the Golgi apparatus packages and dispatches materials, lysosomes digest waste, and ribosomes make proteins.",
+        "working_principle": "Organelles work together like departments in a factory: ribosomes on the rough ER make proteins, these are modified and packaged by the Golgi apparatus, and lysosomes break down waste or worn-out cell parts, keeping the cell functioning smoothly.",
+        "applications": [
+          "Explains why plant cells (with chloroplasts) can photosynthesise while animal cells cannot.",
+          "Lysosomes 'commit suicide' of damaged cells (autolysis), which is important in development and disease."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Mitochondria are called the 'powerhouse of the cell' because muscle cells, which need large amounts of energy for movement, are packed with far more mitochondria than less active cells.",
+      "points": [
+        "Mitochondria: site of cellular respiration; called the 'powerhouse of the cell'.",
+        "Chloroplasts (plastids): site of photosynthesis in plant cells; contain chlorophyll.",
+        "Endoplasmic Reticulum (ER): rough ER (with ribosomes) helps make proteins; smooth ER helps make lipids.",
+        "Golgi apparatus: packages and dispatches materials made by the ER; forms lysosomes.",
+        "Lysosomes: digest worn-out cell parts and foreign material; called 'suicide bags' of the cell.",
+        "Ribosomes: smallest organelles, the site of protein synthesis; not membrane-bound.",
+        "Vacuoles: storage sacs; large and prominent in plant cells (store cell sap), small in animal cells."
+      ],
+      "mistakes": [
+        "Forgetting that ribosomes, unlike other organelles listed here, are not surrounded by a membrane.",
+        "Mixing up the roles of the ER (makes/transports) and the Golgi apparatus (packages/dispatches)."
+      ],
+      "memory_hook": "'Mitochondria = Power, Golgi = Post Office, Lysosome = Cleanup Crew, Ribosome = Protein Factory.'",
+      "advanced": "Mitochondria and chloroplasts each have their own small circle of DNA and can divide independently of the cell — strong evidence for the endosymbiotic theory, which suggests they were once free-living bacteria engulfed by an ancestral cell."
+    },
+    {
+      "title": "Prokaryotic and Eukaryotic Cells",
+      "quick_summary": "Cells are broadly classified as prokaryotic (no well-defined nucleus or membrane-bound organelles) or eukaryotic (true nucleus and membrane-bound organelles present).",
+      "detailed": {
+        "definition": "A prokaryotic cell lacks a nuclear membrane, so its genetic material lies free in the cytoplasm (nucleoid); a eukaryotic cell has a well-defined, membrane-bound nucleus and other membrane-bound organelles.",
+        "key_idea": "Prokaryotic cells are generally simpler and smaller than eukaryotic cells and lack most membrane-bound organelles like mitochondria and ER, though both cell types are always bounded by a cell membrane.",
+        "working_principle": "In prokaryotes, all cell processes occur in one shared cytoplasmic space since there is no internal membrane system dividing the cell into compartments; in eukaryotes, organelles create separate compartments allowing specialised, efficient functioning.",
+        "applications": [
+          "Basis of classifying all living organisms into Monera (prokaryotes) and the remaining four kingdoms (eukaryotes), covered in the Diversity chapter.",
+          "Explains why antibiotics can target bacterial (prokaryotic) cells without harming human (eukaryotic) cells, since their cell structures differ."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Bacteria, such as those in curd, are prokaryotic, while the cells of plants, animals and fungi we can see with the naked eye are all eukaryotic.",
+      "points": [
+        "Prokaryotic cells: no nuclear membrane, genetic material lies free as a nucleoid; e.g. bacteria, blue-green algae.",
+        "Eukaryotic cells: well-defined nucleus with a nuclear membrane; e.g. plant, animal, fungal cells.",
+        "Both cell types have a cell membrane, cytoplasm and ribosomes.",
+        "Prokaryotic cells generally lack membrane-bound organelles such as mitochondria and chloroplasts."
+      ],
+      "mistakes": [
+        "Thinking prokaryotic cells have no genetic material at all — they do, it is just not enclosed by a membrane.",
+        "Assuming all small cells are prokaryotic — size alone does not decide this; the presence of a nuclear membrane does."
+      ],
+      "memory_hook": "'Pro = before (a true nucleus evolved); Eu = true (nucleus present).'",
+      "advanced": "The prokaryote-eukaryote division reflects roughly 3.5 billion years of evolutionary history — prokaryotes were the earliest form of life on Earth, appearing long before the more complex eukaryotic cell evolved."
+    }
+  ]
+}

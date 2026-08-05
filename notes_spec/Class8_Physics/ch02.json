@@ -1,0 +1,100 @@
+{
+  "number": 2,
+  "title": "Friction",
+  "prerequisites": [
+    "Concept of force, and balanced/unbalanced forces from Chapter 1.",
+    "Idea that surfaces of objects, even when they look smooth, are not perfectly flat.",
+    "Basic understanding of motion — objects moving or sliding over each other."
+  ],
+  "topics": [
+    {
+      "title": "Friction — Causes and Types",
+      "quick_summary": "Friction is the opposing force that acts between two surfaces in contact when one tends to move or moves over the other, arising from the tiny irregularities present on every surface.",
+      "detailed": {
+        "definition": "Friction is a contact force that opposes the relative motion (or tendency of motion) between two surfaces touching each other, acting along the surface, opposite to the direction of motion.",
+        "key_idea": "Even surfaces that feel smooth have microscopic bumps and depressions; when two such surfaces touch, these irregularities interlock, resisting sliding.",
+        "working_principle": "As one surface tries to move over another, the interlocking irregularities must be overcome, converting some kinetic energy of motion into heat — this is why rubbing your hands together warms them.",
+        "applications": [
+          "Walking, writing, and gripping objects all depend on friction between surfaces.",
+          "Brakes in vehicles use friction between brake pads and wheels to slow down or stop.",
+          "Matchsticks ignite due to the friction-generated heat when struck against the rough strip."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "It is harder to slide a heavy box across a rough concrete floor than across smooth, polished tiles, because concrete has more surface irregularities.",
+      "points": [
+        "Static friction acts on a body at rest, up to a limiting (maximum) value, and prevents motion from starting.",
+        "Kinetic (sliding) friction acts on a body already in motion, and is generally less than the maximum static friction.",
+        "Rolling friction (on wheels/balls) is much smaller than sliding friction.",
+        "Friction always acts opposite to the direction of relative motion (or attempted motion)."
+      ],
+      "mistakes": [
+        "Thinking friction only exists when things are moving — static friction acts even on stationary objects that are being pushed.",
+        "Believing rolling and sliding friction are the same — rolling friction is significantly smaller."
+      ],
+      "memory_hook": "\"Static holds Still, Kinetic keeps sliding Slower, Rolling is smallest of all.\"",
+      "advanced": "Friction is caused by microscopic interlocking and also by weak attractive (adhesive) forces between the molecules of the two touching surfaces — this is why extremely polished, flat surfaces can sometimes stick together (cold welding) due to unusually strong molecular attraction with almost no gap between them."
+    },
+    {
+      "title": "Factors Affecting Friction",
+      "quick_summary": "The amount of friction between two surfaces depends mainly on how rough the surfaces are and how hard they are pressed together — not on the size of the contact area.",
+      "detailed": {
+        "definition": "The coefficient of friction is a number that represents how much friction exists between two particular surfaces, relating the friction force to the force pressing the surfaces together (the normal force).",
+        "key_idea": "Friction force is roughly proportional to the normal (pressing) force between the two surfaces, and depends on the nature/roughness of the materials, but is nearly independent of the visible contact area.",
+        "working_principle": "Rougher surfaces have more interlocking irregularities, producing more friction; a greater pressing force pushes these irregularities together more firmly, also increasing friction.",
+        "applications": [
+          "Tyre treads are designed with rough patterns to increase friction (grip) with the road, especially in wet conditions.",
+          "Sportspersons choose shoes with soles suited to the surface (spikes for grass, smooth rubber for indoor courts) to control friction."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Pushing a loaded trolley is harder than pushing an empty one because the extra weight presses the wheels harder onto the ground, increasing friction.",
+      "points": [
+        "Friction increases with the roughness of the surfaces in contact.",
+        "Friction increases with the force pressing the two surfaces together (normal force).",
+        "Friction is (to a good approximation) independent of the area of contact between the surfaces.",
+        "Different pairs of materials have different characteristic friction, described by their coefficient of friction."
+      ],
+      "mistakes": [
+        "Assuming a wider (larger area) surface always produces more friction — friction depends mainly on roughness and pressing force, not contact area.",
+        "Forgetting that a heavier load always increases friction, even on the same surface."
+      ],
+      "memory_hook": "\"Rougher and Heavier = more Friction; Area barely matters.\"",
+      "advanced": "Although basic friction theory says area doesn't matter, at a very fine (microscopic) level a larger surface only appears to have more contact — the actual points of true molecular contact stay roughly the same fraction of the surface, which is why the simple friction rule still works well for everyday objects."
+    },
+    {
+      "title": "Friction: Increasing and Reducing It",
+      "quick_summary": "Friction can be both a friend (grip, walking, writing) and a foe (wear and tear, energy loss); everyday design choices increase friction where grip is needed and reduce it where smooth motion is wanted.",
+      "detailed": {
+        "definition": "Increasing friction means making surfaces rougher or pressing them together more firmly; reducing friction means smoothing surfaces, using lubricants, or replacing sliding motion with rolling motion.",
+        "key_idea": "Friction is a 'necessary evil' — without any friction we could not walk, hold objects, or stop moving vehicles, but too much friction wastes energy as heat and causes wear of moving machine parts.",
+        "working_principle": "Lubricants (oil, grease) fill in the microscopic irregularities of surfaces, letting them slide over a smooth film instead of directly on each other, greatly reducing friction. Replacing sliding contact with rolling contact (using wheels or ball bearings) also reduces friction since rolling friction is much smaller than sliding friction.",
+        "applications": [
+          "Ball bearings are used in machine axles, bicycle wheels, and fans to convert sliding friction into much smaller rolling friction.",
+          "Oil and grease are used to lubricate engine parts and hinges to reduce wear and energy loss.",
+          "Streamlining the shape of cars, aeroplanes, and ships reduces fluid friction (air/water resistance)."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Sportsshoes and tyres are designed with grooves to increase friction for better grip, while machine parts are oiled and given ball bearings to reduce friction and wear.",
+      "points": [
+        "Ways to increase friction: roughen surfaces, use treads/grooves, increase pressing force.",
+        "Ways to reduce friction: polish surfaces, use lubricants, use ball bearings/wheels, streamline shape.",
+        "Friction as a foe: causes wear and tear of machine parts, wastes energy as heat, reduces efficiency of machines.",
+        "Friction as a friend: enables walking, writing, gripping, and braking."
+      ],
+      "mistakes": [
+        "Thinking friction should always be minimised — in cases like walking or braking, friction is essential and must be increased, not reduced.",
+        "Forgetting that lubricants work by filling surface irregularities, not just by making things 'slippery' in a vague sense."
+      ],
+      "memory_hook": "\"Rough it up to grip, Smooth it out to slip.\"",
+      "advanced": "Fluid friction (drag) also increases with speed — this is why very fast-moving vehicles, aircraft and bullet trains are given streamlined shapes, since at high speed even a small reduction in drag saves a significant amount of energy."
+    }
+  ]
+}

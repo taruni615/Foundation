@@ -1,0 +1,97 @@
+{
+  "number": 5,
+  "title": "Chemical Bonding",
+  "prerequisites": [
+    "Electronic configuration and valency concepts from Chapter 4.",
+    "Understanding of ions, cations and anions from Chapter 3."
+  ],
+  "topics": [
+    {
+      "title": "Lewis Symbols and Why Atoms Combine",
+      "quick_summary": "Atoms combine with each other to attain a stable, noble-gas-like electronic configuration, usually with 8 electrons in the outermost shell (the octet rule), represented visually using Lewis (electron-dot) symbols.",
+      "detailed": {
+        "definition": "A Lewis symbol (electron-dot symbol) represents an atom's chemical symbol surrounded by dots equal to the number of electrons in its outermost (valence) shell; the octet rule states that atoms react in such a way that each atom gets eight electrons in its outermost shell, achieving a stable, noble-gas-like electronic configuration.",
+        "key_idea": "Only valence (outermost shell) electrons are involved in bond formation — inner shell electrons are not shown in Lewis symbols and play no direct role in chemical bonding.",
+        "working_principle": "To achieve a stable octet, an atom can lose electrons (forming a positive ion), gain electrons (forming a negative ion), or share electrons with another atom — these three routes correspond to metallic behaviour, non-metallic behaviour, and covalent bond formation respectively.",
+        "applications": [
+          "Lewis symbols and the octet rule are used to predict how any two elements are likely to bond, and to correctly draw the structure of simple molecules.",
+          "Explains why noble gases are chemically inert while alkali metals and halogens are highly reactive (needing to lose or gain just one electron respectively)."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Noble gases like neon and argon almost never react with other elements because their outermost shell is already completely filled — precisely the stable state that all other atoms 'aim for' when they form bonds.",
+      "points": [
+        "Only valence shell electrons are shown as dots in a Lewis symbol; a maximum of 8 dots (4 pairs) surround the symbol.",
+        "Octet rule: atoms are most stable with 8 electrons in the outermost shell (2 for the very first, K, shell — the duplet rule for elements like hydrogen and helium).",
+        "Three ways to satisfy the octet: lose electrons, gain electrons, or share electrons with another atom.",
+        "Elements with a nearly-full or nearly-empty valence shell (like halogens or alkali metals) are generally the most reactive."
+      ],
+      "mistakes": [
+        "Including inner-shell electrons while drawing a Lewis symbol — only valence electrons are ever shown.",
+        "Forgetting that hydrogen and helium follow the duplet rule (stable with just 2 electrons), not the octet rule, since their only shell (K) holds a maximum of 2."
+      ],
+      "memory_hook": "'Only the OUTER electrons show up as dots — that's the octet's secret plot.'",
+      "advanced": "The octet rule, while an excellent general guide for main-group elements, has known exceptions (like boron trifluoride with only 6 electrons around boron, or sulphur hexafluoride with 12 electrons around sulphur) — these exceptions are explored more deeply in advanced organic and inorganic chemistry."
+    },
+    {
+      "title": "Ionic Bonding",
+      "quick_summary": "An ionic bond forms through the complete transfer of one or more electrons from a metal atom to a non-metal atom, creating oppositely charged ions that attract each other electrostatically.",
+      "detailed": {
+        "definition": "An ionic (electrovalent) bond is the electrostatic force of attraction that holds together oppositely charged ions, formed when one atom (usually a metal) completely transfers one or more electrons to another atom (usually a non-metal).",
+        "key_idea": "Ionic bonding is favoured between elements with a large difference in their tendency to lose or gain electrons — typically a metal with 1, 2, or 3 valence electrons (which loses them easily) combined with a non- metal with 5, 6, or 7 valence electrons (which gains electrons easily).",
+        "working_principle": "The metal atom loses electron(s) to attain a stable configuration, becoming a positively charged cation; the non-metal atom gains those same electron(s) to attain its own stable configuration, becoming a negatively charged anion; the resulting oppositely charged ions are held together by a strong electrostatic force, arranged in a repeating 3D pattern called a crystal lattice.",
+        "applications": [
+          "Explains the properties of common ionic compounds like salt (NaCl) and household bases like sodium hydroxide.",
+          "Ionic compounds' high melting points, hardness, and conductivity in molten/dissolved states (but not in solid state) are all consequences of this bonding pattern."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Common salt (sodium chloride) forms when a sodium atom transfers its single outer electron to a chlorine atom, creating Na⁺ and Cl⁻ ions that are held together by strong electrostatic attraction in a crystal lattice.",
+      "points": [
+        "Ionic bonds typically form between metals (electron donors) and non-metals (electron acceptors).",
+        "Ionic compounds have high melting and boiling points due to the strong electrostatic forces holding the crystal lattice together.",
+        "Ionic compounds conduct electricity when molten or dissolved in water (since ions become free to move) but not in the solid state (ions are fixed in the lattice).",
+        "Ionic compounds are generally soluble in polar solvents like water and insoluble in non-polar solvents."
+      ],
+      "mistakes": [
+        "Believing solid ionic compounds conduct electricity — they do NOT conduct in the solid state because the ions are rigidly fixed in place; conduction only happens once ions are free to move (molten or dissolved).",
+        "Assuming ionic bonds form between any two different elements — they specifically require a large difference in electron-losing/gaining tendency, typically a metal paired with a non-metal."
+      ],
+      "memory_hook": "'Metal LOSES, Non-metal GAINS — opposite charges, strongly it remains.'",
+      "advanced": "The overall strength of an ionic bond (called lattice energy) increases with higher ionic charge and smaller ionic size — this single trend explains why magnesium oxide (Mg²⁺ and O²⁻) has a much higher melting point than sodium chloride (Na⁺ and Cl⁻)."
+    },
+    {
+      "title": "Covalent Bonding & Polarity",
+      "quick_summary": "A covalent bond forms when two atoms mutually share one or more pairs of electrons to complete their octets, and the resulting bond can be non-polar or polar depending on the electronegativity difference between the atoms.",
+      "detailed": {
+        "definition": "A covalent bond is a chemical bond formed by the mutual sharing of one or more pairs of electrons between two atoms, with each shared pair counting towards the octet of both atoms involved. A non-polar covalent bond forms between identical atoms (equal sharing, no charge separation); a polar covalent bond forms between different atoms with unequal electron-attracting ability, creating a partial positive and partial negative end (a dipole).",
+        "key_idea": "Covalent bonding occurs between two non-metal atoms, both of which need to gain electrons to complete their octet — since neither can afford to fully give up electrons, they instead share them.",
+        "working_principle": "Depending on how many electron pairs are shared, a covalent bond is classified as single (1 pair, e.g., H–H), double (2 pairs, e.g., O=O), or triple (3 pairs, e.g., N≡N); the greater the number of shared pairs, the shorter and stronger the bond. Polarity arises from a difference in electronegativity (the tendency of an atom to attract shared electrons) — the more electronegative atom pulls the shared pair closer, gaining a partial negative charge (δ⁻), leaving the other atom with a partial positive charge (δ⁺).",
+        "applications": [
+          "Covalent bonding explains the structure and properties of the vast majority of organic and everyday molecules, including water, carbon dioxide, methane, and all biomolecules.",
+          "Bond polarity explains why water is an excellent solvent for ionic and polar substances (like sugar and salt) but does not mix with non-polar substances (like oil)."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The oxygen molecule (O₂) we breathe is held together by a covalent bond where both oxygen atoms equally share electron pairs, while the water molecule (H₂O) has polar covalent bonds because oxygen attracts the shared electrons more strongly than hydrogen does.",
+      "points": [
+        "Covalent bonds form between two non-metals, sharing electron pairs (not transferring them).",
+        "Single bond = 1 shared pair; double bond = 2 shared pairs; triple bond = 3 shared pairs — bond strength and bond order increase, while bond length decreases, from single to triple.",
+        "Covalent compounds generally have lower melting/boiling points than ionic compounds and are usually poor conductors of electricity.",
+        "Non-polar covalent bond: atoms of the same or very similar electronegativity (e.g., H₂, Cl₂, O₂); polar covalent bond: atoms of noticeably different electronegativity (e.g., H–O in water, H–Cl in hydrochloric acid)."
+      ],
+      "mistakes": [
+        "Assuming all covalent bonds are non-polar — bonds between different non-metal elements (like C–O or H–Cl) are typically polar due to differing electronegativities.",
+        "Confusing bond polarity (a property of one individual bond) with the overall polarity of the whole molecule (which also depends on the molecule's 3D shape and symmetry)."
+      ],
+      "memory_hook": "'Same wants become Even (non-polar); Different wants make one end Negative & one Positive (polar).'",
+      "advanced": "Dipole moment is the quantitative measure of a bond's or molecule's overall polarity, defined as the product of the magnitude of charge and the distance between the charge centres — it is why carbon dioxide (linear, symmetrical, polar bonds cancel out) is overall non-polar despite having two polar C=O bonds, while water (bent shape) is overall polar."
+    }
+  ]
+}

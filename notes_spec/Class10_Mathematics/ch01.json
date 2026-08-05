@@ -1,0 +1,87 @@
+{
+  "number": 1,
+  "title": "Real Numbers",
+  "prerequisites": [
+    "Difference between rational and irrational numbers.",
+    "Ability to find HCF and LCM by prime factorisation.",
+    "Knowledge of divisibility and prime numbers.",
+    "Familiarity with decimal expansions."
+  ],
+  "topics": [
+    {
+      "title": "Euclid's Division Lemma and Algorithm",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Euclid's division lemma states that for any integers a and b with b > 0 there exist unique q and r with a = bq + r and 0 ≤ r < b, and repeated use of it gives the HCF.",
+      "real_life": "Cutting the largest identical tiles that exactly fit two different wall lengths is a HCF problem solved fastest by Euclid's algorithm.",
+      "detailed": {
+        "definition": "Euclid's division lemma: given positive integers a and b, there exist unique integers q (quotient) and r (remainder) such that a = bq + r, where 0 ≤ r < b. The division algorithm applies this repeatedly to find the HCF.",
+        "key_idea": "The remainder condition 0 ≤ r < b is what makes q and r unique. Without it, infinitely many pairs would satisfy a = bq + r.",
+        "working_principle": "To find HCF(a, b) with a > b, divide a by b, then divide b by the remainder, and continue. The last non-zero remainder is the HCF.",
+        "applications": [
+          "Any positive odd integer can be written as 6q + 1, 6q + 3 or 6q + 5.",
+          "The square of any positive integer is of the form 3m or 3m + 1.",
+          "HCF(455, 42) = 7 by three steps of the algorithm."
+        ]
+      },
+      "points": [
+        "a = bq + r with 0 ≤ r < b; q and r are unique.",
+        "Euclid's algorithm: the last non-zero remainder is the HCF.",
+        "The lemma is used to prove general statements about the form of integers.",
+        "Every integer is of the form 2q or 2q + 1 (even or odd).",
+        "The algorithm always terminates because remainders strictly decrease."
+      ],
+      "mistakes": [
+        "Allowing r = b or r > b; the remainder must be strictly less than the divisor.",
+        "Taking the last remainder (zero) as the HCF instead of the last non-zero one.",
+        "Applying the lemma with b = 0, which is not permitted."
+      ],
+      "memory_hook": "'Divide, take the remainder, divide again — the last non-zero remainder is the HCF.'",
+      "advanced": "Euclid's algorithm is one of the oldest algorithms still in daily use and runs in logarithmic time. It underpins modular arithmetic and therefore RSA encryption — ancient mathematics securing modern banking.",
+      "formulas": [
+        {
+          "name": "Euclid's Division Lemma",
+          "difficulty": "Medium",
+          "formula": "a = bq + r,  0 ≤ r < b",
+          "variables": "a = dividend, b = divisor (b > 0), q = quotient, r = remainder.",
+          "when_to_use": "To find HCF, or to prove that integers take particular forms.",
+          "common_mistakes": "Forgetting the constraint on r, which destroys uniqueness.",
+          "shortcut": "Repeat until the remainder is zero; the previous remainder is the HCF."
+        }
+      ]
+    },
+    {
+      "title": "Fundamental Theorem of Arithmetic and Irrationality",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Every composite number factorises uniquely into primes, and this uniqueness is what proves numbers such as √2 to be irrational.",
+      "real_life": "The unique prime factorisation of large numbers is exactly what makes RSA encryption secure — factorising is easy to check but hard to do.",
+      "detailed": {
+        "definition": "The Fundamental Theorem of Arithmetic states that every composite number can be expressed as a product of primes, and this factorisation is unique apart from the order of the factors.",
+        "key_idea": "Uniqueness is the powerful part. It guarantees that if a prime divides a², it must divide a — the single step on which every irrationality proof in this chapter depends.",
+        "working_principle": "To prove √2 irrational, assume √2 = p/q in lowest terms, square to get p² = 2q², deduce that 2 divides p, substitute, deduce that 2 divides q, and contradict the assumption that p/q was in lowest terms.",
+        "applications": [
+          "HCF × LCM = product of the two numbers, for two numbers only.",
+          "A rational p/q in lowest terms has a terminating decimal exactly when q = 2ⁿ5ᵐ.",
+          "Proof by contradiction is the standard method for irrationality."
+        ]
+      },
+      "points": [
+        "Every composite number has a unique prime factorisation.",
+        "HCF = product of the smallest powers of common primes.",
+        "LCM = product of the greatest powers of all primes involved.",
+        "HCF(a,b) × LCM(a,b) = a × b — valid for TWO numbers only.",
+        "p/q terminates if and only if the denominator in lowest terms is 2ⁿ5ᵐ."
+      ],
+      "mistakes": [
+        "Applying HCF × LCM = product to three numbers, where it fails.",
+        "Omitting the 'lowest terms' condition when testing for a terminating decimal.",
+        "Assuming the sum of two irrationals is always irrational."
+      ],
+      "memory_hook": "'HCF takes the smallest powers, LCM takes the biggest' — and their product is the product of the numbers.",
+      "advanced": "Unique factorisation fails in some larger number systems. In the ring of numbers a + b√−5, the number 6 factorises in two genuinely different ways — which is why the theorem is 'fundamental' rather than obvious."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "number": 6,
+  "title": "Triangles",
+  "prerequisites": [
+    "Congruence criteria for triangles.",
+    "Properties of parallel lines and a transversal.",
+    "Ratio and proportion.",
+    "Area of a triangle as ½ × base × height."
+  ],
+  "topics": [
+    {
+      "title": "Similar Triangles and Criteria for Similarity",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Two triangles are similar if their corresponding angles are equal and corresponding sides are proportional, established by the AAA, SSS or SAS similarity criteria.",
+      "real_life": "The height of a tree is found by comparing its shadow with that of a metre stick — two similar triangles doing the measurement for you.",
+      "detailed": {
+        "definition": "Two triangles are similar if their corresponding angles are equal and their corresponding sides are in the same ratio. Congruent triangles are a special case of similar triangles with ratio 1.",
+        "key_idea": "For triangles, equal angles automatically force proportional sides and vice versa. This is peculiar to triangles — for quadrilaterals both conditions must be checked separately.",
+        "working_principle": "The AA criterion is enough because the third angle is then determined by the angle sum property. In practice AA is the criterion used in almost every problem.",
+        "applications": [
+          "Basic Proportionality Theorem (Thales): a line parallel to one side divides the other two proportionally.",
+          "Its converse is used to prove that a line is parallel to a side.",
+          "The ratio of areas of two similar triangles equals the square of the ratio of corresponding sides."
+        ]
+      },
+      "points": [
+        "Similarity criteria: AAA (or AA), SSS and SAS.",
+        "AA is sufficient because the third angle follows from the angle sum property.",
+        "Basic Proportionality Theorem: if DE ∥ BC then AD/DB = AE/EC.",
+        "Ratio of areas of similar triangles = (ratio of corresponding sides)².",
+        "All congruent triangles are similar, but similar triangles need not be congruent."
+      ],
+      "mistakes": [
+        "Using SSA for similarity, which is not a valid criterion.",
+        "Taking the ratio of areas as the ratio of sides instead of its square.",
+        "Writing the correspondence of vertices in the wrong order."
+      ],
+      "memory_hook": "'Same shape, different size' — angles equal, sides proportional, areas in the squared ratio.",
+      "advanced": "The squared area ratio generalises: for similar solids, volumes scale as the cube of the length ratio. This is why doubling every dimension of a model multiplies its weight by eight.",
+      "formulas": [
+        {
+          "name": "Basic Proportionality Theorem",
+          "difficulty": "Medium",
+          "formula": "If DE ∥ BC, then AD/DB = AE/EC",
+          "variables": "D and E are points on AB and AC of triangle ABC.",
+          "when_to_use": "Whenever a line parallel to one side of a triangle cuts the other two sides.",
+          "common_mistakes": "Pairing the segments incorrectly — AD must go with AE, and DB with EC.",
+          "shortcut": "The converse proves parallelism from the proportion."
+        },
+        {
+          "name": "Ratio of Areas of Similar Triangles",
+          "difficulty": "Medium",
+          "formula": "ar(ΔABC) / ar(ΔPQR) = (AB/PQ)² = (BC/QR)² = (CA/RP)²",
+          "variables": "Corresponding sides of the two similar triangles.",
+          "when_to_use": "To find an unknown area or side ratio between two similar triangles.",
+          "common_mistakes": "Forgetting to square the side ratio.",
+          "shortcut": "Sides in ratio 2:3 → areas in ratio 4:9."
+        }
+      ]
+    },
+    {
+      "title": "Pythagoras Theorem and Its Converse",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "In a right triangle the square on the hypotenuse equals the sum of the squares on the other two sides, and the converse identifies right triangles from their side lengths.",
+      "real_life": "A mason checks a corner is square using the 3-4-5 rule — the converse of the Pythagoras theorem applied with a piece of string.",
+      "detailed": {
+        "definition": "Pythagoras theorem: in a right-angled triangle, the square of the hypotenuse equals the sum of the squares of the other two sides. Its converse: if the square of one side equals the sum of the squares of the other two, the triangle is right-angled.",
+        "key_idea": "The modern proof uses similar triangles: the altitude from the right angle to the hypotenuse creates two triangles each similar to the original. The theorem follows in three lines.",
+        "working_principle": "The hypotenuse is always the longest side and lies opposite the right angle. Identifying it correctly before substituting is essential.",
+        "applications": [
+          "Common Pythagorean triples: (3,4,5), (5,12,13), (8,15,17), (7,24,25).",
+          "The distance formula in coordinate geometry is the Pythagoras theorem.",
+          "Diagonal of a rectangle = √(l² + b²)."
+        ]
+      },
+      "points": [
+        "In a right triangle: hypotenuse² = sum of squares of the other two sides.",
+        "The hypotenuse is opposite the right angle and is the longest side.",
+        "Converse: if c² = a² + b², the angle opposite c is a right angle.",
+        "If c² > a² + b² the triangle is obtuse; if c² < a² + b² it is acute.",
+        "The theorem is proved using similar triangles formed by the altitude to the hypotenuse."
+      ],
+      "mistakes": [
+        "Treating any side as the hypotenuse instead of the longest one.",
+        "Applying the theorem to a triangle that is not right-angled.",
+        "Forgetting to take the square root at the end."
+      ],
+      "memory_hook": "'Longest side squared equals the other two squared, added' — and 3-4-5 always works.",
+      "advanced": "The theorem generalises to the cosine rule c² = a² + b² − 2ab cos C, which reduces to Pythagoras when C = 90° and cos C = 0. Pythagoras is simply the right-angled special case.",
+      "formulas": [
+        {
+          "name": "Pythagoras Theorem",
+          "difficulty": "Easy",
+          "formula": "hypotenuse² = base² + perpendicular²",
+          "variables": "hypotenuse = side opposite the right angle; the other two are the legs.",
+          "when_to_use": "For any right-angled triangle, and in distance and diagonal calculations.",
+          "common_mistakes": "Adding the squares of the hypotenuse and a leg.",
+          "shortcut": "Recognise triples such as 3-4-5 and 5-12-13 to skip the arithmetic."
+        }
+      ]
+    }
+  ]
+}

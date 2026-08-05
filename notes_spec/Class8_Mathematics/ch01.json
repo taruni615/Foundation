@@ -1,0 +1,102 @@
+{
+  "number": 1,
+  "title": "Rational Numbers",
+  "prerequisites": [
+    "Basic idea of integers, fractions, and the number line from earlier classes.",
+    "Concept of LCM and HCF for adding/comparing fractions.",
+    "Familiarity with positive and negative numbers and their operations.",
+    "Idea of equivalent fractions (multiplying/dividing numerator and denominator by the same number)."
+  ],
+  "topics": [
+    {
+      "title": "Rational Numbers & Properties (Closure, Commutativity, Associativity)",
+      "quick_summary": "A rational number is any number that can be written as p/q, where p and q are integers and q ≠ 0; rational numbers obey closure, commutative, and associative properties under addition and multiplication, but not under subtraction and division.",
+      "detailed": {
+        "definition": "A rational number is a number of the form p/q where p and q are integers and q ≠ 0. All natural numbers, whole numbers, integers, fractions, and terminating/repeating decimals are rational numbers, denoted by Q.",
+        "key_idea": "Addition and multiplication of rational numbers are always closed, commutative, and associative; subtraction and division are closed but NOT commutative or associative (order and grouping matter).",
+        "working_principle": "To check a property, pick any rational numbers, apply the operation in different orders or groupings, and compare results. If the result is always a rational number and unaffected by order/grouping, the property holds.",
+        "applications": [
+          "Simplifying long calculations by regrouping or reordering terms (associativity/commutativity) when adding or multiplying several rational numbers.",
+          "Verifying answers in algebra by rearranging terms without changing the result."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Sharing a pizza into fractional slices, or reading a temperature of −2.5°C, are everyday uses of rational numbers — any 'part of a whole' or exact decimal value is rational.",
+      "points": [
+        "Closure: a/b + c/d, a/b − c/d, a/b × c/d are always rational; a/b ÷ c/d is rational only if c/d ≠ 0.",
+        "Commutative for + and ×: a/b + c/d = c/d + a/b, and a/b × c/d = c/d × a/b.",
+        "NOT commutative for − and ÷: order changes the answer (often just the sign, but not always).",
+        "Associative for + and ×; NOT associative for − and ÷."
+      ],
+      "mistakes": [
+        "Assuming subtraction and division are commutative like addition and multiplication — they are not.",
+        "Forgetting that division by 0 is never defined, even though 0 ÷ (a/b) = 0 for a/b ≠ 0.",
+        "Mixing up 'closure' (result stays rational) with 'commutativity' (order doesn't matter) — they are different properties."
+      ],
+      "memory_hook": "'CCA holds for + and ×, breaks for − and ÷' — Closure, Commutativity, Associativity are the 'golden pair' properties.",
+      "advanced": "Structures where every element has an inverse and operations are associative and commutative are called abelian groups in higher mathematics — the rational numbers under addition form exactly such a group, which is why algebraic manipulation (moving terms freely) works so smoothly."
+    },
+    {
+      "title": "Additive & Multiplicative Identity and Inverse",
+      "quick_summary": "0 is the additive identity and 1 is the multiplicative identity for rational numbers; every rational number has an additive inverse (its negative) and every non-zero rational number has a multiplicative inverse (its reciprocal).",
+      "detailed": {
+        "definition": "For a rational number a/b: a/b + 0 = a/b (0 is additive identity); a/b × 1 = a/b (1 is multiplicative identity). The additive inverse of a/b is −a/b since their sum is 0; the multiplicative inverse (reciprocal) of a/b (a ≠ 0) is b/a since their product is 1.",
+        "key_idea": "Every rational number has exactly one additive inverse, but only non-zero rational numbers have a multiplicative inverse — zero has no reciprocal because division by zero is undefined.",
+        "working_principle": "To find the additive inverse, flip the sign; to find the multiplicative inverse, flip numerator and denominator (and keep the sign the same).",
+        "applications": [
+          "Solving equations by adding the additive inverse to both sides to isolate a variable.",
+          "Converting division into multiplication by using the reciprocal (multiplicative inverse) of the divisor."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Adding ₹0 to your savings leaves the amount unchanged (additive identity); multiplying a recipe quantity by 1 keeps it the same (multiplicative identity).",
+      "points": [
+        "Additive identity = 0; a/b + 0 = 0 + a/b = a/b.",
+        "Multiplicative identity = 1; a/b × 1 = 1 × a/b = a/b.",
+        "Additive inverse of a/b is −a/b; their sum is always 0.",
+        "Multiplicative inverse (reciprocal) of a/b is b/a, valid only when a ≠ 0; a/b × b/a = 1."
+      ],
+      "mistakes": [
+        "Trying to find the reciprocal of 0 — it does not exist.",
+        "Confusing additive inverse (change sign) with multiplicative inverse (flip fraction).",
+        "Forgetting that the additive inverse of a negative number is positive, e.g., additive inverse of −5/7 is +5/7."
+      ],
+      "memory_hook": "'Add 0, stay same; Multiply 1, stay same' — 'Flip the sign for + inverse, flip the fraction for × inverse'.",
+      "advanced": "The reciprocal relationship a/b × b/a = 1 is the reason division is always redefined as 'multiply by the reciprocal' — this single idea unifies the rules for dividing fractions taught since primary school with the abstract idea of a multiplicative inverse."
+    },
+    {
+      "title": "Representing Rational Numbers on the Number Line & Finding Rationals Between Two Numbers",
+      "quick_summary": "Every rational number can be plotted at a unique point on the number line, and between any two rational numbers, however close, infinitely many other rational numbers can always be found.",
+      "detailed": {
+        "definition": "To plot a/b on the number line, divide the segment between two integers into b equal parts and count a of those parts from 0. This property of infinitely many rationals between any two rationals is called the density property.",
+        "key_idea": "Unlike integers (where a fixed number of integers lie between two others), rational numbers are 'dense' — no matter how close two rational numbers are, you can always find another one between them, typically by averaging.",
+        "working_principle": "A simple way to find a rational number between two given rationals a/b and c/d is to take their average, (a/b + c/d) ÷ 2; repeating this process generates as many in-between rationals as needed.",
+        "applications": [
+          "Estimating and comparing fractions/decimals accurately by locating them on a number line.",
+          "Generating extra data points or intermediate values in measurement and interpolation problems."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A ruler marked in millimetres shows rational points like 3.5 cm and 3.75 cm between the whole-number marks 3 cm and 4 cm — and you could keep marking finer divisions forever.",
+      "points": [
+        "To compare rational numbers, convert to a common denominator (or decimal form) first.",
+        "The average of two rational numbers always lies exactly halfway between them, and is itself rational.",
+        "Between any two rational numbers there are infinitely many rational numbers (density property).",
+        "To find n rationals between two numbers, it helps to convert both to equivalent fractions with a denominator large enough (e.g., multiply by n+1)."
+      ],
+      "mistakes": [
+        "Believing only a limited number of rationals exist between two given rationals — the count is always infinite.",
+        "Forgetting to convert to a common denominator before comparing or averaging two fractions.",
+        "Plotting a negative rational number on the wrong side of zero on the number line."
+      ],
+      "memory_hook": "'Between any two rationals, infinity hides' — averaging twice already gives you a third new number.",
+      "advanced": "This density property distinguishes rational numbers from integers but is still different from the deeper property of 'completeness' that real numbers have — remarkably, rational numbers are dense yet still don't cover every point on the number line (irrational numbers like √2 fill the remaining gaps), a subtlety explored further in higher classes."
+    }
+  ]
+}

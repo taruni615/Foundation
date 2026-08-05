@@ -1,0 +1,148 @@
+{
+  "number": 8,
+  "title": "Mechanical Properties of Solids and Fluids",
+  "prerequisites": [
+    "Concept of force, pressure and density.",
+    "Archimedes' principle and buoyancy from the Gravitation chapter.",
+    "Idea that solids resist a change in shape.",
+    "Basic understanding of area and volume."
+  ],
+  "topics": [
+    {
+      "title": "Elasticity, Stress and Strain",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Elasticity is the property by which a body regains its original shape after the deforming force is removed, and Hooke's law states that stress is proportional to strain within the elastic limit.",
+      "real_life": "A rubber band returns to shape after a gentle stretch, but pull it too far and it stays permanently longer — the elastic limit has been crossed.",
+      "detailed": {
+        "definition": "Stress is the restoring force per unit area, measured in N/m² or pascal. Strain is the ratio of change in dimension to original dimension, and has no unit. The elastic limit is the maximum stress a body can bear and still return to its original shape.",
+        "key_idea": "Hooke's law — stress ∝ strain — holds only up to the elastic limit. Beyond it the body deforms permanently, and beyond the breaking stress it fractures.",
+        "working_principle": "Young's modulus Y = stress/strain is a constant for a given material and measures its stiffness. Steel has a much larger Young's modulus than rubber, so steel is far more elastic in the physicist's sense.",
+        "applications": [
+          "Cranes use steel ropes because steel has a very high Young's modulus and breaking stress.",
+          "Bridge girders are designed to keep stress well below the elastic limit.",
+          "Springs in a balance obey Hooke's law over their working range."
+        ]
+      },
+      "points": [
+        "Stress = F/A (unit N/m² or Pa); Strain = ΔL/L (no unit).",
+        "Hooke's law: stress ∝ strain, valid only within the elastic limit.",
+        "Young's modulus Y = stress/strain; unit N/m².",
+        "Steel is MORE elastic than rubber in physics, because it resists deformation better.",
+        "Beyond the elastic limit the body suffers permanent (plastic) deformation."
+      ],
+      "mistakes": [
+        "Saying rubber is more elastic than steel — in physics elasticity means resistance to deformation.",
+        "Giving strain a unit; it is a pure ratio.",
+        "Applying Hooke's law beyond the elastic limit, where it does not hold."
+      ],
+      "memory_hook": "'Stress causes Strain; Y measures how Stubborn the material is.'",
+      "advanced": "The area under a stress–strain graph gives the energy stored per unit volume. Rubber stores far more energy per unit volume than steel despite its low modulus, which is why catapults are made of rubber and not steel.",
+      "formulas": [
+        {
+          "name": "Stress",
+          "difficulty": "Easy",
+          "formula": "Stress = F / A",
+          "variables": "F = applied force in N, A = cross-sectional area in m².",
+          "when_to_use": "To find the internal force per unit area in a stretched wire, rod or cable.",
+          "common_mistakes": "Using the surface area instead of the cross-sectional area.",
+          "shortcut": "Stress has the same units as pressure."
+        },
+        {
+          "name": "Young's Modulus",
+          "difficulty": "Medium",
+          "formula": "Y = (F L) / (A ΔL)",
+          "variables": "Y = Young's modulus in N/m², F = force, L = original length, A = cross-sectional area, ΔL = extension.",
+          "when_to_use": "To find the extension of a wire under load, or to compare the stiffness of materials.",
+          "common_mistakes": "Interchanging L and ΔL in the formula.",
+          "shortcut": "Y = stress ÷ strain — build it from the two simpler definitions."
+        }
+      ]
+    },
+    {
+      "title": "Pressure in Fluids and Pascal's Law",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Pressure at a point in a fluid acts equally in all directions and increases with depth; Pascal's law states that pressure applied to an enclosed fluid is transmitted undiminished throughout it.",
+      "real_life": "A hydraulic car lift raises a tonne of vehicle with a small push on a narrow piston — Pascal's law multiplying force by area ratio.",
+      "detailed": {
+        "definition": "Pascal's law states that pressure applied to an enclosed fluid is transmitted equally and undiminished in all directions throughout the fluid. Atmospheric pressure is the pressure exerted by the weight of the air column above.",
+        "key_idea": "Because pressure is transmitted undiminished, a small force on a small piston produces a large force on a large piston. Force is multiplied by the ratio of areas — but the small piston must move much further, so no energy is created.",
+        "working_principle": "Pressure at depth h is P = hρg, independent of the shape or cross-section of the vessel. This is why a dam is built thicker at the base and why water finds its own level.",
+        "applications": [
+          "Hydraulic brakes, hydraulic press and hydraulic lift all use Pascal's law.",
+          "Atmospheric pressure at sea level is about 1.013 × 10⁵ Pa, equal to 76 cm of mercury.",
+          "A barometer measures atmospheric pressure; a manometer measures gas pressure."
+        ]
+      },
+      "points": [
+        "Pressure at depth: P = hρg; it depends only on depth, density and g.",
+        "Pressure acts equally in all directions at a point in a fluid.",
+        "Pascal's law: pressure in an enclosed fluid is transmitted undiminished.",
+        "Hydraulic machines multiply force by the ratio of piston areas.",
+        "Atmospheric pressure ≈ 10⁵ Pa ≈ 76 cm of mercury at sea level."
+      ],
+      "mistakes": [
+        "Thinking pressure at depth depends on the volume or shape of the container; it does not.",
+        "Believing a hydraulic press creates energy — it multiplies force, not work.",
+        "Forgetting to add atmospheric pressure when absolute pressure is required."
+      ],
+      "memory_hook": "'Same pressure everywhere, bigger area, bigger force' — the hydraulic bargain, paid for in distance.",
+      "advanced": "The hydraulic press obeys conservation of energy exactly: the small piston moves a large distance and the large piston a small one, so F₁d₁ = F₂d₂. Force multiplication always costs distance.",
+      "formulas": [
+        {
+          "name": "Pressure at Depth",
+          "difficulty": "Easy",
+          "formula": "P = h ρ g",
+          "variables": "P = pressure in Pa, h = depth in m, ρ = density in kg/m³, g = 9.8 m/s².",
+          "when_to_use": "To find pressure at any depth in a liquid — dams, tanks, submarines.",
+          "common_mistakes": "Including the container's area, which has no effect on pressure at depth.",
+          "shortcut": "Shape does not matter — only vertical depth does."
+        },
+        {
+          "name": "Hydraulic Press",
+          "difficulty": "Medium",
+          "formula": "F₁/A₁ = F₂/A₂",
+          "variables": "F₁, A₁ = force and area of the small piston; F₂, A₂ = force and area of the large piston.",
+          "when_to_use": "For hydraulic lifts, presses and brake systems.",
+          "common_mistakes": "Using the radius instead of the area — remember area varies as the square of the radius.",
+          "shortcut": "Force multiplies by A₂/A₁; doubling the radius quadruples the force."
+        }
+      ]
+    },
+    {
+      "title": "Surface Tension, Viscosity and Fluid Flow",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Surface tension makes a liquid surface behave like a stretched membrane, viscosity is the internal friction opposing flow, and streamline flow becomes turbulent above a critical speed.",
+      "real_life": "A needle floats on water despite being denser, honey pours far more slowly than water, and smoke from an incense stick rises smoothly before breaking into swirls.",
+      "detailed": {
+        "definition": "Surface tension is the force per unit length acting along the surface of a liquid, arising from the cohesive forces between its molecules. Viscosity is the property of a fluid by which it opposes relative motion between its layers.",
+        "key_idea": "A molecule inside a liquid is pulled equally in all directions, but one at the surface is pulled only inward and sideways. This unbalanced inward pull is what makes the surface behave like a stretched skin and minimise its area.",
+        "working_principle": "In streamline flow every particle follows the same path at a given point. Above a critical velocity the flow becomes turbulent and eddies form. Terminal velocity is the constant speed a falling body reaches when viscous drag balances its weight.",
+        "applications": [
+          "Raindrops and soap bubbles are spherical because a sphere has the least surface area for a given volume.",
+          "Detergents lower the surface tension of water, letting it wet and penetrate fabric.",
+          "Lubricating oils are chosen by viscosity; viscosity of liquids falls with rising temperature."
+        ]
+      },
+      "points": [
+        "Surface tension unit: N/m; it decreases as temperature rises.",
+        "Liquid drops are spherical because a sphere has minimum surface area for a given volume.",
+        "Viscosity of liquids DECREASES with temperature; viscosity of gases INCREASES.",
+        "Terminal velocity is reached when viscous drag plus upthrust equals weight.",
+        "Capillary rise is caused by surface tension together with adhesion to the tube wall."
+      ],
+      "mistakes": [
+        "Saying viscosity of all fluids falls with temperature — it rises for gases.",
+        "Confusing surface tension (force per unit length) with surface energy (energy per unit area), though they are numerically equal.",
+        "Thinking a body at terminal velocity has no forces on it; the forces are balanced, not absent."
+      ],
+      "memory_hook": "'Surface tension pulls Inward, Viscosity drags Sideways' — one shapes drops, the other slows flow.",
+      "advanced": "Whether flow is streamline or turbulent is decided by the Reynolds number, a dimensionless ratio of inertial to viscous forces. Below about 2000 flow is laminar, above about 3000 turbulent — the same criterion applies to blood vessels and to oil pipelines."
+    }
+  ]
+}

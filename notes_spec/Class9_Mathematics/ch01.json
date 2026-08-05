@@ -1,0 +1,107 @@
+{
+  "number": 1,
+  "title": "Number Systems",
+  "prerequisites": [
+    "Familiarity with natural numbers, whole numbers and integers.",
+    "Ability to convert a fraction into a decimal.",
+    "Basic knowledge of squares, square roots and the number line.",
+    "Understanding of laws of exponents for integer powers."
+  ],
+  "topics": [
+    {
+      "title": "Rational and Irrational Numbers",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A rational number can be written as p/q with q ≠ 0 and has a terminating or repeating decimal, while an irrational number cannot and has a non-terminating non-repeating decimal.",
+      "real_life": "The ratio of any circle's circumference to its diameter is π, a number no fraction can ever express exactly — which is why we always approximate it.",
+      "detailed": {
+        "definition": "A rational number is one that can be expressed in the form p/q, where p and q are integers and q ≠ 0. An irrational number cannot be expressed in this form. Together they form the real numbers.",
+        "key_idea": "The decimal expansion is the practical test. Terminating or recurring means rational; non-terminating and non-recurring means irrational. Every real number is one or the other, never both.",
+        "working_principle": "A rational number p/q in lowest terms has a terminating decimal exactly when the denominator's prime factors are only 2s and 5s. Otherwise the decimal recurs.",
+        "applications": [
+          "√2, √3, √5, π and e are irrational; 0.101001000100001... is irrational by construction.",
+          "There are infinitely many rational and irrational numbers between any two distinct real numbers.",
+          "√2 can be located on the number line using the Pythagoras theorem on a unit square."
+        ]
+      },
+      "points": [
+        "Rational: terminating or non-terminating recurring decimal.",
+        "Irrational: non-terminating and non-recurring decimal.",
+        "p/q terminates only if the denominator in lowest terms is of the form 2ᵐ5ⁿ.",
+        "Sum or product of a rational and an irrational number is always irrational.",
+        "The sum or product of two irrational numbers may be rational, e.g. √2 × √2 = 2."
+      ],
+      "mistakes": [
+        "Calling 22/7 irrational; it is rational and only an approximation to π.",
+        "Assuming the sum of two irrational numbers must be irrational — (2 + √3) + (2 − √3) = 4.",
+        "Writing √4 as irrational; it equals 2 and is rational."
+      ],
+      "memory_hook": "'Repeats or Ends = Rational; Rambles forever = Irrational.'",
+      "advanced": "Irrational numbers vastly outnumber rational ones: the rationals are countable while the reals are not. If you could pick a real number at random, the probability of getting a rational is exactly zero.",
+      "formulas": [
+        {
+          "name": "Rationalising the Denominator",
+          "difficulty": "Medium",
+          "formula": "1/(a + √b) × (a − √b)/(a − √b) = (a − √b)/(a² − b)",
+          "variables": "a = rational part, √b = irrational part of the denominator.",
+          "when_to_use": "Whenever a surd appears in a denominator and must be removed.",
+          "common_mistakes": "Changing the sign of the wrong term, or forgetting to multiply the numerator as well.",
+          "shortcut": "Multiply by the conjugate — change the sign between the two terms."
+        }
+      ]
+    },
+    {
+      "title": "Laws of Exponents and Surds",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The laws of exponents extend from integer to rational powers, allowing roots to be written as fractional indices and simplified using the same rules.",
+      "real_life": "Compound interest, population growth and sound intensity are all computed with exponent laws, which is why they are worth complete fluency.",
+      "detailed": {
+        "definition": "For a positive real number a and rational numbers m and n, aᵐ × aⁿ = aᵐ⁺ⁿ. A surd is an irrational root of a rational number, such as √2 or ∛5.",
+        "key_idea": "Writing a root as a fractional index — ⁿ√a = a^(1/n) — turns every root manipulation into an exponent manipulation, so one set of rules covers both.",
+        "working_principle": "Surds are simplified by extracting perfect squares (or cubes) from under the radical, and like surds are added or subtracted just as like terms are.",
+        "applications": [
+          "√50 = √(25 × 2) = 5√2.",
+          "Rationalising 1/√3 gives √3/3.",
+          "a^(m/n) = ⁿ√(aᵐ) connects indices and roots directly."
+        ]
+      },
+      "points": [
+        "aᵐ × aⁿ = aᵐ⁺ⁿ; aᵐ ÷ aⁿ = aᵐ⁻ⁿ; (aᵐ)ⁿ = aᵐⁿ; a⁰ = 1 for a ≠ 0.",
+        "a^(1/n) = ⁿ√a and a^(m/n) = ⁿ√(aᵐ).",
+        "a⁻ⁿ = 1/aⁿ.",
+        "Only like surds can be added or subtracted.",
+        "The laws hold for a > 0; for negative bases with fractional powers they can fail."
+      ],
+      "mistakes": [
+        "Writing (a + b)ⁿ = aⁿ + bⁿ, which is false.",
+        "Adding unlike surds, e.g. treating √2 + √3 as √5.",
+        "Forgetting that a⁰ = 1 only when a ≠ 0."
+      ],
+      "memory_hook": "'Multiply → add powers; Divide → subtract powers; Power of a power → multiply.'",
+      "advanced": "Defining a^x for irrational x requires limits, which is where exponents connect to calculus. This is why the natural exponential e^x, defined by its own derivative, becomes the base of choice in higher mathematics.",
+      "formulas": [
+        {
+          "name": "Laws of Exponents",
+          "difficulty": "Easy",
+          "formula": "aᵐ·aⁿ = aᵐ⁺ⁿ,  aᵐ/aⁿ = aᵐ⁻ⁿ,  (aᵐ)ⁿ = aᵐⁿ,  a⁻ⁿ = 1/aⁿ",
+          "variables": "a = base (a > 0), m and n = rational exponents.",
+          "when_to_use": "For all simplification of powers, roots and surds.",
+          "common_mistakes": "Adding the exponents when raising a power to a power instead of multiplying them.",
+          "shortcut": "Same base multiplied → add; same base divided → subtract."
+        },
+        {
+          "name": "Fractional Exponent",
+          "difficulty": "Medium",
+          "formula": "a^(m/n) = ⁿ√(aᵐ) = (ⁿ√a)ᵐ",
+          "variables": "a = positive base, m = power, n = root index.",
+          "when_to_use": "To convert between root notation and index notation.",
+          "common_mistakes": "Interchanging the roles of m and n.",
+          "shortcut": "The denominator of the fraction is the root; the numerator is the power."
+        }
+      ]
+    }
+  ]
+}

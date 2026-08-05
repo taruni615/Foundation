@@ -1,0 +1,44 @@
+{
+  "number": 5,
+  "title": "Introduction to Euclid's Geometry",
+  "prerequisites": [
+    "Familiarity with points, lines and planes.",
+    "Idea that a statement can be proved from simpler statements.",
+    "Basic knowledge of angles and triangles.",
+    "Understanding of the words definition and assumption."
+  ],
+  "topics": [
+    {
+      "title": "Euclid's Axioms and Postulates",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Euclid built the whole of geometry from a small number of undefined terms, self-evident axioms and five geometrical postulates.",
+      "real_life": "Every legal system works the same way — a few agreed principles, from which every specific ruling is derived by argument.",
+      "detailed": {
+        "definition": "Axioms are assumptions used throughout mathematics and are not specific to geometry. Postulates are the assumptions specific to geometry. A theorem is a statement proved from axioms, postulates and previously proved theorems.",
+        "key_idea": "Some terms — point, line, plane — must be left undefined, because defining everything would require an endless chain. Euclid accepted this and started from undefined primitives.",
+        "working_principle": "Euclid's fifth postulate, about lines meeting on the side where interior angles sum to less than two right angles, is equivalent to the parallel postulate, and is far less self-evident than the other four.",
+        "applications": [
+          "Axiom: things equal to the same thing are equal to one another.",
+          "Postulate: a straight line may be drawn from any point to any other point.",
+          "Postulate: all right angles are equal to one another."
+        ]
+      },
+      "points": [
+        "Axioms are general assumptions; postulates are geometry-specific assumptions.",
+        "Point, line and plane are undefined terms.",
+        "Euclid gave five postulates and a number of common notions (axioms).",
+        "The fifth postulate is equivalent to Playfair's axiom on unique parallels.",
+        "A theorem must be proved; an axiom or postulate is assumed."
+      ],
+      "mistakes": [
+        "Using axiom and postulate interchangeably; postulates are specific to geometry.",
+        "Trying to define a point or a line; these are deliberately undefined.",
+        "Assuming Euclid proved the fifth postulate; he assumed it, and centuries of attempts to prove it failed."
+      ],
+      "memory_hook": "'Axioms are for all mathematics, Postulates are for geometry, Theorems must be earned.'",
+      "advanced": "Denying the fifth postulate does not produce a contradiction — it produces non-Euclidean geometry. Those geometries turned out to describe the actual universe in Einstein's general relativity."
+    }
+  ]
+}

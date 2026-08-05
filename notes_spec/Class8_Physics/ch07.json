@@ -1,0 +1,132 @@
+{
+  "number": 7,
+  "title": "Stars and the Solar System",
+  "prerequisites": [
+    "Basic awareness that the Earth revolves around the Sun and rotates on its own axis.",
+    "General familiarity with day, night, and the phases of the Moon from everyday observation.",
+    "Idea that objects in space are held together and move due to gravity."
+  ],
+  "topics": [
+    {
+      "title": "The Moon",
+      "quick_summary": "The Moon is Earth's only natural satellite; it does not produce its own light but shines by reflecting sunlight, and its changing appearance from Earth is due to its phases.",
+      "detailed": {
+        "definition": "The Moon is Earth's only natural satellite, orbiting the Earth roughly once every 27.3 days, and shining only by reflecting sunlight since it has no light of its own.",
+        "key_idea": "As the Moon orbits the Earth, the portion of its sunlit half visible from Earth keeps changing, producing the regular cycle of phases: new moon, crescent, first quarter, gibbous, full moon, and back.",
+        "working_principle": "Half of the Moon is always lit by the Sun (like Earth's day side), but as the Moon moves around the Earth, we see different fractions of this lit half, causing the phases to repeat roughly every 29.5 days (a lunar month).",
+        "applications": [
+          "The lunar calendar, based on Moon phases, is used to determine the dates of several traditional festivals.",
+          "Ocean tides on Earth are caused mainly by the gravitational pull of the Moon (and, to a lesser extent, the Sun).",
+          "The Moon's surface, marked by craters and \"seas\" (maria), has been studied and mapped by space missions."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Over about a month, we see the Moon change from a thin crescent to a full circle and back again — these are the phases of the Moon caused by how much of its sunlit half faces Earth.",
+      "points": [
+        "The Moon has no atmosphere and no light of its own; it only reflects sunlight.",
+        "A full lunar cycle of phases takes about 29.5 days.",
+        "The same side of the Moon always faces the Earth because its rotation and revolution periods are equal.",
+        "Lunar and solar eclipses occur due to specific alignments of the Sun, Earth and Moon."
+      ],
+      "mistakes": [
+        "Thinking the Moon produces its own light — it only reflects sunlight, like a mirror.",
+        "Confusing the Moon's rotation period with its revolution period — they happen to be equal, which is why we always see the same face."
+      ],
+      "memory_hook": "\"Moon = Mirror for sunlight, not a light source of its own.\"",
+      "advanced": "Because the Moon's rotation and orbital periods are exactly matched (a phenomenon called tidal locking, caused by Earth's gravity over billions of years), humans never saw the far side of the Moon until spacecraft photographed it in the 20th century."
+    },
+    {
+      "title": "The Solar System",
+      "quick_summary": "The Solar System consists of the Sun and all the celestial bodies that orbit it due to its gravity — eight planets, their moons, dwarf planets, asteroids, and comets.",
+      "detailed": {
+        "definition": "The Solar System is the Sun together with all the objects that are gravitationally bound to it and orbit around it, including the eight planets, their natural satellites (moons), dwarf planets, asteroids, comets, and meteoroids.",
+        "key_idea": "The eight planets are grouped into inner (rocky/terrestrial) planets — Mercury, Venus, Earth, Mars — and outer (gas/ice giant) planets — Jupiter, Saturn, Uranus, Neptune — based on their composition and position relative to the asteroid belt.",
+        "working_principle": "The Sun's enormous gravity keeps all the planets and other bodies moving in roughly circular (elliptical) orbits around it; the further a planet is from the Sun, the longer it takes to complete one orbit.",
+        "applications": [
+          "Understanding planetary motion allows accurate prediction of eclipses, planetary positions, and space mission timing.",
+          "Space probes and telescopes study planets, moons, asteroids and comets to learn about the Solar System's formation.",
+          "Comparing planetary conditions (like temperature and atmosphere) helps scientists assess where life might exist elsewhere."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Earth is the third planet from the Sun, orbiting it once every 365.25 days, while Jupiter — the largest planet — takes nearly 12 Earth years to complete one orbit.",
+      "points": [
+        "Order of planets from the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+        "Mercury is closest to the Sun and Neptune is farthest (Pluto is now classified as a dwarf planet, not a full planet).",
+        "The asteroid belt lies between Mars and Jupiter, separating the inner rocky planets from the outer gas giants.",
+        "Jupiter is the largest planet; Mercury is the smallest of the eight planets."
+      ],
+      "mistakes": [
+        "Still counting Pluto as the ninth planet — it was reclassified as a dwarf planet in 2006.",
+        "Assuming all planets are similar in composition — inner planets are rocky, while outer planets are mostly gas or ice."
+      ],
+      "memory_hook": "\"My Very Efficient Mother Just Served Us Nachos\" — Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+      "advanced": "The clear division between small rocky inner planets and huge gaseous outer planets reflects how the early Solar System formed: closer to the young Sun's heat, only rock and metal could condense into solid planets, while farther out, where it was cold enough, huge amounts of gas and ice could also accumulate into giant planets."
+    },
+    {
+      "title": "Stars and Constellations",
+      "quick_summary": "Stars are massive, glowing balls of hot gas that produce their own light and heat through nuclear reactions, and recognisable patterns of stars in the sky are called constellations.",
+      "detailed": {
+        "definition": "A star is a huge, glowing ball of extremely hot gas that generates its own light and heat, unlike planets and moons, which merely reflect light. A constellation is a recognisable group or pattern of stars, as seen from Earth, that has been given a name.",
+        "key_idea": "Although stars appear as tiny twinkling points, they are actually enormous and extremely far away — their apparent smallness and dimness compared to the Sun is due to the vast distances involved, not their true size.",
+        "working_principle": "Stars generate their own energy through nuclear fusion reactions deep inside them, producing the light and heat that radiates outward through space, eventually reaching Earth as starlight.",
+        "applications": [
+          "Sailors and travellers historically used star patterns and the Pole Star to navigate, since the Pole Star stays fixed in the northern sky.",
+          "Astronomers use constellations as a convenient way to map and locate regions of the night sky.",
+          "Studying starlight (its colour and spectrum) tells scientists about a star's temperature, composition, and distance."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The Sun is the star closest to Earth; on a clear night, patterns like the Great Bear (Ursa Major, which includes the Big Dipper) and Orion can be spotted using their distinctive star arrangements.",
+      "points": [
+        "Stars produce their own light (via nuclear fusion); planets and moons only reflect light.",
+        "The Pole Star (Polaris) appears almost fixed in the sky because it lies nearly along Earth's rotational axis, making it useful for finding direction.",
+        "Ursa Major (the Great Bear) is a well-known constellation that can help locate the Pole Star.",
+        "Stars twinkle due to the continuous refraction of their light through Earth's turbulent atmosphere."
+      ],
+      "mistakes": [
+        "Confusing a star with a planet — planets do not produce their own light, and do not twinkle as noticeably as stars.",
+        "Thinking all stars we see are similar in size to the Sun — stars vary enormously in size, temperature, and brightness."
+      ],
+      "memory_hook": "\"Stars Shine on their own; Planets just Pass on borrowed light.\"",
+      "advanced": "Because starlight takes years (often many thousands of years) to reach Earth, when we look at distant stars we are actually seeing light that left them long ago — in a real sense, we are looking into the past every time we look up at the night sky."
+    },
+    {
+      "title": "Artificial Satellites",
+      "quick_summary": "Artificial satellites are man-made objects launched into orbit around the Earth to perform tasks like communication, weather observation, navigation, and scientific research.",
+      "detailed": {
+        "definition": "An artificial satellite is a human-made object placed into orbit around a celestial body (usually the Earth) using a rocket, designed to perform a specific function such as communication, observation, or navigation.",
+        "key_idea": "Artificial satellites stay in orbit because their forward motion and the pull of Earth's gravity are perfectly balanced, causing them to continuously 'fall' around the Earth rather than falling straight down or flying off into space.",
+        "working_principle": "A satellite is launched at a very high speed to a suitable altitude; at this speed and height, the curve of its falling path due to gravity matches the curvature of the Earth, keeping it in a stable orbit.",
+        "applications": [
+          "Communication satellites relay television broadcasts, phone calls, and internet signals over long distances.",
+          "Weather satellites monitor cloud cover, storms, and climate patterns from space.",
+          "Navigation satellites (like GPS satellites) allow accurate positioning and navigation on Earth's surface.",
+          "Remote sensing satellites monitor natural resources, agriculture, and environmental changes."
+        ]
+      },
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Weather satellites capture images of cloud patterns to help forecast storms and rainfall, while communication satellites relay television and phone signals across continents.",
+      "points": [
+        "Artificial satellites are distinct from natural satellites (like the Moon) — they are built and launched by humans.",
+        "India's first satellite was Aryabhata, launched in 1975.",
+        "Different satellites orbit at different altitudes depending on their purpose (e.g., communication satellites are often placed in higher, fixed orbits).",
+        "Satellites need a precise combination of speed and altitude to remain in a stable orbit."
+      ],
+      "mistakes": [
+        "Confusing artificial satellites with natural satellites like the Moon.",
+        "Thinking satellites need constant engine power to stay in orbit — once correctly placed, they orbit due to gravity and their own motion, needing only occasional adjustments."
+      ],
+      "memory_hook": "\"Satellite in orbit = constantly falling around the Earth, never landing.\"",
+      "advanced": "A satellite placed in what's called a geostationary orbit moves at exactly the same rate as Earth's rotation, so it appears to stay fixed above one point on the Earth's surface at all times — this is why satellite TV dishes can be pointed at a single fixed spot in the sky without needing to track movement."
+    }
+  ]
+}

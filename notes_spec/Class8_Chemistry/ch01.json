@@ -1,0 +1,108 @@
+{
+  "number": 1,
+  "title": "Synthetic Fibres and Plastics",
+  "prerequisites": [
+    "Idea that cotton, wool and silk are natural fibres from plants and animals.",
+    "Basic understanding that some materials burn and others melt.",
+    "Familiarity with everyday objects made of plastic.",
+    "Knowledge that materials can be classified by their properties."
+  ],
+  "topics": [
+    {
+      "title": "Synthetic Fibres — Rayon, Nylon, Polyester and Acrylic",
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Synthetic fibres are man-made fibres produced by joining small chemical units called monomers into long chains called polymers, and the four common ones are rayon, nylon, polyester and acrylic.",
+      "real_life": "A nylon parachute, a polyester school shirt, an acrylic sweater and a rayon saree are four different synthetic fibres you can find in one wardrobe.",
+      "detailed": {
+        "definition": "A polymer is a very large molecule formed by joining many small repeating units called monomers. A synthetic fibre is a fibre made from such polymers by chemical processes rather than obtained from a plant or animal.",
+        "key_idea": "Rayon is the odd one out — it is made from wood pulp (natural cellulose) that has been chemically treated, so it is called a semi-synthetic or regenerated fibre, and is known as artificial silk. All the others are made entirely from petrochemicals.",
+        "working_principle": "Nylon was the first fully synthetic fibre, made in 1931 from coal, water and air. It is exceptionally strong, elastic and lustrous. Polyester (terylene, PET) resists wrinkles and is easy to wash. Acrylic imitates wool and is warm, light and cheap.",
+        "applications": [
+          "Nylon: ropes, parachutes, seat belts, tents, toothbrush bristles, fishing nets.",
+          "Polyester: terrycot and terrywool blends, PET bottles, sails.",
+          "Acrylic: sweaters, shawls, blankets — 'artificial wool'."
+        ]
+      },
+      "points": [
+        "Monomer → polymer; polymerisation is the joining reaction.",
+        "Rayon is semi-synthetic, made from wood pulp — called artificial silk.",
+        "Nylon is the strongest common synthetic fibre; a nylon thread is stronger than a steel wire of the same thickness.",
+        "Polyester is made of repeating ester units and does not wrinkle easily.",
+        "Acrylic is used as an inexpensive substitute for wool."
+      ],
+      "mistakes": [
+        "Calling rayon fully synthetic — it is regenerated from natural cellulose.",
+        "Saying synthetic fibres absorb water like cotton; they absorb very little, which is why they dry fast but feel uncomfortable in summer.",
+        "Wearing synthetic clothes while working in the kitchen or a laboratory — they melt and stick to the skin."
+      ],
+      "memory_hook": "'RaNPA' — Rayon, Nylon, Polyester, Acrylic; and 'Rayon is the Real (natural) one among the fakes'.",
+      "advanced": "Synthetic fibres are thermoplastic: on heating they soften and melt rather than char like cotton. This is exactly why fire-safety rules forbid synthetics near flames — molten polymer sticks to skin and causes far deeper burns than a cotton fire would."
+    },
+    {
+      "title": "Plastics — Types, Properties and Uses",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Plastics are polymers that can be moulded into any shape, and they are of two kinds — thermoplastics, which soften on heating and can be remoulded, and thermosetting plastics, which set permanently.",
+      "real_life": "A polythene bag can be melted and re-made, but a burnt electrical switch or a cracked melamine plate can never be reshaped — the first is a thermoplastic, the second thermosetting.",
+      "detailed": {
+        "definition": "Plastic is a polymer that can be moulded into any shape under heat and pressure. Thermoplastics soften on heating and can be remoulded repeatedly; thermosetting plastics, once set, cannot be softened again.",
+        "key_idea": "The difference lies in the arrangement of the chains. Thermoplastics have linear or slightly branched chains that slide over one another when heated; thermosetting plastics have chains cross-linked into a rigid three-dimensional network.",
+        "working_principle": "Plastics are chosen because they are light, strong, durable, non-reactive, poor conductors of heat and electricity, and cheap to produce. These same properties — especially non-reactivity — make them very difficult to dispose of.",
+        "applications": [
+          "Thermoplastics: polythene (bags), PVC (pipes), polystyrene (packing), polypropylene (containers).",
+          "Thermosetting plastics: bakelite (electrical switches, handles), melamine (crockery, floor tiles).",
+          "Teflon is used for non-stick cookware; PVC for raincoats and insulation."
+        ]
+      },
+      "points": [
+        "Thermoplastic = can be softened and remoulded; e.g. polythene, PVC.",
+        "Thermosetting = sets permanently, cannot be remoulded; e.g. bakelite, melamine.",
+        "Bakelite is a poor conductor of heat and electricity — used for switches and cooker handles.",
+        "Melamine resists fire and is used for kitchenware and fire-fighting uniforms.",
+        "Plastics are non-reactive, light, durable and cheap — the reason they are everywhere."
+      ],
+      "mistakes": [
+        "Thinking all plastics can be melted and recycled — thermosetting plastics cannot.",
+        "Confusing bakelite (thermosetting) with polythene (thermoplastic).",
+        "Saying plastics are strong because they are heavy; they are strong and light, which is the point."
+      ],
+      "memory_hook": "'ThermoPLASTIC = PLIABLE again and again; ThermoSET = SET for good.'",
+      "advanced": "The polymer chains in a thermoset are joined by covalent cross-links, so melting would require breaking chemical bonds rather than just overcoming weak forces between chains. That is why a thermoset chars and decomposes instead of melting."
+    },
+    {
+      "title": "Plastics and the Environment",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Plastics are non-biodegradable, so they persist for hundreds of years, choke drains and animals, and release poisonous gases when burnt — which is why the 4 R's matter.",
+      "real_life": "The plastic bags that block city drains during the monsoon, and the plastic found in the stomachs of cows and sea turtles, are the direct cost of convenience.",
+      "detailed": {
+        "definition": "A biodegradable material is one that is decomposed by natural processes such as the action of bacteria; a non-biodegradable material is one that is not, or that takes an extremely long time.",
+        "key_idea": "The very property that makes plastic useful — chemical non-reactivity — is the property that makes it an environmental problem. Microorganisms have no enzymes that can break the long carbon chains.",
+        "working_principle": "Burning plastic does not solve the problem: it releases toxic gases such as dioxins and carbon monoxide. The workable answers are to Reduce use, Reuse items, Recycle thermoplastics, and Recover energy where recycling is impossible.",
+        "applications": [
+          "Carrying a cloth or jute bag instead of accepting plastic bags.",
+          "Segregating waste into biodegradable and non-biodegradable at source.",
+          "Recycling PET bottles into polyester fibre for fleece and filling material."
+        ]
+      },
+      "points": [
+        "Plastics are non-biodegradable and may persist for hundreds of years.",
+        "Burning plastic releases poisonous gases and must be avoided.",
+        "The 4 R's: Reduce, Reuse, Recycle, Recover.",
+        "Only thermoplastics can be recycled; thermosetting plastics cannot.",
+        "Plastic waste is a major cause of blocked drains, soil damage and animal deaths."
+      ],
+      "mistakes": [
+        "Believing plastic 'disappears' if buried — it only breaks into microplastics.",
+        "Assuming all plastic waste is recyclable; contaminated and thermosetting plastic is not.",
+        "Thinking incineration is a clean disposal method for plastics."
+      ],
+      "memory_hook": "'Reduce first, Recycle last' — and 'What does not rot, must not be bought in bulk'.",
+      "advanced": "Microplastics — fragments below 5 mm — now reach the human body through drinking water, salt and seafood. Biodegradable plastics made from polylactic acid (from maize starch) exist, but they need industrial composting conditions and do not break down in an ordinary landfill."
+    }
+  ]
+}

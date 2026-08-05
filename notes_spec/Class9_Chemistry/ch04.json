@@ -1,0 +1,155 @@
+{
+  "number": 4,
+  "title": "Structure of Atom",
+  "prerequisites": [
+    "Basic idea of atoms and molecules from Chapter 3.",
+    "Comfort with simple algebraic substitution for calculating subatomic particle counts."
+  ],
+  "topics": [
+    {
+      "title": "Discovery of Subatomic Particles",
+      "quick_summary": "Experiments with cathode rays and anode rays revealed that atoms are not indivisible but are built from three fundamental subatomic particles — the electron, proton, and neutron.",
+      "detailed": {
+        "definition": "Cathode rays are streams of negatively charged particles (electrons) emitted from the cathode in a discharge tube; anode rays (canal rays) are streams of positively charged particles (protons, or more generally positive ions) that travel from the anode towards the cathode; the neutron is a neutral (uncharged) subatomic particle discovered later by James Chadwick.",
+        "key_idea": "Cathode rays travel in straight lines, possess mass, are deflected by electric and magnetic fields towards the positive plate (proving they are negatively charged), and are identical no matter which gas or electrode material is used — proving electrons are a universal constituent of all atoms.",
+        "working_principle": "By measuring the deflection of cathode rays in electric and magnetic fields, J. J. Thomson determined the charge-to-mass ratio of the electron; R. A. Millikan's oil-drop experiment later determined the electron's exact charge, allowing its mass to be calculated. Goldstein's anode ray experiments showed that positive particles' charge-to-mass ratio depends on the gas used, proving the proton's mass is much greater than the electron's.",
+        "applications": [
+          "The existence of electrons, protons and neutrons together explains atomic structure, chemical bonding, electricity, and radioactivity — foundational to all of modern chemistry and physics.",
+          "Cathode-ray-based technology historically enabled television and oscilloscope displays."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The television and older computer monitors (cathode ray tubes) work using the very same negatively charged particle beams — electrons — that J. J. Thomson used to discover the electron.",
+      "points": [
+        "Electron: charge = −1 (relative), mass ≈ 1/1837 times the mass of a proton — considered negligible in atomic mass calculations.",
+        "Proton: charge = +1 (relative), mass ≈ 1 amu, discovered via anode ray experiments (Goldstein).",
+        "Neutron: charge = 0 (neutral), mass ≈ 1 amu (slightly more than a proton), discovered by James Chadwick — much later than the electron and proton.",
+        "Cathode rays are deflected towards the positive plate in an electric field, proving their negative charge; anode rays are deflected towards the negative plate, proving their positive charge."
+      ],
+      "mistakes": [
+        "Assuming all three subatomic particles were discovered around the same time — the neutron was discovered decades after the electron and proton, explaining why early atomic models (Thomson's, Rutherford's) did not include it.",
+        "Confusing which particle is deflected towards which plate in an electric field (electrons → positive plate; protons → negative plate, since opposite charges attract)."
+      ],
+      "memory_hook": "'Electron: light & negative. Proton: heavy & positive. Neutron: heavy & neutral (Not-charged) — discovered last.'",
+      "advanced": "Millikan's famous oil-drop experiment balanced the gravitational pull on tiny charged oil droplets against an adjustable electric field, allowing him to isolate and measure the exact charge of a single electron — a landmark precision experiment in early 20th-century physics."
+    },
+    {
+      "title": "Atomic Models — Thomson, Rutherford & Bohr",
+      "quick_summary": "Atomic models evolved through experimentation: Thomson's 'plum pudding' model gave way to Rutherford's nuclear model after the gold foil experiment, which was then refined by Bohr's model of fixed electron orbits.",
+      "detailed": {
+        "definition": "Thomson's model pictured the atom as a uniform sphere of positive charge with electrons embedded in it like plums in a pudding. Rutherford's nuclear model, based on the gold foil experiment, proposed that an atom has a tiny, dense, positively charged nucleus at its centre with electrons revolving around it in mostly empty space. Bohr's model proposed that electrons revolve around the nucleus only in specific, fixed circular paths (orbits/shells) of fixed energy, without radiating energy while in these orbits.",
+        "key_idea": "Each model was replaced because it failed to explain a new experimental observation: Thomson's model could not explain the results of the gold foil experiment, and Rutherford's model could not explain why electrons don't spiral into the nucleus while radiating energy (which classical physics predicted they should).",
+        "working_principle": "In the gold foil experiment, most fast-moving alpha particles passed straight through a thin gold foil undeflected (proving atoms are mostly empty space), some were deflected at small angles (proving a concentrated positive charge exists), and a very few bounced almost straight back (proving this positive charge, the nucleus, is extremely small, dense, and heavy compared to the atom's total size). Bohr resolved Rutherford's flaw by postulating that electrons only occupy specific quantised energy levels, jumping between them by absorbing or emitting energy, rather than losing energy continuously.",
+        "applications": [
+          "Rutherford's discovery of the nucleus and Bohr's quantised orbits together form the conceptual starting point for understanding atomic spectra, chemical bonding, and even nuclear energy.",
+          "Bohr's model successfully explained the hydrogen atom's line spectrum, connecting chemistry to the emerging field of quantum physics."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Rutherford's alpha-particle scattering experiment is often compared to firing bullets at a sheet of paper and being shocked when a few bounce straight back — implying something extremely small, dense, and solid (the nucleus) is hidden inside.",
+      "points": [
+        "Thomson's model: positive sphere with embedded electrons ('plum pudding'); could not explain the gold foil scattering results.",
+        "Rutherford's model: nucleus (small, dense, positive) at the centre; electrons revolve around it; atom is mostly empty space; could not explain atomic stability (why electrons don't spiral inward).",
+        "Bohr's model: electrons move only in specific, fixed-energy circular orbits (shells) without radiating energy; energy is absorbed/released only when an electron jumps between orbits.",
+        "Drawbacks of Rutherford's model directly motivated Bohr's fix; drawbacks of Bohr's model (failure for multi-electron atoms) later led to the modern quantum mechanical model."
+      ],
+      "mistakes": [
+        "Thinking Rutherford's gold foil experiment proved electrons exist in fixed orbits — it only proved the existence of a small, dense, positively charged nucleus; the fixed-orbit idea came later, from Bohr.",
+        "Forgetting that the vast majority of alpha particles passed straight through undeflected in the gold foil experiment — this is the key evidence that atoms are mostly empty space."
+      ],
+      "memory_hook": "'Thomson: Pudding. Rutherford: Nucleus (mostly empty space). Bohr: Bands (fixed orbits).'",
+      "advanced": "Bohr's model, while extremely successful for the single-electron hydrogen atom, fails to correctly predict the spectra of multi-electron atoms — this limitation eventually led to the fully quantum mechanical model of the atom (involving orbitals and quantum numbers), a preview of which appears later in this same chapter."
+    },
+    {
+      "title": "Electronic Configuration & Valency",
+      "quick_summary": "Electrons are arranged around the nucleus in fixed shells according to the Bohr-Bury scheme, and the number of electrons in the outermost shell determines an atom's valency (its combining capacity).",
+      "detailed": {
+        "definition": "Electronic configuration is the systematic arrangement of electrons in the various shells (K, L, M, N, ...) surrounding the nucleus of an atom, following the Bohr-Bury scheme; valency is the combining capacity of an element, generally determined by the number of electrons in its outermost (valence) shell.",
+        "key_idea": "According to the Bohr-Bury scheme, the maximum number of electrons that can be accommodated in a given shell is 2n², where n is the shell number (K=1, L=2, M=3, N=4, ...), and the outermost shell of any atom cannot hold more than 8 electrons (except for the very first shell, K, which holds a maximum of 2).",
+        "working_principle": "Electrons fill the innermost shell first before moving to the next; valency is calculated as the number of valence electrons if that number is 4 or less, or as (8 − number of valence electrons) if the valence electron count is more than 4, since atoms tend to gain, lose, or share electrons to attain a stable configuration similar to a noble gas (the octet rule).",
+        "applications": [
+          "Determining the valency of common elements is directly used to write correct chemical formulae, as covered in Chapter 3.",
+          "The pattern of valence electrons across a row explains broad reactivity trends among elements, previewing ideas developed further in Chemical Bonding (Chapter 5)."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Sodium (2, 8, 1 configuration) readily loses its single outer electron to become stable, which is exactly why sodium metal is so reactive and is always found combined with other elements in nature, never alone.",
+      "points": [
+        "Maximum electrons per shell = 2n² → K-shell (n=1): 2, L-shell (n=2): 8, M-shell (n=3): 18 (but capped at 8 if it is the outermost shell for elements up to atomic number 20).",
+        "Valency = number of valence electrons (if ≤ 4) or (8 − valence electrons) (if > 4).",
+        "Elements with a completely filled outermost shell (like noble gases, valence electrons = 8, or 2 for helium) have zero valency and are chemically unreactive.",
+        "Electrons always fill shells starting from the one closest to the nucleus (K) outward."
+      ],
+      "mistakes": [
+        "Applying the formula 2n² blindly to the outermost shell even when it should be capped at 8 electrons for lighter elements (e.g., the M-shell can hold up to 18 electrons in general, but as an outermost shell for elements up to calcium, it is filled only up to 8 before the next shell begins).",
+        "Forgetting to use '8 − valence electrons' when valence electrons exceed 4 while calculating valency (e.g., oxygen has 6 valence electrons, so its valency is 8 − 6 = 2, not 6)."
+      ],
+      "memory_hook": "'2, 8, 8, ... fill from the inside out — outer shell caps at 8 to be stable, no doubt.'",
+      "advanced": "The tendency of atoms to gain, lose, or share electrons to achieve 8 valence electrons (a stable, noble-gas-like configuration) is called the octet rule — one of the most powerful predictive tools in all of chemistry, forming the entire basis of the Chemical Bonding chapter that follows."
+    },
+    {
+      "title": "Atomic Number, Mass Number, Isotopes & Isobars",
+      "quick_summary": "Atomic number identifies an element by its number of protons, mass number is the sum of protons and neutrons, and atoms of the same element with different neutron counts are called isotopes.",
+      "detailed": {
+        "definition": "Atomic number (Z) is the number of protons present in the nucleus of an atom (and equals the number of electrons in a neutral atom); mass number (A) is the total number of protons and neutrons present in the nucleus; isotopes are atoms of the same element (same atomic number) having different numbers of neutrons (and hence different mass numbers); isobars are atoms of different elements having the same mass number but different atomic numbers.",
+        "key_idea": "Atomic number defines the chemical identity of an element (it never changes for a given element), while mass number can vary between atoms of the same element due to a differing number of neutrons — this variation is what creates isotopes.",
+        "working_principle": "Since chemical properties depend almost entirely on the number of electrons (and hence protons, in a neutral atom), isotopes of the same element show identical chemical behaviour but different physical properties (like mass and density) because of their differing neutron count.",
+        "applications": [
+          "Isotopes of uranium (U-235) are used as fuel in nuclear reactors; isotopes of cobalt (Co-60) and iodine (I- 131) are used in cancer treatment and medical diagnosis respectively.",
+          "Carbon-14 dating, based on the known decay rate of the carbon-14 isotope, is a major tool in archaeology and geology."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Carbon-12 and carbon-14 are both forms of carbon (same atomic number, 6 protons) but carbon-14 has two extra neutrons, making it useful for radiocarbon dating of ancient fossils and artefacts.",
+      "points": [
+        "Number of protons = Atomic Number (Z); Number of neutrons = Mass Number (A) − Atomic Number (Z); Number of electrons = Number of protons (in a neutral atom).",
+        "Isotopes: same atomic number (Z), different mass number (A) — same element, e.g., protium, deuterium, and tritium (isotopes of hydrogen).",
+        "Isobars: same mass number (A), different atomic number (Z) — different elements, e.g., calcium-40 and argon-40.",
+        "Isotopes have identical chemical properties (same number of valence electrons) but different physical properties (different mass)."
+      ],
+      "mistakes": [
+        "Mixing up isotopes (same element, different mass) with isobars (different elements, same mass) — remembering the 'iso-' prefix refers to what stays the same (topes → protons/atomic number for isotopes; bar → mass number 'bar/weight' for isobars) can help.",
+        "Forgetting that the number of neutrons must be found by subtraction (A − Z), not read directly off the periodic table."
+      ],
+      "memory_hook": "'IsoTOPes: same TOP (proton/atomic number). IsoBARs: same BAR (mass number).'",
+      "advanced": "Because isotopes have virtually identical chemical behaviour, they cannot be separated by ordinary chemical reactions — separating isotopes (e.g., enriching uranium) requires physical methods that exploit tiny mass differences, such as gaseous diffusion or centrifugation, making it a technically demanding and strategically significant process."
+    },
+    {
+      "title": "Quantum Numbers & Modern Configuration Rules",
+      "quick_summary": "The modern quantum mechanical model describes an electron's position and energy using four quantum numbers, and electrons fill orbitals following the Aufbau principle, Pauli's exclusion principle, and Hund's rule.",
+      "detailed": {
+        "definition": "Quantum numbers are a set of four numbers (principal, azimuthal, magnetic, and spin) that together uniquely describe the energy, shape, orientation, and spin of an electron within an atom. The Aufbau Principle states that electrons occupy the lowest available energy orbitals first; Pauli's Exclusion Principle states that no two electrons in the same atom can have the same set of all four quantum numbers (so an orbital can hold a maximum of 2 electrons with opposite spins); Hund's Rule states that electrons fill degenerate (equal-energy) orbitals singly, with parallel spins, before any orbital is doubly occupied.",
+        "key_idea": "These three rules together let us predict the exact electronic configuration (arrangement of electrons in sub-shells s, p, d, f) of any atom, going beyond the simpler shell-only Bohr-Bury scheme.",
+        "working_principle": "Orbitals are filled in increasing order of energy as given by the (n + l) rule (lower n + l value fills first; if equal, lower n fills first). Within a set of orbitals of the same energy (like the three p-orbitals or five d- orbitals), Hund's rule ensures each orbital gets one electron before any gets a second, minimising electron- electron repulsion and maximising stability.",
+        "applications": [
+          "Modern electronic configuration explains the structure of the periodic table, chemical reactivity trends, and the colours/magnetic behaviour of many compounds.",
+          "Exceptional configurations (like extra stability of half-filled and fully-filled orbitals) explain unusual configurations seen in elements like chromium and copper."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The distinct, sharp colours seen in fireworks arise because electrons in metal atoms absorb energy, jump to a higher energy sub-level, and release that exact energy as a specific colour of light when they fall back — a direct visible consequence of quantised electron energy levels.",
+      "points": [
+        "Aufbau Principle: fill lowest-energy orbitals first, following the order 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, ....",
+        "Pauli's Exclusion Principle: maximum of 2 electrons per orbital, and they must have opposite spins.",
+        "Hund's Rule: for orbitals of equal energy, one electron enters each orbital first (with parallel spin) before any pairing occurs.",
+        "Exceptionally stable configurations occur for exactly half-filled and fully-filled sub-shells (e.g., d⁵ and d¹⁰ configurations are extra stable)."
+      ],
+      "mistakes": [
+        "Filling orbitals purely in order of shell number (n) rather than following the correct (n+l) energy order — this is why 4s fills before 3d, even though the 3d shell number is lower.",
+        "Pairing up electrons in one orbital of a set before every orbital in that set has at least one electron, violating Hund's rule."
+      ],
+      "memory_hook": "'Aufbau: Lowest energy first. Pauli: Pair up only with Opposite spins. Hund: One each before any pair.'",
+      "advanced": "The exceptional stability of half-filled and completely filled sub-shells (explaining why chromium is [Ar] 3d⁵4s¹ instead of the 'expected' [Ar] 3d⁴4s²) arises from a genuinely lower total energy due to more favourable electron exchange interactions — a subtle quantum-mechanical effect that becomes important again while studying the periodic table and transition metals in later classes."
+    }
+  ]
+}

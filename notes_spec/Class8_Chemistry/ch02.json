@@ -1,0 +1,108 @@
+{
+  "number": 2,
+  "title": "Materials — Metals and Non-metals",
+  "prerequisites": [
+    "Idea that materials differ in hardness, shine and conductivity.",
+    "Familiarity with common metals such as iron, copper and aluminium.",
+    "Basic understanding of a chemical reaction.",
+    "Knowledge that some substances burn in air."
+  ],
+  "topics": [
+    {
+      "title": "Physical Properties of Metals and Non-metals",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Metals are lustrous, malleable, ductile, sonorous and good conductors of heat and electricity, while non-metals are generally dull, brittle and poor conductors.",
+      "real_life": "A copper wire carries current and can be drawn thin, but a piece of coal crumbles to powder when hammered — one is a metal, the other a non-metal.",
+      "detailed": {
+        "definition": "Malleability is the property of being beaten into thin sheets; ductility is the property of being drawn into wires; sonorousness is the property of producing a ringing sound when struck.",
+        "key_idea": "These properties follow from metallic bonding — positive metal ions in a 'sea' of free electrons. The free electrons carry heat and electricity, and let layers of ions slide over one another without the metal breaking, which is why metals bend instead of shattering.",
+        "working_principle": "Non-metals have no free electrons, so they neither conduct nor deform; when hammered they simply break. Every general rule has exceptions, and those exceptions are a favourite examination question.",
+        "applications": [
+          "Copper and aluminium are used for electrical wiring because of high conductivity.",
+          "Gold and silver are the most malleable and ductile metals, used for jewellery and gold leaf.",
+          "Graphite, a non-metal, conducts electricity and is used for electrodes and pencil leads."
+        ]
+      },
+      "points": [
+        "Metals: lustrous, malleable, ductile, sonorous, good conductors, high density and melting point.",
+        "Non-metals: dull, brittle, non-sonorous, poor conductors, low melting point.",
+        "Exceptions among metals: mercury is liquid; sodium and potassium are soft and cut with a knife; lead is a poor conductor.",
+        "Exceptions among non-metals: graphite conducts electricity; iodine is lustrous; diamond is the hardest known substance.",
+        "Metalloids such as silicon, boron and arsenic show properties of both."
+      ],
+      "mistakes": [
+        "Saying all metals are solid at room temperature — mercury is a liquid.",
+        "Claiming no non-metal conducts electricity; graphite does.",
+        "Confusing malleability (sheets) with ductility (wires)."
+      ],
+      "memory_hook": "'Malleable = Mallet makes sheets; Ductile = Drawn into wires' — and 'Mercury is the Metal that Moves'.",
+      "advanced": "Diamond and graphite are both pure carbon, yet diamond is the hardest insulator and graphite a soft conductor. The difference is entirely structural: diamond bonds all four valence electrons in a rigid 3D lattice, while graphite leaves one electron free in flat sliding sheets."
+    },
+    {
+      "title": "Chemical Properties and the Reactivity Series",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Metals react with oxygen to form basic oxides and with acids to release hydrogen, while non-metals form acidic oxides; the reactivity series ranks metals by how vigorously they react.",
+      "real_life": "Sodium is stored under kerosene because it catches fire in air, whereas gold rings stay bright for generations — the two ends of the reactivity series.",
+      "detailed": {
+        "definition": "The reactivity series is a list of metals arranged in decreasing order of their chemical reactivity. A displacement reaction is one in which a more reactive metal displaces a less reactive metal from its salt solution.",
+        "key_idea": "Metal oxides are basic and turn red litmus blue when dissolved; non-metal oxides are acidic and turn blue litmus red. Some oxides, such as aluminium oxide and zinc oxide, are amphoteric — they react with both acids and bases.",
+        "working_principle": "A metal above another in the series will displace it from solution. Iron displaces copper from copper sulphate solution (blue solution turns green, red-brown copper deposits), but copper cannot displace iron.",
+        "applications": [
+          "Metals above hydrogen in the series release hydrogen gas with dilute acids; copper, silver and gold do not.",
+          "Iron nails placed in copper sulphate solution get coated with copper.",
+          "Thermite reaction: aluminium displaces iron from iron oxide, used to weld railway tracks."
+        ]
+      },
+      "points": [
+        "Reactivity series: K > Na > Ca > Mg > Al > Zn > Fe > Pb > H > Cu > Hg > Ag > Au.",
+        "Metal + oxygen → basic oxide; Non-metal + oxygen → acidic oxide.",
+        "Metal + dilute acid → salt + hydrogen gas (burns with a pop sound).",
+        "Copper, silver and gold do NOT react with dilute acids to give hydrogen.",
+        "Aluminium and zinc oxides are amphoteric — they behave as both acid and base."
+      ],
+      "mistakes": [
+        "Expecting copper to displace hydrogen from acid — copper lies below hydrogen in the series.",
+        "Saying all metal oxides are basic; aluminium and zinc oxides are amphoteric.",
+        "Reversing displacement — the MORE reactive metal displaces the less reactive one."
+      ],
+      "memory_hook": "'Please Send Cats, Monkeys And Zebras In Lead Cages Made Securely Gold-plated' — K, Na, Ca, Mg, Al, Zn, Fe, Pb, Cu, Hg, Ag, Au.",
+      "advanced": "The reactivity series is really an ordering by how readily a metal loses electrons, measured as standard electrode potential. This is why the same series predicts both displacement reactions and which metal will corrode first in a galvanic pair."
+    },
+    {
+      "title": "Corrosion, Extraction of Metals and Alloys",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Corrosion is the slow eating away of a metal by air and moisture; metals are extracted from ores by concentration, reduction and refining, and alloys are mixtures made to improve properties.",
+      "real_life": "A rusted iron gate, a green patina on an old brass idol, and stainless-steel kitchen utensils that never rust are corrosion and its cure side by side.",
+      "detailed": {
+        "definition": "Corrosion is the gradual destruction of a metal by chemical reaction with air, moisture or chemicals. An alloy is a homogeneous mixture of a metal with one or more metals or non-metals.",
+        "key_idea": "Rusting of iron needs BOTH air (oxygen) and moisture — remove either one and rusting stops. Rust is hydrated iron(III) oxide, Fe₂O₃·xH₂O, and it flakes off exposing fresh metal, so iron corrodes right through.",
+        "working_principle": "Metallurgy has three stages: concentration of the ore (removing gangue), reduction of the concentrated ore to free metal, and refining of the impure metal. Highly reactive metals are extracted by electrolysis, moderately reactive ones by reduction with carbon.",
+        "applications": [
+          "Prevention of rusting: painting, oiling, greasing, galvanisation (zinc coating), electroplating, alloying.",
+          "Alloys: steel (Fe + C), stainless steel (Fe + Cr + Ni), brass (Cu + Zn), bronze (Cu + Sn), solder (Pb + Sn).",
+          "Aluminium is extracted from bauxite by electrolysis because it is highly reactive."
+        ]
+      },
+      "points": [
+        "Rusting requires both oxygen and water; rust is Fe₂O₃·xH₂O, reddish-brown and flaky.",
+        "Galvanisation is coating iron with a layer of zinc, which protects even if scratched.",
+        "Ore = mineral from which a metal can be profitably extracted; gangue = unwanted impurities.",
+        "Alloys are harder, stronger and more corrosion-resistant than pure metals.",
+        "Amalgam is any alloy in which mercury is one component."
+      ],
+      "mistakes": [
+        "Thinking rusting happens with air alone — dry air causes no rusting.",
+        "Calling every mineral an ore; only those from which extraction is economical are ores.",
+        "Saying alloys are compounds — they are homogeneous mixtures, not compounds."
+      ],
+      "memory_hook": "'Rust needs Air + Water — remove one, rust is gone' — and 'BRASS = coppeR + zinc, BRONZE = coppeR + tiN'.",
+      "advanced": "Galvanisation protects by sacrificial corrosion: zinc is more reactive than iron, so even at a scratch the zinc corrodes preferentially and the exposed iron is left untouched. A tin coating, by contrast, accelerates rusting once scratched, because tin is less reactive than iron."
+    }
+  ]
+}

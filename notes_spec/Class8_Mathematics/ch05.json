@@ -1,0 +1,102 @@
+{
+  "number": 5,
+  "title": "Data Handling",
+  "prerequisites": [
+    "Basic idea of collecting and organizing numbers/data from earlier classes.",
+    "Comfort with simple bar graphs and reading tables.",
+    "Basic arithmetic — addition, division (for averages) — and fractions/percentages."
+  ],
+  "topics": [
+    {
+      "title": "Organising Data — Frequency Distribution & Grouped Data",
+      "quick_summary": "Raw, unorganized data is arranged into a frequency distribution table (ungrouped or grouped into class intervals) to reveal patterns that are otherwise hard to see.",
+      "detailed": {
+        "definition": "A frequency distribution table shows how often (frequency) each value or range of values (class interval) occurs in a data set; grouping is used when the data has too many distinct values to list individually.",
+        "key_idea": "In grouped data, values are organized into class intervals of equal width; the 'class size' is the width of each interval, and the 'class mark' (midpoint) represents the interval when needed for calculations.",
+        "working_principle": "To build a grouped frequency table: decide a suitable class size, list non-overlapping class intervals covering the full data range, then use tally marks to count how many data values fall into each interval.",
+        "applications": [
+          "Summarizing exam marks, heights, weights, or ages of a group of people into manageable categories.",
+          "Preparing raw survey or experimental data for graphical representation."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "A teacher recording marks of 40 students organizes them into groups like 0–10, 10–20, ..., 90–100 to quickly see how many students fall in each performance band.",
+      "points": [
+        "Class interval example: 10–20 means values from 10 up to (but conventionally not including) 20, in the exclusive method.",
+        "Class size = upper limit − lower limit of any interval (should be the same for all intervals in equal grouping).",
+        "Class mark (midpoint) = (upper limit + lower limit) ÷ 2.",
+        "The sum of all frequencies in the table must equal the total number of data values (observations)."
+      ],
+      "mistakes": [
+        "Using unequal class sizes without a clear reason, making the distribution hard to compare visually.",
+        "Miscounting a boundary value (e.g., exactly 20 marks) into the wrong interval — always check whether the interval is inclusive or exclusive.",
+        "Forgetting to check that total frequency matches the total number of observations."
+      ],
+      "memory_hook": "'Group first, then count' — class intervals turn a messy list of numbers into a readable table.",
+      "advanced": "The choice of class size involves a trade-off: too few, wide intervals hide important patterns (a phenomenon called 'over-smoothing'), while too many, narrow intervals bring back the original clutter — statisticians often use roughly 5 to 10 classes as a practical starting guideline."
+    },
+    {
+      "title": "Graphical Representation — Bar Graphs, Histograms & Pie Charts",
+      "quick_summary": "Data can be visually represented using bar graphs (for categories), histograms (for continuous class intervals with no gaps), and pie charts (for showing proportions of a whole).",
+      "detailed": {
+        "definition": "A bar graph uses separated bars to compare distinct categories; a histogram uses adjacent (touching) bars to represent frequency across continuous class intervals; a pie chart uses sectors of a circle to show each category's proportion of the total.",
+        "key_idea": "The key visual difference between a bar graph and a histogram is that histogram bars touch each other (since class intervals are continuous with no gaps), while bar graph bars are separated (since categories are distinct, unordered groups).",
+        "working_principle": "For a pie chart, each category's central angle is found using the proportion of that category compared to the whole, scaled to 360°: central angle = (category frequency ÷ total frequency) × 360°.",
+        "applications": [
+          "Comparing sales, population, or survey results across different categories using bar graphs.",
+          "Displaying class-interval-based data like age or marks distributions using histograms.",
+          "Showing budget allocation, market share, or time-use breakdowns as pie charts."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A weather report showing monthly rainfall as a bar graph, or a school budget shown as a pie chart with slices for salaries, maintenance, and supplies, are everyday examples.",
+      "points": [
+        "Bar graph: bars have gaps between them (categorical, unordered data).",
+        "Histogram: bars touch each other with no gaps (continuous class-interval data).",
+        "Pie chart central angle for a category = (category frequency / total frequency) × 360°.",
+        "All central angles in a pie chart must add up to exactly 360°."
+      ],
+      "mistakes": [
+        "Drawing a histogram with gaps between bars like a bar graph — this misrepresents continuous data.",
+        "Forgetting to convert frequency to central angle in degrees before drawing a pie chart sector.",
+        "Choosing a pie chart for data with too many categories, making the chart cluttered and hard to interpret."
+      ],
+      "memory_hook": "'Bars for categories, Histogram bars touch, Pie shows the whole' — pick the graph type to match the data type.",
+      "advanced": "Pie charts are visually appealing but statisticians often criticise them for making it hard to compare two similarly- sized slices accurately — bar graphs, where the human eye compares straight-line heights, are generally considered more accurate for precise category comparisons."
+    },
+    {
+      "title": "Probability — Chance & Random Experiments",
+      "quick_summary": "Probability measures how likely an event is to occur in a random experiment, expressed as a number between 0 (impossible) and 1 (certain).",
+      "detailed": {
+        "definition": "Probability of an event E, P(E), is defined as the number of outcomes favourable to E divided by the total number of equally likely outcomes in the random experiment (sample space).",
+        "key_idea": "All possible outcomes of a random experiment together form the sample space; probability assumes every outcome in the sample space is equally likely unless stated otherwise.",
+        "working_principle": "List all possible equally likely outcomes (sample space), count how many of them satisfy the event in question (favourable outcomes), and divide favourable outcomes by total outcomes to get the probability.",
+        "applications": [
+          "Games of chance (dice, cards, coins) and lottery/raffle calculations.",
+          "Estimating risk and likelihood in weather forecasting, insurance, and quality control (basic exposure at this level)."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Predicting the chance of getting heads when tossing a coin, or drawing a red ball from a bag of mixed coloured balls, are classic probability experiments.",
+      "points": [
+        "P(E) = (number of favourable outcomes) / (total number of possible outcomes).",
+        "Probability always lies between 0 and 1, inclusive: 0 ≤ P(E) ≤ 1.",
+        "P(impossible event) = 0; P(certain/sure event) = 1.",
+        "P(E) + P(not E) = 1, where 'not E' is the complementary event."
+      ],
+      "mistakes": [
+        "Listing outcomes that are not actually equally likely and applying the simple formula anyway.",
+        "Forgetting that probability can never be negative or greater than 1 — a calculation outside this range signals an error.",
+        "Confusing the total number of outcomes with the number of trials performed."
+      ],
+      "memory_hook": "'Favourable over Total, always between 0 and 1' — probability is just a careful fraction.",
+      "advanced": "This classical definition of probability (favourable/total) works well for simple, symmetric experiments like coins and dice, but real-world probability (e.g., chance of rain tomorrow) often relies instead on long-run relative frequency from repeated observations — a broader idea explored in higher-level statistics."
+    }
+  ]
+}

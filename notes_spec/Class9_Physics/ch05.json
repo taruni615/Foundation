@@ -1,0 +1,182 @@
+{
+  "number": 5,
+  "title": "Sound",
+  "prerequisites": [
+    "Idea of vibration and oscillation.",
+    "Understanding that matter exists as solid, liquid and gas.",
+    "Basic knowledge of speed, distance and time.",
+    "Familiarity with the words echo and reflection."
+  ],
+  "topics": [
+    {
+      "title": "Production and Propagation of Sound",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Sound is produced by vibrating bodies and travels as a longitudinal wave through a material medium; it cannot travel through vacuum.",
+      "real_life": "An electric bell ringing inside a bell jar falls silent as the air is pumped out, even though it can still be seen vibrating.",
+      "detailed": {
+        "definition": "Sound is a form of energy produced by vibrating bodies that travels through a material medium as a longitudinal wave and produces the sensation of hearing.",
+        "key_idea": "In a longitudinal wave the particles of the medium vibrate along the direction of propagation, creating alternate regions of compression (high pressure, particles close together) and rarefaction (low pressure, particles far apart).",
+        "working_principle": "The particles of the medium do not travel with the wave — they only oscillate about their mean positions. What travels is the disturbance and the energy, not the matter.",
+        "applications": [
+          "A vibrating tuning fork, a plucked string and a beating drum all produce sound.",
+          "Sound needs a medium — astronauts in space communicate by radio, not by shouting.",
+          "The larynx produces speech by vibrating vocal cords."
+        ]
+      },
+      "points": [
+        "Sound is a longitudinal wave; particles vibrate parallel to the direction of propagation.",
+        "Compressions are regions of high pressure and density; rarefactions are low pressure and density.",
+        "Sound requires a material medium and cannot travel through vacuum.",
+        "The particles of the medium do not move along with the wave.",
+        "Sound travels fastest in solids, slower in liquids and slowest in gases."
+      ],
+      "mistakes": [
+        "Calling sound a transverse wave — it is longitudinal in all media except in some solids.",
+        "Thinking air molecules travel from the source to the ear.",
+        "Assuming sound travels faster in gases because gases are lighter; it travels fastest in solids."
+      ],
+      "memory_hook": "'Compression = Crowded, Rarefaction = Rare' — and 'Solids Speed sound, Vacuum Silences it'.",
+      "advanced": "Sound travels faster in solids because the elastic modulus rises far more steeply than the density between gases and solids, and the speed depends on the ratio of the two. Steel carries sound about fifteen times faster than air."
+    },
+    {
+      "title": "Characteristics of a Sound Wave",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A sound wave is described by its frequency, wavelength, amplitude, time period and speed, and these determine the pitch, loudness and quality of the sound heard.",
+      "real_life": "A mosquito's whine is high-pitched because of its high frequency, while a lion's roar is loud because of its large amplitude — two different properties entirely.",
+      "detailed": {
+        "definition": "Frequency is the number of complete oscillations per second, measured in hertz. Wavelength is the distance between two consecutive compressions. Amplitude is the maximum displacement of a particle from its mean position. Time period is the time for one complete oscillation.",
+        "key_idea": "Pitch depends on frequency, loudness depends on amplitude, and timbre or quality distinguishes two sounds of the same pitch and loudness — which is why a violin and a flute playing the same note sound different.",
+        "working_principle": "The wave equation v = fλ links speed, frequency and wavelength. When sound passes from one medium to another its frequency stays the same, so a change of speed forces a change of wavelength.",
+        "applications": [
+          "Audible range for humans: 20 Hz to 20,000 Hz.",
+          "Infrasound is below 20 Hz (produced by elephants, earthquakes); ultrasound is above 20,000 Hz (bats, dolphins).",
+          "Loudness is measured in decibels; above about 80 dB sound becomes physically harmful."
+        ]
+      },
+      "points": [
+        "v = fλ; frequency f = 1/T where T is the time period.",
+        "Pitch ↔ frequency; Loudness ↔ amplitude; Quality ↔ waveform.",
+        "Audible range: 20 Hz to 20 kHz.",
+        "Frequency does NOT change when sound enters a new medium — speed and wavelength do.",
+        "Speed of sound in air at 20 °C is about 344 m/s and increases with temperature."
+      ],
+      "mistakes": [
+        "Saying a louder sound has a higher pitch — loudness and pitch are independent.",
+        "Assuming the frequency changes when sound passes from air into water.",
+        "Confusing amplitude (displacement) with wavelength (distance between compressions)."
+      ],
+      "memory_hook": "'Frequency = Fine or Fat note (pitch); Amplitude = Amount of loudness.'",
+      "advanced": "Because the speed of sound in air rises with the square root of absolute temperature, sound travels faster on a hot day. The resulting refraction is why distant sounds carry unusually far across a lake on a cold morning.",
+      "formulas": [
+        {
+          "name": "Wave Equation",
+          "difficulty": "Easy",
+          "formula": "v = f λ",
+          "variables": "v = speed of the wave in m/s, f = frequency in Hz, λ = wavelength in m.",
+          "when_to_use": "Whenever two of speed, frequency and wavelength are known and the third is required.",
+          "common_mistakes": "Mixing units — wavelength in cm with speed in m/s.",
+          "shortcut": "Frequency stays constant across media; use it to link the wavelengths in two media."
+        },
+        {
+          "name": "Frequency and Time Period",
+          "difficulty": "Easy",
+          "formula": "f = 1 / T",
+          "variables": "f = frequency in Hz, T = time period in seconds.",
+          "when_to_use": "To convert between the two descriptions of how fast a wave oscillates.",
+          "common_mistakes": "Treating them as directly rather than inversely proportional.",
+          "shortcut": "Higher frequency always means a shorter time period."
+        }
+      ]
+    },
+    {
+      "title": "Reflection of Sound — Echo and Reverberation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Sound obeys the laws of reflection; a distinctly repeated sound is an echo, while the persistence of sound due to repeated reflection in a hall is reverberation.",
+      "real_life": "Shouting into a well returns a clear echo, but the same shout in a large empty hall becomes a lingering blur — the difference is the time gap between reflections.",
+      "detailed": {
+        "definition": "An echo is a sound heard after reflection from a distant obstacle, distinct from the original sound. Reverberation is the persistence of sound in a large hall due to repeated reflections.",
+        "key_idea": "The sensation of a sound persists in the human brain for about 0.1 s. For an echo to be heard separately, the reflected sound must arrive at least 0.1 s after the original — which fixes a minimum distance of about 17.2 m.",
+        "working_principle": "In 0.1 s sound in air travels 344 × 0.1 = 34.4 m. Since this is the total to-and-fro path, the reflecting surface must be at least 17.2 m away.",
+        "applications": [
+          "Megaphones and horns use multiple reflections to send sound in one direction.",
+          "Stethoscopes carry sound to the doctor's ears by repeated reflection inside the tube.",
+          "Concert halls have curved ceilings and sound-absorbing curtains to control reverberation."
+        ]
+      },
+      "points": [
+        "Laws of reflection apply to sound: angle of incidence = angle of reflection, all in one plane.",
+        "Persistence of hearing is about 0.1 s.",
+        "Minimum distance for an echo in air is 17.2 m (at 344 m/s).",
+        "Reverberation is excessive in large halls and is reduced by absorbent materials.",
+        "Reflecting surfaces for sound must be large compared with the wavelength."
+      ],
+      "mistakes": [
+        "Using 34.4 m as the minimum echo distance, forgetting that sound travels both to and from the obstacle.",
+        "Confusing echo (distinct repetition) with reverberation (continuous persistence).",
+        "Forgetting to halve the total path when calculating the distance of a reflector."
+      ],
+      "memory_hook": "'Echo needs 17.2 m — half of 34.4, because sound goes there AND back.'",
+      "advanced": "Sabine's formula relates reverberation time to a hall's volume and total absorption, and it made acoustics an engineering discipline. Boston Symphony Hall, designed with it in 1900, is still ranked among the finest concert halls in the world.",
+      "formulas": [
+        {
+          "name": "Distance of a Reflecting Surface",
+          "difficulty": "Medium",
+          "formula": "d = v × t / 2",
+          "variables": "d = distance of the obstacle, v = speed of sound, t = total time between producing the sound and hearing the echo.",
+          "when_to_use": "For echo, sonar and depth-sounding problems.",
+          "common_mistakes": "Omitting the division by 2, which doubles the answer.",
+          "shortcut": "The sound covers the distance twice, so always halve."
+        }
+      ]
+    },
+    {
+      "title": "Ultrasound and Its Applications",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Ultrasound is sound above 20,000 Hz; its short wavelength lets it travel in narrow beams and be reflected from small objects, which makes it valuable in medicine and industry.",
+      "real_life": "A prenatal scan, a ship's depth sounder and a bat navigating a dark cave all rely on exactly the same physics.",
+      "detailed": {
+        "definition": "Ultrasound is sound of frequency higher than 20 kHz, beyond the upper limit of human hearing. SONAR stands for Sound Navigation And Ranging and uses ultrasound to find the distance and direction of underwater objects.",
+        "key_idea": "High frequency means short wavelength, and a wave reflects well only from objects larger than its wavelength. Ultrasound's short wavelength is therefore what lets it detect small flaws and image small structures.",
+        "working_principle": "In SONAR a transmitter emits ultrasonic pulses that reflect from the sea bed or an object; the time delay gives the distance as d = vt/2. Echolocation in bats and dolphins works by the same principle.",
+        "applications": [
+          "Medical: imaging the foetus, kidneys and liver; breaking kidney stones into fine grains.",
+          "Industrial: detecting cracks in metal castings; cleaning spiral tubes and delicate parts.",
+          "Navigation: measuring sea depth, locating shoals of fish, submarines and shipwrecks."
+        ]
+      },
+      "points": [
+        "Ultrasound: frequency above 20,000 Hz; Infrasound: below 20 Hz.",
+        "SONAR uses the formula d = vt/2, the same as for echoes.",
+        "Speed of sound in sea water is about 1500 m/s, far higher than in air.",
+        "Bats, dolphins and porpoises navigate by echolocation.",
+        "Ultrasound is preferred for medical imaging because it is non-ionising and safe."
+      ],
+      "mistakes": [
+        "Confusing ultrasound (above hearing range) with infrasound (below hearing range).",
+        "Using the speed of sound in air for a SONAR problem set in water.",
+        "Forgetting to halve the time in echo-ranging calculations."
+      ],
+      "memory_hook": "'ULTRA = Up above 20 kHz; INFRA = In-ferior, below 20 Hz.'",
+      "advanced": "Resolution in ultrasound imaging is limited to about one wavelength, so higher frequencies give sharper images but penetrate less deeply. Sonographers trade resolution against depth by choosing the probe frequency — a fundamental limit, not a technological one.",
+      "formulas": [
+        {
+          "name": "SONAR Range Equation",
+          "difficulty": "Medium",
+          "formula": "d = v × t / 2",
+          "variables": "d = depth or distance of object, v = speed of sound in the medium, t = total time for the pulse to return.",
+          "when_to_use": "For sea-depth measurement, submarine detection and any echo-ranging problem.",
+          "common_mistakes": "Using 344 m/s in water instead of about 1500 m/s.",
+          "shortcut": "Same formula as an echo — always divide by 2 for the return trip."
+        }
+      ]
+    }
+  ]
+}

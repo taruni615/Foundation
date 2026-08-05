@@ -1,0 +1,128 @@
+{
+  "number": 7,
+  "title": "Electrochemistry",
+  "prerequisites": [
+    "Understanding of oxidation and reduction as electron transfer.",
+    "Knowledge of ionic compounds and how they conduct.",
+    "Familiarity with the reactivity series.",
+    "Basic idea of electric current and a circuit."
+  ],
+  "topics": [
+    {
+      "title": "Electrolytes and Electrolysis",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Electrolytes conduct electricity in molten or aqueous state because they contain free ions, and electrolysis is the decomposition of an electrolyte by passing current through it.",
+      "real_life": "Electroplating a steel spoon with silver, and extracting aluminium from bauxite, are the same process at two very different scales.",
+      "detailed": {
+        "definition": "An electrolyte is a substance that conducts electricity in molten or aqueous state and is decomposed by it. Electrolysis is the chemical decomposition of an electrolyte by the passage of an electric current.",
+        "key_idea": "Cations move to the cathode and are reduced by gaining electrons; anions move to the anode and are oxidised by losing electrons. Reduction always happens at the cathode, whatever the type of cell.",
+        "working_principle": "Where more than one ion could be discharged, the one lower in the electrochemical series is discharged preferentially. In aqueous solutions, water may be discharged instead of a very reactive metal ion.",
+        "applications": [
+          "Electroplating: the article is the cathode and the plating metal is the anode.",
+          "Electrolytic refining of copper: impure copper anode, pure copper cathode.",
+          "Extraction of sodium, aluminium, magnesium and calcium from their molten ores."
+        ]
+      },
+      "points": [
+        "Strong electrolytes ionise almost completely (NaCl, HCl, NaOH); weak ones only partly (CH₃COOH, NH₄OH).",
+        "Cathode is negative in electrolysis and attracts cations; anode is positive and attracts anions.",
+        "Reduction occurs at the cathode; oxidation at the anode — in every cell.",
+        "Non-electrolytes such as sugar and urea do not conduct even in solution.",
+        "Electrolysis of brine gives NaOH, Cl₂ and H₂ (the chlor-alkali process)."
+      ],
+      "mistakes": [
+        "Saying the cathode is positive; in electrolysis it is the negative electrode.",
+        "Confusing strong electrolyte (fully ionised) with concentrated solution (large amount dissolved).",
+        "Forgetting that reduction is always at the cathode, regardless of electrode sign."
+      ],
+      "memory_hook": "'CAT-ions go to the CAThode; AN-ions go to the ANode' — and 'Red Cat, An Ox': Reduction at Cathode, Oxidation at Anode.",
+      "advanced": "In electrolysis of aqueous sodium chloride, hydrogen is discharged rather than sodium because water is more easily reduced. Product prediction therefore depends on the electrochemical series, not merely on which ions are present."
+    },
+    {
+      "title": "Electrochemical Cells and Cell Reactions",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "An electrochemical cell converts chemical energy into electrical energy through a spontaneous redox reaction, with oxidation at the anode and reduction at the cathode.",
+      "real_life": "Every torch cell, mobile phone battery and car battery is a packaged redox reaction whose electrons have been made to travel through a wire.",
+      "detailed": {
+        "definition": "A galvanic or voltaic cell converts chemical energy into electrical energy using a spontaneous redox reaction. An electrolytic cell does the reverse, using electrical energy to drive a non-spontaneous reaction.",
+        "key_idea": "The sign of the electrodes reverses between the two cell types, but the chemistry does not: oxidation is always at the anode and reduction always at the cathode. Memorising the chemistry rather than the signs avoids all confusion.",
+        "working_principle": "In a Daniell cell, zinc is oxidised at the anode and copper ions are reduced at the cathode. A salt bridge completes the circuit and maintains electrical neutrality in both half-cells.",
+        "applications": [
+          "Dry cell (Leclanché): zinc anode, graphite cathode with MnO₂ — used in torches and clocks.",
+          "Lead storage battery: rechargeable, used in cars.",
+          "Fuel cells combine hydrogen and oxygen to give electricity with water as the only product."
+        ]
+      },
+      "points": [
+        "Galvanic cell: chemical → electrical energy; anode negative, cathode positive.",
+        "Electrolytic cell: electrical → chemical energy; anode positive, cathode negative.",
+        "Oxidation at anode and reduction at cathode in BOTH types of cell.",
+        "The salt bridge maintains electrical neutrality and completes the circuit.",
+        "Electrons flow from anode to cathode through the external wire."
+      ],
+      "mistakes": [
+        "Assuming the anode is always positive; it is negative in a galvanic cell.",
+        "Saying the salt bridge carries electrons; it carries ions.",
+        "Reversing the direction of electron flow in the external circuit."
+      ],
+      "memory_hook": "'An Ox and a Red Cat' — ANode OXidation, REDuction CAThode, in every cell ever built.",
+      "advanced": "A fuel cell is not a battery: reactants are supplied continuously rather than stored, so it never runs down. Hydrogen fuel cells achieve efficiencies well above heat engines because they are not limited by the second law's temperature bound."
+    },
+    {
+      "title": "Faraday's Laws and Applications",
+      "time": "14 mins",
+      "difficulty": "Hard",
+      "importance": 4,
+      "quick_summary": "Faraday's laws relate the mass deposited during electrolysis to the quantity of charge passed and to the equivalent mass of the substance.",
+      "real_life": "The thickness of gold on a plated ornament is controlled precisely by choosing the current and the time — Faraday's first law used commercially.",
+      "detailed": {
+        "definition": "Faraday's first law states that the mass of a substance deposited at an electrode is directly proportional to the quantity of electricity passed. The second law states that when the same quantity of electricity passes through different electrolytes, the masses deposited are proportional to their equivalent masses.",
+        "key_idea": "One faraday, 96500 coulombs, is the charge on one mole of electrons. It deposits exactly one gram-equivalent of any substance, which is what makes the second law work across different electrolytes.",
+        "working_principle": "Charge Q = I × t, so mass deposited m = ZIt, where Z is the electrochemical equivalent. Doubling either the current or the time doubles the mass deposited.",
+        "applications": [
+          "Calculating the time needed to deposit a required thickness in electroplating.",
+          "Determining the purity of a metal by electrolytic refining.",
+          "Estimating the charge on an electron from electrolysis measurements."
+        ]
+      },
+      "points": [
+        "1 faraday = 96500 C = charge on one mole of electrons.",
+        "Q = I × t, where I is current in amperes and t is time in seconds.",
+        "m = Z I t, where Z is the electrochemical equivalent in g/C.",
+        "Equivalent mass = atomic mass / valency.",
+        "Equal charge deposits equal numbers of gram-equivalents of different substances."
+      ],
+      "mistakes": [
+        "Using time in minutes instead of seconds when calculating charge.",
+        "Using atomic mass instead of equivalent mass in the second law.",
+        "Forgetting to divide by valency when finding the equivalent mass."
+      ],
+      "memory_hook": "'Charge = Current × Time; Mass follows Charge' — and one faraday, one gram-equivalent.",
+      "advanced": "Faraday's laws were among the first quantitative evidence that electricity itself is particulate. The fixed charge per mole implied a fundamental unit of charge decades before the electron was actually discovered.",
+      "formulas": [
+        {
+          "name": "Faraday's First Law",
+          "difficulty": "Medium",
+          "formula": "m = Z I t",
+          "variables": "m = mass deposited in g, Z = electrochemical equivalent in g/C, I = current in A, t = time in s.",
+          "when_to_use": "To find the mass deposited or the time needed in any electroplating or refining problem.",
+          "common_mistakes": "Using time in minutes rather than seconds.",
+          "shortcut": "Z = equivalent mass / 96500."
+        },
+        {
+          "name": "Quantity of Electricity",
+          "difficulty": "Easy",
+          "formula": "Q = I × t",
+          "variables": "Q = charge in coulombs, I = current in amperes, t = time in seconds.",
+          "when_to_use": "As the first step in every Faraday's law calculation.",
+          "common_mistakes": "Mixing units of time.",
+          "shortcut": "Divide Q by 96500 to get the number of faradays passed."
+        }
+      ]
+    }
+  ]
+}

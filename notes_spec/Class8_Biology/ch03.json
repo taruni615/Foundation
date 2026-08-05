@@ -1,0 +1,108 @@
+{
+  "number": 3,
+  "title": "Conservation of Plants and Animals",
+  "prerequisites": [
+    "Idea that plants and animals depend on one another for food.",
+    "Basic understanding of a forest as a habitat.",
+    "Awareness that some animals such as the tiger are rare.",
+    "Knowledge that trees are cut for wood and paper."
+  ],
+  "topics": [
+    {
+      "title": "Biodiversity and Deforestation",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Biodiversity is the variety of living organisms in an area, and deforestation — the clearing of forests for other uses — is the biggest threat to it.",
+      "real_life": "Landslides in hilly regions after the hill slopes are cleared of trees, and the dust storms over deforested plains, are deforestation showing its effects within a few years.",
+      "detailed": {
+        "definition": "Biodiversity is the variety of plants, animals and microorganisms found in an area, together with the ecosystems they form. Deforestation is the clearing of forests and using that land for other purposes.",
+        "key_idea": "Forests hold the soil with their roots, recycle water through transpiration, absorb carbon dioxide and release oxygen. Removing them therefore causes soil erosion, floods, droughts, global warming and loss of habitat all at once.",
+        "working_principle": "Natural causes of deforestation include forest fires and severe droughts. Human causes — the larger share — are cutting trees for agriculture, houses, factories, roads, furniture and firewood.",
+        "applications": [
+          "Reforestation — replanting the same species that were cut — restores a degraded forest.",
+          "The Van Mahotsav programme plants trees across India every July.",
+          "Recycling paper: recycling one tonne of paper saves about 17 mature trees."
+        ]
+      },
+      "points": [
+        "Consequences of deforestation: soil erosion, floods, droughts, desertification, global warming.",
+        "Fewer trees → less CO₂ absorbed → more greenhouse effect → rise in earth's temperature.",
+        "Deforestation lowers the water-holding capacity of soil, disturbing the water cycle.",
+        "The top layer of soil is exposed and gradually converts fertile land into desert.",
+        "Paper can be recycled about 5–7 times; saving paper saves trees."
+      ],
+      "mistakes": [
+        "Thinking deforestation only means fewer trees — its main damage is soil erosion and climate change.",
+        "Confusing reforestation (replanting where forest was cut) with afforestation (planting on new land).",
+        "Assuming forest fires are always man-made; lightning and extreme heat also start them."
+      ],
+      "memory_hook": "'No Trees → No Roots → No Soil → No Rain' — the four dominoes of deforestation.",
+      "advanced": "Forests are carbon sinks: a mature tropical forest locks up several hundred tonnes of carbon per hectare. When burnt, that carbon returns to the atmosphere as CO₂, which is why deforestation accounts for roughly a tenth of global greenhouse-gas emissions."
+    },
+    {
+      "title": "Wildlife Conservation and Protected Areas",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Wildlife is protected in wildlife sanctuaries, national parks and biosphere reserves, which conserve species in their own natural habitat.",
+      "real_life": "Kaziranga National Park in Assam saved the one-horned rhinoceros, and Project Tiger raised India's tiger numbers from a few hundred to over three thousand.",
+      "detailed": {
+        "definition": "A wildlife sanctuary is an area where animals are protected from poaching and disturbance; a national park is a larger reserve preserving the whole ecosystem including flora, fauna and landscape; a biosphere reserve is a very large protected area that conserves biodiversity along with the culture of the people living there.",
+        "key_idea": "Conservation in the natural habitat (in-situ) preserves not just the animal but the entire web of relationships it depends on. Zoos and seed banks are ex-situ conservation and are only a supporting measure.",
+        "working_principle": "Endangered species are identified and listed in the Red Data Book maintained by the IUCN. Their habitat is then protected by law, poaching is banned, and breeding programmes are run where numbers are critically low.",
+        "applications": [
+          "Pachmarhi Biosphere Reserve contains Satpura National Park and Bori and Pachmarhi wildlife sanctuaries.",
+          "Project Tiger was launched in 1973 to protect the tiger, India's national animal.",
+          "Migratory birds such as the Siberian crane travel thousands of kilometres to Indian wetlands each winter."
+        ]
+      },
+      "points": [
+        "Endemic species: found only in a particular area, e.g. sal and wild mango in Pachmarhi.",
+        "Endangered species: numbers so low that they are at risk of extinction, e.g. tiger, rhino, great Indian bustard.",
+        "Extinct species: no longer found anywhere on earth, e.g. dodo, Indian cheetah.",
+        "The Red Data Book records all endangered plants and animals.",
+        "A biosphere reserve is the largest protected area and may contain national parks and sanctuaries within it."
+      ],
+      "mistakes": [
+        "Swapping sanctuary and national park — a sanctuary protects animals, a national park protects the whole ecosystem.",
+        "Confusing 'endemic' (found only there) with 'endangered' (at risk of extinction).",
+        "Thinking migration is aimless wandering; it is a seasonal, purposeful journey for breeding or climate."
+      ],
+      "memory_hook": "'Sanctuary Saves animals, National park saves Nature, Biosphere is the Biggest' — S < N < B in size and scope.",
+      "advanced": "Habitat fragmentation can be as damaging as habitat loss. When a road or canal cuts a forest into pieces, small isolated populations lose genetic diversity and become inbred, so wildlife corridors are now built to reconnect fragments."
+    },
+    {
+      "title": "Recycling of Paper and Sustainable Practices",
+      "time": "10 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "quick_summary": "Reducing, reusing and recycling paper directly saves trees, energy and water, and is the simplest conservation step a student can take.",
+      "real_life": "The blank backs of used answer sheets, old newspapers sold to the kabadiwala, and recycled-paper notebooks all keep trees standing.",
+      "detailed": {
+        "definition": "Recycling of paper is the process of reprocessing used paper into pulp and making fresh paper from it, instead of using fresh wood pulp.",
+        "key_idea": "Paper is made from wood pulp, so every tonne of paper saved is roughly seventeen trees left standing, along with large savings in water and electricity.",
+        "working_principle": "Used paper is collected, soaked and pulped, ink is removed, and the clean pulp is spread, pressed and dried into new sheets. Because fibres shorten each time, paper can be recycled about five to seven times.",
+        "applications": [
+          "Using both sides of a sheet before discarding it.",
+          "Collecting old newspapers and notebooks for recycling instead of burning them.",
+          "Buying recycled-paper stationery and avoiding unnecessary printing."
+        ]
+      },
+      "points": [
+        "1 tonne of recycled paper saves about 17 mature trees.",
+        "Paper can be recycled about 5–7 times before the fibres become too short.",
+        "The three R's are Reduce, Reuse and Recycle — in that order of priority.",
+        "Burning paper adds carbon dioxide and pollutants to the air; recycling avoids this.",
+        "Van Mahotsav is a tree-planting festival celebrated across India."
+      ],
+      "mistakes": [
+        "Putting 'Recycle' first among the three R's — reducing use comes first.",
+        "Thinking all paper is recyclable; waxed, laminated and heavily soiled paper is not.",
+        "Assuming planting saplings immediately replaces a felled tree — a mature tree takes decades."
+      ],
+      "memory_hook": "'Reduce, Reuse, Recycle — in that order, R1 before R3.'",
+      "advanced": "Every recycled sheet also avoids the methane released when paper decomposes in a landfill. Because methane traps roughly 25 times more heat than CO₂, paper recycling has a climate benefit far larger than the trees alone would suggest."
+    }
+  ]
+}

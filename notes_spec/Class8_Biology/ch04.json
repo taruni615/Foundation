@@ -1,0 +1,140 @@
+{
+  "number": 4,
+  "title": "Cell — Structure and Functions",
+  "prerequisites": [
+    "Idea that all living things are built from smaller units.",
+    "Familiarity with a compound microscope and how to focus it.",
+    "Basic difference between plants and animals.",
+    "Understanding that living things grow, respire and reproduce."
+  ],
+  "topics": [
+    {
+      "title": "Discovery of the Cell and Cell Theory",
+      "time": "11 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Robert Hooke first saw dead cork cells in 1665, and the cell theory that followed states that all living organisms are made of cells and that every cell comes from a pre-existing cell.",
+      "real_life": "A slice of onion peel under a school microscope shows neat brick-like cells — the same view that began the study of biology as we know it.",
+      "detailed": {
+        "definition": "A cell is the basic structural and functional unit of life — the smallest unit that can carry out all the activities of living.",
+        "key_idea": "Cell theory has three parts: all organisms are composed of cells; the cell is the basic unit of structure and function in living things; and all cells arise from pre-existing cells (Rudolf Virchow).",
+        "working_principle": "Hooke examined a thin slice of cork under his own microscope and saw empty compartments which reminded him of the small rooms in a monastery — 'cellulae' — and named them cells. Leeuwenhoek later saw the first living cells, and Purkinje named the fluid inside the cell 'protoplasm'.",
+        "applications": [
+          "Robert Brown discovered the nucleus in 1831.",
+          "Schleiden and Schwann proposed the cell theory in 1838–39.",
+          "The electron microscope revealed the fine structure of organelles in the twentieth century."
+        ]
+      },
+      "points": [
+        "Robert Hooke (1665) discovered cells in a thin slice of cork — they were dead cells.",
+        "Leeuwenhoek was the first to observe live cells (free-living cells in pond water).",
+        "Cell theory: Schleiden (plants) + Schwann (animals); Virchow added 'omnis cellula e cellula'.",
+        "Protoplasm — the living substance of the cell — was named by Purkinje.",
+        "Viruses are an exception to cell theory because they have no cellular structure."
+      ],
+      "mistakes": [
+        "Saying Hooke discovered living cells — cork cells were dead and only their walls remained.",
+        "Attributing the whole of cell theory to Schleiden and Schwann; Virchow contributed the third part.",
+        "Confusing protoplasm (whole living content) with cytoplasm (everything except the nucleus)."
+      ],
+      "memory_hook": "'Hooke Hooked the first cell'; and for cell theory, 'Schleiden the plant man, Schwann the animal man, Virchow the ancestor man'.",
+      "advanced": "Viruses, and the acellular structures of some fungi called coenocytes, are exceptions to strict cell theory. Modern biology therefore states cell theory as applying to all cellular life, with viruses classified separately as non-cellular infectious agents."
+    },
+    {
+      "title": "Variety in Cell Number, Shape and Size",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Organisms may be unicellular or multicellular, and cells vary enormously in shape and size — from a bacterium a few micrometres across to an ostrich egg, the largest single cell.",
+      "real_life": "A single Amoeba does everything a whole human body does, while a human being needs trillions of specialised cells to do the same jobs.",
+      "detailed": {
+        "definition": "Unicellular organisms consist of a single cell that performs all life functions; multicellular organisms are made of many cells, each group specialised for a particular function.",
+        "key_idea": "Cell size is not related to the size of the organism — an elephant and a mouse have cells of similar size; the elephant simply has more of them. Cell shape, however, is closely related to the cell's function.",
+        "working_principle": "A cell's shape follows its job: a nerve cell is long and branched to carry messages over distances, a red blood cell is biconcave to maximise surface area for oxygen, a muscle cell is spindle-shaped to contract, and Amoeba has no fixed shape so that it can form pseudopodia.",
+        "applications": [
+          "Smallest cell: Mycoplasma (PPLO), about 0.1 micrometre.",
+          "Largest cell: the ostrich egg; the longest cell: the nerve cell.",
+          "Human red blood cell is about 7 micrometres and has no nucleus when mature."
+        ]
+      },
+      "points": [
+        "Unicellular: Amoeba, Paramecium, bacteria, yeast, Chlamydomonas.",
+        "Multicellular: all plants and animals, including humans.",
+        "Cell size varies from 0.1 µm (Mycoplasma) to the ostrich egg, the largest cell.",
+        "Cell shape depends on function — nerve, muscle, blood and epithelial cells all differ.",
+        "The number of cells, not their size, determines the size of an organism."
+      ],
+      "mistakes": [
+        "Believing bigger animals have bigger cells — they have more cells, not larger ones.",
+        "Calling the ostrich egg the largest 'organism cell' without noting that the yolk is the single cell.",
+        "Saying Amoeba has a definite shape; it constantly changes shape using pseudopodia."
+      ],
+      "memory_hook": "'Shape Suits the Service' — a cell's shape always matches the service it performs.",
+      "advanced": "Cell size is limited by the surface-area-to-volume ratio. As a cell grows, volume increases as the cube of the radius but surface area only as the square, so beyond a certain size the membrane cannot exchange enough material — which is why organisms grow by adding cells rather than enlarging them."
+    },
+    {
+      "title": "Cell Structure — Membrane, Cytoplasm and Nucleus",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Every cell has three basic parts: a cell membrane that controls what enters and leaves, cytoplasm where the organelles sit, and a nucleus that controls all cell activity.",
+      "real_life": "Think of a cell as a factory — the membrane is the security gate, the cytoplasm is the shop floor with machines, and the nucleus is the manager's office holding the instruction manuals.",
+      "detailed": {
+        "definition": "The cell membrane (plasma membrane) is a thin, selectively permeable covering; cytoplasm is the jelly-like substance between membrane and nucleus containing the organelles; the nucleus is the dense spherical body that controls the cell.",
+        "key_idea": "The membrane is selectively permeable — it allows only certain substances to pass, which is how a cell keeps its internal environment different from the outside. The nucleus contains chromosomes made of DNA, which carry the instructions for every activity and for inheritance.",
+        "working_principle": "The nucleus is bounded by a nuclear membrane with pores, and contains nucleoplasm, a nucleolus and chromatin. During cell division, chromatin condenses into chromosomes. Organelles suspended in the cytoplasm — mitochondria, ribosomes, endoplasmic reticulum, Golgi bodies, lysosomes, plastids — each carry out a specific task.",
+        "applications": [
+          "Mitochondria are the 'powerhouses' — they release energy as ATP during respiration.",
+          "Chloroplasts (in plant cells only) trap sunlight for photosynthesis.",
+          "Lysosomes are the 'suicide bags' — they digest worn-out parts and foreign material."
+        ]
+      },
+      "points": [
+        "The cell membrane is present in ALL cells, plant and animal, and is selectively permeable.",
+        "The nucleus controls all activities and carries hereditary information in the chromosomes.",
+        "A cell without a well-defined nucleus is prokaryotic (bacteria, blue-green algae); with a nucleus it is eukaryotic.",
+        "Mature human red blood cells have no nucleus; sieve tube cells of plants also lack one.",
+        "Cytoplasm + nucleus together make up the protoplasm."
+      ],
+      "mistakes": [
+        "Saying only plant cells have a cell membrane — every cell has one; only plant cells have a cell WALL in addition.",
+        "Confusing the nucleolus (a small body inside the nucleus) with the nucleus itself.",
+        "Thinking prokaryotes have no genetic material — they have DNA, just not enclosed in a nuclear membrane."
+      ],
+      "memory_hook": "'Membrane = Gate, Cytoplasm = Factory floor, Nucleus = Manager' — and 'Mito = Motor, Lyso = Litter-bin, Chloro = Cook'.",
+      "advanced": "Mitochondria and chloroplasts have their own circular DNA and ribosomes resembling those of bacteria. The endosymbiotic theory explains this: they were once free-living bacteria engulfed by an ancestral cell, which is also why mitochondrial DNA is inherited only from the mother."
+    },
+    {
+      "title": "Comparison of Plant and Animal Cells",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Plant cells differ from animal cells in having a rigid cell wall, plastids and one large central vacuole, while animal cells have centrioles and many small vacuoles.",
+      "real_life": "A wilted plant becomes crisp again after watering because water refills its large vacuoles — an animal cell, having no such vacuole, could never do this.",
+      "detailed": {
+        "definition": "A plant cell is a eukaryotic cell bounded by a cellulose cell wall outside its membrane; an animal cell is a eukaryotic cell bounded only by a plasma membrane.",
+        "key_idea": "Three features are present in plant cells and absent in animal cells: cell wall, plastids and a large central vacuole. One feature — the centriole — is present in animal cells and absent in most plant cells.",
+        "working_principle": "The cellulose cell wall gives the plant cell a fixed rectangular shape and protects it from bursting when it takes in water. The large vacuole stores cell sap and provides turgidity, keeping non-woody plants upright.",
+        "applications": [
+          "Chloroplasts (green plastids) make the leaf green and carry out photosynthesis.",
+          "Chromoplasts give colour to flowers and fruits; leucoplasts store starch, oil and protein.",
+          "The rigidity of the cell wall is the reason wood and cotton fibre are strong."
+        ]
+      },
+      "points": [
+        "Present only in plant cells: cell wall, plastids, large central vacuole.",
+        "Present only in animal cells: centriole (and generally many small vacuoles).",
+        "Common to both: cell membrane, cytoplasm, nucleus, mitochondria, ribosomes, ER, Golgi bodies.",
+        "The plant cell wall is made of cellulose; the fungal cell wall is made of chitin.",
+        "Plant cells are usually larger and have a fixed, regular shape."
+      ],
+      "mistakes": [
+        "Saying animal cells have no vacuoles — they have small, temporary ones; only the large central vacuole is plant-specific.",
+        "Listing the cell wall as a feature of all cells — bacteria and fungi have walls too, but of different materials, and animal cells have none.",
+        "Writing that plant cells have no mitochondria because they photosynthesise; they respire and need mitochondria too."
+      ],
+      "memory_hook": "'Plants have a WALL, PLastids and a big Pool (vacuole) — animals have none of the three.'",
+      "advanced": "Turgor pressure — the outward push of the vacuole against the cell wall — is what holds a herbaceous plant upright without any skeleton. Plasmolysis, the shrinking of protoplasm away from the wall in a strong salt solution, is the reverse of this and is how salt kills weeds."
+    }
+  ]
+}

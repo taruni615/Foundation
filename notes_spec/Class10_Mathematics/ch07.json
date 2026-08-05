@@ -1,0 +1,87 @@
+{
+  "number": 7,
+  "title": "Coordinate Geometry",
+  "prerequisites": [
+    "Plotting points in the Cartesian plane.",
+    "Pythagoras theorem.",
+    "Ratio and proportion.",
+    "Properties of triangles and quadrilaterals."
+  ],
+  "topics": [
+    {
+      "title": "Distance Formula and Its Applications",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The distance between two points is √[(x₂−x₁)² + (y₂−y₁)²], which lets geometric properties be verified by calculation rather than by drawing.",
+      "real_life": "A delivery app computes straight-line distance between two map coordinates with exactly this formula before choosing a route.",
+      "detailed": {
+        "definition": "The distance between points A(x₁, y₁) and B(x₂, y₂) is AB = √[(x₂ − x₁)² + (y₂ − y₁)²]. It is the Pythagoras theorem applied to the horizontal and vertical differences.",
+        "key_idea": "Because the differences are squared, the order of subtraction does not matter. Distance is therefore always positive, whichever point is taken first.",
+        "working_principle": "To classify a figure, compute all sides and both diagonals. Equal sides with equal diagonals give a square; equal sides with unequal diagonals give a rhombus.",
+        "applications": [
+          "Collinearity: three points are collinear if the sum of two distances equals the third.",
+          "Circumcentre: the point equidistant from all three vertices of a triangle.",
+          "Type of triangle: equilateral, isosceles, scalene or right-angled, from the side lengths."
+        ]
+      },
+      "points": [
+        "Distance = √[(x₂ − x₁)² + (y₂ − y₁)²].",
+        "Distance from the origin to (x, y) = √(x² + y²).",
+        "Equal sides and equal diagonals → square; equal sides, unequal diagonals → rhombus.",
+        "Equal diagonals with unequal adjacent sides → rectangle.",
+        "Three points are collinear if AB + BC = AC for some ordering."
+      ],
+      "mistakes": [
+        "Subtracting the coordinates in mixed order, e.g. (x₂ − x₁) with (y₁ − y₂).",
+        "Forgetting to square the differences before adding.",
+        "Concluding a figure is a square from equal sides alone, without checking the diagonals."
+      ],
+      "memory_hook": "'Difference of x, difference of y, square, add, root' — Pythagoras in coordinates.",
+      "advanced": "The formula extends unchanged to three dimensions by adding (z₂ − z₁)², and to n dimensions by adding one term per coordinate. It is the Euclidean metric that defines distance in any dimension.",
+      "formulas": [
+        {
+          "name": "Distance Formula",
+          "difficulty": "Easy",
+          "formula": "d = √[(x₂ − x₁)² + (y₂ − y₁)²]",
+          "variables": "(x₁, y₁) and (x₂, y₂) = the two points.",
+          "when_to_use": "For lengths of sides and diagonals, and for classifying figures.",
+          "common_mistakes": "Mixing the order of subtraction between the x and y terms.",
+          "shortcut": "The order does not matter because the differences are squared."
+        }
+      ]
+    },
+    {
+      "title": "Section Formula and Area of a Triangle",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The section formula locates the point dividing a segment in a given ratio, and the area of a triangle can be found from the coordinates of its vertices alone.",
+      "real_life": "Placing a milestone exactly two-fifths of the way along a road between two towns is a section formula calculation.",
+      "detailed": {
+        "definition": "The point P dividing the join of A(x₁,y₁) and B(x₂,y₂) internally in the ratio m₁ : m₂ has coordinates [(m₁x₂ + m₂x₁)/(m₁+m₂), (m₁y₂ + m₂y₁)/(m₁+m₂)].",
+        "key_idea": "The cross-pairing in the section formula is what students most often get wrong: m₁ multiplies x₂, not x₁. Checking the formula against the mid-point case (m₁ = m₂) catches the error instantly.",
+        "working_principle": "The area formula gives zero exactly when the three points are collinear, which makes it the standard test for collinearity.",
+        "applications": [
+          "Mid-point formula: [(x₁+x₂)/2, (y₁+y₂)/2].",
+          "Centroid of a triangle: [(x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3].",
+          "Area zero → the three points are collinear."
+        ]
+      },
+      "points": [
+        "Section formula: [(m₁x₂ + m₂x₁)/(m₁+m₂), (m₁y₂ + m₂y₁)/(m₁+m₂)].",
+        "Mid-point is the special case m₁ : m₂ = 1 : 1.",
+        "Centroid divides each median in the ratio 2 : 1 from the vertex.",
+        "Area = ½|x₁(y₂−y₃) + x₂(y₃−y₁) + x₃(y₁−y₂)|.",
+        "Area = 0 is the test for collinearity."
+      ],
+      "mistakes": [
+        "Pairing m₁ with x₁ instead of x₂ in the section formula.",
+        "Omitting the modulus and reporting a negative area.",
+        "Reversing the ratio when the question specifies the order of the points."
+      ],
+      "memory_hook": "'Cross the ratio over: m₁ goes with x₂' — and check it reduces to the mid-point when m₁ = m₂.",
+      "advanced": "The area formula is the determinant of a 3×3 matrix of the coordinates, halved. Determinants therefore measure area in two dimensions and volume in three — one idea underlying both."
+    }
+  ]
+}

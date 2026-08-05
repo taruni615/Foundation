@@ -1,0 +1,108 @@
+{
+  "number": 4,
+  "title": "Combustion and Flame",
+  "prerequisites": [
+    "Knowledge that oxygen is needed for burning.",
+    "Idea that fuels release heat when burnt.",
+    "Basic understanding of temperature and heat.",
+    "Familiarity with a candle flame and a gas stove flame."
+  ],
+  "topics": [
+    {
+      "title": "Combustion and Conditions Necessary for Burning",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Combustion is a chemical process in which a substance reacts with oxygen to give heat and usually light, and it needs three things — fuel, air and the ignition temperature.",
+      "real_life": "A matchstick lights when friction supplies enough heat to reach its ignition temperature; blowing on a candle removes heat and the same flame dies.",
+      "detailed": {
+        "definition": "Combustion is the chemical process in which a substance reacts with oxygen to produce heat and light. The substance that undergoes combustion is called a combustible substance or fuel. The lowest temperature at which a substance catches fire is its ignition temperature.",
+        "key_idea": "All three conditions must be present together — fuel, a supporter of combustion (oxygen), and a temperature at or above the ignition temperature. Remove any one and combustion stops; every fire extinguisher works by removing one of the three.",
+        "working_principle": "Water extinguishes ordinary fires by cooling the fuel below its ignition temperature and by forming steam that cuts off air. Carbon dioxide extinguishers work differently — CO₂ is heavier than air, so it blankets the fire and cuts off oxygen, and it leaves no damaging residue.",
+        "applications": [
+          "Water must NEVER be used on electrical or oil fires — it conducts electricity and oil floats on water, spreading the fire.",
+          "CO₂ is the best extinguisher for electrical and oil fires.",
+          "A fire in a forest may start from lightning or from the heat of dry, rubbing branches."
+        ]
+      },
+      "points": [
+        "Three requirements: fuel, oxygen (supporter of combustion), and ignition temperature.",
+        "Ignition temperature is the LOWEST temperature at which a substance catches fire.",
+        "Inflammable substances have very low ignition temperature: petrol, alcohol, LPG, spirit.",
+        "Water extinguishes by cooling below the ignition temperature and cutting off air.",
+        "CO₂ is used on electrical and oil fires because it does not conduct electricity and leaves no residue."
+      ],
+      "mistakes": [
+        "Saying 'a substance burns if you heat it enough' without mentioning oxygen — both are required.",
+        "Using water on an oil or electrical fire; it makes both worse.",
+        "Confusing ignition temperature (needed to start burning) with boiling point."
+      ],
+      "memory_hook": "'The Fire Triangle: Fuel + Oxygen + Heat' — break any side and the fire dies.",
+      "advanced": "CO₂ extinguishers also cool as they discharge: the compressed gas expands rapidly and its temperature drops sharply, so a single extinguisher attacks two sides of the fire triangle — the oxygen supply and the heat — at once."
+    },
+    {
+      "title": "Types of Combustion and the Structure of a Flame",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Combustion may be rapid, spontaneous or explosive, and a candle flame has three zones — a dark inner zone, a luminous yellow middle zone and a non-luminous blue outer zone which is the hottest.",
+      "real_life": "Goldsmiths blow the outermost part of a flame onto gold to melt it, because the outer blue zone — not the bright yellow one — is the hottest part.",
+      "detailed": {
+        "definition": "A flame is the region where the gaseous substances produced by a burning substance undergo combustion. Only substances that vaporise on heating burn with a flame.",
+        "key_idea": "The colour of a flame zone tells you how completely the fuel is burning. The outer blue zone has plenty of oxygen and burns completely, making it the hottest but non-luminous. The middle yellow zone has partial combustion producing glowing carbon particles, so it is bright but cooler.",
+        "working_principle": "Rapid combustion produces heat and light quickly (LPG burning). Spontaneous combustion occurs without any apparent cause (white phosphorus in air). Explosion produces a large amount of heat, light, sound and gas suddenly (firecrackers).",
+        "applications": [
+          "Candle wax, kerosene and camphor burn with a flame; coal and charcoal glow without a flame.",
+          "The unburnt carbon particles in the luminous zone deposit soot on a glass plate held in it.",
+          "Blue flame of a gas stove = complete combustion; yellow flame = incomplete combustion and wasted fuel."
+        ]
+      },
+      "points": [
+        "Three zones of a candle flame: dark inner (unburnt vapour), luminous middle (partial combustion), non-luminous outer (complete combustion, hottest).",
+        "The outermost blue zone is the HOTTEST part of the flame.",
+        "Substances that vaporise on heating burn with a flame; those that do not, glow.",
+        "Rapid combustion: LPG; Spontaneous: white phosphorus; Explosion: firecracker.",
+        "A yellow, sooty flame indicates incomplete combustion and insufficient oxygen."
+      ],
+      "mistakes": [
+        "Saying the yellow luminous part is the hottest — it is the brightest but the outer blue zone is hottest.",
+        "Assuming every burning substance produces a flame; coal and charcoal glow without one.",
+        "Calling explosion the same as rapid combustion; explosion additionally produces sound and a large volume of gas."
+      ],
+      "memory_hook": "'Blue is Best (hottest), Yellow is Yeoman (bright but cool), Black is Blank (unburnt)' — outer, middle, inner.",
+      "advanced": "The yellow of a candle flame is blackbody radiation from soot particles heated to about 1,400 °C. A blue flame contains no soot, so its colour comes from electronic transitions in excited CH and C₂ molecules — different physics entirely, which is why colour is such a reliable indicator of combustion completeness."
+    },
+    {
+      "title": "Fuels, Calorific Value and Fuel Efficiency",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A good fuel has a high calorific value, moderate ignition temperature, low cost, easy availability and produces little pollution; calorific value is the heat produced by burning 1 kg of a fuel.",
+      "real_life": "Hydrogen releases nearly four times as much energy per kilogram as LPG, which is why rockets use it — but it is hard to store, so kitchens still use LPG.",
+      "detailed": {
+        "definition": "Calorific value is the amount of heat energy produced on completely burning 1 kilogram of a fuel. Its unit is kilojoule per kilogram (kJ/kg).",
+        "key_idea": "No single fuel is ideal for every job. The best fuel for a purpose is the one that balances calorific value, safety, cost, availability, storage and pollution — which is why aircraft, kitchens and power stations all use different fuels.",
+        "working_principle": "Incomplete combustion produces carbon monoxide, a poisonous gas that binds to haemoglobin and can kill in a closed room. It also wastes fuel, since not all the chemical energy is released.",
+        "applications": [
+          "Burning fossil fuels releases CO₂ (global warming), SO₂ and NO₂ (acid rain), and unburnt carbon particles (respiratory disease).",
+          "CNG and hydrogen are cleaner fuels; hydrogen has the highest calorific value of all fuels.",
+          "Charcoal is preferred over wood because it has a higher calorific value and produces less smoke."
+        ]
+      },
+      "points": [
+        "Calorific value = heat produced by burning 1 kg of fuel completely, in kJ/kg.",
+        "Hydrogen has the highest calorific value (about 150,000 kJ/kg).",
+        "Carbon monoxide from incomplete combustion is poisonous and can be fatal in closed rooms.",
+        "Burning coal and petroleum releases CO₂, causing global warming.",
+        "A good fuel: high calorific value, moderate ignition temperature, low ash, cheap, safe to store."
+      ],
+      "mistakes": [
+        "Saying a fuel with a very low ignition temperature is best — it would be dangerously easy to ignite.",
+        "Confusing carbon dioxide (greenhouse gas, not poisonous) with carbon monoxide (poisonous).",
+        "Thinking calorific value depends on the amount of fuel burnt; it is defined per kilogram."
+      ],
+      "memory_hook": "'High heat, Moderate ignition, Low cost, Low pollution' — the four marks of a good fuel.",
+      "advanced": "Hydrogen's very high calorific value per kilogram hides a practical problem: per unit volume it stores far less energy than petrol, so it must be compressed or liquefied. Energy density by mass and by volume are different measures, and vehicles are constrained by both."
+    }
+  ]
+}

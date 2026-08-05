@@ -1,0 +1,76 @@
+{
+  "number": 17,
+  "title": "Sets, Relations and Functions",
+  "prerequisites": [
+    "Familiarity with the idea of a collection of objects.",
+    "Understanding of ordered pairs and the Cartesian plane.",
+    "Ability to substitute into an algebraic expression.",
+    "Knowledge of number systems N, Z, Q and R."
+  ],
+  "topics": [
+    {
+      "title": "Sets and Set Operations",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A set is a well-defined collection of distinct objects, and sets are combined using union, intersection, difference and complement.",
+      "real_life": "A search filter showing items that are 'in stock AND under ₹500' is computing the intersection of two sets.",
+      "detailed": {
+        "definition": "A set is a well-defined collection of distinct objects. The union A ∪ B contains elements in A or B or both; the intersection A ∩ B contains elements in both; the difference A − B contains elements in A but not in B.",
+        "key_idea": "'Well-defined' means membership must be decidable without opinion. 'The set of tall students' is not a set; 'the set of students above 170 cm' is.",
+        "working_principle": "Venn diagrams turn set identities into pictures, and the inclusion–exclusion principle n(A ∪ B) = n(A) + n(B) − n(A ∩ B) corrects for the double counting of the overlap.",
+        "applications": [
+          "A set with n elements has 2ⁿ subsets.",
+          "De Morgan's laws: (A ∪ B)′ = A′ ∩ B′ and (A ∩ B)′ = A′ ∪ B′.",
+          "Disjoint sets have no common element, so A ∩ B = ∅."
+        ]
+      },
+      "points": [
+        "Elements of a set are distinct and unordered — {1,2,2,3} is just {1,2,3}.",
+        "The empty set ∅ is a subset of every set.",
+        "A set with n elements has 2ⁿ subsets and 2ⁿ − 1 proper subsets.",
+        "n(A ∪ B) = n(A) + n(B) − n(A ∩ B).",
+        "De Morgan's laws exchange union and intersection under complementation."
+      ],
+      "mistakes": [
+        "Listing repeated elements in a set.",
+        "Confusing ∈ (element of) with ⊂ (subset of).",
+        "Forgetting to subtract n(A ∩ B) and double counting the overlap."
+      ],
+      "memory_hook": "'Union is OR, Intersection is AND' — and subtract the overlap once to stop counting it twice.",
+      "advanced": "Naive set theory permits Russell's paradox — the set of all sets that do not contain themselves. Modern mathematics avoids it with axiomatic set theory, which restricts how sets may be formed."
+    },
+    {
+      "title": "Relations and Functions",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A relation is any set of ordered pairs, and a function is a relation in which each input has exactly one output.",
+      "real_life": "A student's roll number maps to exactly one name, which makes it a function; a name might match several roll numbers, so the reverse is only a relation.",
+      "detailed": {
+        "definition": "A relation R from set A to set B is a subset of the Cartesian product A × B. A function f : A → B is a relation in which every element of A is associated with exactly one element of B.",
+        "key_idea": "Every function is a relation, but not every relation is a function. The distinguishing test is that no input may have two different outputs.",
+        "working_principle": "The vertical line test applies this graphically: if any vertical line meets the graph more than once, the relation is not a function.",
+        "applications": [
+          "If n(A) = m and n(B) = n, then n(A × B) = mn and there are 2^(mn) relations from A to B.",
+          "Domain = set of all inputs; Range = set of actual outputs; Codomain = the target set B.",
+          "One-one (injective), onto (surjective) and one-one onto (bijective) classify functions."
+        ]
+      },
+      "points": [
+        "A relation from A to B is a subset of A × B.",
+        "A function assigns exactly one output to each input.",
+        "Domain, codomain and range must be distinguished; the range is a subset of the codomain.",
+        "Vertical line test: more than one intersection means it is not a function.",
+        "Number of relations from A to B is 2^(mn) where m and n are the sizes of A and B."
+      ],
+      "mistakes": [
+        "Calling every relation a function.",
+        "Using range and codomain interchangeably.",
+        "Assuming a function cannot give the same output for two different inputs — it can, unless it is one-one."
+      ],
+      "memory_hook": "'One input, one output' — that single rule separates functions from relations.",
+      "advanced": "Defining a function as a set of ordered pairs removes any appeal to a 'rule' or 'formula', which matters because most functions cannot be written as a formula at all. This set-theoretic definition is what modern analysis is built on."
+    }
+  ]
+}

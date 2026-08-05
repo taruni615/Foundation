@@ -1,0 +1,108 @@
+{
+  "number": 1,
+  "title": "Chemical Reactions and Equations",
+  "prerequisites": [
+    "Knowledge of chemical symbols, formulae and valency.",
+    "Difference between a physical and a chemical change.",
+    "Idea of the law of conservation of mass.",
+    "Familiarity with the terms element, compound and mixture."
+  ],
+  "topics": [
+    {
+      "title": "Chemical Equations and Balancing",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A chemical equation is the symbolic representation of a reaction, and it must be balanced so that the number of atoms of each element is the same on both sides.",
+      "real_life": "A rusting gate, a burning candle and digesting food are all reactions that a chemist can write down in one line each.",
+      "detailed": {
+        "definition": "A chemical equation represents a chemical reaction using symbols and formulae, with reactants on the left and products on the right. A balanced equation has an equal number of atoms of each element on both sides.",
+        "key_idea": "Balancing is required by the law of conservation of mass: matter is neither created nor destroyed in a chemical reaction. This is why only coefficients may be changed, never the subscripts in a formula.",
+        "working_principle": "The hit-and-trial method balances the element occurring in the largest number of atoms first, leaving hydrogen and oxygen for last. Physical states — (s), (l), (g), (aq) — and conditions such as heat, catalyst or pressure are written afterwards to make the equation informative.",
+        "applications": [
+          "Fe + H₂O → Fe₃O₄ + H₂ balances to 3Fe + 4H₂O → Fe₃O₄ + 4H₂.",
+          "The '↑' sign shows a gas evolved and '↓' a precipitate formed.",
+          "Reaction conditions are written above or below the arrow, e.g. Δ for heat."
+        ]
+      },
+      "points": [
+        "Reactants on the left, products on the right, arrow shows direction.",
+        "A balanced equation obeys the law of conservation of mass.",
+        "Only coefficients may be changed while balancing, NEVER subscripts.",
+        "Physical states (s), (l), (g), (aq) make an equation more informative.",
+        "Balance the element with the most atoms first; balance H and O last."
+      ],
+      "mistakes": [
+        "Changing a subscript to balance an equation, which changes the substance itself.",
+        "Forgetting to check every element after adjusting one coefficient.",
+        "Omitting physical states when the question asks for a complete equation."
+      ],
+      "memory_hook": "'Coefficients yes, subscripts never' — and 'metal first, hydrogen and oxygen last'.",
+      "advanced": "A balanced equation is also a statement about moles: 2H₂ + O₂ → 2H₂O says two moles of hydrogen react with one of oxygen. This is what makes stoichiometric calculation possible from the equation alone."
+    },
+    {
+      "title": "Types of Chemical Reactions",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Reactions are classified as combination, decomposition, displacement, double displacement and redox, and separately as exothermic or endothermic by the energy change.",
+      "real_life": "Quicklime added to water gets hot enough to boil it, while a cold pack for a sprain gets icy — one exothermic, one endothermic.",
+      "detailed": {
+        "definition": "Combination: two or more substances form one product. Decomposition: one compound splits into two or more. Displacement: a more reactive element displaces a less reactive one. Double displacement: two compounds exchange ions.",
+        "key_idea": "Decomposition is the exact reverse of combination and always requires energy — supplied as heat (thermal), electricity (electrolytic) or light (photolytic).",
+        "working_principle": "In a double displacement reaction that produces an insoluble solid, the reaction is called precipitation; if it occurs between an acid and a base, it is neutralisation.",
+        "applications": [
+          "Combination: CaO + H₂O → Ca(OH)₂, strongly exothermic (slaking of lime).",
+          "Decomposition: 2AgBr → 2Ag + Br₂ in sunlight — used in black-and-white photography.",
+          "Displacement: Fe + CuSO₄ → FeSO₄ + Cu; blue solution turns green."
+        ]
+      },
+      "points": [
+        "Thermal decomposition: CaCO₃ → CaO + CO₂ on heating.",
+        "Electrolytic decomposition: 2H₂O → 2H₂ + O₂ using electricity.",
+        "Photolytic decomposition: silver halides break down in sunlight.",
+        "Precipitation: Na₂SO₄ + BaCl₂ → BaSO₄↓ + 2NaCl (white precipitate).",
+        "Exothermic reactions release heat; endothermic reactions absorb it."
+      ],
+      "mistakes": [
+        "Confusing displacement (one element replaced) with double displacement (ions exchanged).",
+        "Assuming all decomposition reactions need heat; some need light or electricity.",
+        "Calling respiration endothermic; it is exothermic."
+      ],
+      "memory_hook": "'Combine, Decompose, Displace, Double-displace' — and 'decomposition always demands energy'.",
+      "advanced": "Respiration is exothermic yet occurs at body temperature because enzymes lower the activation energy. Energy release and reaction rate are separate questions — thermodynamics says whether, kinetics says how fast."
+    },
+    {
+      "title": "Oxidation, Reduction and Redox Reactions",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Oxidation is gain of oxygen or loss of hydrogen and reduction is the reverse; because they always occur together the combined process is called a redox reaction.",
+      "real_life": "A shiny copper vessel turning dull black over a flame is copper being oxidised — and rubbing it with hydrogen would reduce it right back.",
+      "detailed": {
+        "definition": "Oxidation is the addition of oxygen or removal of hydrogen (or loss of electrons). Reduction is the addition of hydrogen or removal of oxygen (or gain of electrons). A reaction in which both occur simultaneously is a redox reaction.",
+        "key_idea": "The substance that supplies oxygen is the oxidising agent and is itself reduced; the substance that removes oxygen is the reducing agent and is itself oxidised. The agent always undergoes the opposite of what it causes.",
+        "working_principle": "In CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced, while hydrogen gains oxygen and is oxidised. CuO is therefore the oxidising agent and H₂ the reducing agent.",
+        "applications": [
+          "Corrosion: iron rusts, silver tarnishes black, copper develops a green coating.",
+          "Rancidity: oxidation of fats and oils gives food a bad smell and taste.",
+          "Rancidity is prevented by antioxidants, nitrogen flushing and refrigeration."
+        ]
+      },
+      "points": [
+        "Oxidation = gain of oxygen / loss of hydrogen / loss of electrons.",
+        "Reduction = loss of oxygen / gain of hydrogen / gain of electrons.",
+        "The oxidising agent is itself REDUCED; the reducing agent is itself OXIDISED.",
+        "Corrosion is prevented by painting, oiling, galvanising, anodising and alloying.",
+        "Chips packets are flushed with nitrogen to prevent oxidative rancidity."
+      ],
+      "mistakes": [
+        "Saying the oxidising agent gets oxidised; it gets reduced.",
+        "Treating oxidation and reduction as separate reactions; they always occur together.",
+        "Thinking oxidation always needs oxygen; loss of electrons counts even without it."
+      ],
+      "memory_hook": "'OIL RIG' — Oxidation Is Loss of electrons, Reduction Is Gain — and 'the agent does the opposite to itself'.",
+      "advanced": "Galvanising protects iron by sacrificial corrosion: zinc is more readily oxidised, so it corrodes preferentially even at a scratch. Tin plating, being less reactive than iron, actually accelerates rusting once the coating breaks."
+    }
+  ]
+}

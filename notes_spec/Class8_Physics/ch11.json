@@ -1,0 +1,101 @@
+{
+  "number": 11,
+  "title": "Magnetism",
+  "prerequisites": [
+    "Basic idea of attraction and repulsion between objects.",
+    "Familiarity with the terms north and south as directions.",
+    "General awareness that some metals (like iron) behave differently from others near a magnet."
+  ],
+  "topics": [
+    {
+      "title": "Magnets and Magnetic Properties",
+      "quick_summary": "A magnet is an object that attracts iron and a few other magnetic materials and always has two poles — north and south — which cannot be separated from each other.",
+      "detailed": {
+        "definition": "A magnet is a material or object that produces a magnetic field and attracts ferromagnetic materials like iron, cobalt, and nickel. Every magnet has two poles, called the north pole and the south pole.",
+        "key_idea": "Like poles repel each other and unlike poles attract each other, exactly parallel to how like and unlike electric charges behave — this single rule governs how any two magnets interact.",
+        "working_principle": "If a bar magnet is broken into pieces, each piece becomes a complete new magnet with its own north and south pole — magnetic poles can never exist alone (a single, isolated pole, called a monopole, has never been found).",
+        "applications": [
+          "Magnetic compasses use a freely suspended magnetised needle to indicate geographic direction.",
+          "Fridge magnets, magnetic door catches, and toy magnets rely on simple attraction to hold objects in place.",
+          "Magnetic separators are used industrially to separate iron scrap from other waste materials."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A bar magnet can pick up iron nails and pins, and if allowed to swing freely (as in a compass), it always settles pointing roughly north-south.",
+      "points": [
+        "Every magnet has exactly two poles: north (N) and south (S) — they can never be separated into single poles.",
+        "Like poles repel; unlike poles attract.",
+        "Materials strongly attracted to magnets (like iron, cobalt, nickel) are called magnetic materials; most other materials are non-magnetic.",
+        "Breaking a magnet in two always produces two smaller, complete magnets, each with both a north and a south pole."
+      ],
+      "mistakes": [
+        "Thinking breaking a magnet in half separates the north pole from the south pole — it actually creates two new, smaller complete magnets.",
+        "Confusing magnetic attraction (which happens even with an unmagnetised piece of iron) with the attraction/repulsion rule between two magnets' poles (which requires both to be magnetised)."
+      ],
+      "memory_hook": "\"Like poles Leave (repel), Unlike poles Unite (attract).\"",
+      "advanced": "The fact that no isolated single magnetic pole (a magnetic 'monopole') has ever been discovered in nature, despite intense searching, is one of the intriguing unsolved questions in modern physics — every magnet, no matter how small, always comes as an inseparable north-south pair."
+    },
+    {
+      "title": "Making Magnets and Magnetic Field",
+      "quick_summary": "Magnets can be made artificially from ordinary iron or steel using specific methods, and the region around any magnet where its magnetic influence can be detected is called its magnetic field.",
+      "detailed": {
+        "definition": "A magnetic field is the region around a magnet within which its magnetic force can be detected/felt by another magnet or magnetic material. Artificial magnets are magnets made from ordinary magnetic materials using a magnetising process, unlike natural magnets (lodestone) found in nature.",
+        "key_idea": "Magnetic field lines emerge from the north pole of a magnet and enter at the south pole outside the magnet, and their pattern (drawn using iron filings or a compass) visually represents the strength and direction of the magnetic field.",
+        "working_principle": "Common methods to magnetise a material include stroking it repeatedly with one pole of an existing magnet in a single direction, or placing it inside a current-carrying coil (electromagnetic method), both of which align the material's internal magnetic domains in the same direction.",
+        "applications": [
+          "Iron filings sprinkled near a bar magnet arrange themselves along the invisible magnetic field lines, making the field pattern visible.",
+          "A compass needle, itself a tiny magnet, aligns with the local magnetic field to indicate direction.",
+          "Magnetising and demagnetising processes are used in manufacturing tools, speakers, and various electronic devices."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Stroking an iron nail repeatedly in one direction with one pole of a strong magnet can magnetise the nail, letting it pick up small pins afterward.",
+      "points": [
+        "Magnetic field lines always run from the north pole to the south pole outside the magnet, and never cross each other.",
+        "Field lines are closer together (denser) near the poles, where the magnetic field is strongest.",
+        "A magnet can be demagnetised by heating strongly, hammering repeatedly, or dropping it from a height.",
+        "Storing bar magnets in pairs with unlike poles adjacent (with soft iron keepers) helps preserve their magnetism."
+      ],
+      "mistakes": [
+        "Thinking magnetic field lines physically exist as visible lines — they are an imaginary tool used to represent field direction and strength.",
+        "Forgetting that a magnet loses its magnetism if mishandled (heated, hammered, or dropped repeatedly)."
+      ],
+      "memory_hook": "\"Field lines: leave North, enter South — outside the magnet, never inside.\"",
+      "advanced": "The internal explanation for magnetism is that materials like iron are made of tiny regions called magnetic domains, each acting like a microscopic magnet; in an unmagnetised piece of iron these domains point in random directions and cancel out, but magnetising the material aligns most of these domains in the same direction, creating an overall strong magnetic effect."
+    },
+    {
+      "title": "Earth's Magnetism and the Compass",
+      "quick_summary": "The Earth itself behaves like a giant magnet, with its own magnetic north and south poles, and this natural magnetic field is what makes a simple compass work anywhere on the planet.",
+      "detailed": {
+        "definition": "Earth's magnetism refers to the natural magnetic field surrounding the Earth, behaving as though a giant bar magnet were located inside it. A magnetic compass is a small, freely-pivoted magnetised needle used to detect this field and indicate geographic direction.",
+        "key_idea": "Earth's magnetic poles are close to, but not exactly aligned with, its geographic poles — this small mismatch is called magnetic declination, and it means a compass points to magnetic north, not exactly true geographic north.",
+        "working_principle": "Scientists believe Earth's magnetic field is generated deep inside the planet by the movement of molten iron and nickel in its outer core, acting similar to a giant natural electromagnet.",
+        "applications": [
+          "Magnetic compasses have been used for centuries by sailors, explorers, and hikers for navigation.",
+          "Many animals (like birds and sea turtles) are believed to sense Earth's magnetic field for long-distance migration.",
+          "Understanding Earth's magnetic field helps explain natural phenomena such as the auroras (northern/southern lights)."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A magnetic compass needle, when allowed to swing freely, always settles pointing approximately toward the geographic north — this only happens because the Earth itself has a magnetic field.",
+      "points": [
+        "Earth behaves like a giant magnet, with a magnetic south pole located near the geographic North Pole (which is why a compass's north-seeking pole points north).",
+        "Magnetic declination is the small angle between geographic north and magnetic north at a given location.",
+        "A compass needle aligns itself with Earth's magnetic field lines running roughly from the geographic south to the geographic north.",
+        "Earth's magnetic field also protects the planet by deflecting most harmful charged particles from the Sun (the solar wind)."
+      ],
+      "mistakes": [
+        "Assuming a compass points to exact geographic (true) north — it actually points to magnetic north, which differs slightly by location (declination).",
+        "Thinking Earth's magnetic north pole and geographic North Pole are the exact same point — they are close, but not identical, and even shift slowly over time."
+      ],
+      "memory_hook": "\"Compass follows Magnetic north, not exactly Geographic north — mind the small gap (declination).\"",
+      "advanced": "Earth's magnetic field is not perfectly stable over geological timescales — scientific evidence from rocks shows that Earth's magnetic poles have actually reversed (swapped north and south) many times over millions of years, though such reversals happen far too slowly to be noticed within a single human lifetime."
+    }
+  ]
+}

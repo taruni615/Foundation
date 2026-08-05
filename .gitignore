@@ -28,6 +28,8 @@ edu_pipeline/assessment/.secret
 edu_pipeline/assessment/users.json
 edu_pipeline/assessment/exams.json
 edu_pipeline/assessment/attempts.json
+edu_pipeline/assessment/practice.json
+edu_pipeline/assessment/progress.json
 
 # ---------------------------------------------------------------------------
 # Tooling caches
@@ -45,6 +47,11 @@ htmlcov/
 # topics_json/, study notes sidecars, image_cache/ ...
 edu_pipeline/workspace/
 
+# DB-sourced output from scripts/db_workbench.py (study notes, generated MCQs).
+# Rebuilt from the MySQL bank, so never versioned; kept separate from the
+# extraction workspace above so the two can never overwrite each other.
+edu_pipeline/workspace_db/
+
 # Mathpix OCR cache. Regenerable, but re-running costs API credits — the files
 # are kept on disk deliberately; they are simply not versioned.
 edu_pipeline/materials/cache/
@@ -56,5 +63,8 @@ outputs1/
 # Generated exports produced by tools/export/export_questions.py
 all_database_questions.csv
 all_database_questions.xlsx
+
+# Generated exports produced by tools/export/export_questions_json.py
+exports/
 *.tmp
 *.json.tmp

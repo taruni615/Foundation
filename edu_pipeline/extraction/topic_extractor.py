@@ -1642,19 +1642,88 @@ def toc_entry_type(label: str) -> str:
     return "entry"
 
 
+# Headings a book may use for its table of contents.  "Contents" / "Table of
+# Contents" are unambiguous; "Index" is not -- many books also carry an
+# alphabetical term index at the *back* under that same word (see
+# ``toc_entry_type``, which classifies "index" as backmatter).  So "Index" is
+# only accepted as the TOC when TOC-style entries actually follow it.
+_TOC_HEADINGS_EXACT = ("contents", "table of contents")
+_TOC_HEADINGS_AMBIGUOUS = ("index",)
+
+
+def _heading_label(line: str) -> str:
+    """The text of a ``## `` heading, lowercased; "" for any other line."""
+    stripped = line.strip()
+    return stripped[3:].strip().lower() if stripped.startswith("## ") else ""
+
+
+def _looks_like_toc_block(lines: List[str], start: int, window: int = 25, need: int = 2) -> bool:
+    """True when the lines after ``start`` read like a table of contents."""
+    hits = 0
+    for raw_line in lines[start : start + window]:
+        line = raw_line.strip()
+        if not line or line.startswith("| :---"):
+            continue
+        if line.startswith("## "):
+            break
+        line = normalize_toc_entry_line(line)
+        if TOC_DOTTED_RE.match(line) or TOC_TABLE_RE.match(line) or TOC_TOPIC_RE.match(line):
+            hits += 1
+            if hits >= need:
+                return True
+    return False
+
+
+# How far into the document to look for a table of contents.  A TOC is always
+# front matter, so bounding the search stops a mid-book list of numbered
+# sections from being mistaken for one.
+_TOC_SEARCH_WINDOW = 400
+
+
+def contents_start_index(lines: List[str]) -> int:
+    """Index of the heading that opens the table of contents, or -1.
+
+    Two passes, because the heading text alone cannot be trusted:
+
+    1. An exactly-named heading ("Contents" / "Table of Contents") wins outright.
+    2. Otherwise fall back to *content* detection -- the first front-matter
+       heading followed by TOC-style entries.
+
+    The fallback matters because these books are OCR'd scans.  Real examples hit
+    in this repo: "## Index" (a legitimate alternative name, though the same word
+    also labels a back-of-book term index) and "## Contrents" (Mathpix simply
+    misread "Contents").  Matching the label exactly missed both and silently
+    produced zero topics.
+    """
+    for idx, raw_line in enumerate(lines):
+        if _heading_label(raw_line) in _TOC_HEADINGS_EXACT:
+            return idx
+
+    for idx, raw_line in enumerate(lines[:_TOC_SEARCH_WINDOW]):
+        if _heading_label(raw_line) and _looks_like_toc_block(lines, idx + 1):
+            return idx
+    return -1
+
+
+def _is_contents_heading(line: str) -> bool:
+    """True for any heading that may open the TOC (used to skip it mid-scan)."""
+    return _heading_label(line) in _TOC_HEADINGS_EXACT + _TOC_HEADINGS_AMBIGUOUS
+
+
 def parse_toc(lines: List[str]) -> List[Dict[str, str]]:
     toc: List[Dict[str, str]] = []
+    start = contents_start_index(lines)
     in_contents = False
-    for raw_line in lines:
+    for idx, raw_line in enumerate(lines):
         line = raw_line.strip()
         if not in_contents:
-            if line in ("## Contents", "## CONTENTS"):
+            if start >= 0 and idx == start:
                 in_contents = True
             continue
 
         if _is_contents_end_heading(line):
             break
-        if in_contents and line.startswith("## ") and line.upper() not in ("## CONTENTS", "## Contents"):
+        if in_contents and line.startswith("## ") and not _is_contents_heading(line):
             heading_topic = TOC_HEADING_TOPIC_RE.match(line)
             if heading_topic:
                 toc.append({
@@ -1723,7 +1792,7 @@ def normalize_toc_entry_line(line: str) -> str:
 
 def _is_contents_end_heading(line: str) -> bool:
     """True when a ## heading marks the start of chapter body (end of TOC block)."""
-    if not line.startswith("## ") or line.upper() in ("## CONTENTS", "## Contents"):
+    if not line.startswith("## ") or _is_contents_heading(line):
         return False
     if TOC_HEADING_TOPIC_RE.match(line):
         return False
@@ -1734,14 +1803,15 @@ def _is_contents_end_heading(line: str) -> bool:
 
 def find_contents_end_line(lines: List[str]) -> int:
     """First body chapter heading after the TOC block (not a mid-book ## N. chapter)."""
+    start = contents_start_index(lines)
     in_contents = False
     for idx, raw_line in enumerate(lines):
         line = raw_line.strip()
         if not in_contents:
-            if line in ("## Contents", "## CONTENTS"):
+            if start >= 0 and idx == start:
                 in_contents = True
             continue
-        if not line.startswith("## ") or line.upper() in ("## CONTENTS", "## Contents"):
+        if not line.startswith("## ") or _is_contents_heading(line):
             continue
         if TOC_HEADING_TOPIC_RE.match(line):
             continue
@@ -1782,17 +1852,18 @@ def parse_contents_topics(lines: List[str]) -> List[TopicMeta]:
         pending_num = None
         pending_name_parts = []
 
-    for raw_line in lines:
+    start = contents_start_index(lines)
+    for idx, raw_line in enumerate(lines):
         line = raw_line.strip()
         if not in_contents:
-            if line in ("## Contents", "## CONTENTS"):
+            if start >= 0 and idx == start:
                 in_contents = True
             continue
 
         if _is_contents_end_heading(line):
             break
 
-        if in_contents and line.startswith("## ") and line.upper() not in ("## CONTENTS", "## Contents"):
+        if in_contents and line.startswith("## ") and not _is_contents_heading(line):
             heading_topic = TOC_HEADING_TOPIC_RE.match(line)
             if heading_topic:
                 flush_pending("")
@@ -5723,7 +5794,11 @@ class OllamaClient:
             ],
             "stream": False,
             "format": "json",
-            "options": {"temperature": 0.2, "num_predict": int(num_predict or 4096)},
+            "options": {
+                "temperature": 0.2,
+                "num_predict": int(num_predict or 4096),
+                "num_ctx": int(os.environ.get("OLLAMA_NUM_CTX") or "32768"),
+            },
         }
         last_err: Optional[Exception] = None
         for attempt in range(retries):

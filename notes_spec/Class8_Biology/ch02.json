@@ -1,0 +1,140 @@
+{
+  "number": 2,
+  "title": "Micro-organisms",
+  "prerequisites": [
+    "Idea that living things are made of cells.",
+    "Knowledge that some diseases spread from one person to another.",
+    "Familiarity with a simple microscope and why it is needed.",
+    "Basic understanding that food gets spoiled if left in the open."
+  ],
+  "topics": [
+    {
+      "title": "Microorganisms and Their Classification",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Microorganisms are living organisms too small to be seen with the naked eye, and they are grouped into five classes — bacteria, fungi, protozoa, algae and viruses.",
+      "real_life": "The greenish slime on a wet wall is algae, the white fuzz on stale bread is fungus, and the curd in your kitchen is made by bacteria — three different microbes in one house.",
+      "detailed": {
+        "definition": "Microorganisms, or microbes, are organisms so small that they cannot be seen with the unaided eye and need a microscope to be observed.",
+        "key_idea": "Microbes may be unicellular (bacteria, some algae, protozoa) or multicellular (most fungi, some algae). They live everywhere — in soil, water, air, inside our bodies, in hot springs, in ice and in deserts.",
+        "working_principle": "Bacteria are classified by shape into cocci (spherical), bacilli (rod-shaped), spirilla (spiral) and vibrio (comma-shaped). Gram staining separates bacteria into Gram-positive (thick peptidoglycan wall, stain purple) and Gram-negative (thin wall, stain pink).",
+        "applications": [
+          "Amoeba, Paramecium and Plasmodium are protozoa; Chlamydomonas and Spirogyra are algae.",
+          "Yeast, Penicillium, Aspergillus, Rhizopus and mushrooms are fungi.",
+          "Lichen is a symbiotic partnership of an alga and a fungus; mycorrhiza is a fungus–root partnership."
+        ]
+      },
+      "points": [
+        "Five groups of microbes: bacteria, fungi, protozoa, algae and viruses.",
+        "Bacterial shapes: coccus (round), bacillus (rod), spirillum (spiral), vibrio (comma).",
+        "Cyanobacteria (blue-green algae) are bacteria that photosynthesise and fix nitrogen.",
+        "Microbes are found in ice, hot springs, deserts and marshy land — everywhere.",
+        "Antonie van Leeuwenhoek first observed microorganisms in 1674."
+      ],
+      "mistakes": [
+        "Calling cyanobacteria 'algae' — they are bacteria (prokaryotes), despite the old name blue-green algae.",
+        "Assuming all microorganisms are unicellular — many fungi and algae are multicellular.",
+        "Thinking a microscope is only needed for bacteria; almost all microbes need magnification."
+      ],
+      "memory_hook": "'Ba-Fu-Pro-Al-Vi' — Bacteria, Fungi, Protozoa, Algae, Viruses; and for shapes, 'Cocci are Circles, Bacilli are Bars'.",
+      "advanced": "Extremophiles are microbes that thrive where nothing else can — thermophiles in hot springs above 80 °C, halophiles in salt lakes. The heat-stable enzyme Taq polymerase, taken from a hot-spring bacterium, made modern DNA testing possible."
+    },
+    {
+      "title": "Viruses — Living or Non-living?",
+      "time": "10 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "A virus is on the borderline between the living and the non-living — it reproduces only inside a living host cell and is completely inert outside it.",
+      "real_life": "The common cold, influenza, chickenpox, polio and COVID-19 are all caused by viruses, which is why antibiotics do not help against them.",
+      "detailed": {
+        "definition": "A virus is an infectious particle made of a nucleic acid core (DNA or RNA) surrounded by a protein coat called a capsid, which multiplies only inside a living host cell.",
+        "key_idea": "Outside a host, a virus can be crystallised like a chemical and shows no sign of life. Inside a host cell, it hijacks the cell's machinery to make copies of itself — so it is described as an obligate intracellular parasite.",
+        "working_principle": "The virus attaches to a specific host cell, injects its nucleic acid, forces the cell to manufacture viral parts, assembles new virus particles and finally bursts the cell to release them.",
+        "applications": [
+          "Bacteriophages are viruses that attack bacteria and are used in phage therapy.",
+          "Vaccines use weakened or inactivated viruses to train the immune system.",
+          "Viral diseases in humans: polio, measles, chickenpox, mumps, influenza, AIDS, dengue."
+        ]
+      },
+      "points": [
+        "Virus = nucleic acid (DNA or RNA) + protein coat; never both DNA and RNA.",
+        "Living characteristic: it reproduces and has genetic material.",
+        "Non-living characteristics: it can be crystallised, has no cell structure and no metabolism of its own.",
+        "Antibiotics do NOT work against viruses — only vaccines and antiviral drugs help.",
+        "Viruses are much smaller than bacteria and are seen only with an electron microscope."
+      ],
+      "mistakes": [
+        "Taking antibiotics for a cold or flu — these are viral and antibiotics have no effect.",
+        "Saying a virus contains both DNA and RNA; it contains only one of the two.",
+        "Calling viruses cells — they have no cell membrane, cytoplasm or organelles."
+      ],
+      "memory_hook": "'A virus is a pirate ship — dead in the harbour, deadly once it boards a living cell.'",
+      "advanced": "Some viruses insert their genes permanently into the host chromosome; about 8% of the human genome is made of such ancient viral sequences, and a few of them now perform useful functions such as helping form the placenta."
+    },
+    {
+      "title": "Useful Microorganisms",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Microbes are used to make curd, bread and alcohol, to produce antibiotics and vaccines, to clean up the environment and to increase soil fertility.",
+      "real_life": "The bubbles in a rising dough, the sourness of curd, and the penicillin in a prescription are all the work of useful microorganisms.",
+      "detailed": {
+        "definition": "Useful microorganisms are microbes whose activities benefit humans — in food production, medicine, agriculture and waste management.",
+        "key_idea": "The single most important microbial process for humans is fermentation — the breakdown of sugar into alcohol and carbon dioxide (or into acid) in the absence of oxygen, discovered by Louis Pasteur in 1857.",
+        "working_principle": "Lactobacillus converts milk sugar to lactic acid, curdling milk into curd. Yeast (Saccharomyces) ferments sugar to alcohol and CO₂, making bread rise and producing wine and beer. Soil bacteria decompose dead matter and return nutrients to the soil.",
+        "applications": [
+          "Antibiotics: penicillin from the fungus Penicillium (Alexander Fleming, 1929), streptomycin, tetracycline, erythromycin.",
+          "Vaccines against cholera, tuberculosis, smallpox and hepatitis (Edward Jenner, smallpox, 1798).",
+          "Rhizobium in legume root nodules and Azotobacter in soil fix atmospheric nitrogen; blue-green algae act as biofertilizers in paddy fields."
+        ]
+      },
+      "points": [
+        "Lactobacillus → curd; Yeast → bread, wine, beer (fermentation).",
+        "Penicillin was the first antibiotic, discovered by Alexander Fleming from Penicillium.",
+        "A vaccine contains dead or weakened microbes that make the body produce antibodies.",
+        "Rhizobium lives in root nodules of leguminous plants and fixes nitrogen.",
+        "Decomposers convert dead plant and animal remains into humus."
+      ],
+      "mistakes": [
+        "Saying yeast makes curd — curd is made by Lactobacillus; yeast makes bread and alcohol.",
+        "Confusing antibiotic with vaccine: an antibiotic kills bacteria already inside you, a vaccine prevents the disease beforehand.",
+        "Taking antibiotics without completing the prescribed course, which breeds resistant bacteria."
+      ],
+      "memory_hook": "'Lacto for Lassi, Yeast for Yeast-bread' — and 'Fleming Found Fungus's Penicillin'.",
+      "advanced": "Antibiotic resistance arises by natural selection: a few bacteria carrying a resistance gene survive treatment and multiply. This is why doctors insist on finishing the full course — stopping early leaves behind exactly the toughest survivors."
+    },
+    {
+      "title": "Harmful Microorganisms and Food Preservation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Pathogens cause communicable diseases in humans, animals and plants, and spoil food — which is why food is preserved by heat, cold, chemicals, drying or salting.",
+      "real_life": "Milk in a sealed tetra pack lasts for months because it has been pasteurised, and pickles keep for a year because oil and salt keep microbes out.",
+      "detailed": {
+        "definition": "Disease-causing microorganisms are called pathogens; a disease that spreads from an infected person to a healthy person is a communicable disease. Food preservation is the treatment of food to prevent microbial spoilage.",
+        "key_idea": "Pathogens spread through air (cough, sneeze), water (contaminated drinking water), food, direct contact, and through carriers — animals such as the female Anopheles mosquito (malaria), the Aedes mosquito (dengue) and the housefly.",
+        "working_principle": "Preservation works by removing what microbes need: heat kills them (pasteurisation, boiling, canning), cold slows them (refrigeration, freezing), drying and salting remove water, and chemical preservatives, sugar and oil make the food unsuitable for growth.",
+        "applications": [
+          "Human diseases: tuberculosis, cholera, typhoid (bacteria); malaria, kala-azar (protozoa); polio, chickenpox, influenza (viruses).",
+          "Plant diseases: citrus canker (bacteria), rust of wheat (fungi), yellow vein mosaic of bhindi (virus).",
+          "Preservatives: sodium benzoate and sodium metabisulphite in jams, squashes and sauces."
+        ]
+      },
+      "points": [
+        "Pasteurisation: milk heated to about 70 °C for 15–30 seconds, then chilled suddenly.",
+        "Female Anopheles mosquito carries the malarial parasite Plasmodium.",
+        "Salt and sugar preserve food by drawing water out of microbial cells (osmosis).",
+        "Common preservatives: sodium benzoate, sodium metabisulphite; oil and vinegar in pickles.",
+        "Some fungi produce toxins; food poisoning is caused by eating food spoiled by microbes."
+      ],
+      "mistakes": [
+        "Thinking pasteurisation sterilises milk completely — it only kills most microbes, so milk must still be refrigerated.",
+        "Confusing the vector with the pathogen: the mosquito is the carrier, Plasmodium is the pathogen.",
+        "Believing refrigeration kills microorganisms — it only slows their growth down."
+      ],
+      "memory_hook": "'Pasteur Pasteurises' — and to preserve, 'Too Hot, Too Cold, Too Dry or Too Salty for a microbe to live'.",
+      "advanced": "The nitrogen cycle links harmful and helpful microbes: nitrogen-fixing bacteria convert N₂ to nitrates, nitrifying bacteria oxidise ammonia, and denitrifying bacteria return nitrogen to the atmosphere — keeping the atmospheric level of nitrogen roughly constant at 78%."
+    }
+  ]
+}

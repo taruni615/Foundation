@@ -1,0 +1,107 @@
+{
+  "number": 14,
+  "title": "Statistics",
+  "prerequisites": [
+    "Mean, median and mode of ungrouped data.",
+    "Reading and constructing frequency tables.",
+    "Ability to plot points and draw a smooth curve.",
+    "Understanding of class intervals and class marks."
+  ],
+  "topics": [
+    {
+      "title": "Mean of Grouped Data",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The mean of grouped data is computed by the direct, assumed-mean or step-deviation method, all of which give the same answer.",
+      "real_life": "A school computing the average marks of five hundred students uses grouped data because listing every individual score would be unmanageable.",
+      "detailed": {
+        "definition": "For grouped data, the mean is Σfᵢxᵢ / Σfᵢ, where xᵢ is the class mark of the ith class and fᵢ its frequency. The step-deviation method uses uᵢ = (xᵢ − a)/h.",
+        "key_idea": "All three methods are algebraically identical; only the arithmetic burden differs. The step-deviation method is preferred when the class marks are large and the class size is uniform.",
+        "working_principle": "Grouping loses information: every observation in a class is treated as if it equalled the class mark. The computed mean is therefore an approximation, though a very good one.",
+        "applications": [
+          "Direct method when the class marks are small.",
+          "Assumed-mean method when the class marks are large but class sizes are unequal.",
+          "Step-deviation method when class sizes are equal — it reduces the arithmetic most."
+        ]
+      },
+      "points": [
+        "Class mark xᵢ = (upper limit + lower limit)/2.",
+        "Direct method: mean = Σfᵢxᵢ / Σfᵢ.",
+        "Assumed mean: mean = a + Σfᵢdᵢ / Σfᵢ, where dᵢ = xᵢ − a.",
+        "Step-deviation: mean = a + h(Σfᵢuᵢ / Σfᵢ), where uᵢ = (xᵢ − a)/h.",
+        "All three methods give exactly the same answer."
+      ],
+      "mistakes": [
+        "Using class limits instead of class marks as xᵢ.",
+        "Forgetting to multiply by h in the step-deviation method.",
+        "Choosing a value of a that is not a class mark, which complicates the arithmetic unnecessarily."
+      ],
+      "memory_hook": "'Class mark times frequency, divided by total frequency' — the other two methods are just shortcuts.",
+      "advanced": "Grouping introduces a small bias when the distribution within classes is skewed. Sheppard's correction adjusts for this, though at school level the class-mark approximation is entirely adequate.",
+      "formulas": [
+        {
+          "name": "Mean of Grouped Data",
+          "difficulty": "Medium",
+          "formula": "Direct: x̄ = Σfᵢxᵢ/Σfᵢ;  Step-deviation: x̄ = a + h(Σfᵢuᵢ/Σfᵢ)",
+          "variables": "xᵢ = class mark, fᵢ = frequency, a = assumed mean, h = class size, uᵢ = (xᵢ − a)/h.",
+          "when_to_use": "For any grouped frequency distribution; step-deviation when class sizes are equal.",
+          "common_mistakes": "Omitting the factor h in the step-deviation formula.",
+          "shortcut": "Pick a as the class mark of the class with the highest frequency."
+        }
+      ]
+    },
+    {
+      "title": "Median, Mode and Ogives",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The median and mode of grouped data are found from the median and modal classes using interpolation formulas, and the median can also be read from an ogive.",
+      "real_life": "Median income is quoted rather than mean income precisely because a handful of very high earners would distort the average.",
+      "detailed": {
+        "definition": "The median class is the class in which the cumulative frequency first reaches or exceeds n/2. The modal class is the class with the highest frequency. An ogive is a cumulative frequency curve.",
+        "key_idea": "Both formulas interpolate within a class rather than assuming the answer sits at a class boundary. This is why the cumulative frequency of the preceding class appears in the median formula.",
+        "working_principle": "The point where the 'less than' and 'more than' ogives intersect gives the median directly, which is a useful graphical check on the computed value.",
+        "applications": [
+          "Median is preferred for skewed data such as income or house prices.",
+          "Mode is used when the most common value is what matters, such as shoe sizes to stock.",
+          "Empirical relation: 3 Median = Mode + 2 Mean."
+        ]
+      },
+      "points": [
+        "Median = l + [(n/2 − cf)/f] × h.",
+        "Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h.",
+        "Median class: the class where cumulative frequency first reaches n/2.",
+        "The two ogives intersect at the median.",
+        "Empirical relation: 3 Median = Mode + 2 Mean."
+      ],
+      "mistakes": [
+        "Using the frequency instead of the cumulative frequency of the preceding class in the median formula.",
+        "Taking the modal class as the one with the largest class mark instead of the largest frequency.",
+        "Failing to convert discontinuous classes into continuous ones before applying the formulas."
+      ],
+      "memory_hook": "'Median needs cumulative frequency; Mode needs the neighbours of the tallest bar.'",
+      "advanced": "The median minimises the sum of absolute deviations while the mean minimises the sum of squared deviations. Each average is the optimal answer to a different question about the data.",
+      "formulas": [
+        {
+          "name": "Median of Grouped Data",
+          "difficulty": "Medium",
+          "formula": "Median = l + [(n/2 − cf)/f] × h",
+          "variables": "l = lower limit of the median class, n = total frequency, cf = cumulative frequency of the preceding class, f = frequency of the median class, h = class size.",
+          "when_to_use": "For grouped data, especially when it is skewed.",
+          "common_mistakes": "Using the frequency of the median class as cf.",
+          "shortcut": "Build the cumulative frequency column first, before anything else."
+        },
+        {
+          "name": "Mode of Grouped Data",
+          "difficulty": "Medium",
+          "formula": "Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h",
+          "variables": "l = lower limit of the modal class, f₁ = its frequency, f₀ = preceding frequency, f₂ = following frequency, h = class size.",
+          "when_to_use": "For grouped data where the most frequent value is required.",
+          "common_mistakes": "Mixing up f₀ and f₂, which lie on either side of the modal class.",
+          "shortcut": "The modal class is simply the row with the highest frequency."
+        }
+      ]
+    }
+  ]
+}

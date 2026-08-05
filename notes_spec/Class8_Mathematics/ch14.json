@@ -1,0 +1,101 @@
+{
+  "number": 14,
+  "title": "Factorisation",
+  "prerequisites": [
+    "Standard algebraic identities from Chapter 9.",
+    "Comfort with multiplication of algebraic expressions.",
+    "Idea of HCF applied to algebraic terms (common factors)."
+  ],
+  "topics": [
+    {
+      "title": "Factorisation Using Common Factors & Regrouping",
+      "quick_summary": "Factorisation reverses multiplication by expressing an algebraic expression as a product of its factors, starting with taking out the highest common factor or by regrouping terms.",
+      "detailed": {
+        "definition": "Factorisation is the process of writing an algebraic expression as a product of two or more expressions (its factors); the Common Factor Method extracts the HCF of all terms, while Regrouping reorders and pairs terms to reveal a common binomial factor.",
+        "key_idea": "Factorisation is literally the reverse process of multiplying/expanding — if multiplying out the proposed factors gives back the original expression exactly, the factorisation is correct.",
+        "working_principle": "For the common factor method, find the HCF of the coefficients and the lowest power of each common variable across all terms, then divide it out. For regrouping, rearrange terms into pairs that share a common factor, factor each pair separately, and then factor out the resulting common binomial.",
+        "applications": [
+          "Simplifying algebraic fractions by cancelling common factors from numerator and denominator.",
+          "Solving quadratic and higher-degree equations by first factorising them into simpler linear factors."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Simplifying a shared-cost formula like 3x + 3y into 3(x + y) before further calculation is a basic real-life use of common-factor factorisation.",
+      "points": [
+        "Common Factor Method: always find the HCF of ALL terms (numbers AND variables) before factoring out.",
+        "Regrouping requires choosing pairs of terms carefully so that each pair shares a clear common factor.",
+        "After regrouping and factoring each pair, the two resulting terms must share the SAME binomial factor to proceed.",
+        "Always verify a factorisation by multiplying the factors back out to confirm you recover the original expression."
+      ],
+      "mistakes": [
+        "Extracting only a partial common factor instead of the full HCF, leaving further factorisation possible.",
+        "Regrouping terms in a way that does not lead to a common binomial factor, and not trying an alternative pairing.",
+        "Sign errors when factoring out a negative common factor from a pair of terms."
+      ],
+      "memory_hook": "'Factorisation undoes multiplication' — always check by multiplying your factors back together.",
+      "advanced": "Regrouping is really just a strategic rearrangement — the SAME four terms, grouped differently, might fail to reveal a common factor in one pairing but succeed in another; developing the instinct to try alternate pairings when the first attempt fails is a key problem-solving skill for this topic."
+    },
+    {
+      "title": "Factorisation Using Standard Identities",
+      "quick_summary": "Expressions matching the pattern a²+2ab+b², a²−2ab+b², or a²−b² can be factorised instantly using the standard identities in reverse.",
+      "detailed": {
+        "definition": "Using identities for factorisation means recognising a given expression as the EXPANDED form of a known identity, then writing it directly in its FACTORISED form using the identity in reverse.",
+        "key_idea": "The three standard identities used for expansion in Chapter 9 — (a+b)², (a−b)², and (a+b)(a−b) — are used in exactly the opposite direction here: instead of expanding a bracket, you're recognising the expanded pattern and collapsing it back into brackets.",
+        "working_principle": "Check whether the given expression has three terms matching a²+2ab+b² or a²−2ab+b² (a perfect square trinomial), or exactly two terms matching a²−b² (difference of squares); identify a and b, then write the corresponding factorised form directly.",
+        "applications": [
+          "Quickly factorising quadratic expressions that fit a recognisable identity pattern, especially useful before solving quadratic equations in later classes.",
+          "Simplifying algebraic fractions where numerator or denominator matches a difference-of-squares pattern."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Recognising that x² − 9 matches the a²−b² pattern (with a=x, b=3) lets you instantly factorise it as (x+3)(x−3) without trial and error.",
+      "points": [
+        "a² + 2ab + b² = (a+b)² — look for a middle term that is exactly twice the product of the square roots of the first and last terms.",
+        "a² − 2ab + b² = (a−b)² — same check, but with a negative middle term.",
+        "a² − b² = (a+b)(a−b) — look for exactly TWO terms, both perfect squares, separated by a minus sign.",
+        "Always double-check the middle term's coefficient matches 2ab EXACTLY before applying a perfect-square identity."
+      ],
+      "mistakes": [
+        "Forcing an expression into a perfect-square identity when the middle term doesn't actually equal 2ab.",
+        "Trying to apply a²−b² factorisation to a sum of squares (a²+b²), which does NOT factorise this way over rational numbers.",
+        "Misidentifying which term is 'a' and which is 'b', leading to an incorrect factorised form."
+      ],
+      "memory_hook": "'Spot the pattern, flip the identity' — the same three identities from Chapter 9 now run in reverse.",
+      "advanced": "Being fluent at instantly recognising a²−b², a²+2ab+b², and a²−2ab+b² patterns is one of the highest-leverage algebra skills for later classes, since the same visual pattern recognition underlies factoring quadratic equations, simplifying rational expressions, and even some trigonometric identity manipulations."
+    },
+    {
+      "title": "Division of Algebraic Expressions",
+      "quick_summary": "Dividing algebraic expressions is done by factorising both the dividend and divisor fully, then cancelling any common factors between them.",
+      "detailed": {
+        "definition": "Division of algebraic expressions means expressing the quotient of two expressions in its simplest form, typically by factorising both the numerator (dividend) and denominator (divisor) and cancelling any common factors.",
+        "key_idea": "Just like simplifying numeric fractions by cancelling common factors, algebraic division becomes straightforward once BOTH the numerator and denominator are fully factorised — cancellation can only happen between MATCHING factors, never between unrelated terms.",
+        "working_principle": "Factorise the dividend completely (using common factor extraction, regrouping, or identities as needed), factorise the divisor completely, then cancel any factor common to both, leaving the simplified quotient.",
+        "applications": [
+          "Simplifying algebraic fractions and rational expressions before further calculation or substitution.",
+          "Preparing expressions for solving equations where a common denominator or simplified form is needed."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Simplifying a rate formula like (x²−9)/(x+3) down to just (x−3) by recognising and cancelling the common factor (x+3) uses this exact technique.",
+      "points": [
+        "Monomial ÷ Monomial: divide coefficients, subtract exponents of matching variables (using exponent laws from Chapter 12).",
+        "Polynomial ÷ Monomial: divide EVERY term of the polynomial individually by the monomial.",
+        "Polynomial ÷ Polynomial: factorise both fully first, then cancel any common binomial factors.",
+        "A division is only fully simplified when no more common factors remain between numerator and denominator."
+      ],
+      "mistakes": [
+        "Attempting to cancel individual TERMS instead of complete FACTORS (e.g., wrongly cancelling the 'x' in (x+3)/x).",
+        "Forgetting to divide every single term of a polynomial when dividing by a monomial.",
+        "Leaving common factors uncancelled because the numerator or denominator wasn't fully factorised first."
+      ],
+      "memory_hook": "'Factorise fully first, THEN cancel' — never cancel loose terms, only complete common factors.",
+      "advanced": "This chapter closes the loop between multiplication (Chapter 9), factorisation, and division — recognising factorisation and division as genuinely inverse operations of multiplication reinforces algebra as an internally consistent system, the same way addition/subtraction and multiplication/division are inverse pairs in arithmetic."
+    }
+  ]
+}

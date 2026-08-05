@@ -1,0 +1,218 @@
+{
+  "number": 2,
+  "title": "Force and Laws of Motion",
+  "prerequisites": [
+    "Equations of uniformly accelerated motion from the previous chapter.",
+    "Idea of mass as the quantity of matter in a body.",
+    "Understanding of velocity and acceleration as vectors.",
+    "Familiarity with the units newton, kilogram and second."
+  ],
+  "topics": [
+    {
+      "title": "Force, Balanced and Unbalanced Forces",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A force is a push or pull that can change the state of rest or motion, the direction of motion, or the shape of a body; only an unbalanced force produces acceleration.",
+      "real_life": "In a tug of war neither team moves while the pulls are balanced — the rope only shifts the instant one side pulls harder.",
+      "detailed": {
+        "definition": "Force is a push or a pull acting on a body. Balanced forces are forces whose resultant is zero; unbalanced forces have a non-zero resultant.",
+        "key_idea": "Balanced forces cannot change the state of motion — they can only change the shape of a body. Every change in speed or direction requires an unbalanced force.",
+        "working_principle": "Forces are vectors, so they combine by vector addition. Forces in the same direction add; forces in opposite directions subtract, and the resultant acts in the direction of the larger force.",
+        "applications": [
+          "A book resting on a table has weight balanced exactly by the normal reaction.",
+          "Squeezing a rubber ball with two equal opposite forces changes shape without producing motion.",
+          "A moving vehicle needs continuous engine force only because friction opposes it."
+        ]
+      },
+      "points": [
+        "SI unit of force is the newton (N); 1 N = 1 kg·m/s².",
+        "Balanced forces → no change in state of motion; may change shape.",
+        "Unbalanced forces → acceleration in the direction of the resultant.",
+        "Force is a vector quantity — magnitude and direction both matter.",
+        "Contact forces: friction, normal reaction, tension. Non-contact: gravitational, magnetic, electrostatic."
+      ],
+      "mistakes": [
+        "Assuming a moving body must have a net force acting on it — it may be moving at constant velocity with zero net force.",
+        "Adding forces arithmetically without regard to direction.",
+        "Thinking balanced forces have no effect at all; they can deform a body."
+      ],
+      "memory_hook": "'Balanced = no change in motion; Unbalanced = acceleration' — the resultant is what matters, never the individual forces.",
+      "advanced": "The distinction between contact and non-contact forces dissolves at the microscopic level: normal reaction and friction are ultimately electromagnetic repulsion between the electron clouds of atoms that never truly touch."
+    },
+    {
+      "title": "Newton's First Law and Inertia",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A body continues in its state of rest or uniform motion in a straight line unless acted on by an unbalanced external force — the property responsible is called inertia, and mass is its measure.",
+      "real_life": "When a bus brakes suddenly, passengers lurch forward because their bodies continue moving even after the bus has stopped.",
+      "detailed": {
+        "definition": "Newton's first law of motion states that a body at rest remains at rest, and a body in uniform motion continues in uniform motion in a straight line, unless compelled by an unbalanced external force to change that state. Inertia is the tendency of a body to resist a change in its state of motion.",
+        "key_idea": "The first law is also called the law of inertia, and it defines force as that which changes motion. Mass is the quantitative measure of inertia — the greater the mass, the harder it is to start, stop or turn a body.",
+        "working_principle": "There are three kinds of inertia: inertia of rest (a body stays at rest), inertia of motion (a body keeps moving), and inertia of direction (a body keeps moving in a straight line).",
+        "applications": [
+          "Dust flies off a carpet when beaten — the carpet moves, the dust stays put (inertia of rest).",
+          "An athlete runs before a long jump to make use of inertia of motion.",
+          "A passenger falls outward when a vehicle turns sharply (inertia of direction)."
+        ]
+      },
+      "points": [
+        "First law defines force and introduces inertia; it is also called the law of inertia.",
+        "Mass is the measure of inertia — greater mass means greater inertia.",
+        "Inertia of rest, of motion and of direction are the three types.",
+        "No force is needed to keep a body moving at constant velocity — only to change it.",
+        "Galileo's experiments with inclined planes led to this law."
+      ],
+      "mistakes": [
+        "Saying inertia is a force — inertia is a property, not a force.",
+        "Believing a heavier body always falls faster; mass affects inertia, not free-fall acceleration.",
+        "Thinking a constantly moving body must have a force pushing it forward."
+      ],
+      "memory_hook": "'Lazy law' — objects are lazy and refuse to change what they are already doing; mass measures how lazy.",
+      "advanced": "The first law holds only in an inertial frame — one that is not itself accelerating. In an accelerating bus the law appears violated, and physicists restore it by introducing pseudo-forces such as the centrifugal force."
+    },
+    {
+      "title": "Newton's Second Law and Momentum",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The rate of change of momentum of a body is directly proportional to the applied force and takes place in the direction of the force, which gives the familiar F = ma.",
+      "real_life": "A cricketer moves their hands backward while catching a ball — increasing the time of impact reduces the force on the hands for the same change in momentum.",
+      "detailed": {
+        "definition": "Momentum is the product of mass and velocity, p = mv, a vector with SI unit kg·m/s. Newton's second law states that the rate of change of momentum is proportional to the applied force and occurs in the direction of the force.",
+        "key_idea": "F = ma is only the special case of the second law for constant mass. The general statement F = Δp/Δt explains why the same change in momentum can be produced by a small force over a long time or a large force over a short time.",
+        "working_principle": "Impulse is the product of force and the time for which it acts, and it equals the change in momentum: F × t = mv − mu. This is the principle behind every safety device that lengthens the time of an impact.",
+        "applications": [
+          "Airbags and crumple zones increase collision time, reducing the force on passengers.",
+          "A high jumper lands on a thick foam mattress to increase the stopping time.",
+          "Athletes bend their knees on landing for exactly the same reason."
+        ]
+      },
+      "points": [
+        "Momentum p = mv, a vector; SI unit kg·m/s.",
+        "F = Δp/Δt is the general form; F = ma applies when mass is constant.",
+        "1 newton is the force that gives a 1 kg mass an acceleration of 1 m/s².",
+        "Impulse = F × t = change in momentum.",
+        "For the same change in momentum, a longer contact time means a smaller force."
+      ],
+      "mistakes": [
+        "Using F = ma when the mass is changing, such as for a rocket.",
+        "Forgetting that momentum is a vector, so a reversal of direction doubles the change.",
+        "Confusing momentum (mv) with kinetic energy (½mv²)."
+      ],
+      "memory_hook": "'Force = rate of change of momentum' — and 'more time, less force' for every safety device.",
+      "advanced": "Momentum, not velocity, is the quantity nature conserves. Newton originally wrote his second law in terms of momentum, and that form survives unchanged into relativity, where F = ma does not.",
+      "formulas": [
+        {
+          "name": "Momentum",
+          "difficulty": "Easy",
+          "formula": "p = m × v",
+          "variables": "p = momentum in kg·m/s, m = mass in kg, v = velocity in m/s.",
+          "when_to_use": "Whenever collisions, impulse or conservation problems are involved.",
+          "common_mistakes": "Ignoring the direction, which matters because momentum is a vector.",
+          "shortcut": "A light fast body and a heavy slow body can have the same momentum."
+        },
+        {
+          "name": "Newton's Second Law",
+          "difficulty": "Medium",
+          "formula": "F = ma = (mv − mu) / t",
+          "variables": "F = net force in N, m = mass in kg, a = acceleration in m/s², u and v = initial and final velocities.",
+          "when_to_use": "To find force, mass or acceleration when the other two are known, or to find force from a momentum change.",
+          "common_mistakes": "Substituting a single force instead of the NET force acting on the body.",
+          "shortcut": "Always draw the free-body diagram and add up forces before using F = ma."
+        },
+        {
+          "name": "Impulse",
+          "difficulty": "Medium",
+          "formula": "J = F × t = Δp",
+          "variables": "J = impulse in N·s, F = force, t = time of action, Δp = change in momentum.",
+          "when_to_use": "For short-duration collisions where the force is large and the contact time small.",
+          "common_mistakes": "Forgetting that impulse and momentum have the same units and are numerically equal.",
+          "shortcut": "Impulse is the area under a force–time graph."
+        }
+      ],
+      "derivations": [
+        {
+          "title": "F = ma from Newton's Second Law",
+          "why": "It shows that the familiar formula is not a separate law but a direct consequence of the momentum statement, valid only when the mass is constant.",
+          "assumptions": [
+            "The mass of the body remains constant during the motion.",
+            "The force acts along the direction of motion."
+          ],
+          "steps": [
+            "Let a body of mass m have initial velocity u; after time t under a constant force its velocity is v.",
+            "Initial momentum = mu, final momentum = mv, so the change in momentum is mv − mu = m(v − u).",
+            "The rate of change of momentum is therefore m(v − u)/t.",
+            "By the second law, force is proportional to this rate: F ∝ m(v − u)/t.",
+            "Since (v − u)/t is the acceleration a, F ∝ ma, and choosing the newton so that the constant of proportionality is 1 gives F = ma."
+          ],
+          "result": "F = ma",
+          "exam_perspective": "State the second law in words first, then show the momentum change step by step. Examiners look specifically for the sentence that defines the newton so that k = 1."
+        }
+      ]
+    },
+    {
+      "title": "Newton's Third Law and Conservation of Momentum",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "To every action there is an equal and opposite reaction, and it follows that the total momentum of an isolated system remains constant.",
+      "real_life": "A rifle recoils backward when fired, and a rocket rises because it pushes exhaust gases downward — both are the third law and momentum conservation in action.",
+      "detailed": {
+        "definition": "Newton's third law states that to every action there is an equal and opposite reaction, and the two act on two different bodies. The law of conservation of momentum states that in the absence of an external force, the total momentum of a system remains constant.",
+        "key_idea": "Action and reaction are equal in magnitude and opposite in direction but never cancel, because they act on different bodies. This is the single most misunderstood point in the whole chapter.",
+        "working_principle": "For two bodies colliding, m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂. The forces they exert on each other are equal and opposite and act for the same time, so the momentum gained by one equals the momentum lost by the other.",
+        "applications": [
+          "Recoil of a gun: the gun's backward momentum equals the bullet's forward momentum.",
+          "Rocket propulsion: exhaust gases pushed down, rocket pushed up.",
+          "Walking: we push the ground backward, the ground pushes us forward."
+        ]
+      },
+      "points": [
+        "Action and reaction act on DIFFERENT bodies, so they never cancel out.",
+        "They are equal in magnitude and opposite in direction, and act simultaneously.",
+        "Total momentum before collision = total momentum after collision, if no external force acts.",
+        "Recoil velocity of a gun = (mass of bullet × velocity of bullet) / mass of gun.",
+        "Momentum is conserved in all collisions; kinetic energy is conserved only in elastic ones."
+      ],
+      "mistakes": [
+        "Saying action and reaction cancel each other — they act on different bodies.",
+        "Forgetting to give velocities opposite signs when bodies move in opposite directions.",
+        "Assuming kinetic energy is always conserved in a collision; it is not, except in elastic collisions."
+      ],
+      "memory_hook": "'Equal, Opposite, but on Different bodies' — and 'gun goes back because bullet goes forward'.",
+      "advanced": "Conservation of momentum is more fundamental than Newton's laws themselves — it follows from the fact that the laws of physics are the same everywhere in space. This deep link between symmetry and conservation is Noether's theorem.",
+      "formulas": [
+        {
+          "name": "Conservation of Momentum",
+          "difficulty": "Medium",
+          "formula": "m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂",
+          "variables": "m₁, m₂ = masses; u₁, u₂ = velocities before collision; v₁, v₂ = velocities after collision.",
+          "when_to_use": "For any collision, explosion or recoil where no external force acts on the system.",
+          "common_mistakes": "Using the same sign for velocities in opposite directions.",
+          "shortcut": "For a body initially at rest that explodes, total momentum stays zero, so the fragments move in exactly opposite directions."
+        }
+      ],
+      "derivations": [
+        {
+          "title": "Law of Conservation of Momentum from the Third Law",
+          "why": "It proves that momentum conservation is not an independent assumption but a direct consequence of Newton's third law.",
+          "assumptions": [
+            "The two bodies form an isolated system with no external force acting.",
+            "The collision lasts for a time t, the same for both bodies."
+          ],
+          "steps": [
+            "Two bodies of masses m₁ and m₂ move with initial velocities u₁ and u₂ along the same line, with u₁ > u₂ so that they collide.",
+            "During the collision body 1 exerts a force F₂₁ on body 2, and body 2 exerts F₁₂ on body 1. By the third law, F₁₂ = −F₂₁.",
+            "The force on each equals its rate of change of momentum: F₁₂ = m₁(v₁ − u₁)/t and F₂₁ = m₂(v₂ − u₂)/t.",
+            "Substituting into F₁₂ = −F₂₁ gives m₁(v₁ − u₁)/t = −m₂(v₂ − u₂)/t.",
+            "Cancelling t and rearranging gives m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂ — the total momentum before equals the total momentum after."
+          ],
+          "result": "m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂",
+          "exam_perspective": "This is a very frequently asked derivation. Marks are given specifically for stating the third law relation F₁₂ = −F₂₁ and for noting that the time of contact is the same for both bodies."
+        }
+      ]
+    }
+  ]
+}

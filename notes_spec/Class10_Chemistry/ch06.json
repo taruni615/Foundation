@@ -1,0 +1,119 @@
+{
+  "number": 6,
+  "title": "Chemical Kinetics",
+  "prerequisites": [
+    "Understanding of chemical reactions and balanced equations.",
+    "Idea that particles are in constant motion.",
+    "Familiarity with the term catalyst.",
+    "Basic knowledge of concentration and temperature."
+  ],
+  "topics": [
+    {
+      "title": "Rate of Reaction and Its Measurement",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The rate of a reaction is the change in concentration of a reactant or product per unit time, and it decreases as the reaction proceeds and reactants are used up.",
+      "real_life": "Milk sours in hours on a summer afternoon but takes days in a refrigerator — the same reaction running at two very different rates.",
+      "detailed": {
+        "definition": "The rate of a chemical reaction is the change in concentration of a reactant or product per unit time. Average rate is measured over an interval; instantaneous rate is the rate at a particular moment.",
+        "key_idea": "Rate falls as a reaction proceeds because reactant concentration falls, so collisions become less frequent. This is why the initial rate is always the highest.",
+        "working_principle": "Rate is measured by following any property that changes measurably — volume of gas evolved, mass lost, colour intensity, pH or electrical conductivity — against time.",
+        "applications": [
+          "Volume of CO₂ collected per minute when marble chips react with acid.",
+          "Loss in mass of a flask as gas escapes during a reaction.",
+          "Colour change followed with a colorimeter for reactions involving coloured species."
+        ]
+      },
+      "points": [
+        "Rate = change in concentration / time taken; unit mol L⁻¹ s⁻¹.",
+        "Rate is always taken as a positive quantity.",
+        "The rate is highest at the start and decreases as reactants are consumed.",
+        "For a reaction aA → bB, rate = −(1/a)d[A]/dt = +(1/b)d[B]/dt.",
+        "Instantaneous rate is found from the slope of the tangent to a concentration–time graph."
+      ],
+      "mistakes": [
+        "Reporting a negative rate for a reactant; the negative sign is built into the definition.",
+        "Ignoring the stoichiometric coefficients when relating rates of different species.",
+        "Confusing average rate with instantaneous rate."
+      ],
+      "memory_hook": "'Rate = how fast the concentration changes' — highest at the start, falling ever after.",
+      "advanced": "Reaction rates span an extraordinary range, from ionic reactions complete in nanoseconds to the rusting of iron over years. The same collision theory explains both — only the activation energy differs.",
+      "formulas": [
+        {
+          "name": "Average Rate of Reaction",
+          "difficulty": "Easy",
+          "formula": "Rate = Δ[concentration] / Δt",
+          "variables": "Δ[concentration] = change in molar concentration, Δt = time interval in seconds.",
+          "when_to_use": "To find how fast a reactant is consumed or a product formed over a measured interval.",
+          "common_mistakes": "Forgetting to divide by the stoichiometric coefficient of the species chosen.",
+          "shortcut": "Use the species easiest to measure, then convert using the balanced equation."
+        }
+      ]
+    },
+    {
+      "title": "Factors Affecting the Rate of Reaction",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Reaction rate depends on the nature of reactants, concentration, surface area, temperature, catalyst and, for gases, pressure.",
+      "real_life": "Powdered sugar dissolves and burns far faster than a sugar cube, and a flour mill can explode for exactly the same reason — surface area.",
+      "detailed": {
+        "definition": "A catalyst is a substance that alters the rate of a reaction without being consumed in it. Activation energy is the minimum energy that colliding particles must possess for a reaction to occur.",
+        "key_idea": "A catalyst does not supply energy; it provides an alternative pathway with lower activation energy, so a much larger fraction of collisions become effective.",
+        "working_principle": "Raising the temperature by 10 °C typically doubles the rate, because it both increases collision frequency and, far more importantly, sharply increases the fraction of molecules with energy above the activation energy.",
+        "applications": [
+          "Finely divided iron catalyses the Haber process for ammonia.",
+          "Enzymes are biological catalysts that work under mild conditions.",
+          "Refrigeration slows food spoilage by reducing the rate of microbial reactions."
+        ]
+      },
+      "points": [
+        "Increasing concentration or pressure increases the frequency of collisions and hence the rate.",
+        "Increasing surface area (powdering a solid) increases the rate.",
+        "A 10 °C rise in temperature roughly doubles the rate of many reactions.",
+        "A catalyst lowers the activation energy and is not consumed.",
+        "A catalyst speeds up the forward and reverse reactions equally and cannot shift the equilibrium position."
+      ],
+      "mistakes": [
+        "Saying a catalyst supplies energy to the reaction; it lowers the energy barrier instead.",
+        "Believing a catalyst increases the yield of a reaction; it only changes how fast equilibrium is reached.",
+        "Assuming temperature affects rate only by making particles move faster; the energy distribution matters far more."
+      ],
+      "memory_hook": "'Hotter, Stronger, Finer, Catalysed' — the four ways to speed a reaction up.",
+      "advanced": "The Arrhenius equation k = Ae^(−Ea/RT) shows why temperature has such a dramatic effect: activation energy sits in an exponential. A small rise in T produces a disproportionately large rise in the fraction of successful collisions."
+    },
+    {
+      "title": "Collision Theory and Activation Energy",
+      "time": "14 mins",
+      "difficulty": "Hard",
+      "importance": 4,
+      "quick_summary": "Reactions occur when particles collide with sufficient energy and correct orientation; the minimum energy required is the activation energy.",
+      "real_life": "A mixture of petrol vapour and air sits harmlessly in a cylinder until a spark supplies the activation energy — then it burns in milliseconds.",
+      "detailed": {
+        "definition": "Collision theory states that for a reaction to occur, reacting particles must collide with energy equal to or greater than the activation energy and with the proper orientation. An effective collision is one that results in a reaction.",
+        "key_idea": "Most collisions are ineffective. Only the small fraction that are both energetic enough and correctly oriented lead to reaction, which is why reactions are so much slower than collision frequency alone would suggest.",
+        "working_principle": "The activated complex or transition state is the unstable arrangement at the top of the energy barrier. In an exothermic reaction the products lie below the reactants in energy; in an endothermic reaction they lie above.",
+        "applications": [
+          "Energy profile diagrams show reactants, activation energy, transition state and products.",
+          "A catalyst lowers the peak of the barrier without changing the energy of reactants or products.",
+          "The overall energy change ΔH is unaffected by the presence of a catalyst."
+        ]
+      },
+      "points": [
+        "Two conditions for an effective collision: sufficient energy AND correct orientation.",
+        "Activation energy is the minimum energy needed for a reaction to occur.",
+        "The activated complex is the highest-energy arrangement along the reaction path.",
+        "Exothermic: products lower in energy than reactants, ΔH negative.",
+        "A catalyst lowers activation energy but does not change ΔH."
+      ],
+      "mistakes": [
+        "Assuming every collision produces a reaction; the vast majority do not.",
+        "Forgetting the orientation requirement and citing energy alone.",
+        "Thinking a catalyst changes the enthalpy change of a reaction; it does not."
+      ],
+      "memory_hook": "'Enough energy AND the right angle' — both conditions, or nothing happens.",
+      "advanced": "Orientation matters so much that some enzyme-catalysed reactions run millions of times faster than the uncatalysed version simply because the enzyme holds the substrates in exactly the right alignment."
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "number": 3,
+  "title": "Gravitation",
+  "prerequisites": [
+    "Newton's three laws of motion and the idea of force.",
+    "Equations of uniformly accelerated motion.",
+    "Difference between mass and weight in everyday language.",
+    "Idea that objects fall towards the earth."
+  ],
+  "topics": [
+    {
+      "title": "Universal Law of Gravitation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Every body in the universe attracts every other body with a force directly proportional to the product of their masses and inversely proportional to the square of the distance between them.",
+      "real_life": "The same force that makes an apple fall keeps the moon in orbit — Newton's insight was that these are not two phenomena but one.",
+      "detailed": {
+        "definition": "The universal law of gravitation states that the force of attraction between two bodies is directly proportional to the product of their masses and inversely proportional to the square of the distance between their centres.",
+        "key_idea": "The inverse-square dependence is what makes gravity weak at large distances: doubling the separation reduces the force to one quarter, not one half. G, the universal gravitational constant, is the same everywhere in the universe.",
+        "working_principle": "The two forces on the two bodies form an action–reaction pair — the earth pulls an apple with exactly the force the apple pulls the earth. The earth does not visibly move only because its mass is enormous.",
+        "applications": [
+          "Explains the motion of planets around the sun and the moon around the earth.",
+          "Explains the occurrence of tides due to the moon and the sun.",
+          "Explains why the value of g varies slightly from place to place on earth."
+        ]
+      },
+      "points": [
+        "F = Gm₁m₂/r², where G = 6.67 × 10⁻¹¹ N·m²/kg².",
+        "G is a universal constant — the same everywhere in the universe.",
+        "Gravitational force is always attractive and acts along the line joining the centres.",
+        "The two forces form an action–reaction pair of equal magnitude.",
+        "Distance r is measured between the CENTRES of the two bodies."
+      ],
+      "mistakes": [
+        "Using the distance between surfaces instead of between centres.",
+        "Confusing G (universal constant, 6.67 × 10⁻¹¹) with g (acceleration due to gravity, 9.8 m/s²).",
+        "Forgetting to square the distance in the denominator."
+      ],
+      "memory_hook": "'Big G is Global and constant; small g is Ground-level and varies.'",
+      "advanced": "Cavendish measured G in 1798 using a torsion balance, an experiment sensitive enough to detect the pull between lead spheres in a laboratory. Because he could then calculate the earth's mass, the experiment is often called 'weighing the earth'.",
+      "formulas": [
+        {
+          "name": "Universal Law of Gravitation",
+          "difficulty": "Medium",
+          "formula": "F = G m₁ m₂ / r²",
+          "variables": "F = gravitational force in N, G = 6.67 × 10⁻¹¹ N·m²/kg², m₁ and m₂ = masses in kg, r = distance between centres in m.",
+          "when_to_use": "To find the attraction between any two bodies, including planets, satellites and everyday objects.",
+          "common_mistakes": "Forgetting to square r, or using the radius of only one body instead of the centre-to-centre distance.",
+          "shortcut": "Double the distance → force falls to one quarter; triple it → one ninth."
+        }
+      ]
+    },
+    {
+      "title": "Acceleration Due to Gravity and Free Fall",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "All bodies falling freely near the earth accelerate at the same rate g, independent of their mass, because a larger mass experiences a proportionally larger force.",
+      "real_life": "On the airless moon, Apollo 15's David Scott dropped a hammer and a feather together and both landed at the same instant.",
+      "detailed": {
+        "definition": "Free fall is motion under the influence of gravity alone, with no other force such as air resistance. The acceleration produced is the acceleration due to gravity, g, about 9.8 m/s² near the earth's surface.",
+        "key_idea": "Equating F = mg with F = GMm/R² gives g = GM/R², in which the mass of the falling body cancels out entirely. This is why all bodies fall at the same rate in a vacuum.",
+        "working_principle": "The value of g decreases with altitude and with depth, and increases slightly from the equator towards the poles because the earth is not a perfect sphere and it rotates.",
+        "applications": [
+          "g on the moon is about 1/6 of g on the earth, so a body weighs one-sixth as much there.",
+          "The equations of motion apply to free fall with a replaced by g.",
+          "In a satellite everything is in free fall together, producing apparent weightlessness."
+        ]
+      },
+      "points": [
+        "g = GM/R², where M and R are the earth's mass and radius.",
+        "g is independent of the mass of the falling body.",
+        "g ≈ 9.8 m/s² at the earth's surface; it is maximum at the poles and minimum at the equator.",
+        "g decreases with both altitude and depth, and is zero at the centre of the earth.",
+        "For a body thrown upward, g acts downward, so a = −9.8 m/s²."
+      ],
+      "mistakes": [
+        "Believing heavier bodies fall faster — they do so only because of air resistance, not gravity.",
+        "Taking g as positive for a body moving upward without adjusting the sign convention.",
+        "Thinking g is zero for an astronaut in orbit; g is nearly full strength, they are simply in free fall."
+      ],
+      "memory_hook": "'The mass cancels' — that one algebraic fact is the whole reason a feather and a hammer land together.",
+      "advanced": "Astronauts float not because gravity has vanished but because they and the station fall around the earth together. True weightlessness would require being infinitely far from all masses, which never happens.",
+      "formulas": [
+        {
+          "name": "Acceleration Due to Gravity",
+          "difficulty": "Medium",
+          "formula": "g = GM / R²",
+          "variables": "g = acceleration due to gravity, G = gravitational constant, M = mass of the earth, R = radius of the earth.",
+          "when_to_use": "To calculate g for the earth or for any other planet whose mass and radius are known.",
+          "common_mistakes": "Using the distance from the surface instead of the radius from the centre.",
+          "shortcut": "The mass of the falling body never appears — that is the point of the formula."
+        },
+        {
+          "name": "Equations of Motion Under Gravity",
+          "difficulty": "Medium",
+          "formula": "v = u + gt,  h = ut + ½gt²,  v² = u² + 2gh",
+          "variables": "u = initial velocity, v = final velocity, h = height, t = time, g = 9.8 m/s².",
+          "when_to_use": "For any freely falling body or body thrown vertically upward.",
+          "common_mistakes": "Using +g for upward motion; take one direction as positive and stay consistent.",
+          "shortcut": "For a body dropped from rest, u = 0, so h = ½gt²."
+        }
+      ]
+    },
+    {
+      "title": "Mass and Weight",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Mass is the quantity of matter in a body and never changes, while weight is the gravitational force on it and changes from place to place.",
+      "real_life": "An astronaut's mass is identical on earth and on the moon, but their weight on the moon is only one-sixth as much.",
+      "detailed": {
+        "definition": "Mass is the amount of matter contained in a body, a scalar measured in kilograms. Weight is the force with which the earth attracts a body, a vector measured in newtons, given by W = mg.",
+        "key_idea": "Mass is a fundamental property of a body; weight is a force that depends on where the body is. Confusing the two is the single most common error in this chapter.",
+        "working_principle": "Because weight is mg and g varies with location, the same body weighs slightly more at the poles than at the equator, one-sixth as much on the moon, and nothing at all in free fall.",
+        "applications": [
+          "A beam balance compares masses and gives the same reading everywhere.",
+          "A spring balance measures weight and reads differently on the moon.",
+          "1 kg wt = 9.8 N — the weight of a 1 kg mass on the earth's surface."
+        ]
+      },
+      "points": [
+        "Mass: scalar, kilogram, constant everywhere; Weight: vector, newton, varies with location.",
+        "W = mg, so weight is zero where g is zero.",
+        "Weight on the moon = (1/6) × weight on the earth.",
+        "A beam balance measures mass; a spring balance measures weight.",
+        "Mass can never be zero for a material body; weight can be."
+      ],
+      "mistakes": [
+        "Giving weight in kilograms — the SI unit of weight is the newton.",
+        "Saying an astronaut is weightless because they have no mass.",
+        "Thinking a beam balance would read differently on the moon; it would not."
+      ],
+      "memory_hook": "'Mass is what you are; Weight is what the planet makes of you.'",
+      "advanced": "That gravitational mass (in W = mg) and inertial mass (in F = ma) are numerically identical is not obvious and has been verified to extraordinary precision. Einstein elevated this coincidence into the equivalence principle, the foundation of general relativity.",
+      "formulas": [
+        {
+          "name": "Weight",
+          "difficulty": "Easy",
+          "formula": "W = m × g",
+          "variables": "W = weight in newtons, m = mass in kg, g = acceleration due to gravity in m/s².",
+          "when_to_use": "To convert between mass and weight, or to compare weights on different planets.",
+          "common_mistakes": "Expressing the answer in kg instead of N.",
+          "shortcut": "Multiply mass by 10 for a quick estimate of weight in newtons on the earth."
+        }
+      ]
+    },
+    {
+      "title": "Thrust, Pressure and Archimedes' Principle",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Pressure is thrust per unit area, fluids exert an upward buoyant force on immersed bodies, and Archimedes' principle states that this upthrust equals the weight of fluid displaced.",
+      "real_life": "A sharp knife cuts easily because the same force acts over a tiny area, and a huge steel ship floats because it displaces an enormous weight of water.",
+      "detailed": {
+        "definition": "Thrust is the force acting normally on a surface. Pressure is thrust per unit area, P = F/A, measured in pascals. Buoyancy is the upward force exerted by a fluid on a body immersed in it.",
+        "key_idea": "Archimedes' principle states that a body immersed wholly or partially in a fluid experiences an upthrust equal to the weight of the fluid it displaces. Whether the body floats or sinks depends on how this upthrust compares with its weight.",
+        "working_principle": "If the density of the body is less than that of the fluid, it floats; if greater, it sinks; if equal, it stays suspended. Relative density is the ratio of the density of a substance to the density of water and has no unit.",
+        "applications": [
+          "Ships are hollow so that their average density is less than that of water.",
+          "A hydrometer measures the relative density of liquids such as milk.",
+          "A body weighs less in water — the apparent loss of weight equals the upthrust."
+        ]
+      },
+      "points": [
+        "Pressure P = F/A; SI unit is the pascal (Pa), 1 Pa = 1 N/m².",
+        "Pressure increases with depth in a liquid and acts equally in all directions.",
+        "Archimedes' principle: upthrust = weight of fluid displaced.",
+        "Float if ρ_body < ρ_fluid; sink if ρ_body > ρ_fluid.",
+        "Relative density = density of substance / density of water; it has no unit."
+      ],
+      "mistakes": [
+        "Confusing thrust (a force in newtons) with pressure (force per unit area in pascals).",
+        "Thinking upthrust depends on the weight of the body rather than the weight of the fluid displaced.",
+        "Giving relative density a unit — it is a pure ratio."
+      ],
+      "memory_hook": "'Same force, smaller area, bigger pressure' — and 'Upthrust = weight of the water pushed aside'.",
+      "advanced": "Buoyancy arises because pressure increases with depth, so the upward push on the bottom of a submerged body exceeds the downward push on its top. Archimedes' principle is a consequence of that pressure difference, not a separate law.",
+      "formulas": [
+        {
+          "name": "Pressure",
+          "difficulty": "Easy",
+          "formula": "P = F / A",
+          "variables": "P = pressure in Pa, F = thrust (normal force) in N, A = area in m².",
+          "when_to_use": "Whenever a force is distributed over a surface — nails, knives, snowshoes, foundations.",
+          "common_mistakes": "Using area in cm² without converting to m², which gives an answer 10,000 times too large.",
+          "shortcut": "Reduce the area to increase the pressure — that is why blades are sharpened."
+        },
+        {
+          "name": "Pressure at Depth in a Liquid",
+          "difficulty": "Medium",
+          "formula": "P = h ρ g",
+          "variables": "P = pressure due to the liquid column, h = depth, ρ = density of liquid, g = acceleration due to gravity.",
+          "when_to_use": "To find the pressure at any depth in a liquid, e.g. at the base of a dam.",
+          "common_mistakes": "Including the area of the container — pressure at depth does not depend on it.",
+          "shortcut": "Pressure depends only on depth, density and g — never on the shape of the vessel."
+        },
+        {
+          "name": "Archimedes' Principle",
+          "difficulty": "Medium",
+          "formula": "Upthrust = V ρ g = weight of fluid displaced",
+          "variables": "V = volume of fluid displaced, ρ = density of the fluid, g = acceleration due to gravity.",
+          "when_to_use": "For all floating, sinking and apparent-weight problems.",
+          "common_mistakes": "Using the density of the body instead of the density of the fluid.",
+          "shortcut": "Apparent loss of weight in a fluid is exactly equal to the upthrust."
+        }
+      ]
+    }
+  ]
+}

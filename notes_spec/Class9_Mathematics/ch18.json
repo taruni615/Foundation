@@ -1,0 +1,55 @@
+{
+  "number": 18,
+  "title": "Limits",
+  "prerequisites": [
+    "Ability to substitute a value into an algebraic expression.",
+    "Skill in factorising polynomials.",
+    "Understanding of rational expressions.",
+    "Familiarity with the idea of a function."
+  ],
+  "topics": [
+    {
+      "title": "Concept of a Limit and Its Evaluation",
+      "time": "16 mins",
+      "difficulty": "Hard",
+      "importance": 4,
+      "quick_summary": "The limit of a function as x approaches a value is the value the function gets arbitrarily close to, which need not equal the function's value at that point.",
+      "real_life": "A car's speedometer reads instantaneous speed — the limit of average speed as the time interval shrinks towards zero.",
+      "detailed": {
+        "definition": "lim(x→a) f(x) = L means that f(x) can be made as close to L as desired by taking x sufficiently close to a, but not equal to a.",
+        "key_idea": "A limit describes the approach, not the arrival. The function need not even be defined at x = a for the limit there to exist — which is exactly why limits are more powerful than substitution.",
+        "working_principle": "If direct substitution gives 0/0, the expression is indeterminate and must be simplified by factorising, rationalising or using a standard limit before substituting again.",
+        "applications": [
+          "lim(x→2) (x² − 4)/(x − 2) = 4, found by factorising to (x + 2).",
+          "The derivative is defined as a limit of a difference quotient.",
+          "Left-hand and right-hand limits must be equal for the limit to exist."
+        ]
+      },
+      "points": [
+        "The limit exists only if the left-hand and right-hand limits are equal.",
+        "The limit at a point does not depend on the function's value at that point.",
+        "0/0 is an indeterminate form and needs algebraic simplification.",
+        "lim(x→a) [f(x) ± g(x)] = lim f(x) ± lim g(x), and similarly for products and quotients.",
+        "Standard limit: lim(x→a) (xⁿ − aⁿ)/(x − a) = n·aⁿ⁻¹."
+      ],
+      "mistakes": [
+        "Writing 0/0 = 1 or 0/0 = 0; it is indeterminate, not a number.",
+        "Assuming the limit always equals the function's value at that point.",
+        "Applying the quotient rule for limits when the denominator's limit is zero."
+      ],
+      "memory_hook": "'A limit is about the journey, not the destination' — where the function is heading, not where it lands.",
+      "advanced": "The formal ε–δ definition makes 'arbitrarily close' precise and is what put calculus on a rigorous footing in the nineteenth century. Every theorem of calculus ultimately rests on it.",
+      "formulas": [
+        {
+          "name": "Standard Algebraic Limit",
+          "difficulty": "Medium",
+          "formula": "lim(x→a) (xⁿ − aⁿ)/(x − a) = n·aⁿ⁻¹",
+          "variables": "n = any rational number, a = the point of approach.",
+          "when_to_use": "Whenever a limit produces the indeterminate form 0/0 with a difference of powers.",
+          "common_mistakes": "Applying it when the denominator is not exactly (x − a).",
+          "shortcut": "It is the derivative of xⁿ at x = a, written as a limit."
+        }
+      ]
+    }
+  ]
+}

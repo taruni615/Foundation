@@ -1,0 +1,76 @@
+{
+  "number": 11,
+  "title": "Constructions",
+  "prerequisites": [
+    "Skill in using a ruler and a pair of compasses.",
+    "Properties of triangles and the triangle inequality.",
+    "Knowledge of perpendicular and angle bisectors.",
+    "Angle sum property of a triangle."
+  ],
+  "topics": [
+    {
+      "title": "Basic Constructions with Ruler and Compasses",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Using only an ungraduated ruler and compasses, an angle can be bisected, a segment perpendicularly bisected, and angles of 60°, 30°, 90° and 45° constructed.",
+      "real_life": "A carpenter marking the exact centre of a plank uses compasses rather than a tape, because the construction is more accurate than any measurement.",
+      "detailed": {
+        "definition": "A geometrical construction is an accurate drawing made using only an ungraduated ruler and a pair of compasses, with every step justified by a geometrical theorem.",
+        "key_idea": "Constructions never rely on measurement. Every step must be justified, which is why arcs must be left visible on the final figure as evidence of the method.",
+        "working_principle": "An equilateral triangle construction gives 60°; bisecting it gives 30° and 15°. A perpendicular gives 90°, and bisecting that gives 45° and 22.5°.",
+        "applications": [
+          "Angles constructible by this method are multiples of 15°.",
+          "The perpendicular bisector of a chord passes through the centre of a circle.",
+          "The point of intersection of two perpendicular bisectors is the circumcentre."
+        ]
+      },
+      "points": [
+        "Only an ungraduated ruler and compasses may be used.",
+        "Constructible angles: 60°, 30°, 15°, 90°, 45°, 22.5°, 120°, 135° — all multiples of 15°.",
+        "Never erase the construction arcs; they are the proof of the method.",
+        "The perpendicular bisector is the locus of points equidistant from two given points.",
+        "The angle bisector is the locus of points equidistant from two given lines."
+      ],
+      "mistakes": [
+        "Measuring with a protractor instead of constructing.",
+        "Rubbing out the arcs, which loses the marks for method.",
+        "Changing the compass radius midway through a construction that requires it constant."
+      ],
+      "memory_hook": "'Arcs are the working — never rub them out.'",
+      "advanced": "Trisecting an arbitrary angle with ruler and compasses is impossible, proved by Wantzel in 1837 using field theory. A geometry question was finally settled by algebra, more than two thousand years after it was asked."
+    },
+    {
+      "title": "Construction of Triangles",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "A triangle can be constructed from a base, a base angle and either the sum or the difference of the other two sides, or from its perimeter and two base angles.",
+      "real_life": "A surveyor who knows one side, one angle and the total length of the other two boundaries can still recover the exact shape of a plot.",
+      "detailed": {
+        "definition": "These constructions build a triangle from data that do not directly give all three sides, using an auxiliary point and the isosceles triangle property to convert a sum or difference into a length.",
+        "key_idea": "The technique is always the same: mark the given sum or difference along the base line, join it, and use the fact that a perpendicular bisector or angle bisector recovers the required vertex.",
+        "working_principle": "For a given sum of two sides, cut off that length from the base, join the endpoint, and construct the perpendicular bisector of that join. Its intersection with the base line gives the third vertex.",
+        "applications": [
+          "Given base, base angle and sum of the other two sides.",
+          "Given base, base angle and difference of the other two sides.",
+          "Given perimeter and two base angles."
+        ]
+      },
+      "points": [
+        "Always draw a rough sketch first and mark all the given data on it.",
+        "The perpendicular bisector method converts a given sum into two equal parts.",
+        "Construction is possible only if the data satisfy the triangle inequality.",
+        "The angle sum property limits which pairs of angles can be given.",
+        "State the steps of construction clearly; marks are awarded for them."
+      ],
+      "mistakes": [
+        "Attempting a construction whose data violate the triangle inequality.",
+        "Omitting the rough sketch, which usually leads to misplacing the given elements.",
+        "Not writing the steps of construction when the question asks for them."
+      ],
+      "memory_hook": "'Rough sketch first, then arcs, then steps' — in that order, every time.",
+      "advanced": "A construction exists exactly when the corresponding algebraic system has a real solution. The triangle inequality and the angle sum are the geometric expression of that solvability condition."
+    }
+  ]
+}

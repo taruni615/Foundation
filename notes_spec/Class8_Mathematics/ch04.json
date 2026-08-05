@@ -1,0 +1,71 @@
+{
+  "number": 4,
+  "title": "Practical Geometry",
+  "prerequisites": [
+    "Understanding of quadrilateral properties from Chapter 3.",
+    "Basic skill with a ruler, compass, and protractor.",
+    "Idea of triangle construction rules (SSS, SAS, ASA) from earlier classes."
+  ],
+  "topics": [
+    {
+      "title": "Constructing a Quadrilateral — Given Four Sides & One Diagonal",
+      "quick_summary": "A quadrilateral can be uniquely constructed if five independent measurements are known, such as four sides and one diagonal, by splitting it into two triangles built with a compass and ruler.",
+      "detailed": {
+        "definition": "Constructing a quadrilateral means drawing it accurately to scale using only a compass, ruler, and protractor, based on a specific set of five given measurements that fully determine its shape.",
+        "key_idea": "A quadrilateral needs exactly FIVE independent measurements (sides, angles, or diagonals) to be constructed uniquely — this is because a diagonal splits it into two triangles, and each triangle needs three measurements, sharing one side (the diagonal) between them: 3 + 3 − 1 = 5.",
+        "working_principle": "Draw the diagonal first as the base reference line, then construct one triangle on one side of the diagonal using the given sides (SSS), and the second triangle on the other side using its given sides — the four outer vertices then form the required quadrilateral.",
+        "applications": [
+          "Land and plot surveying, where field measurements are used to accurately draw property boundaries.",
+          "Engineering and design drafting of quadrilateral-shaped components or panels."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Architects and land surveyors mark out irregular plots of land using exactly this method — splitting an odd-shaped four-sided plot into two triangles using a measured diagonal.",
+      "points": [
+        "A quadrilateral needs exactly 5 independent measurements for a unique construction (SSS+SSS sharing a diagonal).",
+        "Always draw the known diagonal FIRST as your base reference before adding the other vertices.",
+        "Use a compass to mark arcs of the correct side lengths from each end of the diagonal to locate the third vertex of each triangle.",
+        "Label vertices in order (A, B, C, D) as you construct, so sides and the diagonal are not confused."
+      ],
+      "mistakes": [
+        "Trying to construct a quadrilateral with fewer than 5 independent measurements — the shape becomes non- unique or impossible to fix exactly.",
+        "Forgetting to draw the diagonal first, making it hard to accurately locate the other two vertices.",
+        "Using the wrong compass radius, mixing up which arc belongs to which given side length."
+      ],
+      "memory_hook": "'5 measurements, 2 triangles, 1 shared diagonal' — 3 + 3 − 1 = 5, the golden rule of quadrilateral construction.",
+      "advanced": "The 'five measurements' rule generalises: any simple polygon with n sides can be split into (n−2) triangles by diagonals from one vertex, and the number of independent measurements needed for a unique construction follows a similar counting logic based on shared sides between adjacent triangles."
+    },
+    {
+      "title": "Constructing Quadrilaterals — Other Given Conditions",
+      "quick_summary": "Quadrilaterals can also be constructed when given two diagonals and three sides, three sides and two included angles, or two adjacent sides and three angles — always reducible to constructing two triangles.",
+      "detailed": {
+        "definition": "Different combinations of five independent measurements (sides, angles, diagonals) can each uniquely determine a quadrilateral, as long as the combination still allows the figure to be broken into two constructible triangles.",
+        "key_idea": "Whichever five measurements are given, the strategy is the same: identify a triangle you CAN construct directly (using SSS, SAS, or ASA), draw it first, then use the remaining given measurements to locate the fourth vertex.",
+        "working_principle": "For 'two diagonals and three sides': draw one triangle using two sides and the included diagonal, then locate the fourth vertex using the second diagonal and the remaining side. For 'three sides and two included angles' or 'two sides and three angles': build the first constructible triangle, then extend using the given angles.",
+        "applications": [
+          "Custom construction of quadrilateral shapes in design, art (rangoli/tessellation), and technical drawing where different measurement combinations are naturally available.",
+          "Verifying whether a set of field/site measurements is sufficient to reconstruct a quadrilateral shape uniquely."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Furniture and packaging design often specifies a quadrilateral panel using a mix of side lengths and angles rather than a diagonal, requiring these alternate construction methods.",
+      "points": [
+        "Given 2 diagonals + 3 sides: construct the triangle formed by one diagonal and two sides first.",
+        "Given 3 sides + 2 included angles: build outward from one fully known triangle (SAS) using the angles.",
+        "Given 2 adjacent sides + 3 angles: use ASA/SAS to build the first triangle, then angles to place the last vertex.",
+        "Always double-check with a ruler/protractor that the final figure matches ALL five given measurements, not just the ones used first."
+      ],
+      "mistakes": [
+        "Starting construction with a triangle that cannot actually be built from the given measurements (e.g., angles that don't correspond to two known sides).",
+        "Ignoring one of the five given conditions and only verifying using four of them, missing construction errors.",
+        "Confusing which angle is 'included' between two given sides when applying the SAS method."
+      ],
+      "memory_hook": "'Always find your first solvable triangle' — every quadrilateral construction begins with one triangle you can draw with confidence.",
+      "advanced": "These construction techniques are a hands-on, geometric proof of triangle congruence rules (SSS, SAS, ASA) — successfully constructing a unique figure from a given set of measurements is a physical demonstration that those measurements are sufficient to fix a shape completely, connecting practical geometry directly to the congruence theorems studied alongside it."
+    }
+  ]
+}

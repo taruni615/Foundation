@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import os
 import re
+import socket
 from typing import Any, Dict, List, Optional, Tuple
 
 import pymysql
@@ -30,7 +31,14 @@ from edu_pipeline.shared.db_config import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT
 # Optional: connect via a local UNIX socket (e.g. /tmp/mysql.sock) instead of
 # TCP host/port.  MySQL treats 'localhost' (socket) as a different host than
 # 127.0.0.1 (TCP), so socket auth often differs.
+#
+# Windows has no AF_UNIX, so a socket path inherited from a macOS/Linux ``.env``
+# can never connect there -- pymysql fails with "module 'socket' has no
+# attribute 'AF_UNIX'" rather than falling back.  Ignore the setting on those
+# platforms so the TCP host/port below is used instead.
 DB_SOCKET = os.environ.get("DB_SOCKET", "").strip()
+if DB_SOCKET and not hasattr(socket, "AF_UNIX"):
+    DB_SOCKET = ""
 
 # ---------------------------------------------------------------------------
 # Vocabulary + config (mirrors app_server.py; intentionally kept in sync)
@@ -78,29 +86,16 @@ def _connect():
 def estimate_difficulty(stem: str, question_type: str = "") -> str:
     """Heuristic per-question difficulty (Easy | Moderate | Difficult).
 
-    The bank has no difficulty column, so we estimate from content signals:
-    length, presence of formulas, and the question type.  Approximate, but gives
-    the adaptive engine a per-question attribute to calibrate against.
+    Kept as a re-export so existing callers keep working.  The rule itself lives
+    in ``generators.questions.tagger`` — the same pure-rule-engine package as
+    ``classify_question``, which this module already imports (see CLAUDE.md, the
+    accepted storage -> generators deviation).  Rows tagged by
+    ``scripts/tag_questions.py`` carry the persisted ``difficulty`` column
+    instead; this function is the fallback for untagged rows.
     """
-    s = stem or ""
-    qt = (question_type or "").lower()
-    score = 0
-    n = len(s)
-    if n > 260:
-        score += 2
-    elif n > 130:
-        score += 1
-    if "<math" in s or "$" in s or "\\(" in s or "\\frac" in s:
-        score += 1
-    if any(t in qt for t in ("numerical", "problem", "hots", "assertion", "matrix")):
-        score += 1
-    if any(t in qt for t in ("definition", "fill", "true", "one word", "short")):
-        score -= 1
-    if score >= 3:
-        return "Difficult"
-    if score >= 1:
-        return "Moderate"
-    return "Easy"
+    from edu_pipeline.generators.questions.tagger import estimate_difficulty as _impl
+
+    return _impl(stem, question_type)
 
 
 def derive_attributes(book_slug: str) -> Dict[str, str]:

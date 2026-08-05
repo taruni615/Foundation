@@ -1,0 +1,87 @@
+{
+  "number": 3,
+  "title": "Pair of Linear Equations in Two Variables",
+  "prerequisites": [
+    "Ability to solve a linear equation in one variable.",
+    "Plotting a straight line from its equation.",
+    "Understanding of ratios and proportion.",
+    "Familiarity with the Cartesian plane."
+  ],
+  "topics": [
+    {
+      "title": "Graphical Method and Consistency",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Two linear equations represent two lines, which may intersect at one point, be parallel, or coincide — giving one solution, none, or infinitely many.",
+      "real_life": "Comparing two mobile tariff plans graphically shows immediately whether one is always cheaper or whether they cross at some usage level.",
+      "detailed": {
+        "definition": "A pair of linear equations a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0 is consistent if it has at least one solution and inconsistent if it has none. A consistent pair with infinitely many solutions is called dependent.",
+        "key_idea": "The ratios of the coefficients decide everything without any drawing. Comparing a₁/a₂, b₁/b₂ and c₁/c₂ tells you the number of solutions in a single line of work.",
+        "working_principle": "If a₁/a₂ ≠ b₁/b₂, the lines intersect and there is a unique solution. If all three ratios are equal, the lines coincide. If the first two are equal but differ from the third, the lines are parallel.",
+        "applications": [
+          "Intersecting lines: unique solution, consistent and independent.",
+          "Coincident lines: infinitely many solutions, consistent and dependent.",
+          "Parallel lines: no solution, inconsistent."
+        ]
+      },
+      "points": [
+        "a₁/a₂ ≠ b₁/b₂ → unique solution (intersecting lines).",
+        "a₁/a₂ = b₁/b₂ = c₁/c₂ → infinitely many solutions (coincident lines).",
+        "a₁/a₂ = b₁/b₂ ≠ c₁/c₂ → no solution (parallel lines).",
+        "Consistent means at least one solution exists.",
+        "Both equations must be in the form ax + by + c = 0 before comparing ratios."
+      ],
+      "mistakes": [
+        "Comparing ratios before writing both equations in standard form.",
+        "Calling a dependent pair inconsistent; it is consistent with infinitely many solutions.",
+        "Mixing up the parallel and coincident conditions, which differ only in the third ratio."
+      ],
+      "memory_hook": "'Two ratios differ → one point; all three equal → same line; only the last differs → never meet.'",
+      "advanced": "In matrix terms the pair has a unique solution exactly when the coefficient determinant a₁b₂ − a₂b₁ is non-zero. Cramer's rule then gives the solution directly, and the ratio conditions are that determinant in disguise."
+    },
+    {
+      "title": "Algebraic Methods of Solution",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A pair of linear equations is solved algebraically by substitution, elimination or cross-multiplication, whichever suits the coefficients best.",
+      "real_life": "Splitting a bill where two items have unknown prices but two different totals are known is solved in seconds by elimination.",
+      "detailed": {
+        "definition": "In substitution, one variable is expressed in terms of the other and substituted. In elimination, the equations are added or subtracted after equalising one coefficient. Cross-multiplication uses a direct formula.",
+        "key_idea": "Elimination is usually fastest when a coefficient is already equal or easily made so; substitution is easier when one variable has coefficient 1. Choosing well saves most of the arithmetic.",
+        "working_principle": "Equations reducible to linear form, such as those involving 1/x and 1/y, are solved by substituting u = 1/x and v = 1/y, solving the linear pair, and converting back.",
+        "applications": [
+          "Age problems, speed–distance–time problems, and work problems.",
+          "Boat and stream problems: upstream speed = b − s, downstream = b + s.",
+          "Fraction problems where numerator and denominator are both unknown."
+        ]
+      },
+      "points": [
+        "Substitution: express one variable and substitute into the other equation.",
+        "Elimination: make one coefficient equal, then add or subtract.",
+        "Cross-multiplication: x/(b₁c₂−b₂c₁) = y/(c₁a₂−c₂a₁) = 1/(a₁b₂−a₂b₁).",
+        "Equations in 1/x and 1/y become linear after substituting u = 1/x, v = 1/y.",
+        "Always verify the answer in BOTH original equations."
+      ],
+      "mistakes": [
+        "Forgetting to convert u and v back to x and y at the end.",
+        "Adding when the signs require subtraction during elimination.",
+        "Checking the solution in only one of the two equations."
+      ],
+      "memory_hook": "'Coefficient of 1 → substitute; matching coefficients → eliminate.'",
+      "advanced": "Cross-multiplication is Cramer's rule written out. For larger systems, Gaussian elimination generalises the elimination method and is what computers actually use to solve thousands of equations at once.",
+      "formulas": [
+        {
+          "name": "Cross-Multiplication Method",
+          "difficulty": "Hard",
+          "formula": "x/(b₁c₂ − b₂c₁) = y/(c₁a₂ − c₂a₁) = 1/(a₁b₂ − a₂b₁)",
+          "variables": "a₁, b₁, c₁ and a₂, b₂, c₂ = coefficients of the two equations in the form ax + by + c = 0.",
+          "when_to_use": "When both equations are already in standard form and the coefficients are awkward.",
+          "common_mistakes": "Not writing both equations with all terms on the left before applying the formula.",
+          "shortcut": "If a₁b₂ − a₂b₁ = 0, there is no unique solution — check the ratios instead."
+        }
+      ]
+    }
+  ]
+}

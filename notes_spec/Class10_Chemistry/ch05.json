@@ -1,0 +1,108 @@
+{
+  "number": 5,
+  "title": "Periodic Classification of Elements",
+  "prerequisites": [
+    "Knowledge of atomic number, mass number and electronic configuration.",
+    "Idea of valency and how it is determined.",
+    "Difference between metals and non-metals.",
+    "Familiarity with the symbols of common elements."
+  ],
+  "topics": [
+    {
+      "title": "Early Attempts at Classification",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Döbereiner's triads and Newlands' law of octaves were the first attempts to order the elements, but each worked only for a small part of the known elements.",
+      "real_life": "Ordering elements is like arranging a library — every early scheme worked for one shelf and failed on the next until the right principle was found.",
+      "detailed": {
+        "definition": "Döbereiner's triads are groups of three elements with similar properties in which the atomic mass of the middle element is approximately the average of the other two. Newlands' law of octaves states that every eighth element has properties similar to the first.",
+        "key_idea": "Both schemes failed because they used atomic mass, which does not increase in a strictly regular way. The failures were as informative as the successes — they pointed towards a different organising property.",
+        "working_principle": "Döbereiner could identify only three triads among the elements known then. Newlands' law worked up to calcium and then broke down, and he had to place two elements in the same slot.",
+        "applications": [
+          "Li, Na, K form a Döbereiner triad: (7 + 39)/2 = 23, the atomic mass of sodium.",
+          "Newlands' law failed for elements beyond calcium and did not allow for undiscovered elements.",
+          "These failures led directly to Mendeleev's use of properties rather than mass alone."
+        ]
+      },
+      "points": [
+        "Döbereiner's triads: only three could be identified among known elements.",
+        "Newlands' law of octaves applied only up to calcium.",
+        "Newlands assumed only 56 elements existed and no more would be discovered.",
+        "Both classifications were based on atomic mass.",
+        "The failure of these schemes showed that atomic mass is not the fundamental property."
+      ],
+      "mistakes": [
+        "Saying the law of octaves worked for all elements; it broke down after calcium.",
+        "Confusing Döbereiner (triads) with Newlands (octaves).",
+        "Thinking these were useless; each identified a genuine periodicity."
+      ],
+      "memory_hook": "'Döbereiner counted in Threes, Newlands counted in Eights' — both counted by mass, and both ran out.",
+      "advanced": "Newlands drew his analogy from the musical octave, which invited ridicule at the time. The underlying periodicity he spotted was real; only the organising variable was wrong."
+    },
+    {
+      "title": "Mendeleev's Periodic Table",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Mendeleev arranged elements by increasing atomic mass and similarity of properties, leaving gaps for undiscovered elements whose properties he predicted correctly.",
+      "real_life": "Mendeleev predicted the properties of a then-unknown element he called eka-silicon; when germanium was discovered fifteen years later it matched almost exactly.",
+      "detailed": {
+        "definition": "Mendeleev's periodic law states that the properties of elements are a periodic function of their atomic masses. His table had horizontal rows called periods and vertical columns called groups.",
+        "key_idea": "Mendeleev's genius was to give priority to properties over strict mass order, and to leave gaps rather than force elements into wrong places. Both decisions were vindicated by later discoveries.",
+        "working_principle": "He grouped elements by the formulae of their oxides and hydrides. Where the mass order conflicted with properties, he placed the element by its properties — as with cobalt and nickel.",
+        "applications": [
+          "Gaps were left for eka-boron (scandium), eka-aluminium (gallium) and eka-silicon (germanium).",
+          "Noble gases were discovered later and were accommodated in a new group without disturbing the table.",
+          "Cobalt (58.9) was placed before nickel (58.7) on the basis of properties."
+        ]
+      },
+      "points": [
+        "Mendeleev's periodic law is based on ATOMIC MASS.",
+        "He left gaps for undiscovered elements and predicted their properties.",
+        "Noble gases were later added as a separate group without disturbing the arrangement.",
+        "Limitation: no fixed position for hydrogen, which resembles both alkali metals and halogens.",
+        "Limitation: isotopes have different masses but must occupy the same position."
+      ],
+      "mistakes": [
+        "Saying Mendeleev arranged elements by atomic number; that was Moseley's later correction.",
+        "Treating the gaps as errors; they were deliberate and predictive.",
+        "Forgetting that anomalous pairs such as Co/Ni were placed by properties, not mass."
+      ],
+      "memory_hook": "'Mass ordered it, Properties corrected it, Gaps proved it' — the three moves of Mendeleev.",
+      "advanced": "The isotope problem was fatal to a mass-based table: chlorine-35 and chlorine-37 are chemically identical but differ in mass. Only when Moseley showed that atomic number is the fundamental property did the anomalies disappear."
+    },
+    {
+      "title": "The Modern Periodic Table and Periodic Trends",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The modern table arranges elements by increasing atomic number in 18 groups and 7 periods, and properties change in regular trends across periods and down groups.",
+      "real_life": "Sodium reacts violently with water while its neighbour magnesium barely reacts at all — one step across the table changes chemistry completely.",
+      "detailed": {
+        "definition": "The modern periodic law states that the properties of elements are a periodic function of their atomic numbers. A group is a vertical column; a period is a horizontal row.",
+        "key_idea": "Elements in a group have the same number of valence electrons, which is why they behave alike chemically. Elements in a period have the same number of shells, which is why size and reactivity change steadily across it.",
+        "working_principle": "Across a period, nuclear charge increases while the number of shells stays constant, so atoms get smaller, metallic character decreases and non-metallic character increases. Down a group, a new shell is added each time, so atoms get larger and metallic character increases.",
+        "applications": [
+          "Group 1 alkali metals, Group 17 halogens, Group 18 noble gases.",
+          "Valency first increases from 1 to 4 and then decreases to 0 across a period.",
+          "Metals lie on the left, non-metals on the right, and metalloids along the dividing staircase."
+        ]
+      },
+      "points": [
+        "Modern periodic table: 18 groups and 7 periods, arranged by atomic number.",
+        "Atomic size DECREASES across a period and INCREASES down a group.",
+        "Metallic character decreases across a period and increases down a group.",
+        "Elements in the same group have the same number of valence electrons and the same valency.",
+        "The number of the period equals the number of shells in the atom."
+      ],
+      "mistakes": [
+        "Saying atomic size increases across a period; it decreases because of rising nuclear charge.",
+        "Confusing group number with period number when locating an element.",
+        "Assuming the most reactive metal and most reactive non-metal are in the same region; they are at opposite corners."
+      ],
+      "memory_hook": "'Across you shrink, Down you grow' — and 'same group, same valence electrons, same behaviour'.",
+      "advanced": "Atomic size shrinks across a period despite added electrons because each new electron enters the same shell while nuclear charge rises. Shielding stays roughly constant, so the effective nuclear pull on the outer electrons increases steadily."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "number": 15,
+  "title": "Introduction to Graphs",
+  "prerequisites": [
+    "Comfort with reading bar graphs and histograms from Chapter 5.",
+    "Basic idea of ordered pairs and coordinates from earlier classes.",
+    "Understanding of direct proportion from Chapter 13 (for linear graphs)."
+  ],
+  "topics": [
+    {
+      "title": "The Coordinate Plane & Plotting Points",
+      "quick_summary": "The Cartesian coordinate plane uses two perpendicular number lines (the x-axis and y-axis) to uniquely locate any point using an ordered pair (x, y).",
+      "detailed": {
+        "definition": "The coordinate plane is formed by a horizontal x-axis and a vertical y-axis intersecting at the origin (0,0); any point is located by its ordered pair (x, y), where x is the horizontal distance and y is the vertical distance from the origin.",
+        "key_idea": "The ORDER in the ordered pair (x, y) matters — the x-coordinate (abscissa) is always written and read first, followed by the y-coordinate (ordinate); (2,3) and (3,2) represent two completely different points.",
+        "working_principle": "To plot (x, y): starting at the origin, move x units horizontally (right if positive, left if negative), then move y units vertically (up if positive, down if negative) from that position, and mark the resulting point.",
+        "applications": [
+          "Mapping and navigation systems, computer graphics, and data visualization all rely on coordinate plotting.",
+          "Representing relationships between two variables (like time and distance, or price and demand) visually as graphs."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "GPS coordinates (latitude, longitude) and pixel positions on a computer screen both use the same idea as the Cartesian coordinate plane to pinpoint an exact location.",
+      "points": [
+        "Every point is written as an ordered pair (x, y): x = abscissa (horizontal), y = ordinate (vertical).",
+        "The origin is the point (0, 0), where both axes intersect.",
+        "The plane is divided into 4 quadrants by the two axes, numbered counter-clockwise starting from the top-right (Quadrant I: x>0,y>0).",
+        "Points on the x-axis always have y = 0; points on the y-axis always have x = 0."
+      ],
+      "mistakes": [
+        "Swapping the order of x and y coordinates while plotting a point.",
+        "Plotting a point in the wrong quadrant due to a sign error on either coordinate.",
+        "Forgetting that a point lying exactly ON an axis has one coordinate equal to zero."
+      ],
+      "memory_hook": "'x before y, always' — 'Along the corridor (x), then up the stairs (y)' is a classic way to remember plotting order.",
+      "advanced": "The coordinate plane, formalized by René Descartes, is the reason algebra and geometry could be unified into a single subject — every algebraic equation in x and y can now be 'seen' as a geometric graph, and every geometric shape can be described using algebraic equations, a connection exploited constantly through the rest of mathematics."
+    },
+    {
+      "title": "Linear Graphs & Reading Graphs (Bar, Line, and Time-Distance)",
+      "quick_summary": "A linear graph is a straight-line graph representing a relationship where one quantity changes at a constant rate with respect to another, commonly used for tracking quantities like distance, temperature, or cost over time.",
+      "detailed": {
+        "definition": "A linear graph is the graph of a linear relationship (such as y = kx or y = mx + c), always appearing as a straight line on the coordinate plane; reading a graph means extracting specific values or trends by interpreting the plotted line or points.",
+        "key_idea": "On a linear graph, the STEEPNESS (slope) of the line reflects the rate of change of one quantity with respect to the other — a steeper line means a faster rate of change (e.g., higher speed on a distance-time graph).",
+        "working_principle": "To read a value from a graph, locate the known coordinate on one axis, trace perpendicular to the line/curve until you reach it, then trace across to read the corresponding value on the other axis; to plot a linear relationship, calculate a few (x,y) pairs from the equation and connect them with a straight line.",
+        "applications": [
+          "Distance-time graphs used in physics to represent constant or changing speed.",
+          "Tracking trends over time such as temperature variation, population growth, or savings growth in finance."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "A car travelling at constant speed produces a straight-line distance-time graph, while a fixed hourly wage produces a straight-line earnings-vs-hours graph.",
+      "points": [
+        "A straight-line graph always represents a relationship where equal changes in x produce equal changes in y (constant rate).",
+        "If a linear graph passes through the origin, the two quantities are in direct proportion (y = kx).",
+        "On a distance-time graph, a horizontal line segment (zero slope) represents the object being at rest (not moving).",
+        "A steeper line on a distance-time graph always represents a faster/higher speed than a less steep line."
+      ],
+      "mistakes": [
+        "Misreading a value off the graph by tracing along the wrong axis or losing track of the scale of each axis.",
+        "Assuming EVERY straight line graph must pass through the origin — only DIRECT proportion graphs do; general linear graphs (y = mx + c with c ≠ 0) do not.",
+        "Confusing a horizontal graph segment (object at rest) with a graph that has zero steepness meaning zero value — they are different ideas."
+      ],
+      "memory_hook": "'Steeper line, faster change' — the slope of a linear graph always tells the story of the rate of change.",
+      "advanced": "Distance-time graphs are a student's first real encounter with the idea of 'slope equals rate' that becomes central to calculus in later years — the intuitive idea that a steeper line means faster change smoothly generalizes into the formal concept of a derivative, making this simple graph-reading skill a genuine mathematical foundation stone."
+    }
+  ]
+}

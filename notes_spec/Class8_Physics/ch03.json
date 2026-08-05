@@ -1,0 +1,131 @@
+{
+  "number": 3,
+  "title": "Sound",
+  "prerequisites": [
+    "Basic idea of vibration — an object moving rapidly back and forth.",
+    "Concept of a medium (solid, liquid, gas) through which something can travel.",
+    "Familiarity with the idea of energy travelling from one place to another."
+  ],
+  "topics": [
+    {
+      "title": "Production and Propagation of Sound",
+      "quick_summary": "Sound is produced by vibrating objects and travels as a wave through a material medium, but cannot travel through a vacuum since it needs particles to carry the vibration forward.",
+      "detailed": {
+        "definition": "Sound is a form of energy produced by vibrating bodies, which travels through a medium as a longitudinal wave made of alternating compressions (crowded particles) and rarefactions (spread-out particles).",
+        "key_idea": "Sound is a mechanical wave — it needs a material medium (solid, liquid or gas) to travel, unlike light, and cannot pass through empty space (vacuum).",
+        "working_principle": "A vibrating source pushes neighbouring particles of the medium, creating a region of compression; as it moves back, it creates a region of rarefaction. This pattern of compressions and rarefactions moves outward, carrying sound energy without the particles themselves travelling far.",
+        "applications": [
+          "Sound generally travels fastest through solids, slower through liquids, and slowest through gases (air) because particles are more closely packed in solids.",
+          "Astronauts on the Moon cannot talk directly because there is no atmosphere (vacuum) to carry sound.",
+          "String and wind musical instruments produce sound from vibrating strings or vibrating air columns."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A ringing bell, a plucked guitar string, and vocal cords during speech all vibrate rapidly to produce sound.",
+      "points": [
+        "Sound needs a medium to travel; it cannot travel through vacuum.",
+        "Sound is a longitudinal wave: particle vibration is along (parallel to) the direction the wave travels.",
+        "Speed of sound: solids > liquids > gases (generally).",
+        "The speed of sound in air is about 344 m/s at room temperature."
+      ],
+      "mistakes": [
+        "Thinking sound can travel through empty space like light does (it cannot — space is a vacuum).",
+        "Confusing longitudinal waves (sound) with transverse waves (like light or water ripples) — in sound, particles vibrate along the wave's direction of travel, not perpendicular to it."
+      ],
+      "memory_hook": "\"No Air, No Sound\" — vacuum kills sound but not light.",
+      "advanced": "Because sound needs matter to travel, its speed depends on how tightly the particles of the medium are packed and how strongly they interact — this is why sound travels roughly four times faster in water and about fifteen times faster in steel than in air."
+    },
+    {
+      "title": "Characteristics of Sound",
+      "quick_summary": "Sounds differ from each other in loudness (how strong they seem), pitch (how high or low they seem), and quality/timbre (which lets us tell different sources apart even at the same pitch and loudness).",
+      "detailed": {
+        "definition": "Loudness depends on the amplitude of the sound wave (how large the vibration is); pitch depends on the frequency of vibration (how many vibrations occur per second); quality (timbre) depends on the waveform produced by the source.",
+        "key_idea": "A larger amplitude produces a louder sound; a higher frequency produces a shriller (higher-pitched) sound. Loudness and pitch are controlled by two completely different wave properties.",
+        "working_principle": "When a vibrating source moves through a larger distance, it pushes air with greater force, producing larger compressions and rarefactions — heard as louder sound. When it vibrates more times per second, more compressions reach the ear each second — heard as a higher pitch.",
+        "applications": [
+          "Musicians adjust string tension or the length of an air column to change the pitch of notes.",
+          "Sound engineers control amplitude (volume knobs) to adjust loudness without changing pitch.",
+          "Noise pollution from loud unwanted sounds is measured and regulated using loudness levels (decibels)."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "A whisper and a shout differ mainly in loudness; a child's voice and an adult's voice differ mainly in pitch; a violin and a flute playing the same note still sound different due to timbre.",
+      "points": [
+        "Loudness ∝ (amplitude)²; measured in decibels (dB).",
+        "Pitch ∝ frequency; SI unit of frequency is the hertz (Hz).",
+        "Higher frequency = higher (shriller) pitch; lower frequency = lower (deeper) pitch.",
+        "Quality/timbre lets us distinguish two sounds of the same pitch and loudness from different sources."
+      ],
+      "mistakes": [
+        "Confusing loudness with pitch — a loud sound is not necessarily high-pitched, and a soft sound is not necessarily low-pitched.",
+        "Thinking amplitude and frequency are the same property of a wave — they are independent of each other."
+      ],
+      "memory_hook": "\"Amplitude = Loudness, Frequency = Pitch — A for Amplitude/loud-Amount, F for Frequency/high-Fly.\"",
+      "advanced": "Musical sound consists of regular, periodic vibrations that blend pleasantly, while noise consists of irregular, non- periodic vibrations — the same physical wave properties (amplitude, frequency) apply to both, but the pattern of vibration is what makes one pleasant and the other unpleasant."
+    },
+    {
+      "title": "Reflection of Sound — Echo and Reverberation",
+      "quick_summary": "Sound reflects off hard surfaces just like light reflects off mirrors; an echo is a clearly heard reflected sound, while reverberation is the persistence of sound due to multiple overlapping reflections.",
+      "detailed": {
+        "definition": "An echo is the sound heard after reflection from a hard, distant surface, distinct from the original sound. Reverberation is the persistence of sound in a large enclosed space because of repeated reflections that overlap before dying out.",
+        "key_idea": "For an echo to be heard as a distinctly separate sound, the reflecting surface must be at least about 17 metres away (so the reflected sound returns at least 0.1 seconds after the original, the minimum time the human ear can distinguish).",
+        "working_principle": "Sound waves obey the same laws of reflection as light — the angle of incidence equals the angle of reflection at a hard surface — but because sound travels much more slowly than light, we can actually perceive the time delay of the reflected sound as an echo.",
+        "applications": [
+          "SONAR (Sound Navigation and Ranging) uses echoes of ultrasonic sound to measure ocean depth and locate underwater objects like shipwrecks and submarines.",
+          "Bats use echolocation, emitting ultrasonic squeaks and using the returning echoes to navigate and find prey in the dark.",
+          "Concert halls are designed with sound-absorbing materials to control reverberation for clear audio."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Shouting into a large empty hall and hearing your own voice repeated back a moment later is an echo caused by sound reflecting off the far wall.",
+      "points": [
+        "Minimum distance for a distinct echo ≈ 17 m from the reflecting surface (in air, at room temperature).",
+        "Reverberation is desirable up to a limit (makes music feel 'full') but excessive reverberation makes speech unclear.",
+        "Curtains, carpets and soft furnishings in halls are used to absorb sound and reduce unwanted reverberation.",
+        "Both echo and reverberation are caused by reflection of sound waves, differing mainly in the time delay and number of reflections."
+      ],
+      "mistakes": [
+        "Thinking echo and reverberation are the same thing — echo is one clear, delayed repetition; reverberation is many overlapping reflections blending together.",
+        "Forgetting that a minimum distance is required to perceive an echo as separate from the original sound."
+      ],
+      "memory_hook": "\"Echo = one clear repeat; Reverberation = many overlapping repeats.\"",
+      "advanced": "Bats and dolphins use very high-frequency (ultrasonic) sound for echolocation because shorter wavelengths reflect more sharply off small objects, giving them far more precise 'sound pictures' of their surroundings than a human- audible frequency ever could."
+    },
+    {
+      "title": "The Human Ear and Noise Pollution",
+      "quick_summary": "The human ear converts sound vibrations in air into electrical signals the brain can interpret, and works within a limited range of audible frequencies; excessive unwanted sound (noise pollution) can damage hearing and health.",
+      "detailed": {
+        "definition": "The human ear is a sense organ with three main parts — outer ear, middle ear, and inner ear — that collects sound waves, converts them into mechanical vibrations, and finally into nerve signals for the brain. Noise pollution is the presence of loud, unwanted, or disturbing sound in the environment.",
+        "key_idea": "Humans can hear sounds only within the audible range of about 20 Hz to 20,000 Hz; sounds below this (infrasonic) or above this (ultrasonic) are inaudible to human ears though some animals can detect them.",
+        "working_principle": "Sound waves entering the outer ear make the eardrum vibrate; these vibrations are amplified by three tiny bones in the middle ear and passed to the fluid-filled cochlea in the inner ear, which converts them into electrical signals sent to the brain via the auditory nerve.",
+        "applications": [
+          "Regulations set maximum permissible noise levels for vehicles, industries and public events to protect hearing and health.",
+          "Ear protection (earmuffs, earplugs) is recommended for workers exposed to continuous loud machinery noise.",
+          "Green belts (rows of trees) are planted near roads and industrial areas to absorb and reduce noise pollution."
+        ]
+      },
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 3,
+      "real_life": "Standing near loud traffic or construction machinery for long periods can gradually damage hearing — a common form of noise pollution in cities.",
+      "points": [
+        "Audible range for humans: 20 Hz to 20,000 Hz.",
+        "Infrasonic sound: below 20 Hz (e.g., some sounds made by elephants, earthquakes).",
+        "Ultrasonic sound: above 20,000 Hz (e.g., sounds made/heard by bats, dolphins).",
+        "Prolonged exposure to noise above safe limits can cause hearing loss, stress, and sleep disturbance."
+      ],
+      "mistakes": [
+        "Thinking all animals hear the same frequency range as humans — many animals hear much higher or lower frequencies.",
+        "Assuming noise pollution only affects hearing — it can also affect sleep, concentration, and general health."
+      ],
+      "memory_hook": "\"20 to 20,000 — that's the human hearing zone.\"",
+      "advanced": "Ultrasonic sound, though inaudible to humans, is put to precise technological use — from medical ultrasound imaging of unborn babies to industrial cleaning and non-destructive testing of metal welds — because its short wavelength allows it to detect very fine details."
+    }
+  ]
+}

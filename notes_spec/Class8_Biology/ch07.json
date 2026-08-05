@@ -1,0 +1,108 @@
+{
+  "number": 7,
+  "title": "Pollution of Air and Water",
+  "prerequisites": [
+    "Knowledge that air is a mixture of gases and that we breathe oxygen.",
+    "Idea of the water cycle — evaporation, condensation and rainfall.",
+    "Awareness that vehicles and factories release smoke.",
+    "Basic understanding that drinking dirty water causes illness."
+  ],
+  "topics": [
+    {
+      "title": "Air Pollution and Its Effects",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Air pollution is the contamination of air by harmful substances, mainly from vehicles, industries and the burning of fuels, and it damages health, buildings and the climate.",
+      "real_life": "The winter smog over Delhi that makes eyes water, and the yellowing of the Taj Mahal's marble, are two visible faces of air pollution.",
+      "detailed": {
+        "definition": "Air pollution is the presence of substances in air in concentrations high enough to harm living organisms or damage materials. Such substances are called air pollutants.",
+        "key_idea": "Pollutants come mostly from burning fossil fuels. Sulphur dioxide and nitrogen dioxide dissolve in rain water to form acid rain; carbon monoxide binds to haemoglobin and reduces oxygen carriage; suspended particulate matter causes respiratory disease.",
+        "working_principle": "Chlorofluorocarbons (CFCs) released from refrigerators, air conditioners and aerosol sprays rise to the stratosphere and destroy ozone, thinning the ozone layer that shields us from ultraviolet radiation.",
+        "applications": [
+          "The Taj Mahal's marble is being corroded and yellowed by acid rain and suspended particles — 'marble cancer'.",
+          "CNG buses were introduced in Delhi to cut vehicular pollution.",
+          "Catalytic converters in cars convert harmful exhaust gases into less harmful ones."
+        ]
+      },
+      "points": [
+        "Major pollutants: SO₂, NO₂, CO, CFCs, suspended particulate matter (SPM), smoke.",
+        "Acid rain is caused mainly by sulphur dioxide and nitrogen dioxide dissolving in rainwater.",
+        "CFCs damage the ozone layer, which protects earth from harmful ultraviolet rays.",
+        "Carbon monoxide is dangerous because it reduces the oxygen-carrying capacity of blood.",
+        "The Taj Mahal is damaged by acid rain — a phenomenon called marble cancer."
+      ],
+      "mistakes": [
+        "Confusing the ozone layer problem (CFCs) with the greenhouse effect (CO₂) — they are different problems.",
+        "Calling carbon dioxide a 'poisonous' gas; it is not poisonous but is a greenhouse gas.",
+        "Thinking smog is just fog; smog is smoke plus fog and contains pollutants."
+      ],
+      "memory_hook": "'CFC Cuts the Cover (ozone); CO₂ Covers the earth like a blanket (warming)' — two different C's, two different problems.",
+      "advanced": "The Montreal Protocol of 1987 phased out CFCs worldwide and is the most successful environmental treaty ever signed — the ozone hole over Antarctica is now measurably shrinking and is expected to close by about 2065."
+    },
+    {
+      "title": "Greenhouse Effect and Global Warming",
+      "time": "12 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Greenhouse gases trap the earth's outgoing heat and keep the planet warm; increasing their concentration is raising the average temperature, which is called global warming.",
+      "real_life": "A closed car parked in the sun becomes far hotter inside than outside — sunlight enters through the glass but the heat cannot get out. The atmosphere does the same thing on a planetary scale.",
+      "detailed": {
+        "definition": "The greenhouse effect is the trapping of the sun's heat by certain gases in the atmosphere. Global warming is the resulting gradual increase in the average temperature of the earth.",
+        "key_idea": "The natural greenhouse effect is essential — without it the earth's average temperature would be about −18 °C instead of about 15 °C. The problem is the enhanced greenhouse effect caused by human emissions.",
+        "working_principle": "Short-wavelength sunlight passes through the atmosphere and warms the earth's surface. The surface re-radiates this energy as longer-wavelength infrared, which greenhouse gases absorb and re-emit back downward, trapping heat near the surface.",
+        "applications": [
+          "Melting of polar ice caps and glaciers, raising sea level and threatening coastal cities.",
+          "Changed rainfall patterns, more frequent droughts and floods.",
+          "Switching to solar, wind and hydro power reduces CO₂ emissions."
+        ]
+      },
+      "points": [
+        "Greenhouse gases: carbon dioxide, methane, nitrous oxide, water vapour, CFCs.",
+        "CO₂ is the main greenhouse gas released by human activity, mostly from burning fossil fuels.",
+        "Global warming causes melting of glaciers, rise in sea level and changes in rainfall.",
+        "Deforestation increases CO₂ because fewer trees absorb it.",
+        "Using public transport, planting trees and using clean fuels reduce the problem."
+      ],
+      "mistakes": [
+        "Saying the greenhouse effect is entirely harmful — the natural greenhouse effect keeps earth habitable.",
+        "Confusing global warming (temperature rise from CO₂) with ozone depletion (UV from CFCs).",
+        "Believing plants alone can absorb all human CO₂ emissions; the rate of emission far exceeds absorption."
+      ],
+      "memory_hook": "'Sunlight gets IN, heat can't get OUT' — that is a greenhouse, a parked car, and our atmosphere.",
+      "advanced": "Methane traps roughly 25 times more heat per molecule than CO₂ but survives only about a decade in the atmosphere, whereas CO₂ persists for centuries. Cutting methane therefore slows warming quickly, while cutting CO₂ is what matters over the long run."
+    },
+    {
+      "title": "Water Pollution and Potable Water",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Water pollution is the addition of harmful substances to water bodies from sewage, industrial waste and agricultural runoff; water fit for drinking is called potable water.",
+      "real_life": "The froth on the Yamuna and the fish deaths reported after a factory discharge are water pollution; the boiling or filtering of water at home is the household answer to it.",
+      "detailed": {
+        "definition": "Water pollution is the contamination of water by substances that make it unfit for use by living organisms. Potable water is water that is safe to drink — free from harmful microorganisms and chemicals.",
+        "key_idea": "The three main sources are sewage (domestic waste), industrial effluents containing arsenic, lead and mercury, and agricultural runoff carrying fertilizers and pesticides. Hot water discharged from power plants causes thermal pollution, which lowers dissolved oxygen and kills fish.",
+        "working_principle": "Water is purified at home by filtration (removes suspended solids), boiling (kills microorganisms), and chlorination (a chlorine tablet kills germs). Sedimentation, filtration and chlorination in that order are used in municipal treatment plants.",
+        "applications": [
+          "The Ganga Action Plan was launched in 1985 to reduce pollution of the river Ganga.",
+          "Chlorine tablets are used to disinfect drinking water during floods.",
+          "Water-borne diseases: cholera, typhoid, dysentery, hepatitis, jaundice."
+        ]
+      },
+      "points": [
+        "Sources of water pollution: sewage, industrial effluents, agricultural chemicals, hot water (thermal).",
+        "Potable water is free of germs and harmful chemicals and is safe to drink.",
+        "Boiling is the simplest and most reliable household method of purification.",
+        "Excess fertilizer causes eutrophication — algal bloom followed by oxygen depletion.",
+        "The Ganga Action Plan (1985) was launched to clean the river Ganga."
+      ],
+      "mistakes": [
+        "Assuming clear water is safe water; harmful microbes and dissolved chemicals are invisible.",
+        "Thinking filtration kills germs — it only removes suspended solids; boiling or chlorination kills germs.",
+        "Ignoring thermal pollution as a form of water pollution just because nothing is 'added'."
+      ],
+      "memory_hook": "'Filter it, Boil it, Chlorinate it' — and 'Clear ≠ Clean'.",
+      "advanced": "Eutrophication is a chain reaction: nutrients → algal bloom → algae die → decomposers multiply → dissolved oxygen falls → fish suffocate. It shows that a pollutant need not be poisonous; an excess of a nutrient can be just as lethal."
+    }
+  ]
+}

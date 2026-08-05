@@ -1,0 +1,172 @@
+{
+  "number": 2,
+  "title": "Control and Coordination",
+  "prerequisites": [
+    "Idea that the nervous system carries messages in the body.",
+    "Basic knowledge of hormones and endocrine glands.",
+    "Familiarity with the structure of a neuron.",
+    "Understanding that plants respond to light and gravity."
+  ],
+  "topics": [
+    {
+      "title": "The Nervous System and Nervous Tissue",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Nervous tissue carries information as electrical impulses along neurons, which pass the signal chemically to the next neuron across a synapse.",
+      "real_life": "The instant your finger touches something hot, an electrical signal has already travelled metres of nerve at over a hundred metres per second.",
+      "detailed": {
+        "definition": "A neuron is the structural and functional unit of the nervous system, consisting of a cell body with dendrites, a long axon, and nerve endings. A synapse is the junction between two neurons.",
+        "key_idea": "The impulse travels electrically along a neuron but chemically across a synapse. At the nerve ending, chemicals called neurotransmitters are released, cross the gap and start a fresh electrical impulse in the next neuron. This ensures one-way transmission.",
+        "working_principle": "Information is acquired by receptors — gustatory (taste), olfactory (smell), photoreceptors (light), phonoreceptors (sound), thermoreceptors (heat). The signal travels along a dendrite to the cell body, down the axon, and across the synapse to the next cell or to a muscle.",
+        "applications": [
+          "A synapse ensures signals travel in only one direction.",
+          "At a neuromuscular junction the impulse causes a muscle to contract.",
+          "Many drugs and toxins act by interfering with synaptic transmission."
+        ]
+      },
+      "points": [
+        "Neuron parts: dendrites (receive), cell body, axon (transmit), nerve endings (release chemicals).",
+        "The gap between two neurons is the synapse; between a neuron and a muscle it is a neuromuscular junction.",
+        "Impulse travel: electrical along the neuron, chemical across the synapse.",
+        "The synapse ensures one-way transmission of the impulse.",
+        "Receptors are usually located in sense organs and are specialised for one kind of stimulus."
+      ],
+      "mistakes": [
+        "Saying the impulse crosses the synapse electrically; it crosses chemically.",
+        "Confusing dendrite (receives) with axon (transmits).",
+        "Thinking a single neuron runs the whole length of a pathway; several neurons relay in sequence."
+      ],
+      "memory_hook": "'Dendrite = Delivers in, Axon = Away out' — and 'electric along, chemical across'.",
+      "advanced": "The synaptic delay of about 0.5 ms per junction is the slowest step in a neural pathway. Reflex arcs minimise the number of synapses precisely to keep the response as fast as possible."
+    },
+    {
+      "title": "Reflex Action and the Reflex Arc",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A reflex action is a rapid, automatic response to a stimulus that is routed through the spinal cord instead of the brain, saving vital time.",
+      "real_life": "You pull your hand away from a hot pan before you consciously feel the heat — the spinal cord has already acted while the brain is still being informed.",
+      "detailed": {
+        "definition": "Reflex action is a sudden, involuntary and rapid response to a stimulus. The pathway taken by the nerve impulse during a reflex action is called the reflex arc.",
+        "key_idea": "Thinking is a slow process because it involves a complex network of neurons in the brain. For situations demanding an immediate response, evolution routed the connection through the spinal cord — the brain is informed afterwards, not consulted first.",
+        "working_principle": "Receptor → sensory neuron → spinal cord (relay neuron) → motor neuron → effector (muscle). The impulse reaches the brain as well, but the response has already begun.",
+        "applications": [
+          "Knee-jerk reflex, blinking, sneezing, coughing and withdrawal of the hand.",
+          "Salivation on smelling food is a reflex, though also conditionable.",
+          "Reflexes are tested clinically to check whether the spinal pathway is intact."
+        ]
+      },
+      "points": [
+        "Reflex arc: receptor → sensory neuron → spinal cord → motor neuron → effector.",
+        "Reflex actions are controlled by the spinal cord, not the brain.",
+        "They are involuntary, rapid and protective.",
+        "The brain is informed of the event but only after the response has begun.",
+        "Reflex arcs evolved because thinking through a complex neural network is too slow."
+      ],
+      "mistakes": [
+        "Saying the brain controls reflex actions; the spinal cord does.",
+        "Omitting the relay neuron in the spinal cord when drawing the reflex arc.",
+        "Calling voluntary actions such as writing reflexes."
+      ],
+      "memory_hook": "'Receptor, Sensory, Spinal, Motor, Muscle' — five steps, no thinking allowed.",
+      "advanced": "Some reflexes are monosynaptic, with the sensory neuron connecting directly to the motor neuron — the knee-jerk is the classic example. With only one synapse it is the fastest reflex in the body, which is why doctors use it as a standard test."
+    },
+    {
+      "title": "Human Brain and Its Parts",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The brain has three regions — forebrain for thinking and voluntary action, midbrain and hindbrain for involuntary control, and the medulla for vital functions such as breathing and heartbeat.",
+      "real_life": "A cricketer catching a ball uses the cerebrum to decide, the cerebellum to balance and time the movement, and the medulla to keep breathing throughout — all at once.",
+      "detailed": {
+        "definition": "The brain is the main coordinating centre of the body, protected inside the cranium and cushioned by cerebrospinal fluid. It is divided into forebrain, midbrain and hindbrain.",
+        "key_idea": "The division of labour is by urgency and by whether the action is voluntary. The forebrain thinks and decides; the cerebellum makes movement precise; the medulla runs the processes you must never have to think about.",
+        "working_principle": "The forebrain (cerebrum) has separate areas for hearing, smell, sight and thought, and it also stores memory. The cerebellum controls posture, balance and precision of voluntary movement. The medulla controls blood pressure, salivation, vomiting and breathing.",
+        "applications": [
+          "Damage to the cerebellum causes loss of balance and jerky, imprecise movement.",
+          "The medulla's control of breathing is why brainstem injury is life-threatening.",
+          "Cerebrospinal fluid and the bony cranium together absorb shocks."
+        ]
+      },
+      "points": [
+        "Forebrain (cerebrum): thinking, memory, voluntary action, sensory areas.",
+        "Midbrain: reflex movements of the head, neck and eye.",
+        "Hindbrain: cerebellum (balance and precision), pons, medulla (involuntary vital functions).",
+        "Medulla controls blood pressure, salivation, vomiting and breathing.",
+        "The brain is protected by the cranium, membranes and cerebrospinal fluid."
+      ],
+      "mistakes": [
+        "Attributing balance to the cerebrum; it is the cerebellum's job.",
+        "Saying the medulla controls thinking; it controls involuntary vital functions.",
+        "Forgetting that the spinal cord, not the brain, handles reflexes."
+      ],
+      "memory_hook": "'Cerebrum thinks, Cerebellum balances, Medulla keeps you alive.'",
+      "advanced": "The cerebral cortex is folded into gyri and sulci, which pack roughly three times more surface area into the skull than a smooth brain could hold. Surface area, again, is the recurring biological solution to a capacity problem."
+    },
+    {
+      "title": "Coordination in Plants — Tropic and Nastic Movements",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Plants coordinate without a nervous system, responding by growth-dependent tropic movements directed by a stimulus, and by immediate nastic movements independent of direction.",
+      "real_life": "A sunflower turning towards the sun grows into position over hours, but a touch-me-not folds its leaves in a second — two completely different mechanisms.",
+      "detailed": {
+        "definition": "A tropic movement is a directional growth movement in response to a stimulus. A nastic movement is a non-directional movement independent of the direction of the stimulus and not caused by growth.",
+        "key_idea": "Tropic movements are slow because they depend on differential growth, while nastic movements are fast because they depend on sudden changes in water content of cells. Plants have no nerves, so they use hormones and turgor changes instead.",
+        "working_principle": "In phototropism, auxin accumulates on the shaded side of a shoot, making those cells elongate more, so the shoot bends towards the light. The touch-me-not folds because cells at the leaf base rapidly lose water and become flaccid.",
+        "applications": [
+          "Phototropism: shoots grow towards light (positive), roots away from it (negative).",
+          "Geotropism: roots grow downward (positive), shoots upward (negative).",
+          "Hydrotropism (towards water), chemotropism (pollen tube growing towards the ovule)."
+        ]
+      },
+      "points": [
+        "Tropic movement is directional and growth-dependent; nastic movement is neither.",
+        "Auxin promotes cell elongation and causes bending towards light.",
+        "Gibberellin: stem growth; Cytokinin: cell division; Abscisic acid: inhibits growth, causes wilting.",
+        "The touch-me-not response is a nastic movement caused by water loss from cells.",
+        "Plants have no nervous system; coordination is entirely chemical and hydraulic."
+      ],
+      "mistakes": [
+        "Calling the touch-me-not response a tropic movement; it is nastic and not growth-related.",
+        "Saying auxin makes the lit side grow; it accumulates on the shaded side.",
+        "Confusing abscisic acid (a growth inhibitor) with the growth-promoting hormones."
+      ],
+      "memory_hook": "'Tropic = Turns Towards, and Takes Time; Nastic = No direction, Now.'",
+      "advanced": "Auxin was the first plant hormone identified, through Darwin's experiments on coleoptiles in 1880. Synthetic auxins are now used both as rooting powders at low concentration and as selective weedkillers at high concentration — the same molecule, opposite effects."
+    },
+    {
+      "title": "Hormones in Animals — The Endocrine System",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Endocrine glands secrete hormones directly into the blood to act on distant target organs, providing slower but longer-lasting control than nerves.",
+      "real_life": "Adrenaline released before an exam raises your heartbeat within seconds, while growth hormone shapes your height over years — the same system on two very different timescales.",
+      "detailed": {
+        "definition": "Hormones are chemical messengers secreted in small amounts by endocrine glands into the blood, which act on specific target organs. Endocrine glands are ductless; exocrine glands release their secretions through ducts.",
+        "key_idea": "Nervous control is fast but brief and reaches only where nerves reach; hormonal control is slower but sustained and reaches every cell through the blood. The two systems complement rather than duplicate each other.",
+        "working_principle": "Hormone levels are held steady by feedback. If blood sugar rises, insulin is secreted and brings it down; as sugar falls, insulin secretion is reduced. The timing and amount of every hormone are regulated in this self-correcting way.",
+        "applications": [
+          "Iodine is essential for thyroxine; its deficiency causes goitre, which iodised salt prevents.",
+          "Insulin deficiency causes diabetes, treated with insulin injections.",
+          "Adrenaline prepares the body for emergency — the fight-or-flight response."
+        ]
+      },
+      "points": [
+        "Pituitary: growth hormone — deficiency causes dwarfism, excess causes gigantism.",
+        "Thyroid: thyroxine, regulates metabolism of carbohydrates, fats and proteins; needs iodine.",
+        "Pancreas: insulin, regulates blood sugar; deficiency causes diabetes.",
+        "Adrenal: adrenaline, raises heartbeat, breathing rate and blood supply to muscles.",
+        "Testes: testosterone; Ovaries: oestrogen — control secondary sexual characters."
+      ],
+      "mistakes": [
+        "Saying hormones travel through nerves; they travel through the blood.",
+        "Confusing dwarfism (growth hormone deficiency) with cretinism (thyroxine deficiency in childhood).",
+        "Thinking hormones act on all cells; they act only on cells with the matching receptor."
+      ],
+      "memory_hook": "'Nerves are the telephone, hormones are the postal service' — fast and local versus slow and everywhere.",
+      "advanced": "A hormone reaches every cell but affects only those carrying the right receptor, which is why one chemical in the bloodstream can produce very specific effects. This lock-and-key specificity is the basis of most modern drug design."
+    }
+  ]
+}

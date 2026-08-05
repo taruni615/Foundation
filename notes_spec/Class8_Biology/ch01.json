@@ -1,0 +1,140 @@
+{
+  "number": 1,
+  "title": "Crop Production and Management",
+  "prerequisites": [
+    "Idea that plants make their own food and need water, air and sunlight.",
+    "Basic difference between living and non-living things.",
+    "Familiarity with common food items — cereals, pulses, vegetables and fruits.",
+    "Awareness of the seasons of the year in India."
+  ],
+  "topics": [
+    {
+      "title": "Crops and Agricultural Practices",
+      "time": "12 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "When plants of the same kind are grown on a large scale at one place it is called a crop, and the series of steps a farmer follows from soil preparation to storage is called agricultural practices.",
+      "real_life": "The wheat in your chapati and the rice in your lunch were both grown as crops — wheat in the cool rabi season and rice in the rainy kharif season.",
+      "detailed": {
+        "definition": "A crop is a large-scale cultivation of plants of the same kind in one field, and agricultural practices are the sequence of activities carried out by a farmer to raise that crop.",
+        "key_idea": "Indian crops are grouped by growing season. Kharif crops are sown in the rainy season (June–October) and need plenty of water — paddy, maize, soyabean, groundnut, cotton. Rabi crops are sown in winter (October–March) and need less water — wheat, gram, pea, mustard, linseed.",
+        "working_principle": "Seven basic practices are followed in order: preparation of soil, sowing, adding manure and fertilizers, irrigation, protection from weeds, harvesting, and storage. Skipping or delaying any step lowers the yield.",
+        "applications": [
+          "Choosing kharif or rabi crops according to the local rainfall pattern.",
+          "Crop rotation — growing a legume after a cereal to restore soil nitrogen.",
+          "Planning a farming calendar so that sowing matches the arrival of the monsoon."
+        ]
+      },
+      "points": [
+        "Crop = plants of the same kind grown on a large scale at one place.",
+        "Kharif = sown with the monsoon (June–Oct); Rabi = sown in winter (Oct–Mar).",
+        "Paddy, maize, cotton, groundnut and soyabean are kharif crops.",
+        "Wheat, gram, pea, mustard and linseed are rabi crops.",
+        "The seven agricultural practices always follow the same order, ending with storage."
+      ],
+      "mistakes": [
+        "Calling paddy a rabi crop — paddy needs standing water and is a kharif crop.",
+        "Thinking 'crop' means any group of plants; it must be plants of the same kind grown on a large scale.",
+        "Mixing up the order of practices — irrigation comes after sowing and manuring, not before soil preparation."
+      ],
+      "memory_hook": "'KhaRIf comes with the RaIn, Rabi Rests in the cold' — and remember the seven steps as 'Soil, Sow, Manure, Water, Weed, Harvest, Store'.",
+      "advanced": "The kharif/rabi division is really a water-availability division. A third group, zaid crops (watermelon, cucumber, muskmelon), is grown in the short summer gap between rabi harvest and kharif sowing wherever irrigation is assured."
+    },
+    {
+      "title": "Preparation of Soil and Sowing of Seeds",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Loosening and levelling the soil by ploughing lets roots breathe and grow deep, and sowing places good-quality seed at the right depth and spacing using a seed drill or traditional funnel.",
+      "real_life": "A gardener always digs and turns the soil in a flowerpot before planting seeds — that is ploughing on a small scale.",
+      "detailed": {
+        "definition": "Preparation of soil is the loosening, turning and levelling of soil before sowing; sowing is the placing of seeds in the prepared soil at a proper depth and distance.",
+        "key_idea": "Loose soil holds more air and water, lets earthworms and microbes work freely, and allows roots to penetrate deeply. Nutrient-rich soil is also brought up to the surface when the soil is turned.",
+        "working_principle": "Ploughing (with a plough, hoe or cultivator) loosens the soil, levelling with a leveller stops water and soil from being washed away, and sowing is done either by broadcasting by hand, with a funnel, or with a seed drill attached to a tractor. Before sowing, damaged seeds are removed by placing seeds in water — damaged seeds are hollow and float.",
+        "applications": [
+          "Seed drills sow seeds at uniform depth and cover them, so birds cannot pick them up.",
+          "Transplantation is used for paddy, tomato and chilli — seedlings are raised in a nursery and then moved to the field.",
+          "The float test in salt water separates healthy seeds from damaged ones before sowing."
+        ]
+      },
+      "points": [
+        "Ploughing loosens the soil, allows aeration, and brings nutrient-rich soil to the top.",
+        "Tools used: plough, hoe, cultivator (for ploughing); leveller (for levelling).",
+        "Damaged seeds float in water because they are hollow and lighter.",
+        "A seed drill sows seeds at the correct depth and spacing and saves time and seed.",
+        "Correct spacing prevents overcrowding and competition for sunlight, water and nutrients."
+      ],
+      "mistakes": [
+        "Saying that damaged seeds sink — they float because they are hollow.",
+        "Confusing a cultivator (ploughing with a tractor) with a seed drill (sowing with a tractor).",
+        "Assuming deeper sowing is always better — seeds sown too deep cannot reach the surface and die."
+      ],
+      "memory_hook": "'Loose soil = Long roots'; and 'Floaters are Failures' — the seeds that float are the damaged ones.",
+      "advanced": "Zero-tillage farming skips ploughing altogether and sows directly into the residue of the previous crop. It conserves soil moisture and organic carbon, and is increasingly used for wheat sown after paddy in north India."
+    },
+    {
+      "title": "Manure, Fertilizers and Irrigation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Manure and fertilizers replace the nutrients a crop removes from the soil, while irrigation supplies water at the right time — both decide how much the field finally yields.",
+      "real_life": "The compost pit in a housing society converts kitchen waste into manure, while the drip pipes in a modern orchard deliver water drop by drop straight to each root.",
+      "detailed": {
+        "definition": "Manure is a natural organic substance obtained by decomposing plant and animal wastes; a fertilizer is an inorganic salt manufactured in a factory that supplies a specific plant nutrient. Irrigation is the supply of water to crops at regular intervals.",
+        "key_idea": "Manure adds humus, improves soil texture and water-holding capacity, but supplies few nutrients. Fertilizers are nutrient-rich and act fast, but do not add humus, and excess use damages soil fertility and pollutes water.",
+        "working_principle": "Nutrients removed by a crop must be replenished — otherwise the soil becomes deficient. Water is needed because nutrients are absorbed by roots only in dissolved form, and water is a raw material for photosynthesis and for germination.",
+        "applications": [
+          "Traditional irrigation: moat (pulley system), chain pump, dhekli and rahat.",
+          "Modern irrigation: sprinkler system for sandy soils and uneven land; drip system for fruit trees and gardens.",
+          "Crop rotation with leguminous plants such as gram and pea fixes nitrogen and reduces the need for fertilizer."
+        ]
+      },
+      "points": [
+        "Manure = organic, adds humus, slow-acting; Fertilizer = inorganic, nutrient-specific, fast-acting.",
+        "Urea, ammonium sulphate, superphosphate and NPK are common fertilizers.",
+        "Excessive fertilizer use destroys soil fertility and pollutes water bodies.",
+        "Drip irrigation is the best method in regions with a scarcity of water.",
+        "Rhizobium bacteria in the root nodules of leguminous plants fix atmospheric nitrogen."
+      ],
+      "mistakes": [
+        "Using 'manure' and 'fertilizer' as the same word — manure is natural and fertilizer is factory-made.",
+        "Thinking more fertilizer always means more yield; over-use makes the soil infertile.",
+        "Forgetting that sprinkler irrigation, not drip, is the method suited to sandy and uneven land."
+      ],
+      "memory_hook": "'MANure comes from Man and animals (natural); FERTilizer comes from a FactoRy' — and 'Drip = Drop by drop saves the crop'.",
+      "advanced": "Excess nitrogen fertilizer washed into ponds causes eutrophication: algae bloom, then die and decay, and the decomposers consume the dissolved oxygen — killing fish. This links crop management directly to water pollution."
+    },
+    {
+      "title": "Weeding, Harvesting and Storage",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "quick_summary": "Weeds are removed so they do not steal nutrients, the ripened crop is cut at harvest, grain is separated by threshing and winnowing, and the dried grain is stored safely against moisture and pests.",
+      "real_life": "The 'Kanaji' or 'khalihan' where villagers thresh paddy, and the huge cylindrical silos beside railway lines used by the Food Corporation of India, are the harvesting and storage steps in action.",
+      "detailed": {
+        "definition": "Weeds are unwanted plants growing naturally along with a crop; harvesting is the cutting of the mature crop; threshing separates grain from the chaff; winnowing separates lighter chaff from heavier grain using wind.",
+        "key_idea": "Weeds compete with the crop for water, nutrients, space and light, so removing them directly raises yield. After harvesting, grain must be dried in sunlight to below about 14% moisture before storage, otherwise fungi and pests destroy it.",
+        "working_principle": "Weeding is done manually (khurpi, seed drill before sowing, uprooting) or chemically with weedicides such as 2,4-D. Harvesting is done with a sickle or a harvester; a combine does harvesting and threshing together. Grain is then stored in jute bags, metal bins, granaries or silos, with dried neem leaves or fumigants to keep pests away.",
+        "applications": [
+          "Weedicides are sprayed on fields before flowering to kill weeds without harming the crop.",
+          "A combine harvester saves labour by cutting and threshing in a single operation.",
+          "Farmers use dried neem leaves in home storage and fumigants in large silos and granaries."
+        ]
+      },
+      "points": [
+        "Weeds compete for nutrients, water, space and sunlight, and reduce yield.",
+        "2,4-D is a common weedicide; weedicides should be sprayed with the face covered.",
+        "Threshing = grain separated from stalk; Winnowing = chaff blown away by wind.",
+        "Grain must be dried in sunlight before storage to prevent attack by fungi and pests.",
+        "A combine performs both harvesting and threshing."
+      ],
+      "mistakes": [
+        "Swapping threshing and winnowing — threshing beats out the grain, winnowing blows away the chaff.",
+        "Believing weedicides are harmless; they can affect the health of the person spraying them.",
+        "Storing grain without drying it, which is the main cause of spoilage by microorganisms."
+      ],
+      "memory_hook": "'THresh to THump the grain out, WINnow with the WINd' — and 'Dry it before you Store it'.",
+      "advanced": "The Green Revolution of the 1960s combined high-yielding varieties, fertilizers and assured irrigation to make India self-sufficient in food grain. Its later cost — falling water tables and declining soil fertility — is why sustainable practices such as crop rotation are being revived."
+    }
+  ]
+}

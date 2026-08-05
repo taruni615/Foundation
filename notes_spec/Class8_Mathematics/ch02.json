@@ -1,0 +1,113 @@
+{
+  "number": 2,
+  "title": "Linear Equations in One Variable",
+  "prerequisites": [
+    "Comfort with rational numbers and their properties (Chapter 1).",
+    "Basic idea of algebraic expressions and like/unlike terms.",
+    "Concept of an equation as a statement of equality (LHS = RHS).",
+    "Simple arithmetic operations and their inverses (addition ↔ subtraction, multiplication ↔ division)."
+  ],
+  "topics": [
+    {
+      "title": "Solving Linear Equations with Variable on One or Both Sides",
+      "quick_summary": "A linear equation in one variable has the variable raised only to power 1; it is solved by performing the same operation on both sides until the variable is isolated.",
+      "detailed": {
+        "definition": "A linear equation in one variable is an equation of the form ax + b = c (or with x-terms on both sides), where a, b, c are constants and x is the unknown, with the highest power of x equal to 1.",
+        "key_idea": "The equation stays balanced (both sides remain equal) only if you perform the exact same operation — add, subtract, multiply, or divide by the same non-zero number — on both sides simultaneously.",
+        "working_principle": "Collect all variable terms on one side and all constant terms on the other by transposition (changing a term's sign when it crosses the '=' sign), then divide both sides by the coefficient of the variable to find its value.",
+        "applications": [
+          "Age problems, speed-distance-time problems, and simple 'find the number' puzzles.",
+          "Setting up equations to solve for unknown quantities in geometry (perimeter, angle relationships) and daily-life budgeting."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Working out how many years until a person's age doubles, or finding an unknown side of a rectangle given its perimeter, both involve setting up and solving a linear equation.",
+      "points": [
+        "Transposing a term means moving it to the other side of '=' by reversing its sign (+ becomes −, × becomes ÷).",
+        "Always perform the same operation on BOTH sides to keep the equation balanced.",
+        "When variables appear on both sides, first bring all variable terms to one side and constants to the other.",
+        "Always verify the solution by substituting it back into the original equation."
+      ],
+      "mistakes": [
+        "Forgetting to change the sign of a term when transposing it across the '=' sign.",
+        "Applying an operation to only one side of the equation, breaking the balance.",
+        "Not simplifying/combining like terms fully before isolating the variable."
+      ],
+      "memory_hook": "'What you do to one side, do to the other' — an equation is a balanced weighing scale.",
+      "advanced": "Solving equations by transposition is really shorthand for applying inverse operations to both sides simultaneously — writing out the full 'add/subtract/multiply/divide both sides' steps explicitly is a good way to catch sign errors until the shortcut becomes automatic.",
+      "formulas": [
+        {
+          "name": "General Linear Equation Solution",
+          "difficulty": "Easy",
+          "formula": "If ax + b = c, then x = (c − b)/a",
+          "variables": "a = coefficient of x, b = constant on the same side as x, c = constant on the other side, a ≠ 0.",
+          "when_to_use": "Whenever a linear equation has been simplified into the standard form ax + b = c.",
+          "common_mistakes": "Dividing only part of the expression by a, or forgetting a cannot be 0 (else x is undefined).",
+          "shortcut": "Isolate x last: first move all constants away, THEN divide by the coefficient of x."
+        }
+      ]
+    },
+    {
+      "title": "Reducing Equations to Simpler Form (Equations with Fractions)",
+      "quick_summary": "Equations containing fractions are simplified by multiplying every term by the LCM of all denominators, converting them into an equivalent equation without fractions.",
+      "detailed": {
+        "definition": "Reducing an equation to simpler form means removing fractions or brackets so the equation becomes a standard linear equation ax + b = c, which is then solved by transposition.",
+        "key_idea": "Multiplying both sides of an equation by the same non-zero number (the LCM of denominators) does not change its solution — it only removes the fractions to make the equation easier to handle.",
+        "working_principle": "Find the LCM of all denominators in the equation, multiply every single term (on both sides) by this LCM, simplify to remove all fractions, then solve the resulting simple linear equation by transposition.",
+        "applications": [
+          "Solving equations that arise from ratio and proportion word problems, which often naturally include fractions.",
+          "Simplifying equations involving percentages (which are fractions with denominator 100) in comparing- quantities type problems."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Splitting a bill or dividing a journey into fractional parts (like 'a bus covers 2/3 of the distance, then 40 km more') naturally produces equations with fractions that need to be cleared before solving.",
+      "points": [
+        "Always find the LCM of ALL denominators appearing anywhere in the equation before clearing fractions.",
+        "Multiply EVERY term on both sides by the LCM — missing even one term breaks the equation's balance.",
+        "After clearing fractions, expand any brackets carefully using the distributive property before transposing.",
+        "Cross-multiplication (for equations of the form a/b = c/d) is a quick shortcut: ad = bc."
+      ],
+      "mistakes": [
+        "Multiplying only the fractional terms by the LCM and forgetting whole-number or already-integer terms.",
+        "Sign errors while expanding brackets after multiplying through by the LCM.",
+        "Using cross-multiplication when the equation is not in the simple form a/b = c/d (extra terms present)."
+      ],
+      "memory_hook": "'Clear the fractions first, then solve like normal' — LCM is your equation's best friend.",
+      "advanced": "Cross-multiplication is just a special, faster case of 'multiply both sides by the LCM' when the equation has exactly one fraction on each side — recognising this connection prevents students from treating cross-multiplication as an unrelated, separate rule."
+    },
+    {
+      "title": "Applications of Linear Equations — Word Problems",
+      "quick_summary": "Real-life situations involving unknown quantities — ages, numbers, money, speed — can be translated into a linear equation, solved, and the answer interpreted back in context.",
+      "detailed": {
+        "definition": "A word problem is translated into a linear equation by assigning a variable to the unknown quantity and expressing all given conditions as algebraic relationships involving that variable.",
+        "key_idea": "The hardest part of a word problem is translation, not solving — carefully naming the unknown as x and converting each sentence of the problem into a piece of the equation prevents most errors.",
+        "working_principle": "Read the problem, identify what is unknown, assign it a variable, express every other quantity mentioned in terms of that variable, form the equation from the given relationship, solve it, and check the answer makes sense in context.",
+        "applications": [
+          "Age, number, and money-distribution puzzles frequently seen in exams.",
+          "Perimeter and angle-based geometry problems where one dimension is described in terms of another."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "'The sum of two consecutive numbers is 25 — find the numbers' or 'A father is 3 times as old as his son; in 5 years he will be 2.5 times as old' are classic word problems solved using linear equations.",
+      "points": [
+        "Always define your variable clearly at the start, e.g., 'Let the number be x'.",
+        "Convert phrases carefully: 'consecutive numbers' → x, x+1, x+2...; 'sum' → +; 'exceeds by' → +; 'less than' → −.",
+        "After solving for x, always go back and find what was actually asked for (sometimes it's not x itself but x+1 or 2x).",
+        "Check the final answer against the original problem statement, not just the equation."
+      ],
+      "mistakes": [
+        "Solving the equation correctly but forgetting to answer what the question actually asked (e.g., finding x when the age in 5 years was required).",
+        "Misreading 'less than' and 'more than' phrasing, which reverses the direction of the operation.",
+        "Not verifying whether the numeric answer makes sense (e.g., a negative age or fractional number of people)."
+      ],
+      "memory_hook": "'Translate the sentence, don't guess the equation' — every word problem is a coded equation waiting to be decoded.",
+      "advanced": "Structured translation of word problems into equations is the foundational skill for all higher algebra, physics, and even computer programming (where 'word problems' become code) — the discipline of precisely defining variables before writing any relationship pays off far beyond this chapter."
+    }
+  ]
+}

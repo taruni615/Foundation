@@ -1,0 +1,101 @@
+{
+  "number": 6,
+  "title": "Square and Square Roots",
+  "prerequisites": [
+    "Comfort with multiplication tables and prime factorization.",
+    "Idea of exponents (a² means a × a) from earlier classes.",
+    "Basic long division skill for the long-division square root method."
+  ],
+  "topics": [
+    {
+      "title": "Perfect Squares & Their Properties",
+      "quick_summary": "A perfect square is the product of a number multiplied by itself; perfect squares follow predictable patterns in their unit digits, number of zeros, and relationship to consecutive odd numbers.",
+      "detailed": {
+        "definition": "A natural number n is a perfect square if n = m × m for some natural number m; m is called the square root of n.",
+        "key_idea": "Perfect squares only ever end in the digits 0, 1, 4, 5, 6, or 9 — never in 2, 3, 7, or 8; also, the sum of the first n odd natural numbers is always n² (e.g., 1+3+5 = 9 = 3²).",
+        "working_principle": "Between any two consecutive perfect squares n² and (n+1)², there are exactly 2n non-perfect-square numbers; this pattern helps quickly check whether a number could be a perfect square without full calculation.",
+        "applications": [
+          "Quickly eliminating numbers that cannot be perfect squares by checking their last digit.",
+          "Verifying results in geometry problems involving square areas and Pythagorean triples."
+        ]
+      },
+      "time": "18 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "Arranging tiles into a perfect square grid (like an 8×8 chessboard, 64 squares) is a physical way perfect squares appear in daily life.",
+      "points": [
+        "Perfect squares end only in 0, 1, 4, 5, 6, or 9 (never 2, 3, 7, or 8).",
+        "If a number ends in an odd number of zeros, it can never be a perfect square (must end in an even number of zeros).",
+        "Sum of first n odd natural numbers = n² (e.g., 1+3+5+7 = 16 = 4²).",
+        "Between n² and (n+1)², there are exactly 2n numbers that are not perfect squares."
+      ],
+      "mistakes": [
+        "Assuming any number ending in 0, 1, 4, 5, 6, or 9 IS a perfect square — this rule only eliminates impossible cases, it doesn't confirm perfect squares.",
+        "Forgetting that a perfect square must end in an EVEN number of zeros.",
+        "Losing count while using the 'sum of odd numbers' method for larger numbers."
+      ],
+      "memory_hook": "'0145 6 9 – the perfect square digits' — never 2, 3, 7, or 8 at the end.",
+      "advanced": "The 'sum of consecutive odd numbers' pattern is not a coincidence — it reflects the geometric fact that each new odd number of unit squares added around an L-shaped border converts an n×n square grid into an (n+1)×(n+1) square grid, visually proving n² + (2n+1) = (n+1)²."
+    },
+    {
+      "title": "Finding Square Roots — Prime Factorization & Long Division Method",
+      "quick_summary": "The square root of a perfect square can be found by prime factorization (pairing identical factors) for smaller numbers, or by the long division method for larger numbers and decimals.",
+      "detailed": {
+        "definition": "The square root of a number n, written √n, is the number which when multiplied by itself gives n. The prime factorization method pairs up identical prime factors; the long division method finds digits of the root one pair at a time.",
+        "key_idea": "In the prime factorization method, every prime factor of a perfect square must appear an EVEN number of times — the square root is found by taking one factor from each identical pair and multiplying them together.",
+        "working_principle": "Prime factorization method: factorize the number fully into primes, pair identical primes, and multiply one factor from each pair. Long division method: pair digits from the right, find the largest digit whose square is ≤ the leftmost group, then bring down pairs and repeat the divisor-adjustment process.",
+        "applications": [
+          "Quickly finding square roots of moderately sized perfect squares by hand without a calculator.",
+          "Extending to find square roots of decimals (by pairing digits from the decimal point in both directions) and estimating roots of non-perfect squares."
+        ]
+      },
+      "time": "20 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Finding the side length of a square garden given its area (say, 225 m²) requires calculating √225 — exactly this skill.",
+      "points": [
+        "Prime factorization method works cleanly only for perfect squares — every prime factor must occur an even number of times.",
+        "Long division method works for ANY number, including non-perfect squares (giving a decimal approximation) and decimals.",
+        "For decimals, pair digits starting from the decimal point — going left for the integer part, right for the fractional part.",
+        "√(a/b) = √a / √b, useful for square roots of fractions once numerator and denominator are perfect squares."
+      ],
+      "mistakes": [
+        "Forgetting to pair digits correctly (in twos) from the decimal point when using the long division method on decimals.",
+        "Leaving an unpaired prime factor and still claiming the number is a perfect square.",
+        "Mixing up which factor to pick when multiple identical pairs exist during prime factorization."
+      ],
+      "memory_hook": "'Pair the primes, pick one per pair' — prime factorization turns square roots into simple pairing.",
+      "advanced": "The long division method for square roots is essentially a manual version of the same digit-by-digit refinement process modern calculators still start from before switching to faster numerical algorithms (like Newton's method) — understanding it by hand builds real number sense for estimating roots quickly."
+    },
+    {
+      "title": "Square Roots of Decimals & Estimating Square Roots of Non-Perfect Squares",
+      "quick_summary": "Square roots of decimal numbers are found by pairing digits from the decimal point, while square roots of non- perfect squares are estimated by locating the number between two known consecutive perfect squares.",
+      "detailed": {
+        "definition": "Estimation of a square root means finding an approximate value (often to one or two decimal places) by narrowing down between the nearest perfect squares, then refining using successive approximation or averaging methods.",
+        "key_idea": "Every non-perfect square's square root is an irrational number (a non-terminating, non-repeating decimal), so exact calculation is impossible — only estimation to a required accuracy is meaningful.",
+        "working_principle": "To estimate √n: find the two consecutive perfect squares a² and (a+1)² between which n lies, then judge how close n is to each to refine the estimate (e.g., using linear interpolation as a quick approximation).",
+        "applications": [
+          "Quick mental estimation of square roots during exams when calculators are not allowed.",
+          "Estimating real-world measurements such as the diagonal of a square (side × √2) or dimensions from area."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "Estimating √50 by knowing it lies between √49 = 7 and √64 = 8, so √50 is a little more than 7, is a practical estimation skill used constantly in mental math and exams.",
+      "points": [
+        "First bracket the number between two consecutive perfect squares to estimate the integer part of its square root.",
+        "For decimals like √2.25, pair digits from the decimal point (2.25 → pairs: 2 | 25) before applying the long division method.",
+        "A quick estimate: √n ≈ a + (n − a²)/(2a), where a² is the nearest perfect square below n (linear interpolation).",
+        "Square roots of non-perfect squares are irrational — their decimal expansion never terminates or repeats."
+      ],
+      "mistakes": [
+        "Assuming the square root of a decimal like 2.25 can be estimated the same way as a whole number without correctly pairing digits.",
+        "Rounding too early during estimation, leading to a noticeably inaccurate final answer.",
+        "Treating an estimated square root as an exact value rather than an approximation."
+      ],
+      "memory_hook": "'Bracket between perfect squares first' — √50 is trapped between 7 (√49) and 8 (√64).",
+      "advanced": "The formula √n ≈ a + (n − a²)/(2a) is actually the first step of Newton's method for root-finding, the same iterative technique (refined further) used inside calculators and computers to compute square roots to many decimal places almost instantly."
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "number": 0,
+  "title": "Basic Mathematics for Physics",
+  "prerequisites": [
+    "Comfort with algebraic expressions, powers and simple equations.",
+    "Basic idea of a right-angled triangle and its sides.",
+    "Familiarity with plotting points on a graph.",
+    "Knowledge of ratios and proportion."
+  ],
+  "topics": [
+    {
+      "title": "Algebra and Quadratic Equations in Physics",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Physics constantly requires rearranging formulae, solving quadratic equations and handling powers of ten, so fluency in these algebraic tools is the first requirement.",
+      "real_life": "Finding the time at which a thrown ball hits the ground means solving a quadratic equation — physics gives the equation, algebra gives the answer.",
+      "detailed": {
+        "definition": "A quadratic equation is an equation of the form ax² + bx + c = 0 with a ≠ 0. Its two roots are given by the quadratic formula.",
+        "key_idea": "In physics the letters carry units, so an equation must be rearranged symbolically first and numbers substituted only at the very end. This avoids rounding errors and makes unit checking possible.",
+        "working_principle": "Whatever operation is applied to one side of an equation must be applied to the other. To make a particular symbol the subject, move every other term away from it by applying the inverse operation in reverse order.",
+        "applications": [
+          "s = ut + ½at² is a quadratic in t and is solved with the quadratic formula.",
+          "Powers of ten make very large and very small physical quantities manageable.",
+          "Binomial approximation (1 + x)ⁿ ≈ 1 + nx for small x simplifies many physics expressions."
+        ]
+      },
+      "points": [
+        "Rearrange symbolically first, substitute numbers last.",
+        "A quadratic in physics often has one physically meaningless root (e.g. negative time) — discard it.",
+        "aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (aᵐ)ⁿ = aᵐⁿ.",
+        "Standard form: a number between 1 and 10 multiplied by a power of ten.",
+        "Always check that both sides of an equation have the same units."
+      ],
+      "mistakes": [
+        "Substituting numbers too early and then being unable to check units.",
+        "Keeping both roots of a quadratic when one is physically impossible.",
+        "Cancelling terms across a plus sign instead of across a multiplication."
+      ],
+      "memory_hook": "'Symbols first, numbers last' — and 'if the units do not match, the equation is wrong'.",
+      "advanced": "Dimensional analysis can reconstruct a formula up to a dimensionless constant. Knowing that the period of a pendulum can depend only on length and g forces T ∝ √(l/g) without solving a single equation of motion.",
+      "formulas": [
+        {
+          "name": "Quadratic Formula",
+          "difficulty": "Medium",
+          "formula": "x = [−b ± √(b² − 4ac)] / 2a",
+          "variables": "a, b, c = coefficients of the quadratic ax² + bx + c = 0; x = the two roots.",
+          "when_to_use": "Whenever an equation of motion or energy leads to a squared unknown, e.g. finding time from s = ut + ½at².",
+          "common_mistakes": "Forgetting the ± sign, or dividing only the square-root term by 2a instead of the whole numerator.",
+          "shortcut": "If b² − 4ac is negative, there is no real solution — check the physics, something is wrong."
+        }
+      ]
+    },
+    {
+      "title": "Trigonometry and Vectors for Physics",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Trigonometric ratios resolve a quantity into components along two perpendicular directions, which is the standard way of handling forces and velocities at an angle.",
+      "real_life": "When you pull a suitcase by its handle, only the horizontal part of your pull moves it forward — trigonometry tells you exactly how much.",
+      "detailed": {
+        "definition": "For a right-angled triangle, sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent. Resolution of a vector is the splitting of a vector into two mutually perpendicular components.",
+        "key_idea": "A vector of magnitude A at angle θ to the x-axis has components A cos θ along x and A sin θ along y. The component along the direction of the angle always carries the cosine.",
+        "working_principle": "Components are added separately along each axis, and the resultant is recovered using Pythagoras: R = √(Rx² + Ry²), with direction tan θ = Ry/Rx.",
+        "applications": [
+          "Resolving weight on an inclined plane into mg sin θ along the slope and mg cos θ perpendicular to it.",
+          "Finding the horizontal and vertical components of a projectile's initial velocity.",
+          "Adding two forces acting at an angle to find the single resultant force."
+        ]
+      },
+      "points": [
+        "sin 0° = 0, sin 30° = ½, sin 45° = 1/√2, sin 60° = √3/2, sin 90° = 1.",
+        "cos values run in the reverse order of sin values.",
+        "sin²θ + cos²θ = 1 for every angle.",
+        "The component ALONG the angle uses cos; the component perpendicular uses sin.",
+        "Scalars have magnitude only; vectors have both magnitude and direction."
+      ],
+      "mistakes": [
+        "Interchanging sin and cos when resolving — always identify which side the angle is measured from.",
+        "Adding vector magnitudes arithmetically instead of resolving into components first.",
+        "Forgetting that the resultant of two equal and opposite vectors is zero, not double."
+      ],
+      "memory_hook": "'SOH-CAH-TOA' — and 'the Cosine hugs the angle, the Sine stands opposite'.",
+      "advanced": "For small angles measured in radians, sin θ ≈ tan θ ≈ θ and cos θ ≈ 1. This small-angle approximation is what makes a pendulum's motion simple harmonic and is used throughout optics and oscillation theory.",
+      "formulas": [
+        {
+          "name": "Resolution of a Vector",
+          "difficulty": "Medium",
+          "formula": "Aₓ = A cos θ,  A_y = A sin θ",
+          "variables": "A = magnitude of the vector, θ = angle with the x-axis, Aₓ and A_y = components.",
+          "when_to_use": "Whenever a force, velocity or displacement acts at an angle and must be split along two perpendicular directions.",
+          "common_mistakes": "Using sin where cos is required because the angle was measured from the wrong axis.",
+          "shortcut": "Draw the triangle first; the side touching the angle is the cosine component."
+        },
+        {
+          "name": "Resultant of Perpendicular Vectors",
+          "difficulty": "Easy",
+          "formula": "R = √(Rₓ² + R_y²)",
+          "variables": "R = magnitude of the resultant, Rₓ and R_y = perpendicular components.",
+          "when_to_use": "To recombine components into a single vector after adding them axis by axis.",
+          "common_mistakes": "Adding the components directly instead of squaring, adding, then taking the square root.",
+          "shortcut": "This is just Pythagoras' theorem applied to vectors."
+        }
+      ]
+    },
+    {
+      "title": "Graphs and Their Physical Meaning",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "The slope of a graph gives the rate of change of the quantity plotted on the y-axis, and the area under a graph gives the product of the two plotted quantities.",
+      "real_life": "A cyclist's speedometer trace tells the whole story: how steeply it rises gives the acceleration, and the area beneath it gives the distance travelled.",
+      "detailed": {
+        "definition": "Slope of a straight-line graph = (change in y) / (change in x). The area under a graph between two points represents the product of the y-quantity and the x-quantity over that interval.",
+        "key_idea": "Two operations extract all the physics from a graph. Slope always answers 'how fast is y changing with x' and area always answers 'what is the accumulated product'. Everything else is interpretation.",
+        "working_principle": "On a distance–time graph the slope is speed. On a velocity–time graph the slope is acceleration and the area is displacement. On a force–displacement graph the area is work done.",
+        "applications": [
+          "A horizontal line on a distance–time graph means the body is at rest.",
+          "A straight line through the origin means the two quantities are directly proportional.",
+          "A curved velocity–time graph means the acceleration is not uniform."
+        ]
+      },
+      "points": [
+        "Distance–time graph: slope = speed.",
+        "Velocity–time graph: slope = acceleration, area = displacement.",
+        "A straight line through the origin indicates direct proportionality (y ∝ x).",
+        "A steeper slope means a greater rate of change.",
+        "Negative slope means the quantity is decreasing."
+      ],
+      "mistakes": [
+        "Reading the area under a distance–time graph as if it meant something; only slope is meaningful there.",
+        "Forgetting that area below the time axis on a velocity–time graph is negative displacement.",
+        "Taking the slope as y/x instead of Δy/Δx when the line does not pass through the origin."
+      ],
+      "memory_hook": "'Slope tells the Speed of change, Area tells the Amount accumulated.'",
+      "advanced": "Slope and area are the graphical faces of differentiation and integration. Recognising them at this level makes calculus in higher classes feel like formal notation for something already understood rather than a new subject."
+    }
+  ]
+}

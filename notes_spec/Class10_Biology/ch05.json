@@ -1,0 +1,172 @@
+{
+  "number": 5,
+  "title": "Our Environment",
+  "prerequisites": [
+    "Idea that plants make food and animals depend on them.",
+    "Basic understanding of decomposition and waste.",
+    "Familiarity with the terms food chain and habitat.",
+    "Knowledge that the ozone layer protects the earth."
+  ],
+  "topics": [
+    {
+      "title": "Ecosystem and Its Components",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "An ecosystem consists of all interacting organisms in an area together with their physical environment, and its biotic components are producers, consumers and decomposers.",
+      "real_life": "An aquarium is a small artificial ecosystem, which is why it needs cleaning — it has no decomposers to recycle the waste.",
+      "detailed": {
+        "definition": "An ecosystem is a self-sustaining unit consisting of all interacting organisms in an area together with the non-living components of the environment. Biotic components are living; abiotic components are non-living.",
+        "key_idea": "Decomposers are the component people most often forget, yet without them nutrients would remain locked in dead bodies and the cycle would stop. They are what make an ecosystem self-sustaining.",
+        "working_principle": "Producers (green plants and blue-green algae) make food. Consumers are herbivores, carnivores, omnivores and parasites. Decomposers (bacteria and fungi) break down dead remains and return nutrients to the soil.",
+        "applications": [
+          "Natural ecosystems: forest, pond, lake, ocean, grassland.",
+          "Artificial ecosystems: aquarium, garden, crop field — these need human maintenance.",
+          "Aquariums must be cleaned because they lack a full complement of decomposers."
+        ]
+      },
+      "points": [
+        "Biotic components: producers, consumers, decomposers.",
+        "Abiotic components: air, water, soil, temperature, sunlight.",
+        "Producers are always green plants or blue-green algae.",
+        "Decomposers recycle nutrients and make the ecosystem self-sustaining.",
+        "Artificial ecosystems are incomplete and require human intervention."
+      ],
+      "mistakes": [
+        "Omitting decomposers from the list of biotic components.",
+        "Calling a garden a natural ecosystem; it is artificial.",
+        "Classifying fungi as producers; they are decomposers."
+      ],
+      "memory_hook": "'Producers make, Consumers take, Decomposers break' — the three biotic roles.",
+      "advanced": "Decomposers close the nutrient loop, which is why nutrients cycle but energy does not. Energy enters as sunlight and leaves as heat; matter is reused indefinitely, energy is used once."
+    },
+    {
+      "title": "Food Chains, Food Webs and Trophic Levels",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A food chain is a series of organisms feeding on one another, and only about 10% of energy passes from one trophic level to the next.",
+      "real_life": "It takes an enormous field of grass to support the deer that feed one tiger — which is why top predators are always rare.",
+      "detailed": {
+        "definition": "A food chain is a series of organisms in which each feeds on the one before it. A trophic level is each step of a food chain. The ten per cent law states that only about 10% of the energy at one trophic level is transferred to the next.",
+        "key_idea": "Because 90% of energy is lost as heat at each step, food chains rarely have more than four or five trophic levels — there simply is not enough energy left to support another level.",
+        "working_principle": "Energy flow is unidirectional: sunlight → producers → consumers → decomposers, never in reverse. Only about 1% of the sunlight falling on leaves is captured by producers in the first place.",
+        "applications": [
+          "Grass → deer → tiger is a three-level food chain.",
+          "A food web is a network of interconnected food chains and is more realistic than a single chain.",
+          "Biological magnification: pesticides concentrate at each successive trophic level, so top consumers are worst affected."
+        ]
+      },
+      "points": [
+        "Ten per cent law: only 10% of energy passes to the next trophic level.",
+        "Energy flow is unidirectional and never cyclic.",
+        "Food chains usually have only 3–4 trophic levels because of energy loss.",
+        "Producers capture about 1% of the sunlight falling on their leaves.",
+        "Biological magnification makes top consumers, including humans, most vulnerable to pesticides."
+      ],
+      "mistakes": [
+        "Saying energy is recycled in an ecosystem; nutrients cycle, energy does not.",
+        "Placing decomposers at a fixed trophic level; they act on every level.",
+        "Thinking pesticide concentration is highest in the soil; it is highest in the top consumers."
+      ],
+      "memory_hook": "'Ten per cent moves up, ninety escapes as heat' — that is why big predators are scarce.",
+      "advanced": "Biological magnification explains why DDT thinned the eggshells of eagles although the concentration sprayed on fields was tiny. It is also the reason large predatory fish carry the highest mercury levels and are restricted in diets during pregnancy."
+    },
+    {
+      "title": "Ozone Layer and Its Depletion",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Ozone in the upper atmosphere shields the earth from harmful ultraviolet radiation, and chlorofluorocarbons released by humans have been destroying it.",
+      "real_life": "The Antarctic ozone hole detected in 1985 triggered the fastest and most successful global environmental agreement ever made.",
+      "detailed": {
+        "definition": "Ozone (O₃) is a molecule of three oxygen atoms found mainly in the stratosphere, where it forms a protective layer against ultraviolet radiation.",
+        "key_idea": "Ozone is poisonous at ground level but essential in the stratosphere. Where it sits matters more than what it is — 'good up high, bad nearby'.",
+        "working_principle": "High-energy UV radiation splits O₂ molecules into free oxygen atoms, which then combine with O₂ to form O₃. Chlorine atoms released from CFCs catalyse the breakdown of ozone, and because they are catalysts, a single chlorine atom can destroy thousands of ozone molecules.",
+        "applications": [
+          "UV radiation causes skin cancer, cataract and damage to the immune system.",
+          "CFCs were used in refrigerators, air conditioners and aerosol sprays.",
+          "The Montreal Protocol (1987) froze and then phased out CFC production worldwide."
+        ]
+      },
+      "points": [
+        "Ozone is O₃; the ozone layer lies in the stratosphere.",
+        "It absorbs harmful ultraviolet radiation from the sun.",
+        "CFCs are the main ozone-depleting substances.",
+        "Ozone depletion causes skin cancer, cataract and reduced immunity.",
+        "The Montreal Protocol of 1987 successfully phased out CFCs."
+      ],
+      "mistakes": [
+        "Confusing ozone depletion (CFCs, UV) with global warming (CO₂, heat) — they are different problems.",
+        "Calling ozone harmless everywhere; it is a pollutant at ground level.",
+        "Saying the ozone hole is a physical hole; it is a region of severe thinning."
+      ],
+      "memory_hook": "'Ozone: good up high, bad nearby' — and 'CFC Cuts the Cover'.",
+      "advanced": "The reason the hole appears over Antarctica is polar stratospheric clouds, which form only in the extreme winter cold and provide surfaces where chlorine is converted into its ozone-destroying form when sunlight returns in spring."
+    },
+    {
+      "title": "Waste Management and Biodegradable Waste",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Biodegradable wastes are broken down by decomposers while non-biodegradable wastes persist and accumulate, so waste must be segregated and managed at source.",
+      "real_life": "The green and blue bins outside most Indian homes exist because a banana peel and a plastic wrapper need entirely different fates.",
+      "detailed": {
+        "definition": "Biodegradable substances are broken down into simpler substances by the action of microorganisms. Non-biodegradable substances are not broken down by biological processes and persist in the environment.",
+        "key_idea": "Non-biodegradable waste does not merely persist — it enters food chains and undergoes biological magnification, which is why plastics and pesticides are far more damaging than their quantity alone suggests.",
+        "working_principle": "Methods of disposal include composting and vermicomposting for biodegradable waste, recycling for plastics and metals, incineration for hazardous waste, and landfill as a last resort. Sewage is treated before being released into water bodies.",
+        "applications": [
+          "Vermicomposting uses earthworms to convert kitchen and garden waste into manure.",
+          "Biogas plants convert cattle dung into fuel gas and leave a nitrogen-rich slurry as manure.",
+          "Segregation at source into wet and dry waste is the essential first step."
+        ]
+      },
+      "points": [
+        "Biodegradable: paper, food waste, cotton, wood, cow dung.",
+        "Non-biodegradable: plastic, glass, metal, DDT, polythene.",
+        "Non-biodegradable substances enter food chains and biomagnify.",
+        "Disposal methods: composting, vermicomposting, recycling, incineration, landfill.",
+        "The 3 R's — Reduce, Reuse, Recycle — in that order of priority."
+      ],
+      "mistakes": [
+        "Calling glass biodegradable because it is made from natural materials; it is not broken down by microbes.",
+        "Thinking incineration is a clean method; it produces toxic gases.",
+        "Placing 'Recycle' before 'Reduce' among the 3 R's."
+      ],
+      "memory_hook": "'Wet bin rots, Dry bin doesn't' — segregate before you dispose.",
+      "advanced": "Sanitary landfills are lined and capped to prevent leachate contaminating groundwater, and the methane they generate is now often tapped as fuel. A landfill is engineering infrastructure, not a rubbish heap."
+    },
+    {
+      "title": "Environmental Problems and Their Control",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "Human activity has caused pollution, deforestation, global warming and loss of biodiversity, and controlling them requires changes in technology, law and individual behaviour.",
+      "real_life": "The switch from leaded to unleaded petrol removed a neurotoxin from the air of every Indian city within a decade — proof that regulation works.",
+      "detailed": {
+        "definition": "Pollution is the addition of harmful substances to air, water or soil in quantities that damage living organisms. Global warming is the rise in the average temperature of the earth caused by increasing greenhouse gases.",
+        "key_idea": "Environmental problems are connected, not separate. Deforestation raises CO₂, which raises temperature, which alters rainfall, which affects agriculture and biodiversity. Treating them one at a time misses the loops.",
+        "working_principle": "Control works at three levels: technology (catalytic converters, CNG, effluent treatment), law (Montreal Protocol, emission standards, plastic bans) and behaviour (public transport, the 3 R's, energy saving).",
+        "applications": [
+          "Acid rain from SO₂ and NO₂ damages buildings, soil and aquatic life.",
+          "The Ganga Action Plan and effluent treatment plants reduce water pollution.",
+          "Renewable energy — solar, wind, hydro — reduces greenhouse gas emissions."
+        ]
+      },
+      "points": [
+        "Greenhouse gases: CO₂, methane, nitrous oxide, CFCs, water vapour.",
+        "Acid rain is caused mainly by sulphur dioxide and nitrogen dioxide.",
+        "Deforestation increases CO₂, reduces rainfall and causes soil erosion.",
+        "Loss of biodiversity weakens the stability of an ecosystem.",
+        "Individual action, technology and law must work together."
+      ],
+      "mistakes": [
+        "Treating environmental problems as independent of each other.",
+        "Assuming individual action alone is enough without regulation.",
+        "Confusing the greenhouse effect (natural and necessary) with global warming (its enhancement)."
+      ],
+      "memory_hook": "'Technology, Law, Behaviour' — no environmental problem is solved with only one of the three.",
+      "advanced": "Ecosystem stability depends on redundancy: several species performing similar roles mean the system survives if one is lost. Biodiversity loss is dangerous less for the species themselves than for the resilience it removes."
+    }
+  ]
+}

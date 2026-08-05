@@ -1,0 +1,108 @@
+{
+  "number": 3,
+  "title": "Coal and Petroleum",
+  "prerequisites": [
+    "Idea that fuels burn to give heat and light.",
+    "Knowledge that some resources are limited on earth.",
+    "Basic difference between solid, liquid and gaseous substances.",
+    "Familiarity with LPG cylinders and petrol pumps."
+  ],
+  "topics": [
+    {
+      "title": "Natural Resources and the Formation of Fossil Fuels",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Coal, petroleum and natural gas are fossil fuels formed over millions of years from buried remains of ancient plants and animals, and they are exhaustible natural resources.",
+      "real_life": "The petrol in a scooter today was living plankton in a sea three hundred million years ago — which is why it can never be replaced within a human lifetime.",
+      "detailed": {
+        "definition": "Inexhaustible natural resources are present in unlimited quantity and are not likely to be exhausted (air, sunlight). Exhaustible natural resources are limited in quantity and can be used up (coal, petroleum, natural gas, minerals, forests).",
+        "key_idea": "Fossil fuels form only under very specific conditions — burial without oxygen, plus high temperature and pressure, sustained for millions of years. That is why they are non-renewable on any practical timescale.",
+        "working_principle": "Coal formed when dense forests were buried by earth movements about 300 million years ago; the slow conversion of dead vegetation into coal is called carbonisation. Petroleum and natural gas formed from the remains of marine organisms buried under sand and clay.",
+        "applications": [
+          "Petroleum is found trapped between two layers of impervious rock, with natural gas above it.",
+          "Coal is mined; petroleum is drilled and pumped from oil wells.",
+          "The stages of coal formation: peat → lignite → bituminous → anthracite, in increasing carbon content."
+        ]
+      },
+      "points": [
+        "Fossil fuels: coal, petroleum, natural gas — all exhaustible and non-renewable.",
+        "Carbonisation is the slow conversion of dead vegetation into coal.",
+        "Petroleum is lighter than water and floats above it in the rock strata.",
+        "Anthracite has the highest carbon content and is the best quality coal.",
+        "Fossil fuels took millions of years to form and cannot be replaced in our lifetime."
+      ],
+      "mistakes": [
+        "Calling forests inexhaustible — they are exhaustible, though renewable if managed.",
+        "Saying coal is formed from dead animals; coal comes from plants, petroleum from marine organisms.",
+        "Confusing carbonisation (coal formation) with combustion (burning)."
+      ],
+      "memory_hook": "'Coal from Trees, Petroleum from the Seas' — and coal grades 'Peat, Lignite, Bituminous, Anthracite' get better as you go.",
+      "advanced": "Burning fossil fuels releases carbon that was locked away for hundreds of millions of years, in a couple of centuries. The rate mismatch — slow burial, fast release — is the fundamental reason atmospheric CO₂ is rising so sharply."
+    },
+    {
+      "title": "Coal and Its Products",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Heating coal in the absence of air is called destructive distillation, and it yields coke, coal tar and coal gas — three products with distinct uses.",
+      "real_life": "The naphthalene balls in a cupboard, the black tar on a road, and the coke used in a steel plant all begin as the same lump of coal.",
+      "detailed": {
+        "definition": "Destructive distillation is the process of heating coal strongly in the absence of air. Coke is a tough, porous, black substance that is almost pure carbon.",
+        "key_idea": "Destructive distillation must exclude air — if air were present, the coal would simply burn to ash and carbon dioxide instead of decomposing into useful products.",
+        "working_principle": "On strong heating without air, coal decomposes into a solid residue (coke), a thick black liquid (coal tar), and a mixture of gases (coal gas). Coal tar is a mixture of about 200 substances and was once the main source of dyes and drugs.",
+        "applications": [
+          "Coke: used as a reducing agent in the extraction of metals and in the manufacture of steel.",
+          "Coal tar: source of naphthalene balls, paints, explosives, synthetic dyes, plastics, roofing material.",
+          "Coal gas: used as a fuel; it was used for street lighting in London from 1810 and in India from 1897."
+        ]
+      },
+      "points": [
+        "Destructive distillation = strong heating in the ABSENCE of air.",
+        "Products of coal: coke (solid), coal tar (liquid), coal gas (gas).",
+        "Coke is almost pure carbon and is used as a reducing agent in metallurgy.",
+        "Bitumen, a petroleum product, has now replaced coal tar for surfacing roads.",
+        "Charcoal is obtained by heating wood in limited air, not coal."
+      ],
+      "mistakes": [
+        "Saying destructive distillation happens in the presence of air — the absence of air is the whole point.",
+        "Confusing coke (from coal) with charcoal (from wood).",
+        "Thinking coal gas is the same as natural gas; coal gas is manufactured, natural gas is extracted."
+      ],
+      "memory_hook": "'Coal gives Coke, Coal Tar and Coal Gas — one Solid, one Liquid, one Gas.'",
+      "advanced": "Coal tar was the birthplace of the synthetic organic chemical industry. Perkin's accidental discovery of mauveine in 1856 while working with a coal-tar derivative created the first synthetic dye and launched an entire industry from what had been an industrial waste product."
+    },
+    {
+      "title": "Petroleum, Natural Gas and Conservation",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Petroleum is separated into useful fractions by fractional distillation in a refinery, natural gas is a clean fuel stored as CNG, and both must be conserved because they are running out.",
+      "real_life": "The same crude oil yields the LPG in your kitchen, the petrol in a bike, the diesel in a bus and the tar on the road — sorted purely by boiling point.",
+      "detailed": {
+        "definition": "Petroleum is a dark, oily liquid mixture of many hydrocarbons, also called crude oil or black gold. Refining is the process of separating crude oil into its useful constituents, called fractions.",
+        "key_idea": "Fractional distillation works because different hydrocarbons boil at different temperatures. Vapour rises up a tall column that is hottest at the bottom; each fraction condenses at the height where the temperature matches its boiling point.",
+        "working_principle": "Lighter fractions with low boiling points (LPG, petrol) are collected near the top; heavier fractions (diesel, lubricating oil, paraffin wax, bitumen) are collected lower down. Natural gas is mainly methane and is compressed to about 200 atmospheres to give CNG.",
+        "applications": [
+          "Petroleum gas (LPG) — domestic and industrial fuel; petrol — motor fuel, dry cleaning solvent.",
+          "Kerosene — stoves and jet fuel; diesel — heavy vehicles and generators; bitumen — road surfacing.",
+          "CNG is used for power generation and as a clean vehicle fuel; it can be piped directly to homes."
+        ]
+      },
+      "points": [
+        "Petroleum is called 'black gold' because of its enormous value.",
+        "Refining = fractional distillation, separating fractions by their different boiling points.",
+        "Lighter fractions (lower boiling point) are collected higher in the column.",
+        "CNG is compressed natural gas — a cleaner fuel that causes far less pollution.",
+        "Petrochemicals are substances obtained from petroleum and natural gas, e.g. detergents, plastics, fibres."
+      ],
+      "mistakes": [
+        "Thinking petroleum is a single compound — it is a mixture of many hydrocarbons.",
+        "Saying LPG and CNG are the same; LPG is mainly butane/propane, CNG is mainly methane.",
+        "Placing heavy fractions at the top of the fractionating column; they condense at the bottom."
+      ],
+      "memory_hook": "'Light rises High, Heavy stays Low' in the fractionating column — and 'PDS: Petrol Drives, Diesel Drags, Bitumen Beds the road'.",
+      "advanced": "The Petroleum Conservation Research Association advises driving at a steady 40–60 km/h, keeping tyres correctly inflated and switching off at traffic lights. Each measure works by reducing the energy wasted as heat and drag rather than by changing the fuel itself."
+    }
+  ]
+}

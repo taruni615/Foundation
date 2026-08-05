@@ -1,0 +1,139 @@
+{
+  "number": 7,
+  "title": "Centre of Mass and Equilibrium of Rigid Bodies",
+  "prerequisites": [
+    "Newton's laws of motion and the idea of balanced forces.",
+    "Concept of weight acting downward on a body.",
+    "Ability to resolve forces into components.",
+    "Basic idea of the turning effect of a force."
+  ],
+  "topics": [
+    {
+      "title": "Centre of Mass and Centre of Gravity",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "The centre of mass is the point at which the whole mass of a body may be considered concentrated, and the centre of gravity is the point through which its entire weight acts.",
+      "real_life": "A high jumper using the Fosbury flop arches so much that their centre of mass passes below the bar even as their body passes above it.",
+      "detailed": {
+        "definition": "The centre of mass of a system is the point where the entire mass may be assumed to be concentrated for the purpose of describing translational motion. The centre of gravity is the point through which the resultant weight of the body acts.",
+        "key_idea": "For bodies small compared with the earth, where g is effectively uniform, the centre of mass and the centre of gravity coincide. They separate only for very large bodies such as a mountain or a tall building.",
+        "working_principle": "For a uniform body of regular shape the centre of mass lies at its geometric centre. It need not lie within the material of the body at all — for a ring or a hollow sphere it lies in the empty space at the centre.",
+        "applications": [
+          "The centre of mass of a uniform rod is at its mid-point; of a triangular lamina, at the centroid.",
+          "A body thrown in the air rotates about its centre of mass while the centre of mass follows a smooth parabola.",
+          "Vehicles are designed with a low centre of gravity to resist toppling."
+        ]
+      },
+      "points": [
+        "Centre of mass may lie outside the material of the body (ring, horseshoe, boomerang).",
+        "Centre of mass and centre of gravity coincide when g is uniform over the body.",
+        "For a uniform regular body, the centre of mass is at the geometric centre.",
+        "The centre of mass of a two-particle system lies on the line joining them, closer to the heavier one.",
+        "External forces determine the motion of the centre of mass; internal forces cannot change it."
+      ],
+      "mistakes": [
+        "Assuming the centre of mass must lie inside the body.",
+        "Treating centre of mass and centre of gravity as always identical without stating the condition.",
+        "Placing the centre of mass of a two-particle system midway regardless of the masses."
+      ],
+      "memory_hook": "'Centre of Mass = the balance point; heavier side pulls it closer.'",
+      "advanced": "When a firework explodes in mid-air, the fragments fly apart but the centre of mass continues along the original parabola. Internal forces, however violent, cannot alter the motion of the centre of mass.",
+      "formulas": [
+        {
+          "name": "Centre of Mass of a Two-Particle System",
+          "difficulty": "Medium",
+          "formula": "x_cm = (m₁x₁ + m₂x₂) / (m₁ + m₂)",
+          "variables": "m₁, m₂ = the two masses; x₁, x₂ = their positions from a chosen origin.",
+          "when_to_use": "To locate the balance point of a system of two or more particles.",
+          "common_mistakes": "Forgetting to divide by the total mass, or measuring positions from different origins.",
+          "shortcut": "For equal masses the centre of mass is exactly midway."
+        }
+      ]
+    },
+    {
+      "title": "Moment of a Force and the Principle of Moments",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The moment of a force, or torque, is the product of the force and the perpendicular distance from the pivot, and a body is in rotational equilibrium when clockwise and anticlockwise moments balance.",
+      "real_life": "A door handle is fitted far from the hinges because the same push produces a much greater turning effect at a greater distance.",
+      "detailed": {
+        "definition": "The moment of a force about a point is the product of the force and the perpendicular distance of its line of action from that point. Its SI unit is the newton metre (N·m).",
+        "key_idea": "It is the perpendicular distance that matters, not the distance along the force. A force whose line of action passes through the pivot has zero moment however large it is.",
+        "working_principle": "The principle of moments states that for a body in rotational equilibrium, the sum of clockwise moments about any point equals the sum of anticlockwise moments about the same point.",
+        "applications": [
+          "A see-saw balances when m₁gd₁ = m₂gd₂ about the pivot.",
+          "Spanners are made long to increase the moment for the same applied force.",
+          "A steelyard balance and a common beam balance both apply the principle of moments."
+        ]
+      },
+      "points": [
+        "Moment = Force × perpendicular distance from the pivot; unit N·m.",
+        "Moment is zero if the line of action passes through the pivot.",
+        "Principle of moments: sum of clockwise moments = sum of anticlockwise moments.",
+        "A couple is a pair of equal, opposite, parallel forces that produce rotation without translation.",
+        "For complete equilibrium both the net force AND the net moment must be zero."
+      ],
+      "mistakes": [
+        "Using the slant distance instead of the perpendicular distance to the line of action.",
+        "Checking only force balance and forgetting that moments must balance too.",
+        "Taking moments about different points for the clockwise and anticlockwise sides."
+      ],
+      "memory_hook": "'Moment = Force × Perpendicular distance' — perpendicular, always.",
+      "advanced": "Torque and force are related as angular quantities to linear ones: torque plays the role of force, moment of inertia the role of mass, and angular acceleration the role of linear acceleration, giving τ = Iα as the rotational form of F = ma.",
+      "formulas": [
+        {
+          "name": "Moment of a Force",
+          "difficulty": "Easy",
+          "formula": "τ = F × d",
+          "variables": "τ = moment or torque in N·m, F = force in N, d = perpendicular distance from the pivot in m.",
+          "when_to_use": "For levers, spanners, doors, see-saws and any turning problem.",
+          "common_mistakes": "Measuring d along the force instead of perpendicular to it.",
+          "shortcut": "Double the distance → double the turning effect for the same force."
+        },
+        {
+          "name": "Principle of Moments",
+          "difficulty": "Medium",
+          "formula": "F₁ d₁ = F₂ d₂",
+          "variables": "F₁, F₂ = forces on either side of the pivot; d₁, d₂ = their perpendicular distances from it.",
+          "when_to_use": "For a balanced beam, see-saw or lever in rotational equilibrium.",
+          "common_mistakes": "Ignoring the weight of the beam itself when it is not uniform or not pivoted at its centre.",
+          "shortcut": "Take moments about the pivot to eliminate the unknown reaction there."
+        }
+      ]
+    },
+    {
+      "title": "Equilibrium and Stability",
+      "time": "13 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "quick_summary": "A body is in equilibrium when both net force and net moment are zero, and its stability depends on how the centre of gravity moves when it is tilted.",
+      "real_life": "A racing car with a wide track and a low body is hard to overturn, while a double-decker bus with passengers on the upper deck is much easier.",
+      "detailed": {
+        "definition": "A body is in equilibrium when the net force and the net moment acting on it are both zero. Stable equilibrium is a state in which a body returns to its original position after a small displacement.",
+        "key_idea": "A body topples when the vertical line through its centre of gravity falls outside its base. Stability is therefore improved by lowering the centre of gravity and widening the base.",
+        "working_principle": "In stable equilibrium the centre of gravity rises when the body is tilted, so it returns. In unstable equilibrium it falls, so the body topples further. In neutral equilibrium the height is unchanged, so it stays put.",
+        "applications": [
+          "Racing cars and buses are built with a low centre of gravity and a wide wheelbase.",
+          "A cone resting on its base is stable; balanced on its tip it is unstable; on its side it is neutral.",
+          "A Bunsen burner has a heavy base for exactly this reason."
+        ]
+      },
+      "points": [
+        "Conditions for equilibrium: net force = 0 AND net moment = 0.",
+        "Stable: centre of gravity rises on tilting, body returns.",
+        "Unstable: centre of gravity falls on tilting, body topples.",
+        "Neutral: centre of gravity stays at the same height, body remains where placed.",
+        "A body topples when the vertical through its centre of gravity falls outside its base."
+      ],
+      "mistakes": [
+        "Checking only force balance and calling that equilibrium — a couple gives zero net force but rotation.",
+        "Thinking a heavy body is automatically stable; it is the position of the centre of gravity that matters.",
+        "Confusing neutral equilibrium with no equilibrium at all."
+      ],
+      "memory_hook": "'Low centre, Wide base = hard to topple' — and 'stable if the CG rises when you tilt it'.",
+      "advanced": "A ship's stability is measured by its metacentric height. When a ship heels, buoyancy shifts sideways and creates a righting moment — which is why cargo is stowed low and why a shifting load is so dangerous."
+    }
+  ]
+}

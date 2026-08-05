@@ -1,0 +1,191 @@
+{
+  "number": 9,
+  "title": "Heat and Thermodynamics",
+  "prerequisites": [
+    "Idea that matter is made of particles in constant motion.",
+    "Difference between the Celsius and Kelvin scales.",
+    "Concept of energy and its conservation.",
+    "Familiarity with melting, boiling and evaporation."
+  ],
+  "topics": [
+    {
+      "title": "Heat, Temperature and Thermal Expansion",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Heat is energy in transit due to a temperature difference, temperature measures the average kinetic energy of particles, and most substances expand on heating.",
+      "real_life": "Gaps are left between railway lines and in bridge decks so that summer expansion does not buckle the track.",
+      "detailed": {
+        "definition": "Heat is the energy that flows from a body at higher temperature to one at lower temperature. Temperature is a measure of the average kinetic energy of the particles of a body. Thermal expansion is the increase in dimensions of a body on heating.",
+        "key_idea": "A bucket of warm water contains far more heat than a red-hot spark, yet the spark is at a much higher temperature. Heat depends on mass and on temperature; temperature does not depend on mass at all.",
+        "working_principle": "Expansion may be linear, areal or cubical, each with its own coefficient, and for a given material α : β : γ = 1 : 2 : 3. Gases expand far more than liquids, and liquids more than solids.",
+        "applications": [
+          "Bimetallic strips in thermostats bend because two metals expand by different amounts.",
+          "Overhead electric wires are strung slack in summer to allow for contraction in winter.",
+          "Water shows anomalous expansion — it contracts from 0 °C to 4 °C and expands above 4 °C."
+        ]
+      },
+      "points": [
+        "SI unit of heat is the joule; 1 calorie = 4.2 J.",
+        "Heat flows from higher to lower temperature, never the reverse on its own.",
+        "Coefficients of expansion: α (linear), β (areal), γ (cubical), with β = 2α and γ = 3α.",
+        "Water is densest at 4 °C — this anomalous expansion lets aquatic life survive under ice.",
+        "Temperature measures average kinetic energy; heat measures total thermal energy transferred."
+      ],
+      "mistakes": [
+        "Using heat and temperature interchangeably — they are different physical quantities.",
+        "Forgetting that water contracts between 0 °C and 4 °C instead of expanding.",
+        "Taking β = 3α and γ = 2α, which reverses the correct relations."
+      ],
+      "memory_hook": "'Heat is what flows, Temperature is what tells it which way to flow.'",
+      "advanced": "Water's anomalous expansion means ice floats and lakes freeze from the top down. If water behaved normally, lakes would freeze solid from the bottom and freshwater life would be impossible in temperate climates.",
+      "formulas": [
+        {
+          "name": "Linear Expansion",
+          "difficulty": "Easy",
+          "formula": "ΔL = L α ΔT",
+          "variables": "ΔL = increase in length, L = original length, α = coefficient of linear expansion, ΔT = rise in temperature.",
+          "when_to_use": "For rods, rails, bridges and wires subjected to a temperature change.",
+          "common_mistakes": "Using the final length instead of the original length.",
+          "shortcut": "β = 2α and γ = 3α for the same material."
+        }
+      ]
+    },
+    {
+      "title": "Specific Heat Capacity and Calorimetry",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Specific heat capacity is the heat needed to raise the temperature of 1 kg of a substance by 1 °C, and calorimetry uses the fact that heat lost by a hot body equals heat gained by a cold one.",
+      "real_life": "Sea breezes exist because water has a much higher specific heat than sand, so land heats and cools far faster than the sea.",
+      "detailed": {
+        "definition": "Specific heat capacity c is the amount of heat required to raise the temperature of unit mass of a substance by one degree. Its SI unit is J/kg·K. The principle of calorimetry states that heat lost by the hot body equals heat gained by the cold body, in an insulated system.",
+        "key_idea": "Water has an unusually high specific heat capacity of 4200 J/kg·K. This is why it is the standard coolant in car radiators and why coastal climates are far milder than inland ones.",
+        "working_principle": "Heat gained or lost with a change of temperature is Q = mcΔT. Heat absorbed during a change of state is Q = mL, with no temperature change. A complete problem may need both, applied stage by stage.",
+        "applications": [
+          "Car radiators and industrial cooling systems use water for its high specific heat.",
+          "Hot-water bottles stay warm for a long time for the same reason.",
+          "Mixing problems: heat lost by hot water = heat gained by cold water plus calorimeter."
+        ]
+      },
+      "points": [
+        "Q = mcΔT for a temperature change; Q = mL for a change of state.",
+        "Specific heat of water = 4200 J/kg·K = 1 cal/g·°C — the highest among common liquids.",
+        "Latent heat of fusion of ice = 3.34 × 10⁵ J/kg; of vaporisation of water = 22.5 × 10⁵ J/kg.",
+        "Water equivalent of a calorimeter is the mass of water that would absorb the same heat.",
+        "During a change of state the temperature stays constant even though heat is supplied."
+      ],
+      "mistakes": [
+        "Using Q = mcΔT during melting or boiling, where ΔT is zero and the formula gives zero.",
+        "Forgetting the calorimeter's own heat capacity in a mixing problem.",
+        "Mixing units — specific heat in J/kg·K with mass in grams."
+      ],
+      "memory_hook": "'Temperature changing → mcΔT; State changing → mL' — never both at once.",
+      "advanced": "Water's high specific heat comes from hydrogen bonding: much of the supplied energy goes into breaking bonds rather than raising molecular speeds. The same bonding explains its high boiling point and high latent heat of vaporisation.",
+      "formulas": [
+        {
+          "name": "Heat and Temperature Change",
+          "difficulty": "Easy",
+          "formula": "Q = m c ΔT",
+          "variables": "Q = heat in J, m = mass in kg, c = specific heat capacity in J/kg·K, ΔT = temperature change.",
+          "when_to_use": "Whenever a substance changes temperature without changing state.",
+          "common_mistakes": "Applying it across a melting or boiling point, where the state also changes.",
+          "shortcut": "Break the problem into stages and apply mcΔT and mL alternately."
+        },
+        {
+          "name": "Principle of Calorimetry",
+          "difficulty": "Medium",
+          "formula": "Heat lost by hot body = Heat gained by cold body",
+          "variables": "m₁c₁(T₁ − T) = m₂c₂(T − T₂), where T is the final common temperature.",
+          "when_to_use": "For all mixing problems in an insulated calorimeter.",
+          "common_mistakes": "Getting the temperature differences the wrong way round, giving a negative heat.",
+          "shortcut": "Always write (higher temperature − final) for the hot body and (final − lower) for the cold body."
+        }
+      ]
+    },
+    {
+      "title": "Modes of Heat Transfer",
+      "time": "14 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "Heat travels by conduction through solids, convection through fluids, and radiation through empty space, needing no medium at all.",
+      "real_life": "A metal spoon in hot tea heats by conduction, the room warms by convection above a heater, and the sun reaches us across empty space by radiation.",
+      "detailed": {
+        "definition": "Conduction is heat transfer through a substance without the bulk movement of its particles. Convection is heat transfer by the actual movement of the heated fluid. Radiation is heat transfer by electromagnetic waves requiring no medium.",
+        "key_idea": "Only radiation can cross a vacuum, which is why a thermos flask has a vacuum between its walls to stop conduction and convection, and silvered surfaces to reflect radiation.",
+        "working_principle": "In conduction, particles vibrate more strongly and pass energy to neighbours while staying in place; free electrons make metals far better conductors. In convection, heated fluid becomes less dense, rises, and cooler fluid flows in to take its place, setting up a current.",
+        "applications": [
+          "Land and sea breezes, trade winds and monsoons are all convection currents.",
+          "A thermos flask blocks all three modes at once.",
+          "Black surfaces are the best absorbers AND the best emitters of radiation; shiny surfaces are the worst."
+        ]
+      },
+      "points": [
+        "Conduction: mainly in solids; metals are the best conductors due to free electrons.",
+        "Convection: only in liquids and gases, because the particles must move bodily.",
+        "Radiation: requires no medium; travels at the speed of light.",
+        "A good absorber of radiation is also a good emitter.",
+        "A thermos flask uses a vacuum, silvered walls and an insulating stopper to block all three modes."
+      ],
+      "mistakes": [
+        "Saying convection can occur in solids — the particles cannot move bodily.",
+        "Thinking radiation needs air; it travels best through a vacuum.",
+        "Assuming a shiny surface is a good emitter; it is a poor absorber and a poor emitter."
+      ],
+      "memory_hook": "'Conduction Contacts, Convection Carries, Radiation Rays across nothing.'",
+      "advanced": "The Stefan–Boltzmann law says radiated power varies as the fourth power of absolute temperature. Doubling a body's absolute temperature raises its radiated energy sixteenfold, which is why a filament glows so intensely at 2500 K and not at all at room temperature."
+    },
+    {
+      "title": "Laws of Thermodynamics",
+      "time": "14 mins",
+      "difficulty": "Hard",
+      "importance": 4,
+      "quick_summary": "The first law of thermodynamics is conservation of energy applied to heat, and the second law states that heat cannot flow spontaneously from a colder to a hotter body.",
+      "real_life": "A refrigerator does move heat from cold to hot — but only because it consumes electrical energy, exactly as the second law requires.",
+      "detailed": {
+        "definition": "The first law of thermodynamics states that the heat supplied to a system equals the increase in its internal energy plus the work done by it: ΔQ = ΔU + ΔW. The second law states that heat cannot flow of its own accord from a body at lower temperature to one at higher temperature.",
+        "key_idea": "The first law says energy is conserved; the second says which direction a process will actually go. Many processes obey the first law perfectly yet never happen, and the second law explains why.",
+        "working_principle": "Internal energy is the total kinetic and potential energy of all the particles of a system and depends only on the state, not on the path taken. No heat engine can be 100% efficient, because some heat must always be rejected to a sink.",
+        "applications": [
+          "A heat engine converts heat into work: petrol engines, diesel engines, steam turbines.",
+          "A refrigerator is a heat engine run backwards, using external work to move heat from cold to hot.",
+          "The zeroth law defines temperature: two bodies in thermal equilibrium with a third are in equilibrium with each other."
+        ]
+      },
+      "points": [
+        "First law: ΔQ = ΔU + ΔW — conservation of energy including heat.",
+        "Second law: heat flows spontaneously only from hot to cold.",
+        "No heat engine can be 100% efficient; some heat must go to the sink.",
+        "Internal energy is a state function — it depends only on the current state.",
+        "Isothermal: constant temperature; Adiabatic: no heat exchange with surroundings."
+      ],
+      "mistakes": [
+        "Saying a refrigerator violates the second law; it does work, so the process is not spontaneous.",
+        "Confusing heat (energy in transit) with internal energy (energy stored in the system).",
+        "Believing a perfectly insulated engine could be 100% efficient; the second law forbids it."
+      ],
+      "memory_hook": "'First law: you cannot win. Second law: you cannot even break even.'",
+      "advanced": "The second law is really a statement about entropy — disorder always increases in an isolated system. It is the only fundamental law of physics that distinguishes past from future, which is why it is called the arrow of time.",
+      "formulas": [
+        {
+          "name": "First Law of Thermodynamics",
+          "difficulty": "Medium",
+          "formula": "ΔQ = ΔU + ΔW",
+          "variables": "ΔQ = heat supplied to the system, ΔU = increase in internal energy, ΔW = work done BY the system.",
+          "when_to_use": "For any thermodynamic process — isothermal, adiabatic, isobaric or isochoric.",
+          "common_mistakes": "Getting the sign of ΔW wrong; it is work done BY the system, not on it.",
+          "shortcut": "Adiabatic → ΔQ = 0; Isothermal → ΔU = 0 for an ideal gas."
+        },
+        {
+          "name": "Efficiency of a Heat Engine",
+          "difficulty": "Medium",
+          "formula": "η = W / Q₁ = 1 − Q₂/Q₁",
+          "variables": "η = efficiency, W = work output, Q₁ = heat absorbed from the source, Q₂ = heat rejected to the sink.",
+          "when_to_use": "To compare heat engines or find the work output from heat input.",
+          "common_mistakes": "Expressing efficiency greater than 1, which is impossible.",
+          "shortcut": "Efficiency is always less than 1 because Q₂ can never be zero."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "number": 8,
+  "title": "General Organic Chemistry — Nomenclature and Isomerism",
+  "prerequisites": [
+    "Tetravalency of carbon and covalent bonding.",
+    "Knowledge of homologous series and hydrocarbons.",
+    "Familiarity with functional groups such as −OH and −COOH.",
+    "Ability to draw simple structural formulae."
+  ],
+  "topics": [
+    {
+      "title": "IUPAC Nomenclature of Organic Compounds",
+      "time": "17 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "An IUPAC name is built from a root indicating the longest carbon chain, a suffix for the functional group and prefixes for the substituents, each with a locant number.",
+      "real_life": "The common name 'wood spirit' tells you nothing, but 'methanol' tells you at once that it has one carbon and an −OH group.",
+      "detailed": {
+        "definition": "The IUPAC name of an organic compound consists of a word root (number of carbon atoms in the longest chain), a primary suffix (type of bond), a secondary suffix (functional group) and prefixes (substituents).",
+        "key_idea": "Numbering must give the lowest possible locant to the principal functional group first, then to double or triple bonds, and only then to substituents. Getting this priority order right resolves nearly every naming dispute.",
+        "working_principle": "Select the longest continuous chain containing the functional group, number it from the end nearer that group, name substituents alphabetically with their locants, and assemble prefix–root–suffix.",
+        "applications": [
+          "CH₃−CH₂−OH is ethanol: eth (2 carbons) + an (single bonds) + ol (alcohol).",
+          "CH₃−CHO is ethanal; CH₃−COOH is ethanoic acid; CH₃−CO−CH₃ is propanone.",
+          "Branched chains: (CH₃)₂CH−CH₃ is 2-methylpropane."
+        ]
+      },
+      "points": [
+        "Word roots: meth (1), eth (2), prop (3), but (4), pent (5), hex (6), hept (7), oct (8).",
+        "Primary suffix: -ane (single), -ene (double), -yne (triple).",
+        "Secondary suffix: -ol (alcohol), -al (aldehyde), -one (ketone), -oic acid (carboxylic acid).",
+        "The final 'e' of the primary suffix is dropped before a suffix beginning with a vowel.",
+        "Number the chain to give the functional group the lowest possible locant."
+      ],
+      "mistakes": [
+        "Numbering from the wrong end and giving the functional group a higher locant.",
+        "Choosing the longest chain without checking that it contains the functional group.",
+        "Retaining the final 'e' — writing 'ethaneol' instead of 'ethanol'."
+      ],
+      "memory_hook": "'Prefix–Root–Suffix' and 'functional group gets the lowest number, always'.",
+      "advanced": "IUPAC nomenclature is a generative grammar: a finite set of rules names an unbounded set of compounds unambiguously. This is why chemical databases can be searched by name across millions of structures."
+    },
+    {
+      "title": "Structural Isomerism",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Isomers have the same molecular formula but different structures, and structural isomerism includes chain, position and functional isomerism.",
+      "real_life": "Butane and isobutane have identical formulas but different boiling points, which is why one liquefies more easily and is preferred in cold-climate LPG.",
+      "detailed": {
+        "definition": "Isomers are compounds with the same molecular formula but different structural formulae, and therefore different properties. Chain isomers differ in the carbon skeleton, position isomers in the position of a group or bond, and functional isomers in the functional group itself.",
+        "key_idea": "Isomerism is a direct consequence of carbon's tetravalency and catenation. The more carbon atoms a molecule has, the more ways they can be arranged, which is why isomer counts explode with chain length.",
+        "working_principle": "To find all isomers systematically, first draw the longest straight chain, then progressively shorten it and place the removed carbons as branches, checking for duplicates by rotation.",
+        "applications": [
+          "C₄H₁₀ has two chain isomers: butane and 2-methylpropane.",
+          "C₃H₈O shows position isomerism: propan-1-ol and propan-2-ol.",
+          "C₂H₆O shows functional isomerism: ethanol (alcohol) and dimethyl ether."
+        ]
+      },
+      "points": [
+        "Isomers have the same molecular formula but different structures and different properties.",
+        "Chain isomerism starts from butane (C₄H₁₀); the first three alkanes have no isomers.",
+        "Position isomerism: same skeleton, different position of the functional group.",
+        "Functional isomerism: same formula, entirely different functional group.",
+        "The number of possible isomers rises very steeply with the number of carbon atoms."
+      ],
+      "mistakes": [
+        "Counting the same structure twice after simply rotating or redrawing it.",
+        "Claiming methane, ethane or propane have isomers; they do not.",
+        "Confusing isomers (same formula) with homologues (differing by CH₂)."
+      ],
+      "memory_hook": "'Same formula, different arrangement' — Chain, Position, Functional: three ways to rearrange.",
+      "advanced": "Stereoisomers have the same connectivity but differ in spatial arrangement, and can differ dramatically in biological effect. The tragedy of thalidomide, where one mirror-image form was a sedative and the other caused birth defects, made stereochemistry a regulatory requirement."
+    },
+    {
+      "title": "Functional Groups and Homologous Series",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A functional group is the atom or group that determines the chemical properties of an organic compound, and compounds sharing one functional group form a homologous series.",
+      "real_life": "Every alcohol from methanol to the alcohol in hand sanitiser reacts with sodium to release hydrogen, because they all carry the same −OH group.",
+      "detailed": {
+        "definition": "A functional group is an atom or group of atoms that gives characteristic chemical properties to an organic compound. A homologous series is a group of compounds with the same functional group and general formula, successive members differing by −CH₂−.",
+        "key_idea": "Chemistry is decided by the functional group and physical properties by the chain length. This division is what makes organic chemistry learnable — you learn a group once and apply it to a whole family.",
+        "working_principle": "As molecular mass increases along a series, boiling point and viscosity increase steadily while solubility in water decreases, because the non-polar hydrocarbon part grows relative to the polar group.",
+        "applications": [
+          "Alcohols (−OH): react with sodium to give hydrogen; oxidised to carboxylic acids.",
+          "Carboxylic acids (−COOH): turn blue litmus red; give CO₂ with sodium carbonate.",
+          "Aldehydes (−CHO) are easily oxidised; ketones (>C=O) are not."
+        ]
+      },
+      "points": [
+        "Members of a homologous series differ by CH₂ and by 14 u in molecular mass.",
+        "All members share the same functional group and hence similar chemical properties.",
+        "Physical properties change gradually with increasing molecular mass.",
+        "Boiling point increases and water solubility decreases as the chain lengthens.",
+        "Functional group determines chemistry; chain length determines physical behaviour."
+      ],
+      "mistakes": [
+        "Saying members of a homologous series have identical properties; chemical properties are similar, physical ones differ.",
+        "Confusing aldehyde (−CHO, at the chain end) with ketone (>C=O, within the chain).",
+        "Assuming all alcohols are soluble in water; solubility falls sharply beyond four carbons."
+      ],
+      "memory_hook": "'Group decides the chemistry, chain decides the physics.'",
+      "advanced": "The −COOH group is acidic while −OH in alcohols is essentially neutral, because the carboxylate ion left after losing H⁺ is stabilised by resonance. Resonance stabilisation of the product, not the strength of the O−H bond, decides acidity."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "number": 13,
+  "title": "Direct & Inverse Proportion",
+  "prerequisites": [
+    "Comfort with ratios and percentages from Chapter 8.",
+    "Basic idea of variables and simple equation solving from Chapter 2.",
+    "Understanding of multiplication and division of fractions."
+  ],
+  "topics": [
+    {
+      "title": "Direct Proportion",
+      "quick_summary": "Two quantities are in direct proportion when they increase or decrease together at the same constant rate, so their ratio always stays the same.",
+      "detailed": {
+        "definition": "Two quantities x and y are in direct proportion if y = kx for some constant k (called the constant of proportionality), meaning x/y stays constant as both quantities change together.",
+        "key_idea": "In direct proportion, if one quantity is multiplied or divided by a certain factor, the other quantity changes by the EXACT SAME factor in the SAME direction (both increase together, or both decrease together).",
+        "working_principle": "If x1/y1 = x2/y2 (the ratio stays constant), the quantities are in direct proportion; this relationship is used to set up and solve for an unknown value using cross-multiplication: x1y2 = x2y1.",
+        "applications": [
+          "Scaling recipes up or down while keeping ingredient ratios the same.",
+          "Currency conversion, fuel consumption vs. distance travelled, and speed-distance calculations at constant speed."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Easy",
+      "importance": 4,
+      "real_life": "The cost of fruit increases directly with the quantity bought — if 2 kg of apples costs ₹200, then 4 kg costs ₹400, always keeping the same cost-per-kg ratio.",
+      "points": [
+        "Direct proportion rule: x/y = k (constant) for all corresponding pairs of values.",
+        "As x increases, y increases in the same ratio; as x decreases, y decreases in the same ratio.",
+        "To solve, set up x1/y1 = x2/y2 and cross-multiply to find the unknown quantity.",
+        "A direct proportion graph (y vs x) is always a straight line passing through the origin."
+      ],
+      "mistakes": [
+        "Confusing direct proportion with a general linear relationship — a direct proportion graph must pass through the ORIGIN (0,0).",
+        "Setting up the ratio upside down (x1/y1 = y2/x2) when cross-multiplying.",
+        "Applying direct proportion logic to situations that are actually inversely proportional (e.g., speed and time for a fixed distance)."
+      ],
+      "memory_hook": "'Both go up together, or both go down together' — the ratio between them never changes.",
+      "advanced": "The constant of proportionality k in y = kx has real physical meaning in many contexts — for cost vs. quantity, k is simply the price per unit; for distance vs. time at constant speed, k is the speed itself — recognising k's real-world meaning makes proportion problems far more intuitive than pure algebra."
+    },
+    {
+      "title": "Inverse Proportion",
+      "quick_summary": "Two quantities are in inverse proportion when one increases as the other decreases such that their PRODUCT always stays constant.",
+      "detailed": {
+        "definition": "Two quantities x and y are in inverse proportion if xy = k for some constant k, meaning as x increases, y decreases proportionally so their product remains fixed.",
+        "key_idea": "In inverse proportion, if one quantity is multiplied by a certain factor, the other quantity is divided by that SAME factor — they move in OPPOSITE directions, unlike direct proportion where they move together.",
+        "working_principle": "If x1y1 = x2y2 (the product stays constant), the quantities are in inverse proportion; this relationship is used to solve for an unknown using x1y1 = x2y2 directly.",
+        "applications": [
+          "Work-and-time problems (more workers/machines finish a fixed job faster).",
+          "Speed and time for a fixed distance (faster speed means less time taken)."
+        ]
+      },
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 4,
+      "real_life": "The number of workers needed and the time taken to finish a fixed job are inversely proportional — more workers means the job finishes in less time, but workers × time (total work) stays the same.",
+      "points": [
+        "Inverse proportion rule: x × y = k (constant) for all corresponding pairs of values.",
+        "As x increases, y decreases in exactly the same ratio, and vice versa (opposite directions).",
+        "To solve, set up x1y1 = x2y2 and solve for the unknown quantity directly.",
+        "An inverse proportion graph (y vs x) is a smooth curve (hyperbola shape), never a straight line."
+      ],
+      "mistakes": [
+        "Setting up a direct-proportion-style ratio (x1/y1 = x2/y2) for a problem that is actually inversely proportional.",
+        "Forgetting that inverse proportion means multiplying one quantity requires DIVIDING the other by the same factor, not multiplying both.",
+        "Assuming a graph of an inverse relationship is a straight line — it is always a curve."
+      ],
+      "memory_hook": "'One goes up, the other comes down — product stays locked' — xy = k is the signature of inverse proportion.",
+      "advanced": "Recognising WHICH type of proportion applies in a word problem is often the hardest step — a useful test is to ask: 'if I double one quantity, does the other double too (direct), or does it halve (inverse)?' — this quick mental check prevents most proportion-type mix-ups before any calculation begins.",
+      "formulas": [
+        {
+          "name": "Inverse Proportion Relation",
+          "difficulty": "Medium",
+          "formula": "x1 × y1 = x2 × y2",
+          "variables": "x1, y1 = first pair of corresponding values; x2, y2 = second pair; both pairs share the same constant product k.",
+          "when_to_use": "Whenever two quantities are confirmed to be inversely proportional (their product stays fixed).",
+          "common_mistakes": "Confusing this with the direct-proportion cross-multiplication rule x1y2 = x2y1.",
+          "shortcut": "Remember: inverse proportion PAIRS multiply straight across (x1y1 = x2y2), unlike direct proportion which cross-multiplies."
+        }
+      ]
+    }
+  ]
+}

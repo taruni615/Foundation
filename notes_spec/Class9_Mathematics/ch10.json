@@ -1,0 +1,76 @@
+{
+  "number": 10,
+  "title": "Circles",
+  "prerequisites": [
+    "Familiarity with the terms radius, diameter and circumference.",
+    "Congruence criteria for triangles.",
+    "Angle sum property of a triangle and of a quadrilateral.",
+    "Idea of a perpendicular from a point to a line."
+  ],
+  "topics": [
+    {
+      "title": "Chords and Their Properties",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "A perpendicular from the centre bisects a chord, equal chords are equidistant from the centre, and the longest chord of a circle is its diameter.",
+      "real_life": "To find the centre of a circular tabletop, draw two chords and their perpendicular bisectors — where they cross is the centre.",
+      "detailed": {
+        "definition": "A chord is a line segment joining two points on a circle. A diameter is a chord passing through the centre. An arc is a part of the circle, and a segment is the region between a chord and an arc.",
+        "key_idea": "Every chord property comes from the isosceles triangle formed by the two radii to the chord's endpoints. Once that triangle is drawn, the results follow from congruence.",
+        "working_principle": "The perpendicular from the centre to a chord bisects it, and conversely the line from the centre to the mid-point of a chord is perpendicular to it. Three non-collinear points determine exactly one circle.",
+        "applications": [
+          "Equal chords of a circle subtend equal angles at the centre, and conversely.",
+          "Equal chords are equidistant from the centre, and conversely.",
+          "The longer chord is nearer to the centre."
+        ]
+      },
+      "points": [
+        "The perpendicular from the centre to a chord bisects the chord.",
+        "The line joining the centre to the mid-point of a chord is perpendicular to it.",
+        "Equal chords are equidistant from the centre, and conversely.",
+        "The diameter is the longest chord of a circle.",
+        "One and only one circle passes through three non-collinear points."
+      ],
+      "mistakes": [
+        "Assuming any line from the centre bisects a chord; it must be perpendicular to it.",
+        "Thinking a circle can be drawn through any three points; they must be non-collinear.",
+        "Saying the shorter chord is nearer the centre; it is the longer one."
+      ],
+      "memory_hook": "'Perpendicular from the centre cuts the chord in half' — and 'longer chord, closer to the centre'.",
+      "advanced": "The perpendicular-bisector property is what makes trilateration possible. GPS locates a receiver by intersecting spheres, using exactly the three-points-determine-a-circle idea in three dimensions."
+    },
+    {
+      "title": "Angles in a Circle and Cyclic Quadrilaterals",
+      "time": "15 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "The angle at the centre is twice the angle at the circumference on the same arc, angles in the same segment are equal, and opposite angles of a cyclic quadrilateral are supplementary.",
+      "real_life": "A camera placed anywhere on a certain arc sees a stage of fixed width at exactly the same angle — the equal-angles-in-the-same-segment property.",
+      "detailed": {
+        "definition": "A cyclic quadrilateral is a quadrilateral whose four vertices all lie on a circle. A segment is the region bounded by a chord and one of the arcs it cuts off.",
+        "key_idea": "The central-angle theorem is the parent result. Angles in the same segment being equal, and the angle in a semicircle being 90°, are both immediate consequences of it.",
+        "working_principle": "Because the angle at the centre standing on a diameter is 180°, the angle at the circumference on the same arc is 90° — which is why any angle in a semicircle is a right angle.",
+        "applications": [
+          "The angle in a semicircle is always 90°.",
+          "Opposite angles of a cyclic quadrilateral sum to 180°, and conversely.",
+          "The exterior angle of a cyclic quadrilateral equals the interior opposite angle."
+        ]
+      },
+      "points": [
+        "Angle at the centre = 2 × angle at the circumference on the same arc.",
+        "Angles in the same segment of a circle are equal.",
+        "The angle in a semicircle is a right angle.",
+        "Opposite angles of a cyclic quadrilateral are supplementary, and conversely.",
+        "Equal arcs subtend equal angles at the centre."
+      ],
+      "mistakes": [
+        "Halving instead of doubling when moving from the circumference to the centre.",
+        "Applying the equal-angles rule to angles in different segments.",
+        "Assuming every quadrilateral is cyclic; the vertices must be concyclic."
+      ],
+      "memory_hook": "'Centre is double the circumference' — and 'a semicircle always gives a right angle'.",
+      "advanced": "The converse of the cyclic quadrilateral theorem is the standard test for concyclic points. Ptolemy's theorem extends it, relating the diagonals and sides of any cyclic quadrilateral in a single elegant equation."
+    }
+  ]
+}

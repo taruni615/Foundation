@@ -1,0 +1,108 @@
+{
+  "number": 8,
+  "title": "Transformation of Matter",
+  "prerequisites": [
+    "Knowledge of chemical symbols, formulae and valency.",
+    "Idea that matter exists in three states.",
+    "Familiarity with rusting, burning and the souring of milk.",
+    "Basic understanding of a chemical equation."
+  ],
+  "topics": [
+    {
+      "title": "Physical and Chemical Changes",
+      "time": "13 mins",
+      "difficulty": "Easy",
+      "importance": 5,
+      "quick_summary": "A physical change alters only the form or state of a substance and is usually reversible, while a chemical change produces one or more entirely new substances and is generally irreversible.",
+      "real_life": "Melting wax is a physical change — it can be re-solidified; burning the same wax is a chemical change — the flame's products can never be turned back into a candle.",
+      "detailed": {
+        "definition": "A physical change is a change in which no new substance is formed and the composition remains the same. A chemical change, or chemical reaction, is one in which one or more new substances with new properties are formed.",
+        "key_idea": "The decisive test is whether a new substance has been formed. Colour change, evolution of gas, formation of a precipitate, change in temperature and change in smell are the usual signs of a chemical change.",
+        "working_principle": "In a physical change only the arrangement of molecules alters; the molecules themselves are unchanged. In a chemical change bonds are broken and new bonds formed, so the molecules themselves are different afterwards.",
+        "applications": [
+          "Physical: melting of ice, boiling of water, dissolving sugar, breaking glass, magnetising iron.",
+          "Chemical: rusting of iron, burning of paper, cooking food, digestion, souring of milk, photosynthesis.",
+          "Both together: burning a candle — the wax melts (physical) and then burns (chemical)."
+        ]
+      },
+      "points": [
+        "Physical change: no new substance, usually reversible, mass unchanged.",
+        "Chemical change: new substance formed, usually irreversible, energy absorbed or released.",
+        "Signs of a chemical change: gas evolved, precipitate formed, colour changed, heat or light produced.",
+        "Dissolving salt in water is physical — the salt can be recovered by evaporation.",
+        "Burning of a candle involves both a physical and a chemical change."
+      ],
+      "mistakes": [
+        "Calling every irreversible change chemical — breaking a glass is irreversible but physical.",
+        "Thinking a colour change always means a chemical change; some physical changes also alter appearance.",
+        "Saying dissolving sugar is chemical because it 'disappears' — it can be recovered unchanged."
+      ],
+      "memory_hook": "'New substance = chemical; New form = physical' — ask 'what is it now?' not 'can I undo it?'.",
+      "advanced": "The boundary is not always sharp. Dissolving common salt in water is called physical, yet it does break the ionic lattice into separate hydrated ions. Chemists therefore judge by whether the original substance can be recovered unchanged by physical means."
+    },
+    {
+      "title": "Types of Chemical Reactions",
+      "time": "16 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Chemical reactions are classified as combination, decomposition, displacement, double displacement and redox, according to how atoms are rearranged.",
+      "real_life": "The white light of a burning magnesium ribbon (combination), the fizz when baking soda meets vinegar (double displacement), and the copper coating on an iron nail in blue solution (displacement) are three types in three seconds.",
+      "detailed": {
+        "definition": "Combination: two or more substances combine to form a single product. Decomposition: a single compound breaks into two or more simpler substances. Displacement: a more reactive element displaces a less reactive one from its compound. Double displacement: two compounds exchange their ions.",
+        "key_idea": "Reactions are also classified by energy: exothermic reactions release heat (burning, respiration, slaking of lime) and endothermic reactions absorb heat (decomposition of calcium carbonate, photosynthesis).",
+        "working_principle": "Decomposition can be brought about by heat (thermal), electricity (electrolytic) or light (photolytic). Double displacement reactions in which an insoluble solid forms are called precipitation reactions; those between an acid and a base are neutralisation reactions.",
+        "applications": [
+          "Combination: 2Mg + O₂ → 2MgO, with a dazzling white light.",
+          "Decomposition: CaCO₃ → CaO + CO₂ on heating; 2H₂O → 2H₂ + O₂ by electrolysis.",
+          "Double displacement: Na₂SO₄ + BaCl₂ → BaSO₄↓ + 2NaCl, a white precipitate."
+        ]
+      },
+      "points": [
+        "Combination is the reverse of decomposition.",
+        "Displacement involves one element and one compound; double displacement involves two compounds.",
+        "A precipitation reaction forms an insoluble solid, shown with a downward arrow (↓).",
+        "Exothermic = heat released; Endothermic = heat absorbed.",
+        "Respiration is exothermic; photosynthesis is endothermic."
+      ],
+      "mistakes": [
+        "Calling every reaction that produces heat a combination reaction; the two classifications are independent.",
+        "Confusing displacement (one element replaced) with double displacement (ions exchanged).",
+        "Forgetting to balance the equation after identifying the reaction type."
+      ],
+      "memory_hook": "'Combine = come together; Decompose = come apart; Displace = push one out; Double displace = swap partners.'",
+      "advanced": "Almost every reaction type can be re-described in terms of electron transfer. Combination, decomposition and displacement reactions are frequently redox reactions in disguise, whereas double displacement reactions usually are not — no element changes its oxidation number."
+    },
+    {
+      "title": "Oxidation, Reduction and Redox Reactions",
+      "time": "14 mins",
+      "difficulty": "Medium",
+      "importance": 5,
+      "quick_summary": "Oxidation is the addition of oxygen or removal of hydrogen, reduction is the reverse, and since the two always occur together the combined process is called a redox reaction.",
+      "real_life": "A cut apple turning brown, butter going rancid and iron rusting are all everyday oxidation — which is why antioxidants are added to packaged food.",
+      "detailed": {
+        "definition": "Oxidation is the addition of oxygen or removal of hydrogen from a substance (or loss of electrons). Reduction is the addition of hydrogen or removal of oxygen (or gain of electrons). A reaction in which both occur simultaneously is a redox reaction.",
+        "key_idea": "Oxidation and reduction can never occur alone. The substance that gives oxygen (or takes electrons) is the oxidising agent and is itself reduced; the substance that removes oxygen is the reducing agent and is itself oxidised.",
+        "working_principle": "In CuO + H₂ → Cu + H₂O, copper oxide loses oxygen (reduced) and hydrogen gains it (oxidised). So CuO is the oxidising agent and H₂ is the reducing agent — each does the opposite of what happens to it.",
+        "applications": [
+          "Corrosion of metals and rancidity of oily food are both oxidation processes.",
+          "Rancidity is prevented by adding antioxidants, packing in nitrogen gas, and refrigeration.",
+          "Extraction of metals uses carbon or carbon monoxide as a reducing agent."
+        ]
+      },
+      "points": [
+        "Oxidation = gain of oxygen / loss of hydrogen / loss of electrons.",
+        "Reduction = loss of oxygen / gain of hydrogen / gain of electrons.",
+        "The oxidising agent is itself REDUCED; the reducing agent is itself OXIDISED.",
+        "Common oxidising agents: O₂, KMnO₄, H₂O₂; reducing agents: H₂, C, CO.",
+        "Rancidity is the oxidation of fats and oils, giving a bad smell and taste."
+      ],
+      "mistakes": [
+        "Saying the oxidising agent gets oxidised — it gets reduced; that is the whole point of the name.",
+        "Treating oxidation and reduction as separate reactions; they always occur together.",
+        "Thinking oxidation always requires oxygen; loss of electrons counts even where no oxygen is present."
+      ],
+      "memory_hook": "'OIL RIG' — Oxidation Is Loss of electrons, Reduction Is Gain — and 'the agent does the opposite to itself'.",
+      "advanced": "Packets of chips are filled with nitrogen rather than air precisely to exclude oxygen and delay rancidity. Nitrogen is chosen because it is chemically inert, plentiful and cheap — the same reasoning behind nitrogen-filled aircraft tyres and museum display cases."
+    }
+  ]
+}

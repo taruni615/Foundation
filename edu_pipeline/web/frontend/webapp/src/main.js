@@ -13,6 +13,7 @@ import { createStore, store as sharedStore } from "./state/store.js";
 import { createRegistry } from "./shell/registry.js";
 import { createRouter } from "./shell/router.js";
 import { registerExams } from "./modules/exams/exams.module.js";
+import { registerPractice } from "./modules/practice/practice.module.js";
 
 // The extraction module wraps the legacy wizard.  In T0-A there is no wizard
 // root inside a shell, so mount/unmount only toggle a `#extraction-root`
@@ -53,6 +54,8 @@ export function boot({
   registry.register(makeExtractionModule(win));
   // Online Exams (student + teacher): dashboard, exams, reports, creation.
   registerExams(registry, { store });
+  // Practice Engine (student): the six PRD practice modes + Chapter Tests.
+  registerPractice(registry, { store });
 
   // When a shell root + factory are provided, build the shell (sidenav +
   // content region) and let it own the dynamic mount node.  Otherwise use the

@@ -3,7 +3,7 @@
 
 Usage (from repo root)::
 
-  python viewer_api.py
+  python scripts/viewer_api.py
   # Open http://127.0.0.1:8765/Viewer/textbook_viewer.html
 
 Requires: pip install pymysql
@@ -716,7 +716,7 @@ class ViewerAPIHandler(BaseHTTPRequestHandler):
                 {
                     "error": (
                         f"API route not found: {path}. "
-                        "Stop and restart: python viewer_api.py"
+                        "Stop and restart: python scripts/viewer_api.py"
                     ),
                 },
             )
@@ -1119,11 +1119,15 @@ def main() -> None:
     host = os.environ.get("VIEWER_API_HOST", "127.0.0.1")
     port = DEFAULT_PORT
     httpd = ThreadingHTTPServer((host, port), ViewerAPIHandler)
+    base = f"http://{host}:{port}"
     print(f"Serving {REPO_ROOT}")
-    print(f"Viewer (DB): http://{host}:{port}/Viewer/textbook_viewer.html")
-    print(f"Viewer (JSON): http://{host}:{port}/Viewer/output_json_viewer.html")
-    print(f"API:    http://{host}:{port}/api/books")
-    print(f"Export: http://{host}:{port}/api/chapter-export?chapter_id=ID&format=pdf")
+    print("Viewers:")
+    print(f"  Questions (<book>_questions.json) : {base}/Viewer/questions_viewer.html")
+    print(f"  Theory    (<book>_theory.json)    : {base}/Viewer/theory_viewer.html")
+    print(f"  Final     (<book>_final.json)     : {base}/Viewer/output_json_viewer.html")
+    print(f"  Database  (MySQL qa_* tables)     : {base}/Viewer/textbook_viewer.html")
+    print(f"API:    {base}/api/books")
+    print(f"Export: {base}/api/chapter-export?chapter_id=ID&format=pdf")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

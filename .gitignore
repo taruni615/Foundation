@@ -68,3 +68,6 @@ all_database_questions.xlsx
 exports/
 *.tmp
 *.json.tmp
+
+# Vendored MathJax for offline viewer builds
+.vendor/

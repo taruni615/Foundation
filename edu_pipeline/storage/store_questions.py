@@ -12,8 +12,8 @@ Requires: pip install pymysql
 
 Usage::
 
-  python insert_qa_table.py "outputs/10TH BIOLOGY FOUNDATION/10TH BIOLOGY FOUNDATION_qa_table.json"
-  python insert_qa_table.py --replace-book path/to/book_qa_table.json
+  python scripts/insert_qa_table.py "outputs/10TH BIOLOGY FOUNDATION/10TH BIOLOGY FOUNDATION_qa_table.json"
+  python scripts/insert_qa_table.py --replace-book path/to/book_qa_table.json
 """
 
 from __future__ import annotations

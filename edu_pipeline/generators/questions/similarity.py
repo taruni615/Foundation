@@ -27,10 +27,10 @@ Ollama credentials from ``.env`` / ``topicwise_pipeline`` are honoured).
 CLI examples::
 
     # list chapters so you can pick one
-    python mcq_similar.py --subject Physics --class 10 --list-chapters
+    python scripts/mcq_similar.py --subject Physics --class 10 --list-chapters
 
     # 2 similar MCQs for each existing MCQ in chapter 178, cap 25 sources
-    python mcq_similar.py --subject Physics --class 10 --chapter 178 \\
+    python scripts/mcq_similar.py --subject Physics --class 10 --chapter 178 \\
         --per-item 2 --limit 25 --out outputs/similar_mcqs.json
 """
 

@@ -538,7 +538,7 @@ def _print_db_failure(exc: BaseException) -> None:
     elif conn.get("transport") == "tcp":
         print(f"  fix   : check MySQL is listening at {conn.get('target')} and that "
               "DB_HOST/DB_PORT in .env point at it.", file=sys.stderr)
-    print("  check : python3 db_workbench.py health", file=sys.stderr)
+    print("  check : python3 scripts/db_workbench.py health", file=sys.stderr)
 
 
 def main(argv: Optional[List[str]] = None) -> int:

@@ -1,0 +1,66 @@
+/*
+ * Shared Viewer theme. Kept next to content_render.js so every viewer page
+ * (final JSON, theory, questions) renders content identically; each page adds
+ * only the rules its own layout needs.
+ */
+:root{
+  color-scheme: dark;
+  --bg:#0b1220;
+  --panel:#0f172a;
+  --panel2:#111c33;
+  --border:#263248;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#60a5fa;
+  --good:#34d399;
+  --warn:#fbbf24;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.wrap{max-width:1400px;margin:0 auto;padding:14px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:12px}
+.hero{background:linear-gradient(135deg,rgba(96,165,250,.14),rgba(15,23,42,.92))}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.spacer{flex:1}
+input,select,button{
+  background:var(--panel2);color:var(--text);
+  border:1px solid var(--border);border-radius:10px;
+  padding:9px 12px;font-size:14px
+}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{border-color:var(--good);background:rgba(52,211,153,.15)}
+.muted{color:var(--muted)}
+.chip{display:inline-block;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.14);color:#bfdbfe;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px;margin-bottom:4px}
+.chip.good{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.12);color:#a7f3d0}
+.chip.warn{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.10);color:#fde68a}
+.grid{display:grid;grid-template-columns:340px 1fr;gap:12px}
+@media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+.list{display:grid;gap:8px}
+.topicBtn{width:100%;text-align:left;padding:10px;border-radius:12px;background:rgba(2,6,23,.18)}
+.topicBtn.active{border-color:var(--accent);background:rgba(96,165,250,.12)}
+.topicBtn .sub{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:normal}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button.active{background:rgba(96,165,250,.18);border-color:var(--accent)}
+.section{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px}
+details summary{cursor:pointer;color:#bfdbfe}
+.rich{line-height:1.55;font-size:15px;word-break:break-word}
+.rich p{margin:0 0 10px}
+.rich ul,.rich ol{margin:8px 0 8px 20px}
+.rich li{margin-bottom:4px}
+.rich table{width:100%;border-collapse:collapse;margin:8px 0 12px}
+.rich th,.rich td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+.rich img{max-width:100%;border-radius:10px;border:1px solid var(--border);display:block;margin:10px 0}
+.math-plain{font-family:"Cambria Math","Segoe UI Symbol",serif;font-style:italic;color:#e2e8f0}
+.rich .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.math-body{white-space:pre-wrap;word-break:break-word}
+mjx-container{overflow-x:auto;max-width:100%}
+code.path{display:inline-block;padding:2px 6px;border-radius:8px;background:rgba(2,6,23,.35);border:1px solid var(--border)}
+.pager button{min-width:72px}
+.kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.kpi .chip{margin-bottom:0}
+pre.raw{white-space:pre-wrap;word-break:break-word;margin:0;max-height:70vh;overflow:auto;font-size:12px}
+
+/* Matching questions: a List II entry is often a diagram. Cap it so one figure
+   cannot push the rest of the pairing out of view. */
+.match-pane img{max-width:200px;max-height:170px;object-fit:contain;margin:4px 0}

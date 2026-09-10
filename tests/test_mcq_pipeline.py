@@ -224,3 +224,66 @@ class TestConversionHeuristics:
         assert mg.needs_conversion("Short Answer", "Define force.") is True
         assert mg.needs_conversion("Short Answer", "Pick:\n(a) one\n(b) two") is False
         assert mg.needs_conversion("MCQ", "Define force.") is False
+
+
+class TestOptionsAreTheOptions:
+    """Option lists the books print in ways that fold together wrongly.
+
+    Each case is from a real question whose options were parsed as something
+    else, leaving the answer key pointing at an option that did not exist.
+    """
+
+    def test_statement_labels_are_not_the_options(self):
+        """"(A)/(B)" label claims to reason about; "(a)-(d)" are the options."""
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        stem, options = parse_options(
+            "Facts about light (A) It is electromagnetic. (B) It needs no medium. "
+            "(a) Only A is true. (b) Only B is true. (c) Both are true (d) Neither is true")
+        assert options == ["Only A is true", "Only B is true",
+                           "Both are true", "Neither is true"]
+        assert "(A) It is electromagnetic" in stem
+
+    def test_uppercase_options_still_work_on_their_own(self):
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        stem, options = parse_options(
+            "Which is a metal? (A) Sodium (B) Sulphur (C) Chlorine (D) Argon")
+        assert options == ["Sodium", "Sulphur", "Chlorine", "Argon"]
+        assert stem == "Which is a metal?"
+
+    def test_the_last_option_does_not_swallow_the_next_question(self):
+        """OCR interleaves a two-column page, dropping another question inside."""
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        _stem, options = parse_options(
+            "Under what conditions does a diverging lens form a virtual image? "
+            "(a) Only if u>f. (b) Only if u<f. (c) Only if u=f "
+            "III. Emergent ray is parallel to the incident ray. (a) I (b) II")
+        assert options == ["Only if u>f", "Only if u<f", "Only if u=f"]
+
+    def test_a_plain_question_is_unaffected(self):
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        stem, options = parse_options("What is the pH of pure water? (a) 5 (b) 7 (c) 9 (d) 14")
+        assert stem == "What is the pH of pure water?"
+        assert options == ["5", "7", "9", "14"]
+
+    def test_an_option_referring_to_the_earlier_ones_keeps_the_rest(self):
+        """"(c) Both (a) and (b)" is a reference, not the start of a new list."""
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        stem, options = parse_options(
+            "Which is preserved in a National Park? (a) Flora (b) Fauna "
+            "(c) Both (a) and (b) (d) None of these")
+        assert options == ["Flora", "Fauna", "Both (a) and (b)", "None of these"]
+        assert stem == "Which is preserved in a National Park?"
+
+    def test_two_markers_separated_by_one_space_both_match(self):
+        """The separator is a lookbehind: a match must not eat the next marker's space."""
+        from edu_pipeline.generators.questions.mcq_parser import parse_options
+
+        _stem, options = parse_options(
+            "Critical angle is (a) sin-1(8/9) (b) sin-1(2/3) (c) cos-1(8/9) (d) None of these")
+        assert len(options) == 4
+        assert options[-1] == "None of these"

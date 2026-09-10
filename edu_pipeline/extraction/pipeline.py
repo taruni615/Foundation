@@ -11,10 +11,10 @@ Default pipeline (--format v3, TopicWiseExporter)
 
 Examples::
 
-  python textbook_extract_pipeline.py "Input_PDFs/10TH CHEMISTRY FOUNDATION.pdf"
-  python textbook_extract_pipeline.py --topics 1,2 "Input_PDFs/book.pdf"
-  python textbook_extract_pipeline.py --skip-llm --merge-final "Input_PDFs/book.pdf"
-  python textbook_extract_pipeline.py --relabel-final "outputs/book/book_final.json"
+  python scripts/textbook_extract_pipeline.py "Input_PDFs/10TH CHEMISTRY FOUNDATION.pdf"
+  python scripts/textbook_extract_pipeline.py --topics 1,2 "Input_PDFs/book.pdf"
+  python scripts/textbook_extract_pipeline.py --skip-llm --merge-final "Input_PDFs/book.pdf"
+  python scripts/textbook_extract_pipeline.py --relabel-final "outputs/book/book_final.json"
 
 Implementation lives in ``topicwise_pipeline.py`` (v3 only; no v2/db/MySQL).
 """

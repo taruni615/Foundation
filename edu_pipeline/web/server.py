@@ -5,10 +5,14 @@ Adds the *write/action* endpoints the read-only ``viewer_api.py`` never had:
 upload a PDF, run extraction (with live progress), view + edit the extracted
 content, preview it grouped by category, and insert it into MySQL.
 
-Run from the repo root::
+Run from the repo root, through the CLI wrapper::
 
-    python app_server.py
+    python scripts/app_server.py
     # then open http://127.0.0.1:8000/
+
+Running this file directly fails with ``ModuleNotFoundError: edu_pipeline`` --
+the package root is not on ``sys.path`` when the interpreter starts inside it.
+``scripts/app_server.py`` exists to add it.
 
 No third-party web framework -- just the standard library, mirroring the style
 of ``viewer_api.py``.  Heavy lifting (Mathpix, Ollama, MySQL) is delegated to

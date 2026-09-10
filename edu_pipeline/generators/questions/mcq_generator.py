@@ -23,8 +23,8 @@ Design goals:
 
 CLI -- batch-convert every theory question in the bank::
 
-    python mcq_generator.py --limit 50 --out outputs/generated_mcqs.json
-    python mcq_generator.py --subject Physics --class 10
+    python scripts/mcq_generator.py --limit 50 --out outputs/generated_mcqs.json
+    python scripts/mcq_generator.py --subject Physics --class 10
 """
 
 from __future__ import annotations

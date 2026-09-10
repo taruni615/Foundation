@@ -22,13 +22,14 @@ WRAPPERS = [
     "app_server", "topicwise_pipeline", "viewer_api", "assessment_store", "bank_read",
     "final_to_qa_table", "insert_qa_table", "mcq_generator", "mcq_similar",
     "question_type_classifier", "refresh_qa_question_types", "short_notes_pipeline",
-    "textbook_extract_pipeline",
+    "textbook_extract_pipeline", "run_ingestion_pipeline", "run_generation_pipeline",
 ]
 
 CLI_HELP = [
     "textbook_extract_pipeline.py", "topicwise_pipeline.py", "mcq_generator.py",
     "mcq_similar.py", "final_to_qa_table.py", "insert_qa_table.py",
     "question_type_classifier.py", "refresh_qa_question_types.py",
+    "run_ingestion_pipeline.py", "run_generation_pipeline.py",
 ]
 
 

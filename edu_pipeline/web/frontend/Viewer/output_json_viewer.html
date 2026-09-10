@@ -4,65 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Foundation Textbooks — Output JSON Viewer</title>
-  <style>
-    :root{
-      color-scheme: dark;
-      --bg:#0b1220;
-      --panel:#0f172a;
-      --panel2:#111c33;
-      --border:#263248;
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --accent:#60a5fa;
-      --good:#34d399;
-      --warn:#fbbf24;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    .wrap{max-width:1400px;margin:0 auto;padding:14px}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:12px}
-    .hero{background:linear-gradient(135deg,rgba(96,165,250,.14),rgba(15,23,42,.92))}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .spacer{flex:1}
-    input,select,button{
-      background:var(--panel2);color:var(--text);
-      border:1px solid var(--border);border-radius:10px;
-      padding:9px 12px;font-size:14px
-    }
-    button{cursor:pointer}
-    button:hover{border-color:var(--accent)}
-    button.primary{border-color:var(--good);background:rgba(52,211,153,.15)}
-    .muted{color:var(--muted)}
-    .chip{display:inline-block;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.14);color:#bfdbfe;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px;margin-bottom:4px}
-    .chip.good{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.12);color:#a7f3d0}
-    .chip.warn{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.10);color:#fde68a}
-    .grid{display:grid;grid-template-columns:340px 1fr;gap:12px}
-    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
-    .list{display:grid;gap:8px}
-    .topicBtn{width:100%;text-align:left;padding:10px;border-radius:12px;background:rgba(2,6,23,.18)}
-    .topicBtn.active{border-color:var(--accent);background:rgba(96,165,250,.12)}
-    .topicBtn .sub{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:normal}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tabs button.active{background:rgba(96,165,250,.18);border-color:var(--accent)}
-    .section{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px}
-    details summary{cursor:pointer;color:#bfdbfe}
-    .rich{line-height:1.55;font-size:15px;word-break:break-word}
-    .rich p{margin:0 0 10px}
-    .rich ul,.rich ol{margin:8px 0 8px 20px}
-    .rich li{margin-bottom:4px}
-    .rich table{width:100%;border-collapse:collapse;margin:8px 0 12px}
-    .rich th,.rich td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
-    .rich img{max-width:100%;border-radius:10px;border:1px solid var(--border);display:block;margin:10px 0}
-    .math-plain{font-family:"Cambria Math","Segoe UI Symbol",serif;font-style:italic;color:#e2e8f0}
-    .rich .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
-    .math-body{white-space:pre-wrap;word-break:break-word}
-    mjx-container{overflow-x:auto;max-width:100%}
-    code.path{display:inline-block;padding:2px 6px;border-radius:8px;background:rgba(2,6,23,.35);border:1px solid var(--border)}
-    .pager button{min-width:72px}
-    .kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-    .kpi .chip{margin-bottom:0}
-    pre.raw{white-space:pre-wrap;word-break:break-word;margin:0;max-height:70vh;overflow:auto;font-size:12px}
-  </style>
+  <link rel="stylesheet" href="./lib/viewer.css" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true },
@@ -73,6 +15,7 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="./lib/content_render.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -90,7 +33,7 @@
         </div>
       </div>
       <div class="row" style="margin-top:10px">
-        <span class="chip good">source: *_final.json (file)</span>
+        <span class="chip good" id="chipSource">source: file</span>
         <span class="chip" id="chipTopics">topics: —</span>
         <span class="chip" id="chipVersion">format: —</span>
         <span class="chip" id="chipMath">mathml: —</span>
@@ -120,7 +63,12 @@
           <span id="topicChip" class="chip"></span>
         </div>
         <div id="topicKpi" class="kpi"></div>
-        <div id="tabs" class="tabs" style="margin-bottom:10px"></div>
+        <div class="row" style="margin-bottom:8px">
+          <div id="tabs" class="tabs" style="flex:1"></div>
+          <label class="muted" style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+            <input id="expandAll" type="checkbox" style="width:auto;margin:0" /> Expand all
+          </label>
+        </div>
         <div id="tabBody" class="section"></div>
       </div>
     </div>
@@ -141,6 +89,28 @@
         } while (el !== null && el.nodeType === 1);
         return null;
       };
+    }
+
+    // Rendering lives in ./lib/content_render.js, shared with the theory and
+    // questions viewers. These shims bind the page's image maps so the existing
+    // call sites keep their shorter signatures.
+    var CR = window.ContentRender;
+    // *_final.json already carries flattened maths, so this page keeps the
+    // plain-text handling it has always had.
+    CR.setMathMode("plain");
+    var esc = CR.esc, escAttr = CR.escAttr, typesetMath = CR.typesetMath;
+    var sanitizeSourceText = CR.sanitizeSourceText;
+    var staticAssetUrl = CR.staticAssetUrl, imageAssetSrc = CR.imageAssetSrc;
+    var buildImageMap = CR.buildImageMap, buildImageUrlMap = CR.buildImageUrlMap;
+    var stripInlineOptions = CR.stripInlineOptions;
+    function renderRichContent(text, imageMap) {
+      return CR.renderRichContent(text, imageMap || state.imageMap, state.imageByUrl);
+    }
+    function renderInlineContent(text, imageMap) {
+      return CR.renderInlineContent(text, imageMap || state.imageMap, state.imageByUrl);
+    }
+    function renderOptions(options, answer) {
+      return CR.renderOptions(options, answer, state.imageMap, state.imageByUrl);
     }
 
     var TAB_ORDER = [
@@ -166,6 +136,7 @@
       imageMap: {},
       pageByTab: {},
       jsonPath: "",
+      expandAll: false,
     };
 
     var els = {
@@ -180,6 +151,8 @@
       chipSummary: document.getElementById("chipSummary"),
       chipImages: document.getElementById("chipImages"),
       chipLayout: document.getElementById("chipLayout"),
+      chipSource: document.getElementById("chipSource"),
+      expandAll: document.getElementById("expandAll"),
       mainGrid: document.getElementById("mainGrid"),
       topicKpi: document.getElementById("topicKpi"),
       topicFilter: document.getElementById("topicFilter"),
@@ -194,289 +167,20 @@
       downloadPdfBtn: document.getElementById("downloadPdfBtn"),
     };
 
-    function staticAssetUrl(relPath) {
-      var p = String(relPath || "").replace(/\\/g, "/").trim();
-      if (!p) return "";
-      if (/^https?:\/\//i.test(p)) return p;
-      if (p[0] !== "/") p = "/" + p;
-      return p.split("/").map(function(seg, i) {
-        if (!seg) return "";
-        return encodeURIComponent(seg);
-      }).join("/");
-    }
 
-    function imageAssetSrc(asset) {
-      if (!asset) return "";
-      if (asset.base64) {
-        var mime = asset.mime_type || "image/jpeg";
-        var b64 = String(asset.base64).replace(/\s+/g, "");
-        return "data:" + mime + ";base64," + b64;
-      }
-      if (asset.file) return staticAssetUrl(asset.file);
-      if (asset.source_url && /^https?:\/\//i.test(asset.source_url)) return asset.source_url;
-      return "";
-    }
 
-    function esc(s) {
-      var out = String(s == null ? "" : s);
-      out = out.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
-      return out;
-    }
 
-    function escAttr(s) {
-      return esc(s).replaceAll("'", "&#39;");
-    }
 
-    function sanitizeSourceText(s) {
-      if (s == null) return "";
-      return String(s).replace(/<br\s*\/?>/gi, "\n").replace(/\uFFFD/g, "®");
-    }
 
-    function needsMathRendering(text) {
-      var raw = sanitizeSourceText(text);
-      if (!raw.trim()) return false;
-      if (/<math[\s>]/i.test(raw)) return true;
-      if (/\$\$[\s\S]+?\$\$/.test(raw)) return true;
-      if (/(^|[^\\$])\$[^$\n]+?\$/.test(raw)) return true;
-      if (/\\\(|\\\[/.test(raw)) return true;
-      return false;
-    }
 
-    function latexToReadable(latex) {
-      var s = String(latex || "").trim();
-      s = s.replace(/\\text\{([^{}]*)\}/g, "$1");
-      s = s.replace(/\\mathrm\{([^{}]*)\}/g, "$1");
-      s = s.replace(/\\mathbf\{([^{}]*)\}/g, "$1");
-      s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)");
-      s = s.replace(/\\frac\{([^{}]+)\}/g, "($1)");
-      s = s.replace(/\^\{([^{}]+)\}/g, function(_, exp) {
-        if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
-        var map = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "n": "ⁿ", "+": "⁺", "-": "⁻" };
-        var out = "";
-        for (var i = 0; i < exp.length; i++) out += map[exp.charAt(i)] || exp.charAt(i);
-        return out;
-      });
-      s = s.replace(/_\{([^{}]+)\}/g, "_$1");
-      s = s.replace(/\\circ/g, "°");
-      s = s.replace(/\\theta/g, "θ");
-      s = s.replace(/\\alpha/g, "α");
-      s = s.replace(/\\beta/g, "β");
-      s = s.replace(/\\pi/g, "π");
-      s = s.replace(/\\mu/g, "μ");
-      s = s.replace(/\\times/g, "×");
-      s = s.replace(/\\cdot/g, "·");
-      s = s.replace(/\\leq/g, "≤");
-      s = s.replace(/\\geq/g, "≥");
-      s = s.replace(/\\neq/g, "≠");
-      s = s.replace(/\\infty/g, "∞");
-      s = s.replace(/\\rightarrow/g, "→");
-      s = s.replace(/\\leftarrow/g, "←");
-      s = s.replace(/\\Rightarrow/g, "⇒");
-      s = s.replace(/\\quad/g, " ");
-      s = s.replace(/\\left\(/g, "(").replace(/\\right\)/g, ")");
-      s = s.replace(/\\[a-zA-Z]+/g, "");
-      s = s.replace(/[{}]/g, "");
-      return s.replace(/\s+/g, " ").trim();
-    }
 
-    function replaceRawLatexInText(text) {
-      if (!text || text.indexOf("$") < 0) return text;
-      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
-        return '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
-      });
-      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
-        return pre + '<span class="math-plain">' + esc(latexToReadable(inner)) + "</span>";
-      });
-      return out;
-    }
 
-    function replaceRawLatexPlain(text) {
-      if (!text || text.indexOf("$") < 0) return text;
-      var out = text.replace(/\$\$([\s\S]+?)\$\$/g, function(_, inner) {
-        return latexToReadable(inner);
-      });
-      out = out.replace(/(^|[^\\$])\$([^$\n]+?)\$(?!\$)/g, function(m, pre, inner) {
-        return pre + latexToReadable(inner);
-      });
-      return out;
-    }
 
-    var SUPER_MAP = { "0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","+":"⁺","-":"⁻","n":"ⁿ" };
-    function formatSuper(exp) {
-      exp = String(exp || "").replace(/\s+/g, "");
-      if (!exp) return "";
-      if (exp === "circ" || exp.indexOf("°") >= 0) return "°";
-      var out = "";
-      for (var i = 0; i < exp.length; i++) out += SUPER_MAP[exp.charAt(i)] || exp.charAt(i);
-      return out;
-    }
-    function mathmlLocalTag(node) {
-      return String(node.localName || node.nodeName || "").replace(/^.*:/, "").toLowerCase();
-    }
-    function mathmlJoin(parts) {
-      var out = [];
-      for (var i = 0; i < parts.length; i++) {
-        var piece = String(parts[i] || "").replace(/\s+/g, " ").trim();
-        if (!piece) continue;
-        if (out.length && !/^[,.;:!?)\]}°]/.test(piece) && !/[([{]$/.test(out[out.length - 1])) out.push(" ");
-        out.push(piece);
-      }
-      return out.join("");
-    }
-    function mathmlNodeToPlain(node) {
-      if (!node) return "";
-      var tag = mathmlLocalTag(node);
-      if (tag === "math" || tag === "mrow" || tag === "mstyle" || tag === "semantics") {
-        var kids = [];
-        for (var c = node.firstChild; c; c = c.nextSibling) {
-          if (c.nodeType === 1) kids.push(mathmlNodeToPlain(c));
-        }
-        return mathmlJoin(kids);
-      }
-      if (tag === "mn" || tag === "mi" || tag === "mtext" || tag === "ms" || tag === "mo") {
-        return (node.textContent || "").replace(/\s+/g, " ").trim();
-      }
-      if (tag === "mspace") return " ";
-      if (tag === "mfrac") {
-        var ch = node.children;
-        if (ch.length >= 2) {
-          var num = mathmlNodeToPlain(ch[0]), den = mathmlNodeToPlain(ch[1]);
-          if (/^[\w\d.]+$/.test(num) && /^[\w\d.]+$/.test(den)) return num + "/" + den;
-          return "(" + num + ")/(" + den + ")";
-        }
-        return ch.length ? mathmlNodeToPlain(ch[0]) : "";
-      }
-      if (tag === "msup") {
-        var ch2 = node.children;
-        if (ch2.length >= 2) return mathmlNodeToPlain(ch2[0]) + formatSuper(mathmlNodeToPlain(ch2[1]));
-        return ch2.length ? mathmlNodeToPlain(ch2[0]) : "";
-      }
-      if (tag === "msub" || tag === "msubsup" || tag === "msqrt" || tag === "mroot" || tag === "mfenced") {
-        var bits = [];
-        for (var j = 0; j < node.children.length; j++) bits.push(mathmlNodeToPlain(node.children[j]));
-        return mathmlJoin(bits);
-      }
-      return (node.textContent || "").replace(/\s+/g, " ").trim();
-    }
-    function mathmlBlockToReadable(block) {
-      try {
-        var safe = block.replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;");
-        var doc = new DOMParser().parseFromString(safe, "application/xml");
-        var root = doc.documentElement;
-        if (!root || root.nodeName === "parsererror") {
-          doc = new DOMParser().parseFromString(safe, "text/html");
-          root = doc.querySelector("math") || doc.body.firstElementChild;
-        }
-        if (!root) return block;
-        var plain = mathmlNodeToPlain(root).trim();
-        return plain;
-      } catch (e) {
-        return block;
-      }
-    }
-    function replaceMathMLInText(text) {
-      if (!text || !/<math[\s>]/i.test(text)) return text;
-      return text.replace(/<math[\s\S]*?<\/math>/gi, function(block) {
-        var plain = mathmlBlockToReadable(block);
-        return '<span class="math-plain">' + esc(plain) + "</span>";
-      });
-    }
 
-    function buildImageMap(topic) {
-      var map = {};
-      var assets = (topic && topic.image_assets) || {};
-      if (Array.isArray(assets)) {
-        for (var i = 0; i < assets.length; i++) {
-          var a = assets[i];
-          if (a && a.id) map[a.id] = a;
-        }
-      } else {
-        Object.keys(assets).forEach(function(id) {
-          var a = assets[id] || {};
-          map[id] = {
-            id: id,
-            file: a.file || "",
-            base64: a.base64 || "",
-            mime_type: a.mime_type || "image/jpeg",
-            source_url: a.source_url || "",
-          };
-        });
-      }
-      return map;
-    }
 
-    function injectImages(text, imageMap) {
-      var raw = String(text == null ? "" : text);
-      if (!raw.trim()) return raw;
-      imageMap = imageMap || {};
-      raw = raw.replace(/\[image:\s*(img_\d+)\]/gi, function(_match, id) {
-        var src = imageAssetSrc(imageMap[id]);
-        if (!src) {
-          return '<span class="chip warn">[missing image: ' + esc(id) + "]</span>";
-        }
-        return '<img class="topic-image" alt="' + esc(id) + '" loading="lazy" src="' + escAttr(src) + '">';
-      });
-      raw = raw.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(_match, alt, url) {
-        var src = staticAssetUrl(url) || url;
-        return '<img class="topic-image" alt="' + esc(alt || "image") + '" loading="lazy" src="' + escAttr(src) + '">';
-      });
-      return raw;
-    }
 
-    function renderRichContent(text, imageMap) {
-      var raw = sanitizeSourceText(text);
-      if (!raw.trim()) return "";
-      raw = injectImages(raw, imageMap);
-      if (/<math[\s>]/i.test(raw)) raw = replaceMathMLInText(raw);
-      var hasRawLatex = /(^|[^\\$])\$[^$\n]+?\$/.test(raw) || /\$\$[\s\S]+?\$\$/.test(raw);
-      if (hasRawLatex) raw = replaceRawLatexInText(raw);
-      if (/<math[\s>]/i.test(raw) || /<img[\s>]/i.test(raw) || /<table[\s>]/i.test(raw) ||
-          /<span class="math-plain"/i.test(raw) || needsMathRendering(raw)) {
-        return '<div class="rich math-body">' + raw + "</div>";
-      }
-      var lines = raw.replace(/\r/g, "").split("\n");
-      var parts = [], paragraph = [], inList = false;
-      function flushP() {
-        if (!paragraph.length) return;
-        parts.push("<p>" + esc(replaceRawLatexPlain(paragraph.join(" "))) + "</p>");
-        paragraph = [];
-      }
-      function flushList() {
-        if (inList) { parts.push("</ul>"); inList = false; }
-      }
-      for (var i = 0; i < lines.length; i++) {
-        var t = lines[i].trim();
-        if (!t) { flushP(); flushList(); continue; }
-        var bullet = /^[-*•]\s+(.*)$/.exec(t) || /^\(\w+\)\s+(.*)$/.exec(t);
-        if (bullet) {
-          flushP();
-          if (!inList) { parts.push("<ul>"); inList = true; }
-          parts.push("<li>" + esc(replaceRawLatexPlain(bullet[1] || bullet[0])) + "</li>");
-          continue;
-        }
-        var heading = /^(#{1,6})\s+(.*)$/.exec(t);
-        if (heading) {
-          flushP(); flushList();
-          var lvl = Math.min(heading[1].length + 2, 6);
-          parts.push("<h" + lvl + ">" + esc(heading[2]) + "</h" + lvl + ">");
-          continue;
-        }
-        paragraph.push(t);
-      }
-      flushP(); flushList();
-      return '<div class="rich">' + parts.join("") + "</div>";
-    }
 
-    function typesetMath() {
-      if (!window.MathJax) return Promise.resolve();
-      if (MathJax.startup && MathJax.startup.promise) {
-        return MathJax.startup.promise.then(function() {
-          return MathJax.typesetPromise([els.tabBody]);
-        });
-      }
-      if (MathJax.typesetPromise) return MathJax.typesetPromise([els.tabBody]);
-      return Promise.resolve();
-    }
+
 
     function defaultJsonPath() {
       // best-effort default for your current run
@@ -529,21 +233,47 @@
       state.pageByTab[tabKey] = Math.max(0, off);
     }
 
+    // Option text is a fragment, not a document: reuse the image/math handling
+    // but skip the paragraph wrapper so the letter and its text stay on one line.
+
+    // The stem keeps the option list the book printed inline; once the options
+    // are broken out into their own block, leaving it in shows every choice
+    // twice.
+
+    // An MCQ answer is often just the letter ("b"), which only means something
+    // next to the options. Render the choices and mark the key.
+
     function renderQaItem(ex, idx) {
       var title = ex.title || ex.question_type || ("Item " + (idx + 1));
       var prob = ex.problem_markdown || ex.problem || ex.prompt_markdown || ex.question || "";
       var sol = ex.solution_markdown || ex.solution || ex.answer || "";
+      var options = renderOptions(ex.options, ex.answer);
+      if (options) prob = stripInlineOptions(prob, ex.options);
+      // With the options listed, repeating the bare key as the solution adds
+      // nothing -- the explanation is the useful half.
+      var answerIsBareKey = options && /^\(?[a-e]\)?$/i.test(String(ex.answer || "").trim());
       var chips = [];
       if (ex.type) chips.push('<span class="chip">' + esc(ex.type) + "</span>");
       if (ex.question_type) chips.push('<span class="chip warn">' + esc(ex.question_type) + "</span>");
       if (ex.question_number != null && ex.question_number !== "") chips.push('<span class="chip">#' + esc(ex.question_number) + "</span>");
       if (ex.subsection_title) chips.push('<span class="chip">' + esc(ex.subsection_title) + "</span>");
       if (ex.page) chips.push('<span class="chip">p.' + esc(ex.page) + "</span>");
+      if (ex.images && ex.images.length) chips.push('<span class="chip">' + ex.images.length + " fig</span>");
+      var body = "";
+      if (prob) body += '<div style="margin-top:10px"><div class="label">Problem</div>' + renderRichContent(prob, state.imageMap) + "</div>";
+      body += options;
+      if (sol && !answerIsBareKey) {
+        body += '<div style="margin-top:10px"><div class="label">Solution</div>' + renderRichContent(sol, state.imageMap) + "</div>";
+      } else if (!sol && !options) {
+        body += '<div class="muted" style="margin-top:10px">No solution</div>';
+      }
+      if (ex.explanation) {
+        body += '<div style="margin-top:10px"><div class="label">Explanation</div>' + renderRichContent(ex.explanation, state.imageMap) + "</div>";
+      }
       return (
-        '<details class="section">' +
+        '<details class="section"' + (state.expandAll ? " open" : "") + ">" +
           "<summary>" + chips.join(" ") + esc(title) + "</summary>" +
-          (prob ? '<div style="margin-top:10px"><div class="label">Problem</div>' + renderRichContent(prob, state.imageMap) + "</div>" : "") +
-          (sol ? '<div style="margin-top:10px"><div class="label">Solution</div>' + renderRichContent(sol, state.imageMap) + "</div>" : '<div class="muted" style="margin-top:10px">No solution</div>') +
+          body +
         "</details>"
       );
     }
@@ -890,7 +620,7 @@
       els.tabBody.innerHTML = html;
       if (state.activeTab === "Raw") fillRawTab(t);
       attachPagerHandlers();
-      typesetMath();
+      typesetMath(els.tabBody);
     }
 
     function renderTopicNav() {
@@ -938,6 +668,7 @@
       var t = state.topics[idx];
       state.pageByTab = {};
       state.imageMap = buildImageMap(t || {});
+      state.imageByUrl = buildImageUrlMap(state.imageMap);
       var imgCount = 0;
       Object.keys(state.imageMap).forEach(function(k) {
         if (state.imageMap[k] && imageAssetSrc(state.imageMap[k])) imgCount++;
@@ -967,7 +698,8 @@
     function setMeta(doc) {
       var md = (doc && doc.metadata) || {};
       els.title.textContent = (md.name ? (md.name + " — Output JSON Viewer") : "Output JSON Viewer");
-      els.chipTopics.textContent = "topics: " + (md.topic_count != null ? md.topic_count : (doc.topics ? doc.topics.length : "—"));
+      els.chipTopics.textContent = "topics: " +
+        (md.topic_count != null ? md.topic_count : (doc.topics ? doc.topics.length : "—"));
       els.chipVersion.textContent = "format: " + (md.format_version || "—");
       els.chipMath.textContent = "mathml: " + (md.mathml || "—");
       els.chipLayout.textContent = "layout: " + (md.layout || "—");
@@ -1030,8 +762,9 @@
       }).catch(function(e) {
         els.status.textContent = "PDF failed: " + String(e.message || e);
       }).finally(function() {
-        if (els.downloadSummaryPdfBtn) els.downloadSummaryPdfBtn.disabled = !state.jsonPath;
-        if (els.downloadContentPdfBtn) els.downloadContentPdfBtn.disabled = !state.jsonPath;
+        var pdfReady = !!state.jsonPath;
+        if (els.downloadSummaryPdfBtn) els.downloadSummaryPdfBtn.disabled = !pdfReady;
+        if (els.downloadContentPdfBtn) els.downloadContentPdfBtn.disabled = !pdfReady;
       });
     }
 
@@ -1106,9 +839,12 @@
       els.jsonPath.value = initial;
 
       els.hint.innerHTML =
-        "Tip: pass a different file via <code class='path'>?json=outputs/&lt;book&gt;/&lt;book&gt;_final.json</code>. " +
-        "Rebuild with images + LLM summaries: <code class='path'>python topicwise_pipeline.py --merge-final --with-images --summarize-llm</code><br>" +
-        "Example:<br><code class='path'>http://127.0.0.1:8765/Viewer/output_json_viewer.html?json=/outputs/10%20PHYSICS%20FOUNDATION/10%20PHYSICS%20FOUNDATION_final.json</code>";
+        "Reads <code class='path'>&lt;book&gt;_final.json</code>. The review sidecars have their " +
+        "own pages: <a href='./questions_viewer.html'>questions_viewer.html</a> and " +
+        "<a href='./theory_viewer.html'>theory_viewer.html</a>.<br>" +
+        "Rebuild with images: <code class='path'>python scripts/topicwise_pipeline.py &lt;book&gt;.pdf --with-images</code><br>" +
+        "Params: <code class='path'>?json=…</code>, <code class='path'>&amp;topic=3</code>, " +
+        "<code class='path'>&amp;tab=Exercises</code>, <code class='path'>&amp;expand=1</code>";
 
       function doLoad() {
         var p = (els.jsonPath.value || "").trim();
@@ -1117,6 +853,12 @@
         state.jsonPath = normalizeJsonPath(p);
         els.status.textContent = "Loading " + p + " …";
         loadJson(p).then(function(doc) {
+          // The review sidecars have their own pages; this one reads *_final.json.
+          if (doc && Array.isArray(doc.chapters) && !Array.isArray(doc.topics)) {
+            var page = doc.chapters.some(function(ch) { return Array.isArray(ch.questions); })
+              ? "questions_viewer.html" : "theory_viewer.html";
+            throw new Error("That is a review sidecar, not a *_final.json — open it in " + page);
+          }
           state.doc = doc || {};
           state.topics = (doc && doc.topics) ? doc.topics : [];
           state.pageByTab = {};
@@ -1129,9 +871,21 @@
           els.mainGrid.style.display = "";
           var savedIdx = Number(sessionStorage.getItem("outViewerTopicIdx"));
           if (!isFinite(savedIdx)) savedIdx = 0;
+          // ?topic=3 deep-links to a chapter by its printed number, alongside ?tab=.
+          var wantedTopic = getParam("topic");
+          if (wantedTopic) {
+            for (var ti = 0; ti < state.topics.length; ti++) {
+              if (String(state.topics[ti].topic_number) === String(wantedTopic)) { savedIdx = ti; break; }
+            }
+          }
           state.filter = "";
           els.topicFilter.value = "";
-          state.activeTab = "Summary";
+          // ?tab=Exercises deep-links straight to a tab; unknown names fall
+          // back to the first tab that has content.
+          var wantedTab = getParam("tab");
+          state.activeTab = TAB_ORDER.indexOf(wantedTab) >= 0 ? wantedTab : "Summary";
+          state.expandAll = /^(1|true|yes)$/i.test(getParam("expand") || "");
+          if (els.expandAll) els.expandAll.checked = state.expandAll;
           renderTopicNav();
           showTopic(savedIdx);
           els.status.textContent = "Loaded: " + p;
@@ -1145,6 +899,13 @@
       els.jsonPath.addEventListener("keydown", function(e) {
         if (e.key === "Enter") doLoad();
       });
+      if (els.expandAll) {
+        els.expandAll.checked = state.expandAll;
+        els.expandAll.addEventListener("change", function(e) {
+          state.expandAll = !!e.target.checked;
+          renderTab();
+        });
+      }
       els.topicFilter.addEventListener("input", function(e) {
         state.filter = e.target.value || "";
         renderTopicNav();

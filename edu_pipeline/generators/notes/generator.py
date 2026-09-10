@@ -23,9 +23,9 @@ Output (and ONLY this) per book, under ``outputs/<book>/``:
     * ``topics_study_notes/topic_NN.json`` -- one self-describing file per topic
 
 Usage:
-    python3 short_notes_pipeline.py "10 PHYSICS FOUNDATION"
-    python3 short_notes_pipeline.py outputs/<book>/<book>_final.json --topics 1,2
-    python3 short_notes_pipeline.py --list
+    python3 scripts/short_notes_pipeline.py "10 PHYSICS FOUNDATION"
+    python3 scripts/short_notes_pipeline.py outputs/<book>/<book>_final.json --topics 1,2
+    python3 scripts/short_notes_pipeline.py --list
 """
 
 from __future__ import annotations

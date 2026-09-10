@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foundation Textbooks — Theory Viewer</title>
+  <link rel="stylesheet" href="./lib/viewer.css" />
+  <style>
+    .grid3{display:grid;grid-template-columns:300px 1fr 240px;gap:12px}
+    @media (max-width:1200px){ .grid3{grid-template-columns:300px 1fr} .outline{display:none} }
+    @media (max-width:920px){ .grid3{grid-template-columns:1fr} }
+    .outline{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 40px);overflow:auto}
+    .outline a{display:block;padding:5px 8px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:13px;line-height:1.35}
+    .outline a:hover{background:rgba(96,165,250,.10);color:var(--text)}
+    .outline a.concept{color:#a7f3d0}
+    .sec{background:rgba(2,6,23,.25);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;scroll-margin-top:12px}
+    .sec h3{margin:0 0 10px;font-size:17px;color:#bfdbfe}
+    .keypoints li{margin-bottom:8px}
+    .reading{max-width:none}
+    .reading.narrow{max-width:820px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card hero">
+      <div class="row">
+        <div>
+          <h1 style="margin:0 0 6px" id="title">Theory Viewer</h1>
+          <div class="muted" id="status">Loading…</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row">
+          <input id="filePick" type="file" accept=".json,application/json" hidden />
+          <button id="pickBtn" class="primary" type="button">Open JSON file…</button>
+          <span id="pathControls" class="row">
+            <label class="muted">or path</label>
+            <input id="jsonPath" type="text" style="min-width:320px" />
+            <button id="loadBtn" type="button">Load</button>
+          </span>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <span class="chip good" id="chipBook">book: —</span>
+        <span class="chip" id="chipChapters">chapters: —</span>
+        <span class="chip" id="chipSections">sections: —</span>
+        <span class="chip" id="chipImages">with figures: —</span>
+      </div>
+      <div class="muted" style="margin-top:8px;line-height:1.45" id="hint"></div>
+      <div id="dropZone" class="muted" style="margin-top:10px;padding:18px;border:1px dashed var(--border);border-radius:12px;text-align:center;display:none">
+        Drop a <code class="path">&lt;book&gt;_theory.json</code> here, or use <b>Open JSON file…</b>
+      </div>
+    </div>
+
+    <div id="mainGrid" class="grid3" style="display:none">
+      <div class="card">
+        <div class="row" style="margin-bottom:10px">
+          <select id="chapterSelect" style="flex:1;min-width:180px"></select>
+        </div>
+        <div id="chapterList" class="list"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:8px">
+          <h2 id="chapterHeading" style="margin:0">Chapter</h2>
+          <div class="spacer"></div>
+          <span id="pageChip" class="chip"></span>
+          <label class="muted" style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+            <input id="narrow" type="checkbox" style="width:auto;margin:0" checked /> Reading width
+          </label>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+          <input id="search" type="text" placeholder="Filter sections…" style="flex:1;min-width:200px" />
+          <span id="matchChip" class="chip"></span>
+        </div>
+        <div id="body" class="reading narrow"></div>
+      </div>
+
+      <div class="card outline">
+        <div class="label" style="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px">On this page</div>
+        <div id="outline"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code", "img"],
+        ignoreHtmlClass: "no-mathjax",
+      },
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="./lib/content_render.js"></script>
+  <script>
+    var CR = window.ContentRender;
+
+    var state = {
+      doc: null,
+      chapters: [],
+      activeChapter: 0,
+      imageMap: {},
+      imageByUrl: {},
+      search: "",
+      jsonPath: "",
+    };
+
+    var els = {};
+    ["title","status","hint","jsonPath","loadBtn","filePick","pickBtn","pathControls","dropZone",
+     "chipBook","chipChapters","chipSections",
+     "chipImages","mainGrid","chapterSelect","chapterList","chapterHeading","pageChip",
+     "narrow","search","matchChip","body","outline"].forEach(function(id) {
+      els[id] = document.getElementById(id);
+    });
+
+    function getParam(name) {
+      var m = new RegExp("[?&]" + name + "=([^&]*)").exec(location.search || "");
+      return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+    }
+
+    function normalizeJsonPath(path) {
+      var p = String(path || "").trim();
+      if (p && !/^https?:\/\//i.test(p) && p[0] !== "/") p = "/" + p;
+      return p;
+    }
+
+    function currentChapter() {
+      return state.chapters[state.activeChapter] || { sections: [] };
+    }
+
+    function buildChapterImages(chapter) {
+      var assets = {};
+      (chapter.sections || []).forEach(function(sec) {
+        (sec.images || []).forEach(function(img) {
+          if (img && img.id && !assets[img.id]) assets[img.id] = img;
+        });
+      });
+      state.imageMap = CR.buildImageMap(assets);
+      state.imageByUrl = CR.buildImageUrlMap(state.imageMap);
+    }
+
+    function keyPointText(kp) {
+      if (kp == null) return "";
+      if (typeof kp === "string") return kp;
+      return kp.text || kp.markdown || kp.content || "";
+    }
+
+    function visibleSections() {
+      var sections = currentChapter().sections || [];
+      if (!state.search) return sections;
+      var needle = state.search.toLowerCase();
+      return sections.filter(function(sec) {
+        // Filter on the visible words, not the MathML markup inside them.
+        var hay = CR.plainText((sec.title || "") + " " + (sec.markdown || "")).toLowerCase();
+        return hay.indexOf(needle) >= 0;
+      });
+    }
+
+    function sectionAnchor(sec) {
+      return "sec-" + String(sec.section_number || "").replace(/[^\w-]/g, "");
+    }
+
+    function renderChapterBody() {
+      var ch = currentChapter();
+      var sections = visibleSections();
+      var parts = [];
+
+      // Summary and key points head the chapter; they are chapter-level in the
+      // theory document rather than sections of their own.
+      if (!state.search) {
+        if (String(ch.summary || "").trim()) {
+          parts.push('<div class="sec" id="sec-summary"><h3>Chapter summary</h3>' +
+            CR.renderRichContent(ch.summary, state.imageMap, state.imageByUrl) + "</div>");
+        }
+        var points = (ch.key_points || []).map(keyPointText).filter(function(t) { return String(t).trim(); });
+        if (points.length) {
+          parts.push('<div class="sec" id="sec-keypoints"><h3>Key points</h3><ul class="keypoints">' +
+            points.map(function(t) {
+              return "<li>" + CR.renderInlineContent(t, state.imageMap, state.imageByUrl) + "</li>";
+            }).join("") + "</ul></div>");
+        }
+      }
+
+      sections.forEach(function(sec) {
+        var title = sec.title || ("Section " + sec.section_number);
+        var chips = [];
+        if (sec.section_kind && sec.section_kind !== "theory") {
+          chips.push('<span class="chip good">' + CR.esc(sec.section_kind) + "</span>");
+        }
+        if (sec.images && sec.images.length) {
+          chips.push('<span class="chip">' + sec.images.length + " fig</span>");
+        }
+        parts.push('<div class="sec" id="' + sectionAnchor(sec) + '">' +
+          "<h3>" + chips.join(" ") + CR.esc(title) + "</h3>" +
+          (String(sec.markdown || "").trim()
+            ? CR.renderRichContent(sec.markdown, state.imageMap, state.imageByUrl)
+            : '<div class="muted">No text captured for this section.</div>') +
+          "</div>");
+      });
+
+      els.body.innerHTML = parts.length
+        ? parts.join("")
+        : '<div class="muted">No sections match this filter.</div>';
+      els.matchChip.textContent = sections.length + " of " +
+        (currentChapter().sections || []).length + " sections";
+      CR.typesetMath(els.body);
+    }
+
+    function renderOutline() {
+      var links = [];
+      if (!state.search) {
+        if (String(currentChapter().summary || "").trim()) {
+          links.push('<a href="#sec-summary">Chapter summary</a>');
+        }
+        if ((currentChapter().key_points || []).length) {
+          links.push('<a href="#sec-keypoints">Key points</a>');
+        }
+      }
+      visibleSections().forEach(function(sec) {
+        var concept = sec.section_kind && sec.section_kind !== "theory";
+        links.push('<a class="' + (concept ? "concept" : "") + '" href="#' + sectionAnchor(sec) + '">' +
+          CR.esc(sec.title || ("Section " + sec.section_number)) + "</a>");
+      });
+      els.outline.innerHTML = links.join("") || '<div class="muted">—</div>';
+    }
+
+    function renderChapterNav() {
+      els.chapterList.innerHTML = state.chapters.map(function(ch, i) {
+        var secs = (ch.sections || []).length;
+        var figs = (ch.sections || []).filter(function(s) { return s.images && s.images.length; }).length;
+        return '<button type="button" class="topicBtn' + (i === state.activeChapter ? " active" : "") +
+          '" data-chapter="' + i + '">' + CR.esc(ch.chapter_number + ". " + (ch.chapter_name || "")) +
+          '<span class="sub">' + secs + " sections · " + figs + " with figures</span></button>";
+      }).join("");
+      Array.prototype.forEach.call(els.chapterList.querySelectorAll("button[data-chapter]"), function(btn) {
+        btn.addEventListener("click", function() { showChapter(Number(this.getAttribute("data-chapter"))); });
+      });
+      els.chapterSelect.innerHTML = state.chapters.map(function(ch, i) {
+        return '<option value="' + i + '"' + (i === state.activeChapter ? " selected" : "") + ">" +
+          CR.esc(ch.chapter_number + ". " + (ch.chapter_name || "")) + "</option>";
+      }).join("");
+    }
+
+    function showChapter(idx) {
+      if (!(idx >= 0 && idx < state.chapters.length)) idx = 0;
+      state.activeChapter = idx;
+      var ch = currentChapter();
+      buildChapterImages(ch);
+      els.chapterHeading.textContent = ch.chapter_number + ". " + (ch.chapter_name || "");
+      els.pageChip.textContent = ch.page_range ? "pp. " + ch.page_range : "";
+      renderChapterNav();
+      renderChapterBody();
+      renderOutline();
+      window.scrollTo(0, 0);
+    }
+
+    function setMeta(doc) {
+      var sections = 0, figured = 0;
+      (doc.chapters || []).forEach(function(ch) {
+        (ch.sections || []).forEach(function(s) {
+          sections++;
+          if (s.images && s.images.length) figured++;
+        });
+      });
+      var who = [doc.class ? "class " + doc.class : "", doc.subject || ""].filter(Boolean).join(" · ");
+      els.title.textContent = (doc.book_name || "Theory") + " — Theory Viewer";
+      els.chipBook.textContent = "book: " + (who || doc.book_name || "—");
+      els.chipChapters.textContent = "chapters: " + (doc.chapters || []).length;
+      els.chipSections.textContent = "sections: " + sections;
+      els.chipImages.textContent = "with figures: " + figured;
+    }
+
+    // Shared by both sources, so a file picked from disk behaves exactly like
+    // one fetched from the server.
+    function applyDocument(doc, label) {
+      if (!doc || !Array.isArray(doc.chapters)) {
+        throw new Error("Not a theory document — expected chapters[].");
+      }
+      // A questions document has the same chapters[] spine, so check for the
+      // payload this page actually renders rather than loading it empty.
+      if (!doc.chapters.some(function(ch) { return Array.isArray(ch.sections); })) {
+        throw new Error("This looks like a questions document (no sections[]). " +
+                        "Open it in the questions viewer.");
+      }
+      state.doc = doc;
+      state.chapters = doc.chapters;
+      setMeta(doc);
+      els.mainGrid.style.display = "";
+      if (els.dropZone) els.dropZone.style.display = "none";
+      var wanted = getParam("chapter");
+      var idx = 0;
+      for (var i = 0; i < state.chapters.length; i++) {
+        if (String(state.chapters[i].chapter_number) === String(wanted)) { idx = i; break; }
+      }
+      showChapter(idx);
+      els.status.textContent = "Loaded: " + label;
+    }
+
+    function showLoadError(err) {
+      els.status.textContent = "Error: " + String((err && err.message) || err);
+      els.mainGrid.style.display = "none";
+      if (els.dropZone) els.dropZone.style.display = "";
+    }
+
+    // Reading a picked File needs no server, which is what lets this page work
+    // when it is copied to another machine and opened straight from disk.
+    function loadFile(file) {
+      if (!file) return;
+      els.status.textContent = "Reading " + file.name + " …";
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          applyDocument(JSON.parse(String(reader.result)), file.name);
+        } catch (e) {
+          showLoadError(e);
+        }
+      };
+      reader.onerror = function () { showLoadError(new Error("could not read " + file.name)); };
+      reader.readAsText(file);
+    }
+
+    function doLoad() {
+      var p = (els.jsonPath.value || "").trim();
+      if (!p) return;
+      try { sessionStorage.setItem("theoryViewerPath", p); } catch (e) { /* private mode */ }
+      state.jsonPath = normalizeJsonPath(p);
+      els.status.textContent = "Loading " + p + " …";
+      fetch(state.jsonPath, { cache: "no-store" }).then(function(resp) {
+        if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + p);
+        return resp.json();
+      }).then(function(doc) {
+        applyDocument(doc, p);
+      }).catch(showLoadError);
+    }
+
+    function init() {
+      // Opened straight from disk there is no server to fetch a path from, so
+      // the page asks for a file instead of trying and failing.
+      var standalone = location.protocol === "file:";
+      var saved = "";
+      try { saved = sessionStorage.getItem("theoryViewerPath") || ""; } catch (e) { /* private mode */ }
+      els.jsonPath.value = getParam("json") || saved ||
+        "outputs/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_theory.json";
+      els.hint.innerHTML = standalone
+        ? "Pick a <code class='path'>&lt;book&gt;_theory.json</code> to read it. " +
+          "Everything runs in this page — nothing is uploaded."
+        : "Reads <code class='path'>&lt;book&gt;_theory.json</code>. Questions live in the " +
+          "<a href='./questions_viewer.html'>questions viewer</a>; a whole " +
+          "<code class='path'>*_final.json</code> opens in " +
+          "<a href='./output_json_viewer.html'>output_json_viewer.html</a>.<br>" +
+          "Params: <code class='path'>?json=…</code>, <code class='path'>&amp;chapter=3</code>";
+
+      if (standalone) {
+        if (els.pathControls) els.pathControls.style.display = "none";
+        if (els.dropZone) els.dropZone.style.display = "";
+        els.status.textContent = "No file loaded yet.";
+      }
+
+      if (els.pickBtn && els.filePick) {
+        els.pickBtn.addEventListener("click", function () { els.filePick.click(); });
+        els.filePick.addEventListener("change", function (e) {
+          loadFile(e.target.files && e.target.files[0]);
+        });
+      }
+      ["dragenter", "dragover"].forEach(function (name) {
+        document.addEventListener(name, function (e) { e.preventDefault(); });
+      });
+      document.addEventListener("drop", function (e) {
+        e.preventDefault();
+        loadFile(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]);
+      });
+
+      els.loadBtn.addEventListener("click", doLoad);
+      els.jsonPath.addEventListener("keydown", function(e) { if (e.key === "Enter") doLoad(); });
+      els.chapterSelect.addEventListener("change", function(e) { showChapter(Number(e.target.value)); });
+      els.search.addEventListener("input", function(e) {
+        state.search = e.target.value || "";
+        renderChapterBody();
+        renderOutline();
+      });
+      els.narrow.addEventListener("change", function(e) {
+        els.body.className = "reading" + (e.target.checked ? " narrow" : "");
+      });
+
+      if (!standalone) doLoad();
+    }
+
+    init();
+  </script>
+</body>
+</html>

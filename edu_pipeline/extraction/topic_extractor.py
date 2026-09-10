@@ -16,7 +16,10 @@ from __future__ import annotations
 
 import argparse
 import base64
+import copy
+import difflib
 import html
+import io
 import json
 import os
 import re
@@ -31,6 +34,9 @@ try:
     import latex2mathml.converter as latex2mathml_converter
 except ImportError:
     latex2mathml_converter = None
+
+from edu_pipeline.extraction import question_bank
+from edu_pipeline.shared.constants import QA_SECTION_KEYS
 
 
 DEFAULT_PDF_PATH = os.path.join("edu_pipeline", "materials", "input", "10 PHYSICS FOUNDATION.pdf")
@@ -68,6 +74,21 @@ LLM_MAX_USER_CHARS = int(os.environ.get("LLM_MAX_USER_CHARS", "48000"))
 LLM_MD_MAX_CHARS = int(os.environ.get("LLM_MD_MAX_CHARS", "48000"))
 OLLAMA_MD_NUM_PREDICT = int(os.environ.get("OLLAMA_MD_NUM_PREDICT", "16384"))
 MAX_TOPIC_IMAGES = int(os.environ.get("MAX_TOPIC_IMAGES", "80"))
+
+# Figures arrive from Mathpix at print resolution -- up to ~1700px wide, far more
+# than any viewer or PDF export uses -- and each one is also base64-embedded in
+# *_final.json, where it costs a third again in encoding. Downscaling the long
+# edge and re-encoding cuts the cache by roughly a quarter with no visible
+# difference on a diagram. Set IMAGE_MAX_DIM=0 to keep the originals untouched.
+IMAGE_MAX_DIM = int(os.environ.get("IMAGE_MAX_DIM", "1000"))
+IMAGE_JPEG_QUALITY = int(os.environ.get("IMAGE_JPEG_QUALITY", "78"))
+
+# Stamped into every topics_json/*.json and checked before one is reused. Bump it
+# whenever extraction changes what a topic JSON contains -- question parsing,
+# heading vocabulary, ordering, illustration or image handling. Without it a book
+# extracted by an older build silently keeps its stale cache on re-extraction and
+# the fixes appear not to apply.
+TOPIC_CACHE_VERSION = 11
 CONCEPT_MAP_LOOKBACK_LINES = int(os.environ.get("CONCEPT_MAP_LOOKBACK_LINES", "50"))
 CONCEPT_MAP_OPENING_LINES = int(os.environ.get("CONCEPT_MAP_OPENING_LINES", "80"))
 CONCEPT_MAP_BACKWARD_LINES = int(os.environ.get("CONCEPT_MAP_BACKWARD_LINES", "45"))
@@ -209,6 +230,11 @@ def theory_only() -> bool:
     return os.environ.get("THEORY_ONLY", "0").lower() in ("1", "true", "yes")
 
 
+def questions_only() -> bool:
+    """When True, extract questions + solutions + QA table only and ignore theory notes."""
+    return os.environ.get("QUESTIONS_ONLY", "0").lower() in ("1", "true", "yes")
+
+
 MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)")
 HTML_IMG_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
 BR_TAG_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
@@ -306,10 +332,21 @@ TOC_DOTTED_RE = re.compile(r"^(.+?)\s+\.{3,}\s+([A-Za-z0-9ivxlcdmIVXLCDM]+)\s*$"
 TOC_TABLE_RE = re.compile(r"^\|\s*(.+?)\s*\|\s*([A-Za-z0-9ivxlcdmIVXLCDM]+)\s*\|$")
 TOC_TOPIC_RE = re.compile(r"^(\d+)\.\s+(.+?)(?:\s*\.{3,}\s*|\s*)(\d+-\d+)\s*$")
 TOC_HEADING_TOPIC_RE = re.compile(r"^##\s+(\d+)\.\s+(.+?)\s+(\d+-\d+)\s*$")
+# Half the books typeset the tail of their contents page as a table -- Chemistry
+# class 10 prints chapters 1-3 as dotted lines and 4-9 as "| 4. | Carbon and its
+# Compounds | 145-194 |". Missing the table rows costs the whole chapter: its
+# content folds into chapter 3, which grew to 13,465 lines.
+TOC_TABLE_TOPIC_RE = re.compile(
+    r"^\|\s*(\d{1,2})\s*[.)]?\s*\|\s*(.+?)\s*\|\s*(\d+\s*-\s*\d+)\s*\|\s*$"
+)
 TOC_PAGE_RANGE_RE = re.compile(r"^(\d+-\d+)\s*$")
 TOC_TOPIC_NUM_ONLY_RE = re.compile(r"^(\d+)\.\s+(.+)$")
 # Mathpix sometimes emits page ranges as $63-102$ or glued to the title (Reproduce103-142).
 TOC_MATHPIX_PAGE_SUFFIX_RE = re.compile(r"\$?(\d+-\d+)\$?\s*$")
+# Alternative wordings for a chapter title, keyed by chapter number. These only
+# apply when the book's own table of contents agrees -- the numbers come from a
+# class-10 Biology book, and without that check "chapter 1 is Life Processes"
+# hijacks chapter 1 of every other book in the corpus.
 TOPIC_CHAPTER_ALIASES: Dict[int, List[str]] = {
     1: ["life process", "life processes", "what are the life processes"],
     4: ["heredity", "heredity and evolution"],
@@ -345,8 +382,18 @@ SUMMARY_SECTION_MAX_CHARS = int(os.environ.get("SUMMARY_SECTION_MAX_CHARS", "700
 SUMMARY_SUBSECTION_MAX_CHARS = int(os.environ.get("SUMMARY_SUBSECTION_MAX_CHARS", "450"))
 SUMMARY_MAX_PARAGRAPHS = int(os.environ.get("SUMMARY_MAX_PARAGRAPHS", "2"))
 CASE_STUDY_RE = re.compile(r"^##\s+CASE STUDY", re.IGNORECASE)
-ILLUSTRATION_RE = re.compile(r"^##\s+ILLUSTRATION\s*:?\s*(.+)$", re.IGNORECASE)
-SOLUTION_RE = re.compile(r"^##\s+SOLUTION\s*:?\s*$", re.IGNORECASE)
+# The ``##`` is optional: OCR keeps the heading text but drops the markdown
+# prefix on roughly half of these markers, and misreads the final N as an M
+# ("ILLUSTRATIOM"). Callers that pass a bare section title as f"## {title}"
+# are unaffected; line scanners now see the plain-text markers too.
+ILLUSTRATION_RE = re.compile(r"^(?:##\s+)?ILLUSTRATIO[NM]\s*:?\s*(.+)$", re.IGNORECASE)
+# "SOLUTION", "SOLUTION :", and "SOLUTION: (i)" -- the marker sometimes carries
+# the first line of the answer with it. The colon is what makes that safe to
+# accept: without it, "SOLUTION OF A PAIR OF LINEAR EQUATIONS" (a theory
+# heading) would read as a solution and hand the section to the illustration
+# above it.
+SOLUTION_RE = re.compile(
+    r"^(?:##\s+)?(?:SOLUTIO[NM]|SOL\.)\s*(?::\s*(?P<rest>.*))?$", re.IGNORECASE)
 NON_THEORY_SECTION_RE = re.compile(
     r"^(ILLUSTRATION|CASE\s+STUDY|Exercise|Text-?Book|Foundation\s+Builder|Exemplar|"
     r"Excercise|Single\s+Option|Multiple\s+Option|DIRECTIONS|SOLUTION|Physics)$",
@@ -1735,6 +1782,15 @@ def parse_toc(lines: List[str]) -> List[Dict[str, str]]:
         if not line or line.startswith("| :---"):
             continue
 
+        table_topic = TOC_TABLE_TOPIC_RE.match(line)
+        if table_topic:
+            toc.append({
+                "entry_type": "chapter",
+                "label": f"{table_topic.group(1)}. {table_topic.group(2).strip()}",
+                "page": table_topic.group(3).replace(" ", ""),
+            })
+            continue
+
         match = TOC_DOTTED_RE.match(line) or TOC_TABLE_RE.match(line)
         if not match:
             topic_match = TOC_TOPIC_RE.match(line)
@@ -1759,6 +1815,23 @@ def parse_toc(lines: List[str]) -> List[Dict[str, str]]:
 def normalize_title_words(text: str) -> List[str]:
     words = re.findall(r"[a-z0-9]+", text.lower())
     return [word for word in words if word not in STOP_TITLE_WORDS and len(word) > 1]
+
+
+def title_char_similarity(topic_name: str, heading: str) -> float:
+    """Character-level similarity of two titles, ignoring spacing and case.
+
+    Word overlap cannot see that "NUTRITIONIN ANMALS" is "Nutrition in Animals":
+    OCR merged a space and dropped a letter, so no whole word lines up. Comparing
+    the squeezed letter sequences does, and lets a near-exact chapter title
+    outrank a merely similar section heading that happens to be shouted in caps.
+    """
+    def squeeze(text: str) -> str:
+        return re.sub(r"[^a-z0-9]", "", str(text or "").lower())
+
+    left, right = squeeze(topic_name), squeeze(heading)
+    if len(left) < 6 or len(right) < 6:
+        return 0.0
+    return difflib.SequenceMatcher(None, left, right).ratio()
 
 
 def title_word_overlap_score(topic_name: str, heading: str) -> float:
@@ -1821,6 +1894,11 @@ def find_contents_end_line(lines: List[str]) -> int:
     return 0
 
 
+# A standalone "## Chapter 2" line: the most explicit boundary a book can give,
+# and the one 11 of the 16 books actually print.
+CHAPTER_MARKER_RE = re.compile(r"^#*\s*Chapter\s*[-–]?\s*\d+\s*$", re.IGNORECASE)
+
+
 def near_chapter_boundary(lines: List[str], idx: int, window: int = 12) -> bool:
     start = max(0, idx - window)
     end = min(len(lines), idx + window + 1)
@@ -1829,6 +1907,9 @@ def near_chapter_boundary(lines: List[str], idx: int, window: int = 12) -> bool:
         if CONCEPT_MAP_HEADING_RE.search(stripped):
             return True
         if re.search(r"\|\s*\(\s*C\s+O\s+N", stripped):
+            return True
+        # The marker always precedes the chapter title it introduces.
+        if CHAPTER_MARKER_RE.match(stripped) and pos <= idx:
             return True
         if CHAPTER_IMAGE_RE.search(stripped) and pos <= idx:
             return True
@@ -1879,6 +1960,16 @@ def parse_contents_topics(lines: List[str]) -> List[TopicMeta]:
 
         line = normalize_toc_entry_line(line)
 
+        table_topic = TOC_TABLE_TOPIC_RE.match(line)
+        if table_topic:
+            flush_pending("")
+            topics.append(TopicMeta(
+                topic_number=int(table_topic.group(1)),
+                topic_name=table_topic.group(2).strip(),
+                page_range=table_topic.group(3).replace(" ", ""),
+            ))
+            continue
+
         dotted_match = TOC_DOTTED_RE.match(line) or TOC_TABLE_RE.match(line)
         if dotted_match:
             label = dotted_match.group(1).strip()
@@ -1922,10 +2013,22 @@ def parse_contents_topics(lines: List[str]) -> List[TopicMeta]:
     return topics
 
 
-def _title_matches_topic_aliases(topic_number: int, title: str) -> bool:
+def _title_matches_topic_aliases(topic_number: int, title: str, topic_name: str = "") -> bool:
+    """True when a heading matches a known alias for this chapter.
+
+    The alias must also be consistent with the chapter's name in this book's
+    contents; otherwise a heading that happens to be another book's chapter 1
+    outranks the real one.
+    """
     title_lower = title.lower()
+    name_lower = (topic_name or "").lower()
     for alias in TOPIC_CHAPTER_ALIASES.get(topic_number, []):
-        if alias in title_lower:
+        if alias not in title_lower:
+            continue
+        if not name_lower:
+            return True
+        first = alias.split()[0]
+        if alias in name_lower or first in name_lower:
             return True
     return False
 
@@ -1949,7 +2052,7 @@ def score_topic_start_candidate(line: str, meta: TopicMeta) -> float:
     if FALSE_CHAPTER_HEADING_RE.match(title):
         return 0.0
 
-    if _title_matches_topic_aliases(topic_number, title):
+    if _title_matches_topic_aliases(topic_number, title, topic_name):
         return 98.0
 
     numbered_match = re.match(rf"^{topic_number}\.\s+(.+)$", title, re.IGNORECASE)
@@ -2018,6 +2121,17 @@ def score_topic_start_candidate(line: str, meta: TopicMeta) -> float:
         score = max(score, 92.0)
     elif title != title.upper() and len(re.findall(r"[A-Za-z]+", title)) > 4:
         score = min(score, 82.0)
+
+    # Applied last and never lowered: a heading that reads as the chapter title
+    # character-for-character is the chapter opening, whatever its case or
+    # length. Without this a shouted sub-heading ("## SOLUTION OF A LINEAR
+    # EQUATION...") outscores the real "## Linear Equations in One Variable",
+    # which the mixed-case rule above caps at 82.
+    char_similarity = title_char_similarity(topic_name, title)
+    if char_similarity >= 0.9:
+        score = max(score, 97.0)
+    elif char_similarity >= 0.8:
+        score = max(score, 94.0)
 
     return score
 
@@ -2192,7 +2306,12 @@ def _write_topic_md_file(
     md_kind: str,
     force: bool,
 ) -> None:
-    body = strip_images_from_markdown(body)
+    # Image references are kept unless SKIP_IMAGES is set: everything downstream
+    # (illustration figures, per-question images) resolves them out of this file,
+    # so stripping them here left every question image-less even under
+    # --with-images.
+    if skip_images():
+        body = strip_images_from_markdown(body)
     front_matter = (
         f"---\n"
         f"topic_number: {chunk.meta.topic_number}\n"
@@ -2204,17 +2323,41 @@ def _write_topic_md_file(
         f"---\n\n"
     )
     action = "Wrote"
+    line_range = f"{chunk.start_line}-{chunk.end_line}"
     if os.path.exists(path) and not force:
+        # A cached file is only valid for the slice of the book it was cut from.
+        # When chapter boundaries move -- a TOC fix finding chapters the previous
+        # run missed -- the old file still covers the whole tail of the book, and
+        # reusing it hands that chapter every later chapter's questions.
+        cached_range = _parse_topic_md_frontmatter(path).get("lines", "")
+        if cached_range and cached_range != line_range:
+            print(f"  Topic {md_kind} MD covers {cached_range}, now {line_range}; re-splitting.")
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write(front_matter + body)
+            print(f"  Wrote topic {md_kind} MD: {path} ({len(body):,} chars)")
+            return
         cached_body = read_topic_markdown_body(path)
-        if not _topic_md_has_images(cached_body):
+        cached_has_images = _topic_md_has_images(cached_body)
+        if skip_images():
+            if not cached_has_images:
+                print(f"  Using cached topic {md_kind} MD: {path}")
+                return
+            body = strip_images_from_markdown(cached_body)
+            action = "Stripped images in cached"
+        elif cached_has_images:
             print(f"  Using cached topic {md_kind} MD: {path}")
             return
-        body = strip_images_from_markdown(cached_body)
-        action = "Stripped images in cached"
+        else:
+            # Cached from an earlier image-less run; rewrite from source so the
+            # figures come back rather than serving a stale stripped file.
+            action = "Restored images in cached"
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(front_matter + body)
-    img_left = len(re.findall(r"cdn\.mathpix\.com|!\[[^\]]*\]\(", body))
-    note = "images stripped" if img_left == 0 else f"WARNING: {img_left} image ref(s) remain"
+    img_count = len(re.findall(r"cdn\.mathpix\.com|!\[[^\]]*\]\(", body))
+    if skip_images():
+        note = "images stripped" if img_count == 0 else f"WARNING: {img_count} image ref(s) remain"
+    else:
+        note = f"{img_count} image ref(s)"
     print(f"  {action} topic {md_kind} MD: {path} ({len(body):,} chars, {note})")
 
 
@@ -2235,7 +2378,7 @@ def write_topic_markdown_files(
     entries: List[Tuple[TopicChunk, str, Optional[str]]] = []
 
     for chunk in chunks:
-        body = strip_images_from_markdown(chunk.markdown)
+        body = strip_images_from_markdown(chunk.markdown) if skip_images() else chunk.markdown
         if split_theory_examples:
             theory_body, examples_body = split_topic_markdown_into_theory_and_examples(body)
             theory_path = os.path.join(
@@ -2489,218 +2632,62 @@ def _subsection_slug(title: str) -> str:
 
 
 def extract_exercise_sections(markdown: str) -> List[Dict[str, Any]]:
-    lines = markdown.splitlines()
-    start_idx = _first_exercise_line_index(lines)
-    if start_idx is None:
+    """Parse a chapter's question bank into exercises with their answers attached.
+
+    Delegates to :mod:`edu_pipeline.extraction.question_bank`, which keys every
+    question on ``(exercise, sub-section, number)`` -- the only coordinates that
+    identify it, since numbering restarts in each sub-section and the answer key
+    sits at the far end of the chapter.
+    """
+    blocks = question_bank.parse_question_bank(markdown)
+    if not blocks:
         return []
 
     sections: List[Dict[str, Any]] = []
-    current: Optional[Dict[str, Any]] = None
-    current_subsection = ""
-    subsection_lines: List[str] = []
-    preamble_lines: List[str] = []
-    subsection_visits: Dict[str, int] = {}
-
-    def reset_subsection_visits() -> None:
-        nonlocal subsection_visits
-        subsection_visits = {}
-
-    def flush_subsection() -> None:
-        nonlocal subsection_lines, current_subsection
-        if current is None or not subsection_lines:
-            subsection_lines = []
-            return
-        current.setdefault("subsections", []).append({
-            "title": current_subsection,
-            "body": compact_markdown("\n".join(subsection_lines)),
-        })
-        subsection_lines = []
-
-    def finalize_exercise() -> None:
-        nonlocal current, preamble_lines
-        if current is None:
-            return
-        flush_subsection()
-        context = compact_markdown("\n".join(preamble_lines))
-        current["kind"] = _classify_exercise_kind(current.get("title", ""), context)
-        current["instruction_markdown"] = context
-        questions: List[Dict[str, Any]] = []
-        for sub in current.get("subsections", []):
-            parsed = parse_questions(sub["body"])
-            sub_title = sub.get("title", "")
-            sub_slug = _subsection_slug(sub_title)
-            for q in parsed.get("questions", []):
-                questions.append({
-                    "number": q["question_number"],
-                    "prompt_markdown": q["prompt"],
-                    "solution_markdown": q.get("solution", ""),
-                    "question_type": _guess_question_type(
-                        q["prompt"], sub_title, section_type="exercise"
-                    ),
-                    "subsection": sub_slug,
-                    "subsection_title": sub_title,
-                })
-        if not questions and current.get("preamble_body"):
-            parsed = parse_questions(current["preamble_body"])
-            for q in parsed.get("questions", []):
-                questions.append({
-                    "number": q["question_number"],
-                    "prompt_markdown": q["prompt"],
-                    "solution_markdown": q.get("solution", ""),
-                    "question_type": _guess_question_type(
-                        q["prompt"],
-                        current.get("title", ""),
-                        section_type="exercise",
-                    ),
-                    "subsection": "general",
-                    "subsection_title": "",
-                })
-        current["questions"] = questions
-        for key in ("subsections", "preamble_body", "lines"):
-            current.pop(key, None)
-        sections.append(current)
-        current = None
-        preamble_lines = []
-
-    for line in lines[start_idx:]:
-        stripped = line.strip()
-        if SOLUTIONS_HEADING_RE.match(stripped):
-            finalize_exercise()
-            break
-        if (
-            _is_top_level_exercise_heading(stripped)
-            or EXERCISE_PLAIN_RE.match(stripped)
-            or EXERCISE_BANK_START_RE.match(stripped)
-            or MISCELLANEOUS_SOLVED_RE.match(stripped)
-        ):
-            finalize_exercise()
-            title = stripped.lstrip("#").strip()
-            current = {"title": title, "subsections": [], "preamble_body": ""}
-            current_subsection = ""
-            subsection_lines = []
-            preamble_lines = []
-            reset_subsection_visits()
-            continue
-        if current is None and DIRECTIONS_QS_RE.match(stripped):
-            current = {
-                "title": "Exercise bank",
-                "subsections": [],
-                "preamble_body": "",
+    by_exercise: Dict[str, Dict[str, Any]] = {}
+    for block in blocks:
+        exercise_key = block["exercise_key"]
+        section = by_exercise.get(exercise_key) if exercise_key else None
+        if section is None:
+            section = {
+                "title": block["exercise_title"] or block["subsection_title"] or "Exercise",
+                "kind": _classify_exercise_kind(block["exercise_title"], ""),
+                "instruction_markdown": "",
+                "questions": [],
             }
-            current_subsection = ""
-            subsection_lines = [line]
-            continue
-        if current is None:
-            continue
-        if DIRECTIONS_QS_RE.match(stripped):
-            flush_subsection()
-            current_subsection = "Directions"
-            subsection_lines = [line]
-            continue
-        if H2_RE.match(stripped) and not QUESTION_RE.match(stripped):
-            flush_subsection()
-            heading = stripped.lstrip("#").strip()
-            if (
-                QUESTION_TYPE_SECTION_RE.search(heading)
-                or MCQ_SECTION_RE.match(stripped)
-                or EXERCISE_BANK_START_RE.match(stripped)
-                or MISCELLANEOUS_SOLVED_RE.match(stripped)
-                or NON_THEORY_SECTION_RE.match(heading)
-            ):
-                slug = _subsection_slug(heading)
-                subsection_visits[slug] = subsection_visits.get(slug, 0) + 1
-                if subsection_visits[slug] > 1:
-                    current_subsection = ""
-                    subsection_lines = []
-                    continue
-                current_subsection = heading
-                subsection_lines = []
-            else:
-                preamble_lines.append(line)
-            continue
-        if current_subsection:
-            subsection_lines.append(line)
-        else:
-            preamble_lines.append(line)
-
-    finalize_exercise()
+            sections.append(section)
+            if exercise_key:
+                by_exercise[exercise_key] = section
+        subsection_title = block["subsection_title"]
+        for question in block["questions"]:
+            section["questions"].append({
+                "number": question["number"],
+                "prompt_markdown": question["prompt_markdown"],
+                "solution_markdown": question["solution_markdown"],
+                "question_type": _guess_question_type(
+                    question["prompt_markdown"], subsection_title, section_type="exercise"
+                ),
+                "subsection": block["subsection_kind"] or _subsection_slug(subsection_title),
+                "subsection_title": subsection_title,
+                "source_line": question.get("source_line", 0),
+                "passage": question.get("passage", ""),
+            })
     return sections
 
 
 def extract_solution_answer_map(markdown: str) -> Dict[Tuple[str, str], str]:
-    lines = markdown.splitlines()
-    start_idx = _first_exercise_line_index(lines)
-    if start_idx is None:
-        return {}
+    """``(sub-section kind, question number) -> answer`` for a chapter.
 
+    Kept for callers that want the key on its own; ``extract_exercise_sections``
+    already attaches these answers to their questions.
+    """
     answers: Dict[Tuple[str, str], str] = {}
-    in_solutions = False
-    current_subsection = ""
-    current_num = ""
-    current_lines: List[str] = []
-    subsection_visits: Dict[str, int] = {}
-
-    def flush_answer() -> None:
-        nonlocal current_num, current_lines
-        if not current_num:
-            current_lines = []
-            return
-        text = compact_markdown("\n".join(current_lines))
-        if text:
-            slug = _subsection_slug(current_subsection)
-            answers[(slug, current_num)] = text
-            answers[("", current_num)] = text
-        current_num = ""
-        current_lines = []
-
-    def capture_answer(q_match: re.Match) -> None:
-        nonlocal current_num, current_lines
-        flush_answer()
-        current_num = q_match.group(1)
-        rest = q_match.group(2).strip()
-        current_lines = [rest] if rest else []
-
-    for line in lines[start_idx:]:
-        stripped = line.strip()
-        if SOLUTIONS_HEADING_RE.match(stripped):
-            flush_answer()
-            in_solutions = True
-            current_subsection = ""
-            continue
-        if EXERCISE_SUBSECTION_PLAIN_RE.match(stripped):
-            flush_answer()
-            in_solutions = True
-            current_subsection = stripped.rstrip(":").strip()
-            subsection_visits[_subsection_slug(current_subsection)] = (
-                subsection_visits.get(_subsection_slug(current_subsection), 0) + 1
-            )
-            continue
-        if H2_RE.match(stripped) and not QUESTION_RE.match(stripped):
-            flush_answer()
-            heading = stripped.lstrip("#").strip()
-            slug = _subsection_slug(heading)
-            subsection_visits[slug] = subsection_visits.get(slug, 0) + 1
-            current_subsection = heading
-            if in_solutions or subsection_visits[slug] > 1:
-                in_solutions = True
-            continue
-        q_match = QUESTION_RE.match(stripped)
-        if not q_match:
-            if current_num:
-                current_lines.append(line)
-            continue
-        slug = _subsection_slug(current_subsection)
-        is_answer = (
-            in_solutions
-            or subsection_visits.get(slug, 0) > 1
-            or _looks_like_answer_line(q_match)
-        )
-        if is_answer:
-            capture_answer(q_match)
-        elif current_num:
-            flush_answer()
-
-    flush_answer()
+    for block in question_bank.parse_question_bank(markdown):
+        subsection = block["subsection_kind"] or _subsection_slug(block["subsection_title"])
+        for question in block["questions"]:
+            solution = question["solution_markdown"]
+            if solution:
+                answers.setdefault((subsection, question["number"]), solution)
     return answers
 
 
@@ -2708,17 +2695,19 @@ def attach_solutions_to_exercises(
     exercise_sections: List[Dict[str, Any]],
     answer_map: Dict[Tuple[str, str], str],
 ) -> None:
+    """Fill in any question left without an answer from ``answer_map``.
+
+    Only blanks are filled: a question already carrying the answer that
+    ``extract_exercise_sections`` matched on its full coordinates keeps it,
+    since the number alone cannot distinguish Exercise 1's MCQ 1 from
+    Exercise 3's.
+    """
     for section in exercise_sections:
         for question in section.get("questions", []):
-            num = str(question.get("number", ""))
-            sub = question.get("subsection", "")
-            solution = answer_map.get((sub, num), "") or answer_map.get(("", num), "")
-            if not solution:
-                for (slug, qnum), text in answer_map.items():
-                    if qnum == num and (not sub or slug == sub):
-                        solution = text
-                        break
-            question["solution_markdown"] = solution
+            if (question.get("solution_markdown") or "").strip():
+                continue
+            key = (question.get("subsection", ""), str(question.get("number", "")))
+            question["solution_markdown"] = answer_map.get(key, "")
 
 
 def extract_theory_notes(markdown: str) -> str:
@@ -3745,9 +3734,19 @@ def _filter_referenced_image_assets(
         if img_id not in priority_ids and img_id in assets
     )
     ordered = priority + rest
-    if len(ordered) > MAX_TOPIC_IMAGES:
-        ordered = ordered[:MAX_TOPIC_IMAGES]
-    return {img_id: assets[img_id] for img_id in ordered}
+    # Every referenced figure keeps its entry, so a question can always resolve
+    # the image it points at. MAX_TOPIC_IMAGES bounds only how many carry an
+    # inline base64 payload -- beyond it the entry still names the cached file
+    # and its source URL, which is all the exported JSON needs. Truncating the
+    # list instead dropped whole-question figures, since ids sort lexically and
+    # a chapter's exercise diagrams come last.
+    kept: Dict[str, Dict[str, str]] = {}
+    for index, img_id in enumerate(ordered):
+        asset = dict(assets[img_id])
+        if index >= MAX_TOPIC_IMAGES:
+            asset.pop("base64", None)
+        kept[img_id] = asset
+    return kept
 
 
 def _count_image_tokens(text: str) -> int:
@@ -3789,6 +3788,13 @@ def attach_topic_images_from_source(
         book_name,
         topic_doc.get("topic_number"),
     )
+    # Register the whole topic markdown first, in the same order as the pass
+    # that tokenised the questions. img_NNN ids are assigned by order of first
+    # appearance, so registering only the theory here would number the same
+    # figure differently and every [image:...] token on a question would then
+    # point at the wrong asset.
+    if source_md_path and os.path.exists(source_md_path):
+        resolver.register_markdown(read_topic_markdown_body(source_md_path))
     resolver.register_markdown(theory_source)
     topic_doc = _apply_concept_map_to_topic(topic_doc, resolver)
 
@@ -3823,6 +3829,17 @@ def attach_topic_images_from_source(
             topic_doc["summary"], resolver
         )
         referenced.update(re.findall(r"\[image:(img_\d+)\]", topic_doc["summary"]))
+
+    # Questions carry figures too -- an illustration's diagram, a circuit in an
+    # MCQ. Without these the assets they point at are filtered away and every
+    # question image resolves to nothing.
+    # collect_referenced_ids resolves both [image:...] tokens and the raw CDN
+    # URLs that exercise questions still carry, since those are re-parsed from
+    # source markdown after the tokenising pass.
+    for array_key in QA_SECTION_KEYS + ("case_studies", "practice_exercises"):
+        for item in (topic_doc.get(array_key) or []):
+            if isinstance(item, dict):
+                referenced.update(resolver.collect_referenced_ids(item))
 
     assets = embed_base64_in_assets(resolver)
     topic_doc["image_assets"] = _filter_referenced_image_assets(
@@ -4102,16 +4119,24 @@ def apply_pedagogy_export_fields(topic_doc: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _theory_sections_combined_markdown(sections: Any) -> str:
+    """Re-join theory sections into markdown, restoring each section heading.
+
+    ``split_theory_and_question_bank_markdown`` stores the section *body*
+    without its ``## Heading``. Concatenating those bodies alone produces
+    markdown with almost no headings, so re-splitting it collapses a chapter's
+    60-odd sections into a handful of unnamed blobs.
+    """
     blocks: List[str] = []
     for sec in sections or []:
         if not isinstance(sec, dict):
             continue
         md = (sec.get("markdown") or "").strip()
-        if md:
-            blocks.append(md)
-            continue
         title = (sec.get("topics") or sec.get("title") or "").strip()
-        if title:
+        if md and title and not md.lstrip().startswith("#"):
+            blocks.append(f"## {title}\n\n{md}")
+        elif md:
+            blocks.append(md)
+        elif title:
             blocks.append(f"## {title}")
     return "\n\n".join(blocks)
 
@@ -4141,10 +4166,20 @@ def apply_labeled_topic_layout(topic_doc: Dict[str, Any]) -> Dict[str, Any]:
         topic_doc["theory_sections"] = _order_theory_sections_for_display(theory_sections)
     else:
         question_md = ""
-    book_slug = str(topic_doc.get("book_slug") or "")
-    topic_doc = merge_question_bank_examples_into_topic(
-        topic_doc, question_md, book_slug=book_slug
+    # Only fold the bank in when the topic has not already had it folded in
+    # from its own markdown. ``question_md`` here is re-derived from
+    # theory_sections, which the exercises were filtered out of, so re-running
+    # this over an already-populated topic replaces the full question set with
+    # the remnant that survived that filter.
+    already_merged = any(
+        (ex.get("source_type") or "") not in ("illustration", "check_your_knowledge")
+        for ex in (topic_doc.get("examples") or [])
     )
+    if not already_merged:
+        book_slug = str(topic_doc.get("book_slug") or "")
+        topic_doc = merge_question_bank_examples_into_topic(
+            topic_doc, question_md, book_slug=book_slug
+        )
 
     examples = topic_doc.get("examples") or []
     buckets = split_examples_into_labeled_buckets(examples)
@@ -4208,6 +4243,36 @@ def save_qa_table_json_sidecar(
         book_slug,
         output_path,
         source_final_path=source_final_path,
+    )
+
+
+def save_questions_json_sidecar(
+    document: Dict[str, Any],
+    book_slug: str,
+    output_path: str,
+) -> str:
+    """Write structured *_questions.json after *_final.json."""
+    from edu_pipeline.storage.export_qa import save_questions_json_from_document
+
+    return save_questions_json_from_document(
+        document,
+        book_slug,
+        output_path,
+    )
+
+
+def save_theory_json_sidecar(
+    document: Dict[str, Any],
+    book_slug: str,
+    output_path: str,
+) -> str:
+    """Write structured *_theory.json alongside *_questions.json."""
+    from edu_pipeline.storage.export_qa import save_theory_json_from_document
+
+    return save_theory_json_from_document(
+        document,
+        book_slug,
+        output_path,
     )
 
 
@@ -4784,8 +4849,20 @@ def save_relational_tables_json(
 
 
 
-def relabel_final_json_document(document: Dict[str, Any]) -> Dict[str, Any]:
-    """Apply labelled layout + LaTeX→MathML on every topic in a *_final.json document."""
+def relabel_final_json_document(
+    document: Dict[str, Any],
+    *,
+    mathml_topics: Optional[List[Dict[str, Any]]] = None,
+) -> Dict[str, Any]:
+    """Apply labelled layout + LaTeX→MathML on every topic in a *_final.json document.
+
+    ``*_final.json`` flattens the MathML to readable plain text, which the DB and
+    the legacy viewers expect but which loses the structure of an equation --
+    ``\\frac{1}{v}`` becomes the string ``1/v``. Pass a list as ``mathml_topics``
+    to also collect each topic as it stands *before* that flattening; the
+    questions/theory sidecars are built from those so a browser can typeset the
+    maths properly.
+    """
     topics = document.get("topics") or []
     math = MathConverter()
     relabeled: List[Dict[str, Any]] = []
@@ -4793,6 +4870,8 @@ def relabel_final_json_document(document: Dict[str, Any]) -> Dict[str, Any]:
     for t in topics:
         topic = apply_labeled_topic_layout(dict(t))
         topic = apply_mathml_conversion(topic, math)
+        if mathml_topics is not None:
+            mathml_topics.append(copy.deepcopy(topic))
         topic = apply_math_plain_conversion(topic)
         relabeled.append(topic)
         leak_paths.extend(MathConverter.scan_latex_leaks(topic)[:3])
@@ -4826,6 +4905,11 @@ def split_theory_and_question_bank_markdown(
         return [], ""
     theory_sections: List[Dict[str, str]] = []
     question_blocks: List[str] = []
+    # The bank is taken as one contiguous slice from the first exercise heading
+    # onwards, so questions under headings OCR stripped of their ``##`` are kept
+    # and stay in reading order -- reassembling it from H2 blocks alone drops
+    # them and scrambles the question/answer sequence the key relies on.
+    _theory_md, bank_md = question_bank.split_theory_and_bank(markdown)
     for sec in _split_all_h2_sections(markdown):
         title = (sec.get("title") or "").strip()
         body = (sec.get("body") or "").strip()
@@ -4855,6 +4939,8 @@ def split_theory_and_question_bank_markdown(
             "topics": "Theory",
             "markdown": compact_markdown(markdown.strip()),
         })
+    if bank_md.strip():
+        return theory_sections, bank_md
     return theory_sections, compact_markdown("\n\n".join(question_blocks))
 
 
@@ -4874,6 +4960,7 @@ def merge_question_bank_examples_into_topic(
     question_bank_md: str,
     *,
     book_slug: str,
+    bank_offset: int = 0,
 ) -> Dict[str, Any]:
     """Parse question-bank markdown into ``examples`` / exercise buckets on ``topic_doc``."""
     if not question_bank_md.strip():
@@ -4882,7 +4969,7 @@ def merge_question_bank_examples_into_topic(
     answer_map = extract_solution_answer_map(question_bank_md)
     attach_solutions_to_exercises(sections, answer_map)
     tn = int(topic_doc.get("topic_number") or 0)
-    bank_examples = exercise_sections_to_examples(sections, tn, book_slug)
+    bank_examples = exercise_sections_to_examples(sections, tn, book_slug, bank_offset=bank_offset)
     kept = [
         ex for ex in (topic_doc.get("examples") or [])
         if ex.get("source_type") in ("illustration", "check_your_knowledge")
@@ -4891,53 +4978,109 @@ def merge_question_bank_examples_into_topic(
     return topic_doc
 
 
-def extract_illustrations_from_md(markdown: str) -> List[Dict[str, str]]:
-    illustrations: List[Dict[str, str]] = []
-    current_ill: Optional[Dict[str, str]] = None
-    for line in markdown.splitlines():
+def extract_illustrations_from_md(markdown: str) -> List[Dict[str, Any]]:
+    """Pull worked illustrations, their solutions and their figures out of a chapter.
+
+    An illustration runs from its ``ILLUSTRATION : 1.4`` marker to the next
+    marker or heading, with ``SOLUTION :`` dividing problem from solution. The
+    figure a problem refers to ("as in Fig. 1.9") is typeset *inside* the
+    solution block, so image references found anywhere in the pair are recorded
+    on ``image_urls`` and belong to that illustration.
+    """
+    illustrations: List[Dict[str, Any]] = []
+    current: Optional[Dict[str, Any]] = None
+    in_solution = False
+
+    def start(stripped: str, match: re.Match, line_no: int) -> Dict[str, Any]:
+        return {
+            "id": f"illustration_{_normalize_illustration_id(match.group(1))}",
+            "title": stripped.lstrip("#").strip(),
+            "problem": "",
+            "solution": "",
+            "image_urls": [],
+            "source_order": line_no,
+        }
+
+    def close() -> None:
+        nonlocal current, in_solution
+        if current is None:
+            return
+        for field_name in ("problem", "solution"):
+            text = current[field_name]
+            current["image_urls"].extend(
+                url for url in IMAGE_MD_RE.findall(text) if url not in current["image_urls"]
+            )
+            current[field_name] = compact_markdown(text)
+        illustrations.append(current)
+        current = None
+        in_solution = False
+
+    all_lines = markdown.splitlines()
+    for line_no, line in enumerate(all_lines):
         stripped = line.strip()
         ill_match = ILLUSTRATION_RE.match(stripped)
-        sol_match = SOLUTION_RE.match(stripped)
         if ill_match:
-            if current_ill:
-                illustrations.append(current_ill)
-            ill_id = _normalize_illustration_id(ill_match.group(1))
-            current_ill = {
-                "id": f"illustration_{ill_id}",
-                "title": stripped.lstrip("#").strip(),
-                "problem": "",
-                "solution": "",
-            }
-        elif sol_match and current_ill is not None:
-            current_ill["_in_solution"] = True
-        elif current_ill is not None:
-            if current_ill.get("_in_solution"):
-                if STOP_SOLUTION_RE.match(stripped) or ILLUSTRATION_RE.match(stripped):
-                    current_ill.pop("_in_solution", None)
-                    current_ill["problem"] = compact_markdown(current_ill.get("problem", ""))
-                    current_ill["solution"] = compact_markdown(current_ill.get("solution", ""))
-                    illustrations.append(current_ill)
-                    ill_match2 = ILLUSTRATION_RE.match(stripped)
-                    if ill_match2:
-                        ill_id = _normalize_illustration_id(ill_match2.group(1))
-                        current_ill = {
-                            "id": f"illustration_{ill_id}",
-                            "title": stripped.lstrip("#").strip(),
-                            "problem": "",
-                            "solution": "",
-                        }
-                    else:
-                        current_ill = None
-                else:
-                    current_ill["solution"] += line + "\n"
-            else:
-                current_ill["problem"] += line + "\n"
-    if current_ill:
-        current_ill.pop("_in_solution", None)
-        current_ill["problem"] = compact_markdown(current_ill.get("problem", ""))
-        current_ill["solution"] = compact_markdown(current_ill.get("solution", ""))
-        illustrations.append(current_ill)
+            close()
+            current = start(stripped, ill_match, line_no)
+            continue
+        if current is None:
+            continue
+        solution_marker = SOLUTION_RE.match(stripped)
+        if solution_marker:
+            in_solution = True
+            remainder = (solution_marker.group("rest") or "").strip()
+            if remainder:
+                current["solution"] += remainder + "\n"
+            continue
+        # Any other heading ends the illustration; without this the trailing
+        # block runs on into the theory that follows it.
+        if STOP_SOLUTION_RE.match(stripped) or H2_RE.match(stripped):
+            close()
+            continue
+        # An illustration is a worked box set into the theory, and the theory
+        # resuming after it is not part of the solution -- unbounded, one
+        # solution absorbed 14,410 characters of the chapter.
+        if in_solution and current["solution"].strip() and _theory_resumes_at(all_lines, line_no):
+            close()
+            continue
+        current["solution" if in_solution else "problem"] += line + "\n"
+
+    close()
     return illustrations
+
+
+# A theory definition resuming after a sidebar box: "(b) Alkenes or Olefins :".
+THEORY_RESUME_RE = re.compile(r"^\(?(?:[a-z]|[ivx]{1,4})\)\s*[A-Z][^.?!]{2,80}:(?:\s|$)")
+
+
+def _theory_resumes_at(lines: List[str], index: int) -> bool:
+    """True when the chapter's own prose starts again at this line.
+
+    A Check Your Knowledge box interrupts the theory and nothing in the OCR
+    marks where the box ends, so its answer otherwise runs to the end of the
+    chapter -- 10,831 characters in the worst case.
+    """
+    line = lines[index].strip()
+    if not line:
+        return False
+    if CHECK_KNOWLEDGE_RE.search(line) or THEORY_RESUME_RE.match(line):
+        return True
+    # A bare title followed by a paragraph of prose is a resumed section
+    # heading. A figure caption inside the answer looks the same, so what
+    # separates them is whether real prose follows.
+    # A numbered theory heading ("2. Decomposition Reaction") counts too. It is
+    # shaped like a numbered question, which is why the prose test below decides:
+    # a numbered answer part is followed by more answer, not by an essay.
+    titled = re.sub(r"^\d{1,2}[.)]\s+", "", line)
+    if (len(line) <= 60 and titled[:1].isupper()
+            and not line.endswith((".", "?", "!", ":", ",", ";"))
+            and "$" not in line and "<" not in line and not line.startswith("!")):
+        for probe in range(index + 1, min(index + 3, len(lines))):
+            following = lines[probe].strip()
+            if not following:
+                continue
+            return len(following) >= 80 and following[:1].isupper()
+    return False
 
 
 def extract_check_your_knowledge_pairs(markdown: str) -> List[Dict[str, str]]:
@@ -4965,6 +5108,8 @@ def extract_check_your_knowledge_pairs(markdown: str) -> List[Dict[str, str]]:
                         break
                     if ILLUSTRATION_RE.match(nxt) or EXERCISE_HEADING_RE.match(nxt):
                         break
+                    if solution_lines and _theory_resumes_at(lines, j):
+                        break
                     solution_lines.append(lines[j])
                     j += 1
                 pairs.append({
@@ -4972,6 +5117,7 @@ def extract_check_your_knowledge_pairs(markdown: str) -> List[Dict[str, str]]:
                     "title": "Check Your Knowledge",
                     "problem": problem,
                     "solution": compact_markdown("\n".join(solution_lines)),
+                    "source_order": i,
                 })
                 idx += 1
                 capture_prompt = False
@@ -5001,6 +5147,7 @@ def exercise_sections_to_examples(
     sections: List[Dict[str, Any]],
     topic_number: int,
     book_slug: str = "",
+    bank_offset: int = 0,
 ) -> List[Dict[str, Any]]:
     """Flatten exercise_sections[] into per-question example dicts with solutions attached."""
     results: List[Dict[str, Any]] = []
@@ -5012,12 +5159,16 @@ def exercise_sections_to_examples(
             label = section_title
             if sub_title and sub_title.lower() not in section_title.lower():
                 label = f"{section_title} — {sub_title}"
+            # Question numbers restart in every sub-section, so the fallback id
+            # has to name the sub-section too: without it Exercise 1's MCQ 1 and
+            # its Fill-in-the-Blanks 1 collide and dedupe_examples_by_id drops
+            # all but the first.
             row_id = make_db_id(
                 book_slug or "book",
                 topic_number,
                 "q",
                 len(results) + 1,
-            ) if book_slug else f"ex{sec_idx}_q{num}"
+            ) if book_slug else f"ex{sec_idx}_{q.get('subsection') or 'general'}_q{num}"
             results.append({
                 "id": row_id,
                 "title": f"{label} — Q{num}",
@@ -5037,6 +5188,11 @@ def exercise_sections_to_examples(
                 "images": [],
                 "question_number": num,
                 "subsection_title": sub_title,
+                # The heading a question sits under is what names its type;
+                # source_order restores the book's own sequence at export time.
+                "subsection_kind": q.get("subsection", ""),
+                "source_order": bank_offset + int(q.get("source_line", 0) or 0),
+                "passage": q.get("passage", ""),
             })
     return dedupe_examples_by_id(results)
 
@@ -5046,7 +5202,10 @@ def extract_exercise_questions(markdown: str) -> List[Dict[str, Any]]:
     sections = extract_exercise_sections(markdown)
     answer_map = extract_solution_answer_map(markdown)
     attach_solutions_to_exercises(sections, answer_map)
-    return exercise_sections_to_examples(sections, topic_number=0, book_slug="")
+    offset = question_bank.find_bank_start(markdown) or 0
+    return exercise_sections_to_examples(
+        sections, topic_number=0, book_slug="", bank_offset=offset,
+    )
 
 
 def extract_key_points_from_pre(pre: Dict[str, Any]) -> List[Dict[str, str]]:
@@ -5128,6 +5287,9 @@ def build_structured_examples_from_md(md: str, pre: Dict[str, Any]) -> Dict[str,
     check_pairs = extract_check_your_knowledge_pairs(md)
     exercise_items = extract_exercise_questions(md)
 
+    # source_order / subsection_kind carry the book's own sequence and the
+    # heading each question was printed under; both are needed downstream, so
+    # they are copied across rather than dropped when the item is rebuilt.
     examples: List[Dict[str, Any]] = []
     for ill in illustrations:
         examples.append({
@@ -5138,6 +5300,8 @@ def build_structured_examples_from_md(md: str, pre: Dict[str, Any]) -> Dict[str,
             "source_type": "illustration",
             "type": "numeric",
             "images": [],
+            "image_urls": ill.get("image_urls", []),
+            "source_order": ill.get("source_order", 0),
         })
     for pair in check_pairs:
         examples.append({
@@ -5148,6 +5312,7 @@ def build_structured_examples_from_md(md: str, pre: Dict[str, Any]) -> Dict[str,
             "source_type": "check_your_knowledge",
             "type": "short",
             "images": [],
+            "source_order": pair.get("source_order", 0),
         })
     for ex in exercise_items:
         examples.append({
@@ -5158,6 +5323,11 @@ def build_structured_examples_from_md(md: str, pre: Dict[str, Any]) -> Dict[str,
             "source_type": ex.get("source_type", "exercise"),
             "type": ex.get("type", "short"),
             "images": [],
+            "question_number": ex.get("question_number", ""),
+            "subsection_title": ex.get("subsection_title", ""),
+            "subsection_kind": ex.get("subsection_kind", ""),
+            "source_order": ex.get("source_order", 0),
+            "passage": ex.get("passage", ""),
         })
     examples = dedupe_examples_by_id(examples)
 
@@ -5308,12 +5478,49 @@ def pre_extract_topic(chunk: TopicChunk) -> Dict[str, Any]:
     }
 
 
+# latex2mathml has no support for the alignment column separator, so an
+# ``aligned`` body emits one <mi>&</mi> per line -- a visible stray glyph in the
+# rendered maths, and invalid XML besides (a bare & is not an entity). The
+# character is pure layout, so it is dropped before conversion. Left alone this
+# marks every multi-line derivation in the corpus: Mathpix wraps them all in
+# ``aligned``, 4,000+ of them.
+#
+# Deliberately narrow: ``matrix``/``pmatrix`` use & to separate real cells and
+# latex2mathml handles those correctly, so they must not be touched.
+ALIGNMENT_ENV_RE = re.compile(
+    r"(\\begin\{(aligned|align\*?|alignat\*?|flalign\*?)\})(.*?)(\\end\{\2\})",
+    re.DOTALL,
+)
+# A bare & that is not an escaped \& and not the start of an entity.
+BARE_AMPERSAND_RE = re.compile(r"(?<!\\)&(?![a-zA-Z#])")
+STRAY_AMPERSAND_NODE_RE = re.compile(r"<mi>\s*&(?:amp;)?\s*</mi>")
+MATHML_BLOCK_RE = re.compile(r"<math\b[\s\S]*?</math>", re.IGNORECASE)
+# Mathpix runs an inline "$...$" straight into a following block "$$...$$" with
+# no separator, giving "$$$". The block pattern then matches from the wrong "$"
+# and swallows the inline span, leaving an unpaired delimiter behind.
+TRIPLE_DOLLAR_RE = re.compile(r"(?<!\$)\$\$\$(?!\$)")
+
+
+def normalize_math_delimiters(text: str) -> str:
+    """Separate an inline close that abuts a block open."""
+    return TRIPLE_DOLLAR_RE.sub("$\n$$", text)
+
+
+def strip_alignment_markers(latex: str) -> str:
+    """Drop the column separators from alignment environments."""
+    def fix(match: re.Match) -> str:
+        body = BARE_AMPERSAND_RE.sub(" ", match.group(3))
+        return match.group(1) + body + match.group(4)
+
+    return ALIGNMENT_ENV_RE.sub(fix, latex)
+
+
 class MathConverter:
     def __init__(self):
         self._warned = False
 
     def latex_to_mathml(self, latex: str) -> str:
-        latex = latex.strip()
+        latex = strip_alignment_markers(latex.strip())
         if not latex:
             return ""
         if latex2mathml_converter is None:
@@ -5323,23 +5530,55 @@ class MathConverter:
             escaped = latex.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             return f"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>{escaped}</mtext></math>"
         try:
-            return latex2mathml_converter.convert(latex)
+            return self._sanitize(latex2mathml_converter.convert(latex))
         except Exception:
             escaped = latex.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             return f"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>{escaped}</mtext></math>"
 
+    @staticmethod
+    def _sanitize(mathml: str) -> str:
+        """Remove stray alignment nodes and make any leftover & valid XML.
+
+        A safety net for LaTeX shapes the preprocessing does not cover: an
+        alignment character reaching the output is always a rendering artefact,
+        never content, and a bare & would make the document invalid XML.
+        """
+        cleaned = STRAY_AMPERSAND_NODE_RE.sub("", mathml)
+        return BARE_AMPERSAND_RE.sub("&amp;", cleaned)
+
     def convert_text(self, text: str) -> str:
+        """Convert $...$ / $$...$$ spans to MathML, leaving existing MathML alone.
+
+        Conversion runs more than once over the same content on the merge path,
+        so it has to be idempotent. Existing <math> blocks are masked out first:
+        without that, a stray unbalanced ``$`` pairs with a later one, swallows
+        the MathML between them and re-converts it -- the literal text ``<math``
+        comes back as ``<`` ``m`` ``a`` ``t`` ``h`` typeset as maths, leaving the
+        document with more </math> tags than <math> ones.
+        """
         if not text or not isinstance(text, str):
             return text
 
-        def block_replace(match: re.Match) -> str:
+        preserved: List[str] = []
+
+        def stash(match: re.Match) -> str:
+            preserved.append(match.group(0))
+            return f"\x00MATH{len(preserved) - 1}\x00"
+
+        def convert(match: re.Match) -> str:
             return self.latex_to_mathml(match.group(1))
 
-        def inline_replace(match: re.Match) -> str:
-            return self.latex_to_mathml(match.group(1))
+        masked = MATHML_BLOCK_RE.sub(stash, text)
+        masked = normalize_math_delimiters(masked)
 
-        result = LATEX_BLOCK_RE.sub(block_replace, text)
-        result = LATEX_INLINE_RE.sub(inline_replace, result)
+        # Mask again between the two passes: the block pass leaves <math> in the
+        # string, and a leftover "$" would otherwise let the inline pass span
+        # across one and re-convert it.
+        after_block = MATHML_BLOCK_RE.sub(stash, LATEX_BLOCK_RE.sub(convert, masked))
+        result = LATEX_INLINE_RE.sub(convert, after_block)
+
+        for index, original in enumerate(preserved):
+            result = result.replace(f"\x00MATH{index}\x00", original)
         return result
 
     def convert_value(self, value: Any) -> Any:
@@ -5602,6 +5841,71 @@ def fix_math_plain_in_document(document: Dict[str, Any]) -> Dict[str, Any]:
     return document
 
 
+# Stamped into a figure once it has been compressed. JPEG is lossy, so without a
+# marker every re-extraction would re-encode the same file and slowly degrade it.
+IMAGE_COMPRESSED_MARKER = "edu-pipeline-compressed"
+
+
+def compress_image_file(path: str) -> bool:
+    """Downscale and re-encode a cached figure in place; True when it shrank.
+
+    Runs at most once per file: the result carries a marker in its metadata and
+    is skipped on later passes, so repeated extractions never re-encode a JPEG
+    on top of itself. Kept deliberately forgiving -- Pillow is optional, so a
+    missing library or an unreadable file leaves the original alone rather than
+    failing extraction. The file is replaced only when the result is genuinely
+    smaller, and the format is preserved so the suffix still describes the bytes.
+    """
+    if IMAGE_MAX_DIM <= 0 or not path or not os.path.exists(path):
+        return False
+    try:
+        from PIL import Image, PngImagePlugin
+    except ImportError:
+        return False
+
+    try:
+        original_size = os.path.getsize(path)
+        is_png = path.lower().endswith(".png")
+        with Image.open(path) as source:
+            info = source.info or {}
+            stamped = info.get("Software") if is_png else info.get("comment")
+            if isinstance(stamped, bytes):
+                stamped = stamped.decode("utf-8", "ignore")
+            if stamped == IMAGE_COMPRESSED_MARKER:
+                return False
+
+            image = source.convert("RGBA" if is_png else "RGB")
+            width, height = image.size
+            if max(width, height) > IMAGE_MAX_DIM:
+                scale = IMAGE_MAX_DIM / float(max(width, height))
+                image = image.resize(
+                    (max(1, int(width * scale)), max(1, int(height * scale))),
+                    Image.LANCZOS,
+                )
+            elif original_size <= 40_000:
+                return False  # already small and correctly sized; leave it be
+
+            buffer = io.BytesIO()
+            if is_png:
+                meta = PngImagePlugin.PngInfo()
+                meta.add_text("Software", IMAGE_COMPRESSED_MARKER)
+                image.save(buffer, "PNG", optimize=True, pnginfo=meta)
+            else:
+                image.save(
+                    buffer, "JPEG",
+                    quality=IMAGE_JPEG_QUALITY, optimize=True, progressive=True,
+                    comment=IMAGE_COMPRESSED_MARKER.encode("utf-8"),
+                )
+        if buffer.tell() >= original_size:
+            return False
+        with open(path, "wb") as handle:
+            handle.write(buffer.getvalue())
+        return True
+    except Exception as exc:
+        print(f"  Warning: could not compress {os.path.basename(path)}: {exc}")
+        return False
+
+
 class ImageResolver:
     def __init__(self, book_name: str, topic_number: Optional[int] = None):
         self.book_name = book_name
@@ -5639,6 +5943,9 @@ class ImageResolver:
 
     def _ensure_downloaded(self, url: str, local_path: str) -> None:
         if os.path.exists(local_path):
+            # Cached by an earlier run that did not compress; shrink it in place
+            # so an existing workspace benefits without re-downloading.
+            compress_image_file(local_path)
             return
         try:
             resp = requests.get(
@@ -5649,6 +5956,7 @@ class ImageResolver:
             if resp.ok:
                 with open(local_path, "wb") as f:
                     f.write(resp.content)
+                compress_image_file(local_path)
                 return
             print(f"Warning: download HTTP {resp.status_code} for {url[:80]}...")
         except Exception as exc:
@@ -5689,6 +5997,9 @@ class ImageResolver:
                 self._ensure_downloaded(asset["source_url"], local_path)
             if not os.path.exists(local_path):
                 continue
+            # Cheap after the first pass: compressed files carry a marker and
+            # are skipped, so a cache filled by an earlier run shrinks once.
+            compress_image_file(local_path)
             with open(local_path, "rb") as f:
                 data = base64.b64encode(f.read()).decode("ascii")
             mime = "image/png" if local_path.endswith(".png") else "image/jpeg"
@@ -5715,6 +6026,8 @@ def embed_base64_in_assets(resolver: ImageResolver) -> Dict[str, Dict[str, str]]
         if local_path and not os.path.isabs(local_path):
             local_path = os.path.normpath(local_path)
         if local_path and os.path.exists(local_path):
+            # Shrink before embedding: base64 costs a third again on top.
+            compress_image_file(local_path)
             with open(local_path, "rb") as handle:
                 entry["base64"] = base64.b64encode(handle.read()).decode("ascii")
             entry["mime_type"] = (
@@ -6410,7 +6723,21 @@ def enrich_topic_from_markdown(
         try:
             with open(json_path, "r", encoding="utf-8") as handle:
                 cached = json.load(handle)
-            if cached.get("examples") and (
+            source_range = f"{chunk.start_line}-{chunk.end_line}"
+            if cached.get("parser_version") != TOPIC_CACHE_VERSION:
+                print(
+                    f"  Topic JSON cache is from an older extractor "
+                    f"(v{cached.get('parser_version', 1)} < v{TOPIC_CACHE_VERSION}), re-extracting."
+                )
+            elif cached.get("source_lines") != source_range:
+                # The chapter now covers a different slice of the book, so the
+                # cache describes content that belongs to another chapter.
+                print(
+                    f"  Topic JSON cache covers lines "
+                    f"{cached.get('source_lines') or 'an unrecorded range'}, "
+                    f"now {source_range}; re-extracting."
+                )
+            elif cached.get("examples") and (
                 cached.get("theory_sections") or cached.get("theory_notes")
             ):
                 print(f"  Loading cached topic JSON: {json_path}")
@@ -6474,6 +6801,8 @@ def enrich_topic_from_markdown(
         # cache (and out of *_final.json); it is written to its own files by
         # export_study_notes_sidecars. It stays on the returned dict in memory.
         cache_result = {k: v for k, v in result.items() if k != "study_notes"}
+        cache_result["parser_version"] = TOPIC_CACHE_VERSION
+        cache_result["source_lines"] = f"{chunk.start_line}-{chunk.end_line}"
         json.dump(cache_result, handle, indent=2, ensure_ascii=False)
     print(f"  Saved topic JSON: {json_path} (LaTeX; MathML only in *_final.json)")
     return result
@@ -6602,12 +6931,13 @@ def _postprocess_topic_enriched(
 
     # MathML is applied only when merging into *_final.json (relabel_final_json_document).
 
+    topic_body = read_topic_markdown_body(topic_md_path)
+    if examples_md_path:
+        topic_body = topic_body + "\n\n" + read_topic_markdown_body(examples_md_path)
+
     image_assets: Dict[str, Any] = {}
     if not skip_images():
-        topic_body = read_topic_markdown_body(topic_md_path)
-        if examples_md_path:
-            topic_body = topic_body + "\n\n" + read_topic_markdown_body(examples_md_path)
-        resolver = ImageResolver(book_name, chunk.topic_number)
+        resolver = ImageResolver(book_name, chunk.meta.topic_number)
         resolver.register_markdown(topic_body)
 
         for key in ("summary", "theory_notes"):
@@ -6636,28 +6966,33 @@ def _postprocess_topic_enriched(
 
     theory_notes = enriched.get("theory_notes", enriched.get("summary", "")) or ""
     theory_sections, question_bank_md = split_theory_and_question_bank_markdown(theory_notes)
+    # theory_notes has already had the exercises filtered out of it, so the bank
+    # is taken from the topic markdown itself. Re-deriving it from theory_notes
+    # returned only the handful of exercise blocks that survived that filter and
+    # then replaced the full set parsed from source.
+    _theory_md, source_bank_md = question_bank.split_theory_and_bank(topic_body)
+    if source_bank_md.strip():
+        question_bank_md = source_bank_md
     example_buckets = split_examples_into_labeled_buckets(enriched.get("examples", []))
 
-    # THEORY_ONLY: drop every question-derived field so the topic carries theory +
-    # notes only. The buckets/lists are emptied here (not in the regex cache), so
-    # per-topic caching keeps working and only the output is theory-focused.
     theory_only_mode = theory_only()
+    questions_only_mode = questions_only()
 
     topic_doc = {
         "topic_number": chunk.meta.topic_number,
         "topic_name": chunk.meta.topic_name,
         "page_range": chunk.meta.page_range,
-        "summary": enriched.get("summary", ""),
-        "summary_source": enriched.get("summary_source", ""),
+        "summary": "" if questions_only_mode else enriched.get("summary", ""),
+        "summary_source": "" if questions_only_mode else enriched.get("summary_source", ""),
         # Structured study-notes JSON (rich format); markdown summary above stays
         # the backward-compatible source for PDF export, legacy viewer and DB.
-        "study_notes": enriched.get("study_notes"),
-        "theory_sections": theory_sections,
+        "study_notes": None if questions_only_mode else enriched.get("study_notes"),
+        "theory_sections": [] if questions_only_mode else theory_sections,
         "illustrations": [] if theory_only_mode else example_buckets["illustrations"],
         "check_your_knowledge_items": [] if theory_only_mode else example_buckets["check_your_knowledge"],
         "textbook_exercises": [] if theory_only_mode else example_buckets["textbook_exercises"],
         "exercises": [] if theory_only_mode else example_buckets["exercises"],
-        "key_points": enriched.get("key_points", []),
+        "key_points": [] if questions_only_mode else enriched.get("key_points", []),
         "case_studies": [] if theory_only_mode else enriched.get("case_studies", []),
         "examples": [] if theory_only_mode else enriched.get("examples", []),
         "practice_exercises": [] if theory_only_mode else enriched.get("practice_exercises", []),
@@ -6668,8 +7003,13 @@ def _postprocess_topic_enriched(
         topic_doc["source_topic_examples_md"] = examples_md_path.replace("\\", "/")
     # THEORY_ONLY: skip folding question-bank questions back into the topic.
     if not theory_only_mode:
+        # Bank line numbers are relative to the bank slice; offset them by where
+        # that slice starts so exercises sort after the theory's illustrations.
         topic_doc = merge_question_bank_examples_into_topic(
-            topic_doc, question_bank_md, book_slug=book_name
+            topic_doc,
+            question_bank_md,
+            book_slug=book_name,
+            bank_offset=question_bank.find_bank_start(topic_body) or 0,
         )
     if not skip_images() and not image_assets:
         topic_doc = attach_topic_images_from_source(topic_doc, book_name)
@@ -6841,20 +7181,37 @@ class TopicWiseExporter:
         topics_out.sort(key=lambda t: t.get("topic_number", 0))
         if not skip_mathml():
             print("  MathML: converting LaTeX in merged *_final.json only")
-        self.document = relabel_final_json_document({
-            "metadata": {
-                "name": title,
-                "source_pdf": self.source_pdf_path,
-                "source_markdown": self.markdown_path,
-                "topics_md_dir": self.book_paths.topics_md_dir.replace("\\", "/"),
-                "topics_json_dir": self.book_paths.topics_json_dir.replace("\\", "/"),
-                "format_version": "3.1",
-                "topic_count": len(topics_out),
-                "llm_model": OLLAMA_MODEL if not self.skip_llm else "none",
-                "ollama_base_url": OLLAMA_BASE_URL,
-            },
-            "topics": topics_out,
-        })
+        # The sidecars are built from the MathML stage, before *_final.json
+        # flattens equations to plain text -- see relabel_final_json_document.
+        mathml_topics: List[Dict[str, Any]] = []
+        metadata = {
+            "name": title,
+            "source_pdf": self.source_pdf_path,
+            "source_markdown": self.markdown_path,
+            "topics_md_dir": self.book_paths.topics_md_dir.replace("\\", "/"),
+            "topics_json_dir": self.book_paths.topics_json_dir.replace("\\", "/"),
+            "format_version": "3.1",
+            "topic_count": len(topics_out),
+            "llm_model": OLLAMA_MODEL if not self.skip_llm else "none",
+            "ollama_base_url": OLLAMA_BASE_URL,
+        }
+        self.document = relabel_final_json_document(
+            {"metadata": metadata, "topics": topics_out},
+            mathml_topics=mathml_topics,
+        )
+        self.math_document = {"metadata": dict(metadata), "topics": mathml_topics}
+
+    def sidecar_source_document(self) -> Dict[str, Any]:
+        """Document the questions/theory sidecars are built from.
+
+        Prefers the MathML stage so equations survive as markup a browser can
+        typeset; falls back to *_final.json's plain-text form when a run did not
+        produce one (``--skip-mathml``, or a document loaded from disk).
+        """
+        math_doc = getattr(self, "math_document", None)
+        if math_doc and math_doc.get("topics"):
+            return math_doc
+        return self.document
 
     def save_json(self) -> None:
         # Write the standalone study-notes files first; this also strips
@@ -6871,6 +7228,16 @@ class TopicWiseExporter:
         with open(self.output_path, "w", encoding="utf-8") as handle:
             json.dump(self.document, handle, indent=2, ensure_ascii=False)
         print(f"Saved topic-wise JSON: {self.output_path}")
+        # Theory and questions ship as two sidecars over the same chapter spine.
+        # Theory is written first so --theory-only still produces its half.
+        if not questions_only():
+            print("=== Step 6/6: Structured Theory JSON ===")
+            save_theory_json_sidecar(
+                self.sidecar_source_document(),
+                self.book_name,
+                self.book_paths.qa_table_output_json.replace("_qa_table.json", "_theory.json"),
+            )
+
         # THEORY_ONLY: there are no questions to flatten, so skip the QA table.
         if theory_only():
             print("=== Step 6/6: QA table JSON skipped (theory-only mode) ===")
@@ -6882,10 +7249,23 @@ class TopicWiseExporter:
             self.book_paths.qa_table_output_json,
             source_final_path=self.output_path,
         )
+        print("=== Step 6/6: Structured Questions JSON ===")
+        questions_path = self.book_paths.qa_table_output_json.replace(
+            "_qa_table.json", "_questions.json")
+        save_questions_json_sidecar(
+            self.sidecar_source_document(),
+            self.book_name,
+            questions_path,
+        )
+        # An extraction can succeed and still be wrong -- a lost chapter, an
+        # answer key parsed as questions, a question that ran on into the
+        # theory. The checks read what was just written and say so.
+        from edu_pipeline.extraction.quality import report_questions_file
+        report_questions_file(questions_path, self.book_name)
 
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Topic-wise textbook extraction (format v3): PDF -> Mathpix MD -> topic JSON",
     )
@@ -6984,11 +7364,16 @@ def parse_args() -> argparse.Namespace:
         help="Ignore all questions (examples/exercises/case studies/QA table) and "
              "extract theory + generate study notes only",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--questions-only",
+        action="store_true",
+        help="Ignore theory sections and study notes; extract questions + solutions + QA table only",
+    )
+    return parser.parse_args(argv)
 
 
-def main() -> None:
-    args = parse_args()
+def main(argv: Optional[List[str]] = None) -> None:
+    args = parse_args(argv)
 
     if args.with_images:
         os.environ["SKIP_IMAGES"] = "0"
@@ -7020,6 +7405,12 @@ def main() -> None:
         os.environ["THEORY_ONLY"] = "1"
     elif os.environ.get("THEORY_ONLY") is None:
         os.environ["THEORY_ONLY"] = "0"
+
+    # Questions-only mode: ignore theory sections and extract questions only.
+    if getattr(args, "questions_only", False):
+        os.environ["QUESTIONS_ONLY"] = "1"
+    elif os.environ.get("QUESTIONS_ONLY") is None:
+        os.environ["QUESTIONS_ONLY"] = "0"
 
     if getattr(args, "math_to_plain", None):
         json_path = args.math_to_plain
@@ -7083,7 +7474,7 @@ def main() -> None:
             qa_table_json_path_from_final(json_path),
             source_final_path=json_path,
         )
-        print("Re-load into MySQL with: python insert_qa_table.py <book>_qa_table.json")
+        print("Re-load into MySQL with: python scripts/insert_qa_table.py <book>_qa_table.json")
         return
 
     if getattr(args, "summarize_only", None):
@@ -7119,7 +7510,7 @@ def main() -> None:
             qa_table_json_path_from_final(json_path),
             source_final_path=json_path,
         )
-        print("Re-load into MySQL with: python insert_qa_table.py <book>_qa_table.json")
+        print("Re-load into MySQL with: python scripts/insert_qa_table.py <book>_qa_table.json")
         return
 
     if args.relabel_final:

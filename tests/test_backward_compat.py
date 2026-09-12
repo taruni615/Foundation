@@ -1,8 +1,7 @@
-"""Backward-compatibility contract.
+"""Backward-compatibility contract for input extraction and output.
 
-The root *.py files are the documented CLI entry points and the public import
-surface. Three cleanup levels have moved code beneath them; these tests pin the
-guarantees that must survive any future refactor.
+The root / scripts/*.py files are the documented CLI entry points and the public import
+surface for extraction, viewers, and sidecar exports.
 """
 
 from __future__ import annotations
@@ -16,20 +15,29 @@ import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-# The CLI entry points now live in scripts/. Each is a thin wrapper that
-# re-exports a package module, so the package remains the real implementation.
+# Extraction and viewer entry points in scripts/
 WRAPPERS = [
-    "app_server", "topicwise_pipeline", "viewer_api", "assessment_store", "bank_read",
-    "final_to_qa_table", "insert_qa_table", "mcq_generator", "mcq_similar",
-    "question_type_classifier", "refresh_qa_question_types", "short_notes_pipeline",
-    "textbook_extract_pipeline", "run_ingestion_pipeline", "run_generation_pipeline",
+    "app_server",
+    "topicwise_pipeline",
+    "viewer_api",
+    "textbook_extract_pipeline",
+    "run_ingestion_pipeline",
+    "batch_extract_no_ollama",
+    "build_standalone_viewer",
+    "check_extraction_quality",
+    "pack_offline_json",
+    "rebuild_sidecars",
 ]
 
 CLI_HELP = [
-    "textbook_extract_pipeline.py", "topicwise_pipeline.py", "mcq_generator.py",
-    "mcq_similar.py", "final_to_qa_table.py", "insert_qa_table.py",
-    "question_type_classifier.py", "refresh_qa_question_types.py",
-    "run_ingestion_pipeline.py", "run_generation_pipeline.py",
+    "textbook_extract_pipeline.py",
+    "topicwise_pipeline.py",
+    "run_ingestion_pipeline.py",
+    "batch_extract_no_ollama.py",
+    "build_standalone_viewer.py",
+    "check_extraction_quality.py",
+    "pack_offline_json.py",
+    "rebuild_sidecars.py",
 ]
 
 
@@ -41,19 +49,14 @@ def test_every_entry_point_exists_in_scripts(name):
 @pytest.mark.parametrize("script", CLI_HELP)
 def test_every_cli_responds_to_help(script):
     result = subprocess.run(
-        [sys.executable, f"scripts/{script}", "--help"], cwd=str(PROJECT_ROOT),
-        capture_output=True, text=True, timeout=120,
+        [sys.executable, f"scripts/{script}", "--help"],
+        cwd=str(PROJECT_ROOT),
+        capture_output=True,
+        text=True,
+        timeout=120,
     )
     assert result.returncode == 0, result.stderr[-800:]
     assert "usage" in result.stdout.lower()
-
-
-def test_short_notes_cli_lists_books():
-    result = subprocess.run(
-        [sys.executable, "scripts/short_notes_pipeline.py", "--list"], cwd=str(PROJECT_ROOT),
-        capture_output=True, text=True, timeout=120,
-    )
-    assert result.returncode == 0, result.stderr[-800:]
 
 
 class TestReExportedNames:
@@ -66,20 +69,13 @@ class TestReExportedNames:
     def test_extraction_module_still_exports_moved_constants(self, name):
         assert hasattr(importlib.import_module("edu_pipeline.extraction.topic_extractor"), name)
 
-    def test_storage_still_exposes_its_query_helpers(self):
-        database = importlib.import_module("edu_pipeline.storage.database")
-        for name in ("derive_attributes", "estimate_difficulty", "search_items"):
-            assert hasattr(database, name)
+    def test_storage_still_exposes_its_helpers(self):
+        export_qa = importlib.import_module("edu_pipeline.storage.export_qa")
+        for name in ("derive_attributes", "build_qa_table_export", "build_structured_questions_json"):
+            assert hasattr(export_qa, name)
 
 
 class TestPublicApiSurface:
-    def test_ai_package_exports_the_documented_services(self):
-        import edu_pipeline.ai as ai
-
-        for name in ("AIService", "MCQService", "NotesService", "KnowledgeEnrichmentService",
-                     "ModelManager", "PromptService", "ProviderRegistry", "LLMResponse"):
-            assert hasattr(ai, name), name
-
     def test_repository_package_exports_its_types(self):
         import edu_pipeline.repository as repo
 
@@ -88,15 +84,9 @@ class TestPublicApiSurface:
     def test_workflow_orchestrator_surface_is_intact(self):
         import edu_pipeline.workflow as wf
 
-        for name in ("execute_workflow", "build_qa_table_export", "insert_qa_table",
-                     "generate_short_notes"):
+        for name in ("execute_workflow", "build_qa_table_export", "run_ingestion_pipeline",
+                     "run_extraction_pipeline", "run_topic_extractor"):
             assert name in wf.__all__
-
-    def test_legacy_enrichment_function_is_still_public(self):
-        """The class wrapper added in Level 3 must not displace the function."""
-        from edu_pipeline.ai.services import enrich_topic_analysis
-
-        assert callable(enrich_topic_analysis)
 
 
 class TestNoInternalDependencyOnWrappers:

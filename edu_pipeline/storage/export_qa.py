@@ -29,7 +29,7 @@ import os
 import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from edu_pipeline.generators.questions.classifier import classify_question
+from edu_pipeline.extraction.classifier import classify_question
 from edu_pipeline.extraction.topic_extractor import (
     apply_pedagogy_export_fields,
     chapter_name_from_topic,
@@ -37,6 +37,7 @@ from edu_pipeline.extraction.topic_extractor import (
 )
 from edu_pipeline.extraction.question_bank import normalize_fullwidth
 from edu_pipeline.shared.constants import QA_SECTION_KEYS
+from edu_pipeline.shared.helpers import derive_attributes
 
 SECTION_TYPE_MAP = {
     "illustrations": "illustration",
@@ -762,8 +763,8 @@ def build_structured_questions_json(
     book_slug: str,
 ) -> Dict[str, Any]:
     """Build structured questions JSON matching user target schema."""
-    from edu_pipeline.storage.database import derive_attributes
-    from edu_pipeline.generators.questions.mcq_parser import parse_options, parse_correct_index
+    from edu_pipeline.shared.helpers import derive_attributes
+    from edu_pipeline.extraction.classifier import parse_options, parse_correct_index
 
     meta = document.get("metadata") or {}
     book_name = meta.get("name") or book_slug
@@ -941,7 +942,7 @@ def build_structured_theory_json(
     ``chapters[]`` spine so either can be loaded, reviewed or regenerated
     without carrying the other.
     """
-    from edu_pipeline.storage.database import derive_attributes
+    from edu_pipeline.shared.helpers import derive_attributes
 
     meta = document.get("metadata") or {}
     book_name = meta.get("name") or book_slug

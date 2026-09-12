@@ -39,23 +39,10 @@ ignore = [
 "app_server.py" = ["F401", "F403"]
 "topicwise_pipeline.py" = ["F401", "F403"]
 "viewer_api.py" = ["F401", "F403"]
-"assessment_store.py" = ["F401", "F403"]
-"bank_read.py" = ["F401", "F403"]
-"final_to_qa_table.py" = ["F401", "F403"]
-"insert_qa_table.py" = ["F401", "F403"]
-"mcq_generator.py" = ["F401", "F403"]
-"mcq_similar.py" = ["F401", "F403"]
-"question_type_classifier.py" = ["F401", "F403"]
-"refresh_qa_question_types.py" = ["F401", "F403"]
-"short_notes_pipeline.py" = ["F401", "F403"]
 "textbook_extract_pipeline.py" = ["F401", "F403"]
 # Modules that re-export moved constants for backward compatibility.
 "edu_pipeline/extraction/topic_extractor.py" = ["F401"]
 "edu_pipeline/shared/__init__.py" = ["F401"]
-"edu_pipeline/ai/__init__.py" = ["F401"]
-"edu_pipeline/ai/services/__init__.py" = ["F401"]
-"edu_pipeline/ai/providers/__init__.py" = ["F401"]
-"edu_pipeline/ai/prompts/__init__.py" = ["F401"]
 "edu_pipeline/repository/__init__.py" = ["F401"]
 "edu_pipeline/workflow.py" = ["F401"]
 
@@ -64,7 +51,7 @@ python_version = "3.13"
 # Pragmatic starting point: type-check the small, well-typed layers and let the
 # 7k-line legacy extraction module opt in later. Tightening these flags is
 # tracked in CONTRIBUTING.md.
-files = ["edu_pipeline/shared", "edu_pipeline/repository", "edu_pipeline/ai"]
+files = ["edu_pipeline/shared", "edu_pipeline/repository"]
 ignore_missing_imports = true
 warn_unused_ignores = true
 no_implicit_optional = true

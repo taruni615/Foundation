@@ -47,10 +47,6 @@ class TestAppServer:
         status, _ = app_server.get("/../../etc/passwd")
         assert status in (403, 404)
 
-    def test_protected_route_requires_authentication(self, app_server):
-        status, _ = app_server.get("/api/auth/me")
-        assert status == 401
-
     def test_study_notes_returns_json_for_a_known_book(self, app_server):
         status, body = app_server.get(f"/api/study-notes?book={BOOK}")
         assert status == 200
@@ -82,19 +78,3 @@ class TestViewerApi:
     def test_traversal_is_rejected(self, viewer_server):
         status, _ = viewer_server.get("/../../etc/passwd")
         assert status in (403, 404)
-
-
-@pytest.mark.requires_db
-class TestBankRoutes:
-    """Question-bank routes need a reachable MySQL instance."""
-
-    def test_bank_health(self, app_server):
-        status, body = app_server.get("/api/bank/health")
-        assert status == 200
-        assert "ok" in json.loads(body) or "db_ok" in json.loads(body)
-
-    def test_bank_items_are_paginated(self, app_server):
-        status, body = app_server.get("/api/bank/items?page=1&pageSize=5")
-        assert status == 200
-        payload = json.loads(body)
-        assert len(payload.get("items", [])) <= 5

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild the review sidecars from an existing *_final.json.
 
+Usage:
     python scripts/rebuild_sidecars.py "outputs/<book>/<book>_final.json"
     python scripts/rebuild_sidecars.py outputs/*/*_final.json
 
@@ -47,6 +48,9 @@ def rebuild(final_path: str) -> bool:
 
 def main(argv=None) -> int:
     paths = list(argv if argv is not None else sys.argv[1:])
+    if "-h" in paths or "--help" in paths:
+        print(__doc__)
+        return 0
     if not paths:
         print(__doc__)
         return 2

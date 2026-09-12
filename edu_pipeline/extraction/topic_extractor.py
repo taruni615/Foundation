@@ -2227,7 +2227,7 @@ def _classify_exercise_kind(title: str, context: str = "") -> str:
 
 def _guess_question_type(prompt: str, subsection: str = "", *, section_type: str = "") -> str:
     """Delegate to question_type_classifier (stakeholder labels)."""
-    from edu_pipeline.generators.questions.classifier import classify_question
+    from edu_pipeline.extraction.classifier import classify_question
 
     return classify_question(
         prompt,

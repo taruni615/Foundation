@@ -65,32 +65,23 @@ class TestPaths:
 
 class TestConstants:
     def test_qa_section_keys_shared_by_every_consumer(self):
-        """All layers must agree on which arrays hold questions."""
-        from edu_pipeline.ai.services.mcq_service import QA_SECTION_KEYS as mcq_keys
+        """All extraction and storage layers must agree on which arrays hold questions."""
         from edu_pipeline.repository.service import QA_SECTION_KEYS as repo_keys
         from edu_pipeline.storage.export_qa import QA_SECTION_KEYS as export_keys
 
         assert repo_keys is QA_SECTION_KEYS
         assert export_keys is QA_SECTION_KEYS
-        assert mcq_keys is QA_SECTION_KEYS
         assert "illustrations" in QA_SECTION_KEYS
 
 
 class TestDbConfig:
     def test_extraction_reexports_the_canonical_values(self):
-        """topic_extractor must keep re-exporting DB_* for the wrappers."""
+        """topic_extractor must keep re-exporting DB_* for backwards compatibility."""
         import edu_pipeline.extraction.topic_extractor as extraction
         import edu_pipeline.shared.db_config as db_config
 
         for name in ("DB_HOST", "DB_PORT", "DB_USER", "DB_PASSWORD", "DB_NAME"):
             assert getattr(extraction, name) == getattr(db_config, name)
-
-    def test_storage_uses_the_same_settings_as_extraction(self):
-        import edu_pipeline.extraction.topic_extractor as extraction
-        import edu_pipeline.storage.database as database
-
-        assert database.DB_NAME == extraction.DB_NAME
-        assert database.DB_HOST == extraction.DB_HOST
 
 
 class TestPipelineLogger:

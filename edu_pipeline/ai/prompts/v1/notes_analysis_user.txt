@@ -1,4 +1,0 @@
-Topic: {topic_title}
-
-RAW THEORY TEXT TO ANALYZE:
-{theory_markdown}

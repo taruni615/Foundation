@@ -37,6 +37,64 @@ except ImportError:
 
 from edu_pipeline.extraction import question_bank
 from edu_pipeline.shared.constants import QA_SECTION_KEYS
+from edu_pipeline.extraction.math_converter import (
+    LATEX_INLINE_RE,
+    LATEX_BLOCK_RE,
+    LATEX_LEAK_RE,
+    ALIGNMENT_ENV_RE,
+    BARE_AMPERSAND_RE,
+    STRAY_AMPERSAND_NODE_RE,
+    MATHML_BLOCK_RE,
+    TRIPLE_DOLLAR_RE,
+    normalize_math_delimiters,
+    strip_alignment_markers,
+    MathConverter,
+    apply_mathml_conversion,
+    mathml_block_to_plain,
+    replace_mathml_with_plain_text,
+    apply_math_plain_conversion,
+)
+from edu_pipeline.extraction.image_processor import (
+    IMAGE_MD_RE,
+    MARKDOWN_IMAGE_RE,
+    HTML_IMG_RE,
+    BR_TAG_RE,
+    MATHPIX_URL_RE,
+    IMAGE_COMPRESSED_MARKER,
+    _mathpix_image_area,
+    _parse_mathpix_crop,
+    _is_foundation_brand_logo_url,
+    _recrop_concept_map_excluding_logo_band,
+    _prepare_concept_map_urls,
+    _strip_foundation_logo_images_from_markdown,
+    _remove_concept_map_sections,
+    _is_fullpage_concept_map_url,
+    _mathpix_page_key,
+    _concept_map_body_text_only,
+    compress_image_file,
+    strip_images_from_markdown,
+    strip_markdown_images,
+    ImageResolver,
+    embed_base64_in_assets,
+)
+from edu_pipeline.extraction.splitter import (
+    TopicMeta,
+    TopicChunk,
+    BookPaths,
+    derive_paths,
+    derive_book_paths,
+    topic_md_filename,
+    topic_theory_md_filename,
+    topic_examples_md_filename,
+    topic_json_path,
+    topic_db_json_path,
+    topic_llm_md_path,
+    make_db_id,
+    read_topic_markdown_body,
+    _parse_topic_md_frontmatter,
+    _parse_line_range,
+    split_topics,
+)
 
 
 DEFAULT_PDF_PATH = os.path.join("edu_pipeline", "materials", "input", "10 PHYSICS FOUNDATION.pdf")
@@ -235,41 +293,6 @@ def questions_only() -> bool:
     return os.environ.get("QUESTIONS_ONLY", "0").lower() in ("1", "true", "yes")
 
 
-MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)")
-HTML_IMG_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
-BR_TAG_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
-MATHPIX_URL_RE = re.compile(r"https?://[^)\s]*mathpix[^)\s]*", re.IGNORECASE)
-
-
-def strip_images_from_markdown(md: str) -> str:
-    """Remove all markdown/HTML images (standalone lines, table cells, headings)."""
-    lines: List[str] = []
-    for raw_line in md.splitlines():
-        line = HTML_IMG_RE.sub("", raw_line)
-        line = MARKDOWN_IMAGE_RE.sub("", line)
-        line = BR_TAG_RE.sub(" ", line)
-        line = re.sub(r"[ \t]{2,}", " ", line).rstrip()
-        if not line.strip():
-            continue
-        lines.append(line)
-
-    out: List[str] = []
-    prev_blank = False
-    for line in lines:
-        blank = not line.strip()
-        if blank and prev_blank:
-            continue
-        out.append(line)
-        prev_blank = blank
-    return compact_markdown("\n".join(out))
-
-
-def strip_markdown_images(text: str) -> str:
-    """Remove images from JSON text fields when SKIP_IMAGES is enabled."""
-    if not text or not skip_images():
-        return text or ""
-    return strip_images_from_markdown(text)
-
 
 def sanitize_topic_text_fields(topic: Dict[str, Any]) -> Dict[str, Any]:
     """Strip images from all markdown-bearing fields in a topic dict."""
@@ -427,34 +450,6 @@ STOP_SOLUTION_RE = re.compile(
     r"^##\s+(ILLUSTRATION|CASE STUDY|Exercise|Text-?Book|Foundation Builder|Keep in Memory|Learn More|CONNECTING)",
     re.IGNORECASE,
 )
-IMAGE_MD_RE = re.compile(r"!\[[^\]]*\]\((https?://[^)]+)\)")
-LATEX_INLINE_RE = re.compile(r"(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)", re.DOTALL)
-LATEX_BLOCK_RE = re.compile(r"\$\$(.+?)\$\$", re.DOTALL)
-LATEX_LEAK_RE = re.compile(r"\$[^$]+\$|\$\$[^$]+\$\$")
-
-
-@dataclass
-class TopicMeta:
-    topic_number: int
-    topic_name: str
-    page_range: str = ""
-
-
-@dataclass
-class TopicChunk:
-    meta: TopicMeta
-    markdown: str
-    start_line: int
-    end_line: int
-    headings: List[Dict[str, str]] = field(default_factory=list)
-
-
-def derive_paths(pdf_path: str) -> tuple[str, str, str]:
-    base_name = os.path.splitext(os.path.basename(pdf_path))[0]
-    cache_path = os.path.join(MATHPIX_CACHE_DIR, f"{base_name}_mathpix.md")
-    book_output_dir = os.path.join(OUTPUT_DIR, base_name)
-    output_json = os.path.join(book_output_dir, f"{base_name}_final.json")
-    return base_name, cache_path, output_json
 
 
 DB_SCHEMA_VERSION = "1.0"
@@ -699,124 +694,6 @@ CASE_STUDY_MAIN_RE = re.compile(r"^CASE\s+STUDY\s*[-:]?\s*\d+", re.IGNORECASE)
 MCQ_SECTION_RE = re.compile(r"^##\s+Multiple\s+Choice\s+Questions", re.IGNORECASE)
 
 
-@dataclass
-class BookPaths:
-    base_name: str
-    mathpix_md: str
-    output_json: str
-    book_output_dir: str
-    topics_md_dir: str
-    topics_llm_md_dir: str
-    topics_json_dir: str
-    topics_db_json_dir: str
-    manifest_path: str
-    llm_md_manifest_path: str
-    db_manifest_path: str
-    db_output_json: str
-    qa_table_output_json: str
-    # Study notes are a standalone entity: per-topic files in topics_study_notes/
-    # plus a merged <book>_study_notes.json sidecar (NOT embedded in _final.json).
-    topics_study_notes_dir: str
-    study_notes_output_json: str
-
-
-def derive_book_paths(pdf_path: str) -> BookPaths:
-    base_name, cache_path, output_json = derive_paths(pdf_path)
-    book_output_dir = os.path.join(OUTPUT_DIR, base_name)
-    qa_table_output_json = os.path.join(book_output_dir, f"{base_name}_qa_table.json")
-    study_notes_output_json = os.path.join(book_output_dir, f"{base_name}_study_notes.json")
-    topics_md_dir = os.path.join(book_output_dir, "topics_md")
-    topics_llm_md_dir = os.path.join(book_output_dir, "topics_llm_md")
-    topics_json_dir = os.path.join(book_output_dir, "topics_json")
-    topics_study_notes_dir = os.path.join(book_output_dir, "topics_study_notes")
-    topics_db_json_dir = os.path.join(book_output_dir, "topics_db_json")
-    manifest_path = os.path.join(topics_md_dir, "manifest.json")
-    llm_md_manifest_path = os.path.join(topics_llm_md_dir, "manifest.json")
-    db_manifest_path = os.path.join(topics_db_json_dir, "manifest.json")
-    db_output_json = os.path.join(OUTPUT_DIR, f"{base_name}_db.json")
-    return BookPaths(
-        base_name=base_name,
-        mathpix_md=cache_path,
-        output_json=output_json,
-        book_output_dir=book_output_dir,
-        topics_md_dir=topics_md_dir,
-        topics_llm_md_dir=topics_llm_md_dir,
-        topics_json_dir=topics_json_dir,
-        topics_db_json_dir=topics_db_json_dir,
-        manifest_path=manifest_path,
-        llm_md_manifest_path=llm_md_manifest_path,
-        db_manifest_path=db_manifest_path,
-        db_output_json=db_output_json,
-        qa_table_output_json=qa_table_output_json,
-        topics_study_notes_dir=topics_study_notes_dir,
-        study_notes_output_json=study_notes_output_json,
-    )
-
-
-def topic_md_filename(meta: TopicMeta) -> str:
-    return f"topic_{meta.topic_number:02d}_{slugify(meta.topic_name)}.md"
-
-
-def topic_theory_md_filename(meta: TopicMeta) -> str:
-    return f"topic_{meta.topic_number:02d}_{slugify(meta.topic_name)}_theory.md"
-
-
-def topic_examples_md_filename(meta: TopicMeta) -> str:
-    return f"topic_{meta.topic_number:02d}_{slugify(meta.topic_name)}_examples.md"
-
-
-def topic_json_path(book_paths: BookPaths, topic_number: int) -> str:
-    return os.path.join(book_paths.topics_json_dir, f"topic_{topic_number:02d}.json")
-
-
-def topic_db_json_path(book_paths: BookPaths, topic_number: int) -> str:
-    return os.path.join(book_paths.topics_db_json_dir, f"topic_{topic_number:02d}.json")
-
-
-def topic_llm_md_path(book_paths: BookPaths, meta: TopicMeta) -> str:
-    return os.path.join(book_paths.topics_llm_md_dir, topic_md_filename(meta))
-
-
-def make_db_id(book_slug: str, topic_number: int, category: str, seq: int) -> str:
-    slug = slugify(book_slug).replace("-", "_") or "book"
-    return f"{slug}_t{topic_number:02d}_{category}_{seq:03d}"
-
-
-def read_topic_markdown_body(md_path: str) -> str:
-    with open(md_path, "r", encoding="utf-8") as handle:
-        text = handle.read()
-    if text.startswith("---"):
-        end = text.find("\n---", 3)
-        if end != -1:
-            return text[end + 4 :].lstrip("\n")
-    return text
-
-
-def _parse_topic_md_frontmatter(md_path: str) -> Dict[str, str]:
-    meta: Dict[str, str] = {}
-    if not md_path or not os.path.isfile(md_path):
-        return meta
-    with open(md_path, "r", encoding="utf-8") as handle:
-        text = handle.read()
-    if not text.startswith("---"):
-        return meta
-    end = text.find("\n---", 3)
-    if end == -1:
-        return meta
-    for line in text[3:end].splitlines():
-        if ":" not in line:
-            continue
-        key, val = line.split(":", 1)
-        meta[key.strip()] = val.strip()
-    return meta
-
-
-def _parse_line_range(lines_spec: str) -> Tuple[Optional[int], Optional[int]]:
-    match = re.match(r"(\d+)\s*-\s*(\d+)", str(lines_spec or "").strip())
-    if not match:
-        return None, None
-    return int(match.group(1)), int(match.group(2))
-
 
 def _mathpix_cache_path_for_topic(
     topic_doc: Dict[str, Any],
@@ -897,127 +774,6 @@ def _theory_markdown_with_images_for_topic(
     return extract_theory_notes(chunk_md) or theory
 
 
-def _mathpix_image_area(url: str) -> int:
-    match = re.search(r"height=(\d+)&width=(\d+)", url, re.IGNORECASE)
-    if match:
-        return int(match.group(1)) * int(match.group(2))
-    return 0
-
-
-def _parse_mathpix_crop(url: str) -> Tuple[int, int, int, int]:
-    """Return width, height, top_left_x, top_left_y (0 when absent)."""
-    width = height = top_x = top_y = 0
-    match = re.search(r"height=(\d+)&width=(\d+)", url, re.IGNORECASE)
-    if match:
-        height, width = int(match.group(1)), int(match.group(2))
-    match = re.search(r"top_left_y=(\d+)", url, re.IGNORECASE)
-    if match:
-        top_y = int(match.group(1))
-    match = re.search(r"top_left_x=(\d+)", url, re.IGNORECASE)
-    if match:
-        top_x = int(match.group(1))
-    return width, height, top_x, top_y
-
-
-def _is_foundation_brand_logo_url(url: str) -> bool:
-    """Detect the 'Build Strong Foundation' star logo (upper-right chapter opener)."""
-    width, height, top_x, top_y = _parse_mathpix_crop(url)
-    if not width or not height:
-        return False
-    return (
-        top_x >= FOUNDATION_LOGO_MIN_X
-        and top_y <= FOUNDATION_LOGO_MAX_Y
-        and 380 <= width <= 550
-        and 380 <= height <= 550
-    )
-
-
-def _recrop_concept_map_excluding_logo_band(url: str) -> str:
-    """Drop standalone logo crops; trim logo band from full-page concept-map crops."""
-    if _is_foundation_brand_logo_url(url):
-        return ""
-    width, height, _top_x, top_y = _parse_mathpix_crop(url)
-    if not width or not height:
-        return url
-    if top_y <= 500 and width >= 1200 and height >= 1200:
-        new_top_y = top_y + FOUNDATION_LOGO_BAND_PX
-        new_height = height - FOUNDATION_LOGO_BAND_PX
-        if new_height >= 400:
-            url = re.sub(
-                r"top_left_y=\d+",
-                f"top_left_y={new_top_y}",
-                url,
-                count=1,
-                flags=re.IGNORECASE,
-            )
-            url = re.sub(
-                r"height=\d+",
-                f"height={new_height}",
-                url,
-                count=1,
-                flags=re.IGNORECASE,
-            )
-    return url
-
-
-def _prepare_concept_map_urls(urls: List[str]) -> List[str]:
-    seen: Set[str] = set()
-    prepared: List[str] = []
-    for url in urls:
-        processed = _recrop_concept_map_excluding_logo_band(url)
-        if processed and processed not in seen:
-            seen.add(processed)
-            prepared.append(processed)
-    return prepared
-
-
-def _strip_foundation_logo_images_from_markdown(markdown: str) -> str:
-    """Remove logo ![](...) references from concept-map markdown text."""
-    if not markdown:
-        return markdown
-    cleaned = markdown
-    for url in IMAGE_MD_RE.findall(markdown):
-        if _is_foundation_brand_logo_url(url):
-            cleaned = cleaned.replace(f"![]({url})", "")
-    return compact_markdown(cleaned)
-
-
-def _remove_concept_map_sections(sections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    kept: List[Dict[str, Any]] = []
-    for sec in sections or []:
-        if not isinstance(sec, dict):
-            kept.append(sec)
-            continue
-        if sec.get("section_kind") == "concept_map":
-            continue
-        if CONCEPT_MAP_HEADING_RE.search(theory_section_heading(sec) or ""):
-            continue
-        kept.append(sec)
-    return kept
-
-
-def _is_fullpage_concept_map_url(url: str) -> bool:
-    """Single full-spread concept map image (chapter 1 style)."""
-    width, height, _, _ = _parse_mathpix_crop(url)
-    if not width or not height:
-        return False
-    return (
-        width >= 1200
-        and height >= 1200
-        and width * height >= MIN_CONCEPT_MAP_IMAGE_AREA
-    )
-
-
-def _mathpix_page_key(url: str) -> str:
-    match = re.search(r"cropped/(.+?)(?:-\d+)?\.jpg", url, re.IGNORECASE)
-    return match.group(1) if match else url
-
-
-def _concept_map_body_text_only(body: str) -> str:
-    text = body or ""
-    text = IMAGE_MD_RE.sub("", text)
-    text = re.sub(r"\[\^\d+\]", "", text)
-    return re.sub(r"\s+", " ", text).strip()
 
 
 def _collect_image_urls_between_lines(
@@ -5478,571 +5234,6 @@ def pre_extract_topic(chunk: TopicChunk) -> Dict[str, Any]:
     }
 
 
-# latex2mathml has no support for the alignment column separator, so an
-# ``aligned`` body emits one <mi>&</mi> per line -- a visible stray glyph in the
-# rendered maths, and invalid XML besides (a bare & is not an entity). The
-# character is pure layout, so it is dropped before conversion. Left alone this
-# marks every multi-line derivation in the corpus: Mathpix wraps them all in
-# ``aligned``, 4,000+ of them.
-#
-# Deliberately narrow: ``matrix``/``pmatrix`` use & to separate real cells and
-# latex2mathml handles those correctly, so they must not be touched.
-ALIGNMENT_ENV_RE = re.compile(
-    r"(\\begin\{(aligned|align\*?|alignat\*?|flalign\*?)\})(.*?)(\\end\{\2\})",
-    re.DOTALL,
-)
-# A bare & that is not an escaped \& and not the start of an entity.
-BARE_AMPERSAND_RE = re.compile(r"(?<!\\)&(?![a-zA-Z#])")
-STRAY_AMPERSAND_NODE_RE = re.compile(r"<mi>\s*&(?:amp;)?\s*</mi>")
-MATHML_BLOCK_RE = re.compile(r"<math\b[\s\S]*?</math>", re.IGNORECASE)
-# Mathpix runs an inline "$...$" straight into a following block "$$...$$" with
-# no separator, giving "$$$". The block pattern then matches from the wrong "$"
-# and swallows the inline span, leaving an unpaired delimiter behind.
-TRIPLE_DOLLAR_RE = re.compile(r"(?<!\$)\$\$\$(?!\$)")
-
-
-def normalize_math_delimiters(text: str) -> str:
-    """Separate an inline close that abuts a block open."""
-    return TRIPLE_DOLLAR_RE.sub("$\n$$", text)
-
-
-def strip_alignment_markers(latex: str) -> str:
-    """Drop the column separators from alignment environments."""
-    def fix(match: re.Match) -> str:
-        body = BARE_AMPERSAND_RE.sub(" ", match.group(3))
-        return match.group(1) + body + match.group(4)
-
-    return ALIGNMENT_ENV_RE.sub(fix, latex)
-
-
-class MathConverter:
-    def __init__(self):
-        self._warned = False
-
-    def latex_to_mathml(self, latex: str) -> str:
-        latex = strip_alignment_markers(latex.strip())
-        if not latex:
-            return ""
-        if latex2mathml_converter is None:
-            if not self._warned:
-                print("Warning: latex2mathml not installed; wrapping LaTeX in mtext.")
-                self._warned = True
-            escaped = latex.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            return f"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>{escaped}</mtext></math>"
-        try:
-            return self._sanitize(latex2mathml_converter.convert(latex))
-        except Exception:
-            escaped = latex.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            return f"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>{escaped}</mtext></math>"
-
-    @staticmethod
-    def _sanitize(mathml: str) -> str:
-        """Remove stray alignment nodes and make any leftover & valid XML.
-
-        A safety net for LaTeX shapes the preprocessing does not cover: an
-        alignment character reaching the output is always a rendering artefact,
-        never content, and a bare & would make the document invalid XML.
-        """
-        cleaned = STRAY_AMPERSAND_NODE_RE.sub("", mathml)
-        return BARE_AMPERSAND_RE.sub("&amp;", cleaned)
-
-    def convert_text(self, text: str) -> str:
-        """Convert $...$ / $$...$$ spans to MathML, leaving existing MathML alone.
-
-        Conversion runs more than once over the same content on the merge path,
-        so it has to be idempotent. Existing <math> blocks are masked out first:
-        without that, a stray unbalanced ``$`` pairs with a later one, swallows
-        the MathML between them and re-converts it -- the literal text ``<math``
-        comes back as ``<`` ``m`` ``a`` ``t`` ``h`` typeset as maths, leaving the
-        document with more </math> tags than <math> ones.
-        """
-        if not text or not isinstance(text, str):
-            return text
-
-        preserved: List[str] = []
-
-        def stash(match: re.Match) -> str:
-            preserved.append(match.group(0))
-            return f"\x00MATH{len(preserved) - 1}\x00"
-
-        def convert(match: re.Match) -> str:
-            return self.latex_to_mathml(match.group(1))
-
-        masked = MATHML_BLOCK_RE.sub(stash, text)
-        masked = normalize_math_delimiters(masked)
-
-        # Mask again between the two passes: the block pass leaves <math> in the
-        # string, and a leftover "$" would otherwise let the inline pass span
-        # across one and re-convert it.
-        after_block = MATHML_BLOCK_RE.sub(stash, LATEX_BLOCK_RE.sub(convert, masked))
-        result = LATEX_INLINE_RE.sub(convert, after_block)
-
-        for index, original in enumerate(preserved):
-            result = result.replace(f"\x00MATH{index}\x00", original)
-        return result
-
-    def convert_value(self, value: Any) -> Any:
-        if isinstance(value, str):
-            return self.convert_text(value)
-        if isinstance(value, list):
-            return [self.convert_value(v) for v in value]
-        if isinstance(value, dict):
-            return {k: self.convert_value(v) for k, v in value.items()}
-        return value
-
-    @staticmethod
-    def scan_latex_leaks(obj: Any, path: str = "") -> List[str]:
-        leaks: List[str] = []
-        if isinstance(obj, str) and LATEX_LEAK_RE.search(obj):
-            leaks.append(path or "root")
-        elif isinstance(obj, dict):
-            for k, v in obj.items():
-                leaks.extend(MathConverter.scan_latex_leaks(v, f"{path}.{k}" if path else k))
-        elif isinstance(obj, list):
-            for i, v in enumerate(obj):
-                leaks.extend(MathConverter.scan_latex_leaks(v, f"{path}[{i}]"))
-        return leaks
-
-
-def apply_mathml_conversion(
-    data: Any,
-    math: Optional[MathConverter] = None,
-) -> Any:
-    """Convert $...$ and $$...$$ LaTeX to MathML in all string fields (recursive)."""
-    if skip_mathml():
-        return data
-    converter = math or MathConverter()
-    return converter.convert_value(data)
-
-
-_SUPERSCRIPT_CHARS = str.maketrans({
-    "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
-    "7": "⁷", "8": "⁸", "9": "⁹", "+": "⁺", "-": "⁻", "−": "⁻", "=": "⁼",
-    "(": "⁽", ")": "⁾", "n": "ⁿ", "i": "ⁱ",
-})
-
-_MO_TRIM_RE = re.compile(r"^[\s\u00A0]+|[\s\u00A0]+$")
-_NO_SPACE_BEFORE = set(".,;:!?)]}°′″")
-_NO_SPACE_AFTER = set("([{")
-
-
-def _mathml_local_tag(tag: str) -> str:
-    if "}" in tag:
-        return tag.rsplit("}", 1)[-1]
-    return tag.lstrip("/")
-
-
-def _format_superscript(exp: str) -> str:
-    exp = re.sub(r"\s+", "", exp.strip())
-    if not exp:
-        return ""
-    if exp in ("circ", "°", "∘") or "°" in exp:
-        return "°"
-    return exp.translate(_SUPERSCRIPT_CHARS)
-
-
-def _latex_to_readable_plain(latex: str) -> str:
-    """Readable plain text from LaTeX (mirrors viewer ``latexToReadable``)."""
-    s = str(latex or "").strip()
-    if not s:
-        return ""
-    s = re.sub(r"\\text\{([^{}]*)\}", r"\1", s)
-    s = re.sub(r"\\mathrm\{([^{}]*)\}", r"\1", s)
-    s = re.sub(r"\\mathbf\{([^{}]*)\}", r"\1", s)
-    s = re.sub(r"\\frac\{([^{}]+)\}\{([^{}]+)\}", r"(\1)/(\2)", s)
-    s = re.sub(r"\\frac\{([^{}]+)\}", r"(\1)", s)
-
-    def _sup_repl(match: re.Match) -> str:
-        return _format_superscript(match.group(1))
-
-    s = re.sub(r"\^\{([^{}]+)\}", _sup_repl, s)
-    s = re.sub(r"_\{([^{}]+)\}", r"_\1", s)
-    for pat, repl in (
-        (r"\\circ", "°"), (r"\\theta", "θ"), (r"\\alpha", "α"), (r"\\beta", "β"),
-        (r"\\pi", "π"), (r"\\mu", "μ"), (r"\\times", "×"), (r"\\cdot", "·"),
-        (r"\\leq", "≤"), (r"\\geq", "≥"), (r"\\neq", "≠"), (r"\\infty", "∞"),
-        (r"\\rightarrow", "→"), (r"\\leftarrow", "←"), (r"\\Rightarrow", "⇒"),
-        (r"\\quad", " "),
-    ):
-        s = re.sub(pat, repl, s)
-    s = s.replace(r"\left(", "(").replace(r"\right)", ")")
-    s = re.sub(r"\\[a-zA-Z]+", "", s)
-    s = re.sub(r"[{}]", "", s)
-    return re.sub(r"\s+", " ", s).strip()
-
-
-def _mathml_leaf_text(elem: ET.Element) -> str:
-    parts: List[str] = []
-    if elem.text:
-        parts.append(elem.text)
-    for child in elem:
-        parts.append(_mathml_element_to_plain(child))
-        if child.tail:
-            parts.append(child.tail)
-    return html.unescape("".join(parts)).strip()
-
-
-def _mathml_join_parts(parts: List[str]) -> str:
-    out: List[str] = []
-    for part in parts:
-        piece = re.sub(r"\s+", " ", str(part or "").strip())
-        if not piece:
-            continue
-        if out:
-            prev = out[-1]
-            if (
-                piece[0] not in _NO_SPACE_BEFORE
-                and prev[-1] not in _NO_SPACE_AFTER
-                and not (prev[-1].isalnum() and piece[0] in "=<>±∓∴∵")
-            ):
-                out.append(" ")
-        out.append(piece)
-    return "".join(out)
-
-
-def _mathml_element_to_plain(elem: ET.Element) -> str:
-    tag = _mathml_local_tag(elem.tag)
-    if tag in ("math", "mrow", "mstyle", "mpadded", "mphantom", "semantics"):
-        return _mathml_join_parts([_mathml_element_to_plain(c) for c in elem])
-    if tag in ("mn", "mi", "mtext", "ms"):
-        return _mathml_leaf_text(elem)
-    if tag == "mo":
-        sym = _MO_TRIM_RE.sub("", _mathml_leaf_text(elem))
-        if sym in ("", "\u200B"):
-            return ""
-        if sym in ("⁡",):
-            return ""
-        return sym
-    if tag == "mspace":
-        return " "
-    if tag == "mfrac":
-        kids = list(elem)
-        if len(kids) >= 2:
-            num = _mathml_element_to_plain(kids[0])
-            den = _mathml_element_to_plain(kids[1])
-            if re.fullmatch(r"[\w\d.]+", num) and re.fullmatch(r"[\w\d.]+", den):
-                return f"{num}/{den}"
-            return f"({num})/({den})"
-        return _mathml_element_to_plain(kids[0]) if kids else ""
-    if tag == "msup":
-        kids = list(elem)
-        if len(kids) >= 2:
-            base = _mathml_element_to_plain(kids[0])
-            exp = _mathml_element_to_plain(kids[1])
-            return base + _format_superscript(exp)
-        return _mathml_element_to_plain(kids[0]) if kids else ""
-    if tag == "msub":
-        kids = list(elem)
-        if len(kids) >= 2:
-            return _mathml_element_to_plain(kids[0]) + _mathml_element_to_plain(kids[1])
-        return _mathml_element_to_plain(kids[0]) if kids else ""
-    if tag == "msubsup":
-        kids = list(elem)
-        if len(kids) >= 3:
-            base = _mathml_element_to_plain(kids[0])
-            sub = _mathml_element_to_plain(kids[1])
-            sup = _format_superscript(_mathml_element_to_plain(kids[2]))
-            return f"{base}_{sub}{sup}"
-        return _mathml_join_parts([_mathml_element_to_plain(c) for c in kids])
-    if tag == "msqrt":
-        inner = _mathml_join_parts([_mathml_element_to_plain(c) for c in elem])
-        return f"√({inner})" if inner else "√"
-    if tag == "mroot":
-        kids = list(elem)
-        if len(kids) >= 2:
-            rad = _mathml_element_to_plain(kids[0])
-            idx = _mathml_element_to_plain(kids[1])
-            return f"{rad}^(1/{idx})"
-        return _mathml_join_parts([_mathml_element_to_plain(c) for c in kids])
-    if tag in ("mover", "munder", "munderover", "mtable", "mtr", "mtd"):
-        return _mathml_join_parts([_mathml_element_to_plain(c) for c in elem])
-    if tag == "mfenced":
-        open_ch = elem.get("open") or "("
-        close_ch = elem.get("close") or ")"
-        inner = _mathml_join_parts([_mathml_element_to_plain(c) for c in elem])
-        return f"{open_ch}{inner}{close_ch}"
-    return _mathml_leaf_text(elem)
-
-
-def _sanitize_mathml_for_xml(block: str) -> str:
-    """Escape bare ``&`` so MathML with ``<mi>&</mi>`` parses."""
-    return re.sub(
-        r"&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)",
-        "&amp;",
-        block,
-    )
-
-
-def mathml_block_to_plain(block: str) -> str:
-    """Convert one ``<math>...</math>`` fragment to readable plain text."""
-    raw = str(block or "").strip()
-    if not raw:
-        return ""
-    try:
-        root = ET.fromstring(_sanitize_mathml_for_xml(raw))
-    except ET.ParseError:
-        return _mathml_block_to_plain_fallback(raw)
-    plain = _mathml_element_to_plain(root).strip()
-    return plain
-
-
-def _mathml_block_to_plain_fallback(block: str) -> str:
-    """Best-effort plain text when XML parsing fails."""
-    text = re.sub(r"<mspace[^>]*/?>", " ", block, flags=re.IGNORECASE)
-    text = re.sub(r"<mtext[^>]*>([\s\S]*?)</mtext>", r"\1", text, flags=re.IGNORECASE)
-    text = re.sub(r"<mn[^>]*>([\s\S]*?)</mn>", r"\1", text, flags=re.IGNORECASE)
-    text = re.sub(r"<mi[^>]*>([\s\S]*?)</mi>", r"\1", text, flags=re.IGNORECASE)
-    text = re.sub(r"<mo[^>]*>([\s\S]*?)</mo>", r"\1", text, flags=re.IGNORECASE)
-    text = re.sub(r"<[^>]+>", "", text)
-    text = html.unescape(text)
-    return re.sub(r"\s+", " ", text).strip()
-
-
-def replace_mathml_with_plain_text(text: str) -> str:
-    if not text or not isinstance(text, str) or "<math" not in text.lower():
-        return text
-
-    def _repl(match: re.Match) -> str:
-        return mathml_block_to_plain(match.group(0))
-
-    out = MATHML_BLOCK_RE.sub(_repl, text)
-    if "$" in out:
-        out = LATEX_BLOCK_RE.sub(
-            lambda m: _latex_to_readable_plain(m.group(1)), out,
-        )
-        out = LATEX_INLINE_RE.sub(
-            lambda m: _latex_to_readable_plain(m.group(1)), out,
-        )
-    return out
-
-
-def apply_math_plain_conversion(data: Any) -> Any:
-    """Replace MathML (and any leftover $...$ LaTeX) with readable plain text."""
-    if isinstance(data, str):
-        return replace_mathml_with_plain_text(data)
-    if isinstance(data, list):
-        return [apply_math_plain_conversion(v) for v in data]
-    if isinstance(data, dict):
-        return {k: apply_math_plain_conversion(v) for k, v in data.items()}
-    return data
-
-
-def fix_math_plain_in_document(document: Dict[str, Any]) -> Dict[str, Any]:
-    """Convert MathML/LaTeX in all topics[] strings to readable plain text."""
-    document = dict(document)
-    topics_out: List[Dict[str, Any]] = []
-    for topic in document.get("topics") or []:
-        if isinstance(topic, dict):
-            topics_out.append(apply_math_plain_conversion(dict(topic)))
-    document["topics"] = topics_out
-    meta = dict(document.get("metadata") or {})
-    meta["mathml"] = "plain_text"
-    document["metadata"] = meta
-    return document
-
-
-# Stamped into a figure once it has been compressed. JPEG is lossy, so without a
-# marker every re-extraction would re-encode the same file and slowly degrade it.
-IMAGE_COMPRESSED_MARKER = "edu-pipeline-compressed"
-
-
-def compress_image_file(path: str) -> bool:
-    """Downscale and re-encode a cached figure in place; True when it shrank.
-
-    Runs at most once per file: the result carries a marker in its metadata and
-    is skipped on later passes, so repeated extractions never re-encode a JPEG
-    on top of itself. Kept deliberately forgiving -- Pillow is optional, so a
-    missing library or an unreadable file leaves the original alone rather than
-    failing extraction. The file is replaced only when the result is genuinely
-    smaller, and the format is preserved so the suffix still describes the bytes.
-    """
-    if IMAGE_MAX_DIM <= 0 or not path or not os.path.exists(path):
-        return False
-    try:
-        from PIL import Image, PngImagePlugin
-    except ImportError:
-        return False
-
-    try:
-        original_size = os.path.getsize(path)
-        is_png = path.lower().endswith(".png")
-        with Image.open(path) as source:
-            info = source.info or {}
-            stamped = info.get("Software") if is_png else info.get("comment")
-            if isinstance(stamped, bytes):
-                stamped = stamped.decode("utf-8", "ignore")
-            if stamped == IMAGE_COMPRESSED_MARKER:
-                return False
-
-            image = source.convert("RGBA" if is_png else "RGB")
-            width, height = image.size
-            if max(width, height) > IMAGE_MAX_DIM:
-                scale = IMAGE_MAX_DIM / float(max(width, height))
-                image = image.resize(
-                    (max(1, int(width * scale)), max(1, int(height * scale))),
-                    Image.LANCZOS,
-                )
-            elif original_size <= 40_000:
-                return False  # already small and correctly sized; leave it be
-
-            buffer = io.BytesIO()
-            if is_png:
-                meta = PngImagePlugin.PngInfo()
-                meta.add_text("Software", IMAGE_COMPRESSED_MARKER)
-                image.save(buffer, "PNG", optimize=True, pnginfo=meta)
-            else:
-                image.save(
-                    buffer, "JPEG",
-                    quality=IMAGE_JPEG_QUALITY, optimize=True, progressive=True,
-                    comment=IMAGE_COMPRESSED_MARKER.encode("utf-8"),
-                )
-        if buffer.tell() >= original_size:
-            return False
-        with open(path, "wb") as handle:
-            handle.write(buffer.getvalue())
-        return True
-    except Exception as exc:
-        print(f"  Warning: could not compress {os.path.basename(path)}: {exc}")
-        return False
-
-
-class ImageResolver:
-    def __init__(self, book_name: str, topic_number: Optional[int] = None):
-        self.book_name = book_name
-        self.topic_number = topic_number
-        base = os.path.join(IMAGE_CACHE_DIR, book_name)
-        if topic_number is not None:
-            base = os.path.join(base, f"topic_{int(topic_number):02d}")
-        self.cache_dir = base
-        self.url_to_id: Dict[str, str] = {}
-        self.assets: Dict[str, Dict[str, str]] = {}
-        self._counter = 0
-        os.makedirs(self.cache_dir, exist_ok=True)
-
-    def register_markdown(self, markdown: str) -> None:
-        for url in IMAGE_MD_RE.findall(markdown):
-            if url not in self.url_to_id:
-                self._counter += 1
-                img_id = f"img_{self._counter:03d}"
-                self.url_to_id[url] = img_id
-                ext = ".jpg"
-                if ".png" in url.lower():
-                    ext = ".png"
-                local_path = os.path.join(self.cache_dir, f"{img_id}{ext}")
-                self.assets[img_id] = {
-                    "source_url": url,
-                    "file": local_path.replace("\\", "/"),
-                }
-
-    def _mathpix_headers(self) -> Dict[str, str]:
-        headers: Dict[str, str] = {}
-        if MATHPIX_APP_ID and MATHPIX_APP_KEY:
-            headers["app_id"] = MATHPIX_APP_ID
-            headers["app_key"] = MATHPIX_APP_KEY
-        return headers
-
-    def _ensure_downloaded(self, url: str, local_path: str) -> None:
-        if os.path.exists(local_path):
-            # Cached by an earlier run that did not compress; shrink it in place
-            # so an existing workspace benefits without re-downloading.
-            compress_image_file(local_path)
-            return
-        try:
-            resp = requests.get(
-                url,
-                headers=self._mathpix_headers(),
-                timeout=60,
-            )
-            if resp.ok:
-                with open(local_path, "wb") as f:
-                    f.write(resp.content)
-                compress_image_file(local_path)
-                return
-            print(f"Warning: download HTTP {resp.status_code} for {url[:80]}...")
-        except Exception as exc:
-            print(f"Warning: failed to download {url}: {exc}")
-
-    def replace_urls_with_ids(self, text: str) -> str:
-        def repl(match: re.Match) -> str:
-            url = match.group(1)
-            img_id = self.url_to_id.get(url, "")
-            return f"[image:{img_id}]" if img_id else match.group(0)
-        return IMAGE_MD_RE.sub(repl, text)
-
-    def collect_referenced_ids(self, obj: Any) -> Set[str]:
-        found: Set[str] = set()
-        if isinstance(obj, str):
-            found.update(re.findall(r"\[image:(img_\d+)\]", obj))
-            for url, img_id in self.url_to_id.items():
-                if url in obj:
-                    found.add(img_id)
-        elif isinstance(obj, dict):
-            for v in obj.values():
-                found.update(self.collect_referenced_ids(v))
-        elif isinstance(obj, list):
-            for v in obj:
-                found.update(self.collect_referenced_ids(v))
-        return found
-
-    def build_image_list(self, referenced_ids: Set[str]) -> List[Dict[str, str]]:
-        if skip_images():
-            return []
-        images: List[Dict[str, str]] = []
-        for img_id in sorted(referenced_ids):
-            asset = self.assets.get(img_id)
-            if not asset:
-                continue
-            local_path = asset["file"]
-            if not os.path.exists(local_path):
-                self._ensure_downloaded(asset["source_url"], local_path)
-            if not os.path.exists(local_path):
-                continue
-            # Cheap after the first pass: compressed files carry a marker and
-            # are skipped, so a cache filled by an earlier run shrinks once.
-            compress_image_file(local_path)
-            with open(local_path, "rb") as f:
-                data = base64.b64encode(f.read()).decode("ascii")
-            mime = "image/png" if local_path.endswith(".png") else "image/jpeg"
-            images.append({
-                "id": img_id,
-                "caption": "",
-                "base64": data,
-                "mime_type": mime,
-            })
-        return images
-
-    def get_assets_dict(self) -> Dict[str, Dict[str, str]]:
-        return dict(self.assets)
-
-
-def embed_base64_in_assets(resolver: ImageResolver) -> Dict[str, Dict[str, str]]:
-    """Embed base64 image data in all registered assets for the final JSON."""
-    if skip_images():
-        return {}
-    assets_out: Dict[str, Dict[str, str]] = {}
-    for img_id, asset in resolver.assets.items():
-        entry = dict(asset)
-        local_path = entry.get("file", "")
-        if local_path and not os.path.isabs(local_path):
-            local_path = os.path.normpath(local_path)
-        if local_path and os.path.exists(local_path):
-            # Shrink before embedding: base64 costs a third again on top.
-            compress_image_file(local_path)
-            with open(local_path, "rb") as handle:
-                entry["base64"] = base64.b64encode(handle.read()).decode("ascii")
-            entry["mime_type"] = (
-                "image/png" if local_path.lower().endswith(".png") else "image/jpeg"
-            )
-        elif entry.get("source_url"):
-            resolver._ensure_downloaded(entry["source_url"], local_path)
-            if local_path and os.path.exists(local_path):
-                with open(local_path, "rb") as handle:
-                    entry["base64"] = base64.b64encode(handle.read()).decode("ascii")
-                entry["mime_type"] = (
-                    "image/png" if local_path.lower().endswith(".png") else "image/jpeg"
-                )
-        assets_out[img_id] = entry
-    return assets_out
 
 
 def _extract_json_from_llm_text(text: str) -> Dict[str, Any]:

@@ -454,7 +454,7 @@
       var saved = "";
       try { saved = sessionStorage.getItem("questionsViewerPath") || ""; } catch (e) { /* private mode */ }
       els.jsonPath.value = getParam("json") || saved ||
-        "outputs/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_questions.json";
+        "edu_pipeline/workspace/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_questions.json";
       els.hint.innerHTML = standalone
         ? "Pick a <code class='path'>&lt;book&gt;_questions.json</code> to view it. " +
           "Everything runs in this page — nothing is uploaded."

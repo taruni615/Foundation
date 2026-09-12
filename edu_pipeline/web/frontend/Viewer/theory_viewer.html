@@ -341,7 +341,7 @@
       var saved = "";
       try { saved = sessionStorage.getItem("theoryViewerPath") || ""; } catch (e) { /* private mode */ }
       els.jsonPath.value = getParam("json") || saved ||
-        "outputs/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_theory.json";
+        "edu_pipeline/workspace/10 PHYSICS FOUNDATION/10 PHYSICS FOUNDATION_theory.json";
       els.hint.innerHTML = standalone
         ? "Pick a <code class='path'>&lt;book&gt;_theory.json</code> to read it. " +
           "Everything runs in this page — nothing is uploaded."

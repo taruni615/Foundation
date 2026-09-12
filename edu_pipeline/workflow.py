@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional
 from edu_pipeline.extraction.pipeline import main as run_extraction_pipeline
 from edu_pipeline.extraction.topic_extractor import main as run_topic_extractor
 from edu_pipeline.repository import BookRepository, RepositoryService
-from edu_pipeline.storage.export_qa import (
+from edu_pipeline.export import (
     build_qa_table_export,
     build_structured_questions_json,
     build_structured_theory_json,

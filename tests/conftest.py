@@ -99,56 +99,6 @@ def analysis_payload() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Fake LLM
-# ---------------------------------------------------------------------------
-class FakeLLM:
-    """Records calls and returns canned responses, so pipeline shape can be
-    asserted without a model. Mirrors OllamaLLMProvider.generate's contract."""
-
-    def __init__(self, json_reply: dict | None = None, text_reply: str = "# Notes\n\nBody.",
-                 fail_models: tuple[str, ...] = (), empty_models: tuple[str, ...] = ()):
-        self.calls: list[dict] = []
-        self.json_reply = json_reply or {}
-        self.text_reply = text_reply
-        self.fail_models = fail_models
-        self.empty_models = empty_models
-
-    def install(self, monkeypatch):
-        from edu_pipeline.ai.providers import llm as llm_mod
-        from edu_pipeline.ai.response import LLMResponse
-
-        fake = self
-
-        def generate(self, system_prompt, user_prompt, temperature=0.4,
-                     max_tokens=None, json_format=False):
-            fake.calls.append({
-                "model": self._model, "json_format": json_format,
-                "temperature": temperature, "system_prompt": system_prompt,
-                "user_prompt": user_prompt,
-            })
-            if self._model in fake.fail_models:
-                raise RuntimeError(f"simulated provider failure for {self._model}")
-            if self._model in fake.empty_models:
-                return LLMResponse(text="", model=self._model)
-            text = json.dumps(fake.json_reply) if json_format else fake.text_reply
-            return LLMResponse(text=text, model=self._model)
-
-        monkeypatch.setattr(llm_mod.OllamaLLMProvider, "generate", generate)
-        return self
-
-    @property
-    def models_used(self) -> list[str]:
-        return [c["model"] for c in self.calls]
-
-
-@pytest.fixture
-def fake_llm(monkeypatch):
-    def _make(**kwargs):
-        return FakeLLM(**kwargs).install(monkeypatch)
-    return _make
-
-
-# ---------------------------------------------------------------------------
 # Live server helper (smoke tests)
 # ---------------------------------------------------------------------------
 def _free_port() -> int:

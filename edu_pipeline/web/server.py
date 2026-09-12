@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from urllib.parse import parse_qs, unquote, urlparse
 
-from edu_pipeline.shared.paths import PACKAGE_ROOT, PROJECT_ROOT, load_dotenv
+from edu_pipeline.shared import PACKAGE_ROOT, PROJECT_ROOT, load_dotenv
 
 REPO_ROOT = PROJECT_ROOT
 WEBAPP_DIR = PACKAGE_ROOT / "web" / "frontend" / "webapp" if (PACKAGE_ROOT / "web" / "frontend" / "webapp").is_dir() else PROJECT_ROOT / "webapp"
@@ -36,7 +36,7 @@ DEFAULT_PORT = int(os.environ.get("APP_PORT", "8000"))
 
 load_dotenv(PROJECT_ROOT / ".env")
 
-from edu_pipeline.storage.export_qa import build_qa_table_export  # noqa: E402
+from edu_pipeline.export import build_qa_table_export  # noqa: E402
 
 # Attribute vocabulary (left-hand selectors)
 BOARDS = ["Foundation", "CBSE", "ICSE", "State Board", "Other"]
